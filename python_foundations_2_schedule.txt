@@ -1,0 +1,36 @@
+session 1  (big soace after)
+    Environment (editor/command line/interpreter)
+    Creating python modules
+        Executing a python module (__main__)
+        Importing from a python module.
+    Python spelling of things you know from foundations 1
+    * basic data types (string, list/tuple (arrays), dict (mapping/object))
+    * basic logic flow (for/while/if)
+    * boatload of exercises (4-6 hours of expected work) in practicing the
+      Python spellings of these things.
+
+session 2
+    Advanced function signatures
+        * args/kwargs/default values/tuple packing/unpacking splat and double-splat
+        Immutability vs. Mutability
+        Assignment is binding, not variables
+        Functions are objects/passing functions as arguments
+    Boolean Expressions
+        or, and, >, < etc, ternary operator, 
+    Advanced flow control
+        break/continue/else
+
+    Short homework (2-3 hours tops) writing some more advanced functions
+
+session 3 (big space after)
+
+
+session 4
+
+session 5 (big space after)
+
+session 6
+
+session 7 (big space after)
+
+session 8
