@@ -271,15 +271,25 @@ extensions += [
     'hieroglyph',
 ]
 
-slide_theme = 'slides'
+slide_title = "Foundations 2: Python"
+slide_theme = 'slides2'
 slide_levels = 3
 
 # Place custom static assets in the _static directory and uncomment
 # the following lines to include them
 
 slide_theme_options = {
+    'subtitle': 'Fundamentals of Python Programming',
     'custom_css': 'custom.css',
     # 'custom_js': 'custom.js',
+    'presenters': [
+        {
+            'name': 'Cris Ewing, Christopher Barker',
+            'twitter': '@crisewing, zzz',
+            'www': 'http://crisewing.com, zzz',
+            'github': 'http://github.com/cewing/codefellows_f2_python',
+        },
+    ],
 }
 
 # ----------------------------------------------
