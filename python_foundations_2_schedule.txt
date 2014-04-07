@@ -5,7 +5,10 @@ session 1  (big space after)
       - Saving a function to a file and running it.
       - Tab completion
       - '?' help system
+
+    Editor
       - SublimeText unless you have a solid alternative already in place
+      - Enhancements via blog post as homework
 
     Python spelling of things you know from foundations 1
       - basic data types (string, numerics, list)
