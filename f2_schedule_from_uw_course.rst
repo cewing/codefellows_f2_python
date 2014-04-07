@@ -11,7 +11,30 @@ General Introduction to Python and the class. Using the command interpreter and
 development environment. Finding and using the documentation. Getting help.
 Class github project. Basic data types, functions.
 
-Homework: 
+Topics
+------
+
+* Editor
+  - SublimeText unless you have a solid alternative already in place
+  - Enhancements via blog post as homework
+
+* Environment (editor/command line/interpreter).
+  - iPython
+  - using the run command to "execute" a python file
+  - Saving a function to a file and running it.
+  - Tab completion
+  - '?' help system
+
+* Python spelling of things you know from foundations 1
+  - basic data types (string, numerics, list)
+    * do we do dict (mapping/object)?
+  - basic logic flow (for/while/if)
+  - boatload of exercises (4-6 hours of expected work) in practicing the
+    Python spellings of these things.
+  - basic function calls
+
+Homework:
+---------
 
 * codingbat exercises
 * set up your editor
