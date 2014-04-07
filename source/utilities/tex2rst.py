@@ -27,7 +27,12 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'{\LARGE ',
                    r'{\HUGE ',
                    r'{\small ',
-                   r'\pause ',
+                   r'{\Large',
+                   r'{\large',
+                   r'{\LARGE',
+                   r'{\HUGE',
+                   r'{\small',
+                   r'\pause',
                    r'\begin{itemize}',
                    r'\end{itemize}',
                    r'\begin{enumerate}',
@@ -55,7 +60,7 @@ if __name__ == "__main__":
 
     # strip comments
     # caused problems with % in verbatim ....
-    #full_file = [line.split('%')[0] for line in full_file]
+    full_file = [line for line in full_file if (line and line.strip()[0] != '%')]
 
     # title
     title = ''
@@ -99,7 +104,7 @@ if __name__ == "__main__":
             line = line.strip()[9:-1]
             full_file[i] = "="*len(line)
             full_file.insert(i+1, line)
-            full_file.insert(i+2, "="*len(line))
+            full_file.insert(i+2, "="*len(line)+'\n')
 
 
     # extra spacing: \\[0.1in]
@@ -153,6 +158,7 @@ if __name__ == "__main__":
         for item in stuff_to_remove:
             line = line.replace(item, '')
         full_file[i] = line
+
 
     # clean out empty lines:
     num_empty = 0
