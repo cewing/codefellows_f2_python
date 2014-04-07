@@ -18,18 +18,23 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'\usepackage{listings}',
                    r'\usepackage{hyperref}',
                    r'\begin{document}',
+                   r'\author{Christopher Barker}',
+                   r'\institute{UW Continuing Education}',
                    r'\vfill',
                    r'\end{frame}',
-                   r'{\Large',
-                   r'{\large',
-                   r'{\LARGE',
-                   r'{\HUGE',
+                   r'{\Large ',
+                   r'{\large ',
+                   r'{\LARGE ',
+                   r'{\HUGE ',
+                   r'{\small ',
+                   r'\pause ',
                    r'\begin{itemize}',
                    r'\end{itemize}',
                    r'\begin{enumerate}',
                    r'\end{enumerate}',
                    r'\url{',
                    r'\\',
+                   r'\bf ',
                    r'}',
                    ]
 
@@ -49,12 +54,12 @@ if __name__ == "__main__":
     full_file = [line.rstrip() for line in full_file]
 
     # strip comments
-    full_file = [line.split('%')[0] for line in full_file]
+    # caused problems with % in verbatim ....
+    #full_file = [line.split('%')[0] for line in full_file]
 
     # title
     title = ''
     for i, line  in enumerate(full_file):
-        print line
         if line.lstrip().startswith(r"\title["):
             title = line.split('[',1)[1]
             title = title.replace(']{', ' ')
@@ -67,23 +72,47 @@ if __name__ == "__main__":
             full_file[i] = '='*len(title) +'\n' + title[:-1] +'\n' + '='*len(title)
             break
 
+    #remove date
+    for i, line  in enumerate(full_file):
+        if line.lstrip().startswith(r'\date'):
+            full_file[i] = ''  
+
+    # remove titlepage
+    for i, line  in enumerate(full_file):
+        if line.lstrip().startswith(r'\begin{frame}'):
+            if full_file[i+1].strip() == r'\titlepage':
+                full_file[i] = ''
+                full_file[i+1] = ''
+                full_file[i+2] = ''
+                break
+
     # new slide header:
     for i, line  in enumerate(full_file):
-        if line.startswith(r'\begin{frame}'):
+        if line.lstrip().startswith(r'\begin{frame}'):
             line = line[line.rindex('{'):][1:-1]
             full_file[i] = line
             full_file.insert(i+1, "="*len(line))
 
+    # section:
+    for i, line  in enumerate(full_file):
+        if line.lstrip().startswith(r'\section{'):
+            line = line.strip()[9:-1]
+            full_file[i] = "="*len(line)
+            full_file.insert(i+1, line)
+            full_file.insert(i+2, "="*len(line))
+
+
     # extra spacing: \\[0.1in]
     full_file = [line.split(r'\\[')[0]for line in full_file] 
 
-    # horizontal spacing:\hspace{0.5in}
-    for i, line  in enumerate(full_file):
-        while r'\hspace{' in line:
-            j = line.index(r'\hspace{') + 8
-            k = line.index('}',j+1)
-            line = line[:j-8]+line[k+1:]
-        full_file[i] = line     
+    # horizontal and vertical spacing:\hspace{0.5in}
+    for space_cmd in [r'\hspace{', r'\vspace{']:
+        for i, line  in enumerate(full_file):
+            while space_cmd in line:
+                j = line.index(space_cmd) + 8
+                k = line.index('}',j+1)
+                line = line[:j-8]+line[k+1:]
+            full_file[i] = line     
 
 
     for r in replacments:
@@ -125,7 +154,14 @@ if __name__ == "__main__":
             line = line.replace(item, '')
         full_file[i] = line
 
-
+    # clean out empty lines:
+    num_empty = 0
+    new_file = [] 
+    for i, line  in enumerate(full_file):
+        num_empty += (1 if not line.strip() else -num_empty)
+        if num_empty <= 2:
+            new_file.append(line)
+    full_file = new_file
 
 
     open(outfile,'w').write("\n".join(full_file) )

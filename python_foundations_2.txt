@@ -10,6 +10,8 @@ Objectives:
         * sets
         * understand the bigO performance characteristics of the types
     * have facility with built-ins and keywords
+    * understand the difference between mutable and immutable objects
+    * understand that assignment is binding names to objects, not variables
 
 
 
@@ -21,8 +23,6 @@ Objectives:
             * truthiness
         * error handling
             try/except/else/finally
-    * understand the difference between mutable and immutable objects
-    * understand that assignment is binding names to objects, not variables
     * understand duck-typing
         * uses in mocking functionality for testing
     * be comfortable working in the Python interpreter
