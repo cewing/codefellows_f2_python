@@ -1,62 +1,87 @@
-session 1  (big soace after)
-    Environment (editor/command line/interpreter)
-    Creating python modules
-        Executing a python module (__main__)
-        Importing from a python module.
+session 1  (big space after)
+    Environment (editor/command line/interpreter).
+      - iPython
+      - using the run command to "execute" a python file
+      - Saving a function to a file and running it.
+      - Tab completion
+      - '?' help system
+      - SublimeText unless you have a solid alternative already in place
+
     Python spelling of things you know from foundations 1
-    * basic data types (string, list/tuple (arrays), dict (mapping/object))
-    * basic logic flow (for/while/if)
-    * boatload of exercises (4-6 hours of expected work) in practicing the
-      Python spellings of these things.
+      - basic data types (string, numerics, list)
+         do we do dict (mapping/object)?
+      - basic logic flow (for/while/if)
+      - boatload of exercises (4-6 hours of expected work) in practicing the
+        Python spellings of these things.
+      - basic function calls
+
 
 session 2
     Creating a Python Module
         writing functions in a module
         importing from a module while in the interpreter
         executing module code with 'if __name__ == "__main__":' blocks
-    Advanced function signatures
-        * args/kwargs/default values/tuple packing/unpacking splat and double-splat
-        Immutability vs. Mutability
-        Assignment is binding, not variables
-        Functions are objects/passing functions as arguments
-    Boolean Expressions
-        or, and, >, < etc, ternary operator,
-    Advanced flow control
-        break/continue/else
 
     Short homework (2-3 hours tops) writing some more advanced functions
         create functions in a file and submit that file.
 
+
 session 3 (big space after)
+
     Introduction to Git
       - In-class workshop on creating a repository for f2 homework
+        - python .gitignore
       - In-class workshop on making a branch, committing and issuing a pull-request for homeworks
+
+    Boolean Expressions
+        or, and, >, < etc, ternary operator,
+
+    Advanced flow control
+        break/continue/else
+
     Error handling in functions
       - try/except/else/finally
 
+    File I/O and the os module
+      - open()
+      - 
 
 
 session 4
+    
+    Advanced function signatures
+        Immutability vs. Mutability
+          - tuples as immutable list-type things
+          - dictionaries as mutable objects that require immutable keys
+        Args/kwargs/default values/tuple packing/unpacking splat and double-splat
+        Assignment is binding, not variables
+
+
+session 5 (big space after)
+
+    
+
+
+session 6
     Defining Python Classes
       - simple new-style classes
       - attributes and methods
         - class attributes
         - instance attributes
         - __init__
+      - class inheritance
+        - attribute/method override
     Object-Oriented Design
 
 
-session 5 (big space after)
+session 7 (big space after)
     Advanced Python object orientation
-      - class inheritance
       - multiple inheritance and mixins
       - 'super'
       - magic methods
       - duck-typing
       - parameters: getters, setters and 'read-only' attributes
 
-session 6
-
-session 7 (big space after)
 
 session 8
+
