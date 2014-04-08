@@ -1,12 +1,29 @@
+**************************
+Session One: Introductions
+**************************
 
-.. Foundations 2: Python slides file, created by
-   hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
+In which you are introduced to this class, your instructors, your environment
+and your new best friend, Python.
+
+
+**************************
+Introduction to This class
+**************************
+
+
+********************************
+Introduction to Your Instructors
+********************************
+
+
+********************************
+Introduction to Your Environment
+********************************
+
 
 **********************
-Session One: Something
+Introduction to Python
 **********************
-
-In which we learn some stuff
 
 
 Slide With Bullets
