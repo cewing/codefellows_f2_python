@@ -25,6 +25,10 @@ Topics
   - Tab completion
   - '?' help system
 
+* Git
+  - How to create a new repository, TTW and command-line
+  - python .gitignore
+
 * Python spelling of things you know from foundations 1
   - basic data types (string, numerics, list)
     * do we do dict (mapping/object)?
@@ -54,6 +58,12 @@ Modules and import
 Conditionals and Boolean expressions
 
 Testing as asserts in main
+
+
+* Creating a Python Module
+  - writing functions in a module
+  - importing from a module while in the interpreter
+  - executing module code with 'if __name__ == "__main__":' blocks
 
 
 Class 3:
