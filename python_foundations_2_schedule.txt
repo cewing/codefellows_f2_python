@@ -30,11 +30,6 @@ session 2
 
 session 3 (big space after)
 
-    Introduction to Git
-      - In-class workshop on creating a repository for f2 homework
-        - python .gitignore
-      - In-class workshop on making a branch, committing and issuing a pull-request for homeworks
-
     Boolean Expressions
         or, and, >, < etc, ternary operator,
 
