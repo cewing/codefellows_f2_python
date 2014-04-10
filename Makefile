@@ -6,6 +6,8 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = build
+SASSBUILD     = sassc
+SASSOPTS      = --include-path './scss_sources'
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -178,6 +180,7 @@ pseudoxml:
 
 
 slides:
+	$(SASSBUILD) $(SASSOPTS) scss_sources/slides_custom.scss > $(BUILDDIR)/slides/_static/custom.css
 	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/slides
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 

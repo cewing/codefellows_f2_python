@@ -289,7 +289,7 @@ slide_theme_options = {
             'www': 'http://crisewing.com, zzz',
             'github': 'http://github.com/cewing/codefellows_f2_python',
         },
-    ],
+    ]
 }
 
 # ----------------------------------------------
