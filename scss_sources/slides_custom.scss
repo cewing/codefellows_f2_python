@@ -1,0 +1,33 @@
+.level-1 {
+    h1 {
+        font-size: 65px;
+        line-height: 1.4;
+        letter-spacing: -3px;
+        color: #515151;
+    }
+    article {
+        text-align: center;
+    }
+}
+
+.level-2 {
+    h2 {
+        position: static;
+        border-bottom: 1px solid #515151;
+        color: #515151;
+    }
+    article {
+        text-align: center;
+    }
+}
+
+.level-3 {
+    h3 {
+        position: static;
+        border-bottom: 1px solid #515151;
+        color: #515151;
+        height: 40px;
+        line-height: 40px;
+        font-weight: bold;
+    }
+}
