@@ -1,46 +1,36 @@
 
-%
 
-===================================================================================================
+***************************************************************************************************
 Intro to Python: Week 1 Introduction  to Python  General Introduction, Basic Data Types, Functions
-===================================================================================================
+***************************************************************************************************
 
 
 frame
-=====
+-----
 \frametitle{Table of Contents
-%\tableofcontents[currentsection]
 \tableofcontents
-
 
 ==================
 Intro to the Class
 ==================
 
 Instuctors
-==========
-
+----------
 {\large
 Christopher Barker: PythonCHB@gmail.com
 
-
 {TA:
-
 Fulvio Casali: fulviocasali@gmail.com
-
 
 But for the next two weeks:
 
-
 Josh Rakita: joshuarakita@gmail.com
-
 
 (Fulvio is at the Plone conference in Brazil)
 
 
 Chris' History
-==============
-
+--------------
 First computer:
 
   * Commodore Pet -- 8k RAM
@@ -63,10 +53,8 @@ College:
 
 Then a long Break: Theater Arts Major, Scenery, Lighting...
 
-
 Chris' History (cont) 
-======================
-
+----------------------
     Back to School: PhD Coastal Engineering 
     
       *     DOS / Windows 3.1
@@ -82,16 +70,13 @@ Chris' History (cont)
        * Oil Spill Modeling
        * Software Development
     
-
+    
     Gave TCL a try............ 
-
     
     Gave Perl a try............
 
-
 Chris' History
-==============
-
+--------------
 Discovered Python in 1998
 
     * It could do what Perl could do,
@@ -113,8 +98,7 @@ Discovered Python in 1998
 
 
 Who are you?
-============
-
+------------
 A bit about you:
 
   * name
@@ -123,18 +107,14 @@ A bit about you:
 
 
 Class Structure
-===============
-
+---------------
 github project 
 https://github.com/UWPCE-PythonCert/IntroToPython
-
 
 Syllabus: 
 https://github.com/UWPCE-PythonCert/IntroToPython/blob/master/Syllabus.rst
 
-
 Presentations, Sample Code, etc:
-
 {\small
 ::
     
@@ -144,19 +124,15 @@ Presentations, Sample Code, etc:
 
 
 Class Structure
-===============
-
+---------------
 Class Time:
   
      * Some lecture, lots of demos
      * Lab time: lots of hand-on practice
      * Later, Rinse, Repeat.....
   
-
 Interrupt me with questions -- please!
-
 (Some of the best learning promted by questions)
-
 
 Homework:
   
@@ -167,8 +143,7 @@ Homework:
   
 
 Lightning Talks
-===============
-
+---------------
 Lightning Talks
 
    * 5 minutes (including setup) - no kidding!
@@ -178,22 +153,18 @@ Lightning Talks
 
 
 Mailing list and Office Hours
-=============================
-
+-----------------------------
 
 We've set up a google group
  -- you will all be invited to join.
-
 programming-in-python@googlegroups.com
-
 
 "Office Hours" 
 -- Useful? Will you come?
 
 
 Python Ecosystem
-================
-
+----------------
 Used for:
 
   * CS education (this course!)
@@ -204,13 +175,10 @@ Used for:
   * Software tools (automated software testing, distributed version control, ...)
   * Research (natural language, graph theory, distributed computing, ...)
 
-
  An unusually large number of niches -- versatile
 
-
 Python Ecosystem
-================
-
+----------------
 Used by:
 
   * Beginners
@@ -221,10 +189,8 @@ Used by:
  An unusually large number of types of users -- versatile
  You can be productive in Python WITHOUT full-time immersion!
 
-
 Python Features
-===============
-
+---------------
 Gets many things right:
 
   *  Readable -- looks nice, makes sense
@@ -242,7 +208,7 @@ What is Python?
 ===============
 
 What is Python?
-===============
+---------------
     
       * Dynamic
       * Object oriented
@@ -252,10 +218,8 @@ What is Python?
     
 
 Python Features
-===============
-
+---------------
 Features:
-
 
   *  Unlike C, C++, C\#, Java ... More like Ruby, Lisp, Perl, Matlab, Mathematica ...
   *  Dynamic - no type declarations
@@ -268,60 +232,44 @@ Features:
 
 
 What's a Dynamic language
-=========================
-
+-------------------------
 {Strong, Dynamic typing.
-
  - Type checking and dispatch happen at run-time
-
 
 ``X = A+B`` 
 
 
-\pause
   * What is A?
   * What is B?
   * What does it mean to add them?
 
-\pause
+
   * A and B can change at any time before this process
 
 
 Duck Typing
-===========
+-----------
+
+ "If it looks like a duck, and quacks like a duck -- it's probably a duck"
 
 
-{\center \Large "If it looks like a duck, and quacks like a duck -- it's probably a duck"
-
-\pause
-
-{\center \Large If an object behaves as expected at run-time, it's the right type.
-
+ If an object behaves as expected at run-time, it's the right type.
 
 Python Versions
-===============
-
+---------------
 Python 2.*
-
 "Classic" Python -- evolved from original
 
-
 Python 3.* ("py3k")
-
 Updated version -- removed the "warts" allowed to break code
-
 (but really not all that different)
-
 Adoption is growing fast, but a few key packages still not supported.
 (https://python3wos.appspot.com/)
 
-
 This program uses Python 2.7 not Python 3 (next year?)
 
-
 Implementations
-===============
-
+---------------
 
     * Jython (JVM)
     * Iron Python (.NET)
@@ -330,13 +278,10 @@ Implementations
 
   We will use CPython 2.7 from python.org for this course.
 
-
 A Tiny Bit of History
-=====================
-
+---------------------
 Invented/developed by Guido van Rossum in 1989 -- first version was written on
 a Mac. Time of origin similar to TCL and Perl.
-
    \begin{columns[t] % contents are top vertically aligned
      \begin{column[T]{4.5cm % each column can also be its own environment
         \begin{tabular[pos]{lr
@@ -359,10 +304,8 @@ a Mac. Time of origin similar to TCL and Perl.
    \end{columns
 Code swarm for Python history: http://vimeo.com/1093745
 
-
 Using Python
-============
-
+------------
 {All you need for Python:
 
   *  A good programmer's text editor
@@ -381,10 +324,8 @@ Using Python
 There are lots of Editors, IDES, etc.:
    maybe you'll find one you like.
 
-
 Running Python Code
-===================
-
+-------------------
 
   * At an interpreter prompt:
 ::
@@ -397,47 +338,31 @@ Running Python Code
 
 
 Running Python Modules
-======================
-
-
+----------------------
 Running Modules
 -- a file that contains Python code, filename ends with ``.py`` 
-
  
     * ``$ python hello.py``   -- must be in current working directory
-
     * ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system
-
     * ``$ ./hello.py``        -- put ``#!/usr/env/python``  at top of module (Unix)
-
     * ``$ python -i hello.py``   -- import module, remain in interactive session
-
     * ``>>> import hello``     -- at the python prompt -- importing a module executes its contents
-
     * ``run hello.py``     -- at the IPython prompt -- running a module brings the names into the interactive namespace
 
 
 Documentation
-=============
-
+-------------
 www.python.org docs:
-
 http://docs.python.org/index.html
 
-
 Particularly the library reference:
-
 http://docs.python.org/library/index.html
-
 
 (The tutorial is pretty good, too)
 
-
 PEPs
-====
-
+----
 http://www.python.org/dev/peps/ 
-
 
 \begin{description
   *[PEP 1]   PEP Purpose and Guidelines
@@ -445,21 +370,16 @@ http://www.python.org/dev/peps/
   *[PEP 20]  the Zen of Python (``import this`` )
 \end{description
 
-
 pydoc
-=====
-
+-----
 {Suite of tools for processing "docstrings"
-
 And an online source at the interpreter:
-
 ::
     
 
     >>> from pydoc import help
     >>> help(int)
     Help on class int in module __builtin__:
-    
     class int(object)
      |  int(x[, base]) -> integer
      |
@@ -468,45 +388,33 @@ And an online source at the interpreter:
 
 
 or: ``$ pydoc``
-
 (but I prefer IPython's  ``?`` )
 
-
 Documentation
-=============
-
+-------------
 {\LARGE￼google
-
 
 But  be careful!
 
-
 Lots of great info out there!
-
 
 Most of it is opinionated and out of date.
 (might still be correct, though!)
 
-
 Lab
-===
-
+---
 
 A (very) Quick tour of the gitHub project
 
-
 https://github.com/UWPCE-PythonCert/IntroToPython
-
 
 {\small
 https://github.com/UWPCE-PythonCert/IntroToPython.git
 
 
 Lab
-===
-
+---
 Getting everyone on-line and at a command line.
-
 
     * Do a ``git clone``  of the project
     * Start up the Python interpreter:
@@ -522,7 +430,6 @@ Getting everyone on-line and at a command line.
     * if you have time:
 http://learnpythonthehardway.org/book/ex1.html
 http://learnpythonthehardway.org/book/ex2.html
-
 ...
 
 
@@ -531,21 +438,16 @@ Values, Expressions, and Types
 ==============================
 
 Code structure
-==============
-
+--------------
 
 Each line is a piece of code
 
-
 {Comments: everything following a ``#``  is a comment
-
 
 {Expression: something that results in a value: ``3+4`` 
 
-
 {Statement: Line of code that does not return a value: 
         ``print "this"`` 
-
 
 Blocks of code are delimited by a colon and indentation:
 ::
@@ -558,63 +460,45 @@ Blocks of code are delimited by a colon and indentation:
 
 
 The print statement
-===================
-
+-------------------
 {\large
 Kind of obvious, but handy when playing with code:
 
-
 ``print something``  prints ``something``  to the console.
-
 
 Can print multiple things: ``print "the value is", 5`` 
 
-
 Automatically adds a newline.
-
 
 You can suppress the newline with a comma: 
 ``print "the value is",`` 
 ``print 5`` 
-
 
 Any python object can be printed
 (though it might not be pretty...)
 
 
 Values, expressions, and types
-==============================
-
+------------------------------
 Values (data) vs. variables (names with values)
 
-
     *  Values are pieces of unnamed data: ``42, 'Hello, world',`` 
-
     *  In Python, all values are objects
       Try ``dir(42)``  - lots going on behind the curtain! (demo)
-
     *  Every value belongs to a type: integer, float, str, ...  (demo)
-
     *  An expression is made up of values and operators, is evaluated to
         produce a value:  ``2 + 2`` , etc.
-
     *  Python interpreter can be used as a calculator to evaluate expressions (demo)
-
     *  Integer vs. float arithmetic (demo)
-
     *  Type errors - checked at run time only (demo)
-
     *  Type conversions (demo)
 
 
 Variables
-=========
-
+---------
 Variables are names for values (objects)
-
 -- Variables don't have a type; values do --
 this is where the dynamic comes from
-
 ::
     
 
@@ -633,8 +517,7 @@ this is where the dynamic comes from
 
 
 Assignment
-==========
-
+----------
 Assignment is really name binding: 
 
   * Attaching a name to a value
@@ -643,46 +526,31 @@ Assignment is really name binding:
 
 ``=``  assigns (binds a name)
 
-
 ``+=``  also an assignment: ``a += 1``  same as ``a = a+1`` 
-
 also: ``-=, *=, /=, **=, \%=`` 
-
 (not quite -- really in-place assignment for mutables....)
 
-
 Multiple Assignment
-===================
-
+-------------------
 You can assign multiple variables from multiple expressions in one statement
-
 
 ``i, j = 2 + x,  3 * y``  \# commas separate variables on lhs, exprs on rhs
 
-
 Python evaluates all the expressions on the right before doing any assignments
-
 
 ``i, j = j, i``  \# parlor trick: swap in one statement
 
-
 \large{These are just tricks, but multiple assignment is more helpful in other contexts
-
 
 (more on what's really going on later...)
 
-
 (demo)
 
-
 Deleting
-========
-
+--------
 You can't actually delete anything in python...
 
-
 ``del``  only unbinds a name
-
 
 ::
     
@@ -692,61 +560,42 @@ You can't actually delete anything in python...
     del a
 
 
-
 The object is still there...python will only delete it if there are no references to it.
-
 
 (demo)
 
-
 equality and identity
-=====================
-
+---------------------
 {\large
 
 ``==``  checks equality
 
-
 ``is``  checks identity
-
 
 ``id()``  queries identity
 
 
 (demo)
 
-
 Operator Precedence
-===================
-
+-------------------
 {Operator Precedence determines what evaluates first:
-
 ``4 + 3 * 5 != (4 + 3) * 5``   --  Use parentheses !
-
 Precedence of common operators:
-
 Arithmetic 
 ``**``  
 ``+x, -x``  
 ``*, /, %`` 	
 ``+, -``  
-
 Comparisons:
-
 ``<, <=, >, >=, !=, ==`` 
-
 Boolean operators:
-
 ``or, and, not`` 
-
 Membership and Identity:
-
 ``in, not in, is, is not`` 
 
-
 string literals
-===============
-
+---------------
 ::
     
 
@@ -759,16 +608,13 @@ string literals
     all in one
     """
     "a string with an \n escaped character"
-    
     r'a "raw" string the \n comes through as a \n'
-    
+
 
 
 key words
-=========
-
+---------
  A bunch:
-
 
 ::
     
@@ -784,62 +630,45 @@ key words
 
 
 and the built-ins..
-===================
-
+-------------------
  Try this:
-
 
 ``>>> dir(__builtins__)`` 
 
 
 Lab
-===
-
+---
 From LPTHW 
-
 
 http://learnpythonthehardway.org/book/ex3.html
 
-
 http://learnpythonthehardway.org/book/ex4.html
 
-
 http://learnpythonthehardway.org/book/ex5.html
-
 (and 6 -- 8 if you get bored...)
 
-
 =========
 Functions
 =========
 
 Functions
-=========
-
+---------
 
 What is a function?
 
-
 A function is a self-contained chunk of code
-
 
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
-
 (DRY) 
-
 
 Or just to keep the code clean
 
-
 Functions can take and return information
 
-
 Functions
-=========
-
+---------
 Minimal Function does nothing
-
 ::
     
 
@@ -858,23 +687,18 @@ Pass Statement (Note the indentation!)
 
 
 Functions: def
-==============
-
+--------------
 ``def``  is a statement:
 
   * it is executed
   * it creates a local variable
 
-
 {\large￼function defs must be executed before the functions can be called
 
-\pause
 {\large￼functions call functions -- this makes a stack -- that's all a trace back is
 
-
 Functions: Call Stack
-=====================
-
+---------------------
 ::
     
 
@@ -890,8 +714,7 @@ Functions: Call Stack
 
 
 Functions: Tracebacks
-=====================
-
+---------------------
 ::
     
 
@@ -908,16 +731,13 @@ Functions: Tracebacks
 
 
 Functions: return
-=================
-
+-----------------
 Every function ends with a ``return`` 
-
 ::
     
 
     def five():
         return 5
-
 
 
 Actually simplest function
@@ -930,10 +750,8 @@ Actually simplest function
 
 
 Functions: return
-=================
-
+-----------------
 if you don't put ``return``  there, python will:
-
 ::
     
 
@@ -944,89 +762,53 @@ if you don't put ``return``  there, python will:
     None
 
 
-
 note that the interpreter eats ``None`` 
 
-
 Functions: return
-=================
-
+-----------------
 
 Only one return statement will ever be executed.
 
-\pause
 
 Ever.
 
-\pause
 
 Anything after a executed return statement will never get run.
 
-
 ￼This is useful when debugging! 
 
-
 Functions: return
-=================
-
+-----------------
 functions can return multiple results
-
 ::
     
 
     def fun():
         return 1,2,3
-    
     In [149]: fun()
     Out[149]: (1, 2, 3)
 
 
 
 Functions: return
-=================
-
+-----------------
 remember multiple assignment?
-
 ::
     
 
     In [150]: x,y,z = fun()
-    
     In [151]: x
     Out[151]: 1
-    
     In [152]: y
     Out[152]: 2
-    
     In [153]: z
     Out[153]: 3
 
 
 
-% \begin{frame[fragile]{Functions: return
-
-% Actually a tuple of results...
-
-% \begin{verbatim
-% In [154]: t = fun()
-
-% In [155]: t
-% Out[155]: (1, 2, 3)
-
-% In [156]: type(t)
-% Out[156]: tuple
-% \end{verbatim
-
-% Multiple assignment is really "tuple unpacking"
-
-% 
-
-
 Functions: parameters
-=====================
-
+---------------------
 function parameters: in definition
-
 ::
     
 
@@ -1035,15 +817,11 @@ function parameters: in definition
          print x, y, z, q
 
 
-
 x, y, z are local names -- so is q
 
-
 Functions: arguments
-====================
-
+--------------------
 function arguments: when calling
-
 ::
     
 
@@ -1055,14 +833,12 @@ function arguments: when calling
     
 
     In [138]: fun(3, 4, 5)
-    
     3 4 5
 
 
 
 Functions: local vs. global
-===========================
-
+---------------------------
 ::
     
 
@@ -1077,16 +853,13 @@ Functions: local vs. global
     
 
     In [141]: fun(3,4)
-    
     32 3 4
 
 
 x is global, y, z are local
 
-
 Functions: local vs. global
-===========================
-
+---------------------------
 ::
     
 
@@ -1098,15 +871,11 @@ Functions: local vs. global
         print y
 
 
-
 What happens when we call ``f()`` ?
 
-
 Functions: local vs. global
-===========================
-
+---------------------------
 Gotcha!
-
 ::
     
 
@@ -1121,47 +890,34 @@ Gotcha!
           5     print y
 
 
-
 you are going to assign x -- so it's local
 
-
 Scopes
-======
-
+------
 
 {\Large￼There is a ``global``  statement
 
-\pause
 
 Don't use it!
 
-
 Scopes
-======
-
+------
 
 {\Large￼good discussion of scopes:
 
-
 http://docs.python.org/tutorial/classes.html#python-­‐scopes-­‐and-­‐namespaces
 
-
 Recursion
-=========
-
+---------
 
 {\Large￼Recursion is calling a function from itself.
 
-
 {\Large￼Max stack depth, function call overhead.
-
 
 {\Large￼Because of these two(?), recursion isn't used {that often in Python.
 
-
 Lab: functions
-==============
-
+--------------
 write a function that:
 
   * takes a number and returns the square and cube of that number
@@ -1175,18 +931,14 @@ Wrap Up
 =======
 
 Lightning Talks
-===============
-
+---------------
 
 Assign times for lightning talks
 
-
 \centerLet's use Python for that!
 
-
 Homework
-========
-
+--------
 Recommended Reading:
 
   * Think Python: Chapters 1--7 
@@ -1196,16 +948,12 @@ Recommended Reading:
 
 Problems in ``week-01\homework.rst`` 
 
-
 Coding is the only way to learn to code:
 CodingBat exercises are a good way to build skills.
 
   * visit http://codingbat.com
   * sign up for an account and goto ‘prefs’ page and share To: PythonCHB@gmailcom
 
-
 Do at least two exercises from CodingBat: Warmup-1
 
-
 \end{document
-

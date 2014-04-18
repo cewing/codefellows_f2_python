@@ -27,11 +27,12 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'{\LARGE ',
                    r'{\HUGE ',
                    r'{\small ',
-                   r'{\Large',
-                   r'{\large',
-                   r'{\LARGE',
-                   r'{\HUGE',
-                   r'{\small',
+                   r'{\Large ',
+                   r'{\large ',
+                   r'\Large ',
+                   r'{\LARGE ',
+                   r'{\HUGE ',
+                   r'{\center',
                    r'\pause',
                    r'\begin{itemize}',
                    r'\end{itemize}',
@@ -74,7 +75,7 @@ if __name__ == "__main__":
             title = title+ ' ' + line.strip() 
 
         if title and title[-1] == '}':
-            full_file[i] = '='*len(title) +'\n' + title[:-1] +'\n' + '='*len(title)
+            full_file[i] = '*'*len(title) +'\n' + title[:-1] +'\n' + '*'*len(title)
             break
 
     #remove date
@@ -96,7 +97,7 @@ if __name__ == "__main__":
         if line.lstrip().startswith(r'\begin{frame}'):
             line = line[line.rindex('{'):][1:-1]
             full_file[i] = line
-            full_file.insert(i+1, "="*len(line))
+            full_file.insert(i+1, "-"*len(line))
 
     # section:
     for i, line  in enumerate(full_file):
@@ -155,8 +156,16 @@ if __name__ == "__main__":
 
     # remove useless cruft:
     for i, line  in enumerate(full_file):
+        if 'Large' in line:
+            print line 
+            yes = True
+        else:
+            yes = False
         for item in stuff_to_remove:
+
+            if yes: print '\n',item
             line = line.replace(item, '')
+            if yes: print line
         full_file[i] = line
 
 
