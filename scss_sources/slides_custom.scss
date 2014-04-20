@@ -1,3 +1,63 @@
+body {
+  -webkit-transition: opacity 200ms ease-in;
+  -webkit-transition-delay: 50ms;
+  -moz-transition: opacity 200ms ease-in 50ms;
+  -o-transition: opacity 200ms ease-in 50ms;
+  transition: opacity 200ms ease-in 50ms;
+}
+slides {
+  -webkit-transition: opacity 200ms ease-in;
+  -webkit-transition-delay: 50ms;
+  -moz-transition: opacity 200ms ease-in 50ms;
+  -o-transition: opacity 200ms ease-in 50ms;
+  transition: opacity 200ms ease-in 50ms;
+}
+slides > slide {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.highlight-code slide.current pre > * {
+  opacity: 0.25;
+  -webkit-transition: opacity 0.1s ease-in;
+  -moz-transition: opacity 0.1s ease-in;
+  -o-transition: opacity 0.1s ease-in;
+  transition: opacity 0.1s ease-in;
+}
+.build > *, p.build {
+    transition: opacity 0.1s ease-in-out 0.1s;
+    -o-transition: opacity 0.1s ease-in-out 0.1s;
+    -moz-transition: opacity 0.1s ease-in-out 0.1s;
+    -webkit-transition: opacity 0.1s ease-in-out 0.1s;
+}
+.note {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.with-notes.popup .note {
+  -webkit-transition: opacity 100ms ease-in-out;
+  -moz-transition: opacity 100ms ease-in-out;
+  -o-transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
+}
+.auto-fadein {
+  -webkit-transition: opacity 0.25s ease-in;
+  -webkit-transition-delay: 0.25s;
+  -moz-transition: opacity 0.25s ease-in 0.25s;
+  -o-transition: opacity 0.25s ease-in 0.25s;
+  transition: opacity 0.25s ease-in 0.25s;
+}
+aside.gdbar {
+  -webkit-transition: all 0.1s ease-out;
+  -webkit-transition-delay: 0.1s;
+  -moz-transition: all 0.1s ease-out 0.1s;
+  -o-transition: all 0.1s ease-out 0.1s;
+  transition: all 0.1s ease-out 0.1s;
+  /* Better to transition only on background-size, but not sure how to do that with the mixin. */
+}
 .level-1 {
     h1 {
         font-size: 65px;
@@ -7,6 +67,9 @@
     }
     article {
         text-align: center;
+        img {
+          margin-top: 10px;
+        }
     }
 }
 
@@ -26,8 +89,19 @@
         position: static;
         border-bottom: 1px solid #515151;
         color: #515151;
-        height: 40px;
-        line-height: 40px;
+        font-size: 40px;
+        height: 45px;
+        line-height: 45px;
         font-weight: bold;
+    }
+    article {
+      p.center {
+        text-align: center;
+        margin-top: 20%;
+      }
+      p.large {
+        font-weight: bold;
+        font-size: 200%;
+      }
     }
 }
