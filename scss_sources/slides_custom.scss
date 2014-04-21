@@ -1,3 +1,5 @@
+$main-color: #515151;
+
 body {
   -webkit-transition: opacity 200ms ease-in;
   -webkit-transition-delay: 50ms;
@@ -58,50 +60,82 @@ aside.gdbar {
   transition: all 0.1s ease-out 0.1s;
   /* Better to transition only on background-size, but not sure how to do that with the mixin. */
 }
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+article {
+  .center {
+    text-align: center;
+    margin-top: 20%;
+  }
+  .large {
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 65px;
+  }
+  .mlarge {
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 55px;
+  }
+  .medium {
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 45px;
+  }
+  .line-block {
+    .line {
+      font-size: inherit;
+    }
+  }
+}
+
 .level-1 {
-    h1 {
-        font-size: 65px;
-        line-height: 1.4;
-        letter-spacing: -3px;
-        color: #515151;
+  h1 {
+    font-size: 65px;
+    line-height: 1.4;
+    letter-spacing: -3px;
+    color: $main-color;
+  }
+  article {
+    text-align: center;
+    img {
+      margin-top: 10px;
     }
-    article {
-        text-align: center;
-        img {
-          margin-top: 10px;
-        }
-    }
+  }
 }
 
 .level-2 {
-    h2 {
-        position: static;
-        border-bottom: 1px solid #515151;
-        color: #515151;
-    }
-    article {
-        text-align: center;
-    }
+  h2 {
+    position: static;
+    border-bottom: 1px solid $main-color;
+    border-top: 1px solid $main-color;
+    padding: 5px 0px;
+    color: $main-color;
+
+  }
+  article {
+    text-align: center;
+  }
 }
 
 .level-3 {
-    h3 {
-        position: static;
-        border-bottom: 1px solid #515151;
-        color: #515151;
-        font-size: 40px;
-        height: 45px;
-        line-height: 45px;
-        font-weight: bold;
-    }
-    article {
-      p.center {
-        text-align: center;
-        margin-top: 20%;
-      }
-      p.large {
-        font-weight: bold;
-        font-size: 200%;
-      }
-    }
+  h3 {
+      position: static;
+      border-bottom: 1px solid $main-color;
+      color: $main-color;
+      font-size: 40px;
+      height: 45px;
+      line-height: 45px;
+      font-weight: bold;
+  }
+  article {
+    text-align: left;
+  }
 }
