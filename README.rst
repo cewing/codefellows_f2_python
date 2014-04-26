@@ -86,6 +86,10 @@ Or the epub documentation:
 License
 =======
 
+Copyright 2014 Christopher Barker and Cris Ewing.
+
+Thanks to Jon Jacky and Brian Dorsey, who developed the materials from which this course was derived.
+
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
 To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/4.0/
