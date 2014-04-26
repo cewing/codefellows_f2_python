@@ -11,10 +11,38 @@ Session One: Introductions
 
 xkcd.com/353
 
-Introduction to Your Instructors
-================================
+Introductions
+=============
 
-here we are
+.. rst-class:: center large
+
+In which we meet each-other
+
+
+Your instructors
+----------------
+
+.. rst-class:: center large
+
+Christopher Barker
+
+.. nextslide::
+
+.. rst-class:: center large
+
+Cris Ewing
+
+
+And You
+-------
+
+Tell us:
+
+.. rst-class:: build
+
+* Your name
+* What you do
+* programing background (languages)
 
 
 Introduction to This class
@@ -32,9 +60,7 @@ Why Python?
 
 Python Is Versatile
 
-
-Why Python?
------------
+.. nextslide::
 
 Used for:
 
@@ -48,9 +74,7 @@ Used for:
 * Software tools (automated software testing, distributed version control, ...)
 * Research (natural language, graph theory, distributed computing, ...)
 
-
-Why Python?
------------
+.. nextslide::
 
 Used by:
 
@@ -62,9 +86,7 @@ Used by:
   ...
 * You don't need to immerse yourself in Python to be productive
 
-
-Why Python?
------------
+.. nextslide::
 
 Gets many things right:
 
@@ -92,8 +114,7 @@ What is Python?
 * Interpreted
 
 
-What is Python?
----------------
+.. nextslide::
 
 .. rst-class:: center large
 
@@ -137,9 +158,7 @@ Dynamic typing.
 * What does it mean to add them?
 * ``a`` and ``b`` can change at any time before this process
 
-
-What's a Dynamic language
--------------------------
+.. nextslide::
 
 Strong typing.
 
@@ -169,8 +188,7 @@ Duck Typing
 "If it looks like a duck, and quacks like a duck -- it's probably a duck"
 
 
-Duck Typing
------------
+.. nextslide::
 
 .. rst-class:: center large
 
@@ -200,8 +218,7 @@ Python 3.x ("py3k")
 (but really not all that different)
 
 
-Python Versions
----------------
+.. nextslide::
 
 This program uses Python 2.7 not Python 3.
 
@@ -210,6 +227,8 @@ This program uses Python 2.7 not Python 3.
 * Adoption is growing fast
 * A few key packages still not supported (https://python3wos.appspot.com/)
 * Most code in the wild is still 2.x
+* You *can* learn to write Python that is forward compatible from 2.x to 3.x
+* We will be teaching from that perspective.
 
 
 Implementations
@@ -223,39 +242,72 @@ We will use CPython 2.7 from python.org for this course.
 
 
 
-
-
-
-
-
-
-
-
-
-
 Introduction to Your Environment
 ================================
 
-A Slide
--------
+There are three basic elements to your environment when working with Python:
 
 .. rst-class:: build
 
-* With a few
-* Bullets but then again
-* Not too many of them
+* Your Command Line
+* Your Interpreter
+* Your Editor
+
+
+Your Command Line (cli)
+-----------------------
+
+Having some facility on the command line is important
+
+We won't cover this in class, so if you are not comfortable, please bone up at
+home.
+
+I suggest running through the **cli** tutorial at "learn code the hard way":
+
+`http://cli.learncodethehardway.org/book`_
+
+.. _http://cli.learncodethehardway.org/book: http://cli.learncodethehardway.org/book
+
+
+Command Line Enhancements
+-------------------------
+
+There are a few things you can do to help make your command line a better place
+to work.
+
+Part of your homework this week will be to do these things.
+
+More on this later.
+
+
+Your Interpreter
+----------------
 
 
 
+Your Editor
+-----------
 
 
 
+Why No IDE?
+-----------
 
+I am often asked this question.
 
+An IDE does not give you much that you can't get with a good editor plus a good
+interpreter.
 
+An IDE often weighs a great deal
 
+Setting up IDEs to work with different projects can be challenging and
+time-consuming.
 
+.. nextslide::
 
+.. rst-class:: center large
+
+YAGNI
 
 
 Basic Python Syntax
@@ -287,9 +339,7 @@ Expressions:
     In [5]: 3 + 4
     Out[5]: 7
 
-
-Code structure
---------------
+.. nextslide::
 
 Statements:
 
@@ -323,8 +373,7 @@ You can print multiple things:
     the value is 5
 
 
-The Print Statement
--------------------
+.. nextslide::
 
 Python automatically adds a newline, which you can suppress with a comma:
 
@@ -342,8 +391,7 @@ Python automatically adds a newline, which you can suppress with a comma:
     the value is 4
 
 
-The Print Statement
--------------------
+.. nextslide::
 
 Any python object can be printed (though it might not be pretty...)
 
@@ -649,9 +697,7 @@ You can't actually delete anything in python...
 
     NameError: name 'a' is not defined
 
-
-Deleting
---------
+.. nextslide::
 
 The object is still there...python will only delete it if there are no
 references to it.
@@ -925,3 +971,268 @@ You are free to rebind these symbols:
     ----> 1 type(u'type is no longer what it was')
 
     TypeError: 'unicode' object is not callable
+
+In general, this is a **BAD IDEA**.
+
+
+
+Functions
+---------
+
+What is a function?
+
+
+A function is a self-contained chunk of code
+
+
+You use them when you need the same code to run multiple times,
+or in multiple parts of the program.
+
+(DRY) 
+
+
+Or just to keep the code clean
+
+
+Functions can take and return information
+
+.. nextslide::
+
+Minimal Function does nothing
+
+.. code-block:: python
+
+    def <name>():
+        <statement>
+
+.. nextslide::
+
+Pass Statement (Note the indentation!)
+
+.. code-block:: python
+
+    def minimal():
+        pass
+
+
+Functions: ``def``
+------------------
+
+``def``  is a *statement*:
+
+.. rst-class:: build
+
+  * it is executed
+  * it creates a local variable
+
+
+.. nextslide::
+
+function defs must be executed before the functions can be called:
+
+.. code-block:: ipython
+
+    In [23]: unbound()
+    ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+    <ipython-input-23-3132459951e4> in <module>()
+    ----> 1 unbound()
+
+    NameError: name 'unbound' is not defined
+
+.. code-block:: ipython
+
+    In [18]: def simple():
+       ....:     print u"I am a simple function"
+       ....:
+
+    In [19]: simple()
+    I am a simple function
+
+
+Calling Functions
+-----------------
+
+You **call** a function using the function call operator (parens):
+
+.. code-block:: ipython
+
+    In [2]: type(simple)
+    Out[2]: function
+    In [3]: simple
+    Out[3]: <function __main__.simple>
+    In [4]: simple()
+    I am a simple function
+
+
+Functions: Call Stack
+---------------------
+
+functions call functions -- this makes an execution stack -- that's all a trace
+back is
+
+.. code-block:: ipython
+
+    In [5]: def exceptional():
+       ...:     print u"I am exceptional!"
+       ...:     print 1/0
+       ...:
+    In [6]: def passive():
+       ...:     pass
+       ...:
+    In [7]: def doer():
+       ...:     passive()
+       ...:     exceptional()
+       ...:
+
+You've defined three functions, one of which will *call* the other two.
+
+
+Functions: Tracebacks
+---------------------
+
+.. code-block:: ipython
+
+    In [8]: doer()
+    I am exceptional!
+    ---------------------------------------------------------------------------
+    ZeroDivisionError                         Traceback (most recent call last)
+    <ipython-input-8-685a01a77340> in <module>()
+    ----> 1 doer()
+
+    <ipython-input-7-aaadfbdd293e> in doer()
+          1 def doer():
+          2     passive()
+    ----> 3     exceptional()
+          4
+
+    <ipython-input-5-d8100c70edef> in exceptional()
+          1 def exceptional():
+          2     print u"I am exceptional!"
+    ----> 3     print 1/0
+          4
+
+    ZeroDivisionError: integer division or modulo by zero
+
+
+
+Functions: ``return``
+---------------------
+
+Every function ends by returning a value
+
+This is actually the simplest possible function:
+
+.. code-block:: python
+
+    def fun():
+        return None
+
+.. nextslide::
+
+if you don't explicilty put ``return``  there, Python will:
+
+.. code-block:: ipython
+
+    In [9]: def fun():
+       ...:     pass
+       ...:
+    In [10]: fun()
+    In [11]: result = fun()
+    In [12]: print result
+    None
+
+note that the interpreter eats ``None``
+
+
+.. nextslide::
+
+Only one return statement will ever be executed.
+
+Ever.
+
+Anything after a executed return statement will never get run.
+
+This is useful when debugging!
+
+.. code-block:: ipython
+
+    In [14]: def no_error():
+       ....:     return 'done'
+       ....:     # no more will happen
+       ....:     print 1/0
+       ....:
+    In [15]: no_error()
+    Out[15]: 'done'
+
+
+.. nextslide::
+
+However, functions *can* return multiple results:
+
+.. code-block:: ipython
+
+    In [16]: def fun():
+       ....:     return (1, 2, 3)
+       ....:
+    In [17]: fun()
+    Out[17]: (1, 2, 3)
+
+
+.. nextslide::
+
+Remember multiple assignment?
+
+.. code-block:: ipython
+
+    In [18]: x,y,z = fun()
+    In [19]: x
+    Out[19]: 1
+    In [20]: y
+    Out[20]: 2
+    In [21]: z
+    Out[21]: 3
+
+
+Functions: parameters
+---------------------
+
+In a ``def`` statement, the values written *inside* the parens are
+**parameters**
+
+.. code-block:: ipython
+
+    In [22]: def fun(x, y, z):
+       ....:     q = x + y + z
+       ....:     print x, y, z, q
+       ....:
+
+x, y, z are *local* symbols -- so is q
+
+
+Functions: arguments
+--------------------
+
+When you call a function, you pass values to the function parameters as
+**arguments**
+
+.. code-block:: ipython
+
+    In [23]: fun(3, 4, 5)
+    3 4 5 12
+
+The values you pass in are *bound* to the symbols inside the function and used.
+
+
+Enough For Now
+--------------
+
+And that's about it for our basic intro to Python
+
+Before next session, you'll use what you've learned here today to do some
+exercises in Python programming
+
+
+Homework
+========
+
