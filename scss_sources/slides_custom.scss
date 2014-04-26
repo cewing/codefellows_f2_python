@@ -94,6 +94,22 @@ article {
       font-size: inherit;
     }
   }
+  dl {
+    margin-bottom: 10em;
+    dt {
+      font-weight: bold;
+      margin-bottom: .25em;
+    }
+    dd {
+      padding-left: 1em;
+      margin-bottom: .5em;
+    }
+  }
+  .docutils {
+    &.literal {
+      font-family: 'Droid Sans Mono', 'Courier New', monospace;
+    }
+  }
 }
 
 .level-1 {
