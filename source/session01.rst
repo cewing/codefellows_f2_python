@@ -126,9 +126,9 @@ Dynamic typing.
 
 * Type checking and dispatch happen at run-time
 
-.. code-block:: pycon
+.. code-block:: ipython
 
-    >>> x = a + b
+    In [1]: x = a + b
 
 .. rst-class:: build
 
@@ -143,14 +143,17 @@ What's a Dynamic language
 
 Strong typing.
 
-.. code-block:: pycon
+.. code-block:: ipython
 
-    >>> a = 5
-    >>> type(a)
-    <type 'int'>
-    >>> b = '5'
-    >>> type(b)
-    <type 'str'>
+    In [2]: a = 5
+
+    In [3]: type(a)
+    Out[3]: int
+
+    In [4]: b = b'5'
+
+    In [5]: type(b)
+    Out[5]: str
 
 .. rst-class:: build
 
@@ -271,13 +274,13 @@ Each line is a piece of code.
 
 Comments:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [3]: # everything after a '#' is a comment
 
 Expressions:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [4]: # evaluating an expression results in a value
 
@@ -290,7 +293,7 @@ Code structure
 
 Statements:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [6]: # statements do not return a value, may contain an expression
 
@@ -307,16 +310,16 @@ The Print Statement
 
 It's kind of obvious, but handy when playing with code:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
-    In [1]: print "something"
+    In [1]: print u"something"
     something
 
 You can print multiple things: 
 
-.. code-block:: pycon
+.. code-block:: ipython
 
-    In [2]: print "the value is", 5
+    In [2]: print u"the value is", 5
     the value is 5
 
 
@@ -326,15 +329,17 @@ The Print Statement
 Python automatically adds a newline, which you can suppress with a comma:
 
 
-.. code-block:: pycon
+.. code-block:: ipython
 
-    In [9]: def no_newline():
-       ...:     print "the value is",
-       ...:     print 5
-       ...:
-
-    In [10]: no_newline()
-    the value is 5
+    In [12]: for i in range(5):
+       ....:     print u"the value is",
+       ....:     print i
+       ....:
+    the value is 0
+    the value is 1
+    the value is 2
+    the value is 3
+    the value is 4
 
 
 The Print Statement
@@ -342,7 +347,7 @@ The Print Statement
 
 Any python object can be printed (though it might not be pretty...)
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [1]: class bar(object):
        ...:     pass
@@ -375,9 +380,7 @@ Blocks of code are delimited by a colon and indentation:
     except:
         fix_the_problem()
 
-
-Indentation
------------
+.. nextslide::
 
 Python uses whitespace to delineate structure.
 
@@ -388,8 +391,7 @@ The standard is to indent with **4 spaces**.
 **SPACES ARE NOT TABS**
 
 
-Indentation
------------
+.. nextslide::
 
 These two blocks look the same:
 
@@ -404,8 +406,7 @@ These two blocks look the same:
         print i**2
 
 
-Indentation
------------
+.. nextslide::
 
 But they are not:
 
@@ -422,8 +423,7 @@ But they are not:
 **ALWAYS INDENT WITH 4 SPACES**
 
 
-Indentation
------------
+.. nextslide::
 
 .. rst-class:: center large
 
@@ -479,6 +479,13 @@ Symbols are how we give names to values (objects).
 
 * Symbols must begin with an underscore or letter
 * Symbols can contain any number of underscores, letters and numbers
+
+  * this_is_a_symbol
+  * this_is_2
+  * _AsIsThis
+  * 1butThisIsNot
+  * nor-is-this
+
 * Symbols don't have a type; values do
 
   * This is why python is 'Dynamic'
@@ -490,7 +497,7 @@ Symbols and Type
 Evaluating the type of a *symbol* will return the type of the *value* to which
 it is bound.
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [19]: type(42)
     Out[19]: int
@@ -523,12 +530,11 @@ A *symbol* is **bound** to a *value* with the assignment operator: ``=``
 * Assignment is a statement, it returns no value
 
 
-Assignment
-----------
+.. nextslide::
 
 Evaluating the name will return the value to which it is bound
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [26]: name = "value"
 
@@ -551,7 +557,7 @@ In-Place Assignment
 
 You can also do "in-place" assignment with ``+=``.
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [32]: a = 1
 
@@ -574,11 +580,11 @@ also: ``-=, *=, /=, **=, \%=``
 
 
 Multiple Assignment
-===================
+-------------------
 
 You can assign multiple variables from multiple expressions in one statement
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [48]: x = 2
 
@@ -601,7 +607,7 @@ Nifty Python Trick
 
 Using this feature, we can swap values between two symbols in one statement:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [51]: i
     Out[51]: 4
@@ -674,7 +680,7 @@ Every value in Python is an object.
 Every object is unique and has a unique *identity*, which you can inspect with
 the ``id`` *builtin*:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [68]: id(i)
     Out[68]: 140553647890984
@@ -694,7 +700,7 @@ Testing Identity
 You can find out if the values bound to two different symbols are the **same
 object** using the ``is`` operator:
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [72]: count = 23
 
@@ -716,7 +722,7 @@ Equality
 
 You can test for the equality of certain values with the ``==`` operator
 
-.. code-block:: pycon
+.. code-block:: ipython
 
     In [77]: val1 = 20 + 30
 
@@ -745,16 +751,33 @@ Operator Precedence determines what evaluates first:
 To force statements to be evaluated out of order, use parentheses.
 
 
-Common Operator Precedence
+Python Operator Precedence
 --------------------------
 
 Parentheses and Literals:
-  ``(), [], {}, ""``
+  ``(), [], {}``
+
+  ``"", b'', u''``
+
+Function Calls:
+  ``f(args)``
+
+Slicing and Subscription:
+  ``a[x:y]``
+
+  ``b[0], c['key']``
+
+Attribute Reference:
+  ``obj.attribute``
+
+.. nextslide::
 
 Exponentiation:
   ``**``
 
-Unary Signing:
+Bitwise NOT, Unary Signing:
+  ``~x``
+
   ``+x, -x``
 
 Multiplication, Division, Modulus:
@@ -763,8 +786,12 @@ Multiplication, Division, Modulus:
 Addition, Subtraction:
   ``+, -``
 
+.. nextslide::
+
 Bitwise operations:
-  ``<<, >>, &, ^, |``
+  ``<<, >>,``
+
+  ``&, ^, |``
 
 Comparisons:
   ``<, <=, >, >=, !=, ==``
@@ -775,41 +802,56 @@ Membership and Identity:
 Boolean operations:
   ``or, and, not``
 
-Conditionals:
-  ``if ... else``
-
 Anonymous Functions:
   ``lambda``
 
 
-string literals
-===============
+String Literals
+---------------
+
+You define a ``string`` value by writing a *literal*:
+
+.. code-block:: ipython
+
+    In [1]: u'a string'
+    Out[1]: u'a string'
+
+    In [2]: u"also a string"
+    Out[2]: u'also a string'
+
+    In [3]: u"a string with an apostrophe: isn't it cool?"
+    Out[3]: u"a string with an apostrophe: isn't it cool?"
+
+    In [4]: u'a string with an embedded "quote"'
+    Out[4]: u'a string with an embedded "quote"'
+
+.. nextslide::
+
+.. code-block:: ipython
+
+    In [5]: u"""a multi-line
+       ...: string
+       ...: all in one
+       ...: """
+    Out[5]: u'a multi-line\nstring\nall in one\n'
+
+    In [6]: u"a string with an \n escaped character"
+    Out[6]: u'a string with an \n escaped character'
+
+    In [7]: r'a "raw" string, the \n comes through as a \n'
+    Out[7]: 'a "raw" string, the \\n comes through as a \\n'
+
+
+Keywords
+--------
+
+Python defines a number of **keywords**
+
+These are language constructs.
+
+You *cannot* use these words as symbols.
 
 ::
-    
-
-    'a string'
-    "also a string"
-    "a string with an apostophe: isn't it cool?"
-    ' a string with an embedded "quote" '
-    """ a multi-line
-    string
-    all in one
-    """
-    "a string with an \n escaped character"
-    
-    r'a "raw" string the \n comes through as a \n'
-    
-
-
-key words
-=========
-
- A bunch:
-
-
-::
-    
 
     and       del       from      not       while
     as        elif      global    or        with
@@ -819,13 +861,67 @@ key words
     continue  finally   is        return
     def       for       lambda    try
 
+.. nextslide::
+
+If you try to use any of the keywords as symbols, you will cause a
+``SyntaxError``:
+
+.. code-block:: ipython
+
+    In [13]: del = "this will raise an error"
+      File "<ipython-input-13-c816927c2fb8>", line 1
+        del = "this will raise an error"
+            ^
+    SyntaxError: invalid syntax
+
+.. code-block:: ipython
+
+    In [14]: def a_function(else='something'):
+       ....:     print else
+       ....:
+      File "<ipython-input-14-1dbbea504a9e>", line 1
+        def a_function(else='something'):
+                          ^
+    SyntaxError: invalid syntax
 
 
-and the built-ins..
-===================
+__builtins__
+------------
 
- Try this:
+Python also has a number of pre-bound symbols, called **builtins**
 
+Try this:
 
-``>>> dir(__builtins__)`` 
+.. code-block:: ipython
 
+    In [6]: dir(__builtins__)
+    Out[6]:
+    ['ArithmeticError',
+     'AssertionError',
+     'AttributeError',
+     'BaseException',
+     'BufferError',
+     ...
+     'unicode',
+     'vars',
+     'xrange',
+     'zip']
+
+.. nextslide::
+
+You are free to rebind these symbols:
+
+.. code-block:: ipython
+
+    In [15]: type(u'a new and exciting string')
+    Out[15]: unicode
+
+    In [16]: type = u'a slightly different string'
+
+    In [17]: type(u'type is no longer what it was')
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-17-907616e55e2a> in <module>()
+    ----> 1 type(u'type is no longer what it was')
+
+    TypeError: 'unicode' object is not callable
