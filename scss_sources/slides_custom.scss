@@ -69,6 +69,14 @@ strong {
   font-weight: bold;
 }
 
+hgroup {
+  .docutils {
+    &.literal {
+      font-family: 'Droid Sans Mono', 'Courier New', monospace;
+    }
+  }
+}
+
 article {
   .center {
     text-align: center;
