@@ -42,6 +42,7 @@ Homework:
 
 * codingbat exercises
 * set up your editor
+* set up your ipython
 * create a python git repository for classwork
 
 
