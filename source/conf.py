@@ -287,9 +287,13 @@ slide_theme_options = {
     'presenters': [
         {
             'name': 'Cris Ewing, Christopher Barker',
-            'twitter': '@crisewing, zzz',
-            'www': 'http://crisewing.com, zzz',
+            'twitter': '@crisewing',
+            'www': 'http://crisewing.com',
             'github': 'http://github.com/cewing/codefellows_f2_python',
+        },
+        {
+            'name': 'Christopher Barker',
+            'github': 'pythonchb@gmail.com',
         },
     ]
 }
