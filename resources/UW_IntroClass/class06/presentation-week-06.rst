@@ -1,13 +1,13 @@
 
 
-================================================================================================
+************************************************************************************************
 Intro to Python: Week 1 Introduction  to Python  Lambda, Functional Programming and intro to OO
-================================================================================================
+************************************************************************************************
 
 
 frame
-=====
-\frametitle{Table of Contents
+-----
+\frametitle{Table of Contents}
   \tableofcontents
 
 ================
@@ -15,7 +15,7 @@ Review/Questions
 ================
 
 Review of Previous Class
-========================
+------------------------
 
   * Unicode?
   * Keyword arguments?
@@ -24,9 +24,9 @@ Review of Previous Class
 
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
 
 Lawrence Chan
@@ -34,12 +34,13 @@ Lawrence Chan
 Kimberly Colwell
 
 Maria Petrova
+}
 
 
 Homework review
-===============
+---------------
   
-  Homework Questions? 
+  Homework Questions? }
   
 
 ======
@@ -47,8 +48,8 @@ Lambda
 ======
 
 lambda
-======
-"Anonymous" functions
+------
+"Anonymous" functions}
 
 ::
     
@@ -59,13 +60,13 @@ lambda
 
 
 
-Can only be an expression -- not a statement
+Can only be an expression -- not a statement}
 
 lambda
-======
-Called "Anonymous": it doesn't need a name.
+------
+Called "Anonymous": it doesn't need a name.}
 
-It's a python object, it can be stored in a list or other container
+It's a python object, it can be stored in a list or other container}
 
 ::
     
@@ -76,7 +77,7 @@ It's a python object, it can be stored in a list or other container
 
 
 
-And you can call it:
+And you can call it:}
 
 ::
     
@@ -87,8 +88,8 @@ And you can call it:
 
 
 functions as first class objects
-================================
-You can do that with "regular" functions too:
+--------------------------------
+You can do that with "regular" functions too:}
 
 ::
     
@@ -109,9 +110,9 @@ Functional Programming
 ======================
 
 map
-===
+---
 ``map``  "maps" a function onto a sequence of objects --
-It applies the function to each item in the list, returning another list
+It applies the function to each item in the list, returning another list}
 ::
     
 
@@ -122,7 +123,7 @@ It applies the function to each item in the list, returning another list
     Out[25]: [14, 20, 24, 34, 22, 18]
 
 
-But if you only need that function once:
+But if you only need that function once:}
 ::
     
 
@@ -132,12 +133,12 @@ But if you only need that function once:
 
 
 filter
-======
+------
 ``filter``  "filters" a sequence of objects with a boolean function --
 It keeps only those for which the function is True
+}
 
-
-To get only the even numbers
+To get only the even numbers}
 ::
     
 
@@ -148,10 +149,10 @@ To get only the even numbers
 
 
 reduce
-======
-``reduce``  "reduces" a sequence of objects to a single object with a function that combines two arguments
+------
+``reduce``  "reduces" a sequence of objects to a single object with a function that combines two arguments}
 
-To get the sum:
+To get the sum:}
 ::
     
 
@@ -160,7 +161,7 @@ To get the sum:
     Out[31]: 36
 
 
-To get the product:
+To get the product:}
 ::
     
 
@@ -170,10 +171,10 @@ To get the product:
 
 
 comprehensions
-==============
-Couldn't you do all this with comprehensions?
+--------------
+Couldn't you do all this with comprehensions?}
 
-Yes:
+Yes:}
 ::
     
 
@@ -183,26 +184,26 @@ Yes:
     Out[34]: [2, 12, 6, 4]
 
 
-Except Reduce
+Except Reduce}
 
 But Guido thinks almost all uses of reduce are really ``sum()`` 
 
 functional programming
-======================
+----------------------
 
-Comprehensions and map, filter, reduce are all "functional programming" approaches
+Comprehensions and map, filter, reduce are all "functional programming" approaches}
 
-``map, filter``  and ``reduce``  pre-date comprehensions in Python's history
+``map, filter``  and ``reduce``  pre-date comprehensions in Python's history}
 
-Some people like that syntax better
+Some people like that syntax better}
 
-And "map-reduce" is a big concept these days for parallel processing of "Big Data" in NoSQL databases.
+And "map-reduce" is a big concept these days for parallel processing of "Big Data" in NoSQL databases.}
 
-(Hadoop, MongoDB, etc.) 
+(Hadoop, MongoDB, etc.) }
 
 lambda
-======
-Can also use keyword arguments
+------
+Can also use keyword arguments}
 ::
     
 
@@ -217,10 +218,11 @@ Can also use keyword arguments
     9
 
 
-Note when the keyword argument is evaluated: this turns out to be handy
+Note when the keyword argument is evaluated: this turns out to be handy}
 
 LAB
-===
+---
+{\large
 
 
   * Write a function that returns a list of n functions,
@@ -232,95 +234,98 @@ incremented by an increasing number.
 ``code/lambda/lambda_keyword.html(rst)``  
 ``code/lambda/lambda_keyword.py``  
 ``code/lambda/test_lambda_keyword.py``  
-
+}
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 {\l\Large
 
 Lawrence Chan
 
 Kimberly Colwell
-
+}
 
 ===========================
 Object Oriented Programming
 ===========================
 
 Object Oriented Programming
-===========================
+---------------------------
 
- More about Python implementation than OO design/strengths/weaknesses
+ More about Python implementation than OO design/strengths/weaknesses}
 
 One reason for this:
-Folks can't even agree on what OO "really" means
+Folks can't even agree on what OO "really" means}
 
 The Quarks of Object-Oriented Development - Deborah J. Armstrong:
-http://agp.hx0.ru/oop/quarks.pdf
+http://agp.hx0.ru/oop/quarks.pdf}
 
 Object Oriented Programming
-===========================
+---------------------------
 
- Is Python a "True" Object-Oriented Language?
+ Is Python a "True" Object-Oriented Language?}
 
 (Doesn't support full encapsulation, doesn't require
-objects, etc...)
+objects, etc...)}
 
 Object Oriented Programming
-===========================
+---------------------------
 
- I don't Care!
+ I don't Care!}
 
 Good software design is about code re-use, clean separation of concerns,
-refactorability, testability, etc...
+refactorability, testability, etc...}
 
 OO can help with all that, but:
 
   * It doesn't guarantee it
   * It can get in the way
 
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
- Python is a Dynamic Language
+ Python is a Dynamic Language}
 
-That clashes with "pure" OO
+That clashes with "pure" OO}
 
 Think in terms of what makes sense for your project
  -- not any one paradigm of software design.
-
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
- OO for this class:
+ OO for this class:}
 
 
 "Objects can be thought of as wrapping their data 
 within a set of functions designed to ensure that 
 the data are used appropriately, and to assist in 
 that use"
+}
 
-
-http://en.wikipedia.org/wiki/Object-oriented_programming
-
+{\small
+http://en.wikipedia.org/wiki/Object-oriented_programming}
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
-Even simpler:
+Even simpler:}
 
 
 Objects are data and the functions that act on them in one place.
+}
 
 
 In Python: just another namespace.
-
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
 The OO buzzwords:
 
@@ -331,23 +336,26 @@ The OO buzzwords:
   * polymorphism
   * inheritance
 
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
-You can do OO in C
+You can do OO in C}
 (see the GTK+ project)
 
 
 "OO languages" give you some handy tools to make it easier (and safer):
+}
 
 
   * polymorphism (duck typing gives you this anyway)
   * inheritance
 
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
 OO is the dominant model for the past couple decades
 
@@ -356,30 +364,30 @@ You will need to use it:
 -- It's a good idea for a lot of problems
 
 -- You'll need to work with OO packages
-
+}
 
 Object Oriented Programming
-===========================
+---------------------------
 
-Some definitions
-\begin{description
+Some definitions}
+\begin{description}
   *[class] A category of objects: particular data and behavior: A "circle" (same as a type in python)
   *[instance] A particular object of a class: a specific circle
   *[object] The general case of a instance -- really any value (in Python anyway)
   *[attribute] Something that belongs to an object (or class)
     -- generally thought of as a variable, or single object, as opposed to a ...
   *[method] A function that belongs to a class
-\end{description
+\end{description}
 
 ==============
 Python Classes
 ==============
 
 Python Classes
-==============
-The ``class``  statement
+--------------
+The ``class``  statement}
 
-``class``  creates a new type object:
+``class``  creates a new type object:}
 ::
     
 
@@ -390,13 +398,13 @@ The ``class``  statement
     Out[5]: type
 
 
-It is created when the statement is run -- much like ``def`` 
+It is created when the statement is run -- much like ``def`` }
 
 (note on"new style" classes)
 
 Python Classes
-==============
-Note about the book (TP):
+--------------
+Note about the book (TP):}
 Chapters 15 and 16 use a style that generally isn't recommended:
 ::
     
@@ -415,8 +423,8 @@ defaults, etc.
  -- but use a named tuple now)
 
 Python Classes
-==============
-About the simplest class:
+--------------
+About the simplest class:}
 ::
     
 
@@ -436,8 +444,8 @@ About the simplest class:
 
 
 Python Classes
-==============
-Basic Structure of a real class:
+--------------
+Basic Structure of a real class:}
 ::
     
 
@@ -453,15 +461,15 @@ Basic Structure of a real class:
     print "p.y is:", p.y
 
 
-see: ``code/simple_class``  
+see: ``code/simple_class``  }
 
 Python Classes
-==============
-The Initializer
+--------------
+The Initializer}
 
-The ``__init__``  special method is called when a new instance of a class is created.
+The ``__init__``  special method is called when a new instance of a class is created.}
 
-You can use it to do any set-up you need
+You can use it to do any set-up you need}
 
 ::
     
@@ -473,15 +481,15 @@ You can use it to do any set-up you need
 
 
 
-It gets the arguments passed to the class constructor
+It gets the arguments passed to the class constructor}
 
 Python Classes
-==============
-``self`` 
+--------------
+``self`` }
 
-The instance of the class is passed as the first parameter for every method.
+The instance of the class is passed as the first parameter for every method.}
 
-"``self`` " is only a convention -- but you DO want to use it.
+"``self`` " is only a convention -- but you DO want to use it.}
 
 ::
     
@@ -492,10 +500,10 @@ The instance of the class is passed as the first parameter for every method.
 
 
 
-Does this look familiar from C-style procedural programming?
+Does this look familiar from C-style procedural programming?}
 
 Python Classes
-==============
+--------------
 ::
     
 
@@ -507,13 +515,13 @@ Python Classes
 
 
 Anything assigned to a ``self.``  attribute is kept in the instance
-name space
+name space}
 
-That's where all the instance-specific data is.
+That's where all the instance-specific data is.}
 
 
 Python Classes
-==============
+--------------
 ::
     
 
@@ -527,11 +535,11 @@ Python Classes
 
 
 Anything assigned in the class scope is a class attribute -- every
-instance of the class shares the same one.
+instance of the class shares the same one.}
 
 
 Python Classes
-==============
+--------------
 ::
     
 
@@ -546,12 +554,12 @@ Python Classes
 
 
 
-class attributes are accessed with ``self``  also..
+class attributes are accessed with ``self``  also..}
 
 
 Python Classes
-==============
-Typical methods
+--------------
+Typical methods}
 ::
     
 
@@ -564,11 +572,11 @@ Typical methods
 
 
 
-methods take some parameters, manipulate the attributes in ``self`` 
+methods take some parameters, manipulate the attributes in ``self`` }
 
 Python Classes
-==============
-Gotcha!
+--------------
+Gotcha!}
 ::
     
 
@@ -582,27 +590,27 @@ Gotcha!
 
 
 
-Huh???? I only gave 2
+Huh???? I only gave 2}
 
-("self" is implicitly passed in...)
+("self" is implicitly passed in...)}
 
 LAB
-===
+---
 
-Let's say you need to render some html...
+Let's say you need to render some html...}
 
 The goal is to build a set of classes that render an html page:
 ``sample_html.html`` 
+}
 
-
-We'll start with a single class, then add some sub-classes to specialize the behavior
+We'll start with a single class, then add some sub-classes to specialize the behavior}
 
 More details in ``week-06/LAB_instuctions.rst(html)`` 
 
 LAB
-===
+---
 
-Step 1:
+Step 1:}
 
   * Create an "Element" class for rendering an html element (xml element).
   * It should have class attributes for the tag name  and the
@@ -616,22 +624,23 @@ Step 1:
 
 
 Lightning Talks
-===============
-{\centering
+---------------
 
-Lightning Talks: 
 
-Maria Petrova
+Lightning Talks: }
 
-Patrick Thach
+Maria Petrova}
 
+Patrick Thach}
+
+}
 
 =======================
 Subclassing/Inheritance
 =======================
 
 Inheritance
-===========
+-----------
 In object-oriented programming (OOP), inheritance is a way to reuse code of
 existing objects, or to establish a subtype from an existing object.
 
@@ -642,10 +651,10 @@ from pre-existing classes called base classes, or super classes.
 
 The resulting classes are known as derived classes or subclasses.
 
-(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29)
+(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29})
 
 Subclassing
-===========
+-----------
 A subclass "inherits" all the attributes (methods, etc) of the parent class.
 
 You can then change ("override") some or all of the attributes to change the behavior.
@@ -662,8 +671,8 @@ The simplest subclass in Python:
 ``A_subclass``  now has exactly the same behavior as ``The_SuperClass`` 
 
 Overriding attributes
-=====================
-Overriding is as simple as creating a new attribute with the same name:
+---------------------
+Overriding is as simple as creating a new attribute with the same name:}
 
 ::
     
@@ -682,8 +691,8 @@ Overriding is as simple as creating a new attribute with the same name:
 all the ``self``  instances will have the new attribute
 
 Overriding methods
-==================
-Same thing, but with methods
+------------------
+Same thing, but with methods}
 
 ::
     
@@ -704,7 +713,7 @@ Same thing, but with methods
 all the instances will have the new method
 
 frame
-=====
+-----
 
 "Here's a program design suggestion: whenever you override a method, the
 interface of the new method should be the same as the old.  It should take
@@ -713,14 +722,14 @@ and postconditions.  If you obey this rule, you will find that any function
 designed to work with an instance of a superclass, like a Deck, will also work
 with instances of subclasses like a Hand or PokerHand.  If you violate this
 rule, your code will collapse like (sorry) a house of cards."
-
+}
 
 \hfill ThinkPython 18.10
 
 LAB
-===
+---
 
-Step 2:
+Step 2:}
 
   *  Create a couple subclasses of ``Element`` , for a ``<body>``  tag
          and ``<p>``  tag. Simply override the ``tag``  class attribute.
@@ -733,9 +742,9 @@ Step 2:
 
 
 LAB
-===
+---
 
-Step 3:
+Step 3:}
 
   * Create a ``<head>``  element -- simple subclass.
   * Create a ``OneLineTag``  subclass of Element:
@@ -749,15 +758,15 @@ Step 3:
 
 
 Homework
-========
-Catch Up!
+--------
+Catch Up!}
 
-Read up on OO if you haven't already
+Read up on OO if you haven't already}
 
-Finish today's Lab
+Finish today's Lab}
 
-Finish other Homework / Labs you may not have gotten to.
+Finish other Homework / Labs you may not have gotten to.}
 
-Come up with a project proposal
+Come up with a project proposal}
 
-\end{document
+\end{document}

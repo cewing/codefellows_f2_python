@@ -1,31 +1,35 @@
 
 
-============================================================================================================
+************************************************************************************************************
 Intro to Python: Week 4 Introduction  to Python:  Dictionaries, Sets, Exceptions  Files and Text Processing
-============================================================================================================
+************************************************************************************************************
 
 
+frame
+-----
+\frametitle{Table of Contents}
+  \tableofcontents
 
 ================
 Review/Questions
 ================
 
 Review of Previous Class
-========================
+------------------------
 
   * Sequences
   * Lists
   * Tuples
 
 
-Any questions?
+Any questions?}
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
-( Jo-Anne Antoun )
+( Jo-Anne Antoun )}
 
 
  Sako Eaton
@@ -35,16 +39,17 @@ Brandon Ivers
 Gary Pei
 
 Nathan Savage
+}
 
 
 Notes on Workflow
-=================
+-----------------
   
-  For more than a few lines:
+  For more than a few lines:}
   
-  Write your code in a module
+  Write your code in a module}
   
-  Have a way to re-run quickly
+  Have a way to re-run quickly}
   
     * Plain command line: ``$ python my_script.py`` 
     * iPython: ``run my_script.py`` 
@@ -52,19 +57,20 @@ Notes on Workflow
   
   
 Finish Last Class...
-====================
+--------------------
   
-  More on Looping
+  More on Looping}
   
-  Strings!
+  Strings!}
   
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
 
 Jo-Anne Antoun
+}
 
 
 =====================
@@ -72,10 +78,10 @@ Dictionaries and Sets
 =====================
 
 Dictionary
-==========
-Python calls it a ``dict``  
+----------
+Python calls it a ``dict``  }
 
-Other languages call it:
+Other languages call it:}
 
   * dictionary
   * associative array
@@ -86,33 +92,33 @@ Other languages call it:
 
 
 Dictionary Constructors
-=======================
+-----------------------
 ::
     
 
-    >>> {'key1': 3, 'key2': 5
-    {'key1': 3, 'key2': 5
+    >>> {'key1': 3, 'key2': 5}
+    {'key1': 3, 'key2': 5}
     >>> dict([('key1', 3),('key2', 5)])
-    {'key1': 3, 'key2': 5
+    {'key1': 3, 'key2': 5}
     >>> dict(key1=3, key2= 5)
-    {'key1': 3, 'key2': 5
-    >>> d = {
+    {'key1': 3, 'key2': 5}
+    >>> d = {}
     >>> d['key1'] = 3
     >>> d['key2'] = 5
     >>> d
-    {'key1': 3, 'key2': 5
+    {'key1': 3, 'key2': 5}
 
 
 
 Dictionary Indexing
-===================
+-------------------
 ::
     
 
-    >>> d = {'name': 'Brian', 'score': 42
+    >>> d = {'name': 'Brian', 'score': 42}
     >>> d['score']
     42
-    >>> d = {1: 'one', 0: 'zero'
+    >>> d = {1: 'one', 0: 'zero'}
     >>> d[0]
     'zero'
     >>> d['non-existing key']
@@ -123,8 +129,8 @@ Dictionary Indexing
 
 
 Dictionary Indexing
-===================
-Keys can be any immutable:
+-------------------
+Keys can be any immutable:}
 
   * numbers
   * string
@@ -145,7 +151,7 @@ Keys can be any immutable:
 Actually -- any "hashable" type.
 
 Dictionary Indexing
-===================
+-------------------
 
 hash functions convert arbitrarily large data to a small proxy (usually int)
 
@@ -153,82 +159,87 @@ always return the same proxy for the same input
 
 MD5, SHA, etc
 
+}
 
 Dictionary Indexing
-===================
+-------------------
 
 
 Dictionaries hash the key to an integer proxy and use it to find the key and value
+}
 
 
 Key lookup is efficient because the hash function leads directly to a bucket with a very few keys (often just one)
+}
 
 
 Dictionary Indexing
-===================
+-------------------
 
 
 What would happen if the proxy changed after storing a key?
+}
 
 
-Hashability requires immutability
+Hashability requires immutability}
 
 
 Dictionary Indexing
-===================
+-------------------
 
 
 Key lookup is very efficient
 
 Same average time regardless of size
-
+}
 
 also... Python name look-ups are implemented with dict:
  --- its highly optimized
 
 Dictionary Indexing
-===================
+-------------------
 
 
-{\center
 key to value
 lookup is one way
+}}
 
 
-{\center
 value to key
 requires visiting the whole dict
+}}
 
 
 if you need to check dict values often, create another dict or set (up to you to keep them in sync)
+}
 
 
 Dictionary Ordering (not)
-=========================
+-------------------------
 
 
 dictionaries have no defined order
-
+}
 
 ::
     
 
-    In [352]: d = {'one':1, 'two':2, 'three':3
+    In [352]: d = {'one':1, 'two':2, 'three':3}
     In [353]: d
-    Out[353]: {'one': 1, 'three': 3, 'two': 2
+    Out[353]: {'one': 1, 'three': 3, 'two': 2}
     In [354]: d.keys()
     Out[354]: ['three', 'two', 'one']
 
 
 
 Dictionary Iterating
-====================
-``for``  iterates the keys
+--------------------
+``for``  iterates the keys}
 
 ::
     
 
-    >>> d = {'name': 'Brian', 'score': 42
+    >>> d = {'name': 'Brian', 'score': 42}
     >>> for x in d:
     ...   print x
     ...
@@ -236,10 +247,10 @@ Dictionary Iterating
 
 
 
-{note the different order...
+{note the different order...}
 
 dict keys and values
-====================
+--------------------
 
 ::
     
@@ -254,13 +265,13 @@ dict keys and values
 
 
 dict keys and values
-====================
-iterating on everything
+--------------------
+iterating on everything}
 
 ::
     
 
-    >>> d = {'name': 'Brian', 'score': 42
+    >>> d = {'name': 'Brian', 'score': 42}
     >>> for k, v in d.items():
     ...   print "%s: %s" % (k, v)
     ...
@@ -270,7 +281,7 @@ iterating on everything
 
 
 Dictionary Performance 
-=======================
+-----------------------
 
   * indexing is fast and constant time: O(1)
   * x in s cpnstant time: O(1)
@@ -279,18 +290,18 @@ Dictionary Performance
   * deleting is constant time: O(1)
 
 
- http://wiki.python.org/moin/TimeComplexity
+ http://wiki.python.org/moin/TimeComplexity}
 
  Sets 
-======
+------
 
-``set``  is an unordered collection of distinct values
+``set``  is an unordered collection of distinct values}
 
-Essentially a dict with only keys
+Essentially a dict with only keys}
 
 
 Set Constructors
-================
+----------------
 
 ::
     
@@ -300,7 +311,7 @@ Set Constructors
     >>> set([1, 2, 3])
     set([1, 2, 3])
     # as of 2.7
-    >>> {1, 2, 3
+    >>> {1, 2, 3}
     set([1, 2, 3])
     >>> s = set()
     >>> s.update([1, 2, 3])
@@ -310,13 +321,13 @@ Set Constructors
 
 
  Set Properties
-===============
+---------------
 
-``Set``  members must be hashable
+``Set``  members must be hashable}
 
-Like dictionary keys -- and for same reason (efficient lookup)
+Like dictionary keys -- and for same reason (efficient lookup)}
 
-No indexing (unordered) 
+No indexing (unordered) }
 
 ::
     
@@ -329,7 +340,7 @@ No indexing (unordered)
 
 
  Set Methods
-============
+------------
 ::
     
 
@@ -350,7 +361,7 @@ No indexing (unordered)
 
 
  Set Methods
-============
+------------
 ::
     
 
@@ -364,12 +375,12 @@ No indexing (unordered)
 
 
  Frozen Set
-===========
+-----------
 
-Also ``frozenset`` 
+Also ``frozenset`` }
 
 immutable -- for use as a key in a dict
-(or another set...)
+(or another set...)}
 
 ::
     
@@ -383,21 +394,22 @@ immutable -- for use as a key in a dict
 
 
 LAB
-===
+---
 
-Dictionary LAB:
+Dictionary LAB:}
 
-``code/dict_lab.html (rst) `` 
+``code/dict_lab.html (rst) `` }
 
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
 
  Sako Eaton
 
 Brandon Ivers
+}
 
 
 ==========
@@ -405,8 +417,8 @@ Exceptions
 ==========
 
 Exceptions
-==========
-Another Branching structure:
+----------
+Another Branching structure:}
 
 ::
     
@@ -421,8 +433,8 @@ Another Branching structure:
 
 
 Exceptions
-==========
-Never Do this:
+----------
+Never Do this:}
 
 ::
     
@@ -437,9 +449,9 @@ Never Do this:
 
 
 Exceptions
-==========
+----------
 Use Exceptions, rather than your own tests
-  -- Don't do this:
+  -- Don't do this:}
 
 ::
     
@@ -454,29 +466,30 @@ Use Exceptions, rather than your own tests
 it will almost always work -- but the almost will drive you crazy
 
 Exceptions
-==========
-{\centering
+----------
+ing
 "easier to ask forgiveness than permission"
 
 \hfill -- Grace Hopper
+}
+}
 
-
-http://www.youtube.com/watch?v=AZDWveIdqjY
+http://www.youtube.com/watch?v=AZDWveIdqjY}
 (Pycon talk by Alex Martelli)
 
 Exceptions
-==========
+----------
 
 
 For simple scripts, let exceptions happen
 
 Only handle the exception if the code can and will do something about it
-
+}
 
 (much better debugging info when an error does occur)
 
 Exceptions -- finally 
-======================
+----------------------
 
 ::
     
@@ -492,10 +505,10 @@ Exceptions -- finally
 
 
 
-the ``finally:``  clause will always run
+the ``finally:``  clause will always run}
 
 Exceptions -- else 
-===================
+-------------------
 
 ::
     
@@ -511,10 +524,10 @@ Exceptions -- else
 
 
 Advantage:
-you know where the Exception came from
+you know where the Exception came from}
 
 Exceptions -- using them 
-=========================
+-------------------------
 
 ::
     
@@ -528,7 +541,7 @@ Exceptions -- using them
         raise
 
 
-Particularly useful if you catch more than one exception:
+Particularly useful if you catch more than one exception:}
 ::
     
 
@@ -538,7 +551,7 @@ Particularly useful if you catch more than one exception:
 
 
 Raising Exceptions 
-===================
+-------------------
 ::
     
 
@@ -550,7 +563,7 @@ Raising Exceptions
 
 
 
-when you call it: 
+when you call it: }
 
 ::
     
@@ -561,9 +574,9 @@ when you call it:
 
 
 Built in Exceptions
-===================
-You can create your own custom exceptions
-But...
+-------------------
+You can create your own custom exceptions}
+But...}
 ::
     
 
@@ -573,12 +586,12 @@ But...
     32
 
 
-For the most part, you can/should use a built in one
+For the most part, you can/should use a built in one}
 
 LAB
-===
-Exceptions Lab: Improving ``raw_input`` :
-
+---
+Exceptions Lab: Improving ``raw_input`` :}
+{\large
 
 The ``raw_input()``  function can generate two exceptions:
 ``EOFError``  or ``KeyboardInterrupt``  on end-of-file
@@ -588,16 +601,18 @@ Create a wrapper function, perhaps ``safe_input()``  that returns
 ``None``  rather rather than raising these exceptions, when
 the user enters ``^C``  for Keyboard Interrupt, or ``^D`` 
 (``^Z``  on Windows) for End Of File.
+}
 
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
 
 Gary Pei
 
 Nathan Savage
+}
 
 
 ========================
@@ -605,8 +620,8 @@ File Reading and Writing
 ========================
 
 Files
-=====
-Text Files
+-----
+Text Files}
 ::
     
 
@@ -615,13 +630,13 @@ Text Files
     f.close()
 
 
-``secret_data``  is a string
+``secret_data``  is a string}
 
 (can also use ``file()``  -- ``open()``  is preferred)
 
 Files
-=====
-Binary Files
+-----
+Binary Files}
 ::
     
 
@@ -631,13 +646,13 @@ Binary Files
 
 
 ``secret_data``  is still a string
-(with arbitrary bytes in it)
+(with arbitrary bytes in it)}
 
 (See the ``struct``  module to unpack binary data )
 
 Files
-=====
-File Opening Modes
+-----
+File Opening Modes}
 
 ::
     
@@ -652,11 +667,11 @@ File Opening Modes
 
 
 
-Gotcha -- w mode always clears the file
+Gotcha -- w mode always clears the file}
 
 Text File Notes
-===============
-Text is default
+---------------
+Text is default}
 
   * Newlines are translated: ``\r\n -> \n`` 
   *   -- reading and writing!
@@ -664,7 +679,7 @@ Text is default
   * Open text files with ``'U'``  "Universal" flag
 
 
-Gotcha:
+Gotcha:}
 
   *  no difference between text and binary on *nix
   
@@ -672,8 +687,8 @@ Gotcha:
   
 
 File Reading
-============
-Reading Part of a file
+------------
+Reading Part of a file}
 ::
     
 
@@ -685,8 +700,8 @@ Reading Part of a file
 
 
 File Reading
-============
-Common Idioms
+------------
+Common Idioms}
 ::
     
 
@@ -707,7 +722,7 @@ Common Idioms
 
 
 File Writing
-============
+------------
 ::
     
 
@@ -718,8 +733,8 @@ File Writing
 
 
 File Methods
-============
-Commonly Used Methods
+------------
+Commonly Used Methods}
 ::
     
 
@@ -732,10 +747,10 @@ Commonly Used Methods
 
 
 File Like Objects
-=================
-File-like objects 
+-----------------
+File-like objects }
 
-Many classes implement the file interface:
+Many classes implement the file interface:}
 
 
   * loggers
@@ -744,11 +759,11 @@ Many classes implement the file interface:
   * pipes, subprocesses
   * StringIO
 
-￼http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects
+￼http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects}
 
 StringIO
-========
-StringIO 
+--------
+StringIO }
 
 ::
     
@@ -761,15 +776,15 @@ StringIO
     Out[423]: 'somestuff'
 
 
-handy for testing
+handy for testing}
 
 =====================
 Paths and Directories
 =====================
 
 Paths
-=====
-Relative paths:
+-----
+Relative paths:}
 ::
     
 
@@ -777,19 +792,19 @@ Relative paths:
     ./secret.txt
 
 
-Absolute paths:
+Absolute paths:}
 ::
     
 
     /home/chris/secret.txt
 
 
-Either work with ``open()`` , etc.
+Either work with ``open()`` , etc.}
 
 (working directory only makes sense with command-line programs...)
 
 os.path
-=======
+-------
 ::
     
 
@@ -801,7 +816,7 @@ os.path
 
 
 os.path
-=======
+-------
 
 ::
     
@@ -817,7 +832,7 @@ os.path
 (all platform independent)
 
 directories
-===========
+-----------
 
 ::
     
@@ -831,8 +846,8 @@ directories
 (higher level stuff in ``shutil``  module)
 
 LAB
-===
-Paths and File Processing
+---
+Paths and File Processing}
 
   * write a program which prints the full path to all files
     in the current directory, one per line
@@ -844,22 +859,22 @@ Paths and File Processing
 
 
 Homework
-========
-Recommended Reading
+--------
+Recommended Reading}
 
   * Dive Into Python: Chapt. 13,14
-  * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
+  * Unicode: http://www.joelonsoftware.com/articles/Unicode.html}
 
 
-Do the Labs you didn't finish in class
+Do the Labs you didn't finish in class}
 
 
   * Coding Kata 14 - Dave Thomas 
-    http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
+    http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html}
   * Use The Adventures of Sherlock Holmes as input:
         ``code/sherlock.txt``  (ascii)
   *  This is intentionally open-ended and underspecified. There are many interesting decisions to make.
   * Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
 
 
-\end{document
+\end{document}

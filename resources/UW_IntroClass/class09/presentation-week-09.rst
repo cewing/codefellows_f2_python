@@ -1,14 +1,14 @@
 
 
 Decorators, Context Managers, 
-=========================================================================================================
+*********************************************************************************************************
 Intro to Python: Week 9 Introduction  to Python  Decorators, Context Managers,  Packages and Packaging
-=========================================================================================================
+*********************************************************************************************************
 
 
 frame
-=====
-\frametitle{Table of Contents
+-----
+\frametitle{Table of Contents}
   \tableofcontents
 
 ================
@@ -16,7 +16,7 @@ Review/Questions
 ================
 
 Review of Previous Class
-========================
+------------------------
 
   * Magic methods
   * Iterators
@@ -25,9 +25,9 @@ Review of Previous Class
 
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
 
  Harlan AuBuchon
@@ -36,42 +36,44 @@ Lightning talks today:
 
  Brian Schmitz
 
+}
+
 
 Review
-======
+------
   
-  Questions about labs? 
+  Questions about labs? }
   
-  My Solutions? 
+  My Solutions? }
   
 
 A diversion...
-==============
-\Large{A number of you are already using ``iPython`` 
+--------------
+\Large{A number of you are already using ``iPython`` }
 
-\Large{It's a very useful tool
+\Large{It's a very useful tool}
 
-\Large{And the ``iPython``  notebook is even cooler .. paticularly for in-class demos.
+\Large{And the ``iPython``  notebook is even cooler .. paticularly for in-class demos.}
 
-\Large{So I'll use it some today:
+\Large{So I'll use it some today:}
 
-http://ipython.org/ipython-doc/dev/interactive/notebook.html
+http://ipython.org/ipython-doc/dev/interactive/notebook.html}
 
 ==========
 Decorators
 ==========
 
 Decorators
-==========
-Decorators are wrappers around functions
+----------
+Decorators are wrappers around functions}
 
-They let you add code before and after the execution of a function
+They let you add code before and after the execution of a function}
 
-Creating a custom version of that function
+Creating a custom version of that function}
 
 Decorators
-==========
-Syntax:
+----------
+Syntax:}
 
 ::
     
@@ -84,14 +86,14 @@ Syntax:
 
 
 Demo and Motivation: 
-``code/decorators/basic_math.py [ipnb]``  
+``code/decorators/basic_math.py [ipnb]``  }
 
-PEP: http://www.python.org/dev/peps/pep-0318/
+PEP: http://www.python.org/dev/peps/pep-0318/}
 
 Decorators
-==========
-``@``  decorator operator is an abbreviation:
-
+----------
+``@``  decorator operator is an abbreviation:}
+{\large
 
 ::
     
@@ -112,11 +114,12 @@ same as
     g = f(g)
 
 
+}
 
-"Syntactic Sugar" -- but really quite nice
+"Syntactic Sugar" -- but really quite nice}
 
 Decorators
-==========
+----------
 demo:
 
 ::
@@ -125,12 +128,13 @@ demo:
     decorator.py
 
 
+}
 
 Decorator  examples
-===================
-Examples from the stdlib:
+-------------------
+Examples from the stdlib:}
 
-Does this structure:
+Does this structure:}
 
 ::
     
@@ -141,11 +145,11 @@ Does this structure:
 
 
 
-look familiar from last class?
+look familiar from last class?}
 
 Decorator examples
-==================
-``staticmethod()`` 
+------------------
+``staticmethod()`` }
 
 ::
     
@@ -158,10 +162,10 @@ Decorator examples
 
 
 Decorator examples
-==================
-``staticmethod()`` 
+------------------
+``staticmethod()`` }
 
-Decorator form:
+Decorator form:}
 ::
     
 
@@ -172,11 +176,11 @@ Decorator form:
 
 
 
-( and ``classmethod``  )
+( and ``classmethod``  )}
 
 examples
-========
-``property()`` 
+--------
+``property()`` }
 
 ::
     
@@ -195,10 +199,10 @@ examples
 
 
 
-becomes...
+becomes...}
 
 Decorator examples
-==================
+------------------
 ::
     
 
@@ -217,11 +221,11 @@ Decorator examples
 
 
 
-Puts the info close to where it is used
+Puts the info close to where it is used}
 
 examples
-========
-CherryPy
+--------
+CherryPy}
 
 ::
     
@@ -236,8 +240,8 @@ CherryPy
 
 
 examples
-========
-Pyramid
+--------
+Pyramid}
 
 ::
     
@@ -253,18 +257,18 @@ Pyramid
 so you don't need to think about what your view is returning...
 
 decorators...
-=============
-For this class:
+-------------
+For this class:}
 
-Mostly want to you to know how to use decorators that someone else has written
+Mostly want to you to know how to use decorators that someone else has written}
 
-Have a basic idea what they do when you do use them
+Have a basic idea what they do when you do use them}
 
-But writing a couple will help you "get" it, and help cement your Python knowledge...
+But writing a couple will help you "get" it, and help cement your Python knowledge...}
 
 Writing Decorators
-==================
-So how to you write one?
+------------------
+So how to you write one?}
 
 
 demo in iPython notebook
@@ -275,12 +279,13 @@ demo in iPython notebook
     code\decorators\DecoratorDemo.py
 
 
+}
 
-For more detail: (and talks about closures...):
-http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
+For more detail: (and talks about closures...):}
+http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/}
 
 LAB
-===
+---
 
   * Re-write the properties from last week's ``Circle``  class
         to use the decorator syntax (see a couple slides back for an example)
@@ -301,46 +306,46 @@ LAB
 
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
- Harlan AuBuchon
+ Harlan AuBuchon}
 
- Luke Cypret
+ Luke Cypret}
 
 ================
 Context Managers
 ================
 
 Context Managers
-================
-the ``with``  statement
+----------------
+the ``with``  statement}
 
-A class with ``__enter__()``  and ``__exit__()``  methods.
+A class with ``__enter__()``  and ``__exit__()``  methods.}
 
-``__enter__()``  is run before your block of code
+``__enter__()``  is run before your block of code}
 
-``__exit__()``  is run after your block of code
+``__exit__()``  is run after your block of code}
 
-Can be used to setup/cleanup before and after: open/closing files, db connections, etc
+Can be used to setup/cleanup before and after: open/closing files, db connections, etc}
 
 Context Managers
-================
-"PEP 343: the ``with``  statement" 
+----------------
+"PEP 343: the ``with``  statement"} 
   -- A.M. Kuchling
-http://docs.python.org/dev/whatsnew/2.6.html#pep-343-the-with-statement
+http://docs.python.org/dev/whatsnew/2.6.html#pep-343-the-with-statement}
 
-"Understanding Python's ``with``  statement" 
+"Understanding Python's ``with``  statement"} 
   -- Fredrik Lundh
-http://effbot.org/zone/python-with-statement.htm
+http://effbot.org/zone/python-with-statement.htm}
 
-"The Python ``with``  Statement by Example" 
+"The Python ``with``  Statement by Example"} 
   -- Jeff Preshing
-http://preshing.com/20110920/the-python-with-statement-by-example
+http://preshing.com/20110920/the-python-with-statement-by-example}
 
 Context Managers
-================
-Use syntax:
+----------------
+Use syntax:}
 ::
     
 
@@ -351,12 +356,14 @@ Use syntax:
 
 
 
+{\large
 ``manager``  is the context manager: i.e. has an ``__enter__``  and ``__exit__``  method -- if ``__enter__``  returns an object, it gets assigned to ``something`` 
+}
 
 
 Context Managers
-================
-The file object is also a context manager:
+----------------
+The file object is also a context manager:}
 ::
     
 
@@ -368,13 +375,13 @@ The file object is also a context manager:
 
 
 
-In this case, the file will automatically be closed when you leave that block, regardless of errors, etc.
+In this case, the file will automatically be closed when you leave that block, regardless of errors, etc.}
 
-Most commonly used context manager -- by far!
+Most commonly used context manager -- by far!}
 
 Context Managers
-================
-You also may hav seen this in some of my unit tests:
+----------------
+You also may hav seen this in some of my unit tests:}
 ::
     
 
@@ -384,13 +391,13 @@ You also may hav seen this in some of my unit tests:
 
 
 
-Context Managers can also catch Exceptions....
+Context Managers can also catch Exceptions....}
 
 
 LAB
-===
-See if you can write a context manger that will time some code.
-When using it, you can do:
+---
+See if you can write a context manger that will time some code.}
+When using it, you can do:}
 ::
     
 
@@ -399,7 +406,7 @@ When using it, you can do:
           how_long_might_it_take
 
 
-and you'll get something like:
+and you'll get something like:}
 ::
     
 
@@ -407,26 +414,26 @@ and you'll get something like:
 
 
 
-See: ``context_manager\timer_context.html``  (``timer_context.py`` ) 
+See: ``context_manager\timer_context.html``  (``timer_context.py`` ) }
 
 Lightning Talk
-==============
-Lightning Talk:
+--------------
+Lightning Talk:}
 
-  Brian Schmitz
+  Brian Schmitz}
 
 ======================
 Packages and Packaging
 ======================
 
 Modules and Packages
-====================
+--------------------
 
-A module is a file with python code in it
+A module is a file with python code in it}
 
-A package is a directory with an ``__init__.py``  file in it
+A package is a directory with an ``__init__.py``  file in it}
 
-And usually other modules, packages, etc...
+And usually other modules, packages, etc...}
 ::
     
 
@@ -445,7 +452,7 @@ And usually other modules, packages, etc...
 runs ``my_package/__init__.py``
 
 Modules and Packages
-====================
+--------------------
 
 ::
     
@@ -459,13 +466,13 @@ Modules and Packages
 (demo)
 
 Installing Python
-=================
-Linux:
+-----------------
+Linux:}
 Usually part of the system -- just use it
 
-Windows:
+Windows:}
 
-Use the python.org version:
+Use the python.org} version:
 
 System Wide
 
@@ -474,216 +481,217 @@ Can install multiple versions if need be
 Third party binaries for it.
 
 Installing Python
-=================
-OS-X:
+-----------------
+OS-X:}
 Comes with the system, but:
 
     * Apple has never upgraded within a release
     * There are non-open source components
     * Third party packages may or may not support it
     * Apple does use it -- so don't mess with it.
-    * I usually recommend the python.org version
+    * I usually recommend the python.org} version
 
 (Also Macports, Fink, Home Brew...)
 
 
 Distributions
-=============
+-------------
 
-There are also a few "curated" distributions:
+There are also a few "curated" distributions:}
 
-These provide python and a package management system for hard-to-buid packages.
+These provide python and a package management system for hard-to-buid packages.}
 
-Widely used by the scipy community (lots of hard to build stuff that needs to work together...)
+Widely used by the scipy community (lots of hard to build stuff that needs to work together...)}
+{\large
 
+  * Anoconda (https://store.continuum.io/cshop/anaconda/})
+  * Canopy (https://www.enthought.com/products/canopy/})
+  * ActivePython (http://www.activestate.com/activepython})
 
-  * Anoconda (https://store.continuum.io/cshop/anaconda/)
-  * Canopy (https://www.enthought.com/products/canopy/)
-  * ActivePython (http://www.activestate.com/activepython)
-
+}
 
 Installing Packages
-===================
-Every Python installation has its own stdlib and ``site-packages``  folder
+-------------------
+Every Python installation has its own stdlib and ``site-packages``  folder}
 
-``site-packages``  is the default place for third-party packages
+``site-packages``  is the default place for third-party packages}
 
 Finding Packages
-================
-The Python Package Index:
+----------------
+The Python Package Index:}
 
-PyPi
+PyPi}
 
-http://pypi.python.org/pypi
+http://pypi.python.org/pypi}
 
 Installing Packages
-===================
-From source
+-------------------
+From source}
 (``setup.py install`` )
 
-With the system installer (apt-get, yum, etc...)
+With the system installer (apt-get, yum, etc...)}
 
-From binaries: 
+From binaries: }
 
-Windows: MSI installers
+Windows:} MSI installers
 
-OS-X: dmg installers
+OS-X:} dmg installers
 
-And now: binary wheels
+And now:} binary wheels
 (make sure to get compatible packages)
 
-``easy_install``  and ``pip`` 
+``easy_install``  and ``pip`` }
 
 Installing Packages
-===================
-In the beginning, there was the ``distutils`` :
-....
-But ``distutils``  is missing some key features:
+-------------------
+In the beginning, there was the ``distutils`` :}
+....}
+But ``distutils``  is missing some key features:}
 
   * package versioning
   * package discovery
   * auto-install
 
 
-- And then came ``PyPi`` 
+- And then came ``PyPi`` }
 
-- And then came ``setuptools`` 
+- And then came ``setuptools`` }
 
-- But that wasn't well maintained...
+- But that wasn't well maintained...}
 
-- Then there was ``distribute/pip`` 
+- Then there was ``distribute/pip`` }
 
-- Which has now been merged back into ``setuptools`` 
+- Which has now been merged back into ``setuptools`` }
 
 Installing Packages
-===================
+-------------------
 
-Actually, it's still a bit of a mess
+Actually, it's still a bit of a mess}
 
-But getting better...
+But getting better...}
 
 Packaging Time line
-===================
-{\centering
-\includegraphics[width=4.5in]{PackagingTimeline.pdf
+-------------------
 
+\includegraphics[width=4.5in]{PackagingTimeline.pdf}
+}
 
 Packaging Tools
-===============
-{\centering
-\includegraphics[width=4.5in]{packaging1.pdf
+---------------
 
+\includegraphics[width=4.5in]{packaging1.pdf}
+}
 
 Current State of Packaging
-==========================
+--------------------------
 
-To build packages: distutils
-http://docs.python.org/2/distutils/
+To build packages: distutils}
+http://docs.python.org/2/distutils/}
 
-For more features: setuptools
-http://pythonhosted.org/setuptools/
+For more features: setuptools}
+http://pythonhosted.org/setuptools/}
 
-To install packages: pip
-http://www.pip-installer.org/en/latest/
+To install packages: pip}
+http://www.pip-installer.org/en/latest/}
 
-For binary packages: wheels
-http://www.python.org/dev/peps/pep-0427/
+For binary packages: wheels}
+http://www.python.org/dev/peps/pep-0427/}
 
 Compiled Packages
-=================
+-----------------
 Biggest issue is with compiled extensions
 \hfill(C/C++, etc)\hfill
+}
 
+-- You need the right compiler set up}
 
--- You need the right compiler set up
+Dependencies}
 
-Dependencies
+-- Here's were it gets really ugly}
 
--- Here's were it gets really ugly
-
--- Particularly on Windows
+-- Particularly on Windows}
 
 Compiled Packages
-=================
-Linux
+-----------------
+Linux}
 
-Pretty straightforward:
+Pretty straightforward:}
 
 1) Is there a system package 
-
+}
 
 2) Install the dependencies, build from source:
 ``python setup.py build ; python setup.py install`` 
 
 ( Or maybe ``pip install``  will just work )
-
+}
 
 Compiled Packages
-=================
-Windows
+-----------------
+Windows}
 
-Sometimes simpler:
+Sometimes simpler:}
 
 1) A lot of packages have Windows binaries:
-            - Usually for python.org builds 
-            - Excellent source: http://www.lfd.uci.edu/~gohlke/pythonlibs/ 
+            - Usually for python.org} builds 
+            - Excellent source:} http://www.lfd.uci.edu/~gohlke/pythonlibs/} 
            - Make sure you get 32 or 64 bit consistent
-
+}
 
 2) But if no binaries: 
            - Hope the dependencies are available!
            - Set up the compiler (MS VS2008 Express works)
-
+}
 
 Compiled Packages
-=================
-OS-X
+-----------------
+OS-X}
 
 Lots of Python versions:
   - Apple's built-in (different for each version of OS)
-  - python.org builds.
+  - python.org} builds.
   - 32 bit PPC+Intel
   - 32+64 bit Intel
   - Macports
   - Homebrew
+}
 
-
-Binary Installers (dmg or wheel) have to match python version
+Binary Installers (dmg or wheel) have to match python version}
 
 Compiled Packages
-=================
-OS-X
+-----------------
+OS-X}
 
-If you have to build it yourself:
+If you have to build it yourself:}
 
 Xcode compiler (the right version):
   - Version 3.* for 32 bit PPC+Intel
   - Version 4.* for 32+64 bit Intel
-
+}
 
 If extra dependencies:
   - macports or home brew often easiest way to build them
-
+}
 
 Final Recommendation
-====================
-First try: ``pip install`` 
+--------------------
+First try: ``pip install`` }
 
-If that doesn't work:
+If that doesn't work:}
 
-Read the docs of the package you want to install
+Read the docs of the package you want to install}
 
-Do what they say
+Do what they say}
 
 virtualenv
-==========
-``virtualenv``  is a tool to create isolated Python environments.
+----------
+``virtualenv``  is a tool to create isolated Python environments.}
 
-Very useful for developing multiple apps
+Very useful for developing multiple apps}
 
-Or deploying more than one on one system
+Or deploying more than one on one system}
 
-http://www.virtualenv.org/en/latest/index.html
+http://www.virtualenv.org/en/latest/index.html}
 
 (Cris will get into more detail with this next class)
 
@@ -692,59 +700,59 @@ Distributing
 ============
 
 Distributing
-============
-What if you need to distribute you own:
+------------
+What if you need to distribute you own:}
+
+Scripts}
+
+Libraries }
+
+Applications }
+
 
 Scripts
-
-Libraries 
-
-Applications 
-
-
-Scripts
-=======
+-------
 
 Often you can just copy, share, or check in the script to source
-control and call it good.
+control and call it good.}
 
-But only if it's a single file, and doesn't need anything non-standard
+But only if it's a single file, and doesn't need anything non-standard}
 
 Scripts
-=======
+-------
 
 ￼When the script needs more than just the stdlib
- (or your company standard environment)
+ (or your company standard environment)}
 
-You have an application, not a script
+You have an application, not a script}
 
 
 Libraries
-=========
+---------
 
-When you read the distutils docs, it's usually libraries they're talking about
+When you read the distutils docs, it's usually libraries they're talking about}
 
-Scripts + library is the same...
+Scripts + library is the same...}
 
-(http://docs.python.org/distutils/)
+(http://docs.python.org/distutils/})
 
 distutils
-=========
+---------
 
-``distutils``  makes it easy to do the easy stuff:
+``distutils``  makes it easy to do the easy stuff:}
 
-Distribute and install to multiple platforms, etc.
+Distribute and install to multiple platforms, etc.}
 
-Even binaries, installers and compiled packages
+Even binaries, installers and compiled packages}
 
-(Except dependencies)
+(Except dependencies)}
 
-(http://docs.python.org/distutils/)
+(http://docs.python.org/distutils/})
 
 distutils basics
-================
+----------------
 
-It's all in the ``setup.py file`` :
+It's all in the ``setup.py file`` :}
 ::
     
 
@@ -760,11 +768,11 @@ It's all in the ``setup.py file`` :
 
 
 
-(http://docs.python.org/distutils/)
+(http://docs.python.org/distutils/})
 
 distutils basics
-================
-Once your setup.py is written, you can:
+----------------
+Once your setup.py is written, you can:}
 ::
     
 
@@ -781,51 +789,51 @@ Once your setup.py is written, you can:
 
 
 More complex packaging
-======================
-For a complex package:
+----------------------
+For a complex package:}
 
-You want to use a well structured setup:
+You want to use a well structured setup:}
 
-http://guide.python-distribute.org/creation.html
+http://guide.python-distribute.org/creation.html}
 
 
 develop mode
-============
-While you are developing your package, Installing it is a pain.
+------------
+While you are developing your package, Installing it is a pain.}
 
-But you want your code to be able to import, etc. as though it were installed
+But you want your code to be able to import, etc. as though it were installed}
 
 ``setup.py develop``  installs links to your code, rather than copies
- -- so it looks like it's installed, but it's using the original source
+ -- so it looks like it's installed, but it's using the original source}
 
-``python setup.py develop`` 
+``python setup.py develop`` }
 
-You need ``setuptools``  to use it.
+You need ``setuptools``  to use it.}
 
 
 Applications
-============
-For a complete application:
+------------
+For a complete application:}
 
   * Web apps
   * GUI apps
 
-Multiple options:
+Multiple options:}
 
   * Virtualenv + VCS
-  * zc.buildout ( http://www.buildout.org/ )
+  * zc.buildout ( http://www.buildout.org/} )
   * System packages (rpm, deb, ...)
   * Bundles...
 
 
 Bundles
-=======
+-------
 
 Bundles are Python + all your code + plus all the dependencies --
 all in one single "bundle"
 
 Most popular on Windows and OS-X
-
+}
 ::
     
 
@@ -835,15 +843,15 @@ Most popular on Windows and OS-X
      ...
 
 
-User doesn't even have to know it's python 
+User doesn't even have to know it's python }
 
 Examples: 
- http://www.bitpim.org/ 
- http://response.restoration.noaa.gov/nucos
+ http://www.bitpim.org/} 
+ http://response.restoration.noaa.gov/nucos}
 
 LAB
-===
-Write a setup.py for a script of yours
+---
+Write a setup.py for a script of yours}
 
   * Ideally, your script relies on at least one other module
   * At a minimum, you'll need to specify ``scripts`` 
@@ -865,15 +873,15 @@ Write a setup.py for a script of yours
 
 
 Homework
-========
+--------
 
-Finish any labs...
+Finish any labs...}
 
-Your project
+Your project}
 
-Next week:
+Next week:}
 
-Cris Ewing will come and talk about the next quarter
+Cris Ewing will come and talk about the next quarter}
 
 
-\end{document
+\end{document}

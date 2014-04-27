@@ -1,40 +1,40 @@
 
 
 More OO: Special methods, magic methods
-====================================================================================================================
+********************************************************************************************************************
 Intro to Python: Week 8 Introduction  to Python  More OO: Special methods, magic methods Iterators and Generators
-====================================================================================================================
+********************************************************************************************************************
 
 
 frame
-=====
-\frametitle{Table of Contents
+-----
+\frametitle{Table of Contents}
   \tableofcontents
 
 Schedule...
-===========
+-----------
 
-Three more classes (including this one)!
+Three more classes (including this one)!}
 
-No class next week: Thanksgiving!
+No class next week: Thanksgiving!}
 
-Extra time to work on project...
+Extra time to work on project...}
 
 Desktop GUIs
-============
+------------
 
-A number of people are interested in desktop GUIs
+A number of people are interested in desktop GUIs}
 
-No time to cover that in class
+No time to cover that in class}
 
-Extra class T-day week on wxPython?
+Extra class T-day week on wxPython?}
 
 ================
 Review/Questions
 ================
 
 Review of Previous Class
-========================
+------------------------
 
   * Object oriented programing
   * Classes, subclasses, instances.
@@ -42,9 +42,9 @@ Review of Previous Class
 
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
 
 Luke Cypret
@@ -53,16 +53,18 @@ Blane Moore
 
 Brent Parrish
 
+}
+
 
 ==========
 Properties
 ==========
 
 Accessing Attributes
-====================
-One of the strengths of Python is lack of clutter
+--------------------
+One of the strengths of Python is lack of clutter}
 
-Simple attributes:
+Simple attributes:}
 ::
     
 
@@ -77,8 +79,8 @@ Simple attributes:
 
 
 Getter and Setters?
-===================
-What if you need to add behavior later?
+-------------------
+What if you need to add behavior later?}
 
   * do some calculation
   * check data validity
@@ -86,7 +88,7 @@ What if you need to add behavior later?
 
 
 Getter and Setters?
-===================
+-------------------
 ::
     
 
@@ -103,12 +105,12 @@ Getter and Setters?
     >>> 8
 
 
-Ugly and verbose -- Java?
-http://dirtsimple.org/2004/12/python-is-not-java.html
+Ugly and verbose -- Java?}
+http://dirtsimple.org/2004/12/python-is-not-java.html}
 
 properties
-==========
-{ \Large When (and if) you need them: 
+----------
+{ When (and if) you need them: }
 ::
     
 
@@ -122,13 +124,13 @@ properties
         x = property(_getx, _setx, _delx, doc="docstring")
 
 
-Interface is still like simple attribute access
+Interface is still like simple attribute access}
 
 (demo: ``properties_sample.py``  )
 
 staticmethod
-============
-{ \Large A method that doesn't get self! 
+------------
+{ A method that doesn't get self! }
 ::
     
 
@@ -143,13 +145,13 @@ staticmethod
     4
 
 
-When you don't need self -- can be used from either an instance or the class itself
+When you don't need self -- can be used from either an instance or the class itself}
 
 see: ``static_method.py`` 
 
 classmethod
-===========
-{ \Large Method gets the class object, rather than an instance, as the first argument
+-----------
+{ Method gets the class object, rather than an instance, as the first argument}
 ::
     
 
@@ -163,13 +165,13 @@ classmethod
         a_class_method = classmethod(a_class_method)
 
 
-When you need the class object rather than an instance -- plays well with subclassing
+When you need the class object rather than an instance -- plays well with subclassing}
 
 see: ``class_method.py`` 
 
 dict.fromkeys()
-===============
-{ \Large ``classmethod``  often used for alternate constructors:
+---------------
+{ ``classmethod``  often used for alternate constructors:}
 ::
     
 
@@ -180,12 +182,12 @@ dict.fromkeys()
     sequence element #0 to a sequence
     >>> d = dict.fromkeys([1,2,3])
     >>> d
-    {1: None, 2: None, 3: None
+    {1: None, 2: None, 3: None}
 
 
 
 dict.fromkeys()
-===============
+---------------
 ::
     
 
@@ -200,14 +202,14 @@ dict.fromkeys()
 
 
 
-See also datetime.datetime.now(), etc....
+See also datetime.datetime.now(), etc....}
 
 For a low-level look:
-http://docs.python.org/howto/descriptor.html
+http://docs.python.org/howto/descriptor.html}
 
 LAB
-===
-Write a simple "Circle" class:
+---
+Write a simple "Circle" class:}
 
 ::
     
@@ -226,16 +228,16 @@ Use properties so you can keep the radius and diameter in sync, and the area com
 
 Extra Credit: use a class method to make an alternate constructor that takes the diameter instead.
 
-``code/circle.py``  and ``code/test_circle1.py`` 
+``code/circle.py``  and ``code/test_circle1.py`` }
 
 Lightning Talks
-===============
+---------------
 
-Lightning Talk:  
+Lightning Talk:  }
 
-Luke Cypret
+Luke Cypret}
 
-Blane Moore
+Blane Moore}
 
 
 ==================
@@ -243,27 +245,27 @@ Special Attributes
 ==================
 
 "magic" methods
-=================
-Python's Duck typing:
+-----------------
+Python's Duck typing:}
 
 Defining special (or magic) methods in your classes is how you make
-your class act like standard classes
+your class act like standard classes}
 
 special methods
-===============
-We've seen at least one:
+---------------
+We've seen at least one:}
 
-``__init__`` 
+``__init__`` }
 
-It's all in the double underscores...
+It's all in the double underscores...}
 
-Pronounced "dunder" (or "under-under") 
+Pronounced "dunder" (or "under-under") }
 
-try: ``dir(2)``  or ``dir(list)``  
+try: ``dir(2)``  or ``dir(list)``  }
 
 special methods
-===============
-Emulating Numeric types
+---------------
+Emulating Numeric types}
 ::
     
 
@@ -283,8 +285,8 @@ Emulating Numeric types
 
 
 special methods
-===============
-Emulating container types:
+---------------
+Emulating container types:}
 ::
     
 
@@ -302,8 +304,8 @@ Emulating container types:
 
 
 special methods
-===============
-Example -- to define addition:
+---------------
+Example -- to define addition:}
 ::
     
 
@@ -318,11 +320,11 @@ Example -- to define addition:
 ( from a nice complete example in ``code/vector.py``  )
 
 special methods
-===============
+---------------
 
-You only need to define the ones that are going to get used
+You only need to define the ones that are going to get used}
 
-But you probably want to define at least these:
+But you probably want to define at least these:}
 
 ``object.__str__`` : Called by the str() built-in function and by the print statement to compute the “informal” string representation of an object.
 
@@ -331,23 +333,23 @@ But you probably want to define at least these:
 (ideally: ``eval( repr(something) ) == something``  )
 
 special methods
-===============
+---------------
 
-When you want your class to act like a "standard" class in some way:
+When you want your class to act like a "standard" class in some way:}
 
-Look up the magic methods you need and define them
+Look up the magic methods you need and define them}
 
-http://docs.python.org/reference/datamodel.html#special-method-names
+http://docs.python.org/reference/datamodel.html#special-method-names}
 
-http://www.rafekettler.com/magicmethods.html
+http://www.rafekettler.com/magicmethods.html}
 
 LAB
-===
-Extend your "Circle" class:
+---
+Extend your "Circle" class:}
 
-Add ``__str__``  and ``__repr__``  methods 
+Add ``__str__``  and ``__repr__``  methods }
 
-Write an ``__add__``  method so you can add two circles 
+Write an ``__add__``  method so you can add two circles }
 (and multiply by a number....)
 ::
     
@@ -361,16 +363,16 @@ Write an ``__add__``  method so you can add two circles
     Out[26]: Circle(9)
 
 
-If you have time: compare them... (``c1 > c2`` , etc)
+If you have time: compare them... (``c1 > c2`` , etc)}
 
-``code/circle.py``  and ``code/test_circle2.py`` 
+``code/circle.py``  and ``code/test_circle2.py`` }
 
 Lightning Talk
-==============
+--------------
 
-Lightning Talk:  
+Lightning Talk:  }
 
-Brent Parrish
+Brent Parrish}
 
 
 ======================
@@ -378,8 +380,8 @@ Iterators / Generators
 ======================
 
 Iterators
-=========
-Iterators are one of the main reasons Python code is so readable:
+---------
+Iterators are one of the main reasons Python code is so readable:}
 ::
     
 
@@ -387,13 +389,13 @@ Iterators are one of the main reasons Python code is so readable:
         do_stuff(x)
 
 
-you can loop through anything that satisfies the iterator protocol
+you can loop through anything that satisfies the iterator protocol}
 
-http://docs.python.org/library/stdtypes.html#iterator-types
+http://docs.python.org/library/stdtypes.html#iterator-types}
 
 Iterator Protocol
-=================
-An iterator must have the following methods:
+-----------------
+An iterator must have the following methods:}
 ::
     
 
@@ -412,8 +414,8 @@ Return the next item from the container. If there are no further items,
 raise the StopIteration exception.
 
 Example Iterator
-================
-A simple version of ``xrange()`` 
+----------------
+A simple version of ``xrange()`` }
 ::
     
 
@@ -433,18 +435,18 @@ A simple version of ``xrange()``
 
 
 itertools
-=========
+---------
 ``itertools``  is a collection of utilities that make it easy to
-build an iterator that iterates over sequences in various common ways
+build an iterator that iterates over sequences in various common ways}
 ::
     
 
 
 
-http://docs.python.org/library/itertools.html
+http://docs.python.org/library/itertools.html}
 
 LAB
-===
+---
 
   *  Extend (``iterator_1.py`` ) to be more like ``xrange()``  --
          add three input parameters: ``iterator_2(start, stop, step=1)`` 
@@ -471,21 +473,21 @@ And then pick up again:
 
 
 generators
-==========
+----------
 \Large{￼Generators give you the iterator immediately:
-no access to the underlying data ... if it even exists
+no access to the underlying data ... if it even exists}
 
-{Conceptually:
+{Conceptually:}
 iterators are about various ways to loop over data,
 generators generate the data on the fly
 
-{Practically:
+{Practically:}
 You can use either either way (and a generator is one type of iterator)
 Generators do some of the book-keeping for you.
 
 yield
-=====
-\Large{￼``yield``  is a way to make a quickie generator with a function:
+-----
+\Large{￼``yield``  is a way to make a quickie generator with a function:}
 ::
     
 
@@ -495,15 +497,15 @@ yield
 
 
 
-\Large{ Generator functions "yield" a value, rather than returning it 
+\Large{ Generator functions "yield" a value, rather than returning it }
 
-\Large{ State is preserved in between yields 
+\Large{ State is preserved in between yields }
 
 yield
-=====
-\Large{￼A function with ``yield``  in it is a "factory" for a generator
+-----
+\Large{￼A function with ``yield``  in it is a "factory" for a generator}
 
-\Large{￼Each time you call it, you get a new generator:
+\Large{￼Each time you call it, you get a new generator:}
 
 ::
     
@@ -513,13 +515,13 @@ yield
 
 
 
-\Large{ Each instance keeps its own state. 
+\Large{ Each instance keeps its own state. }
 
-\Large{ Really just a shorthand for an iterator class that does the book keeping for you.
+\Large{ Really just a shorthand for an iterator class that does the book keeping for you.}
 
 yield
-=====
-\Large{￼An example: like ``xrange()`` 
+-----
+\Large{￼An example: like ``xrange()`` }
 ::
     
 
@@ -531,11 +533,11 @@ yield
 
 
 
-Real World Example: ``FloatCanvas`` 
+Real World Example: ``FloatCanvas`` }
 
 yield
-=====
-Note:
+-----
+Note:}
 ::
     
 
@@ -550,21 +552,21 @@ Note:
      'next',
 
 
-So the generator {is an iterator
+So the generator {is} an iterator}
 
 yield
-=====
-A generator function can also be a method in a class
+-----
+A generator function can also be a method in a class}
 
-More about iterators and generators:
+More about iterators and generators:}
 
-http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
+http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/}
 
 ``yield_example.py`` 
 
 generator comprehension
-=======================
-another way to make a generator:
+-----------------------
+another way to make a generator:}
 ::
     
 
@@ -581,11 +583,11 @@ another way to make a generator:
 More interesting if [1, 2, 3] is also a generator
 
 LAB
-===
+---
 
-Generator lab:
+Generator lab:}
 
-Write a few generators:
+Write a few generators:}
 
   * Sum of integers
   * Doubler
@@ -593,19 +595,19 @@ Write a few generators:
   * Prime numbers
 
 
-``code/generatorLAB.html`` 
-``code/test_generator.py`` 
+``code/generatorLAB.html`` }
+``code/test_generator.py`` }
 
 Homework
-========
+--------
 
-Finish the labs
+Finish the labs}
 
-Project Proposals!
+Project Proposals!}
 
-You should have a good start on your project by the end of this week
+You should have a good start on your project by the end of this week}
 
-Remember: no class next week!
+Remember: no class next week!}
 
 
-\end{document
+\end{document}
