@@ -180,7 +180,7 @@ pseudoxml:
 
 
 slides:
-	$(SASSBUILD) $(SASSOPTS) scss_sources/slides_custom.scss > $(BUILDDIR)/slides/_static/custom.css
 	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/slides
+	$(SASSBUILD) $(SASSOPTS) scss_sources/slides_custom.scss > $(BUILDDIR)/slides/_static/custom.css
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 
