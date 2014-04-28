@@ -194,8 +194,7 @@ I suggest running through the **cli** tutorial at "learn code the hard way":
 .. _http://cli.learncodethehardway.org/book: http://cli.learncodethehardway.org/book
 
 
-Command Line Enhancements
--------------------------
+.. nextslide:: Command Line Enhancements
 
 There are a few things you can do to help make your command line a better place
 to work.
@@ -225,8 +224,7 @@ That last thing you see, ``>>>`` is the "Python prompt".
 This is where you type code.
 
 
-Python in the Interpreter
--------------------------
+.. nextslide:: Python in the Interpreter
 
 Try it out:
 
@@ -243,8 +241,7 @@ Try it out:
     >>>
 
 
-Tools in the Interpreter
-------------------------
+.. nextslide:: Tools in the Interpreter
 
 When you are in an interpreter, there are a number of tools available to you.
 
@@ -264,7 +261,7 @@ There is a help system:
 
 You can type ``q`` to exit the help viewer.
 
-.. nextslide::
+.. nextslide:: Tools in the Interpreter
 
 You can also use the ``dir`` builtin to find out about the attributes of a
 given object:
@@ -305,7 +302,7 @@ fashion.
 
 This is where an Editor fits in.
 
-.. nextslide::
+.. nextslide:: Text Editors Only
 
 Any good text editor will do.
 
@@ -316,7 +313,7 @@ Nor is *TextEdit* on a Mac.
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
 
-.. nextslide::
+.. nextslide:: Minimum Requirements
 
 At a minumum, your editor should have:
 
@@ -728,8 +725,7 @@ Statements:
     In [9]:
 
 
-The Print Statement
--------------------
+.. nextslide:: The Print Statement
 
 It's kind of obvious, but handy when playing with code:
 
@@ -778,8 +774,7 @@ Any python object can be printed (though it might not be pretty...)
     <class '__main__.bar'>
 
 
-Code Blocks
------------
+.. nextslide:: Code Blocks
 
 Blocks of code are delimited by a colon and indentation:
 
