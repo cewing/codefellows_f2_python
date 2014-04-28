@@ -12,6 +12,13 @@ more work on your Python chops, you should try these out.
 
 ### Python Language Resources
 
+As a Python programmer, you'll want to keep a bookmark pointed at the
+[official Python documentation](https://docs.python.org/2/), especially the
+documentation for the
+[standard library](https://docs.python.org/2/library/index.html). However,
+there are a number of additional resources you can (and should) use to help
+build your Python chops.
+
 #### For the beginner
 
 * [The Python Tutorial](https://docs.python.org/2/tutorial/): This is the
