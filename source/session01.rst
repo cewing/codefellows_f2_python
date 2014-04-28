@@ -41,56 +41,6 @@ Introduction to This class
 Python Programming
 
 
-Why Python?
------------
-
-.. rst-class:: center large
-
-Python Is Versatile
-
-.. nextslide::
-
-Used for:
-
-.. rst-class:: build
-
-* CS education (this course!)
-* Application scripting (GIS, GNU Radio, Blender...)
-* Systems administration and "glue"
-* Web applications (Django etc. etc. etc.)
-* Scientific/technical computing (a la MATLAB, Mathematica, also BioPython etc. ..)
-* Software tools (automated software testing, distributed version control, ...)
-* Research (natural language, graph theory, distributed computing, ...)
-
-.. nextslide::
-
-Used by:
-
-.. rst-class:: build
-
-* Beginners
-* Professional software developers, computer system administrators, ...
-* Professionals OTHER THAN computer specialists: biologists, urban planners,
-  ...
-* You don't need to immerse yourself in Python to be productive
-
-.. nextslide::
-
-Gets many things right:
-
-.. rst-class:: build
-
-*  Readable -- looks nice, makes sense
-*  No ideology about best way to program -- object-oriented programming,
-   functional, etc.
-*  No platform preference -- Windows, Mac, Linux, ...
-*  Easy to connect to other languages -- C, Fortran - essential for
-   science/math
-*  Large standard library
-*  Even larger network of external packages
-*  Countless conveniences, large and small, make it pleasant to work with
-
-
 What is Python?
 ---------------
 
@@ -201,10 +151,6 @@ Python 3.x ("py3k")
 * Removed the "warts"
 * Allowed to break code
 
-.. rst-class:: build
-
-(but really not all that different)
-
 
 .. nextslide::
 
@@ -212,22 +158,13 @@ This program uses Python 2.7 not Python 3.
 
 .. rst-class:: build
 
-* Adoption is growing fast
-* A few key packages still not supported (https://python3wos.appspot.com/)
+* Adoption of Python 3 is growing fast
+
+  * A few key packages still not supported (https://python3wos.appspot.com/)
+
 * Most code in the wild is still 2.x
 * You *can* learn to write Python that is forward compatible from 2.x to 3.x
 * We will be teaching from that perspective.
-
-
-Implementations
----------------
-
-* Jython (JVM)
-* Iron Python (.NET)
-* PyPy -- Python written in Python (actually RPy...)
-
-We will use CPython 2.7 from python.org for this course.
-
 
 
 Introduction to Your Environment
@@ -525,13 +462,19 @@ command at the command line:
 
     $ virtualenv <name>
 
-``<name>`` is an arbitrary designator that means something to you [demo]
+``<name>`` is an arbitrary designator that means something to you
 
 Once you've created a virtualenv, you can ``activate`` it, install packages in
-it, and ``deactivate`` it when you are done. [demo]
+it, and ``deactivate`` it when you are done.
 
 If you've finished working with an environment, you can simply throw away the
 directory created by the command.  Your system will be unharmed.
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+    [DEMO]
 
 
 Step 4: Virtualenvwrapper
@@ -613,7 +556,7 @@ At your command line, type the following:
     $ mkdir .virtualenvs
     $ mkdir projects
 
-Now, you're ready to make your class environment
+Now, you're ready to make your class environment.
 
 
 Step 5: Make a Class Environment
@@ -652,9 +595,7 @@ That's great!  We have a home for our class work.
 
 But how do we get back here easily?
 
-``Virtualenvwrapper`` to the rescue, again.
-
-Try this:
+``Virtualenvwrapper`` to the rescue, again:
 
 .. code-block:: bash
 
@@ -676,15 +617,70 @@ Nice, eh?
 Step 6: Clone Class Repositories
 --------------------------------
 
-Next, you'll make a copy of the class repository
+Next, you'll make a copy of the class repository using ``git``.
 
+The canonical copy is in the CodeFellows organization on GitHub.
 
+https://github.com/codefellows/sea-c15-python
+
+Open that URL, and click on the ``Fork`` button at the top right corner.
+
+This will make a copy of this repository in *your* github account.
+
+.. nextslide:: Clone Your Fork
+
+From here, you'll want to make a clone of your copy on your local machine.
+
+At your command line, run the following commands:
+
+.. code-block:: bash
+
+    $ workon cff2py
+    (cff2py)$ git clone https://github.com/<yourname>/sea-c15-python.git
+
+If you have an SSH key set up for github, you'll want to do this instead:
+
+.. code-block:: bash
+
+    git@github.com:<yourname>/sea-c15-python.git
+
+**Remember**, <yourname> should be replaced by your github account name.
+
+.. nextslide:: Class Documentation
+
+There is a second repository for the class.
+
+https://github.com/codefellows/sea-c15-python-documentation
+
+This one holds the documentation for this class: slides, reading lists, and
+additional resources.
+
+You can repeat the above "fork and clone" process to copy this documentation
+into your class project directory.
+
+Place it next to (not inside) the class work repository.
 
 
 Step 7: Install Requirements
 ----------------------------
 
+In each of the class repositories, you'll find a file called
+``requirements.txt``.
 
+This file lists additional Python packages that are required in order for the
+code in the repository to run.
+
+You can install these requirements in one go using ``pip`` (make sure your
+virtualenv is active):
+
+.. code-block:: bash
+
+    (cff2py)$ cd sea-c15-python
+    (cff2py)$ pip install -r requirements.txt
+    ...
+    (cff2py)$ cd ../sea-c15-python-documentation
+    (cff2py)$ pip install -r requirements.txt
+    ...
 
 
 Basic Python Syntax
