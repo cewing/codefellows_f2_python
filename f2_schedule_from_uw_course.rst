@@ -116,7 +116,7 @@ Class 7:
 
 Instructor: CPE
 
-More OO -- Inheritance and duck typing
+More OO: Inheritance and duck typing
 
 More OO: Special methods
 

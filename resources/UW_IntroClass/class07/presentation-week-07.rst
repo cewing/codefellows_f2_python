@@ -1,19 +1,19 @@
 
 
-==========================================================================================================
+**********************************************************************************************************
 Intro to Python: Week 1 Introduction  to Python  More OO -- Inheritance and Duck Typing   Special methods
-==========================================================================================================
+**********************************************************************************************************
 
 
 frame
-=====
-\frametitle{Table of Contents
+-----
+\frametitle{Table of Contents}
   \tableofcontents
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
 
 Linh Tran
@@ -23,6 +23,7 @@ Maitri Kashyap
 Sridharan Rajagopalan
 
 Richard Smith
+}
 
 
 ================
@@ -30,40 +31,41 @@ Review/Questions
 ================
 
 Review of Previous Class
-========================
-
+------------------------
+{\LARGE
 
   * lambda
   * Intro to OO
   * Start of HTML generation code
 
+}
 
 Homework review
-===============
+---------------
   
-  Questions? 
+  Questions? }
   
-  Overview of my html-generating classes so far...
+  Overview of my html-generating classes so far...}
 
-Demo of class vs. instance attributes
+Demo of class vs. instance attributes}
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
-Linh Tran
+Linh Tran}
 
-Maitri Kashyap
+Maitri Kashyap}
 
 ===================
 More on Subclassing
 ===================
 
 Overriding \_\_init\_\_
-=======================
-``__init__`` common method to override
+-----------------------
+``__init__`` common method to override}
 
-You often need to call the super class ``__init__``  as well
+You often need to call the super class ``__init__``  as well}
 
 ::
     
@@ -83,8 +85,8 @@ You often need to call the super class ``__init__``  as well
 exception to: "don't change the method signature" rule.
 
 More subclassing
-================
-You can also call the superclass' other methods:
+----------------
+You can also call the superclass' other methods:}
 
 ::
     
@@ -103,15 +105,15 @@ You can also call the superclass' other methods:
 There is nothing special about ``__init__``  except that it gets called automatically.
 
 When to Subclass
-================
+----------------
 
-"Is a" relationship: Subclass/inheritance
+"Is a" relationship: Subclass/inheritance}
 
-"Has a" relationship: Composition
+"Has a" relationship: Composition}
 
 When to Subclass
-================
-"Is a" vs "Has a" 
+----------------
+"Is a" vs "Has a" }
 
 You may have a class that needs to accumulate an arbitrary number of objects.
 
@@ -126,12 +128,12 @@ or
 You only want to subclass list if your class could be used anywhere a list can be used.
 
 Attribute resolution order
-==========================
+--------------------------
 When you access an attribute:
 
-``An_Instance.something`` 
+``An_Instance.something`` }
 
-Python looks for it in this order:
+Python looks for it in this order:}
 
 
   * Is it an instance attribute ?
@@ -142,16 +144,16 @@ Python looks for it in this order:
 
 
 It can get more complicated...
-
-http://www.python.org/getit/releases/2.3/mro/ 
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
+{\small
+http://www.python.org/getit/releases/2.3/mro/} 
+http://python-history.blogspot.com/2010/06/method-resolution-order.html}
+}
 
 What are Python classes, really?
-================================
-Putting aside the OO theory...
+--------------------------------
+Putting aside the OO theory...}
 
-Python classes are:
+Python classes are:}
 
   * Namespaces
   
@@ -162,11 +164,11 @@ Python classes are:
   * Auto tacking-on of ``self`` 
 
 
-That's about it -- really!
+That's about it -- really!}
 
 Type-Based dispatch
-===================
-From Think Python:
+-------------------
+From Think Python:}
 ::
     
 
@@ -177,23 +179,23 @@ From Think Python:
 
 
 
-Usually better to use "duck typing" (polymorphism)
+Usually better to use "duck typing" (polymorphism)}
 
-But when it's called for:
+But when it's called for:}
 
     * ``isinstance()`` 
     * ``issubclass()`` 
 
 
 GvR: "Five Minute Multi- methods in Python":
-http://www.artima.com/weblogs/viewpost.jsp?thread=101605 
+http://www.artima.com/weblogs/viewpost.jsp?thread=101605} }
 
 LAB
-===
-We're going to do the rest: steps 4 - 8
-{(Still using ``week-06/code/htmlrender`` ) 
+---
+We're going to do the rest: steps 4 - 8}
+{(Still using ``week-06/code/htmlrender`` ) }
 
-Step 4:
+Step 4:}
 
   * Extend the Element class to accept a set of attributes as keywords to the
   constructor, i.e.:
@@ -212,8 +214,8 @@ Step 4:
 You can now render some ``<p>``  tags (and others) with attributes
 
 LAB
-===
-Step 5:
+---
+Step 5:}
 
    * Create a ``SelfClosingTag``  subclass of ``Element`` , to render tags like:
    ``<hr /> and <br />``  (horizontal rule and line break).
@@ -226,8 +228,8 @@ Step 5:
 You can now render an html page with a proper ``<head>``  (``<meta />``  and ``<title>``  elements)
 
 LAB
-===
-Step 6:
+---
+Step 6:}
 
    *  Create an ``A``  class for an anchor (link) element. Its constructor should
           look like: ``A(self, link, content)``  -- where link is the link,
@@ -241,8 +243,8 @@ Step 6:
     You can now add a link to your web page.
 
 LAB
-===
-Step 7:
+---
+Step 7:}
 
    * Create ``Ul``  class for an unordered list (really simple subclass of Element)
    * Create ``Li``  class for an element in a list (also really simple)
@@ -255,8 +257,8 @@ Step 7:
 
 
 LAB
-===
-Step 8:
+---
+Step 8:}
 
    * Update the Html element class to render the "``<!DOCTYPE html>`` " tag at the
    head of the page, before the ``html``  element.
@@ -266,14 +268,14 @@ Step 8:
    and add the meta element to the beginning of the head element to give your document
    an encoding.
    * The doctype and encoding are HTML 5 and you can check this at:
-          validator.w3.org.
+          validator.w3.org.}
 
 
 You now have a pretty full-featured html renderer
 
 Review of HTML renderer lab
-===========================
-You have built an html generator, using:
+---------------------------
+You have built an html generator, using:}
   
     * A Base Class with a couple methods
     * Subclasses overriding class attributes
@@ -281,27 +283,27 @@ You have built an html generator, using:
     * Subclasses overriding the ``__init__`` 
   
 
-These are the core OO approaches
+These are the core OO approaches}
 
 If you don't have it working, or don't think you "get" it:
- work on it for homework, and ask questions.
+ work on it for homework, and ask questions.}
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
-Sridharan Rajagopalan
+Sridharan Rajagopalan}
 
-Richard Smith
+Richard Smith}
 
 ====================
 Multiple Inheritance
 ====================
 
 multiple inheritance
-====================
+--------------------
 Multiple inheritance:
- Pulling from more than one class
+ Pulling from more than one class}
 
 ::
     
@@ -316,9 +318,9 @@ Multiple inheritance:
 (calls to the super class ``__init__``  are optional -- case dependent)
 
 multiple inheritance
-====================
+--------------------
 
-Attribute resolution -- left to right
+Attribute resolution -- left to right}
 
   * Is it an instance attribute ?
   * Is it a class attribute ?
@@ -332,14 +334,15 @@ Attribute resolution -- left to right
   * ...also left to right...
 
 
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
+http://python-history.blogspot.com/2010/06/method-resolution-order.html}
 
 Mix-ins
-=======
-Why would you want to do this?
+-------
+Why would you want to do this?}
 
-Hierarchies are not always simple:
+Hierarchies are not always simple:}
 
+{\large
 
   * Animal
   
@@ -352,29 +355,31 @@ Hierarchies are not always simple:
       * LayEggs()
     
   
-Where do you put a Platypus or an Armadillo?
+}
 
-Real World Example: ``FloatCanvas`` 
+Where do you put a Platypus or an Armadillo?}
+
+Real World Example: ``FloatCanvas`` }
 
 New Style classes
-=================
-You will see reference to "new style" classes
+-----------------
+You will see reference to "new style" classes}
 
-These derive from ``object`` 
+These derive from ``object`` }
 
-Introduced in python2.2 to better merge types and classes, and clean up a few things
+Introduced in python2.2 to better merge types and classes, and clean up a few things}
 
-Differences in method resolution order and properties
+Differences in method resolution order and properties}
 
-Mostly the same, often makes no difference
+Mostly the same, often makes no difference}
 
-My advice: always subclass from ``object`` 
+My advice: always subclass from ``object`` }
 
 super
-=====
-``super(): `` use it to call a superclass method, rather than exlicitly calling it:
+-----
+``super(): `` use it to call a superclass method, rather than exlicitly calling it:}
 
-instead of:
+instead of:}
 ::
     
 
@@ -384,7 +389,7 @@ instead of:
             ...
 
 
-You can do:
+You can do:}
 ::
     
 
@@ -395,65 +400,65 @@ You can do:
 
 
 
-There are some subtle differences with multiple inheritance
+There are some subtle differences with multiple inheritance}
 
 super
-=====
-Two seminal articles about ``super()`` :
+-----
+Two seminal articles about ``super()`` :}
 
-"Super Considered Harmful"
--- James Knight 
+"Super Considered Harmful"}
+-- James Knight }
 
-https://fuhm.net/super-harmful/
+https://fuhm.net/super-harmful/}
 
-"super() considered super!"
- --  Raymond Hettinger 
+"super() considered super!"}
+ --  Raymond Hettinger }
 
-http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
 
-(Both worth reading....)
-
-Wrap Up
-=======
-Thinking OO in Python:
-
-Think about what makes sense for your code:
-
-  * Code re-use
-  * Clean APIs
-  * ... 
-
-
-Don't be a slave to what OO is \emph{supposed to look like. 
-
-Let OO work for you, not \emph{create work for you
+(Both worth reading....)}
 
 Wrap Up
-=======
-OO in Python:
+-------
+Thinking OO in Python:}
 
-The Art of Subclassing: Raymond Hettinger
+Think about what makes sense for your code:}
 
-http://pyvideo.org/video/879/the-art-of-subclassing
+  * Code re-use}
+  * Clean APIs}
+  * ... }
+
+
+Don't be a slave to what OO is \emph{supposed} to look like. }
+
+Let OO work for you, not \emph{create} work for you}
+
+Wrap Up
+-------
+OO in Python:}
+
+The Art of Subclassing}: Raymond Hettinger
+
+http://pyvideo.org/video/879/the-art-of-subclassing}}
 
 "classes are for code re-use -- not creating taxonomies"
 
-Stop Writing Classes: Jack Diederich
+Stop Writing Classes}: Jack Diederich
 
-http://pyvideo.org/video/880/stop-writing-classes
+http://pyvideo.org/video/880/stop-writing-classes}}
 
 "If your class has only two methods -- and one of them is ``__init__`` 
 -- you don't need a class "
 
 Homework
-========
-Finish the labs.
+--------
+Finish the labs.}
 
-Watch the videos.
+Watch the videos.}
 
-Readup more on OO design.
+Readup more on OO design.}
 
-Your Project:
+Your Project:}
 
   * By next week, send me a project proposal: can be short and sweet.
   * Think about how you might use OO:
@@ -462,4 +467,4 @@ Your Project:
     * NOTE: maybe none!
   
 
-\end{document
+\end{document}

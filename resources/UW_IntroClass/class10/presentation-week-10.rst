@@ -1,13 +1,13 @@
 
 
-=============================================================================
+*****************************************************************************
 Intro to Python: Week 1 Introduction  to Python  Persistence / Serialization
-=============================================================================
+*****************************************************************************
 
 
 frame
-=====
-\frametitle{Table of Contents
+-----
+\frametitle{Table of Contents}
   \tableofcontents
 
 ================
@@ -15,18 +15,19 @@ Review/Questions
 ================
 
 Review of Previous Class
-========================
+------------------------
 
 
   * Decorators
   * Context Managers
   * Packaging
 
+}
 
 Lightning Talks
-===============
+---------------
 
-Lightning talks today:
+Lightning talks today:}
 
 
 Andrew Bae
@@ -34,131 +35,133 @@ Andrew Bae
 Travis  Grizzel
 
 Adam Leblanc
+}
 
 
 Projects
-========
+--------
   
-  Due Dec 14th, 11:59pm PST 
+  Due Dec 14th, 11:59pm PST }
   
-  Email them to me
+  Email them to me}
   
-  Questions?
+  Questions?}
   
-  Note: private github project -- should I make it public?
+  Note: private github project -- should I make it public?}
 
 Evaluations
-===========
+-----------
 
-UWPCE wants you to fill out course evaluations...
+UWPCE wants you to fill out course evaluations...}
 
 I need a volunteer:
 
   * Collect the evals...
   * Mail them in to UWPCE
 
+}
 
-pLease fill them out during the class period
+pLease fill them out during the class period}
 
-Yes, I do have a handful of \#2 pencils...
+Yes, I do have a handful of \#2 pencils...}
 
 =====================
 Web Development Class
 =====================
 
 Internet Programming in Python
-==============================
+------------------------------
 
-Internet Programming in Python 
+Internet Programming in Python }
 
-Cris Ewing
+Cris Ewing}
 
 Lightning Talks
-===============
-Lightning Talks:
+---------------
+Lightning Talks:}
 
-Andrew Bae 
+Andrew Bae }
 
-Travis  Grizzel 
+Travis  Grizzel }
 
 
 Side note:
-==========
-How do you spell switch/case in Python?
+----------
+How do you spell switch/case in Python?}
 
-{ Hint: NOT with a lot of ``elif`` s
+{ Hint: NOT with a lot of ``elif`` s}
 
-Use a dict:
+Use a dict:}
 
-Put the values to switch on in the keys:
+Put the values to switch on in the keys:}
 
-Functions to call in values:
+Functions to call in values:}
 
 demo: sample code (``switch_case.py`` )
 
 This Class
-==========
+----------
 
-Today is less about concepts
+Today is less about concepts}
 
-More about learning to use a given module
+More about learning to use a given module}
 
-So less talk, more coding
+So less talk, more coding}
 
 Serialization
-=============
+-------------
 
-I'm focusing on methods available in the Python standard library
+I'm focusing on methods available in the Python standard library}
 
 Serialization is the process of putting your potentially complex
-(and nested) python data structures into a linear (serial) form .. i.e. a string of bytes.
+(and nested) python data structures into a linear (serial) form .. i.e. a string of bytes.}
 
-The serial form can be saved to a file, pushed over the wire, etc.
+The serial form can be saved to a file, pushed over the wire, etc.}
 
 Persistence
-===========
+-----------
 
 Persistence is saving your python data structure(s) to disk -- so they
-will persist once the python process is finished.
+will persist once the python process is finished.}
 
 Any serial form can provide persistence (by dumping/loading it to/from
-a file), but not all persistence mechanisms are serial (i.e RDBMS)
+a file), but not all persistence mechanisms are serial (i.e RDBMS)}
 
-http://wiki.python.org/moin/PersistenceTools
+http://wiki.python.org/moin/PersistenceTools}
 
 =======================
 Python Specific Formats
 =======================
 
 Python Literals
-===============
+---------------
 
-Putting plain old python literals in your file
+Putting plain old python literals in your file}
 
-Gives a nice, human-editable form for config files, etc.
+Gives a nice, human-editable form for config files, etc.}
 
-Don't use for untrusted sources!!!
+Don't use for untrusted sources!!!}
 
 Python Literals
-===============
+---------------
 
-Good for basic python types.
+Good for basic python types.}
 (can work for your own classes, too -- if you write a good ``__repr__`` )
 
-In theory, ``repr()``  always gives a form that can be re-constructed.
+In theory, ``repr()``  always gives a form that can be re-constructed.}
 
-Often ``str()``  form works too.
+Often ``str()``  form works too.}
 
-``pprint``  (pretty print) module can make it easier to read.
+``pprint``  (pretty print) module can make it easier to read.}
 
 Python Literal Example
-======================
-
+----------------------
+{\small
 ::
     
 
     # a list of dicts
-    data = [{'this':5, 'that':4, {'spam':7, 'eggs':3.4]
+    data = [{'this':5, 'that':4}, {'spam':7, 'eggs':3.4}]
     In [51]: s = repr(data) # save a string version:
     In [52]: data2 = eval(s) # re-construct with eval:
     In [53]: data2 == data # they are equal
@@ -167,80 +170,82 @@ Python Literal Example
     Out[54]: False
 
 
-
+}
 You can save the string to a file and even use ``import`` 
 
 pretty print
-============
-
+------------
+{\small
 ::
     
 
     In [69]: import pprint
     In [71]: repr(data)
-    Out[71]: "[{'this': 5, 'that': 4, {'eggs': 3.4, 'spam': 7, {'foo': 86, 'bar': 4.5, {'fun': 43, 'baz': 6.5]"
+    Out[71]: "[{'this': 5, 'that': 4}, {'eggs': 3.4, 'spam': 7}, {'foo': 86, 'bar': 4.5}, {'fun': 43, 'baz': 6.5}]"
     In [72]: s = pprint.pformat(data)
     In [73]: print s
-    [{'that': 4, 'this': 5,
-     {'eggs': 3.4, 'spam': 7,
-     {'bar': 4.5, 'foo': 86,
-     {'baz': 6.5, 'fun': 43]
+    [{'that': 4, 'this': 5},
+     {'eggs': 3.4, 'spam': 7},
+     {'bar': 4.5, 'foo': 86},
+     {'baz': 6.5, 'fun': 43}]
 
 
+}
 
 Pickle
-======
+------
 
-Pickle is a binary format for python objects
+Pickle is a binary format for python objects}
 
-You can essentially dump any python object to disk (or string, or socket, or...
+You can essentially dump any python object to disk (or string, or socket, or...}
 
 ``cPickle``  is faster than pickle, but
-can't be customized -- you usually want ``cPickle`` 
+can't be customized -- you usually want ``cPickle`` }
 
-http://docs.python.org/library/pickle.html
+http://docs.python.org/library/pickle.html}
 
 Pickle
-======
-
+------
+{\small
 ::
     
 
     In [87]: import cPickle as pickle
     In [83]: data
     Out[83]:
-    [{'that': 4, 'this': 5,
-     {'eggs': 3.4, 'spam': 7,
-     {'bar': 4.5, 'foo': 86,
-     {'baz': 6.5, 'fun': 43]
+    [{'that': 4, 'this': 5},
+     {'eggs': 3.4, 'spam': 7},
+     {'bar': 4.5, 'foo': 86},
+     {'baz': 6.5, 'fun': 43}]
     In [84]: pickle.dump(data, open('data.pkl', 'wb'))
     In [85]: data2 = pickle.load(open('data.pkl', 'rb'))
     In [86]: data2 == data
     Out[86]: True
 
 
+}
 
-http://docs.python.org/library/pickle.html
+http://docs.python.org/library/pickle.html}
 
 Shelve
-======
+------
 
-A "shelf" is a persistent, dictionary-like object
+A "shelf" is a persistent, dictionary-like object}
 
 The values (not the keys!) can be essentially arbitrary Python
-objects (anything picklable)
+objects (anything picklable)}
 
 NOTE: will not reflect changes in mutable objects without
-   re-writing them to the db.
+   re-writing them to the db.}
    (or use writeback=True)
 
-If less that 100s of MB -- just use a dict and pickle it.
+If less that 100s of MB -- just use a dict and pickle it.}
 
-http://docs.python.org/library/shelve.html
+http://docs.python.org/library/shelve.html}
 
 Shelve
-======
-``shelve``  presents a ``dict``  interface:
+------
+``shelve``  presents a ``dict``  interface:}
 ::
     
 
@@ -254,11 +259,11 @@ Shelve
 
 
 
-http://docs.python.org/library/shelve.html
+http://docs.python.org/library/shelve.html}
 
 LAB
-===
-There are two datasets in the ``code``  dir:
+---
+There are two datasets in the ``code``  dir:}
 ::
     
 
@@ -279,10 +284,10 @@ They have address book data -- one with a nested dict, one "flat"
 
 
 Lightning Talk
-==============
-Lightning Talk:
+--------------
+Lightning Talk:}
 
-Adam Leblanc
+Adam Leblanc}
 
 
 ===================
@@ -290,8 +295,8 @@ Interchange Formats
 ===================
 
 INI
-===
-INI files
+---
+INI files}
 (the old Windows config files)
 ::
     
@@ -306,11 +311,11 @@ INI files
 
 
 
-Good for configuration data, etc.
+Good for configuration data, etc.}
 
 ConfigParser
-============
-Writing ``ini``  files:
+------------
+Writing ``ini``  files:}
 ::
     
 
@@ -328,8 +333,8 @@ Writing ``ini``  files:
 Note: all keys and values are strings
 
 ConfigParser
-============
-Reading ``ini``  files:
+------------
+Reading ``ini``  files:}
 ::
     
 
@@ -344,24 +349,24 @@ Reading ``ini``  files:
 
 
 
-http://docs.python.org/library/configparser.html
+http://docs.python.org/library/configparser.html}
 
 CSV
-===
+---
 CSV (Comma Separated Values) format is the
-most common import and export format for spreadsheets and databases.
+most common import and export format for spreadsheets and databases.}
 
-No real standard -- the Python csv package more or less follows MS Excel standard
+No real standard -- the Python csv package more or less follows MS Excel standard}
 (with other "dialects" available)
 
-Can use delimiters other than commas...
+Can use delimiters other than commas...}
 (I like tabs better)
 
-Most useful for simple tabular data
+Most useful for simple tabular data}
 
 CSV module
-==========
-Reading ``CSV``  files:
+----------
+Reading ``CSV``  files:}
 ::
     
 
@@ -374,13 +379,13 @@ Reading ``CSV``  files:
 
 
 
-{``csv``  module takes care of string quoting, etc. for you
+{``csv``  module takes care of string quoting, etc. for you}
 
-http://docs.python.org/library/csv.html
+http://docs.python.org/library/csv.html}
 
 CSV module
-==========
-Writing ``CSV``  files:
+----------
+Writing ``CSV``  files:}
 ::
     
 
@@ -392,87 +397,87 @@ Writing ``CSV``  files:
 
 
 
-{``csv``  module takes care of string quoting, etc for you
+{``csv``  module takes care of string quoting, etc for you}
 
-http://docs.python.org/library/csv.html
+http://docs.python.org/library/csv.html}
 
 JSON
-====
+----
 
 JSON (JavaScript Object Notation) is a subset of JavaScript syntax
-        used as a lightweight data interchange format.
+        used as a lightweight data interchange format.}
 
-Python module has an interface similar to pickle
+Python module has an interface similar to pickle}
 
-Can handle the standard Python data types
+Can handle the standard Python data types}
 
-Specializable encoding/decoding for other types -- but I wouldn't do that!
+Specializable encoding/decoding for other types -- but I wouldn't do that!}
 
-Presents a similar interface as ``pickle`` 
+Presents a similar interface as ``pickle`` }
 
-http://www.json.org/
-http://docs.python.org/library/json.html
+http://www.json.org/}
+http://docs.python.org/library/json.html}
 
 Python json module
-==================
-
+------------------
+{\small
 ::
     
 
     In [94]: s = json.dumps(data)
-    Out[95]: '[{"this": 5, "that": 4, {"eggs": 3.4, "spam": 7,
-               {"foo": 86, "bar": 4.5, {"fun": 43, "baz": 6.5]'
+    Out[95]: '[{"this": 5, "that": 4}, {"eggs": 3.4, "spam": 7},
+               {"foo": 86, "bar": 4.5}, {"fun": 43, "baz": 6.5}]'
         # looks a lot like python literals...
     In [96]: data2 = json.loads(s)
     Out[97]:
-    [{u'that': 4, u'this': 5,
-     {u'eggs': 3.4, u'spam': 7,
+    [{u'that': 4, u'this': 5},
+     {u'eggs': 3.4, u'spam': 7},
     ...
     In [98]: data2 == data
     Out[98]: True # they are the same
 
 
-
+}
 (also ``json.dump() and json.load()``  for files)
 
-http://docs.python.org/library/json.html
+http://docs.python.org/library/json.html}
 
 XML
-===
+---
 
 XML is a standardized version of SGML, designed for use as a data
-        storage / interchange format.
+        storage / interchange format.}
 
-NOTE: HTML is also SGML, and modern versions conform to the XML standard.
+NOTE: HTML is also SGML, and modern versions conform to the XML standard.}
 
 XML in the python std lib
-=========================
+-------------------------
 
-``xml.dom`` : 
+``xml.dom`` : }
 
-``xml.sax`` : 
+``xml.sax`` : }
 
-``xml.parsers.expat`` : 
+``xml.parsers.expat`` : }
 
-``xml.etree`` : 
-http://docs.python.org/library/xml.etree.elementtree.html
+``xml.etree`` : }
+http://docs.python.org/library/xml.etree.elementtree.html}
 
 elementtree
-===========
+-----------
 
  The Element type is a flexible container object, designed to store
-hierarchical data structures in memory.
+hierarchical data structures in memory.}
 
- Essentially an in-memory XML -- can be read from / written-to XML
+ Essentially an in-memory XML -- can be read from / written-to XML}
 
-an ``ElementTree``  is an entire XML doc
+an ``ElementTree``  is an entire XML doc}
 
-an ``Element``  is a node in that tree
+an ``Element``  is a node in that tree}
 
-http://docs.python.org/library/xml.etree.elementtree.html
+http://docs.python.org/library/xml.etree.elementtree.html}
 
 LAB
-===
+---
 ::
     
 
@@ -498,22 +503,22 @@ DataBases
 =========
 
 anydbm
-======
+------
 
-``anydbm``  is a generic interface to variants of the DBM database
+``anydbm``  is a generic interface to variants of the DBM database}
 
-Suitable for storing data that fits well into a python dict with strings as both keys and values
+Suitable for storing data that fits well into a python dict with strings as both keys and values}
 
 Note: anydbm will use the dbm system that works on your system --
         this may be different on different systems -- so the db files may NOT
         be compatible! ``whichdb``  will try to figure it out, but it's not
-        guaranteed
+        guaranteed}
 
-http://docs.python.org/library/anydbm.html
+http://docs.python.org/library/anydbm.html}
 
 anydbm module
-=============
-Writing data:
+-------------
+Writing data:}
 ::
     
 
@@ -521,19 +526,19 @@ Writing data:
     anydbm.open(filename, 'n')
 
 
-flag options are: 
-\begin{description
+flag options are: }
+\begin{description}
   *['r']  Open existing database for reading only (default)
   *['w']  Open existing database for reading and writing
   *['c']  Open database for reading and writing, creating it if it doesn’t exist
   *['n']  Always create a new, empty database, open for reading and writing
-\end{description
+\end{description}
 
-http://docs.python.org/library/anydbm.html
+http://docs.python.org/library/anydbm.html}
 
 anydbm module
-=============
-``dbm``  provides dict-like interace:
+-------------
+``dbm``  provides dict-like interace:}
 ::
     
 
@@ -550,35 +555,35 @@ anydbm module
 
 
 
-http://docs.python.org/library/anydbm.html
+http://docs.python.org/library/anydbm.html}
 
 sqlite
-======
+------
 
-SQLite: C library provides a lightweight disk-based single-file database
+SQLite: C library provides a lightweight disk-based single-file database}
 
-Nonstandard variant of the SQL query language
+Nonstandard variant of the SQL query language}
 
 Very broadly used as as an embedded databases for storing
-        application-specific data etc.
+        application-specific data etc.}
 
 Firefox plug-in:
-https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/
+https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/}
 
 python sqlite module
-====================
+--------------------
 
-``sqlite3``  Python module wraps C lib -- provides standard DB-API interface
+``sqlite3``  Python module wraps C lib -- provides standard DB-API interface}
 
-Allows (and require SQL queries
+Allows (and require SQL queries}
 
-Can provide high performance, flexible, portable storage for your app
+Can provide high performance, flexible, portable storage for your app}
 
-http://docs.python.org/library/sqlite3.html
+http://docs.python.org/library/sqlite3.html}
 
 python sqlite module
-====================
-Example:
+--------------------
+Example:}
 ::
     
 
@@ -592,11 +597,11 @@ Example:
 
 
 
-http://docs.python.org/library/sqlite3.html
+http://docs.python.org/library/sqlite3.html}
 
 python sqlite module
-====================
-Execute SQL with the cursor:
+--------------------
+Execute SQL with the cursor:}
 ::
     
 
@@ -612,11 +617,11 @@ Execute SQL with the cursor:
 
 
 
-http://docs.python.org/library/sqlite3.html
+http://docs.python.org/library/sqlite3.html}
 
 python sqlite module
-====================
-``SELECT``  creates an cursor that can be iterated:
+--------------------
+``SELECT``  creates an cursor that can be iterated:}
 ::
     
 
@@ -627,7 +632,7 @@ python sqlite module
     ...
 
 
-Or you can get the rows one by one or in a list:
+Or you can get the rows one by one or in a list:}
 ::
     
 
@@ -637,9 +642,9 @@ Or you can get the rows one by one or in a list:
 
 
 python sqlite module
-====================
+--------------------
 
-Good idea to use the DB-API’s parameter substitution:
+Good idea to use the DB-API’s parameter substitution:}
 ::
     
 
@@ -655,12 +660,12 @@ Good idea to use the DB-API’s parameter substitution:
 
 
 
-http://xkcd.com/327/
+http://xkcd.com/327/}
 
 DB-API
-======
+------
 
-The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.
+The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.}
 
 Support for a large number of third-party Database drivers:
 
@@ -670,49 +675,50 @@ Support for a large number of third-party Database drivers:
   * MSSQL (?)
   * .....
 
+}
 
-http://www.python.org/dev/peps/pep-0249
+http://www.python.org/dev/peps/pep-0249}
 
 =============
 Other Options
 =============
 
 Object-Relation Mappers
-=======================
+-----------------------
 
-Systems for mapping Python objects to tables
+Systems for mapping Python objects to tables}
 
-Saves you writing that glue code (and the SQL) 
+Saves you writing that glue code (and the SQL) }
 
 Usually deal with mapping to variety of back-ends:
- -- test with SQLite, deploy with PostreSQL
+ -- test with SQLite, deploy with PostreSQL}
 
- SQL Alchemy
- -- http://www.sqlalchemy.org/
+ SQL Alchemy}
+ -- http://www.sqlalchemy.org/}
 
-Django ORM
-https://docs.djangoproject.com/en/dev/topics/db/
+Django ORM}
+https://docs.djangoproject.com/en/dev/topics/db/}
 
 Object Databases
-================
-Directly store and retrieve Python Objects.
+----------------
+Directly store and retrieve Python Objects.}
 
-Kind of like ``shelve`` , but more flexible, and give you searching, etc.
+Kind of like ``shelve`` , but more flexible, and give you searching, etc.}
 
-ZODB:
-(http://www.zodb.org/)
+ZODB:}
+(http://www.zodb.org/})
 
-Durus:
-(https://www.mems-exchange.org/software/DurusWorks/)
+Durus:}
+(https://www.mems-exchange.org/software/DurusWorks/})
 
 NoSQL
-=====
-Map-Reduce, etc.
+-----
+Map-Reduce, etc.}
 
-....Big deal for "Big Data": Amazon, Google, etc.
+....Big deal for "Big Data": Amazon, Google, etc.}
 
-Document-Oriented Storage
-
+Document-Oriented Storage}
+{\large
 
   * MongoDB (BSON interface, JSON documents)
   * CouchDB (Apache):
@@ -722,14 +728,16 @@ Document-Oriented Storage
     *  HTTP API
   
 
-Evaluations
-===========
-I need to submit evaluations to UW
+}
 
-We'll so that now -- then the last LAB
+Evaluations
+-----------
+I need to submit evaluations to UW}
+
+We'll so that now -- then the last LAB}
 
 LAB
-===
+---
 ::
     
 
@@ -746,11 +754,11 @@ LAB
 
 
 Homework
-========
+--------
 
-Send me a copy of your project: due next Sunday
+Send me a copy of your project: due next Sunday}
 
-Keep learning about and using Python
+Keep learning about and using Python}
 
 
-\end{document
+\end{document}

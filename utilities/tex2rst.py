@@ -23,6 +23,7 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'\vfill',
                    r'\end{frame}',
                    r'{\Large ',
+                   r'{\Large',
                    r'{\large ',
                    r'{\LARGE ',
                    r'{\HUGE ',
@@ -32,6 +33,7 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'\Large ',
                    r'{\LARGE ',
                    r'{\HUGE ',
+                   r'{\centering',
                    r'{\center',
                    r'\pause',
                    r'\begin{itemize}',
@@ -41,7 +43,6 @@ stuff_to_remove = [r'\documentclass{beamer}',
                    r'\url{',
                    r'\\',
                    r'\bf ',
-                   r'}',
                    ]
 
 replacments = [ (r'\item','*'), #punting on enumerated lists...
@@ -156,18 +157,9 @@ if __name__ == "__main__":
 
     # remove useless cruft:
     for i, line  in enumerate(full_file):
-        if 'Large' in line:
-            print line 
-            yes = True
-        else:
-            yes = False
         for item in stuff_to_remove:
-
-            if yes: print '\n',item
             line = line.replace(item, '')
-            if yes: print line
         full_file[i] = line
-
 
     # clean out empty lines:
     num_empty = 0
