@@ -10,7 +10,9 @@ resources to help a newcomer get to know Python. The following list represents
 the best-known and best-regarded of the breed. If you are itching for a bit
 more work on your Python chops, you should try these out.
 
-### For the beginner
+### Python Language Resources
+
+#### For the beginner
 
 * [The Python Tutorial](https://docs.python.org/2/tutorial/): This is the
   official tutorial from the Python website. No more authoritative source is
@@ -32,7 +34,7 @@ more work on your Python chops, you should try these out.
   Python. It is really an intro to Python *in the service of* Computer Science,
   though, so not so helpful for the absolute newcomer.
 
-### Next Steps
+#### Next Steps
 
 * [New Coder](http://newcoder.io): Advertised as "Five lifejackets to throw to
   the new coder", this site offers five very interesting tutorials written in
@@ -42,7 +44,7 @@ more work on your Python chops, you should try these out.
   intermediate tutorials for Python programming. A great place to go once you
   have the basics down and are ready for more challenging work.
 
-### Evaluating Your Options
+#### Evaluating Your Options
 
 The blurbs above are short descriptions of the material in each resource. I've
 drawn them both from my own usage of the various tools, and from
@@ -54,3 +56,10 @@ as a result of that research offers some great hints about the aspects of
 Python programming best covered by each resource. I would urge any new student
 of Python to take the time to look over this poster to help determine the best
 path forward for themselves.
+
+### iPython Interpreter Resources
+
+* [Using IPython for interactive work](http://ipython.org/ipython-doc/stable/interactive/index.html)
+  Learn about the abilities iPython provides for interactive sessions.
+* [The iPython Documentation](http://ipython.org/ipython-doc/stable/index.html)
+  Use this to learn more about iPython's amazing capabilities.
