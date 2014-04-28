@@ -33,18 +33,6 @@ Christopher Barker
 Cris Ewing
 
 
-And You
--------
-
-Tell us:
-
-.. rst-class:: build
-
-* Your name
-* What you do
-* programing background (languages)
-
-
 Introduction to This class
 ==========================
 
@@ -283,11 +271,135 @@ More on this later.
 Your Interpreter
 ----------------
 
+Python comes with a built-in interpreter.
+
+You see it when you type ``python`` at the command line:
+
+.. code-block:: bash
+
+    $ python
+    Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+    [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+
+That last thing you see, ``>>>`` is the "Python prompt".
+
+This is where you type code.
+
+
+Python in the Interpreter
+-------------------------
+
+Try it out:
+
+.. code-block:: pycon
+
+    >>> print u"hello world!"
+    hello world!
+    >>> 4 + 5
+    9
+    >>> 2 ** 8 - 1
+    255
+    >>> print u"one string" + u" plus another"
+    one string plus another
+    >>>
+
+
+Tools in the Interpreter
+------------------------
+
+When you are in an interpreter, there are a number of tools available to you.
+
+There is a help system:
+
+.. code-block:: pycon
+
+    >>> help(str)
+    Help on class str in module __builtin__:
+
+    class str(basestring)
+     |  str(object='') -> string
+     |
+     |  Return a nice string representation of the object.
+     |  If the argument is a string, the return value is the same object.
+     ...
+
+You can type ``q`` to exit the help viewer.
+
+.. nextslide::
+
+You can also use the ``dir`` builtin to find out about the attributes of a
+given object:
+
+.. code-block:: pycon
+
+    >>> bob = u"this is a string"
+    >>> dir(bob)
+    ['__add__', '__class__', '__contains__', '__delattr__',
+     '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+     '__getitem__', '__getnewargs__', '__getslice__', '__gt__',
+     ...
+     'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines',
+     'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper',
+     'zfill']
+    >>> help(bob.rpartition)
+
+This allows you quite a bit of latitude in exploring what Python is.
+
+
+.. nextslide:: Advanced Interpreters
+
+In addition to the built-in interpreter, there are several more advanced
+interpreters available to you.
+
+We'll be using one in this course called ``iPython``.
+
+More on this soon.
 
 
 Your Editor
 -----------
 
+Typing code in an interpreter is great for exploring.
+
+Eventually, you want to save the work you are doing in a more permanent
+fashion.
+
+This is where an Editor fits in.
+
+.. nextslide::
+
+Any good text editor will do.
+
+MS Word is **not** a text editor.
+
+Nor is *TextEdit* on a Mac.
+
+A text editor saves only what it shows you, with no special formatting
+characters hidden behind the scenes.
+
+.. nextslide::
+
+At a minumum, your editor should have:
+
+.. rst-class:: build
+
+* Syntax Colorization
+* Automatic Indentation
+
+In addition, great features to add include:
+
+.. rst-class:: build
+
+* Tab completion
+* Code linting
+* Jump-to-definition
+* Interactive follow-along for debugging
+
+Have an editor that does all this? Feel free to use it.
+
+If not, may I suggest ``Sublime Text``?
 
 
 Why No IDE?
@@ -308,6 +420,271 @@ time-consuming.
 .. rst-class:: center large
 
 YAGNI
+
+
+Setting Up Your Environment
+===========================
+
+.. rst-class:: center large
+
+Shared setup means reduced complications.
+
+
+Our Class Environment
+---------------------
+
+We are going to work from a common environment in this class.
+
+We will take the time here in class to get this going.
+
+This helps to ensure that you will be able to work.
+
+
+Step 1: Python 2.7
+------------------
+
+.. rst-class:: center large
+
+You have this already, RIGHT?
+
+.. code-block:: bash
+
+    $ python
+    Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+    [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> ^D
+    $
+
+
+Step 2: Pip
+-----------
+
+Python comes with quite a bit.
+
+Sometimes you need a bit more.
+
+Pip allows you to install Python packages to expand your system.
+
+You install it by downloading and then executing an installer script:
+
+.. code-block:: bash
+
+    $ curl -O https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100 1526k  100 1526k    0     0   189k      0  0:00:08  0:00:08 --:--:--  203k
+    $ python get-pip.py
+
+.. nextslide:: Using Pip
+
+Once you've installed pip, you use it to install Python packages by name:
+
+.. code-block:: bash
+
+    $ pip install foobar
+    ...
+
+Let's start by installing the only two packages you will install in your global
+environment.
+
+
+Step 3: Virtualenv
+------------------
+
+Python packages come in many versions.
+
+Often you need one version for one project, and a different one for another.
+
+`Virtualenv`_ allows you to create isolated environments.
+
+You can then install potentially conflicting software safely.
+
+.. _Virtualenv: http://www.virtualenv.org/
+
+.. nextslide:: Installing Virtualenv
+
+We will use ``pip`` to do this.
+
+.. code-block:: bash
+
+    $ sudo pip install virtualenv
+    Downloading/unpacking virtualenv
+      Downloading virtualenv-1.11.2-py2.py3-none-any.whl (2.8MB): 2.8MB downloaded
+    Installing collected packages: virtualenv
+    Successfully installed virtualenv
+    Cleaning up...
+    $ 
+
+.. nextslide:: Using Virtualenv
+
+Once that completes, you can create a new virtualenv using the ``virtualenv``
+command at the command line:
+
+.. code-block:: bash
+
+    $ virtualenv <name>
+
+``<name>`` is an arbitrary designator that means something to you [demo]
+
+Once you've created a virtualenv, you can ``activate`` it, install packages in
+it, and ``deactivate`` it when you are done. [demo]
+
+If you've finished working with an environment, you can simply throw away the
+directory created by the command.  Your system will be unharmed.
+
+
+Step 4: Virtualenvwrapper
+-------------------------
+
+Virtualenv allows you to create isolated Python environments in which to work.
+
+But once you have a number of projects, how do you keep track of the virtualenvs?
+
+You use `virtualenvwrapper`_
+
+.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org
+
+This extension to ``virtualenv`` provides a number of useful commands you can
+use to manage your environments.
+
+.. nextslide:: Installing Virtualenvwrapper
+
+Again, we'll use ``pip`` to install the new tool:
+
+.. code-block:: bash
+
+    $ sudo pip install virtualenvwrapper
+    Downloading/unpacking virtualenvwrapper
+      Downloading virtualenvwrapper-4.2.tar.gz (125kB): 125kB downloaded
+      Running setup.py (path:/private/tmp/pip_build_root/virtualenvwrapper/setup.py) egg_info for package virtualenvwrapper
+      ...
+    Successfully installed virtualenvwrapper virtualenv-clone stevedore
+    Cleaning up...
+    $
+
+.. nextslide:: System Wiring
+
+To get the most out of ``virtualenvwrapper`` you'll want to add a couple of
+environmental variables to your shell.
+
+Open a command prompt and navigate to your home directory with the ``cd``
+command:
+
+.. code-block:: bash
+
+    $ cd
+
+Then list *all* the files in your home directory with ``ls -a``:
+
+.. code-block:: bash
+
+    $ ls -a
+    ...
+    .profile
+    ...
+
+.. nextslide:: Setting Environment Variables
+
+You should find a file called ``.profile`` (or ``.bashrc``, ``.bash_profile``,
+``.bash_login``)
+
+Open that file in your text editor and add the following lines:
+
+.. code-block:: bash
+
+    export WORKON_HOME=~/.virtualenvs
+    export PROJECT_HOME=~/projects
+    source /usr/local/bin/virtualenvwrapper.sh
+
+Save the file, and then quit and restart your command line
+
+.. nextslide:: Providing Homes
+
+These variables tell ``virtualenvwrapper`` where to put new envs and projects.
+
+You need to create these two directories so that they are there to be found.
+
+At your command line, type the following:
+
+.. code-block:: bash
+
+    $ cd
+    $ mkdir .virtualenvs
+    $ mkdir projects
+
+Now, you're ready to make your class environment
+
+
+Step 5: Make a Class Environment
+--------------------------------
+
+``Virtualenvwrapper`` provides a command that allows you to accomplish a number
+of related tasks at once:
+
+.. rst-class:: build
+
+* It creates a new virtual environment in your ``WORKON_HOME``
+* It creates a project folder with the same name in your ``PROJECT_HOME``
+* It changes your working directory into that new project directory
+* It activates your new virtual environment
+
+.. nextslide::
+
+The command is ``mkproject``.  Use it to create a new project for your
+class work:
+
+.. code-block:: bash
+
+    $ mkproject cff2py
+    New python executable in cff2py/bin/python
+    Installing setuptools, pip...done.
+    Creating /Users/cewing/projects/cff2py
+    Setting project for foo to /Users/cewing/projects/cff2py
+    (cff2py)$ which python
+    /Users/cewing/.virtualenvs/cff2py/bin/python
+    (cff2py)$ pwd
+    /Users/cewing/projects/cff2py
+
+.. nextslide:: Using the Environment
+
+That's great!  We have a home for our class work.
+
+But how do we get back here easily?
+
+``Virtualenvwrapper`` to the rescue, again.
+
+Try this:
+
+.. code-block:: bash
+
+    (cff2py)$ deactivate
+    $ cd
+    $ which python
+    /usr/bin/python
+    $ pwd
+    /Users/cewing
+    $ workon cff2py
+    (cff2py)$ which python
+    /Users/cewing/.virtualenvs/cff2py/bin/python
+    (cff2py)$ pwd
+    /Users/cewing/projects/cff2py
+
+Nice, eh?
+
+
+Step 6: Clone Class Repositories
+--------------------------------
+
+Next, you'll make a copy of the class repository
+
+
+
+
+Step 7: Install Requirements
+----------------------------
+
+
 
 
 Basic Python Syntax
