@@ -611,8 +611,8 @@ But how do we get back here easily?
 Nice, eh?
 
 
-Step 6: Clone Class Repositories
---------------------------------
+Step 6: Clone Class Repository
+------------------------------
 
 Next, you'll make a copy of the class repository using ``git``.
 
@@ -643,26 +643,11 @@ If you have an SSH key set up for github, you'll want to do this instead:
 
 **Remember**, <yourname> should be replaced by your github account name.
 
-.. nextslide:: Class Documentation
-
-There is a second repository for the class.
-
-https://github.com/codefellows/sea-c15-python-documentation
-
-This one holds the documentation for this class: slides, reading lists, and
-additional resources.
-
-You can repeat the above "fork and clone" process to copy this documentation
-into your class project directory.
-
-Place it next to (not inside) the class work repository.
-
 
 Step 7: Install Requirements
 ----------------------------
 
-In each of the class repositories, you'll find a file called
-``requirements.txt``.
+In the class repository, you'll find a file called ``requirements.txt``.
 
 This file lists additional Python packages that are required in order for the
 code in the repository to run.
@@ -673,9 +658,6 @@ virtualenv is active):
 .. code-block:: bash
 
     (cff2py)$ cd sea-c15-python
-    (cff2py)$ pip install -r requirements.txt
-    ...
-    (cff2py)$ cd ../sea-c15-python-documentation
     (cff2py)$ pip install -r requirements.txt
     ...
 
