@@ -1,9 +1,442 @@
+*******************************
+Functions, Booleans and Modules
+*******************************
 
-.. Foundations 2: Python slides file, created by
-   hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
+.. ifslides::
 
-**********************
-Session Two: Something
-**********************
+    .. rst-class:: center large
 
-In which we learn some stuff
+    Oh My!
+
+
+
+Review/Questions
+================
+
+Review of Previous Session
+--------------------------
+
+.. rst-class:: build
+
+  * Values and Types
+  * Expressions
+  * Intro to functions
+
+Homework Review
+---------------
+
+.. rst-class:: center large
+
+Any questions that are nagging?
+
+
+Quick Intro to Basics
+=====================
+
+.. rst-class:: center large
+
+Because there's a few things you just gotta have
+
+Basics
+------
+
+It turns out you can't really do much at all without at least a container type,
+conditionals and looping...
+
+
+.. nextslide:: if
+
+``if`` and ``elif`` allow you to make decisions:
+
+.. code-block:: python
+
+    if a:
+        print 'a'
+    elif b:
+        print 'b'
+    elif c:
+        print 'c'
+    else:
+        print 'that was unexpected'
+
+
+.. nextslide:: if
+
+What's the difference between these two:
+
+.. code-block:: python
+
+    if a:
+        print 'a'
+    elif b:
+        print 'b'
+    ## versus...
+    if a:
+        print 'a'
+    if b:
+        print 'b'
+
+
+.. nextslide:: switch?
+
+Many languages have a ``switch`` construct:
+
+.. code-block:: js
+
+    switch (expr) {
+      case "Oranges":
+        document.write("Oranges are $0.59 a pound.<br>");
+        break;
+      case "Apples":
+        document.write("Apples are $0.32 a pound.<br>");
+        break;
+      case "Mangoes":
+      case "Papayas":
+        document.write("Mangoes and papayas are $2.79 a pound.<br>");
+        break;
+      default:
+        document.write("Sorry, we are out of " + expr + ".<br>");
+    }
+
+.. nextslide:: switch?
+
+**Not Python**
+
+use ``if..elif..elif..else`` 
+
+(or a dictionary, or subclassing....)
+
+
+.. nextslide:: lists
+
+A way to store a bunch of stuff in order
+
+called "array" in other languages
+
+.. code-block:: python
+
+    a_list = [2,3,5,9]
+    a_list_of_strings = ['this', 'that', 'the', 'other']
+
+
+.. nextslide:: tuples
+
+Another way to store an ordered list of things
+
+.. code-block:: python
+
+    a_tuple = (2,3,4,5)
+    a_tuple_of_strings = ('this', 'that', 'the', 'other')
+
+
+Tuples are **not** the same as lists.
+
+The exact difference is a topic for next session.
+
+
+.. nextslide:: for
+
+Sometimes called a 'determinate' loop
+
+When you need to do something to everything in a sequence
+
+.. code-block:: ipython
+
+    In [10]: a_list = [2,3,4,5]
+
+    In [11]: for item in a_list:
+       ....:     print item
+       ....:
+    2
+    3
+    4
+    5
+
+
+.. nextslide:: range() and for
+
+Range builds lists of numbers automatically
+
+Use it when you need to do something a set number of times
+
+.. code-block:: ipython
+
+    In [12]: range(6)
+    Out[12]: [0, 1, 2, 3, 4, 5]
+
+    In [13]: for i in range(6):
+       ....:     print "*",
+       ....:
+    * * * * * *
+
+
+.. nextslide:: Intricacies
+
+This is enough to get you started.
+
+Each of these have intricacies special to python
+
+We'll get to those over the next couple of classes
+
+
+Functions
+=========
+
+Review
+------
+
+Defining a function:
+
+.. code-block:: python
+
+    def fun(x, y):
+        z = x+y
+        return z
+
+
+x, y, z are *local* names
+
+
+Local vs. Global
+----------------
+
+Symbols bound in Python have a *scope*
+
+That *scope* determines where a symbol is visible, or what value it has in a
+given block.
+
+.. code-block:: ipython
+
+    In [14]: x = 32
+    In [15]: y = 33
+    In [16]: z = 34
+    In [17]: def fun(y, z):
+       ....:     print x, y, z
+       ....:
+    In [18]: fun(3, 4)
+    32 3 4
+
+
+x is global, y and z local to the function
+
+.. nextslide::
+
+But, did the value of y and z change in the *global* scope?
+
+.. code-block:: ipython
+
+    In [19]: y
+    Out[19]: 33
+
+    In [20]: z
+    Out[20]: 34
+
+.. nextslide::
+
+In general, you should use global bindings mostly for constants.
+
+In python we designate global constants by typing the symbols we bind to them
+in ALL_CAPS
+
+.. code-block:: python
+
+    INSTALLED_APPS = [u'foo', u'bar', u'baz']
+    CONFIGURATION_KEY = u'some secret value'
+    ...
+
+.. nextslide:: Global Gotcha
+
+Take a look at this function definition:
+
+.. code-block:: ipython
+
+    In [21]: x = 3
+
+    In [22]: def f():
+       ....:     y = x
+       ....:     x = 5
+       ....:     print x
+       ....:     print y
+       ....:
+
+What is going to happen when we call ``f``
+
+.. nextslide:: Global Gotcha
+
+Try it and see:
+
+.. code-block:: ipython
+
+    In [23]: f()
+    ---------------------------------------------------------------------------
+    UnboundLocalError                         Traceback (most recent call last)
+    <ipython-input-23-0ec059b9bfe1> in <module>()
+    ----> 1 f()
+
+    <ipython-input-22-9225fa53a20a> in f()
+          1 def f():
+    ----> 2     y = x
+          3     x = 5
+          4     print x
+          5     print y
+
+    UnboundLocalError: local variable 'x' referenced before assignment
+
+Because you are binding the symbol ``x`` locally, it becomes a local and masks
+the global value already bound.
+
+
+Parameters
+----------
+
+So far we've seen simple parameter lists:
+
+.. code-block:: python
+
+    def fun(x, y, z):
+        print x, y, z
+
+These types of parameters are called *positional*
+
+When you call a function, you **must** provide arguments for all *positional*
+parameters *in the order they are listed*
+
+
+.. nextslide::
+
+You can provide *default values* for parameters in a function definition:
+
+.. code-block:: ipython
+
+    In [24]: def fun(x=1, y=2, z=3):
+       ....:     print x, y, z
+       ....:
+
+When parameters are given with default values, they become *optional*
+
+.. code-block:: ipython
+
+    In [25]: fun()
+    1 2 3
+
+
+.. nextslide::
+
+You can provide arguments to a function call for *optional* parameters
+positionally:
+
+.. code-block:: ipython
+
+    In [26]: fun(6)
+    6 2 3
+    In [27]: fun(6, 7)
+    6 7 3
+    In [28]: fun(6, 7, 8)
+    6 7 8
+
+Or, you can use the parameter name as a *keyword* to indicate which you mean:
+
+.. code-block:: ipython
+
+    In [29]: fun(y=4, x=1)
+    1 4 3
+
+.. nextslide::
+
+Once you've provided a *keyword* argument in this way, you can no longer
+provide any *positional* arguments:
+
+.. code-block:: ipython
+
+    In [30]: fun(x=5, 6)
+      File "<ipython-input-30-4529e5befb95>", line 1
+        fun(x=5, 6)
+    SyntaxError: non-keyword arg after keyword arg
+
+.. nextslide:: Parameters and Unpacking
+
+This brings us to a fun feature of Python function definitions.
+
+You can define a parameter list that requires an **unspecified** number of
+*positional* or *keyword* arguments.
+
+The key is the ``*`` (splat) or ``**`` (double-splat) operator:
+
+.. code-block:: ipython
+
+    In [31]: def fun(*args, **kwargs):
+       ....:     print args, kwargs
+       ....:
+    In [32]: fun(1)
+    (1,) {}
+    In [33]: fun(1, 2, zombies="brains")
+    (1, 2) {'zombies': 'brains'}
+    In [34]: fun(1, 2, 3, zombies="brains", vampires="blood")
+    (1, 2, 3) {'vampires': 'blood', 'zombies': 'brains'}
+
+**args** and **kwargs** are *conventional* names for these.
+
+
+Recursion
+---------
+
+You've seen functions that call other functions.
+
+If a function calls *itself*, we call that **recursion**
+
+Like with other functions, a call within a call establishes a *call stack*
+
+With recursion, if you are not careful, this stack can get *very* deep.
+
+Python has a maximum limit to how much it can recurse. This is intended to
+save your machine from running out of RAM.
+
+.. nextslide:: Recursion can be Useful
+
+Recursion is especially useful for a particular set of problems.
+
+For example, take the case of the *factorial* function.
+
+In mathmatics, the *factorial* of an integer is the result of multiplying that
+integer by every integer smaller than it down to 1.
+
+::
+
+    5! == 5 * 4 * 3 * 2 * 1
+
+We can use a recursive function nicely to model this mathematical function
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+    [demo]
+
+
+In-Class Lab:
+=============
+
+.. rst-class:: center large
+
+Fun With Functions
+
+Exercises
+---------
+
+Try your hand at writing a function that computes the distance between two
+points::
+
+    dist = sqrt( (x1-x2)**2 + (y1-y2)**2 )
+
+Experiment with ``locals`` by adding this statement to a function or two you
+have written::
+
+    print locals()
+
+Compute the Fibonacci series with a recursive function::
+
+    f(0) = 0; f(1) = 1
+    f(n) = f(n-1) + f(n-2)
+    0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+
