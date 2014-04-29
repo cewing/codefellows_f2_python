@@ -24,28 +24,42 @@ build your Python chops.
 * [The Python Tutorial](https://docs.python.org/2/tutorial/): This is the
   official tutorial from the Python website. No more authoritative source is
   available.
+
 * [Code Academy: Python Track](http://www.codecademy.com/tracks/python): Often
   cited as a great resource, this site offers an entertaining and engaging
   approach and in-browser work.
+
 * [Learn Python the Hard Way](http://learnpythonthehardway.org/book/): Solid
   and gradual. This course offers a great foundation for folks who have never
   programmed in any language before.
+
 * [Dive Into Python 3](http://www.diveinto.org/python3/): The updated version
   of a classic. This book offers an introduction to Python aimed at the student
   who has experience programming in another language.
+
 * [Python for You and Me](http://pymbook.readthedocs.org/en/latest/): Simple
   and clear. This is a great book for absolute newcomers, or to keep as a quick
   reference as you get used to the language.
+
 * [Think Python](http://greenteapress.com/thinkpython/): Methodical and
   complete.  This book offers a very "computer science"-style introduction to
   Python. It is really an intro to Python *in the service of* Computer Science,
-  though, so not so helpful for the absolute newcomer.
+  though, so not so while helpful for the absolute newcomer, it isn't quite as "pythonic" as it might be.
+
+* [Core Python Programming](http://corepython.com/): Only available as a dead
+ trees version, but if you like to have book to hold in your hands anyway, this
+ is the best textbook style introduction out there. It starts from the
+ beginning, but gets into the full language. Published in 2009, but still in
+ print, with updated appendixes available for new language features.
+
+
 
 #### Next Steps
 
 * [New Coder](http://newcoder.io): Advertised as "Five lifejackets to throw to
   the new coder", this site offers five very interesting tutorials written in
   an engaging style. Not an introduction. More a second step.
+
 * [OpenHatch](https://openhatch.org/wiki/Intermediate_Python_Workshop/Projects):
   The Open Hatch project offers a number of workshops with well-paced
   intermediate tutorials for Python programming. A great place to go once you
@@ -66,7 +80,12 @@ path forward for themselves.
 
 ### iPython Interpreter Resources
 
+iPython is an enhanced interpreter that makes interactive experimentation at the command line much more pleasant and powerful.
+
+* [The iPython tutorial](http://ipython.org/ipython-doc/rel-0.10.2/html/interactive/tutorial.html)
+
 * [Using IPython for interactive work](http://ipython.org/ipython-doc/stable/interactive/index.html)
   Learn about the abilities iPython provides for interactive sessions.
+
 * [The iPython Documentation](http://ipython.org/ipython-doc/stable/index.html)
   Use this to learn more about iPython's amazing capabilities.
