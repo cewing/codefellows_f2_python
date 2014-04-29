@@ -286,14 +286,15 @@ slide_theme_options = {
     # 'custom_js': 'custom.js',
     'presenters': [
         {
-            'name': 'Cris Ewing, Christopher Barker',
+            'name': 'Cris Ewing',
             'twitter': '@crisewing',
             'www': 'http://crisewing.com',
             'github': 'http://github.com/cewing/codefellows_f2_python',
         },
         {
             'name': 'Christopher Barker',
-            'github': 'pythonchb@gmail.com',
+            'email': 'pythonchb@gmail.com',
+            'gihub':'https://github.com/PythonCHB'
         },
     ]
 }

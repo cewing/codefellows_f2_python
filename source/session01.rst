@@ -700,6 +700,69 @@ Specifically, you'll want to pay attention to the information about
 .. _official documentation: http://ipython.org/ipython-doc/stable/index.html
 .. _Using iPython for Interactive Work: http://ipython.org/ipython-doc/stable/interactive/index.html
 
+The very basics of iPython
+----------------------------
+
+iPython can do alot for you, but for starters, here are the key pieces you'll want to know:
+
+Start it up
+
+.. code-block:: bash
+
+    $ipython
+
+    $ ipython
+    Python 2.7.6 (v2.7.6:3a1db0d2747e, Nov 10 2013, 00:42:54) 
+    Type "copyright", "credits" or "license" for more information.
+
+    IPython 2.0.0 -- An enhanced Interactive Python.
+    ?         -> Introduction and overview of IPython's features.
+    %quickref -> Quick reference.
+    help      -> Python's own help system.
+    object?   -> Details about 'object', use 'object??' for extra details.
+
+
+(live demo)
+
+iPython basics
+---------------
+
+This is the stuff I use every day:
+
+* command line recall:
+
+  - hit the "up arrow" key
+  - if you have typed a bit, it will find the last command that starts the same way.
+
+* basic shell commands:
+
+  - ``ls``, ``cd``, ``pwd``
+
+* any shell command:
+
+ - ``! the_shell_command``
+
+* pasting from the clipboard:
+
+  - ``%paste`` (this keeps whitesapce cleaner for you)
+
+iPython basics (cont)
+---------------------
+
+* getting help:
+
+  - ``something?``
+
+* tab completion:
+
+  - ``something.<tab>`` 
+
+* running a python file:
+
+  - ``run the_name_of_the_file.py``
+
+
+That's it -- you can get a lot done with those. 
 
 Basic Python Syntax
 ===================
@@ -738,7 +801,7 @@ Statements:
 
     In [6]: # statements do not return a value, may contain an expression
 
-    In [7]: print "this"
+    In [7]: print u"this"
     this
 
     In [8]: line_count = 42
@@ -872,7 +935,7 @@ Values
 
 .. rst-class:: build
 
-* Values are pieces of unnamed data: ``42, 'Hello, world',``
+* Values are pieces of unnamed data: ``42, u'Hello, world',``
 * In Python, all values are objects
 
   * Try ``dir(42)``  - lots going on behind the curtain! (demo)
@@ -896,7 +959,7 @@ An expression is made up of values and operators
 
 * Integer vs. float arithmetic (demo)
 
-  * Python 3 smooths this out
+  * (Python 3 smooths this out
   * Always use ``/`` when you want float results, ``//`` when you want floored results
 
 * Type conversions (demo)
@@ -1093,18 +1156,22 @@ references to it.
 
 .. code-block:: ipython
 
-    In [60]: b
-    Out[60]: 5
+    In [15]: a = 5
 
-    In [61]: del b
+    In [16]: b = a
 
-    In [62]: b
+    In [17]: del a
+
+    In [18]: a
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
-    <ipython-input-62-3b5d5c371295> in <module>()
-    ----> 1 b
+    <ipython-input-18-60b725f10c9c> in <module>()
+    ----> 1 a
 
-    NameError: name 'b' is not defined
+    NameError: name 'a' is not defined
+
+    In [19]: b
+    Out[19]: 5
 
 
 Identity
