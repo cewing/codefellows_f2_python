@@ -29,7 +29,7 @@ to manage your virtual environments:
     Installing setuptools, pip...done.
     Creating /path/to/projects/cff2py
     Setting project for cff2py to /path/to/projects/cff2py
-    [cff2py]$
+    (cff2py)$
 
 .. _virtualenv: http://virtualenv.org
 .. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org:
@@ -75,6 +75,14 @@ Or the html5 slides:
     Running Sphinx v1.2.2
     ...
     Build finished. The HTML slides are in build/slides.
+
+At any time, you can return to working on this repository using the ``workon``
+command, provided by ``virtualenvwrapper``:
+
+.. code-block:: bash
+
+    $ workon cff2py
+    (cff2py)$
 
 
 License
