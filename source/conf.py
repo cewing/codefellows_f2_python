@@ -289,13 +289,14 @@ slide_theme_options = {
             'name': 'Cris Ewing',
             'twitter': '@crisewing',
             'www': 'http://crisewing.com',
-            'github': 'http://github.com/cewing/codefellows_f2_python',
+            'github': 'http://github.com/cewing',
+            'company': 'Cris Ewing, Developer LLC'
         },
         {
             'name': 'Christopher Barker',
-            'email': 'pythonchb@gmail.com',
-            'gihub':'https://github.com/PythonCHB'
-        },
+            'github': 'https://github.com/PythonCHB',
+            'company': 'NOAA'
+        }
     ]
 }
 
