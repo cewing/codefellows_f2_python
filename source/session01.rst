@@ -683,9 +683,10 @@ Specifically, you'll want to pay attention to the information about
 .. _Using iPython for Interactive Work: http://ipython.org/ipython-doc/stable/interactive/index.html
 
 The very basics of iPython
-----------------------------
+--------------------------
 
-iPython can do alot for you, but for starters, here are the key pieces you'll want to know:
+iPython can do alot for you, but for starters, here are the key pieces you'll
+want to know:
 
 Start it up
 
@@ -704,10 +705,12 @@ Start it up
     object?   -> Details about 'object', use 'object??' for extra details.
 
 
-(live demo)
+.. ifslides::
 
-iPython basics
----------------
+    (live demo)
+
+
+.. nextslide:: iPython basics
 
 This is the stuff I use every day:
 
@@ -728,8 +731,8 @@ This is the stuff I use every day:
 
   - ``%paste`` (this keeps whitesapce cleaner for you)
 
-iPython basics (cont)
----------------------
+
+.. nextslide:: iPython basics (cont)
 
 * getting help:
 
@@ -744,7 +747,8 @@ iPython basics (cont)
   - ``run the_name_of_the_file.py``
 
 
-That's it -- you can get a lot done with those. 
+That's it -- you can get a lot done with those.
+
 
 Basic Python Syntax
 ===================
@@ -1018,10 +1022,10 @@ Evaluating the name will return the value to which it is bound
 
 .. code-block:: ipython
 
-    In [26]: name = "value"
+    In [26]: name = u"value"
 
     In [27]: name
-    Out[27]: 'value'
+    Out[27]: u'value'
 
     In [28]: an_integer = 42
 
@@ -1352,19 +1356,19 @@ If you try to use any of the keywords as symbols, you will cause a
 
 .. code-block:: ipython
 
-    In [13]: del = "this will raise an error"
+    In [13]: del = u"this will raise an error"
       File "<ipython-input-13-c816927c2fb8>", line 1
-        del = "this will raise an error"
+        del = u"this will raise an error"
             ^
     SyntaxError: invalid syntax
 
 .. code-block:: ipython
 
-    In [14]: def a_function(else='something'):
+    In [14]: def a_function(else=u'something'):
        ....:     print else
        ....:
       File "<ipython-input-14-1dbbea504a9e>", line 1
-        def a_function(else='something'):
+        def a_function(else=u'something'):
                           ^
     SyntaxError: invalid syntax
 
@@ -1596,12 +1600,12 @@ This is useful when debugging!
 .. code-block:: ipython
 
     In [14]: def no_error():
-       ....:     return 'done'
+       ....:     return u'done'
        ....:     # no more will happen
        ....:     print 1/0
        ....:
     In [15]: no_error()
-    Out[15]: 'done'
+    Out[15]: u'done'
 
 
 .. nextslide::
