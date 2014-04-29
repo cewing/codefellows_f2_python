@@ -680,6 +680,27 @@ virtualenv is active):
     ...
 
 
+Introduction to IPython
+=======================
+
+As part of the *requirements* you have now installed `iPython`_.
+
+iPython is an advanced Python interpreter that offers enhancements.
+
+.. ifslides::
+
+    Let's see a quick demo of what it can do for you.
+
+You can also read more about it in the `official documentation`_.
+
+Specifically, you'll want to pay attention to the information about
+`Using iPython for Interactive Work`_.
+
+.. _iPython: http://ipython.org
+.. _official documentation: http://ipython.org/ipython-doc/stable/index.html
+.. _Using iPython for Interactive Work: http://ipython.org/ipython-doc/stable/interactive/index.html
+
+
 Basic Python Syntax
 ===================
 
