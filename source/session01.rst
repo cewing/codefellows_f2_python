@@ -24,13 +24,25 @@ Your instructors
 
 .. rst-class:: center large
 
-Christopher Barker
+| Christopher Barker
+| (pythonchb at gmail dot com)
+
 
 .. nextslide::
 
 .. rst-class:: center large
 
-Cris Ewing
+| Cris Ewing
+| (cris at crisewing dot com)
+
+
+Your TA
+-------
+
+.. rst-class:: center large
+
+| Mark Charyk
+| (markcharyk at gmail dot com)
 
 
 Introduction to This class
@@ -359,7 +371,7 @@ YAGNI
 Setting Up Your Environment
 ===========================
 
-.. rst-class:: center large
+.. rst-class:: centered large
 
 Shared setup means reduced complications.
 
@@ -661,19 +673,23 @@ virtualenv is active):
     (cff2py)$ pip install -r requirements.txt
     ...
 
+**Please Note**
 
-Introduction to IPython
+If you are working on OS X, you will likely need to change your ``pip install``
+command as follows:
+
+.. code-block:: bash
+
+    ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -r requirements.txt
+
+Introduction to iPython
 =======================
 
 As part of the *requirements* you have now installed `iPython`_.
 
 iPython is an advanced Python interpreter that offers enhancements.
 
-.. ifslides::
-
-    Let's see a quick demo of what it can do for you.
-
-You can also read more about it in the `official documentation`_.
+You can read more about it in the `official documentation`_.
 
 Specifically, you'll want to pay attention to the information about
 `Using iPython for Interactive Work`_.
@@ -682,10 +698,15 @@ Specifically, you'll want to pay attention to the information about
 .. _official documentation: http://ipython.org/ipython-doc/stable/index.html
 .. _Using iPython for Interactive Work: http://ipython.org/ipython-doc/stable/interactive/index.html
 
+.. ifslides::
+
+    Let's see a quick demo of what it can do for you.
+
+
 The very basics of iPython
 --------------------------
 
-iPython can do alot for you, but for starters, here are the key pieces you'll
+iPython can do a lot for you, but for starters, here are the key pieces you'll
 want to know:
 
 Start it up
@@ -924,11 +945,17 @@ Values
 * Values are pieces of unnamed data: ``42, u'Hello, world',``
 * In Python, all values are objects
 
-  * Try ``dir(42)``  - lots going on behind the curtain! (demo)
+  * Try ``dir(42)``  - lots going on behind the curtain!
 
 * Every value belongs to a type
 
-  * Try ``type(42)`` - the type of a value determines what it can do (demo)
+  * Try ``type(42)`` - the type of a value determines what it can do
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+        [demo]
 
 
 Values in Action
@@ -941,19 +968,24 @@ An expression is made up of values and operators
 * An expression is evaluated to produce a new value:  ``2 + 2``
 
   *  The Python interpreter can be used as a calculator to evaluate expressions
-     (demo)
 
-* Integer vs. float arithmetic (demo)
+* Integer vs. float arithmetic
 
   * (Python 3 smooths this out
   * Always use ``/`` when you want float results, ``//`` when you want floored results
 
-* Type conversions (demo)
+* Type conversions
 
   * This is the source of many errors, especially in handling text
   * Python 3 will not implicitly convert bytes to unicode
 
-* Type errors - checked at run time only (demo)
+* Type errors - checked at run time only
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+        [demo]
 
 
 Symbols
@@ -1202,7 +1234,11 @@ object** using the ``is`` operator:
     In [76]: other_count is count
     Out[76]: False
 
-(demo)
+.. ifslides::
+
+    .. rst-class:: centered
+
+        [demo]
 
 
 Equality
@@ -1224,7 +1260,11 @@ You can test for the equality of certain values with the ``==`` operator
     In [81]: val1 = val3
     Out[84]: False
 
-(demo)
+.. ifslides::
+
+    .. rst-class:: centered
+
+        [demo]
 
 
 Operator Precedence
@@ -1416,6 +1456,26 @@ You are free to rebind these symbols:
 
 In general, this is a **BAD IDEA**.
 
+
+Exceptions
+----------
+
+Notice that the first batch of ``__builtins__`` are all *Exceptions*
+
+Exceptions are how Python tells you that something has gone wrong.
+
+There are several exceptions that you are likely to see a lot of:
+
+.. rst-class:: build
+
+* NameError: indicates that you have tried to use a symbol that is not bound to
+  a value.
+* TypeError: indicates that you have tried to use the wrong kind of object for
+  an operation.
+* SyntaxError: indicates that you have mis-typed something.
+* AttributeError: indicates that you have tried to access an attribute or
+  method that an object does not have (this often means you have a different
+  type of object than you expect)
 
 
 Functions
@@ -1677,4 +1737,115 @@ exercises in Python programming
 
 Homework
 ========
+
+Four Tasks by Next Monday
+
+
+Task 1
+------
+
+**Tell Us About Yourself**
+
+* Create a new folder in the ``students`` folder in the class repository.
+
+  * Create the folder in your clone of your fork of the repository.
+  * Name it with your own name in CamelCase, like: ``CrisEwing``.
+  * In the folder create one new file, named ``README.md``
+  * In that new file, write up a few paragraphs about yourself.
+
+    * Use proper `markdown`_ syntax.
+    * Include at least two headings, of different levels.
+    * Include at least one link.
+
+* Using ``git add``, add the new folder and file to your clone of the
+  repository.
+* Using ``git commit``, commit your changes to your clone (write a good commit
+  message). If you later edit your file, don't forget to commit those changes
+  too.
+* Using ``git push``, push your commits to your fork on GitHub.
+* In GitHub's Web UI, make a ``pull request`` to the original CodeFellows
+  repository.
+
+.. _markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+
+Task 2
+------
+
+**Set Up a Great Dev Environment**
+
+Work through the supplemental tutorials on setting up SublimeText and your
+Command Line for good development support.
+
+At the end, your editor should support tab completion and pep8 and pyflakes
+linting. Your command line should be able to show you what virtualenv is active
+and give you information about your git repository when you are inside one.
+
+If you are not using SublimeText, look for plugins that accomplish the same
+goals for your own editor.  If none are available, please consider a change of
+editor.
+
+
+Task 3
+------
+
+**Python Pushups**
+
+To get a bit of exercise solving some puzzles with Python, work on the Python
+exercises at `CodingBat`_.
+
+Begin by making an account on the site. Once you have done so, go to the
+'prefs' link at the top right and enter your name so we know who you are.
+
+In addition, add the following email address to the 'Share To' box.  This will
+allow your instructors to see the work you have done.
+
+::
+
+    FIXME: EMAIL GOES HERE (cff2py@crisewing.com)
+
+There are 8 sets of puzzles. Do as many as you can, starting with the Warmups.
+
+.. _CodingBat: http://codingbat.com
+
+
+Task 4
+------
+
+**Explore Errors**
+
+* Make a branch of your clone of the class repository called ``errors``
+  * ``git checkout -b errors``
+  * ``git push -u origin errors``
+
+* Create a new file called ``break_me.py``.
+
+  * Create it inside your personal folder in the ``students`` folder of the
+    class repository
+  * Make sure you create it in your clone of your fork of the repository.
+  * Use ``git add`` to add the file to the repository.
+
+* In the file write four simple Python functions
+
+  * Each function, when called, should cause an exception to happen
+  * Each function should result in one of the four common exceptions from our
+    lecture.
+
+    * for review: NameError, TypeError, SyntaxError, AttributeError
+
+  * Use the Python standard library reference on `Built In Exceptions`_ as a
+    reference
+
+* Use ``git commit`` to commit changes you make to your clone
+
+  * Make frequent, small commits using ``git commit`` when working.
+  * Write clear, concise commit messages that explain what you are doing.
+
+* When you are finished with your work, use ``git push`` to push your changes
+  to your fork on GitHub.
+
+* Finally, issue a pull request to the original CodeFellows repository with
+  your work.
+
+.. _Built In Exceptions: https://docs.python.org/2/library/exceptions.html
 
