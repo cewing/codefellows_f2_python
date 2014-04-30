@@ -1824,11 +1824,14 @@ allow your instructors to see the work you have done.
 
 ::
 
-    FIXME: EMAIL GOES HERE (cff2py@crisewing.com)
+    pyinstructor@codefellows.com
 
 There are 8 sets of puzzles. Do as many as you can, starting with the Warmups.
 
 .. _CodingBat: http://codingbat.com
+
+**Please Note:** Do Not send emails to the above email address, they will not
+be answered.
 
 
 Task 4
