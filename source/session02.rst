@@ -859,7 +859,8 @@ side-effects.
 .. nextslide:: Re-import
 
 The code in a module is NOT re-run when imported again
- -- it must be explicitly reloaded to be re-run
+
+It must be explicitly reloaded to be re-run
 
 .. code-block:: python
 
@@ -873,30 +874,79 @@ The code in a module is NOT re-run when imported again
     (demo)
 
 
-.. nextslide:: What's in a Python?
+.. nextslide:: Running a Module
 
-Curious about what modules are around for you to play with?
+In addition to importing modules, you can run them.
+
+There are a few ways to do this:
+
+.. rst-class:: build
+
+* ``$ python hello.py``   -- must be in current working directory
+* ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system
+* ``$ ./hello.py``        -- put ``#!/usr/env/python``  at top of module (Unix)
+* ``run hello.py``     -- at the IPython prompt -- running a module brings the
+  names into the interactive namespace
+
+
+.. nextslide:: Running a Module
+
+Like importing, running a module executes all statements at the module level.
+
+But there's an important difference.
+
+When you *import* a module, the value of the symbol ``__name__`` in the module
+is the same as the filename.
+
+When you *run* a module, the value of the symbol ``__name__`` is ``__main__``.
+
+This allows you to create blocks of code that are executed *only when you run a
+module*
 
 .. code-block:: python
 
-    import sys
-    print sys.modules
+    if __name__ == '__main__':
+        # Do something interesting here
+        # It will only happen when the module is run
 
-Try it now.
+.. nextslide:: "main" blocks
+
+This is useful in a number of cases.
+
+You can put code here that lets your module be a utility script
+
+You can put code here that demonstrates the functions contained in your module
+
+You can put code here that proves that your module works.
+
+.. ifslides::
+
+    [demo]
 
 
-.. nextslide:: Programmatic Import
+.. nextslide:: ``Assert``
 
+Writing ``tests`` that demonstrate that your program works is an important part
+of learning to program.
 
-If you don’t know the module name before execution.
+The python ``assert`` statement is useful in writing ``main`` blocks that test
+your code.
 
-.. code-block:: python
+.. code-block:: ipython
 
-    __import__(module)
+    In [1]: def add(n1, n2):
+       ...:     return n1 + n2
+       ...:
 
-(here ``module`` is a symbol bound to a Python string)
+    In [2]: assert add(3, 4) == 7
 
+    In [3]: assert add(3, 4) == 10
+    ---------------------------------------------------------------------------
+    AssertionError                            Traceback (most recent call last)
+    <ipython-input-3-6731d4ac4476> in <module>()
+    ----> 1 assert add(3, 4) == 10
 
+    AssertionError:
 
 In-Class Lab
 ============
