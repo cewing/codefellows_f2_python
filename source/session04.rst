@@ -1,11 +1,9 @@
-
-.. Foundations 2: Python slides file, created by 
+.. Foundations 2: Python slides file, created by
    Chris Barker: April 26, 2014.
 
-
-****************************************************
+*******************************************************
 Session Four: Dictionaries, Sets, Exceptions, and Files
-****************************************************
+*******************************************************
 
 
 
