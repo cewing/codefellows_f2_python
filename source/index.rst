@@ -1,4 +1,3 @@
-
 In This Course
 ==============
 
@@ -14,4 +13,5 @@ In This Course
     session07
     session08
 
-These slide decks copyright Cris Ewing and Christopher Barker, with thanks to Jon Jacky and Brian Dorsey for the materials from which these were derived.
+These slide decks copyright Cris Ewing and Christopher Barker, with thanks to
+Jon Jacky and Brian Dorsey for the materials from which these were derived.
