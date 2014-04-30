@@ -53,6 +53,16 @@ Introduction to This class
 Python Programming
 
 
+Course Materials Online
+-----------------------
+
+A rendered HTML copy of the slides for this course may be found online at:
+
+.. rst-class:: centered
+
+http://codefellows.github.io/sea-c15-python/
+
+
 What is Python?
 ---------------
 
