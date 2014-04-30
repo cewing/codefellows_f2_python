@@ -1,6 +1,6 @@
-*******************************
-Functions, Booleans and Modules
-*******************************
+********************************************
+Session Two: Functions, Booleans and Modules
+********************************************
 
 .. ifslides::
 
@@ -704,6 +704,8 @@ Code Structure
 In Python, the structure of your code is determined by whitespace.
 
 How you *indent* your code determines how it is structured
+
+::
 
     block statement:
         some code body

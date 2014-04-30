@@ -565,6 +565,13 @@ At your command line, type the following:
     $ mkdir .virtualenvs
     $ mkdir projects
 
+.. ifnotslides::
+
+    You can also work through a more thorough tutorial on using virtualenv and
+    virtualenvwrapper in the class `supplemental materials`_.
+    
+    .. _supplemental materials: supplements/virtualenv.html
+
 Now, you're ready to make your class environment.
 
 
@@ -1757,6 +1764,10 @@ Task 1
     * Include at least two headings, of different levels.
     * Include at least one link.
 
+.. _markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+.. nextslide::
+
 * Using ``git add``, add the new folder and file to your clone of the
   repository.
 * Using ``git commit``, commit your changes to your clone (write a good commit
@@ -1766,16 +1777,14 @@ Task 1
 * In GitHub's Web UI, make a ``pull request`` to the original CodeFellows
   repository.
 
-.. _markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-
 
 Task 2
 ------
 
 **Set Up a Great Dev Environment**
 
-Work through the supplemental tutorials on setting up SublimeText and your
-Command Line for good development support.
+Work through the supplemental tutorials on setting up `SublimeText`_ and your
+`Command Line`_ for good development support.
 
 At the end, your editor should support tab completion and pep8 and pyflakes
 linting. Your command line should be able to show you what virtualenv is active
@@ -1785,6 +1794,9 @@ If you are not using SublimeText, look for plugins that accomplish the same
 goals for your own editor.  If none are available, please consider a change of
 editor.
 
+
+.. _SublimeText: supplements/sublime_as_ide.html
+.. _Command Line: supplements/shell.html
 
 Task 3
 ------
@@ -1825,6 +1837,8 @@ Task 4
   * Make sure you create it in your clone of your fork of the repository.
   * Use ``git add`` to add the file to the repository.
 
+.. nextslide::
+
 * In the file write four simple Python functions
 
   * Each function, when called, should cause an exception to happen
@@ -1835,6 +1849,8 @@ Task 4
 
   * Use the Python standard library reference on `Built In Exceptions`_ as a
     reference
+
+.. nextslide::
 
 * Use ``git commit`` to commit changes you make to your clone
 
