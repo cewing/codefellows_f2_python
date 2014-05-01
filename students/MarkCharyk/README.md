@@ -1,8 +1,9 @@
 Mark Charyk
 ======
 ###### TA for CodeFellows Foundations II Python
-##### [markcharyk@gmail.com](mailto:markcharyk@gmail.com)
-##### https://www.github.com/markcharyk
+__[markcharyk@gmail.com](mailto:markcharyk@gmail.com)__
+
+**https://www.github.com/markcharyk**
 
 ### Who am I?
 I'm a recent graduate of the CodeFellows Python Bootcamp which was an unequivocally awesome experience. I will be helping out with grading and question answering. I fell in love with Python since the first time I tried it and found out
