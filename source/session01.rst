@@ -559,6 +559,10 @@ Open that file in your text editor and add the following lines:
     export PROJECT_HOME=~/projects
     source /usr/local/bin/virtualenvwrapper.sh
 
+The above system path may not be correct. If you do not have a file
+``virtualenvwrapper.sh`` in ``/usr/local/bin`` you can run ``$ which
+virtualenvwrapper.sh`` to find out where it ended up.
+
 Save the file, and then quit and restart your command line
 
 .. nextslide:: Providing Homes
