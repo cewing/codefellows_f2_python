@@ -709,6 +709,7 @@ iPython is an advanced Python interpreter that offers enhancements.
 You can read more about it in the `official documentation`_.
 
 Specifically, you'll want to pay attention to the information about
+
 `Using iPython for Interactive Work`_.
 
 .. _iPython: http://ipython.org
@@ -767,7 +768,7 @@ This is the stuff I use every day:
 
 * pasting from the clipboard:
 
-  - ``%paste`` (this keeps whitesapce cleaner for you)
+  - ``%paste`` (this keeps whitespace cleaner for you)
 
 
 .. nextslide:: iPython basics (cont)
@@ -974,6 +975,22 @@ Values
 
         [demo]
 
+Literals for the Basic Value types:
+------------------------------------
+
+Numbers:
+  - floating point: ``3.4``
+  - integers: ``456``
+
+Text:
+  -  ``u"a bit of text``
+  -  ``u'a bit of text'``
+
+Boolean values:
+  -  ``True``
+  -  ``False``
+
+(There are intricacies to all of these that we'll get into later)
 
 Values in Action
 ----------------
@@ -1274,7 +1291,7 @@ You can test for the equality of certain values with the ``==`` operator
 
     In [80]: val3 = u'50'
 
-    In [81]: val1 = val3
+    In [81]: val1 == val3
     Out[84]: False
 
 .. ifslides::
@@ -1742,11 +1759,39 @@ When you call a function, you pass values to the function parameters as
 
 The values you pass in are *bound* to the symbols inside the function and used.
 
+The ``if`` Statement
+---------------------
+
+In order to do anything interesting at all (including this weeks homework), you need to be able to make a decision.
+
+.. nextslide::
+
+.. code-block:: python
+
+    In [12]: def test(a):
+       ....:     if a == 5:
+       ....:         print u"that's the value I'm looking for!"
+       ....:     elif a == 7:
+       ....:         print u"that's an OK number"
+       ....:     else:
+       ....:         print u"that number won't do!"
+
+    In [13]: test(5)
+    that's the value I'm looking for!
+
+    In [14]: test(7)
+    that's an OK number
+
+    In [15]: test(14)
+    that number won't do!
+
+There is more to it than that, but this will get you started.
+
 
 Enough For Now
 --------------
 
-And that's about it for our basic intro to Python
+That's it for our basic intro to Python
 
 Before next session, you'll use what you've learned here today to do some
 exercises in Python programming

@@ -1,53 +1,132 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Session One: Introductions &mdash; Foundations 2: Python 1.0-dev documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Foundations 2: Python 1.0-dev documentation" href="index.html" />
-    <link rel="next" title="Session Two: Functions, Booleans and Modules" href="session02.html" />
-    <link rel="prev" title="In This Course" href="index.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="In This Course"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Foundations 2: Python 1.0-dev documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Session One: Introductions &mdash; Foundations 2: Python 1.0 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Foundations 2: Python 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Session Two: Functions, Booleans and Modules" href="session02.html"/>
+        <link rel="prev" title="In This Course" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Foundations 2: Python</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Session One: Introductions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introductions">Introductions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-this-class">Introduction to This class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-your-environment">Introduction to Your Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-environment">Setting Up Your Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-ipython">Introduction to iPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-python-syntax">Basic Python Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session02.html">Session Two: Functions, Booleans and Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#review-questions">Review/Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#quick-intro-to-basics">Quick Intro to Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#in-class-lab">In-Class Lab:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#boolean-expressions">Boolean Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#id1">In-Class Lab:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#code-structure-modules-and-namespaces">Code Structure, Modules, and Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#id4">In-Class Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session02.html#homework">Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session04.html">Session Four: Dictionaries, Sets, Exceptions, and Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session04.html#review-questions">Review/Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session04.html#dictionaries-and-sets">Dictionaries and Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session04.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session04.html#file-reading-and-writing">File Reading and Writing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session04.html#paths-and-directories">Paths and Directories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supplements/index.html">Supplemental Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="supplements/virtualenv.html">Working with Virtualenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supplements/sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supplements/shell.html">Shell Customizations for Python Development</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Foundations 2: Python</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Session One: Introductions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/session01.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
   <div class="section" id="session-one-introductions">
 <h1>Session One: Introductions<a class="headerlink" href="#session-one-introductions" title="Permalink to this headline">¶</a></h1>
@@ -498,8 +577,8 @@ command as follows:</p>
 <p>As part of the <em>requirements</em> you have now installed <a class="reference external" href="http://ipython.org">iPython</a>.</p>
 <p>iPython is an advanced Python interpreter that offers enhancements.</p>
 <p>You can read more about it in the <a class="reference external" href="http://ipython.org/ipython-doc/stable/index.html">official documentation</a>.</p>
-<p>Specifically, you&#8217;ll want to pay attention to the information about
-<a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/index.html">Using iPython for Interactive Work</a>.</p>
+<p>Specifically, you&#8217;ll want to pay attention to the information about</p>
+<p><a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/index.html">Using iPython for Interactive Work</a>.</p>
 <div class="section" id="the-very-basics-of-ipython">
 <h3>The very basics of iPython<a class="headerlink" href="#the-very-basics-of-ipython" title="Permalink to this headline">¶</a></h3>
 <p>iPython can do a lot for you, but for starters, here are the key pieces you&#8217;ll
@@ -538,7 +617,7 @@ object?   -&gt; Details about <span class="s1">&#39;object&#39;</span>, use <spa
 </div></blockquote>
 <ul class="simple">
 <li>pasting from the clipboard:<ul>
-<li><tt class="docutils literal"><span class="pre">%paste</span></tt> (this keeps whitesapce cleaner for you)</li>
+<li><tt class="docutils literal"><span class="pre">%paste</span></tt> (this keeps whitespace cleaner for you)</li>
 </ul>
 </li>
 </ul>
@@ -675,6 +754,30 @@ object?   -&gt; Details about <span class="s1">&#39;object&#39;</span>, use <spa
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="literals-for-the-basic-value-types">
+<h3>Literals for the Basic Value types:<a class="headerlink" href="#literals-for-the-basic-value-types" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Numbers:</dt>
+<dd><ul class="first last simple">
+<li>floating point: <tt class="docutils literal"><span class="pre">3.4</span></tt></li>
+<li>integers: <tt class="docutils literal"><span class="pre">456</span></tt></li>
+</ul>
+</dd>
+<dt>Text:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">u&quot;a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">u'a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text'</span></tt></li>
+</ul>
+</dd>
+<dt>Boolean values:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">True</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">False</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p>(There are intricacies to all of these that we&#8217;ll get into later)</p>
 </div>
 <div class="section" id="values-in-action">
 <h3>Values in Action<a class="headerlink" href="#values-in-action" title="Permalink to this headline">¶</a></h3>
@@ -914,7 +1017,7 @@ object</strong> using the <tt class="docutils literal"><span class="pre">is</spa
 
 <span class="gp">In [80]: </span><span class="n">val3</span> <span class="o">=</span> <span class="s">u&#39;50&#39;</span>
 
-<span class="gp">In [81]: </span><span class="n">val1</span> <span class="o">=</span> <span class="n">val3</span>
+<span class="gp">In [81]: </span><span class="n">val1</span> <span class="o">==</span> <span class="n">val3</span>
 <span class="gh">Out[84]: </span><span class="go">False</span>
 </pre></div>
 </div>
@@ -1259,9 +1362,32 @@ back is</p>
 </div>
 <p>The values you pass in are <em>bound</em> to the symbols inside the function and used.</p>
 </div>
+<div class="section" id="the-if-statement">
+<h3>The <tt class="docutils literal"><span class="pre">if</span></tt> Statement<a class="headerlink" href="#the-if-statement" title="Permalink to this headline">¶</a></h3>
+<p>In order to do anything interesting at all (including this weeks homework), you need to be able to make a decision.</p>
+<div class="highlight-python"><div class="highlight"><pre>In [12]: def test(a):
+   ....:     if a == 5:
+   ....:         print u&quot;that&#39;s the value I&#39;m looking for!&quot;
+   ....:     elif a == 7:
+   ....:         print u&quot;that&#39;s an OK number&quot;
+   ....:     else:
+   ....:         print u&quot;that number won&#39;t do!&quot;
+
+In [13]: test(5)
+that&#39;s the value I&#39;m looking for!
+
+In [14]: test(7)
+that&#39;s an OK number
+
+In [15]: test(14)
+that number won&#39;t do!
+</pre></div>
+</div>
+<p>There is more to it than that, but this will get you started.</p>
+</div>
 <div class="section" id="enough-for-now">
 <h3>Enough For Now<a class="headerlink" href="#enough-for-now" title="Permalink to this headline">¶</a></h3>
-<p>And that&#8217;s about it for our basic intro to Python</p>
+<p>That&#8217;s it for our basic intro to Python</p>
 <p>Before next session, you&#8217;ll use what you&#8217;ve learned here today to do some
 exercises in Python programming</p>
 </div>
@@ -1370,137 +1496,67 @@ your work.</li>
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Session One: Introductions</a><ul>
-<li><a class="reference internal" href="#introductions">Introductions</a><ul>
-<li><a class="reference internal" href="#your-instructors">Your instructors</a></li>
-<li><a class="reference internal" href="#your-ta">Your TA</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#introduction-to-this-class">Introduction to This class</a><ul>
-<li><a class="reference internal" href="#course-materials-online">Course Materials Online</a></li>
-<li><a class="reference internal" href="#what-is-python">What is Python?</a></li>
-<li><a class="reference internal" href="#python-features">Python Features</a></li>
-<li><a class="reference internal" href="#what-s-a-dynamic-language">What&#8217;s a Dynamic language</a></li>
-<li><a class="reference internal" href="#duck-typing">Duck Typing</a></li>
-<li><a class="reference internal" href="#python-versions">Python Versions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#introduction-to-your-environment">Introduction to Your Environment</a><ul>
-<li><a class="reference internal" href="#your-command-line-cli">Your Command Line (cli)</a></li>
-<li><a class="reference internal" href="#your-interpreter">Your Interpreter</a></li>
-<li><a class="reference internal" href="#your-editor">Your Editor</a></li>
-<li><a class="reference internal" href="#why-no-ide">Why No IDE?</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#setting-up-your-environment">Setting Up Your Environment</a><ul>
-<li><a class="reference internal" href="#our-class-environment">Our Class Environment</a></li>
-<li><a class="reference internal" href="#step-1-python-2-7">Step 1: Python 2.7</a></li>
-<li><a class="reference internal" href="#step-2-pip">Step 2: Pip</a></li>
-<li><a class="reference internal" href="#step-3-virtualenv">Step 3: Virtualenv</a></li>
-<li><a class="reference internal" href="#step-4-virtualenvwrapper">Step 4: Virtualenvwrapper</a></li>
-<li><a class="reference internal" href="#step-5-make-a-class-environment">Step 5: Make a Class Environment</a></li>
-<li><a class="reference internal" href="#step-6-clone-class-repository">Step 6: Clone Class Repository</a></li>
-<li><a class="reference internal" href="#step-7-install-requirements">Step 7: Install Requirements</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#introduction-to-ipython">Introduction to iPython</a><ul>
-<li><a class="reference internal" href="#the-very-basics-of-ipython">The very basics of iPython</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#basic-python-syntax">Basic Python Syntax</a><ul>
-<li><a class="reference internal" href="#code-structure">Code structure</a></li>
-<li><a class="reference internal" href="#values">Values</a></li>
-<li><a class="reference internal" href="#values-in-action">Values in Action</a></li>
-<li><a class="reference internal" href="#symbols">Symbols</a></li>
-<li><a class="reference internal" href="#symbols-and-type">Symbols and Type</a></li>
-<li><a class="reference internal" href="#assignment">Assignment</a></li>
-<li><a class="reference internal" href="#in-place-assignment">In-Place Assignment</a></li>
-<li><a class="reference internal" href="#multiple-assignment">Multiple Assignment</a></li>
-<li><a class="reference internal" href="#nifty-python-trick">Nifty Python Trick</a></li>
-<li><a class="reference internal" href="#deleting">Deleting</a></li>
-<li><a class="reference internal" href="#identity">Identity</a></li>
-<li><a class="reference internal" href="#testing-identity">Testing Identity</a></li>
-<li><a class="reference internal" href="#equality">Equality</a></li>
-<li><a class="reference internal" href="#operator-precedence">Operator Precedence</a></li>
-<li><a class="reference internal" href="#python-operator-precedence">Python Operator Precedence</a></li>
-<li><a class="reference internal" href="#string-literals">String Literals</a></li>
-<li><a class="reference internal" href="#keywords">Keywords</a></li>
-<li><a class="reference internal" href="#builtins">__builtins__</a></li>
-<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
-<li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#functions-def">Functions: <tt class="docutils literal"><span class="pre">def</span></tt></a></li>
-<li><a class="reference internal" href="#calling-functions">Calling Functions</a></li>
-<li><a class="reference internal" href="#functions-call-stack">Functions: Call Stack</a></li>
-<li><a class="reference internal" href="#functions-tracebacks">Functions: Tracebacks</a></li>
-<li><a class="reference internal" href="#functions-return">Functions: <tt class="docutils literal"><span class="pre">return</span></tt></a></li>
-<li><a class="reference internal" href="#functions-parameters">Functions: parameters</a></li>
-<li><a class="reference internal" href="#functions-arguments">Functions: arguments</a></li>
-<li><a class="reference internal" href="#enough-for-now">Enough For Now</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">Homework</a><ul>
-<li><a class="reference internal" href="#task-1">Task 1</a></li>
-<li><a class="reference internal" href="#task-2">Task 2</a></li>
-<li><a class="reference internal" href="#task-3">Task 3</a></li>
-<li><a class="reference internal" href="#task-4">Task 4</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="session02.html" class="btn btn-neutral float-right" title="Session Two: Functions, Booleans and Modules"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="In This Course"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">In This Course</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="session02.html"
-                        title="next chapter">Session Two: Functions, Booleans and Modules</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/session01.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Cris Ewing, Christopher Barker.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="In This Course"
-             >previous</a> |</li>
-        <li><a href="index.html">Foundations 2: Python 1.0-dev documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Cris Ewing, Christopher Barker.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
