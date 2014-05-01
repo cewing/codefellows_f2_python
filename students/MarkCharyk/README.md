@@ -2,6 +2,7 @@ Mark Charyk
 ======
 ###### TA for CodeFellows Foundations II Python
 __[markcharyk@gmail.com](mailto:markcharyk@gmail.com)__
+
 **https://www.github.com/markcharyk**
 
 ### Who am I?
