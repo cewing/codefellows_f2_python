@@ -21,3 +21,7 @@ To this day I still keep typing `pythong` on accident.
 
 ### What do I like?
 Apart from code, I brew beer, run long distances, root for the Sounders and the Mariners, think about my dog too much, sing karaoke, use the Oxford comma, and [make bad jokes](https://www.twitter.com/markcharyk "My Twitter").
+
+### Where can you find me?
+I am planning on being around the CodeFellows office on Mondays leading up to class (5-7) and Thursdays during normal class time (7-9). 
+If neither of those times work for you, let me know and I'm absolutely available to come in by appointment as well.
