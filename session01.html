@@ -479,6 +479,9 @@ command:</p>
 <span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh
 </pre></div>
 </div>
+<p>The above system path may not be correct. If you do not have a file
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt> in <tt class="docutils literal"><span class="pre">/usr/local/bin</span></tt> you can run <tt class="docutils literal"><span class="pre">$</span> <span class="pre">which</span>
+<span class="pre">virtualenvwrapper.sh</span></tt> to find out where it ended up.</p>
 <p>Save the file, and then quit and restart your command line</p>
 <p>These variables tell <tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt> where to put new envs and projects.</p>
 <p>You need to create these two directories so that they are there to be found.</p>
@@ -570,6 +573,8 @@ command as follows:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">ARCHFLAGS</span><span class="o">=</span>-Wno-error<span class="o">=</span>unused-command-line-argument-hard-error-in-future pip install -r requirements.txt
 </pre></div>
 </div>
+<p>Also Note that on OS X you will want to uncomment the requirement for
+gnureadline in <tt class="docutils literal"><span class="pre">requirements.txt</span></tt></p>
 </div>
 </div>
 <div class="section" id="introduction-to-ipython">

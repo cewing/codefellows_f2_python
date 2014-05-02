@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Session Three: Something &mdash; Foundations 2: Python 1.0 documentation</title>
+  <title>Session Three: Sequences, Iteration and Strings &mdash; Foundations 2: Python 1.0 documentation</title>
   
 
   
@@ -115,7 +115,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Session Three: Something</li>
+    <li>Session Three: Sequences, Iteration and Strings</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/session03.txt" rel="nofollow"> View page source</a>
@@ -126,9 +126,219 @@
 </div>
           <div role="main">
             
-  <div class="section" id="session-three-something">
-<h1>Session Three: Something<a class="headerlink" href="#session-three-something" title="Permalink to this headline">¶</a></h1>
-<p>In which we learn some stuff</p>
+  <div class="section" id="session-three-sequences-iteration-and-strings">
+<h1>Session Three: Sequences, Iteration and Strings<a class="headerlink" href="#session-three-sequences-iteration-and-strings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="review-questions">
+<h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="review-of-previous-session">
+<h3>Review of Previous Session<a class="headerlink" href="#review-of-previous-session" title="Permalink to this headline">¶</a></h3>
+<ul class="build simple">
+<li>Values and Types</li>
+<li>Expressions</li>
+<li>Intro to functions</li>
+</ul>
+</div>
+<div class="section" id="homework-review">
+<h3>Homework Review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h3>
+<p class="center large">Any questions that are nagging?</p>
+</div>
+</div>
+<div class="section" id="sequences">
+<h2>Sequences<a class="headerlink" href="#sequences" title="Permalink to this headline">¶</a></h2>
+<p>Sequences are ordered collections of objects</p>
+<p>They can be indexed, sliced, iterated over,...</p>
+<p>They have a length:  <tt class="docutils literal"><span class="pre">len(sequence)</span></tt></p>
+<p>Common sequences (Remember Duck Typing?):</p>
+<blockquote>
+<div><ul class="simple">
+<li>strings</li>
+<li>tuples</li>
+<li>lists</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
+<p>square brackets for indexing: <tt class="docutils literal"><span class="pre">[]</span></tt></p>
+<p>Indexing starts at zero</p>
+<div class="highlight-python"><div class="highlight"><pre>In [98]: s = &quot;this is a string&quot;
+In [99]: s[0]
+Out[99]: &#39;t&#39;
+In [100]: s[5]
+Out[100]: &#39;i&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Indexing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Negative indexes count from the end</p>
+<div class="highlight-python"><div class="highlight"><pre>In [105]: s = &quot;this is a string&quot;
+In [106]: s[-1]
+Out[106]: &#39;g&#39;
+In [107]: s[-6]
+Out[107]: &#39;s&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="slices">
+<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">¶</a></h2>
+<p>Slicing: Pulling a range out of a sequence</p>
+<div class="highlight-python"><div class="highlight"><pre>sequence[start:finish]
+indexes for which:
+start &lt;= i &lt; finish
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Slices<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>In [121]: s = &quot;a bunch of words&quot;
+In [122]: s[2]
+Out[122]: &#39;b&#39;
+In [123]: s[6]
+Out[123]: &#39;h&#39;
+In [124]: s[2:6]
+Out[124]: &#39;bunc&#39;
+In [125]: s[2:7]
+Out[125]: &#39;bunch&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Slices<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>the indexes point to the spaces between the items</p>
+<div class="highlight-python"><div class="highlight"><pre>  X   X   X   X   X   X   X   X
+|   |   |   |   |   |   |   |
+0   1   2   3   4   5   6   7
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Slices<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Slicing satisfies nifty properties:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">len</span><span class="p">(</span> <span class="n">seq</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">]</span> <span class="p">)</span> <span class="o">==</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+<span class="n">seq</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">]</span> <span class="o">+</span> <span class="n">seq</span><span class="p">[</span><span class="n">b</span><span class="p">:</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slicing-vs-indexing">
+<h2>Slicing vs. Indexing<a class="headerlink" href="#slicing-vs-indexing" title="Permalink to this headline">¶</a></h2>
+<p>Indexing returns a single element</p>
+<div class="highlight-python"><div class="highlight"><pre>In [86]: l
+Out[86]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+In [87]: type(l)
+Out[87]: list
+In [88]: l[3]
+Out[88]: 3
+In [89]: type( l[3] )
+Out[89]: int
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Slicing vs. Indexing<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Unless it&#8217;s a string:</p>
+<div class="highlight-python"><div class="highlight"><pre>In [75]: s = &quot;a string&quot;
+In [76]: s[3]
+Out[76]: &#39;t&#39;
+In [77]: type(s[3])
+Out[77]: str
+</pre></div>
+</div>
+<p>There is no single character type</p>
+</div>
+<div class="section" id="id6">
+<h2>Slicing vs. Indexing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Slicing returns a sequence:</p>
+<div class="highlight-python"><div class="highlight"><pre>In [68]: l
+Out[68]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+In [69]: l[2:4]
+Out[69]: [2, 3]
+</pre></div>
+</div>
+<p>Even if it&#8217;s one element long</p>
+<div class="highlight-python"><div class="highlight"><pre>In [70]: l[2:3]
+Out[70]: [2]
+In [71]: type(l[2:3])
+Out[71]: list
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Slicing vs. Indexing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Indexing out of range produces an error</p>
+<div class="highlight-python"><div class="highlight"><pre>In [129]: s = &quot;a bunch of words&quot;
+In [130]: s[17]
+----&gt; 1 s[17]
+IndexError: string index out of range
+</pre></div>
+</div>
+<p>Slicing just gives you what&#8217;s there</p>
+<div class="highlight-python"><div class="highlight"><pre>In [131]: s[10:20]
+Out[131]: &#39; words&#39;
+In [132]: s[20:30]
+Out[132]: &quot;
+</pre></div>
+</div>
+<p>(demo)</p>
+</div>
+<div class="section" id="multiplying-and-slicing">
+<h2>Multiplying and slicing<a class="headerlink" href="#multiplying-and-slicing" title="Permalink to this headline">¶</a></h2>
+<p>from CodingBat: Warmup-1 &#8211; front3</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">front3</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="o">+</span><span class="nb">str</span><span class="o">+</span><span class="nb">str</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="nb">str</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="nb">str</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<blockquote>
+<div><dl class="docutils">
+<dt>def front3(str):</dt>
+<dd>return str[:3] * 3</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="slicing">
+<h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
+<p>from CodingBat: Warmup-1 &#8211; <tt class="docutils literal"><span class="pre">missing_char</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">missing_char</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+  <span class="n">front</span> <span class="o">=</span> <span class="nb">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+  <span class="n">back</span> <span class="o">=</span> <span class="nb">str</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">front</span> <span class="o">+</span> <span class="n">back</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">missing_char</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Slicing<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>you can skip items, too</p>
+<div class="highlight-python"><div class="highlight"><pre>In [289]: string = &quot;a fairly long string&quot;
+In [290]: string[0:15]
+Out[290]: &#39;a fairly long s&#39;
+In [291]: string[0:15:2]
+Out[291]: &#39;afil ogs&#39;
+In [292]: string[0:15:3]
+Out[292]: &#39;aallg&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="lab">
+<h2>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
+<p>Write some functions that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>return a string with the first and last characters exchanged.</li>
+<li>return a string with every other character removed</li>
+<li>return a string with the first and last 4 characters removed, and every other char in between</li>
+<li>return a string reversed (just with slicing)</li>
+<li>return a string with the middle, then last, then first third in a new order</li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 
 
