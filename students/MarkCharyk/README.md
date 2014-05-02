@@ -25,3 +25,4 @@ Apart from code, I brew beer, run long distances, root for the Sounders and the 
 ### Where can you find me?
 I am planning on being around the CodeFellows office on Mondays leading up to class (5-7) and Thursdays during normal class time (7-9). 
 If neither of those times work for you, let me know and I'm absolutely available to come in by appointment as well.
+Email is also always good, and I occasionally hang around on IRC in the #codefellows channel where you are also welcome.
