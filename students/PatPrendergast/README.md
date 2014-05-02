@@ -10,14 +10,14 @@ I hope to use Python and web development skills to develop/prototype web and mob
 
 I also have a serious media problem...
 
-    *   books(printed, no less!), 
-    *   music, 
-    *   movies, 
-    *   games, 
-    *   news,
-           NPR,
-           magazines, 
-           blogs. 
+*   books(printed, no less!), 
+*   music, 
+*   movies, 
+*   games, 
+*   news,
+       NPR,
+       magazines, 
+       blogs. 
     
 ####A Find and a Definition
 Finally, I found this [Dingus](http://daringfireball.net/projects/markdown/dingus), from the creator of Markdown.  It has a sidebar syntax cheatsheet and shows you a preview of the HTML source and result.
