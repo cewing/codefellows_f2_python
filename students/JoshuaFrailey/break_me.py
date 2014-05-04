@@ -15,3 +15,10 @@ def causeTypeError():
 def causeAttributeError():
     a = 5
     a.sort()
+
+def causeSyntaxError():
+    '''
+    Causes a SyntaxError
+    '''
+    while True
+        print 'Doing stuff'
