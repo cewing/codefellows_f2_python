@@ -1,6 +1,6 @@
 # Karl Gentner - Code Fellows F2 Python
 
-![alt text][logo](https://myspace.com/116010290/mixes/classic-my-photos-366434/photo/94131230)
+![alt text](https://myspace.com/116010290/mixes/classic-my-photos-366434/photo/94131230)
 
 ## About Me:
 
@@ -12,8 +12,8 @@ Now, I'm excited to try something new with programming. I have some previous exp
 
 ## Contact Information:
 
-* email: gentnerkarl@gmail.com
-* [LinkedIn: https://www.linkedin.com/in/karlgentner](https://www.linkedin.com/in/karlgentner)
-* [github: https://github.com/kgentner](https://github.com/kgentner)
+* [email](gentnerkarl@gmail.com)
+* [LinkedIn](https://www.linkedin.com/in/karlgentner)
+* [github](https://github.com/kgentner)
 
 
