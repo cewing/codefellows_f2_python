@@ -7,7 +7,7 @@
 ### Python & Me
 The first Python program I wrote was an eBay web scraper for my job in 2000. A few years later I wrote my first Python game (using the Pygame library) which featured pictures of my friends' faces vomiting, because I am a mature adult.
 
-Since then I've written bits of Python here and there but never really had a good foundation or reason to regularly develop in it, so I joined this class.
+Since then I've written bits of Python here and there but never really had a good foundation or reason to regularly develop in it, so I joined this class. Hooray!
 
 ### Databases & Me
 Much of my career has been spent managing databases for boring and/or stupid companies. A few years back I decided to enter the games industry, so things are a bit more fun now. Currently I work for Gazillion Entertainment, mainly on our newest game [Marvel Heroes](http://marvelheroes.com/ "Marvel Heroes").
