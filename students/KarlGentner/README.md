@@ -1,7 +1,5 @@
 # Karl Gentner - Code Fellows F2 Python
 
-![alt text](https://myspace.com/116010290/mixes/classic-my-photos-366434/photo/94131230)
-
 ## About Me:
 
 My name is Karl Gentner. I am currently a stay-at-home dad looking to get back to work as my daughter transitions to full-time preschool. Prior to fatherhood, I had devoted my life to all things related to audio... including some absolutely awful bands. Thankfully my daughter doesn't even know what a Compact Disc is. 
@@ -12,7 +10,7 @@ Now, I'm excited to try something new with programming. I have some previous exp
 
 ## Contact Information:
 
-* [email](gentnerkarl@gmail.com)
+* gentnerkarl@gmail.com
 * [LinkedIn](https://www.linkedin.com/in/karlgentner)
 * [github](https://github.com/kgentner)
 
