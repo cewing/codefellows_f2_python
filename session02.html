@@ -70,6 +70,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Session Two: Functions, Booleans and Modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#review-questions">Review/Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-work">Git Work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quick-intro-to-basics">Quick Intro to Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#in-class-lab">In-Class Lab:</a></li>
@@ -143,6 +144,102 @@
 <div class="section" id="homework-review">
 <h3>Homework Review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h3>
 <p class="center large">Any questions that are nagging?</p>
+</div>
+</div>
+<div class="section" id="git-work">
+<h2>Git Work<a class="headerlink" href="#git-work" title="Permalink to this headline">¶</a></h2>
+<p class="center large">Let&#8217;s get to know your fellow students!</p>
+<div class="section" id="working-with-an-upstream">
+<h3>Working with an Upstream<a class="headerlink" href="#working-with-an-upstream" title="Permalink to this headline">¶</a></h3>
+<p>You&#8217;ve created a fork of the class repository from the <tt class="docutils literal"><span class="pre">codefellows</span></tt> account
+on GitHub.</p>
+<p>You&#8217;ve pushed your own changes to that fork, and then issued pull requests to
+have that worked merged back to the <tt class="docutils literal"><span class="pre">codefellows</span></tt> original.</p>
+<p>You want to keep your fork up-to-date with that original copy as the class goes
+forward.</p>
+<p>To do this, you use the git concept of an <strong>upstream</strong> repository.</p>
+<p>Since <tt class="docutils literal"><span class="pre">git</span></tt> is a <em>distributed</em> versioning system, there is no <strong>central</strong>
+repository that serves as the one to rule them all.</p>
+<p>Instead, you work with <em>local</em> repositories, and <em>remotes</em> that they are
+connected to.</p>
+<p>Cloned repositories get an <em>origin</em> remote for free:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git remote -v
+origin  git@github.com:cewing/sea-c15-python.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:cewing/sea-c15-python.git <span class="o">(</span>push<span class="o">)</span>
+</pre></div>
+</div>
+<p>You can add <em>remotes</em> at will, to connect your <em>local</em> repository to other
+copies of it in different remote locations.</p>
+<p>This allows you to grab changes made to the repository in these other
+locations.</p>
+<p>For our class, we will add an <em>upstream</em> remote to our local copy that points
+to the original copy of the material in the <tt class="docutils literal"><span class="pre">codefellows</span></tt> account.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git remote add upstream https://github.com/codefellows/sea-c15-python.git
+<span class="nv">$ </span>git remote -v
+origin  git@github.com:cewing/sea-c15-python.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:cewing/sea-c15-python.git <span class="o">(</span>push<span class="o">)</span>
+upstream    https://github.com/codefellows/sea-c15-python.git <span class="o">(</span>fetch<span class="o">)</span>
+upstream    https://github.com/codefellows/sea-c15-python.git <span class="o">(</span>push<span class="o">)</span>
+</pre></div>
+</div>
+<p>To get the updates from your new remote, you&#8217;ll need first to fetch everything:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git fetch --all
+Fetching origin
+Fetching upstream
+...
+</pre></div>
+</div>
+<p>Then you can see the branches you have locally available:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git branch -a
+  gh-pages
+* master
+  upstream-master
+  remotes/origin/HEAD -&gt; origin/master
+  ...
+  remotes/upstream/gh-pages
+  ...
+</pre></div>
+</div>
+<p>Finally, you can fetch and then merge changes from the upstream master.</p>
+<p>Start by making sure you are on your own master branch:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git checkout master
+</pre></div>
+</div>
+<p>This is really really important.  Take the time to ensure you are where you
+think you are.</p>
+<p>Then, fetch the upstream master branch and merge it into your master:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git fetch upstream master
+From github.com:codefellows/sea-c15-python
+ * branch            master     -&gt; FETCH_HEAD
+<span class="nv">$ </span>git merge upstream/master
+Updating 137a1db..2119f9b
+Fast-forward
+...
+</pre></div>
+</div>
+<p>Now all the changes from <em>upstream</em> are present in your local clone.</p>
+<p>In order to preserve them in your fork on GitHub, you&#8217;ll have to push:</p>
+<div class="highlight-bash"><div class="highlight"><pre>$ git status
+On branch master
+Your branch is ahead of &#39;origin/master&#39; by 10 commits.
+  (use &quot;git push&quot; to publish your local commits)
+$ git push origin master
+Counting objects: 44, done.
+...
+$
+</pre></div>
+</div>
+<p>You can incorporate this into your daily workflow:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git checkout master
+<span class="nv">$ </span>git fetch upstream master
+<span class="nv">$ </span>git merge upstream/master
+<span class="nv">$ </span>git push origin master
+<span class="o">[</span><span class="k">do </span>some work<span class="o">]</span>
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;here is a good commit message&quot;</span>
+<span class="nv">$ </span>git push origin master
+<span class="o">[</span>make a pull request<span class="o">]</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="quick-intro-to-basics">

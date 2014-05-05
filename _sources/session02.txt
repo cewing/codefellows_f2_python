@@ -30,6 +30,148 @@ Homework Review
 Any questions that are nagging?
 
 
+Git Work
+========
+
+.. rst-class:: center large
+
+Let's get to know your fellow students!
+
+
+Working with an Upstream
+------------------------
+
+You've created a fork of the class repository from the ``codefellows`` account
+on GitHub.
+
+You've pushed your own changes to that fork, and then issued pull requests to
+have that worked merged back to the ``codefellows`` original.
+
+You want to keep your fork up-to-date with that original copy as the class goes
+forward.
+
+To do this, you use the git concept of an **upstream** repository.
+
+.. nextslide::
+
+Since ``git`` is a *distributed* versioning system, there is no **central**
+repository that serves as the one to rule them all.
+
+Instead, you work with *local* repositories, and *remotes* that they are
+connected to.
+
+Cloned repositories get an *origin* remote for free:
+
+.. code-block:: bash
+
+    $ git remote -v
+    origin  git@github.com:cewing/sea-c15-python.git (fetch)
+    origin  git@github.com:cewing/sea-c15-python.git (push)
+
+.. nextslide:: Adding a Remote
+
+You can add *remotes* at will, to connect your *local* repository to other
+copies of it in different remote locations.
+
+This allows you to grab changes made to the repository in these other
+locations.
+
+For our class, we will add an *upstream* remote to our local copy that points
+to the original copy of the material in the ``codefellows`` account.
+
+.. code-block:: bash
+
+    $ git remote add upstream https://github.com/codefellows/sea-c15-python.git
+    $ git remote -v
+    origin  git@github.com:cewing/sea-c15-python.git (fetch)
+    origin  git@github.com:cewing/sea-c15-python.git (push)
+    upstream    https://github.com/codefellows/sea-c15-python.git (fetch)
+    upstream    https://github.com/codefellows/sea-c15-python.git (push)
+
+.. nextslide:: Fetching Everything.
+
+To get the updates from your new remote, you'll need first to fetch everything:
+
+.. code-block:: bash
+
+    $ git fetch --all
+    Fetching origin
+    Fetching upstream
+    ...
+
+Then you can see the branches you have locally available:
+
+.. code-block:: bash
+
+    $ git branch -a
+      gh-pages
+    * master
+      upstream-master
+      remotes/origin/HEAD -> origin/master
+      ...
+      remotes/upstream/gh-pages
+      ...
+
+.. nextslide:: Fetching Upstream Changes
+
+Finally, you can fetch and then merge changes from the upstream master.
+
+Start by making sure you are on your own master branch:
+
+.. code-block:: bash
+
+    $ git checkout master
+
+This is really really important.  Take the time to ensure you are where you
+think you are.
+
+.. nextslide:: Merging Upstream Changes
+
+Then, fetch the upstream master branch and merge it into your master:
+
+.. code-block:: bash
+
+    $ git fetch upstream master
+    From github.com:codefellows/sea-c15-python
+     * branch            master     -> FETCH_HEAD
+    $ git merge upstream/master
+    Updating 137a1db..2119f9b
+    Fast-forward
+    ...
+
+.. nextslide:: Pushing to Origin
+
+Now all the changes from *upstream* are present in your local clone.
+
+In order to preserve them in your fork on GitHub, you'll have to push:
+
+.. code-block:: bash
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 10 commits.
+      (use "git push" to publish your local commits)
+    $ git push origin master
+    Counting objects: 44, done.
+    ...
+    $
+
+.. nextslide:: Daily Workflow
+
+You can incorporate this into your daily workflow:
+
+.. code-block:: bash
+
+    $ git checkout master
+    $ git fetch upstream master
+    $ git merge upstream/master
+    $ git push origin master
+    [do some work]
+    $ git commit -m "here is a good commit message"
+    $ git push origin master
+    [make a pull request]
+
+
 Quick Intro to Basics
 =====================
 
