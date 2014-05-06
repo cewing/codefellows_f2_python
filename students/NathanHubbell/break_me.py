@@ -3,8 +3,8 @@ def name_Error(num):
     a=b+c
 def type_Error(str):
     return sum(str)
-#def syntax_Error(str):
-#    retrn sum(str)
+def syntax_Error(str):
+    retrn sum(str)
 def attribute_Error(num):
     num.lower()
     return num
