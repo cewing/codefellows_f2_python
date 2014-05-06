@@ -30,6 +30,148 @@ Homework Review
 Any questions that are nagging?
 
 
+Git Work
+========
+
+.. rst-class:: center large
+
+Let's get to know your fellow students!
+
+
+Working with an Upstream
+------------------------
+
+You've created a fork of the class repository from the ``codefellows`` account
+on GitHub.
+
+You've pushed your own changes to that fork, and then issued pull requests to
+have that worked merged back to the ``codefellows`` original.
+
+You want to keep your fork up-to-date with that original copy as the class goes
+forward.
+
+To do this, you use the git concept of an **upstream** repository.
+
+.. nextslide::
+
+Since ``git`` is a *distributed* versioning system, there is no **central**
+repository that serves as the one to rule them all.
+
+Instead, you work with *local* repositories, and *remotes* that they are
+connected to.
+
+Cloned repositories get an *origin* remote for free:
+
+.. code-block:: bash
+
+    $ git remote -v
+    origin  git@github.com:cewing/sea-c15-python.git (fetch)
+    origin  git@github.com:cewing/sea-c15-python.git (push)
+
+.. nextslide:: Adding a Remote
+
+You can add *remotes* at will, to connect your *local* repository to other
+copies of it in different remote locations.
+
+This allows you to grab changes made to the repository in these other
+locations.
+
+For our class, we will add an *upstream* remote to our local copy that points
+to the original copy of the material in the ``codefellows`` account.
+
+.. code-block:: bash
+
+    $ git remote add upstream https://github.com/codefellows/sea-c15-python.git
+    $ git remote -v
+    origin  git@github.com:cewing/sea-c15-python.git (fetch)
+    origin  git@github.com:cewing/sea-c15-python.git (push)
+    upstream    https://github.com/codefellows/sea-c15-python.git (fetch)
+    upstream    https://github.com/codefellows/sea-c15-python.git (push)
+
+.. nextslide:: Fetching Everything.
+
+To get the updates from your new remote, you'll need first to fetch everything:
+
+.. code-block:: bash
+
+    $ git fetch --all
+    Fetching origin
+    Fetching upstream
+    ...
+
+Then you can see the branches you have locally available:
+
+.. code-block:: bash
+
+    $ git branch -a
+      gh-pages
+    * master
+      upstream-master
+      remotes/origin/HEAD -> origin/master
+      ...
+      remotes/upstream/gh-pages
+      ...
+
+.. nextslide:: Fetching Upstream Changes
+
+Finally, you can fetch and then merge changes from the upstream master.
+
+Start by making sure you are on your own master branch:
+
+.. code-block:: bash
+
+    $ git checkout master
+
+This is really really important.  Take the time to ensure you are where you
+think you are.
+
+.. nextslide:: Merging Upstream Changes
+
+Then, fetch the upstream master branch and merge it into your master:
+
+.. code-block:: bash
+
+    $ git fetch upstream master
+    From github.com:codefellows/sea-c15-python
+     * branch            master     -> FETCH_HEAD
+    $ git merge upstream/master
+    Updating 137a1db..2119f9b
+    Fast-forward
+    ...
+
+.. nextslide:: Pushing to Origin
+
+Now all the changes from *upstream* are present in your local clone.
+
+In order to preserve them in your fork on GitHub, you'll have to push:
+
+.. code-block:: bash
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 10 commits.
+      (use "git push" to publish your local commits)
+    $ git push origin master
+    Counting objects: 44, done.
+    ...
+    $
+
+.. nextslide:: Daily Workflow
+
+You can incorporate this into your daily workflow:
+
+.. code-block:: bash
+
+    $ git checkout master
+    $ git fetch upstream master
+    $ git merge upstream/master
+    $ git push origin master
+    [do some work]
+    $ git commit -m "here is a good commit message"
+    $ git push origin master
+    [make a pull request]
+
+
 Quick Intro to Basics
 =====================
 
@@ -377,6 +519,109 @@ The key is the ``*`` (splat) or ``**`` (double-splat) operator:
 **args** and **kwargs** are *conventional* names for these.
 
 
+Documentation
+-------------
+
+It's often helpful to leave information in your code about what you were
+thinking when you wrote it.
+
+This can help reduce the number of `WTFs per minute`_ in reading it later.
+
+.. _WTFs per minute: http://www.osnews.com/story/19266/WTFs_m
+
+There are two approaches to this:
+
+.. rst-class:: build
+
+* Comments
+* Docstrings
+
+.. nextslide:: Comments
+
+Comments go inline in the body of your code, to explain reasoning:
+
+.. code-block:: python
+
+    if (frobnaglers > whozits):
+        # borangas are shermed to ensure frobnagler population
+        # does not grow out of control
+        sherm_the_boranga()
+
+You can use them to mark places you want to revisit later:
+
+.. code-block:: python
+
+    for partygoer in partygoers:
+        for baloon in baloons:
+            for cupcake in cupcakes:
+                # TODO: Reduce time complexity here.  It's killing us
+                #  for large parties.
+                resolve_party_favor(partygoer, baloon, cupcake)
+
+.. nextslide:: Comments
+
+Be judicious in your use of comments.
+
+Use them when you need to.
+
+Make them useful.
+
+This is not useful:
+
+.. code-block:: python
+
+    for sponge in sponges:
+        # apply soap to each sponge
+        worker.apply_soap(sponge)
+
+.. nextslide:: Docstrings
+
+In Python, ``docstrings`` are used to provide in-line documentation in a number
+of places.
+
+The first place we will see is in the definition of ``functions``.
+
+To define a function you use the ``def`` keyword.
+
+If a ``string literal`` is the first thing in the function block following the
+header, it is a ``docstring``:
+
+.. code-block:: python
+
+    def complex_function(arg1, arg2, kwarg1=u'bannana'):
+        """Return a value resulting from a complex calculation."""
+        # code block here
+
+You can then read this in an interpreter as the ``__doc__`` attribute of the
+function object.
+
+.. nextslide:: Docstrings
+
+A ``docstring`` should:
+
+.. rst-class:: build
+
+* be a complete sentence in the form of a command describing what the function
+  does.
+
+  * """Return a list of values based on blah blah""" is a good docstring
+  * """Returns a list of values based on blah blah""" is *not*
+
+* fit onto a single line.
+
+  * If more description is needed, make the first line a complete sentence and
+    add more lines below for enhancement.
+
+* be enclosed with triple-quotes.
+
+  * This allows for easy expansion if required at a later date
+  * Always close on the same line if the docstring is only one line.
+
+For more information see `PEP 257: Docstring Conventions`_.
+
+.. _PEP 257\: Docstring Conventions: http://legacy.python.org/dev/peps/pep-0257/
+
+
 Recursion
 ---------
 
@@ -428,16 +673,10 @@ points::
 
     dist = sqrt( (x1-x2)**2 + (y1-y2)**2 )
 
-Experiment with ``locals`` by adding this statement to a function or two you
-have written::
+Experiment with ``locals`` by adding this statement to the function you just
+wrote:::
 
     print locals()
-
-Compute the Fibonacci series with a recursive function::
-
-    f(0) = 0; f(1) = 1
-    f(n) = f(n-1) + f(n-2)
-    0, 1, 1, 2, 3, 5, 8, 13, 21, ...
 
 
 Boolean Expressions
@@ -684,8 +923,8 @@ Exercises
      multiples of three print "Fizz" instead of the number and for the
      multiples of five print "Buzz". For numbers which are multiples of both
      three and five print "FizzBuzz" instead.
-  * Re-write a couple CodingBat exercises, using a conditional expression
-  * Re-write a couple CodingBat exercises, returning the direct boolean results
+  * Re-write a couple of CodingBat exercises, using a conditional expression
+  * Re-write a couple of CodingBat exercises, returning the direct boolean results
 
 (use whichever you like, or the ones in: ``code/codingbat.rst``  )
 
@@ -1014,4 +1253,109 @@ You wouldn't want to import * those -- check out
 Homework
 ========
 
+You have two tasks to complete by Wednesday:
 
+Task 1
+------
+
+The Ackermann function, A(m, n), is defined::
+
+    A(m, n) =
+        n+1   if  m = 0
+        A(m−1, 1)   if  m > 0  and  n = 0
+        A(m−1, A(m, n−1))   if  m > 0  and  n > 0.
+
+See http://en.wikipedia.org/wiki/Ackermann_function.
+
+Create a new module called ``ack.py`` in your student folder. In that module,
+write a function named ``ack`` that performs Ackermann's function.
+
+* Write a good ``docstring`` for your function according to PEP 257.
+* Ackermann's function is not defined for input values less than 0.  Validate
+  inputs to your function and return None if they are negative.
+
+.. nextslide::
+
+The wikipedia page provides a table of output values for inputs between 0 and
+4. Using this table, add a ``if __name__ == "__main__":`` block to test your
+function.
+
+Test each pair of inputs between 0 and 4 and assert that the result produced by
+your function is the result expected by the wikipedia table.
+
+When your module is run from the command line, these tests should be executed.
+If they all pass, print "All Tests Pass" as the result.
+
+Add your new module to your git clone and commit frequently while working on
+your implementation. Include good commit messages that explain concisely both
+*what* you are doing and *why*.
+
+When you are finished, push your changes to your fork of the class repository
+in GitHub. Then make a pull request and submit your assignment in canvas.
+
+::
+
+    - Adapted from "Think Python": Chapter 6, excercise 5.
+
+Task 2
+------
+
+The `Fibonacci Series`_ is a numeric series starting with the integers 0 and 1.
+In this series, the next integer is determined by summing the previous two.
+This gives us::
+
+    0, 1, 1, 2, 3, 5, 8, 13, ...
+
+Create a new module ``series.py`` in your student folder. In it, add a function
+called ``fibonacci``. The function should have one parameter ``n``. The
+function should return the ``nth`` value in the fibonacci series.
+
+Ensure that your function has a well-formed ``docstring``
+
+.. _Fibonacci Series: http://en.wikipedia.org/wiki/Fibbonaci_Series
+
+.. nextslide::
+
+The `Lucas Numbers`_ are a related series of integers that start with the
+values 2 and 1 rather than 0 and 1. The resulting series looks like this::
+
+    2, 1, 3, 4, 7, 11, 18, 29, ...
+
+.. _Lucas Numbers: http://en.wikipedia.org/wiki/Lucas_number
+
+In your ``series.py`` module, add a new function ``lucas`` that returns the
+``nth`` value in the *lucas numbers*
+
+Ensure that your function has a well-formed ``docstring``
+
+.. nextslide::
+
+Both the *fibonacci series* and the *lucas numbers* are based on an identical
+formula.
+
+Add a third function called ``sum_series`` with one required parameter and two
+optional parameters. The required parameter will determine which element in the
+series to print. The two optional parameters will have default values of 0 and
+1 and will determine the first two values for the series to be produced.
+
+Calling this function with no optional paramters will produce numbers from the
+*fibonacci series*.  Calling it with the optional arguments 2 and 1 will
+produce values from the *lucas numbers*. Other values for the optional
+parameters will produce other series.
+
+Ensure that your function has a well-formed ``docstring``
+
+.. nextslide::
+
+Add an ``if __name__ == "__main__":`` block to the end of your ``series.py``
+module. Use the block to write a series of ``assert`` statements that
+demonstrate that your three functions work properly.
+
+Use comments in this block to inform the observer what your tests do.
+
+Add your new module to your git clone and commit frequently while working on
+your implementation. Include good commit messages that explain concisely both
+*what* you are doing and *why*.
+
+When you are finished, push your changes to your fork of the class repository
+in GitHub. Then make a pull request and submit your assignment in Canvas.

@@ -703,6 +703,10 @@ command as follows:
 
     ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -r requirements.txt
 
+Also Note that on OS X you will want to uncomment the requirement for
+gnureadline in ``requirements.txt``
+
+
 Introduction to iPython
 =======================
 

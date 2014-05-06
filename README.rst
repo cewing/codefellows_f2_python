@@ -40,7 +40,7 @@ Once a virtual environment is established, clone this repository:
 .. code-block:: bash
 
     
-    (cff2py)$ git clone https://github.com/cewing/codefellows_f2_python.git
+    (cff2py)$ git clone https://github.com/codefellows/sea-c15-python.git
     ...
     (cff2py)$ cd codefellows_f2_python
 
