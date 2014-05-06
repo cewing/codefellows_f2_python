@@ -33,7 +33,6 @@ def xyz_there(str):
 
 # sum13() http://codingbat.com/prob/p167025
 
-# Josh Frailey:
 # Has two iterations through the list and one nested iteration through a third created list
 # -> Not very O(happy)
 def sum13(nums):
