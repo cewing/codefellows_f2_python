@@ -592,6 +592,9 @@ header, it is a ``docstring``:
         """Return a value resulting from a complex calculation."""
         # code block here
 
+You can then read this in an interpreter as the ``__doc__`` attribute of the
+function object.
+
 .. nextslide:: Docstrings
 
 A ``docstring`` should:
