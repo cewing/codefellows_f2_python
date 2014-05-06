@@ -21,6 +21,7 @@ def ackermann(m,n):
         return ackermann(m-1, ackermann(m, n-1))
 
 if __name__ == "__main__":
+    #TODO: rewrite outside of nose. Nose isn't available in cff2py.
     import nose
     nose.run(argv=[__file__, '--with-doctest', '-vv'])
     
