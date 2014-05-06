@@ -1,24 +1,19 @@
-"""Ackermann Function"""
+"""Ackermann Function Assignment"""
 
 
-def ackermann(m, n):
-    if m == 0:
-        return n + 1
-    elif n == 0:
-        while m > 0:
-            acker = ackermann(m-1, 0)
-            print acker, n
-        return acker
-    else:
-        pass
+def ackermann(m,n):
+    """
+    Evaluate the Ackermann function for given integer indexes m, n.
 
-
-def ackermann_tail_recursive(m,n):
-    """The verbatim Ackermann function written in an if/else construction
+    More information available at
     http://en.wikipedia.org/wiki/Ackermann_function
-    Unfortunately tail recursion is a problem, and as written, this funcition
-    can't be evaluated past m = 3, n = 3 """
-    if m == 0:
+    Note that tail recursion is a problem, and as written, this function
+    can't be evaluated past m = 3, n = 3.
+    """
+
+    if int(m) != m or int(n) != n:
+        return None
+    elif m == 0:
         return n + 1
     elif n == 0:
         return ackermann(m-1, 1)
