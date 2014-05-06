@@ -2,8 +2,11 @@ General Information
 ===================
 
 Name: Gideon Sylvan
+
 Age: 24 
+
 Height: 5'11.5"
+
 Weight: 170lbs
 
 
@@ -15,7 +18,7 @@ Interests
 + family-style meals
 + backpacking
 + self denfense
-+ TV shows ()
++ TV shows
 + reading the news
 
 Trivia
