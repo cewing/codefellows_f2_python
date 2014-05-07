@@ -52,9 +52,10 @@ def lucas(n):
         return recursive_lucas(n)
 
 
-def series_sum(n, n0=0, n1=1):
+def sum_series(n, n0=0, n1=1):
     """Return the nth value in a.
     """
+
     def check_value(n):
         if not isinstance(n, int):
             raise ValueError
@@ -107,15 +108,17 @@ if __name__ == "__main__":
 
     for input_, output in fibonacci_vals:
         assert fibonacci(input_) == output
+        assert sum_series(input_) == output
 
     for input_, output in lucas_vals:
         assert lucas(input_) == output
+        assert sum_series(input_) == output
 
     for badval in [1, -2.78, 3.14, 'a', []]:
         try:
             fibonacci_result = fibonacci(badval)
             lucas_result = lucas(badval)
-            # sum_series_result = sum_series(badval)
+            sum_series_result = sum_series(badval)
         except ValueError:
             pass
         else:
