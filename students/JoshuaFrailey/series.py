@@ -51,6 +51,28 @@ def lucas(n):
     if check_value(n):
         return recursive_lucas(n)
 
+
+def series_sum(n, n0=0, n1=1):
+    """Return the nth value in a.
+    """
+    def check_value(n):
+        if not isinstance(n, int):
+            raise ValueError
+        if n < 0:
+            raise ValueError
+        return True
+
+    def rercursive_sum(n, n0, n1):
+        if n == 0:
+            return n0
+        elif n == n1:
+            return n1
+        else:
+            return rercursive_sum(n-1, n0, n1) + rercursive_sum(n-2, n0, n1)
+
+    if check_value(n):
+        return rercursive_sum(n, n0, n1)
+
 if __name__ == "__main__":
     fibonacci_vals = [
         (0, 0),
@@ -86,14 +108,27 @@ if __name__ == "__main__":
     for input_, output in fibonacci_vals:
         assert fibonacci(input_) == output
 
-    for badval in [-1, -2.78, 3.14, 'a', []]:
+    for input_, output in lucas_vals:
+        assert lucas(input_) == output
+
+    for badval in [1, -2.78, 3.14, 'a', []]:
         try:
             fibonacci_result = fibonacci(badval)
-            # lucas_result = lucas(badval)
+            lucas_result = lucas(badval)
             # sum_series_result = sum_series(badval)
         except ValueError:
             pass
         else:
-            print u"A bad value did not trigger a ValueError!"
+            print u"A bad value did not trigger a ValueError in fibonacci()!"
+
+    # for badval in [-1, -2.78, 3.14, 'a', []]:
+    #     try:
+    #         lucas_result = lucas(badval)
+    #         # lucas_result = lucas(badval)
+    #         # sum_series_result = sum_series(badval)
+    #     except ValueError:
+    #         pass
+    #     else:
+    #         print u"A bad value did not trigger a ValueError in lucas()!"
 
     print u"All tests passed!"
