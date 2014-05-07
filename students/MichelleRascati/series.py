@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # Check that sum_series works for fib and luc
     for i, val in enumerate(fib, start=1):
-        assert val == fibonacci(i)
+        assert val == sum_series(i)
     for i, val in enumerate(luc, start=1):
-        assert val == lucas(i)
+        assert val == sum_series(i, 2, 1)
     print "All Tests Pass"
