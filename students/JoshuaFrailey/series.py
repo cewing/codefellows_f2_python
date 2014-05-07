@@ -2,7 +2,7 @@ def fibonacci(n):
     """Return the nth value in the Fibonacci series.
 
     Arguments:
-    n: A nonnegative, nonzero integer.
+    n: A positive integer.
     Return value: A positive integer.
     """
 
@@ -66,14 +66,22 @@ if __name__ == "__main__":
         (10, 55),
         (11, 89),
         (12, 144)
-        ]
+        ]  # Values from http://en.wikipedia.org/wiki/Fibonacci_number
     lucas_vals = [
         (0, 2),
         (1, 1),
         (2, 3),
         (3, 4),
         (4, 7),
-        (4, 11)]
+        (5, 11),
+        (6, 18),
+        (7, 29),
+        (8, 47),
+        (9, 76),
+        (10, 123),
+        (11, 199),
+        (12, 322)
+        ]  # Values from http://oeis.org/A000204
 
     for input_, output in fibonacci_vals:
         assert fibonacci(input_) == output
