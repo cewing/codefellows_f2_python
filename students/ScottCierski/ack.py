@@ -17,12 +17,10 @@ if __name__ == '__main__':
 
     i = 0
 
+    # Loop through m and n values, and assert each pair against the correct value from ack_list
     for m in range(4):
         for n in range(4):
             ack_result = ack_list[i]
             assert ack(m, n) == ack_result
             print i, m, n, ack_result
             i = i + 1
-
-
-
