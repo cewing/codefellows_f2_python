@@ -5,12 +5,23 @@ def fibonacci(n):
     n: A nonnegative, nonzero integer.
     Return value: A positive integer.
     """
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+    def check_value(n):
+        if not isinstance(n, int):
+            raise ValueError
+        if n < 0:
+            raise ValueError
+        return True
+
+    def recursive_fib(n):
+            if n == 0:
+                return 0
+            elif n == 1:
+                return 1
+            else:
+                return recursive_fib(n-1) + recursive_fib(n-2)
+
+    if check_value(n):
+        return recursive_fib(n)
 
 if __name__ == "__main__":
     fibonacci_vals = [
