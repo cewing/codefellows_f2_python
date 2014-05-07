@@ -1,9 +1,12 @@
 def ack(m, n):
-    """Return the Ackermann-Peter function.
+    """
+    Return the Ackermann-Peter function.
 
     Arguments:
     m: A nonnegative integer between 0 and 3 inclusive.
     n: A nonnegative integer between 0 and 4 inclusive.
+
+
     Return value: A nonnegative integer
     """
     if (not isinstance(m, int)) or (not isinstance(n, int)):
@@ -39,8 +42,9 @@ if __name__ == '__main__':
         (3, 2): 29,
         (3, 3): 61,
         (3, 4): 125,
-        }
+        }  # Values from wikipedia.org/wiki/Ackermann_function
 
+    # Verifies the reutrned values match expectations
     for input_ in vals:
         assert ack(input_[0], input_[1]) == vals[input_]
 
@@ -62,6 +66,7 @@ if __name__ == '__main__':
         (2.78, [])
         ]
 
+    # Verify that only positive integers are processed by the fucntion
     for badval in badvals:
         try:
             result = ack(badval[0], badval[1])
