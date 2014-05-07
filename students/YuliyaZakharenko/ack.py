@@ -7,8 +7,27 @@ def A(m,n):
     else:
         return A(m-1, A(m,n-1))  
 def test_fun():
-    if A(0,0) == 1 and A(1,0) == 2 and A(2,0) == 3 and A(3,0) == 5 and A(0,1) == 2 and A(1,1) == 3 and A(2,1) == 5 and A(3,1) == 13 and A(0,2) == 3 and A(1,2) == 4 and A(2,2) == 7 and A(3,2) == 29 and A(0,3) == 4 and A(1,3) == 5 and A(2,3) == 9 and A(3,3) == 61 and A(0,4) == 5 and A(1,4) == 6 and A(2,4) == 11 and A(3,4) == 125:
-        print "All Tests Pass"    
+    assert A(0,0) == 1
+    assert A(1,0) == 2
+    assert A(2,0) == 3
+    assert A(3,0) == 5
+    assert A(0,1) == 2
+    assert A(1,1) == 3
+    assert A(2,1) == 5
+    assert A(3,1) == 13
+    assert A(0,2) == 3
+    assert A(1,2) == 4
+    assert A(2,2) == 7
+    assert A(3,2) == 29
+    assert A(0,3) == 4
+    assert A(1,3) == 5
+    assert A(2,3) == 9
+    assert A(3,3) == 61
+    assert A(0,4) == 5
+    assert A(1,4) == 6
+    assert A(2,4) == 11
+    assert A(3,4) == 125
+    print "All Tests Pass"    
 
 if __name__ == "__main__":
     test_fun()
