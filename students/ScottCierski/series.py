@@ -1,42 +1,37 @@
 import sys
 
-def fibonacci(n):
-    """This function returns the nth value of the Fibonacci sequence"""
+def sum_series(nth_value, first_value = 0, second_value = 1):
+    """This function returns the nth value of an integer sequence, wherein each integer is the sum of the previous two."""
 
-    # Convert input to int, in case a negative integer is passed in
-    n = int(n)
+    # Convert inputs to int
+    nth_value = int(nth_value)
+    first_value = int(first_value)
+    second_value = int(second_value)
 
-    a = 0
-    b = 1
-
-    if n < 0:
+    #  Exit if nth_value is negative
+    if nth_value < 0:
         print('Only positive values are allowed.')
         return None
-    # First two values of sequence are fixed at 0 and 1, so just return them if they're passed in
-    elif n ==0:
-        return 0
-    elif n ==1:
-        return 1
-    # This is a special case hack for 2
-    elif n == 2:
-        return a + b
     else:
-        for i in range(n-2):
-            # add current two values
-            c = a + b
+        sum_list = [first_value, second_value]
+        print sum_list
+        for i in range(nth_value):
+            # add current two values, and append sum to end of sum_list
+            current_sum = first_value + second_value
+            sum_list.append(current_sum)
 
-            # Debugging
-            # print '1st: ', a, b, c
+            # Shift values
+            first_value = second_value
+            second_value = current_sum
 
-            # Shift b and c back to a and b 
-            a = b
-            b = c
-
-            # Debugging
-            print '2nd: ', a, b
-
-    return b
+    print '+++'
+    print sum_list
+    print sum_list[nth_value]
+    return sum_list[nth_value]
 
 if __name__ == '__main__':
-    n = sys.argv[1]
-    fibonacci(n)
+    a = sys.argv[1]
+    b = sys.argv[2]
+    c = sys.argv[3]
+    print a, b, c
+    sum_series(a, b, c)
