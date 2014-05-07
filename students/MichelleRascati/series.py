@@ -7,5 +7,5 @@ def fibonacci(n):
     elif n == 2:
         return 1
     for i in range(1, n - 1):
-        seq = seq.append(seq[i] + seq[i - 1])
+        seq.append(seq[i] + seq[i - 1])
     return seq[-1]
