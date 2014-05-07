@@ -26,3 +26,4 @@ def sum_series(n, x = 0, y = 1):
 		return lucas(n)
 	else:
 	    print "undefined series"	
+if __name__ == "__main__":
