@@ -1,8 +1,11 @@
 def fibonacci(n):
-    """Return the nth value in the Fibonacci series.
 
-    Arguments:
+    """
+    Return the nth integer in the Fibonacci series.
+
+    Argument:
     n: A positive integer.
+
     Return value: A positive integer.
     """
 
@@ -26,10 +29,13 @@ def fibonacci(n):
 
 
 def lucas(n):
-    """Return the nth value in the Lucas series.
 
-    Arguments:
-    n: A nonnegative, nonzero integer.
+    """
+    Return the nth integer in the Lucas series.
+
+    Argument:
+    n: A nonnegative integer.
+
     Return value: A positive integer.
     """
 
@@ -53,7 +59,16 @@ def lucas(n):
 
 
 def sum_series(n, n0=0, n1=1):
-    """Return the nth value in a.
+
+    """
+    Return the nth int in an summed int sequence started by given args.
+
+    Arguments:
+    n: A nonnegative integer.
+    n0: A nonnegative integer.
+    n1: A nonnegative integer.
+
+    Return value: A positive integer.
     """
 
     def check_value(n):
@@ -106,15 +121,24 @@ if __name__ == "__main__":
         (12, 322)
         ]  # Values from http://oeis.org/A000204
 
+    # Ensure the first 12 values returned by fibonacci() equal a known source.
+    # Also ensures the first 12 values returned by sum_series() with the
+    # default arguments matches the output
     for input_, output in fibonacci_vals:
         assert fibonacci(input_) == output
         assert sum_series(input_) == output
 
+    # Ensure the first 12 values returned by lucas() equal a known source.
+    # Also ensures the first 12 values returned by sum_series() called with
+    # iniital values equivalent to the first two values in lucas() matches the
+    # output.
     for input_, output in lucas_vals:
         assert lucas(input_) == output
-        assert sum_series(input_) == output
+        assert sum_series(input_, 2, 1) == output
 
-    for badval in [1, -2.78, 3.14, 'a', []]:
+    # Verify that fibonacci(), lucas(), and sum_series() catch all inputs that
+    # are not non-negative integers
+    for badval in [-1, -2.78, 3.14, 'a', []]:
         try:
             fibonacci_result = fibonacci(badval)
             lucas_result = lucas(badval)
@@ -122,16 +146,7 @@ if __name__ == "__main__":
         except ValueError:
             pass
         else:
-            print u"A bad value did not trigger a ValueError in fibonacci()!"
-
-    # for badval in [-1, -2.78, 3.14, 'a', []]:
-    #     try:
-    #         lucas_result = lucas(badval)
-    #         # lucas_result = lucas(badval)
-    #         # sum_series_result = sum_series(badval)
-    #     except ValueError:
-    #         pass
-    #     else:
-    #         print u"A bad value did not trigger a ValueError in lucas()!"
+            print u"A bad value did not trigger a ValueError!"
+            assert(False)
 
     print u"All tests passed!"
