@@ -34,21 +34,21 @@ def sum_series(n, a = 0, b = 1):
 
 	"""
 
-	if (a == 0 and b == 1) or (a == 2 and b == 1): 
+	if a == 0 and b == 1:
+		return fibonnaci(n)
 
-		for i in range(n):
-			a, b = b, a + b
-		return a
+	if a == 2 and b == 1:
+		return lucas(n)
 
 	c, d = a, b
-	
+
 	for i in range(n):
 		c, d = d, c + d
 	return c
 
 
 if __name__ == '__main__':
-	u"""test that both the fibonnaci and lucas functions perform as expected."""
+	u"""test that fibonnaci, lucas and sum_series functions perform as expected."""
 
 	vals_fib = [
 
@@ -102,6 +102,36 @@ if __name__ == '__main__':
 	
 	]
 
+	vals_other = [
+
+	(0, 1, 0, 0),
+	(0, 1, 1, 1),
+	(0, 1, 2, 1),
+	(0, 1, 3, 2),
+	(0, 1, 4, 3),
+	(0, 1, 5, 5),
+	(0, 1, 6, 8),
+	(0, 1, 7, 13),
+	(2, 1, 0, 2),
+	(2, 1, 1, 1),
+	(2, 1, 2, 3),
+	(2, 1, 3, 4),
+	(2, 1, 4, 7),
+	(2, 1, 5, 11),
+	(2, 1, 6, 18),
+	(2, 1, 7, 29),
+	(3, 4, 0, 3),
+	(3, 4, 1, 4),
+	(3, 4, 2, 7),
+	(3, 4, 3, 11),
+	(3, 4, 4, 18),
+	(3, 4, 5, 29),
+	(3, 4, 6, 47),
+	(3, 4, 7, 76),
+
+	]
+
+
 	for n, output in vals_fib:
 		assert fibonnaci(n) == output
 
@@ -111,6 +141,20 @@ if __name__ == '__main__':
 		assert lucas(n) == output
 
 	print u'All Tests Pass'
+
+	for a, b, n, output in vals_other:
+		assert sum_series(n, a, b) == output
+
+	print u"All Tests Pass"
+
+	
+
+	
+
+
+
+	
+	
 
 
 
