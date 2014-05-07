@@ -31,7 +31,7 @@ def lucas(nth):
     return next_
 
 
-def sum_series(nth, seed1, seed2):
+def sum_series(nth, seed1=0, seed2=1):
     """
     Return nth value of sum_series using seed1 and seed2 as first two values.
 
@@ -122,9 +122,9 @@ if __name__ == "__main__":
 
         # Testing using Fibonacci values
         for output_set in fib_val:
-            assert sum_series(output_set[0], 0, 1) == output_set[1]
+            assert sum_series(output_set[0]) == output_set[1]
         for output_set in fib_val_rubbish:
-            assert sum_series(output_set[0], 0, 1) == output_set[1]
+            assert sum_series(output_set[0]) == output_set[1]
 
         for output_set in luc_val:
             assert sum_series(output_set[0], 2, 1) == output_set[1]

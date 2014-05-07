@@ -1,7 +1,7 @@
 """Ackermann Function Assignment"""
 
 
-def ackermann(m,n):
+def ackermann(m, n):
     """
     Evaluate the Ackermann function for given integer indexes m, n.
 
@@ -11,7 +11,9 @@ def ackermann(m,n):
     can't be evaluated past m = 3, n = 3.
     """
 
-    if int(m) != m or int(n) != n:
+    if not isinstance(m, int) or not isinstance(n, int):
+        return None
+    elif m < 0 or n < 0:
         return None
     elif m == 0:
         return n + 1
@@ -20,29 +22,46 @@ def ackermann(m,n):
     else:
         return ackermann(m-1, ackermann(m, n-1))
 
+
 if __name__ == "__main__":
-    #TODO: rewrite outside of nose. Nose isn't available in cff2py.
-    import nose
-    nose.run(argv=[__file__, '--with-doctest', '-vv'])
-    
-    nose.assert_equal(ackermann(0,0), 1)
-    nose.assert_equal(ackermann(0,1), 2)
-    nose.assert_equal(ackermann(0,2), 3)
-    nose.assert_equal(ackermann(0,3), 4)
-    nose.assert_equal(ackermann(0,4), 5)
-    nose.assert_equal(ackermann(1,0), 2)
-    nose.assert_equal(ackermann(1,1), 3)
-    nose.assert_equal(ackermann(1,2), 4)
-    nose.assert_equal(ackermann(1,3), 5)
-    nose.assert_equal(ackermann(1,4), 6)
-    nose.assert_equal(ackermann(2,1), 3)
-    nose.assert_equal(ackermann(2,2), 7)
-    nose.assert_equal(ackermann(2,3), 9)
-    nose.assert_equal(ackermann(2,4), 11)
-    nose.assert_equal(ackermann(3,0), 5)
-    nose.assert_equal(ackermann(3,1), 13)
-    nose.assert_equal(ackermann(3,2), 29)
-    nose.assert_equal(ackermann(3,3), 61)
-    nose.assert_equal(ackermann(3,4), 125)
-    nose.assert_equal(ackermann(4,0), 13)
-    nose.assert_equal(ackermann(4,1), 65533) 
+    """Test Ackermann function"""
+
+    ack_vals = [
+        [0, 0, 1],
+        [0, 1, 2],
+        [0, 2, 3],
+        [0, 3, 4],
+        [0, 4, 5],
+        [1, 0, 2],
+        [1, 1, 3],
+        [1, 2, 4],
+        [1, 4, 6],
+        [2, 0, 3],
+        [2, 1, 5],
+        [2, 2, 7],
+        [2, 3, 9],
+        [2, 4, 11],
+        [3, 0, 5],
+        [3, 1, 13],
+        [3, 2, 29],
+        [3, 3, 61],
+        [3, 4, 125]
+    ]
+
+    ack_rubbish = [
+        [1.2, 2, None],
+        ["asdfasdf", 3, None],
+        [2, 0.2, None],
+        [-4, 2, None],
+    ]
+
+    def assert_ackermann():
+        """Use known output as well as rubbish input to test ackermann()."""
+        for output_set in ack_vals:
+            assert ackermann(output_set[0], output_set[1]) == output_set[2]
+        for output_set in ack_rubbish:
+            assert ackermann(output_set[0], output_set[1]) == output_set[2]
+        print "Ackermann tests pass ok."
+
+    # calling defined test function
+    assert_ackermann()
