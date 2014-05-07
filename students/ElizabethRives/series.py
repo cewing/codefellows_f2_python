@@ -34,17 +34,9 @@ def sum_series(n, a = 0, b = 1):
 
 	"""
 
-	if a == 0 and b == 1:
-		return fibonnaci(n)
-
-	if a == 2 and b == 1:
-		return lucas(n)
-
-	c, d = a, b
-
 	for i in range(n):
-		c, d = d, c + d
-	return c
+		a, b = b, a + b
+	return a
 
 
 if __name__ == '__main__':
