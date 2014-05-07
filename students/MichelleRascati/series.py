@@ -39,23 +39,18 @@ if __name__ == '__main__':
     # Check that fibonacci works
     # Sample sequence
     fib = [0, 1, 1, 2, 3, 5, 8, 13]
-    fibtest = True
     for i, val in enumerate(fib, start=1):
-        fibtest = val == fibonacci(i)
-    if fibtest: print "fibonacci passed"
+        assert val == fibonacci(i)
 
     # Check that lucas works
     # Sample sequence
     luc = [2, 1, 3, 4, 7, 11, 18, 29]
-    luctest = True
     for i, val in enumerate(luc, start=1):
-        luctest = val == lucas(i)
-    if luctest: print "lucas passed"
+        assert val == lucas(i)
 
     # Check that sum_series works for fib and luc
-    sumtest = True
     for i, val in enumerate(fib, start=1):
-        sumtest = val == fibonacci(i)
+        assert val == fibonacci(i)
     for i, val in enumerate(luc, start=1):
-        sumtest = val == lucas(i)
-    if sumtest: print "sum_series passed"
+        assert val == lucas(i)
+    print "All Tests Pass"

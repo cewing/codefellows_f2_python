@@ -23,11 +23,7 @@ if __name__ == '__main__':
             [3, 0, 5], [3, 1, 13], [3, 2, 29], [3, 3, 61], [3, 4, 125]
             ]
 
-    test = True   # Intialize Test
-
     for val in vals:
-        # test will return False if any ack(m,n) results are not correct
-        test = test and ack(val[0], val[1]) == val[2]   # True or False?
+        assert ack(val[0], val[1]) == val[2]
 
-    if test:
-        print "All Tests Pass"
+    print "All Tests Pass"
