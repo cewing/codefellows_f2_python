@@ -518,6 +518,12 @@ Mutability
    :width: 35%
    :alt: Presto change-o
 
+.. rst-class:: credit
+
+image from flickr by `illuminaut`_, (CC by-nc-sa)
+
+.. _illuminaut: https://www.flickr.com/photos/illuminaut/3595530403
+
 
 Mutability in Python
 --------------------
