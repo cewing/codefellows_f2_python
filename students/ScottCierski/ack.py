@@ -11,28 +11,18 @@ def ack(m, n):
         return(ack(m-1, ack(m, n-1)))
 
 if __name__ == '__main__':
-    print(ack(0, 0))
-    print(ack(0, 1))
-    print(ack(0, 2))
-    print(ack(0, 3))
-    print(ack(0, 4))
-    print(ack(1, 0))
-    print(ack(1, 1))
-    print(ack(1, 2))
-    print(ack(1, 3))
-    print(ack(1, 4))
-    print(ack(2, 0))
-    print(ack(2, 1))
-    print(ack(2, 2))
-    print(ack(2, 3))
-    print(ack(2, 4))
-    print(ack(3, 0))
-    print(ack(3, 1))
-    print(ack(3, 2))
-    print(ack(3, 3))
-    print(ack(3, 4))
-    print(ack(4, 0))
-    print(ack(4, 1))
-    print(ack(4, 2))
-    print(ack(4, 3))
-    print(ack(4, 4))
+
+    # List of correct answers for the first 16 Ackermann input value pairs
+    ack_list = [1,2,3,4,2,3,4,5,3,5,7,9,5,13,29,61]
+
+    i = 0
+
+    for m in range(4):
+        for n in range(4):
+            ack_result = ack_list[i]
+            assert ack(m, n) == ack_result
+            print i, m, n, ack_result
+            i = i + 1
+
+
+
