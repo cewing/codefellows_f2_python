@@ -26,7 +26,9 @@ if __name__ == '__main__':
 
     for val in vals:
         # test will return False if any ack(m,n) results are not correct
-        test = test and ack(val[0], val[1]) == val[3]   # True or False?
+        test = test and ack(val[0], val[1]) == val[2]   # True or False?
+        if not test:
+            print val[0], val[1], ack(val[0], val[1]), val[2]
 
     if test:
         print "All Tests Pass"
