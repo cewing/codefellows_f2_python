@@ -7,8 +7,10 @@ def fibonaccci(n):
         return None
     elif int(n)!=float(n):
         return None
+    elif n==0:
+        return firstInt
     else:
-        for i in range(1,n-1):
+        for i in range(1,n):
             thirdInt = firstInt+secondInt
             firstInt=secondInt
             secondInt=thirdInt
@@ -26,12 +28,14 @@ def lucas(n):
         return None
     elif int(n)!=float(n):
         return None
+    elif n==0:
+        return firstInt
     else:
-        for i in range(1,n-1):
+        for i in range(1,n):
             thirdInt = firstInt+secondInt
             firstInt=secondInt
             secondInt=thirdInt
             thirdInt=0
         return secondInt
 
-print lucas(2)
+print lucas(0)
