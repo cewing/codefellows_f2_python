@@ -25,21 +25,34 @@ def sum_series(n, x = 0, y = 1):
 	elif x == 2 and y == 1:
 		return lucas(n)
 	else:
-	    print "undefined series"	
+	    return "undefined series"	
+def test_fun():
+    assert fibonacci(1) == 0
+    assert fibonacci(2) == 1
+    assert fibonacci(3) == 1
+    assert fibonacci(4) == 2
+    assert fibonacci(5) == 3
+    assert fibonacci(6) == 5
+    assert fibonacci(7) == 8
+    assert fibonacci(8) == 13
+    assert lucas(1) == 2
+    assert lucas(2) == 1
+    assert lucas(3) == 3
+    assert lucas(4) == 4
+    assert lucas(5) == 7
+    assert lucas(6) == 11
+    assert lucas(7) == 18
+    assert lucas(8) == 29
+    assert sum_series(5) == 3
+    assert sum_series(6) == 5
+    assert sum_series(7) == 8
+    assert sum_series(8) == 13
+    assert sum_series(5, 2, 1) == 7
+    assert sum_series(6, 2, 1) == 11
+    assert sum_series(7, 2, 1) == 18
+    assert sum_series(8, 2, 1) == 29
+    assert sum_series(5, 3, 3) == "undefined series"    
+
+    print "All Tests Pass" 
 if __name__ == "__main__":
-	assert fibonacci(1) == 0
-	assert fibonacci(2) == 1
-	assert fibonacci(3) == 1
-	assert fibonacci(4) == 2
-	assert fibonacci(5) == 3
-	assert fibonacci(6) == 5
-	assert fibonacci(7) == 8
-	assert fibonacci(8) == 13
-	assert lucas(1) == 2
-	assert lucas(2) == 1
-	assert lucas(3) == 3
-	assert lucas(4) == 4
-	assert lucas(5) == 7
-	assert lucas(6) == 11
-	assert lucas(7) == 18
-	assert lucas(8) == 29
+    test_fun()
