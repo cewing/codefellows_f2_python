@@ -13,6 +13,7 @@ def ack(m, n):
         raise ValueError
     if (m < 0) or (n < 0):
         raise ValueError
+
     if m == 0:
         return n+1
     elif n == 0:
@@ -73,6 +74,6 @@ if __name__ == '__main__':
         except ValueError:
             pass
         else:
-            print u"A bad value did not trigger a ValueError"
+            raise ValueError(u"A bad value did not trigger a ValueError")
 
     print u"All tests passed!"
