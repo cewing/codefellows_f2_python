@@ -13,7 +13,7 @@ def fibonacci(n):
         if not isinstance(n, int):
             raise ValueError
         if n < 0:
-            raise ValueError
+            return None
         return True
 
     def recursive_fib(n):
@@ -43,7 +43,7 @@ def lucas(n):
         if not isinstance(n, int):
             raise ValueError
         if n < 0:
-            raise ValueError
+            return None
         return True
 
     def recursive_lucas(n):
@@ -75,7 +75,7 @@ def sum_series(n, n0=0, n1=1):
         if not isinstance(n, int):
             raise ValueError
         if n < 0:
-            raise ValueError
+            return None
         return True
 
     def rercursive_sum(n, n0, n1):
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
     # Verify that fibonacci(), lucas(), and sum_series() catch all inputs that
     # are not non-negative integers
-    for badval in [-1, -2.78, 3.14, 'a', []]:
+    for badval in [3.14, 'a', []]:
         try:
             fibonacci_result = fibonacci(badval)
             lucas_result = lucas(badval)
