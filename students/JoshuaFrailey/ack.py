@@ -6,7 +6,6 @@ def ack(m, n):
     m: A nonnegative integer between 0 and 3 inclusive.
     n: A nonnegative integer between 0 and 4 inclusive.
 
-
     Return value: A nonnegative integer
     """
     if (not isinstance(m, int)) or (not isinstance(n, int)):
