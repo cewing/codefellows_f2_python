@@ -21,7 +21,7 @@ print ack(1, 1)
 if __name__ == '__main__':
     ''' Testing the Ack function with Assert/Try '''    
     good_acker = [
-        ((0, 1), 2), #format here, what should it be for two params
+        ((0, 1), 2), 
         ((1, 0), 2),
         ((1, 1), 3),
         ((1, 2), 4),
@@ -38,10 +38,10 @@ if __name__ == '__main__':
         ['a', [2,3,4], 5],
 
     ]
-'''
+
     for input, output in good_acker:
         assert ack(*input) == output
-
+'''
     for input in bad_acker:
         try:
             result = ack(*input) == bad_acker[2]
@@ -51,4 +51,5 @@ if __name__ == '__main__':
             print u"a bad value did not raise the expected error"
             assert(False)
 '''
+
     print "All tests pass"

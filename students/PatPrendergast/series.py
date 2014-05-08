@@ -1,3 +1,4 @@
+# series.py
 
 # Fibonacci
 def fibo (n):
@@ -88,10 +89,9 @@ if __name__ == "__main__":
     ]
 
 
-for input, output in fibo_nums:
-    assert fibo(input) == output
-
-
+    for input, output in fibo_nums:
+        assert fibo(input) == output
+    '''
     for e in [3.5, 'a', [2,3,4]]:
         try:
             result = fibo(e)
@@ -100,11 +100,13 @@ for input, output in fibo_nums:
         else:
             print u"a bad value did not raise the expected error"
             assert(False)
+    '''
+
+    for input, output in lucas_nums:
+        assert lucas(input) == output
+
+
 
     print "All tests pass"
-"""
-for input, output in lucas_nums:
-    assert lucas(input) == output
 
-"""
-
+    
