@@ -20,6 +20,7 @@ def lucas(n):
             return series[n-1]        
 
 def sum_series(n, x = 0, y = 1):
+    """return nth value in fibonacci or lucas series or undefined series message"""
 	if x == 0 and y == 1:
 		return fibonacci(n)
 	elif x == 2 and y == 1:
