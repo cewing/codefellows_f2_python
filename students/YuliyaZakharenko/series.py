@@ -1,7 +1,7 @@
 def fibonacci(n):
 	"""return nth value in fibonacci series"""
 	if n <= 0:
-		print "no value"
+		return "no value"
 	else:
 	    series = [0,1]
 	    for i in range(2, n):
@@ -12,7 +12,7 @@ def fibonacci(n):
 def lucas(n):
 	"""return nth value in lucas series"""
 	if n <= 0:
-		print "no value"
+		return "no value"
 	else:
 	    series = [2,1]
 	    for i in range(2, n):
@@ -30,6 +30,7 @@ def sum_series(n, x = 0, y = 1):
     
 if __name__ == "__main__":
     #testing fibonacci series
+    assert fibonacci(-1) == "no value"
     assert fibonacci(1) == 0
     assert fibonacci(2) == 1
     assert fibonacci(3) == 1
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     assert fibonacci(7) == 8
     assert fibonacci(8) == 13
     #testing lucas series
+    assert lucas(-1) == "no value"
     assert lucas(1) == 2
     assert lucas(2) == 1
     assert lucas(3) == 3
