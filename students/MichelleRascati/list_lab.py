@@ -47,6 +47,13 @@ def begin_with(char, x):
         if val[0] == char:
             print val
 
+
+def rem_val(x):
+    """Prompt user to Remove value from list (x)."""
+    x.remove(raw_input("Pick a fruit to delete: "))
+    return x
+
+
 if __name__ == '__main__':
     # Create a list that contains "Apples", "Pears", "Oranges", "Peaches".
     fruits = list()
@@ -67,3 +74,15 @@ if __name__ == '__main__':
     d_list(fruits)
     # Display all the fruits that begin with "P", using a for loop.
     begin_with("P", fruits)
+    #################################
+    # Copy list from above:
+    fruits2 = fruits[:]
+    # Display the list.
+    d_list(fruits2)
+    # Remove the last fruit from the list.
+    fruits2.pop()
+    # Display the list.
+    d_list(fruits2)
+    # Ask the user for a fruit to delete and find it and delete it.
+    fruits2 = rem_val(fruits2)
+    d_list(fruits2)
