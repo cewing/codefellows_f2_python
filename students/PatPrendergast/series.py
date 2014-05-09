@@ -105,6 +105,10 @@ if __name__ == "__main__":
     for input, output in lucas_nums:
         assert lucas(input) == output
 
+    for input, output in fibo_nums:
+        assert sum_series(input) == output
+    for input, output in lucas_nums:
+        assert sum_series(input) == output
 
 
     print "All tests pass"

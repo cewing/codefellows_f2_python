@@ -10,46 +10,41 @@ def ack(m, n):
         return ack(m - 1, 1)
     return ack(m - 1, ack(m, n - 1))
 
-print ack(0, 0)
-print ack(1, 0)
-print ack(2, 0)
-print ack(3, 0)
-print ack(4, 0)
-print ack(1, 1)
-
 
 if __name__ == '__main__':
     ''' Testing the Ack function with Assert/Try '''    
     good_acker = [
-        ((0, 1), 2), 
+        ((0, 0), 1),
+        ((0, 1), 2),
+        ((0, 2), 3),
+        ((0, 3), 4),
+        ((0, 4), 5),
         ((1, 0), 2),
         ((1, 1), 3),
         ((1, 2), 4),
+        ((1, 3), 5),
+        ((1, 4), 6),
+        ((2, 0), 3),
+        ((2, 1), 5),
         ((2, 2), 7),
-        #((2, 3), 9),
-        #((0, 3), 4),
-        #((1, 4), 6), 
-        #((2, 0), 3),
-        #((3, 0), 5),
-        #((4, 0), 13),
+        ((2, 3), 9),
+        ((2, 4), 11),
+        ((3, 0), 5),
+        ((3, 1), 13),
+        ((3, 2), 29),
+        ((3, 3), 61),
+        ((3, 4), 125),
     ]
 
-    bad_acker = [
-        ['a', [2,3,4], 5],
-
-    ]
+    bad_acker = [((3.2, -2), 5),]
 
     for input, output in good_acker:
         assert ack(*input) == output
 '''
-    for input in bad_acker:
-        try:
-            result = ack(*input) == bad_acker[2]
-        except ValueError:
-            pass
-        else:
-            print u"a bad value did not raise the expected error"
-            assert(False)
-'''
-
+    for input, output in bad_acker:
+        assert ack(*input) == output
+'''        
     print "All tests pass"
+
+
+    
