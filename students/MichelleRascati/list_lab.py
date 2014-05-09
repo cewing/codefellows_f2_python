@@ -8,6 +8,7 @@ def list():
 
 def d_list(x):
     """Display a list (x)."""
+    print u"Current list: "
     for val in x:
         print val,
     print
@@ -43,6 +44,7 @@ def add_insert(val, x):
 
 def begin_with(char, x):
     """Display values from list (x) that begin with char."""
+    print u"Fruits beginning with '%c':" % char
     for val in x:
         if val[0] == char:
             print val
@@ -108,6 +110,7 @@ if __name__ == '__main__':
     #################################
     # Copy original list:
     fruits3 = fruits[:]
+    d_list(fruits3)
     # Ask the user for input displaying a line like "Do you like apples?
     # for each fruit in the list (making the fruit all lowercase).
     # For each "no", delete that fruit from the list.
@@ -119,6 +122,7 @@ if __name__ == '__main__':
     #################################
     # Make a copy of the list and reverse the letters in each fruit.
     fruits4 = fruits[:]
+    d_list(fruits4)
     fruits4 = rev_word(fruits4)
     # Delete the last item of the original list.
     fruits.pop()
