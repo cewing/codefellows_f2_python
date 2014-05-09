@@ -1,9 +1,15 @@
-def _validate_input(prompt, accpet):  # Valid _input or Validate_input?
-    u"""Return user input if in accepted value"""
-    response = raw_input(prompt)
-    while response not in accpet:
+def _validate_input(prompt, accept):  # Valid _input or Validate_input?
+    u"""Return user input if in accepted string or list of strings"""
+    accept_copy = accept[:]
+    if isinstance(accept_copy, str):
+        accept_copy = accept_copy.lower()
+    else:
+        for i, ele in enumerate(accept_copy):
+            accept_copy[i] = ele.lower()
+    response = raw_input(prompt).lower()
+    while response not in accept_copy:
         response = raw_input(
-            u"""That value was not valid. Please choose from {}: """.format(accpet))
+            u"""That value was not valid. Please choose from {}: """.format(accept))
 # Find out how to best deal with the length of the above
     return response
 
@@ -15,7 +21,7 @@ def _print_basket(list_):
             print ele
         else:
             print ele,
-    #print u"\n"
+
 
 # Series 1:
 fruit_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
@@ -54,8 +60,8 @@ _print_basket(fruit_list)
 user_fruit = _validate_input(u"Please enter a fruit to remove from the basket: ", fruit_list)
 fruit_list = fruit_list*2
 print u"""Doubling the fruit in the basket and removing all {} from the basket""".format(user_fruit)
-while user_fruit in fruit_list:
-    fruit_list.remove(user_fruit)
+while user_fruit.title() in fruit_list:
+    fruit_list.remove(user_fruit.title())
 _print_basket(fruit_list)
 
 # Series 3
@@ -65,7 +71,8 @@ _print_basket(series3_fruit_list)
 for fruit in original_fruit_list:
     user_likes = _validate_input(u"Do you like {}? ".format(fruit.lower()), ["Yes", "No","Y","N"])
     if user_likes == u"No" or user_likes == u"N":
-        series3_fruit_list.remove(fruit)
+        while user_fruit in series3_fruit_list:
+            series3_fruit_list.remove(fruit)
 
 _print_basket(series3_fruit_list)
 
