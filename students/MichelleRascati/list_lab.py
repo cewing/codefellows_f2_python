@@ -54,6 +54,17 @@ def rem_val(x):
     return x
 
 
+def like(x):
+    """Ask user if they like item in list (x), remove if 'no'."""
+    x2 = x[:]
+    for val in x:
+        answer = ''
+        while answer not in ('yes', 'no'):
+            answer = raw_input("Do you like %s? (yes/no): " % val.lower())
+        if answer == 'no':
+            x2.remove(val)
+    return x2
+
 if __name__ == '__main__':
     # Create a list that contains "Apples", "Pears", "Oranges", "Peaches".
     fruits = list()
@@ -86,3 +97,15 @@ if __name__ == '__main__':
     # Ask the user for a fruit to delete and find it and delete it.
     fruits2 = rem_val(fruits2)
     d_list(fruits2)
+    #################################
+    # Copy original list:
+    fruits3 = fruits[:]
+    # Ask the user for input displaying a line like "Do you like apples?
+    # for each fruit in the list (making the fruit all lowercase).
+    # For each "no", delete that fruit from the list.
+    # For any answer that is not "yes" or "no", prompt the user to
+    # answer with one of those two values (a while loop is good here)
+    fruits3 = like(fruits3)
+    # Display the list.
+    d_list(fruits3)
+    #################################
