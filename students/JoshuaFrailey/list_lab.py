@@ -19,7 +19,7 @@ fruit_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 _print_basket(fruit_list)
 # May want to ensure empty string is not added by user
 user_fruit = raw_input(u'Please enter a fruit to add to the basket: ')
-fruit_list.append(user_fruit)
+fruit_list.append(user_fruit.title())
 _print_basket(fruit_list)
 user_picks_fruit = _validate_input(
     u"""Please enter a number corresponding to a fruit in the list (starting at 1): """,
@@ -28,22 +28,27 @@ user_picks_fruit = _validate_input(
 print u"""You picked fruit number {}, {}""".format(
     user_picks_fruit, fruit_list[int(user_picks_fruit)-1]
     )
+print u"Adding Mangos to the basket"
 fruit_list += [u"Mangos"]
 _print_basket(fruit_list)
+print u"Adding Papaya to the basket"
 fruit_list.insert(0, u"Papaya")
 _print_basket(fruit_list)
 
 # Put in function?
+print u"Displaying all fruit that start with the letter 'P'"
 for fruit in fruit_list:
     if fruit.startswith(u'P'):
         print fruit
 
 # Series 2
 _print_basket(fruit_list)
+print u"Removing the last fruit from the basket"
 fruit_list.pop()
 _print_basket(fruit_list)
 user_fruit = _validate_input(u"Please enter a fruit to remove from the basket: ", fruit_list)
 fruit_list = fruit_list*2
+print u""" Doubling the fruit in the basket and removing all {} from the basket""".format(user_fruit)
 while user_fruit in fruit_list:
     fruit_list.remove(user_fruit)
 _print_basket(fruit_list)
