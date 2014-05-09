@@ -65,6 +65,14 @@ def like(x):
             x2.remove(val)
     return x2
 
+
+def rev_word(x):
+    """Reverse letters of each word in list (x)."""
+    x2 = []
+    for val in x:
+        x2.append(val[::-1])
+    return x2
+
 if __name__ == '__main__':
     # Create a list that contains "Apples", "Pears", "Oranges", "Peaches".
     fruits = list()
@@ -109,3 +117,11 @@ if __name__ == '__main__':
     # Display the list.
     d_list(fruits3)
     #################################
+    # Make a copy of the list and reverse the letters in each fruit.
+    fruits4 = fruits[:]
+    fruits4 = rev_word(fruits4)
+    # Delete the last item of the original list.
+    fruits.pop()
+    # Display the original list and the copy.
+    d_list(fruits)
+    d_list(fruits4)
