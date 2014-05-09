@@ -25,7 +25,7 @@ user_fruit = raw_input(u'Please enter a fruit to add to the basket: ')
 fruit_list.append(user_fruit.title())
 _print_basket(fruit_list)
 user_picks_fruit = _validate_input(
-    u"""Please enter a number corresponding to a fruit in the list (starting at 1 = {}): """.format(fruit_list[1]),
+    u"""Please enter a number corresponding to a fruit in the list (starting at 1 = {}): """.format(fruit_list[0]),
     str(range(1, len(fruit_list)+1))
     )
 print u"""You picked fruit number {}, {}""".format(
@@ -42,10 +42,9 @@ original_fruit_list = fruit_list[:]
 # Put in function?
 print u"Displaying all fruit that start with the letter 'P'"
 for i, fruit in enumerate(fruit_list):
-    if fruit.startswith(u'P') and i == len(fruit_list)-1:
-        print fruit
-    elif fruit.startswith(u'P'):
+    if fruit.startswith(u'P'):
         print fruit,
+print ''
 
 # Series 2
 _print_basket(fruit_list)
