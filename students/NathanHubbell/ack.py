@@ -11,32 +11,10 @@ def ack(m,n):
 
 if __name__ == '__main__':
 
-    assert ack(0,0)==1
-    assert ack(0,1)==2
-    assert ack(0,2)==3
-    assert ack(0,3)==4
-    assert ack(0,4)==5
-    assert ack(1,0)==2
-    assert ack(1,1)==3
-    assert ack(1,2)==4
-    assert ack(1,3)==5
-    assert ack(1,4)==6
-    assert ack(2,0)==3
-    assert ack(2,1)==5
-    assert ack(2,2)==7
-    assert ack(2,3)==9
-    assert ack(2,4)==11
-    assert ack(3,0)==5
-    assert ack(3,1)==13
-    assert ack(3,2)==29
-    assert ack(3,3)==61
-    assert ack(3,4)==125
-    assert ack(4,0)==13
-    #Anything below this line reaches the maximum recursion depth
-    #-------------------------------------------------
-    #assert ack(4,1)==65533
-    #assert ack(4,2)==2**65536-3
-    #assert ack(4,3)==2**2**65536-3
-    #assert ack(4,4)==2**2**2**65536-2
+    ackFunc = [[1,2,3,4,5],[2,3,4,5,6],[3,5,7,9,11],[5,13,29,61,125]]
+
+    for m in range(4):
+        for n in range(5):
+            assert ack(m,n) == ackFunc[m][n]
 
     print "All Tests Pass"
