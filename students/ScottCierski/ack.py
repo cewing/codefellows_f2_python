@@ -16,18 +16,19 @@ if __name__ == '__main__':
     ack_list = [1,2,3,4,2,3,4,5,3,5,7,9,5,13,29,61]
 
     i = 0
-    ack_error = False
+    is_ack_error = False
 
     # Loop through m and n values, and assert each pair against the correct value from ack_list
     # If a test fails, assign boolean flag
     for m in range(4):
         for n in range(4):
             ack_result = ack_list[i]
-            assert ack(m, n) == ack_result, ack_error == True
-            # print statements for debugging
-            # print i, m, n, ack_result, ack_error
+            # print i, m, n, ack_result, is_ack_error
+            if not ack(m, n) == ack_result:
+                is_ack_error = True
+                print('Ackermann failure.')
             i += 1
 
     # If there are no errors in the assert run, print success message as per assignment instructions
-    if ack_error == False:
-        print u"All Tests Pass"
+    if is_ack_error == False:
+        print('All Tests Pass')
