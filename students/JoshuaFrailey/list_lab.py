@@ -14,12 +14,10 @@ def _print_basket(list_):
         print ele,
     print u"\n"
 
-def function():
-    pass
-
 # Series 1:
 fruit_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 _print_basket(fruit_list)
+# May want to ensure empty string is not added by user
 user_fruit = raw_input(u'Please enter a fruit to add to the basket: ')
 fruit_list.append(user_fruit)
 _print_basket(fruit_list)
@@ -35,6 +33,17 @@ _print_basket(fruit_list)
 fruit_list.insert(0, u"Papaya")
 _print_basket(fruit_list)
 
+# Put in function?
 for fruit in fruit_list:
     if fruit.startswith(u'P'):
         print fruit
+
+# Series 2
+_print_basket(fruit_list)
+fruit_list.pop()
+_print_basket(fruit_list)
+user_fruit = _validate_input(u"Please enter a fruit to remove from the basket: ", fruit_list)
+fruit_list = fruit_list*2
+while user_fruit in fruit_list:
+    fruit_list.remove(user_fruit)
+_print_basket(fruit_list)
