@@ -6,13 +6,14 @@ def type_Error(str):
 def syntax_Error(str):
     retrn sum(str)
 def attribute_Error(num):
-    num.lower()
+    alwaysAnum = 7
+    alwaysAnum.lower()
     return num
 
-#attribute_Error(4)
-#syntax_Error("hello")
-#type_Error("hello world")
-#name_Error(3)
+attribute_Error(4)
+syntax_Error("hello")
+type_Error("hello world")
+name_Error(3)
 
 #I commented out everything that prevents it from building.
 #It's insteresting that it finds the syntax error within an uncalled function,
