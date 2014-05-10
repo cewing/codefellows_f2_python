@@ -103,7 +103,7 @@ def yes_or_no(prompt):
 
 
 def series_3(fruits):
-    """list_lab series 3, deterine liked fruits"""
+    """list_lab series 3, determine liked fruits"""
     print u"\nlist_lab series 3"
 
     fruits3 = fruits[:]
@@ -118,13 +118,29 @@ def series_3(fruits):
 
     print_fruits(liked_fruits)
 
+def series_4(fruits):
+    """list_lab series 4, copy list and reverse letters"""
+    print u"\nlist_lab series 4"
+
+    fruits_reversed = fruits[:]
+    print_fruits(fruits)
+
+    for i, fruit in enumerate(fruits_reversed):
+        fruits_reversed[i] = fruit[::-1]
+
+    fruits.pop()
+    print_fruits(fruits)
+    print_fruits(fruits_reversed)
+
 # This assignment has 4 sections, or series of actions based on lists
 # list_lab series 1, creating a list of fruits
 fruits = series_1(fruits)
 
-# list_lab series 2, removing fruits from the list
+# list_lab series 2, remove fruits from the list
 series_2(fruits)
 
-# list_lab series 3, Remove all fruits the user does not like
+# list_lab series 3, create a list of fruits the user likes
 series_3(fruits)
 
+# list_lab series 4, copy the list and reverse letters in each fruit
+series_4(fruits)
