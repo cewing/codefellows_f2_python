@@ -10,10 +10,7 @@ def fibonaccci(n):
         return firstInt
     else:
         for i in range(1,n):
-            thirdInt = firstInt+secondInt
-            firstInt = secondInt
-            secondInt = thirdInt
-            thirdInt = 0
+            firstInt,secondInt = secondInt,(firstInt+secondInt)
         return secondInt
 
 
@@ -29,10 +26,7 @@ def lucas(n):
         return firstInt
     else:
         for i in range(1,n):
-            thirdInt = firstInt+secondInt
-            firstInt = secondInt
-            secondInt = thirdInt
-            thirdInt = 0
+            firstInt,secondInt = secondInt,(firstInt+secondInt)
         return secondInt
 
 
@@ -46,48 +40,28 @@ def sum_series(n,indexZero = 0,indexOne = 1):
         return indexZero
     else:
         for i in range(1,n):
-            thirdInt = indexZero+indexOne
-            indexZero = indexOne
-            indexOne = thirdInt
-            thirdInt = 0
+            indexZero,indexOne = indexOne,(indexZero+indexOne)
         return indexOne
 
 
 if __name__=='__main__':
+    fibList = [None,0,1,1,2,3,5,8]
+    lucList = [None,2,1,3,4,7,11,18]
     #Test the fibonacci function
-    assert fibonaccci(0)==0
-    assert fibonaccci(1.1)==None
-    assert fibonaccci(2)==1
-    assert fibonaccci(3)==2
-    assert fibonaccci(4)==3
-    assert fibonaccci(5)==5
-    assert fibonaccci(6)==8
+    for i in range(8):
+        assert fibonaccci(i-1)==fibList[i]
+
     #test the lucas function
-    assert lucas(0)==2
-    assert lucas(1.1)==None
-    assert lucas(2)==3
-    assert lucas(3)==4
-    assert lucas(4)==7
-    assert lucas(5)==11
-    assert lucas(6)==18
+    for i in range(8):
+        assert lucas(i-1)==lucList[i]
 
     #Test the  fibonacci sum_series function
-    assert sum_series(-10)==None
-    assert sum_series(0)==0
-    assert sum_series(1.1)==None
-    assert sum_series(2)==1
-    assert sum_series(3)==2
-    assert sum_series(4)==3
-    assert sum_series(5)==5
-    assert sum_series(6)==8
+    for i in range(8):
+        assert sum_series(i-1)==fibList[i]
+
     #test the lucas sum_series function
-    assert sum_series(-20,2,1)==None
-    assert sum_series(0,2,1)==2
-    assert sum_series(1.1,2,1)==None
-    assert sum_series(2,2,1)==3
-    assert sum_series(3,2,1)==4
-    assert sum_series(4,2,1)==7
-    assert sum_series(5,2,1)==11
-    assert sum_series(6,2,1)==18
+    for i in range(8):
+        assert sum_series(i-1,2,1)==lucList[i]
+
     #Succes!
     print "All Tests Passed"
