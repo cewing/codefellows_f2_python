@@ -1,11 +1,11 @@
-#! /usr/bin/env/python
+#!/usr/bin/env python
 
 
 l = ['Apples', 'Pears', 'Oranges', 'Peaches']
 
 
 def add_fruit():
-	u"""Ask user to add fruit to the list and insert two list items."""
+	u"""Ask user to add fruit to the list, also insert two list items."""
 	
 	print l
 	fruit = raw_input(u"What's a fruit you'd like to add to the list?")
@@ -54,7 +54,7 @@ def like_dislike():
 	    if like == u'no':
 	    	l.remove(l[i])
 	    elif like != 'yes':
-	    	print 'Please only respond with yes or no'
+	    	print u'Please only respond with yes or no'
 	print l
    
 like_dislike()
@@ -69,3 +69,4 @@ def final():
 	print new_l
 
 final()
+
