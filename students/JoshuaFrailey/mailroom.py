@@ -13,7 +13,7 @@ for donor in donor_list:
 
 
 def _get_donors():
-    """Return a list of donor names."""
+    u"""Return a list of donor names."""
     names = []
     for donor in donor_list:
         names.append(donor[0])
@@ -21,8 +21,14 @@ def _get_donors():
 
 
 def _add_donor(name):
-    """Append donor to donor list."""
+    u"""Append donor to donor list."""
     donor_list.append([name.title()])
+
+
+def _add_donation(donor, amount):
+    u"""Append donation for donor to donor list"""
+    i = _get_donors.index(donor)
+    donor_list[i].append(amount)
 
 
 def _get_donation():
@@ -30,14 +36,17 @@ def _get_donation():
 
 
 def _send_thankyou():
-    input_ = raw_input(
-        u"""
+    menu = u"""
         Enter a donor's full name to generate a personalized letter.
         Type 'list' to see a list of all donors.
         """
-        )
+    input_ = raw_input(menu).title()
     while True:
-        if input_ ==
+        if input_ in ["List", "L"]:
+            print _get_donors()
+            input_ = raw_input(u"Please select from the above.")
+        elif input_ in _get_donors():
+            donor = input_
 
 
 def _create_report():
