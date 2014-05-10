@@ -1,3 +1,4 @@
+#! /usr/bin/env/python
 
 
 l = ['Apples', 'Pears', 'Oranges', 'Peaches']
@@ -13,9 +14,10 @@ def add_fruit():
 	
 	number = raw_input(u'Choose a number')
 	fruit_index = l[int(number)] 
-	print number, fruit_index
+	print number, fruit_index 
 
 	new_l = ['Plums'] + l
+	print new_l
 	new_l.insert(0, 'Grapes')
 	print new_l
 
@@ -47,23 +49,20 @@ remove_fruit()
 def like_dislike():
 	u"""For each fruit in the list, modify list based on user input."""
 	
-	print l
-	for i in range(len(l[:])):
+	for i in reversed(range(len(l[:]))):
 	    like = raw_input(u'Do you like ' + l[i].lower()) 
 	    if like == u'no':
 	    	l.remove(l[i])
-	    elif like == u'yes':
-	    	pass
-	    else:
-	    	print u'Please only respond yes or no'
-
+	    elif like != 'yes':
+	    	print 'Please only respond with yes or no'
+	print l
+   
 like_dislike()
 
 
 def final():
 	u"""Reverse items in the list and delete last item."""
 	
-	print l
 	new_l = [i[::-1] for i in l]
 	l.pop()
 	print l
