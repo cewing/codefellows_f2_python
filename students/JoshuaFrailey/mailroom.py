@@ -27,7 +27,8 @@ def _add_donor(name):
 
 def _add_donation(donor, amount):
     u"""Append donation for donor to donor list"""
-    i = _get_donors.index(donor)
+    donors = _get_donors()
+    i = donors.index(donor)
     donor_list[i].append(amount)
 
 
@@ -40,13 +41,22 @@ def _send_thankyou():
         Enter a donor's full name to generate a personalized letter.
         Type 'list' to see a list of all donors.
         """
-    input_ = raw_input(menu).title()
+    donor = raw_input(menu).title()
     while True:
-        if input_ in ["List", "L"]:
+        if donor in ["List", "L"]:
             print _get_donors()
-            input_ = raw_input(u"Please select from the above.")
-        elif input_ in _get_donors():
-            donor = input_
+            donor = raw_input(u"Please select from the above. ")
+        else:
+            _add_donor(donor)
+            break
+    amount = raw_input(u"Enter the amount of the donation: ")
+    while True:
+        # Need to account for '.'
+        if amount.isdigit():
+            break
+        else:
+            amount = raw_input(u"Please only enter digits")
+    _add_donation(donor, int(amount))
 
 
 def _create_report():

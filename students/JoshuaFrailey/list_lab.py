@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 def _validate_input(prompt, accept):  # Valid _input or Validate_input?
     u"""Return user input if in accepted string or list of strings"""
     accept_copy = accept[:]
@@ -6,10 +7,10 @@ def _validate_input(prompt, accept):  # Valid _input or Validate_input?
     else:
         for i, ele in enumerate(accept_copy):
             accept_copy[i] = ele.lower()
-    response = raw_input(prompt).lower()
+    response = unicode(raw_input(prompt).lower())
     while response not in accept_copy:
-        response = raw_input(
-            u"""That value was not valid. Please choose from {}: """.format(accept))
+        response = unicode(raw_input(
+            u"""That value was not valid. Please choose from {}: """.format(accept)))
 # Find out how to best deal with the length of the above
     return response
 
@@ -24,10 +25,11 @@ def _print_basket(list_):
 
 
 # Series 1:
-fruit_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
+original_fruit_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
+fruit_list = original_fruit_list[:]
 _print_basket(fruit_list)
 # May want to ensure empty string is not added by user
-user_fruit = raw_input(u'Please enter a fruit to add to the basket: ')
+user_fruit = unicode(raw_input(u"Please enter a fruit to add to the basket: "))
 fruit_list.append(user_fruit.title())
 _print_basket(fruit_list)
 user_picks_fruit = _validate_input(
@@ -43,16 +45,16 @@ _print_basket(fruit_list)
 print u"Adding Papaya to the basket"
 fruit_list.insert(0, u"Papaya")
 _print_basket(fruit_list)
-original_fruit_list = fruit_list[:]
 
 # Put in function?
 print u"Displaying all fruit that start with the letter 'P'"
 for i, fruit in enumerate(fruit_list):
-    if fruit.startswith(u'P'):
+    if fruit.startswith(u"P"):
         print fruit,
-print ''
+print ""
 
 # Series 2
+fruit_list = original_fruit_list[:]
 _print_basket(fruit_list)
 print u"Removing the last fruit from the basket"
 fruit_list.pop()
@@ -65,23 +67,23 @@ while user_fruit.title() in fruit_list:
 _print_basket(fruit_list)
 
 # Series 3
-series3_fruit_list = original_fruit_list[:]
-_print_basket(series3_fruit_list)
+fruit_list = original_fruit_list[:]
+_print_basket(fruit_list)
 
 for fruit in original_fruit_list:
-    user_likes = _validate_input(u"Do you like {}? ".format(fruit.lower()), ["Yes", "No","Y","N"])
+    user_likes = _validate_input(u"Do you like {}? ".format(fruit.lower()), ["Yes", "No", "Y", "N"])
     if user_likes == u"No" or user_likes == u"N":
-        while user_fruit in series3_fruit_list:
-            series3_fruit_list.remove(fruit)
+        while user_fruit in fruit_list:
+            fruit_list.remove(fruit)
 
-_print_basket(series3_fruit_list)
+_print_basket(fruit_list)
 
 # Series 4
-series4_fruit_list = original_fruit_list[:]
+fruit_list = original_fruit_list[:]
 
-for i, fruit in enumerate(series4_fruit_list):
-    series4_fruit_list[i] = fruit[::-1]
+for i, fruit in enumerate(fruit_list):
+    fruit_list[i] = fruit[::-1]
 
 original_fruit_list.pop()
 _print_basket(original_fruit_list)
-_print_basket(series4_fruit_list)
+_print_basket(fruit_list)
