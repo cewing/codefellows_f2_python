@@ -39,12 +39,20 @@ def do_stuff():
 
     fruit_list_copy = fruit_list[:]
     for fruit in fruit_list_copy:
-        print 'Do you like ' + fruit.lower() + '?'
+        print "Do you like " + fruit.lower() + "? Type yes or no: "
         fruit_choice = raw_input()
-        if fruit_choice.lower() == 'no':
+        fruit_choice = fruit_choice.lower()
+        while fruit_choice != 'yes' and fruit_choice != 'no':
+            print "Please type yes or no: "
+            fruit_choice = raw_input()
+            fruit_choice = fruit_choice.lower()
+        if fruit_choice == 'no':
+            print u"OK, removing " + fruit + u" from the list."
             fruit_list.remove(fruit)
             print fruit_list
-
+        elif fruit_choice == 'yes':
+            print u"OK, we'll keep " + fruit + " in the list."
+            print fruit_list
 
 if __name__ == '__main__':
     do_stuff()
