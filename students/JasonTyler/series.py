@@ -11,8 +11,7 @@ def fibonacci(nth):
     else:
         for _ in range(nth - 2):
             next_ = one_past + two_past
-            two_past = one_past
-            one_past = next_
+            two_past, one_past = one_past, next_
     return next_
 
 
@@ -26,8 +25,7 @@ def lucas(nth):
     else:
         for _ in range(nth - 2):
             next_ = one_past + two_past
-            two_past = one_past
-            one_past = next_
+            two_past, one_past = one_past, next_
     return next_
 
 
@@ -46,8 +44,7 @@ def sum_series(nth, seed1=0, seed2=1):
     else:
         for _ in range(nth - 2):
             next_ = one_past + two_past
-            two_past = one_past
-            one_past = next_
+            two_past, one_past = one_past, next_
     return next_
 
 if __name__ == "__main__":
