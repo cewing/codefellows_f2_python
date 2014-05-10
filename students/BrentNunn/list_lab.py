@@ -66,13 +66,23 @@ def series_2(fruits):
     print u"\nRemoving last item from fruits"
     fruits.pop()
     print_fruits(fruits)
+
+    print u"\nDoubling the series 2 list"
     fruits *= 2
+    print_fruits(fruits)
 
     delete_fruit = get_fruit(u"\nEnter fruit to delete from the list: ")
     new_fruits = []
-    for fruit in fruits:
-        if fruit <> delete_fruit:
-            new_fruits += [fruit]
+    while True:
+        for fruit in fruits:
+            if fruit <> delete_fruit:
+                new_fruits += [fruit]
+
+        if len(new_fruits) < len(fruits):
+            break
+        else:
+            delete_fruit = get_fruit(u"Entry not found.  Try again: ")
+            new_fruits = []
 
     print_fruits(new_fruits)
 
