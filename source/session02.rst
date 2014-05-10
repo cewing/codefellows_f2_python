@@ -749,12 +749,12 @@ Instead, use what Python gives you:
         do_something()
 
 
-And, Or and Not
+and, or and not
 ---------------
 
 Python has three boolean keywords, ``and``, ``or`` and ``not``.
 
-``And`` and ``or`` are binary expressions, and evaluate from left to right.
+``and`` and ``or`` are binary expressions, and evaluate from left to right.
 
 ``and`` will return the first operand that evaluates to False, or the last
 operand if none are True:
