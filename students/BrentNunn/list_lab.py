@@ -33,26 +33,55 @@ def get_num(max_num):
 
     return num_in
 
-# list_lab series 1
-print_fruits(fruits)
-fruits.extend([get_fruit(u"\nPlease add another fruit to the list: ")])
-print_fruits(fruits)
+def series_1(fruits):
+    """\nlist_lab series 1, creating a list of fruits"""
+    print u"list_lab series 1"
+    print_fruits(fruits)
+    fruits.extend([get_fruit(u"\nPlease add another fruit to the list: ")])
+    print_fruits(fruits)
 
-fruit_num = get_num(len(fruits))
-print u"Fruit number {} is {}.".format(fruit_num, fruits[fruit_num - 1])
+    fruit_num = get_num(len(fruits))
+    print u"Fruit number {} is {}.".format(fruit_num, fruits[fruit_num - 1])
 
-one_fruit = [get_fruit(u"\nPlease add another fruit to the list: ")]
-fruits = one_fruit + fruits
-print_fruits(fruits)
+    one_fruit = [get_fruit(u"\nPlease add another fruit to the list: ")]
+    fruits = one_fruit + fruits
+    print_fruits(fruits)
 
-one_fruit = get_fruit(u"\nPlease add another fruit to the list: ")
-fruits.insert(0, one_fruit)
-print_fruits(fruits)
+    one_fruit = get_fruit(u"\nPlease add another fruit to the list: ")
+    fruits.insert(0, one_fruit)
+    print_fruits(fruits)
 
-print u"\nThese fruits begin with 'P':"
-for fruit in fruits:
-    if fruit[0] == 'P':
-        print fruit
+    print u"\nThese fruits begin with 'P':"
+    for fruit in fruits:
+        if fruit[0] == 'P':
+            print fruit
 
-# list_lab series 2
+    return fruits
+
+def series_2(fruits):
+    """list_lab series 2, deleting items from the list of fruits"""
+    print u"\nlist_lab series 2"
+    print_fruits(fruits)
+
+    print u"\nRemoving last item from fruits"
+    fruits.pop()
+    print_fruits(fruits)
+    fruits *= 2
+
+    delete_fruit = get_fruit(u"\nEnter fruit to delete from the list: ")
+    new_fruits = []
+    for fruit in fruits:
+        if fruit <> delete_fruit:
+            new_fruits += [fruit]
+
+    print_fruits(new_fruits)
+
+
+# This assignment has 4 sections, or series of actions based on lists
+# list_lab series 1, creating a list of fruits
+fruits = series_1(fruits)
+
+# list_lab series 2, removing fruits from the list
+series_2(fruits)
+
 
