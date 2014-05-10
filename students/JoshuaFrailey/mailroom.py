@@ -12,8 +12,17 @@ for donor in donor_list:
         donor.append(round(random.random()*10000, 2))
 
 
-def _get_donor():
-    pass
+def _get_donors():
+    """Return a list of donor names."""
+    names = []
+    for donor in donor_list:
+        names.append(donor[0])
+    return names
+
+
+def _add_donor(name):
+    """Append donor to donor list."""
+    donor_list.append([name.title()])
 
 
 def _get_donation():
@@ -21,7 +30,14 @@ def _get_donation():
 
 
 def _send_thankyou():
-    pass
+    input_ = raw_input(
+        u"""
+        Enter a donor's full name to generate a personalized letter.
+        Type 'list' to see a list of all donors.
+        """
+        )
+    while True:
+        if input_ ==
 
 
 def _create_report():
