@@ -5,7 +5,9 @@ fruits = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 def print_fruits(fruits):
     """Print all fruits in the sequence"""
     for fruit in fruits:
-        print fruit    
+        print fruit,    
+
+    print ""
 
 def get_fruit(prompt):
     """Get the name of another fruit."""
@@ -36,6 +38,7 @@ def get_num(max_num):
 def series_1(fruits):
     """\nlist_lab series 1, creating a list of fruits"""
     print u"list_lab series 1"
+
     print_fruits(fruits)
     fruits.extend([get_fruit(u"\nPlease add another fruit to the list: ")])
     print_fruits(fruits)
@@ -61,24 +64,26 @@ def series_1(fruits):
 def series_2(fruits):
     """list_lab series 2, deleting items from the list of fruits"""
     print u"\nlist_lab series 2"
-    print_fruits(fruits)
+
+    fruits2 = fruits[:]
+    print_fruits(fruits2)
 
     print u"\nRemoving last item from fruits"
-    fruits.pop()
-    print_fruits(fruits)
+    fruits2.pop()
+    print_fruits(fruits2)
 
     print u"\nDoubling the series 2 list"
-    fruits *= 2
-    print_fruits(fruits)
+    fruits2 *= 2
+    print_fruits(fruits2)
 
     delete_fruit = get_fruit(u"\nEnter fruit to delete from the list: ")
     new_fruits = []
     while True:
-        for fruit in fruits:
+        for fruit in fruits2:
             if fruit <> delete_fruit:
                 new_fruits += [fruit]
 
-        if len(new_fruits) < len(fruits):
+        if len(new_fruits) < len(fruits2):
             break
         else:
             delete_fruit = get_fruit(u"Entry not found.  Try again: ")
@@ -86,6 +91,32 @@ def series_2(fruits):
 
     print_fruits(new_fruits)
 
+def yes_or_no(prompt):
+    while True:
+        response = raw_input(prompt)
+        if response.isalpha():
+            response = response.lower()
+            if response == u"yes" or response == u"no":
+                return response
+            else:
+                prompt = u"'yes' or 'no': "
+
+
+def series_3(fruits):
+    """list_lab series 3, deterine liked fruits"""
+    print u"\nlist_lab series 3"
+
+    fruits3 = fruits[:]
+    print_fruits(fruits3)
+
+    liked_fruits = []
+    for fruit in fruits3:
+        prompt = u"Do you like {}? ".format(fruit.lower())
+        liked = yes_or_no(prompt)
+        if liked == u"yes":
+            liked_fruits += [fruit]
+
+    print_fruits(liked_fruits)
 
 # This assignment has 4 sections, or series of actions based on lists
 # list_lab series 1, creating a list of fruits
@@ -94,4 +125,6 @@ fruits = series_1(fruits)
 # list_lab series 2, removing fruits from the list
 series_2(fruits)
 
+# list_lab series 3, Remove all fruits the user does not like
+series_3(fruits)
 
