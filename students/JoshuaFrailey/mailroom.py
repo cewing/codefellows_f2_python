@@ -4,7 +4,7 @@ random.seed(0)
 
 
 def _create_donor_list():
-    """Return a random list of donors and donatiosn"""
+    u"""Return a random list of donors and donations."""
     names = [
         [u"Jonathan Blow"], [u"Markus Persson"], [u"Mike Bithell"],
         [u"Calvin Goble"], [u"Alix Stolzer"], [u"Jeff Vogel"]
@@ -29,7 +29,7 @@ def _get_donors():
 
 
 def _print_donors():
-    u"""Print donor names on same line"""
+    u"""Print donor names on same line."""
     donors = _get_donors()
     for i, donor in enumerate(donors):
         if i == len(donors)-1:
@@ -44,7 +44,7 @@ def _add_donor(name):
 
 
 def _add_donation(donor, amount):
-    u"""Append donation for donor to donor list"""
+    u"""Append donation for donor to donor list."""
     donors = _get_donors()
     i = donors.index(donor)
     donor_list[i].append(amount)
@@ -69,7 +69,7 @@ def _print_donations(donations):
 
 
 def _print_ty_menu():
-    """Print the 'Send Thank You' sub-menu"""
+    u"""Print the 'Send Thank You' sub-menu."""
     menu = []
     menu.append(u"Enter a donor's full name to add a donation and generate")
     menu.append(u"a personalized letter. Type 'list' to see a list of all")
@@ -79,7 +79,7 @@ def _print_ty_menu():
 
 
 def _generate_ty(donor):
-    """Print the thank you letter"""
+    u"""Print the thank you letter."""
     donations = _get_donations(donor)
     recent = donations.pop()
     donations.reverse()
@@ -97,10 +97,11 @@ def _generate_ty(donor):
 
 
 def _send_thankyou():
+    u"""Control flow for the 'Send Thank You' sub-menu."""
     _print_ty_menu()
-    donor = unicode(raw_input("--> ").title())
+    donor = unicode(raw_input(u"--> ").title())
     while True:
-        if donor in [u"Menu", "M"]:
+        if donor in [u"Menu", u"M"]:
             break
         elif donor in [u"List", u"L"]:
             _print_donors()
@@ -114,7 +115,7 @@ def _send_thankyou():
         else:
             while True:
                 prompt = u"Do you wish to add a donor named "
-                prompt += u"{} (Y/N)? \n-->".format(donor)
+                prompt += u"{} (Y/N)? \n--> ".format(donor)
                 input_ = unicode(raw_input(prompt))
                 if input_.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
@@ -127,14 +128,11 @@ def _send_thankyou():
 
 
 def _add_amount(donor):
+    u"""Ask for amount, validate it, and pass it."""
     amount = unicode(raw_input(u"Enter the amount of the donation: "))
     while True:
         if amount in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
-        # if amount.isdigit():
-        #     _add_donation(donor, int(amount))
-        #     _generate_ty(donor)
-        #     break
         else:
             amount = _is_float(amount)
             _add_donation(donor, amount)
@@ -143,31 +141,33 @@ def _add_amount(donor):
 
 
 def _is_float(input_):
+    u"""Return input_ if it's a float."""
     while True:
         if input_ in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
         try:
             amount = float(input_)
         except ValueError:
-            prompt = u"Please only enter a number.\n-->"
+            prompt = u"Please only enter a number.\n--> "
             input_ = unicode(raw_input(prompt))
         else:
             return amount
 
 
 def _create_report():
+    u"""Print donation statistics for each donor."""
     print "\n"
     for i, donor in enumerate(donor_list):
         name = donor[0]
         total = sum(donor[1:])
         number = len(donor[1:])
         average = round(sum(donor[1:])/(len(donor[1:])), 2)
-        print u"{}    {}    {}    {}".format(name, total, number, average)
+        print u"{width}${}{}${}".format(name, total, number, average, width=30)
     print u"\n"
 
 
 def _print_main_menu():
-    """Print the the menu options"""
+    u"""Print the the menu options"""
     menu = []
     menu.append(u"Please select from the following: ")
     menu.append(u'1: Send a Thank You')
