@@ -2,21 +2,19 @@
 
 
 def thanks(ty_name):
-    """Prompt for donation amount and return amount"""
+    """Prompt for donation amount and return amount."""
     amt = u'' + raw_input("What is %s's donation amount? " % ty_name)
-    print amt
     if amt == u'quit':
         return None
     else:
         while True:
-            print u'line 11'
             try:
                 amt = float(amt)
             except ValueError:
                 amt = u'' + raw_input("%s is not a number, please enter \
-                    donation amount [or 'quit']: " % amt)
+donation amount [or 'quit']: " % amt)
                 if amt == u'quit':
-                    break
+                    return None
             else:
                 break
         print "Dear %s, \n \
@@ -27,6 +25,7 @@ your support. \n \
 
 
 def second(l_list):
+    """Return second variable in list."""
     return l_list[1]
 
 
@@ -57,26 +56,26 @@ if __name__ == '__main__':
                     donations.append([name])
             if not name == u'quit':
                 amount = thanks(name)
-                print amount
                 if not amount is None:
                     donations[[col[0] for col in donations].index(name)]\
                         .append(amount)
                 else:
                     # Remove name if quit thanks()
                     donations.pop()
-            print donations
 
         elif do == u'Create a Report':
-            new_dons = []
+            don_rep = []
             for donor in donations:
                 total = sum(donor[1:])
                 count = len(donor) - 1
-                new_dons.append([donor[0], total, count, total / count])
-            new_dons.sort(key=second, reverse=True)
+                don_rep.append([donor[0], total, count, total / count])
+            don_rep.sort(key=second, reverse=True)
             # Find longest name to use for formatting
-            n_long = max([len(col[0]) for col in new_dons])
-            for donor in new_dons:
-                print "%*s Total: %8i Count: %8i Average: %8d" % \
+            n_long = max([len(col[0]) for col in don_rep])
+            print "%*s %8s %8s %8s" % (-n_long, "Name", "Total",
+                                       "Count", "Average")
+            for donor in don_rep:
+                print "%*s %8i %8i %8d" % \
                     (-n_long, donor[0], donor[1], donor[2], donor[3])
         elif do == u'quit':
             break
