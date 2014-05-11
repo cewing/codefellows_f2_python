@@ -30,7 +30,7 @@ def fruitSeriesOne(fruitlist):
     f = copy.copy(fruitlist)
     displayAllFruit(f)
     # User add to end of fruit list
-    userInput = raw_input("Name a fruit to add to the end.-->").decode()
+    userInput = ""
     while userInput == "":
             userInput = raw_input("Name a fruit" +
                                   " to add to the end.-->").decode()
@@ -38,9 +38,7 @@ def fruitSeriesOne(fruitlist):
     f.append(userInput)
     displayAllFruit(f)
     # User pick a fruit list index to display
-    userInput = raw_input("Pick a number between 1 and "
-                          + str(len(f)) +
-                          " to display the corresponding fruit.-->")
+    userInput = ""
     while isInt(userInput) is False or int(userInput) <= 0 or int(userInput) > len(f):
             userInput = raw_input("Pick a number between 1 and "
                                   + str(len(f)) +
@@ -76,8 +74,7 @@ def fruitSeriesTwo(fruitlist):
     f.pop()
     displayAllFruit(f)
     # User pick a fruit to delete
-    userInput = raw_input("Name a fruit to delete from the list.-->").decode()
-    userInput = userInput.capitalize()
+    userInput = ""
     while userInput not in f:
             userInput = raw_input("Name a fruit" +
                                   " to delete from the list.-->").decode()
