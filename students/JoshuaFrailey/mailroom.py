@@ -49,9 +49,8 @@ def _get_donations(donor):
     return donor_list[donor_pos][1:]
 
 
-def _print_donations(donor):
+def _print_donations(donations):
     u"""Print donations for a given donor."""
-    donations = _get_donations(donor)
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
             print u"${}".format(donation)
@@ -72,7 +71,7 @@ def _generate_ty(donor):
     """Print the thank you letter"""
     donations = _get_donations(donor)
     recent = donations[-1]
-    history = donations[:len(donations)-2]
+    history = donations[:len(donations)-1]
     letter = []
     letter.append(u"Dear {},".format(donor))
     letter.append(u"Local Chairty is very appreciative of your recent,")
