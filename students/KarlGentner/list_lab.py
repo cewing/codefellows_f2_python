@@ -5,7 +5,7 @@ import sys
 import copy
 
 
-# Create fruitlist
+# Create original fruitlist
 fruitlist = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 
 
