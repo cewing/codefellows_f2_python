@@ -5,7 +5,7 @@ import sys
 import copy
 
 
-# Create original fruitlist
+# Create fruitlist
 fruitlist = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 
 
@@ -48,21 +48,13 @@ def fruitSeriesOne(fruitlist):
     sys.stdout.write("\nFruit #" + userInput + ": "
                      + f[int(userInput)-1] + "\n")
     sys.stdout.write("\n")
-    # User add to beginning of fruit list using "+"
-    userInput = raw_input("Name a fruit to add to the beginning.-->").decode()
-    while userInput == "":
-            userInput = raw_input("Name a fruit" +
-                                  " to add to the beginning.-->").decode()
-    userInput = userInput.capitalize()
-    f = [userInput] + f
+    # Add to beginning of fruit list using "+"
+    sys.stdout.write("Let's add 'Grapes' to the beginning of the list.-->")
+    f = [u"Grapes"] + f
     displayAllFruit(f)
-    # User add to beginning of fruit list using insert
-    userInput = raw_input("Name a fruit to add to the beginning.-->").decode()
-    while userInput == "":
-            userInput = raw_input("Name a fruit" +
-                                  " to add to the beginning.-->").decode()
-    userInput = userInput.capitalize()
-    f.insert(0, userInput)
+    # Add to beginning of fruit list using insert
+    sys.stdout.write("Let's add 'Bananas' to the beginning of the list.-->")
+    f.insert(0, u"Bananas")
     displayAllFruit(f)
     # Display all fruits in the list that begin with the letter P
     p_fruitlist = []
@@ -119,6 +111,7 @@ def fruitSeriesFour(fruitlist):
         reverseSpellList.remove(fruit)
     sys.stdout.write("Here is the copied list with spelling reversed:\n")
     sys.stdout.write(", ".join(reverseSpellList))
+    fruitlist.pop()
     displayAllFruit(fruitlist)
 
 
