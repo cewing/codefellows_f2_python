@@ -35,7 +35,7 @@ def _print_donors():
         if i == len(donors)-1:
             print donor
         else:
-            print donor + u",",  # Can this be done with str.format()?
+            print u"{},".format(donor),
 
 
 def _add_donor(name):
@@ -84,16 +84,16 @@ def _generate_ty(donor):
     recent = donations.pop()
     donations.reverse()
     history = _print_donations(donations)
-    letter = []
-    letter.append(u"\nDear {},".format(donor))
-    letter.append(u"\nLocal Chairty is very appreciative of your recent,")
-    letter.append(u"generous donation of ${}. Much like your previous".format(recent))  # FIgure out formatting
-    letter.append(u"donations of {}, this doantion will go to clothe the".format(history))
-    letter.append(u"poor berengas who have been so unjustly shermed. \n")
-    letter.append(u"Thank you, \n")
-    letter.append(u"Local Chairty\n")
-    for line in letter:
-        print line
+    letter = u"\nDear {},\n\nLocal Chairty is very appreciative".format(donor)
+    letter += u" of your recent, generous donation of ${}".format(recent)
+    if history:
+        letter += u". Much like your previous donations of {},".format(history)
+        letter += u" this "
+    else:
+        letter += u". This "
+    letter += u"donation will go to clothe the poor berengas who have been "
+    letter += u"so unjustly shermed.\n\nThank you,\n\nLocal Chairty\n"
+    print letter
 
 
 def _send_thankyou():
@@ -115,9 +115,11 @@ def _send_thankyou():
             while True:
                 prompt = u"Do you wish to add a donor named "
                 prompt += u"{} (Y/N)? \n-->".format(donor)
-                unicode(raw_input(prompt))
-                if donor.lower() in [u"y", u"yes"]:
+                input_ = unicode(raw_input(prompt))
+                if input_.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
+                    _add_amount(donor)
+                    _generate_ty(donor)
                     break
                 else:
                     break
@@ -127,14 +129,30 @@ def _send_thankyou():
 def _add_amount(donor):
     amount = unicode(raw_input(u"Enter the amount of the donation: "))
     while True:
-        if amount.lower() in [u"m", u"menu"]:
+        if amount in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
-        if amount.isdigit():
-            break
+        # if amount.isdigit():
+        #     _add_donation(donor, int(amount))
+        #     _generate_ty(donor)
+        #     break
         else:
-            amount = unicode(raw_input(u"Please only enter digits. "))
-    _add_donation(donor, int(amount))
-    _generate_ty(donor)
+            amount = _is_float(amount)
+            _add_donation(donor, amount)
+            _generate_ty(donor)
+            break
+
+
+def _is_float(input_):
+    while True:
+        if input_ in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
+            break
+        try:
+            amount = float(input_)
+        except ValueError:
+            prompt = u"Please only enter a number.\n-->"
+            input_ = unicode(raw_input(prompt))
+        else:
+            return amount
 
 
 def _create_report():
