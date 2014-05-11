@@ -49,6 +49,16 @@ def _get_donations(donor):
     return donor_list[donor_pos][1:]
 
 
+def _print_donations(donor):
+    u"""Print donations for a given donor."""
+    donations = _get_donations(donor)
+    for i, donation in enumerate(donations):
+        if i == len(donations)-1:
+            print u"${}".format(donation)
+        else:
+            print u"${}".format(donation) + ",",
+
+
 def _print_ty_menu():
     """Print the 'Send Thank You' sub-menu"""
     menu = []
