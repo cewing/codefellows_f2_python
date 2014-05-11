@@ -51,11 +51,14 @@ def _get_donations(donor):
 
 def _print_donations(donations):
     u"""Print donations for a given donor."""
+    donations_str = u""
+    print len(donations)
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
-            print u"${}".format(donation)
+            donations_str += u"$" + unicode(donation)
         else:
-            print u"${}".format(donation) + ",",
+            donations_str += u"$" + unicode(donation) + ", "
+    return donations_str
 
 
 def _print_ty_menu():
@@ -70,12 +73,13 @@ def _print_ty_menu():
 def _generate_ty(donor):
     """Print the thank you letter"""
     donations = _get_donations(donor)
-    recent = donations[-1]
-    history = donations[:len(donations)-1]
+    recent = donations.pop()
+    donations.reverse()
+    history = _print_donations(donations)
     letter = []
     letter.append(u"Dear {},".format(donor))
     letter.append(u"Local Chairty is very appreciative of your recent,")
-    letter.append(u"generous donation of {}. Much like your previous".format(recent))  # FIgure out formatting
+    letter.append(u"generous donation of ${}. Much like your previous".format(recent))  # FIgure out formatting
     letter.append(u"donations of {}, this doantion will go to clothe the".format(history))
     letter.append(u"poor berengas who have been so unjustly shermed. \n")
     letter.append(u"Thank you, \n")
