@@ -60,7 +60,6 @@ def _get_donations(donor):
 def _print_donations(donations):
     u"""Print donations for a given donor."""
     donations_str = u""
-    print len(donations)
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
             donations_str += u"$" + unicode(donation)
@@ -86,8 +85,8 @@ def _generate_ty(donor):
     donations.reverse()
     history = _print_donations(donations)
     letter = []
-    letter.append(u"Dear {},".format(donor))
-    letter.append(u"Local Chairty is very appreciative of your recent,")
+    letter.append(u"\nDear {},".format(donor))
+    letter.append(u"\nLocal Chairty is very appreciative of your recent,")
     letter.append(u"generous donation of ${}. Much like your previous".format(recent))  # FIgure out formatting
     letter.append(u"donations of {}, this doantion will go to clothe the".format(history))
     letter.append(u"poor berengas who have been so unjustly shermed. \n")
@@ -101,17 +100,22 @@ def _send_thankyou():
     _print_ty_menu()
     donor = unicode(raw_input("--> ").title())
     while True:
-        if donor in [u"Quit", "Q"]:
+        if donor in [u"Menu", "M"]:
             break
         elif donor in [u"List", u"L"]:
             _print_donors()
-            donor = unicode(raw_input(u"Please type a name from the list above or enter the name of a new donor. ").title())
+            prompt = u"Type a name from the above list or enter the name of "
+            prompt += u"a new donor. Type 'menu' to return to the main menu."
+            prompt += u"\n--> "
+            donor = unicode(raw_input(prompt).title())
         elif donor in _get_donors():
             _add_amount(donor)
             break
         else:
             while True:
-                unicode(raw_input(u"Do you wish to add {}".format(donor)))
+                prompt = u"Do you wish to add a donor named "
+                prompt += u"{} (Y/N)? \n-->".format(donor)
+                unicode(raw_input(prompt))
                 if donor.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
                     break
@@ -123,7 +127,7 @@ def _send_thankyou():
 def _add_amount(donor):
     amount = unicode(raw_input(u"Enter the amount of the donation: "))
     while True:
-        if amount.lower() in [u"Q", u"Quit"]:
+        if amount.lower() in [u"m", u"menu"]:
             break
         if amount.isdigit():
             break
