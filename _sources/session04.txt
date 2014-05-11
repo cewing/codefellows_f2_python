@@ -1,5 +1,5 @@
 .. Foundations 2: Python slides file, created by
-   Chris Barker: April 26, 2014.
+   Chris Barker: May 12, 2014.
 
 *******************************************************
 Session Four: Dictionaries, Sets, Exceptions, and Files
@@ -20,6 +20,23 @@ Review of Previous Class
 
 
 Any questions?
+
+Homework comments
+-----------------
+
+What is ``assert`` for?
+
+Testing -- NOT for issues expected to happen operationally::
+
+    assert m >= 0
+
+in operational code should be::
+
+    if m < 0:
+        raise ValueError
+
+
+(Asserts get ignored if optimization is turned on!)
 
 
 =====================
@@ -71,8 +88,8 @@ Dictionary Indexing
       File "<stdin>", line 1, in <module>
     KeyError: 'non-existing key'
 
-Dictionary Indexing
--------------------
+
+.. nextslide::
 
 Keys can be any immutable:
 
@@ -93,8 +110,8 @@ Keys can be any immutable:
 Actually -- any "hashable" type.
 
 
-Dictionary Indexing
--------------------
+
+.. nextslide:: Hashing
 
 Hash functions convert arbitrarily large data to a small proxy (usually int)
 
@@ -106,11 +123,6 @@ Dictionaries hash the key to an integer proxy and use it to find the key and val
 
 Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one)
 
-
-Dictionary Indexing
--------------------
-
-
 What would happen if the proxy changed after storing a key?
 
 Hashability requires immutability
@@ -119,11 +131,12 @@ Key lookup is very efficient
 
 Same average time regardless of size
 
-also ... Python name look-ups are implemented with dict -- it's highly optimized
+
+.. nextslide:: Dictionary indexing
 
 
-Dictionary Indexing
--------------------
+Note: Python name look-ups are implemented with dict -- it's highly optimized
+
 
 Key to value:
  * lookup is one way
@@ -139,7 +152,7 @@ Dictionary Ordering (not)
 -------------------------
 
 
-dictionaries have no defined order
+Dictionaries have no defined order
 
 .. code-block:: ipython
 
@@ -279,8 +292,7 @@ Set Methods
       File "<stdin>", line 1, in <module>
     KeyError: 2
 
-Set Methods
-------------
+..nextslide::
 
 ::
 
@@ -294,7 +306,7 @@ Set Methods
 Frozen Set
 ----------
 
-Also ``frozenset``
+Another kind of set: ``frozenset``
 
 immutable -- for use as a key in a dict
 (or another set...)
@@ -363,11 +375,27 @@ Use Exceptions, rather than your own tests
 
 It will almost always work -- but the almost will drive you crazy
 
+..nextslide::
 
-Exceptions
-----------
+Example from homework::
 
-"easier to ask forgiveness than permission"
+    if num_in.isdigit():
+        num_in = int(num_in)
+
+but -- ``int(num_in)`` will only work if the string can be converted to an integer. So you can do::
+
+    try:
+        num_in = int(num_in)
+    except ValueError:
+        print u"Input must be an integer, try again."
+
+Or let the Exception be raised!
+
+
+..nextslide:: EAFP
+
+
+"it's Easier to Ask Forgiveness than Permission"
 
  -- Grace Hopper
 
@@ -376,9 +404,7 @@ http://www.youtube.com/watch?v=AZDWveIdqjY
 
 (Pycon talk by Alex Martelli)
 
-Exceptions
-----------
-
+..nextslide:: Do you catch all Exceptions?
 
 For simple scripts, let exceptions happen
 
@@ -434,7 +460,7 @@ Exceptions -- using them
         raise
 
 
-Particularly useful if you catch more than one exception:}
+Particularly useful if you catch more than one exception:
 ::
     
     except (IOError, BufferError, OSError) as the_error:
@@ -476,8 +502,27 @@ But...
 
 For the most part, you can/should use a built in one
 
-LAB
----
+..nextslide::
+
+Choose the best match you can for the built in Exception you raise.
+
+Example (for last week's ackerman homework)::
+
+  if (not isinstance(m, int)) or (not isinstance(n, int)):
+      raise ValueError
+
+Is the *value* or the input the problem here?
+
+Nope: the *type* is the problem::
+
+  if (not isinstance(m, int)) or (not isinstance(n, int)):
+      raise TypeError
+
+(but should you be checking type anyway?)
+
+
+Homework
+---------
 
 Exceptions Lab: Improving ``raw_input`` :
 
@@ -507,12 +552,11 @@ Text Files
     f.close()
 
 
-``secret_data``  is a string}
+``secret_data``  is a (unicode) string
 
-(can also use ``file()``  -- ``open()``  is preferred)
+(There is also the regular ``open()`` built in, but it won't handle unicode for you...)
 
-Files
------
+..nextslide::
 
 Binary Files
 
@@ -523,20 +567,21 @@ Binary Files
     f.close()
 
 
-``secret_data``  is still a byte string
+``secret_data``  is a byte string
 
 (with arbitrary bytes in it)
 
 (See the ``struct``  module to unpack binary data )
 
-Files
------
+
+..nextslide::
+
 
 File Opening Modes
 
 ::
 
-    f = open('secrets.txt', [mode])
+    f = codecs.open('secrets.txt', [mode])
     'r', 'w', 'a'
     'rb', 'wb', 'ab'
     r+, w+, a+
@@ -547,8 +592,8 @@ File Opening Modes
 
 Gotcha -- 'w' mode always clears the file
 
-Text File Notes
----------------
+..nextslide:: Text File Notes
+
 Text is default
 
 (more about unicode vs text vs binary here!)
@@ -579,8 +624,8 @@ Reading part of a file
     f.close()
 
 
-File Reading
-------------
+..nextslide::
+
 
 Common Idioms
 
@@ -617,9 +662,13 @@ Commonly Used Methods
 ::
 
     f.read() f.readline()  f.readlines()
+    
     f.write(str) f.writelines(seq)
+    
     f.seek(offset)   f.tell()
+    
     f.flush()
+    
     f.close()
 
 
@@ -635,7 +684,7 @@ Many classes implement the file interface:
   * pipes, subprocesses
   * StringIO
 
-http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects}
+http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects
 
 StringIO
 --------
@@ -644,11 +693,10 @@ StringIO
     
     In [417]: import StringIO
     In [420]: f = StringIO.StringIO()
-    In [421]: f.write("somestuff")
+    In [421]: f.write(u"somestuff")
     In [422]: f.seek(0)
     In [423]: f.read()
     Out[423]: 'somestuff'
-
 
 (handy for testing file handling code...)
 
@@ -658,7 +706,8 @@ Paths and Directories
 
 Paths
 -----
-Relative paths:}
+
+Relative paths:
 ::
 
     u'secret.txt'
@@ -685,8 +734,8 @@ os module
     os.path.relpath()￼
 
 
-os.path module
---------------
+..nextslide:: os.path module
+----------------------------
 
 ::
 
@@ -699,8 +748,7 @@ os.path module
 
 (all platform independent)
 
-directories
------------
+..nextslide:: directories
 
 ::
 
@@ -719,7 +767,6 @@ Paths and File Processing
     in the current directory, one per line
   * write a program which copies a file from a source, to a
         destination (without using shutil, or the OS copy command)
-  * write a program that extracts all the programming languages that the students in this class used before (``code\students_languages.txt`` )
   * update mail-merge from the earlier lab to write output
          to individual files on disk
 
@@ -730,12 +777,12 @@ Homework
 Recommended Reading:
 
   * Dive Into Python: Chapt. 13,14
-  * Unicode: http://www.joelonsoftware.com/articles/Unicode.html}
+  * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
 
 Do the Labs you didn't finish in class
 
   * Coding Kata 14 - Dave Thomas 
-    http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html}
+    http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
 
   * Use The Adventures of Sherlock Holmes as input:
         ``code/sherlock.txt``  (ascii)
