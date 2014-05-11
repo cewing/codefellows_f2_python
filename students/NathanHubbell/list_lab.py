@@ -41,6 +41,15 @@ def series3():
                 noAnswer=0
     print fruit
 
+def series4():
+    dupfruit=[]
+    for i in range(len(fruit)):
+        aFruit=list(fruit[i])
+        aFruit.reverse()
+        aFruit=''.join(aFruit)
+        dupfruit.append(aFruit)
+    print dupfruit
+    fruit.pop()
+    print fruit
 
-
-series3()
+series4()
