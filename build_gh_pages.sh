@@ -10,7 +10,7 @@
 
 # cp -R build/html/ ./
 # git add *
-git commit -a
+# git commit -a
 # git push origin gh-pages
 # git push upstream gh-pages
 # git checkout master
