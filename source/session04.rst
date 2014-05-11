@@ -38,6 +38,16 @@ in operational code should be::
 
 (Asserts get ignored if optimization is turned on!)
 
+..newslide
+
+The rot13 solution:
+
+At least one of you found the "rot13" codec -- that's the really easy way to do it!
+
+A couple found the ``string.translate()`` function -- anyone get it to work with unicode?
+
+Did you notice that rot13(rot13(a_string)) == a_string?
+
 
 =====================
 Dictionaries and Sets
