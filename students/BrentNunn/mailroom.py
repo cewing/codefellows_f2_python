@@ -36,17 +36,25 @@ def summarize_donor(donor):
     return [donor, total_donations, num_donations, total_donations / num_donations]
 
 
+def total_donation(row):
+    return row[1]
+
 def create_report():
     """Create a donors report"""
 
     donors = []
     donors_summary = []
 
+    # Summarize donations per donor
     for donation in donations:
-        if donation[0] not in donors:
-            donors.append(donation[0])
-            donors_summary.append(summarize_donor(donation[0]))
+        name = donation[0]
+        if name not in donors:
+            donors.append(name)
+            donors_summary.append(summarize_donor(name))
 
+
+    # Sort the donors summary on total donations
+    donors_summary.sort(key=total_donation)
 
     #print u"\nHere is your report."
     print u"{:^59}".format("Donor's Summary")
