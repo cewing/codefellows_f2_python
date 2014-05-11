@@ -1,13 +1,16 @@
 # Usage Notes
 # Report formatting is designed for consoles with fixed length fonts
 
+
 def main_prompt(donor_list):
     """Display main prompt for mailroom program"""
 
     print u""
     print u"*** Welcome To Mailroom Madness ***"
     print u""
-    print u"Menu Options:"
+    menu_options_header = u"Menu Options:"
+    print menu_options_header
+    print u"-" * len(menu_options_header)
     print u"Type T to send a thank you note"
     print u"Type R to create a report"
     print u"Type Q to quit"
@@ -17,8 +20,7 @@ def main_prompt(donor_list):
 
     # Validate inputs
     while input_string not in ('t', 'r', 'q'):
-        print u"Valid options are T or R or Q: "
-        input_string = raw_input().lower()
+        input_string = raw_input("Valid options are T or R or Q: ").lower()
     print u""
 
     # Send Thank You Note
@@ -36,41 +38,64 @@ def main_prompt(donor_list):
 
 def send_thank_you_note(donor_list):
     """Allow user to make additions to donor data, and generate a thnk you note"""
-    input_string = raw_input("Enter the full name of a donor, or type 'list' to see a list of donors: ")
+
+    thank_you_note_options_header = u"Thank You Note Options:"
+    enter_current_donor_string = u"Type the full name of a current donor"
+    enter_new_donor_string = u"To add a new donor, type the new donor's name"
+    type_list_string = u"Type 'list' for a list of donors"
+    type_q_string = "Type Q to quit to main prompt: "
+
+    print thank_you_note_options_header
+    print u"-" * len(thank_you_note_options_header)
+    print enter_current_donor_string
+    print enter_new_donor_string
+    print type_list_string
+    input_string = raw_input(type_q_string)
 
     # Print just the donor names, then reprompt user for a name
     while input_string == 'list':
         for a in donor_list:
             print a[0]
-        input_string = raw_input("Enter the full name of a donor, or type 'list' to see a list of donors: ")
 
-    # Create a new list just of donor names
-    donor_list_names = []
-    for a in donor_list:
-        donor_list_names.append(a[0])
+        print u""
+        print thank_you_note_options_header
+        print u"-" * len(thank_you_note_options_header)
+        print enter_current_donor_string
+        print enter_new_donor_string
+        print type_list_string
+        input_string = raw_input(type_q_string)
 
-    # If donor not already in list, add the new donor
-    if input_string not in donor_list_names:
-        print u"Adding %s to donor list." % input_string
-        donor_list.append([input_string])
+    if input_string.lower() == 'q':
+        main_prompt(donor_list)
+        return
+    else:
+        # Create a new list just of donor names
+        donor_list_names = []
+        for a in donor_list:
+            donor_list_names.append(a[0])
 
-    # Prompt user for a donation amount for current donor, and add it to that donor's donation history
-    input_donation = raw_input("Enter a donation amount for %s: " % input_string)
+        # If donor not already in list, add the new donor to the list
+        if input_string not in donor_list_names:
+            print u"Adding %s to donor list." % input_string
+            donor_list.append([input_string])
 
-    #Check to see if input is a number, reprompt if not
-    # print type(input_donation)
-    # while type(input_donation) != int:
-    #     print u"Sorry, we accept whole dollar amounts only."
-    #     input_donation = raw_input("Enter a donation amount for %s: " % input_string)
+        # Prompt user for a donation amount for current donor, and add it to that donor's donation history
+        input_donation = raw_input("Enter a donation amount for %s: " % input_string)
 
-    for a in donor_list:
-        if a[0] == input_string:
-            a.append(int(input_donation))
+        #Check to see if input is a number, reprompt if not
+        # print type(input_donation)
+        # while type(input_donation) != int:
+        #     print u"Sorry, we accept whole dollar amounts only."
+        #     input_donation = raw_input("Enter a donation amount for %s: " % input_string)
 
-    # print donor_list
+        for a in donor_list:
+            if a[0] == input_string:
+                a.append(int(input_donation))
 
-    # Print thank you email to the console
-    print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
+        # print donor_list
+
+        # Print thank you email to the console
+        print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
 
     # Send user back to main prompt
     main_prompt(donor_list)
@@ -95,8 +120,6 @@ def create_report(donor_list):
         space_2 = u" " * (45 - (len(donor_name) + len(space_1) + len(str(donor_sum))))
         space_3 = u" " * (64 - (len(donor_name) + len(space_1) + len(str(donor_sum)) + \
             len(space_2) + len(str(number_of_donations)) + len(str(average_donation))))
-
-        # print len(space_1), len(space_2), len(space_3)
 
         # Print everything
         print donor_name, space_1, donor_sum, space_2, number_of_donations, space_3, average_donation
