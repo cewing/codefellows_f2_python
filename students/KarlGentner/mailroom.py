@@ -11,10 +11,9 @@ donors = [[u'Amy Akin', [1]],
 
 # User pick "Send a Thank You" or "Create a Report"
 def userSendCreate():
-    userInput = raw_input("type 'S' to send a thank you" +
-                          " - OR - type 'C'  to create a report-->").decode()
-    userInput = userInput.capitalize()
+    userInput = ''
     while userInput != 'S' and userInput != 'C':
         userInput = raw_input("type 'S' to send a thank you" +
                               " - OR - type 'C'  to create a report-->").decode()
+        userInput = userInput.capitalize()
     return userInput
