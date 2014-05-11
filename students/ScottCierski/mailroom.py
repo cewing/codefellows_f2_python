@@ -1,3 +1,36 @@
+def main_prompt(donor_list):
+    """Display main prompt for mailroom program"""
+
+    print u""
+    print u"*** Welcome To Mailroom Madness ***"
+    print u""
+    print u"Menu Options:"
+    print u"Type T to send a thank you note"
+    print u"Type R to create a report"
+    print u"Type Q to quit"
+
+    # Convert to lower case before validating, so user can input either upper or lower case
+    input_string = raw_input('Enter T or R or Q: ').lower()
+
+    # Validate inputs
+    while input_string not in ('t', 'r', 'q'):
+        print u"Valid options are T or R or Q: "
+        input_string = raw_input().lower()
+    print u""
+
+    # Send Thank You Note
+    if input_string == 't':
+        send_thank_you_note(donor_list)
+    # Create Report
+    elif input_string == 'r':
+        create_report(donor_list)
+    # Quit the program
+    elif input_string == 'q':
+        print u"Good bye."
+    else:
+        print u"This should never happen."
+
+
 def send_thank_you_note(donor_list):
     """Allow user to make additions to donor data, and generate a thnk you note"""
     input_string = raw_input("Enter the full name of a donor, or type 'list' to see a list of donors: ")
@@ -31,14 +64,26 @@ def send_thank_you_note(donor_list):
         if a[0] == input_string:
             a.append(int(input_donation))
 
-    print donor_list
+    # print donor_list
 
     # Print thank you email to the console
     print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
 
+    # Send user back to main prompt
+    main_prompt(donor_list)
+
+
 def create_report(donor_list):
     """Print list of donors, sorted by total historical donation amount"""
-    return
+    
+    print u"  Name         |  Total Donated  |  # of Donations  |  Average Donation"
+    print u"=" * 71
+    #Print donor name, sum of donations, # of donations, and average donation amount
+    for a in donor_list:
+        print a[0], sum(a[1:]), len(a)-1, sum(a[1:]) / len(a)-1
+
+    # Send user back to main prompt
+    main_prompt(donor_list)
 
 
 if __name__ == '__main__':
@@ -52,29 +97,5 @@ if __name__ == '__main__':
         ['Emilio Esteves', 70, 70, 70]
         ]
 
-    print u""
-    print u"*** Welcome To Mailroom Madness ***"
-    print u""
-    print u"Menu Options:"
-    print u"Type T to send a thank you note"
-    print u"Type R to create a report"
-    print u"Type Q to quit"
-
-    # Convert to lower case before validating, so user can input either upper or lower case
-    input_string = raw_input('Enter T or R or Q: ').lower()
-
-    # Validate inputs
-    while input_string not in ('t', 'r', 'q'):
-        print u"Valid options are T or R or Q: "
-        input_string = raw_input().lower()
-    print u""
-
-    # Send Thank You Note
-    if input_string == 't':
-        send_thank_you_note(donor_list)
-    elif input_string == 'r':
-        create_report(donor_list)
-    elif input_string == 'q':
-        print u"Good bye."
-    else:
-        print u"This should never happen."
+    # Send user to main prompt
+    main_prompt(donor_list)
