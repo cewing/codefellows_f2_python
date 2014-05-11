@@ -111,7 +111,7 @@ def fruitSeriesFour(fruitlist):
         reverseSpellList.remove(fruit)
     sys.stdout.write("Here is the copied list with spelling reversed:\n")
     sys.stdout.write(", ".join(reverseSpellList))
-    sys.stdout.write("\nLet's remove the last item of the original list.\n")
+    sys.stdout.write("\n\nLet's remove the last item of the original list.\n")
     fruitlist.pop()
     displayAllFruit(fruitlist)
 
