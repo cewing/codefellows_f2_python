@@ -100,3 +100,26 @@ while not fruit_remove_flag:
 
 display_list()
 
+# Asking if fruits are liked, "Series 3"
+for fruit in set(fruit_list):
+    while True:
+        print "Do you like %s? \n yes/no" % fruit
+        fruit_question = get_input()
+        if fruit_question == 'yes':
+            break
+        elif fruit_question == 'no':
+            list_rm_all(fruit, fruit_list)
+            break
+        else:
+            pass
+
+display_list()
+
+# Series 4
+wonky_copy = list()
+for fruit in fruit_list:
+    wonky_copy.append(fruit[::-1])
+print "Here are your !stiurf:", wonky_copy
+stolen = fruit_list.pop()
+print "Sorry, I mean here are your fruits:", fruit_list
+print "<Computer steals: %s>" % stolen
