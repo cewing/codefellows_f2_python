@@ -46,12 +46,35 @@ def _get_donation():
     pass
 
 
+def _print_ty_menu():
+    """Print the 'Send Thank You' sub-menu"""
+    menu = []
+    menu.append(u"Enter a donor's full name to generate a personalized letter")
+    menu.append(u"Type 'list' to see a list of all donors.")
+    for line in menu:
+        print line
+
+
+def _generate_ty(donor):
+    """Print the thank you letter"""
+    donations = _get_donation(donor)
+    recent = donations[-1]
+    history = donations[:len(donations)-2]
+    letter = []
+    letter.append(u"Dear {},".format(donor))
+    letter.append(u"Local Chairty is very appreciative of your recent,")
+    letter.append(u"generous donation of {}. Much like your previous".format(recent))  # FIgure out formatting
+    letter.append(u"donations of {}, this doantion will go to clothe the".format(history))
+    letter.append(u"poor berengas who have been so unjustly shermed. \n")
+    letter.append(u"Thank you, \n")
+    letter.append(u"Local Chairty")
+    for line in letter:
+        print line
+
+
 def _send_thankyou():
-    menu = u"""
-        Enter a donor's full name to generate a personalized letter.
-        Type 'list' to see a list of all donors.
-        """
-    donor = unicode(raw_input(menu).title())
+    _print_ty_menu()
+    donor = unicode(raw_input("--> ").title())
     while True:
         if donor in [u"List", u"L"]:
             _print_donors()
@@ -73,14 +96,20 @@ def _create_report():
     pass
 
 
+def _print_main_menu():
+    """Print the the menu options"""
+    menu = []
+    menu.append(u"Please select from the following: ")
+    menu.append(u'1: Send a Thank You')
+    menu.append(u'2: Create a Report')
+    menu.append(u'3: Exit')
+    for line in menu:
+        print line
+
+
 while True:
-    menu = u"""
-        Please select from the following:
-        '1: Send a Thank You'
-        '2: Create a Report'
-        '3: Exit'
-        """
-    input_ = unicode(raw_input(menu))
+    _print_main_menu()
+    input_ = unicode(raw_input("--> "))
     if input_.lower() in [u'1', u's', u'send a thank you']:
         _send_thankyou()
     elif input_.lower() in [u'2', u'c', u'create a report']:
