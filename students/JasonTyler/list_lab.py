@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """Task 1, List Lab"""
 
 def get_input():
@@ -103,7 +105,7 @@ display_list()
 # Asking if fruits are liked, "Series 3"
 for fruit in set(fruit_list):
     while True:
-        print "Do you like %s? \n yes/no" % fruit
+        print "Do you like %s? \n yes/no" % fruit.lower()
         fruit_question = get_input()
         if fruit_question == 'yes':
             break
