@@ -2,14 +2,22 @@ import random
 
 random.seed(0)
 
-donor_list = [
-    [u"Jonathan Blow"], [u"Markus Persson"], [u"Mike Bithell"],
-    [u"Calvin Goble"], [u"Alix Stolzer"], [u"Jeff Vogel"]
-    ]
 
-for donor in donor_list:
-    for donations in range(random.randint(1, 3)):
-        donor.append(round(random.random()*10000, 2))
+def _create_donor_list():
+    """Return a random list of donors and donatiosn"""
+    names = [
+        [u"Jonathan Blow"], [u"Markus Persson"], [u"Mike Bithell"],
+        [u"Calvin Goble"], [u"Alix Stolzer"], [u"Jeff Vogel"]
+        ]
+    donor_list = []
+    random_name = random.choice(names)
+    while (len(donor_list) < 5) and random_name not in donor_list:
+        donor_list.append(random_name)
+        random_name = random.choice(names)
+    for donor in donor_list:
+        for donations in range(random.randint(1, 3)):
+            donor.append(round(random.random()*10000, 2))
+    return donor_list
 
 
 def _get_donors():
@@ -27,7 +35,7 @@ def _print_donors():
         if i == len(donors)-1:
             print donor
         else:
-            print donor + ",",  # Can this be done with string formatting?
+            print donor + u",",  # Can this be done with str.format()?
 
 
 def _add_donor(name):
@@ -57,15 +65,16 @@ def _print_donations(donations):
         if i == len(donations)-1:
             donations_str += u"$" + unicode(donation)
         else:
-            donations_str += u"$" + unicode(donation) + ", "
+            donations_str += u"$" + unicode(donation) + u", "
     return donations_str
 
 
 def _print_ty_menu():
     """Print the 'Send Thank You' sub-menu"""
     menu = []
-    menu.append(u"Enter a donor's full name to generate a personalized letter")
-    menu.append(u"Type 'list' to see a list of all donors.")
+    menu.append(u"Enter a donor's full name to add a donation and generate")
+    menu.append(u"a personalized letter. Type 'list' to see a list of all")
+    menu.append(u"donors. Type 'menu' to return to the main menu.")
     for line in menu:
         print line
 
@@ -83,7 +92,7 @@ def _generate_ty(donor):
     letter.append(u"donations of {}, this doantion will go to clothe the".format(history))
     letter.append(u"poor berengas who have been so unjustly shermed. \n")
     letter.append(u"Thank you, \n")
-    letter.append(u"Local Chairty")
+    letter.append(u"Local Chairty\n")
     for line in letter:
         print line
 
@@ -95,8 +104,16 @@ def _send_thankyou():
         if donor in [u"List", u"L"]:
             _print_donors()
             donor = unicode(raw_input(u"Please type a name from the list above or enter the name of a new donor. ").title())
-        else:  # Need to not add a donor if donor exists
-            _add_donor(donor)
+        elif donor in _get_donors():
+            break
+        else:
+            while True:
+                unicode(raw_input(u"Do you wish to add {}".format(donor)))
+                if donor.lower() in [u"y", u"yes"]:
+                    _add_donor(donor)
+                    break
+                else:
+                    break
             break
     amount = unicode(raw_input(u"Enter the amount of the donation: "))
     while True:
@@ -106,6 +123,7 @@ def _send_thankyou():
         else:
             amount = unicode(raw_input(u"Please only enter digits. "))
     _add_donation(donor, int(amount))
+    _generate_ty(donor)
 
 
 def _create_report():
@@ -123,14 +141,16 @@ def _print_main_menu():
         print line
 
 
-while True:
-    _print_main_menu()
-    input_ = unicode(raw_input("--> "))
-    if input_.lower() in [u'1', u's', u'send a thank you']:
-        _send_thankyou()
-    elif input_.lower() in [u'2', u'c', u'create a report']:
-        _create_report()
-    elif input_.lower() in [u'3', u'e', u'exit']:
-        break
-    else:
-        input_ = unicode(raw_input(u"Please enter '1', '2', or '3'"))
+if __name__ == "__main__":
+    donor_list = _create_donor_list()
+    while True:
+        _print_main_menu()
+        input_ = unicode(raw_input("--> "))
+        if input_.lower() in [u'1', u's', u'send a thank you']:
+            _send_thankyou()
+        elif input_.lower() in [u'2', u'c', u'create a report']:
+            _create_report()
+        elif input_.lower() in [u'3', u'e', u'exit']:
+            break
+        else:
+            input_ = unicode(raw_input(u"Please enter '1', '2', or '3'"))
