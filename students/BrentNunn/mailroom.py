@@ -20,7 +20,7 @@ def send_thanks():
 def summarize_donor(donor):
     """Summarize donations of a donor"""
 
-    print u"Summarizing for donor {}".format(donor)
+    #print u"Summarizing for donor {}".format(donor)
 
     total_donations = 0
     num_donations = 0
@@ -30,8 +30,8 @@ def summarize_donor(donor):
             total_donations += donation[1]
             num_donations += 1
 
-    print "donor_summary = {}".format([donor, total_donations, num_donations, 
-                                       total_donations / num_donations])
+    #print "donor_summary = {}".format([donor, total_donations, num_donations, 
+    #                                   total_donations / num_donations])
     
     return [donor, total_donations, num_donations, total_donations / num_donations]
 
@@ -48,9 +48,14 @@ def create_report():
             donors_summary.append(summarize_donor(donation[0]))
 
 
-    print u"\nHere is your report."
-    print u"Donors Summary"
-    print donors_summary
+    #print u"\nHere is your report."
+    print u"{:^59}".format("Donor's Summary")
+    #print donors_summary
+    #print ""
+
+    print "{:<30}{:>12}{:>7}{:>12}".format("Name", "Total", "Count", "Average")
+    for row in donors_summary:
+        print "{:<30}{:>12,}{:>7,}{:>12,}".format(row[0], row[1], row[2], row[3])
 
 
 if __name__ == '__main__':
