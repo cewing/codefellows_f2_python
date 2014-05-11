@@ -18,11 +18,14 @@ def send_thank_you_note(donor_list):
         print u"Adding %s to donor list." % input_string
         donor_list.append([input_string])
 
-    # Promt user for a donation amount for current donor, and add it to that donor's donation history
+    # Prompt user for a donation amount for current donor, and add it to that donor's donation history
     input_donation = raw_input("Enter a donation amount for %s: " % input_string)
 
     #Check to see if input is a number, reprompt if not
-
+    # print type(input_donation)
+    # while type(input_donation) != int:
+    #     print u"Sorry, we accept whole dollar amounts only."
+    #     input_donation = raw_input("Enter a donation amount for %s: " % input_string)
 
     for a in donor_list:
         if a[0] == input_string:
@@ -30,7 +33,10 @@ def send_thank_you_note(donor_list):
 
     print donor_list
 
-def create_report():
+    # Print thank you email to the console
+    print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
+
+def create_report(donor_list):
     """Print list of donors, sorted by total historical donation amount"""
     return
 
@@ -52,19 +58,23 @@ if __name__ == '__main__':
     print u"Menu Options:"
     print u"Type T to send a thank you note"
     print u"Type R to create a report"
-    
+    print u"Type Q to quit"
+
     # Convert to lower case before validating, so user can input either upper or lower case
-    input_string = raw_input('Enter T or R: ').lower()
+    input_string = raw_input('Enter T or R or Q: ').lower()
 
     # Validate inputs
-    while input_string != 't' and input_string != 'r':
-        print u"Valid options are T or R: "
+    while input_string not in ('t', 'r', 'q'):
+        print u"Valid options are T or R or Q: "
         input_string = raw_input().lower()
     print u""
 
     # Send Thank You Note
     if input_string == 't':
         send_thank_you_note(donor_list)
-
-
-
+    elif input_string == 'r':
+        create_report(donor_list)
+    elif input_string == 'q':
+        print u"Good bye."
+    else:
+        print u"This should never happen."
