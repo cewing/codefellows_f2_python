@@ -3,23 +3,27 @@
 
 def thanks(ty_name):
     """Prompt for donation amount and return amount"""
-    amt = raw_input("What is %s's donation amount? " % ty_name)
-    while True:
-        try:
-            amt = float(amt)
-        except ValueError:
-            amt = raw_input("%s is not a number, please enter donation \
-amount: " % amt)
-        else:
-            break
-    #while not amt == float(amt):
-    #    amt = raw_input("%s is not a number, please enter donation \
-    #        amount: " % amt)
-    print "Dear %s, \n \
-Thank you for your donation of $%.2f to our charity.  We appreciate \
+    amt = u'' + raw_input("What is %s's donation amount? " % ty_name)
+    print amt
+    if amt == u'quit':
+        return None
+    else:
+        while True:
+            print u'line 11'
+            try:
+                amt = float(amt)
+            except ValueError:
+                amt = u'' + raw_input("%s is not a number, please enter \
+                    donation amount [or 'quit']: " % amt)
+                if amt == u'quit':
+                    break
+            else:
+                break
+        print "Dear %s, \n \
+    Thank you for your donation of $%.2f to our charity.  We appreciate \
 your support. \n \
-Sincerely,\n Michelle Rascati" % (ty_name, amt)
-    return amt
+    Sincerely,\n Michelle Rascati" % (ty_name, amt)
+        return amt
 
 
 def second(l_list):
@@ -47,13 +51,20 @@ if __name__ == '__main__':
                 if name == u'list':
                     for val in donations:
                         print val[0]
-                elif name not in [col[0] for col in donations]:
-                    donations.append([name])
                 elif name == u'quit':
                     break
+                elif name not in [col[0] for col in donations]:
+                    donations.append([name])
             if not name == u'quit':
-                donations[[col[0] for col in donations].index(name)].append(
-                    thanks(name))
+                amount = thanks(name)
+                print amount
+                if not amount is None:
+                    donations[[col[0] for col in donations].index(name)]\
+                        .append(amount)
+                else:
+                    # Remove name if quit thanks()
+                    donations.pop()
+            print donations
 
         elif do == u'Create a Report':
             new_dons = []
