@@ -1,3 +1,6 @@
+# Usage Notes
+# Report formatting is designed for consoles with fixed length fonts
+
 def main_prompt(donor_list):
     """Display main prompt for mailroom program"""
 
@@ -76,11 +79,28 @@ def send_thank_you_note(donor_list):
 def create_report(donor_list):
     """Print list of donors, sorted by total historical donation amount"""
     
+    # Print report header
     print u"  Name         |  Total Donated  |  # of Donations  |  Average Donation"
     print u"=" * 71
-    #Print donor name, sum of donations, # of donations, and average donation amount
+    
+    # Get or calculate donor name, sum of donations, # of donations, and average donation amount
     for a in donor_list:
-        print a[0], sum(a[1:]), len(a)-1, sum(a[1:]) / len(a)-1
+        donor_name = a[0]
+        donor_sum = sum(a[1:])
+        number_of_donations = len(a)-1
+        average_donation = donor_sum / number_of_donations
+
+        # Calculate spacing between values for report formatting
+        space_1 = u" " * (30 - (len(donor_name) + len(str(donor_sum))))
+        space_2 = u" " * (45 - (len(donor_name) + len(space_1) + len(str(donor_sum))))
+        space_3 = u" " * (64 - (len(donor_name) + len(space_1) + len(str(donor_sum)) + \
+            len(space_2) + len(str(number_of_donations)) + len(str(average_donation))))
+
+        # print len(space_1), len(space_2), len(space_3)
+
+        # Print everything
+        print donor_name, space_1, donor_sum, space_2, number_of_donations, space_3, average_donation
+        print u"-" * 71
 
     # Send user back to main prompt
     main_prompt(donor_list)
