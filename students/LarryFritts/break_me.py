@@ -9,8 +9,8 @@ def TypeErrorFunction():
     return a
 
 def SyntaxErrorFunction():
-    import somethingWeird
     a = 6
+    if a = 6
     return a
 
 def AttributeErrorFunction():
@@ -20,5 +20,5 @@ def AttributeErrorFunction():
 
 #NameErrorFunction()
 #TypeErrorFunction()
-#SyntaxErrorFunction()
-AttributeErrorFunction()
+SyntaxErrorFunction()
+#AttributeErrorFunction()
