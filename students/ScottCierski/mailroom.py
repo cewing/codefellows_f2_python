@@ -43,14 +43,15 @@ def send_thank_you_note(donor_list):
     enter_current_donor_string = u"Type the full name of a current donor"
     enter_new_donor_string = u"To add a new donor, type the new donor's name"
     type_list_string = u"Type 'list' for a list of donors"
-    type_q_string = "Type Q to quit to main prompt: "
+    type_q_string = "Type Q to quit to main prompt"
 
     print thank_you_note_options_header
     print u"-" * len(thank_you_note_options_header)
     print enter_current_donor_string
     print enter_new_donor_string
     print type_list_string
-    input_string = raw_input(type_q_string)
+    print type_q_string
+    input_string = raw_input("Please make your selection: ")
 
     # Print just the donor names, then reprompt user for a name
     while input_string == 'list':
@@ -63,7 +64,8 @@ def send_thank_you_note(donor_list):
         print enter_current_donor_string
         print enter_new_donor_string
         print type_list_string
-        input_string = raw_input(type_q_string)
+        print type_q_string
+        input_string = raw_input("Please make your selection: ")
 
     if input_string.lower() == 'q':
         main_prompt(donor_list)
@@ -74,28 +76,50 @@ def send_thank_you_note(donor_list):
         for a in donor_list:
             donor_list_names.append(a[0])
 
-        # If donor not already in list, add the new donor to the list
+        # If donor not already in list, set a flag
+        # Do not add the donor yet, since the user may elect to quit before also adding a donation
+        is_new_donor = False;
         if input_string not in donor_list_names:
-            print u"Adding %s to donor list." % input_string
-            donor_list.append([input_string])
+            is_new_donor = True;
 
-        # Prompt user for a donation amount for current donor, and add it to that donor's donation history
-        input_donation = raw_input("Enter a donation amount for %s: " % input_string)
+        # Prompt user for a donation amount, and add it to that donor's donation history
+        donation_options_header_string = u"Donation Options"
+        print u""
+        print donation_options_header_string
+        print u"-" * len(donation_options_header_string)
+        print u"Enter a donation amount for %s: " % input_string
+        print type_q_string
+        input_donation = raw_input("Please make your selection: ")
 
-        #Check to see if input is a number, reprompt if not
-        # print type(input_donation)
-        # while type(input_donation) != int:
-        #     print u"Sorry, we accept whole dollar amounts only."
-        #     input_donation = raw_input("Enter a donation amount for %s: " % input_string)
+        if input_donation.lower() == 'q':
+            main_prompt(donor_list)
+            return
+        else:
 
-        for a in donor_list:
-            if a[0] == input_string:
-                a.append(int(input_donation))
+            #Check to see if input is a number, reprompt if not
+            while unicode(input_donation).isnumeric() != True:
+                print u"Sorry, donation amount must be a number."
+                print u""
+                print donation_options_header_string
+                print u"-" * len(donation_options_header_string)
+                print u"Enter a donation amount for %s: " % input_string
+                print type_q_string
+                input_donation = raw_input("Please make your selection: ")
 
-        # print donor_list
+            # If the donor is new, add the new donor to the list
+            if is_new_donor == True:
+                print u"Adding %s to donor list." % input_string
+                donor_list.append([input_string])
 
-        # Print thank you email to the console
-        print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
+            for a in donor_list:
+                if a[0] == input_string:
+                    a.append(int(input_donation))
+                    print u"Adding donation of %s for donor %s." % (input_donation, input_string)
+
+            # print donor_list
+
+            # Print thank you email to the console
+            print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
 
     # Send user back to main prompt
     main_prompt(donor_list)
