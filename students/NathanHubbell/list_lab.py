@@ -14,4 +14,17 @@ def series1():
     fruit.insert(0,u"Mangos")
     print fruit
 
-series1()
+def series2():
+    print fruit
+    fruit.pop(-1)
+    print fruit
+    theLength=len(fruit)
+    while len(fruit)==theLength:
+        fruitDestory= raw_input(u"Please enter a fruit on the list to remove: ")
+        if fruitDestory in fruit:
+            fruit.remove(fruitDestory)
+        else:
+            print u"That fruit isn't on the list! Try again."
+    print fruit
+
+series2
