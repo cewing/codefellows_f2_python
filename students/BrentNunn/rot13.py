@@ -1,16 +1,30 @@
 #!/usr/bin/env python
 
-import string
-
 def rot13(text):
     """Return the text after ROT13 encryption."""
 
-    trans_from = u"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    trans_to = u"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"
-    trans_tbl = string.maketrans(trans_from, trans_to)
+    text_encrypted = ""
 
-    return text.translate(trans_tbl)
-    #return "Hey! Is this the way to San Jose?".translate(trans_tbl)
+    for ch in text:
+        if ch >= 'A' and ch <= 'Z':
+            rot13_ch = ord(ch) + 13
+            if rot13_ch > ord('Z'):
+                rot13_ch = ord('A') + rot13_ch - ord('Z') - 1
+
+            text_encrypted += chr(rot13_ch)
+
+        elif ch >= 'a' and ch <= 'z':
+            rot13_ch = ord(ch) + 13
+            if rot13_ch > ord('z'):
+                rot13_ch = ord('a') + rot13_ch - ord('z') - 1
+
+            text_encrypted += chr(rot13_ch)
+
+        else:
+            text_encrypted += ch
+
+
+    return text_encrypted
 
 
 if __name__ == '__main__':
@@ -22,9 +36,14 @@ if __name__ == '__main__':
     print u"Before encryption: {}".format(test_string1)
     print u"After encryption:  {}".format(encrypted)
 
-    print u"'A' after encrpytion = {}".format(rot13(u"A"))
+    print u"'A' after encryption = '{}'".format(rot13(u"A"))
+    print u"'Z' after encryption = '{}'".format(rot13(u"Z"))
+    print u"'a' after encryption = '{}'".format(rot13(u"a"))
+    print u"'z' after encryption = '{}'".format(rot13(u"z"))
 
-    #assert ord(rot13(u"A")) == ord(u"A") + 13
-    #assert ord(rot13(u"a")) == ord(u"a") + 13
+    assert ord(rot13(u"A")) == ord(u"A") + 13
+    assert ord(rot13(u"Z")) == ord(u"A") + 12
+    assert ord(rot13(u"a")) == ord(u"a") + 13
+    assert ord(rot13(u"z")) == ord(u"a") + 12
 
 
