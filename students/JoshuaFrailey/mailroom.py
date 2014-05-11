@@ -42,8 +42,11 @@ def _add_donation(donor, amount):
     donor_list[i].append(amount)
 
 
-def _get_donation():
-    pass
+def _get_donations(donor):
+    u"""Return donations for a given donor."""
+    donors = _get_donors()
+    donor_pos = donors.index(donor)
+    return donor_list[donor_pos][1:]
 
 
 def _print_ty_menu():
@@ -57,7 +60,7 @@ def _print_ty_menu():
 
 def _generate_ty(donor):
     """Print the thank you letter"""
-    donations = _get_donation(donor)
+    donations = _get_donations(donor)
     recent = donations[-1]
     history = donations[:len(donations)-2]
     letter = []
@@ -79,7 +82,7 @@ def _send_thankyou():
         if donor in [u"List", u"L"]:
             _print_donors()
             donor = unicode(raw_input(u"Please type a name from the list above or enter the name of a new donor. ").title())
-        else:
+        else:  # Need to not add a donor if donor exists
             _add_donor(donor)
             break
     amount = unicode(raw_input(u"Enter the amount of the donation: "))
