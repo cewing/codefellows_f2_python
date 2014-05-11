@@ -27,4 +27,20 @@ def series2():
             print u"That fruit isn't on the list! Try again."
     print fruit
 
-series2
+def series3():
+    print fruit
+    dupFruit=fruit[:]
+    for aFruit in dupFruit:
+        noAnswer=1
+        while noAnswer==1:
+            opinion = raw_input(u"Do you like %s yes/no:"%aFruit)
+            if opinion.lower()==u"no":
+                fruit.remove(aFruit)
+                noAnswer=0
+            elif opinion.lower()==u"yes":
+                noAnswer=0
+    print fruit
+
+
+
+series3()
