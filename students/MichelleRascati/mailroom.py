@@ -24,6 +24,22 @@ your support. \n \
         return amt
 
 
+def create(c_list):
+    don_rep = []
+    for donor in donations:
+        total = sum(donor[1:])
+        count = len(donor) - 1
+        don_rep.append([donor[0], total, count, total / count])
+    don_rep.sort(key=second, reverse=True)
+    # Find longest name to use for formatting
+    n_long = max([len(col[0]) for col in don_rep])
+    print "%*s %8s %8s %8s" % (-n_long, "Name", "Total",
+                               "Count", "Average")
+    for donor in don_rep:
+        print "%*s %8i %8i %8d" % \
+            (-n_long, donor[0], donor[1], donor[2], donor[3])
+
+
 def second(l_list):
     """Return second variable in list."""
     return l_list[1]
@@ -62,20 +78,7 @@ if __name__ == '__main__':
                 else:
                     # Remove name if quit thanks()
                     donations.pop()
-
         elif do == u'Create a Report':
-            don_rep = []
-            for donor in donations:
-                total = sum(donor[1:])
-                count = len(donor) - 1
-                don_rep.append([donor[0], total, count, total / count])
-            don_rep.sort(key=second, reverse=True)
-            # Find longest name to use for formatting
-            n_long = max([len(col[0]) for col in don_rep])
-            print "%*s %8s %8s %8s" % (-n_long, "Name", "Total",
-                                       "Count", "Average")
-            for donor in don_rep:
-                print "%*s %8i %8i %8d" % \
-                    (-n_long, donor[0], donor[1], donor[2], donor[3])
+            create(donations)
         elif do == u'quit':
             break
