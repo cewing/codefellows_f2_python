@@ -28,24 +28,36 @@ if __name__ == '__main__':
                 [u'Julie', 35.50],
                 [u'Bob', 60.25, 100.00],
                 [u'Karen', 83.50, 72.45, 90.25]]
-do = u''
-while do not in (u'Send a Thank You', u'Create a Report'):
-    do = u'' + raw_input("'Send a Thank You' or 'Create a Report'? ")
+    while True:
+        do = u''
+        while do not in (u'Send a Thank You', u'Create a Report', u'quit'):
+            do = u'' + raw_input("'Send a Thank You' or 'Create a Report'? \
+[or 'quit']: ")
 
-if do == u'Send a Thank You':
-    # Prompt for full name
-    name = ''
-    while name not in [col[0] for col in donations]:
-        name = u'' + raw_input("Type full name for Thank You letter or 'list'\
-for a list of names: ")
-        if name == u'list':
-            for val in donations:
-                print val[0]
-        elif name not in [col[0] for col in donations]:
-            donations.append([name])
-    donations[[col[0] for col in donations].index(name)].append(thanks(name))
+        if do == u'Send a Thank You':
+            # Prompt for full name
+            name = ''
+            while name not in [col[0] for col in donations]:
+                name = u'' + raw_input("Type full name for Thank You letter or\
+ 'list' for a list of names. [or 'quit']: ")
+                if name == u'list':
+                    for val in donations:
+                        print val[0]
+                elif name not in [col[0] for col in donations]:
+                    donations.append([name])
+                elif name == u'quit':
+                    break
+            if not name == u'quit':
+                donations[[col[0] for col in donations].index(name)].append(
+                    thanks(name))
 
-elif do == 'Create a Report':
-    for i in donations:
-        #TODO sort by donation amt
-        print i
+        elif do == u'Create a Report':
+            print donations
+            for donor in donations:
+                #TODO sort by donation amt
+                total = sum(donor[1:])
+                count = len(donor) - 1
+                print "Name: %8s Total: %8i Count: %8i Average: %8d" % \
+                      (donor[0], total, count, total / count)
+        elif do == u'quit':
+            break
