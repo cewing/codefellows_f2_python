@@ -56,7 +56,7 @@ def series_1(fruits):
 
     print u"\nThese fruits begin with 'P':"
     for fruit in fruits:
-        if fruit[0] == 'P':
+        if fruit[0] == 'P' or fruit[0] == 'p':
             print fruit
 
     return fruits
