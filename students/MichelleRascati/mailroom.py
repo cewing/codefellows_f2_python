@@ -22,6 +22,10 @@ Sincerely,\n Michelle Rascati" % (ty_name, amt)
     return amt
 
 
+def second(l_list):
+    return l_list[1]
+
+
 if __name__ == '__main__':
     donations = [[u'Larry', 10.00, 150.50, 75.00],
                 [u'Sue', 40.00, 35.00],
@@ -52,12 +56,16 @@ if __name__ == '__main__':
                     thanks(name))
 
         elif do == u'Create a Report':
-            print donations
+            new_dons = []
             for donor in donations:
-                #TODO sort by donation amt
                 total = sum(donor[1:])
                 count = len(donor) - 1
-                print "Name: %8s Total: %8i Count: %8i Average: %8d" % \
-                      (donor[0], total, count, total / count)
+                new_dons.append([donor[0], total, count, total / count])
+            new_dons.sort(key=second, reverse=True)
+            # Find longest name to use for formatting
+            n_long = max([len(col[0]) for col in new_dons])
+            for donor in new_dons:
+                print "%*s Total: %8i Count: %8i Average: %8d" % \
+                    (-n_long, donor[0], donor[1], donor[2], donor[3])
         elif do == u'quit':
             break
