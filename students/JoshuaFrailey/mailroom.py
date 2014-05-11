@@ -156,7 +156,14 @@ def _is_float(input_):
 
 
 def _create_report():
-    pass
+    print "\n"
+    for i, donor in enumerate(donor_list):
+        name = donor[0]
+        total = sum(donor[1:])
+        number = len(donor[1:])
+        average = round(sum(donor[1:])/(len(donor[1:])), 2)
+        print u"{}    {}    {}    {}".format(name, total, number, average)
+    print u"\n"
 
 
 def _print_main_menu():
