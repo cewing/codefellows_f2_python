@@ -14,8 +14,8 @@ donations = [[u"Fred Flinstone", 1000000],
 donors = []
 
 
-def maintain_donors_list():
-    """Maintain a list of unique donors' names"""
+def update_donors_list():
+    """Maintain the list of unique donors' names"""
 
     for donation in donations:
         if donation[0] not in donors:
@@ -37,11 +37,10 @@ def get_donation(donor):
             print u"Please enter a numeric donation value"
 
 
-
 def send_thanks():
     """Say thank you to a donor"""
 
-    maintain_donors_list()
+    update_donors_list()
 
     while True:
         print u"\n    Send a Thank You"
@@ -55,10 +54,11 @@ def send_thanks():
             print u"\nThe donors are: "
             for donor in donors:
                 print donor
-        else:
-            print u"OK then.  Thank you {}.".format(name)
+        elif len(name) > 0:
             get_donation(name)
-            maintain_donors_list()
+            if name not in donors:
+                update_donors_list()
+
 
 def summarize_donor(donor):
     """Summarize donations of a donor"""
@@ -83,7 +83,7 @@ def total_donation(row):
 def create_report():
     """Create a donors report"""
 
-    maintain_donors_list()
+    update_donors_list()
     donors_summary = []
 
     for donor in donors:
