@@ -1,5 +1,5 @@
+import string 
 def rot13(str):
-    import string 
     tran_list=[]
     alphabet_lower = string.lowercase
     alphabet_upper = string.uppercase
@@ -25,32 +25,20 @@ def rot13(str):
     tran_table = string.maketrans(new_str, tran_str)
     str_encripted = str.translate(tran_table)
     return str_encripted
+
+
 if __name__ == '__main__':
+    test_str = 'az'
+    for i in range(len(test_str)):
+        int_letter = string.lowercase.find(test_str[i])
+        enc_letter = string.lowercase.find(rot13(test_str)[i])
+        if ord(test_str[i]) <= 109:
+            assert enc_letter - int_letter == 13   
+        elif ord(test_str[i]) > 109:
+            assert enc_letter - int_letter == -13 
+        print "Passed All Tests"   
 
-       #assert len(str) = len(rot13(str))   
-    alphabet_table = []
-    test_table = []
-    for i in alphabet_lower:
-            #test_table.append.(list(enumerate(alphabet_lower, start=1))[i+13][1])
-        alphabet_table.append(i)
-    for i in alphabet_upper:
-            #test_table.append.(list(enumerate(alphabet_lower, start=1))[i+13][1])
-        alphabet_table.append(i)
-
-    for i in range(len(alphabet_table)):
-        if i <=12:
-            test_table.append([alphabet_table[i], alphabet_table[i+13]])
-        elif i > 12 and i < 26:
-            test_table.append([alphabet_table[i], alphabet_table[(i+13)%25-1]])
-        if i >= 26 and i <=37:
-            test_table.append([alphabet_table[i], alphabet_table[i+13]])
-        elif i > 38:
-            test_table.append([alphabet_table[i], alphabet_table[(i+38)%50-1]])
-
-
-print 'All test passed'
-
-
+     
 
 
 
