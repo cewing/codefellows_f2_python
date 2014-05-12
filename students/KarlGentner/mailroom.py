@@ -1,12 +1,15 @@
 #!/usr/bin/python
 
 
+import copy
+
+
 # Create original donor list with names and past donations (in dollars)
-donors = [[u'Amy Akin', [1]],
-          [u'Bob Bueller', [10, 20]],
-          [u'Carol Carlson', [100, 200, 300]],
-          [u'Dave Davis', [1000, 2000]],
-          [u'Eve Eastman', [10000]]]
+donors = [[u'Amy Akin', [200, 450, 565]],
+          [u'Bob Bueller', [3234, 763489]],
+          [u'Carol Carlson', [101, 200, 300]],
+          [u'Dave Davis', [1000000, 20]],
+          [u'Eve Eastman', [12345]]]
 
 
 # isInt - validate whether user input string is an integer
@@ -24,20 +27,36 @@ def printDonors():
     print ("Donors:\n")
     for i in range(len(donors)):
         print donors[i][0]
-    print ("Donors:\n")
+    print ("\n")
 
 
 # Print report
 def printReport():
-    print "report"  # to be completed at a later time
+    report = copy.deepcopy(donors)
+    for i in range(len(report)):
+        donations = report[i][1]
+        total = 0
+        for j in range(len(donations)):
+            total += donations[j]
+        num = len(donations)
+        average = total / num
+        report[i].insert(1, str(average))
+        report[i].insert(1, str(num))
+        report[i].insert(1, str(total))
+    x = sorted(report, key=lambda donor: int(donor[1]))
+    print ("NAME\t\t\t\tTOTAL DONATIONS\t\tNUM OF DONATIONS\tAVG DONATION\n")
+    print ("--------------------------------------------------------------------------------------------")
+    for i in range(len(x)):
+        print("\t\t\t".join(x[i][0:4]))
+        print "\n"
 
 
 # Print thank You letter for person at index in donor's list.
 def printThankYou(index, amount):
     print (u"Dear {name},\n\n" +
            "Thank you for your recent donation of {donation}.\n" +
-           "The world is truly a better place because of people like you.\n" +
-           "Sincerely,\n\n" +
+           "The world is truly a better place because of people like you.\n\n" +
+           "Sincerely,\n" +
            "The Charity Foundation\n").format(name=donors[index][0], donation=amount)
 
 
@@ -52,81 +71,66 @@ def donorIndex(person):
 
 # Add donation to person's history using index. Returns 'm' to get to main menu
 def addDonation(index):
-
     userInput = ""
-    while userInput == "" or isInt(userInput) is False:
+    while isInt(userInput) is False and userInput != 'm':
         userInput = raw_input("Enter the new donation amount\n" +
                               "'m' to return to main menu\n" +
                               "-->").decode()
         # Back to main menu
-        if userInput.lower() == 'm':
-            return 'm'
-        else:
-            donors[index][1].append(int(userInput))
-            return userInput
+    if userInput.lower() == 'm':
+        return 'm'
+    else:
+        donors[index][1].append(int(userInput))
+        return userInput
 
 
 # Main Interaction
 if __name__ == '__main__':
     # Main Menu
-    userMain = ""
-    while userMain != 's' and userMain != 'c' and userMain != 'q':
+    userInputMain = ""
+    while userInputMain != 's' and userInputMain != 'c' and userInputMain != 'q':
         print ("-----------------Main Menu-------------------\n")
-        userMain = raw_input("'s' to send a thank you\n" +
-                             "'c' to create a report\n" +
-                             "'q' to quit\n-->").decode()
-        userMain = userMain.lower()
+        userInputMain = raw_input("'s' to send a thank you\n" +
+                                  "'c' to create a report\n" +
+                                  "'q' to quit\n-->").decode()
+        userInputMain = userInputMain.lower()
         # Quit main menu
-        if userMain == 'q':
+        if userInputMain == 'q':
             break
-        # Enter Send a Thank You Menu
-        while userMain == 's':
+        # Enter 'Send a Thank You' Menu
+        while userInputMain == 's':
             print ("---------------Send A Thank You--------------\n")
-            userSend = ""
-            while userSend == "" or isInt(userSend) is True:
-                userSend = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
-                                     "'list' to see the list of donors\n" +
-                                     "'m' to return to main menu\n" +
-                                     "-->").decode()
+            userInput = ""
+            while userInput == "" or isInt(userInput) is True:
+                userInput = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
+                                      "'list' to see the list of donors\n" +
+                                      "'m' to return to main menu\n" +
+                                      "-->").decode()
                 # List donors
-                if userSend.lower() == "list":
+                if userInput.lower() == "list":
                     printDonors()
-                    userSend = ""
+                    userInput = ""
             # Back to main menu
-            if userSend.lower() == 'm':
-                userMain = ""
+            if userInput.lower() == 'm':
+                userInputMain = ""
                 break
-            # Find index of name and add donation
+            # if name does not already exist in donor list, add it
+            if donorIndex(userInput) < 0:
+                donors.append([userInput, []])
             print ("----------------Add a Donation---------------\n")
-            p_index = donorIndex(userSend)
-            if p_index >= 0:
-                amount = addDonation(p_index)
-                if amount == 'm':
-                    userMain = ""
-                    break
-                else:
-                    print ("----------------Thank You Letter-------------\n")
-                    printThankYou(p_index, amount)
-                    userMain = ""
-                    break
-            # If name is not in list,
-            # then add name to list and add donation
+            amount = addDonation(donorIndex(userInput))
+            if amount == 'm':
+                userInputMain = ""
+                break
             else:
-                donors.append([userSend, []])
-                p_index = donorIndex(userSend)
-                if p_index >= 0:
-                    amount = addDonation(p_index)
-                    if amount == 'm':
-                        userMain = ""
-                        break
-                    else:
-                        print ("-----------------Thank You Letter-----------\n")
-                        printThankYou(p_index, amount)
-                        userMain = ""
-                        break
+                print ("----------------Thank You Letter-------------\n")
+                printThankYou(donorIndex(userInput), amount)
+                userInputMain = ""
+                break
         # Enter Create a Report Menu
-        while userMain.lower() == 'c':
+        while userInputMain.lower() == 'c':
+            print ("------------------Report---------------------\n")
             printReport()
             # Back to main menu
-            userMain = ""
+            userInputMain = ""
             break
