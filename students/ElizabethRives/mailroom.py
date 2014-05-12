@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 
 
 state = 'main'
@@ -9,6 +9,7 @@ d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [
 def menu():
 	u"""Prompt the user to either send a thank you email or create a report."""
 
+	print '## -- Type q to exit program or menu to return to main menu -- '
 	action = raw_input("Send a Thank You or Create a Report?")
 	if action == 'q':
 		return 'quit'
@@ -42,11 +43,11 @@ def thank_you():
 					
 	print u"""Dear %s, 	
 
-	Thank you for your generous donation of $%s. Your contribution will help make the impossible, possible.
+Thank you for your generous donation of $%s. Your contribution will help make the impossible, possible.
 
-	Sincerely,
+Sincerely,
 
-	OrganizationX""" % (input_name, input_amount)
+OrganizationX""" % (input_name, input_amount)
 
 	return 'send a thank you'
 
@@ -64,25 +65,28 @@ def report():
 		average = sum(values)/len(values)
 		d_new[name] = (total, count, average)
 	
-	sorted(d_new.items(), key=lambda x: x[1])
+	x = list(d_new.items())
 
-	list(d_new.items())
+	y = sorted(x, key=lambda a: a[1])
 
-	for (k, v) in d_new.items(): 
+	for (k, v) in y: 
 		print "%s\t %s\t  %s\t%s\t" % (k, v[0], v[1], v[2])
 
 	return 'main'
 
 
-while True:
-	if state == 'main':
-		state = menu()
-	if state == 'send a thank you':
-		state = thank_you()
-	if state == 'create a report':
-		state = report()
-	if state == 'quit':
-		break
+if __name__ == '__main__':
+
+
+	while True:
+		if state == 'main':
+			state = menu()
+		if state == 'send a thank you':
+			state = thank_you()
+		if state == 'create a report':
+			state = report()
+		if state == 'quit':
+			break
 
 
 
