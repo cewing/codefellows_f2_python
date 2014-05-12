@@ -6,7 +6,7 @@ d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [
 
 
 def menu():
-	"""Prompt the user to either send a thank you email or create a report."""
+	u"""Prompt the user to either send a thank you email or create a report."""
 
 	action = raw_input("Send a Thank You or Create a Report?")
 	if action == 'q':
@@ -18,7 +18,7 @@ def menu():
 
 
 def thank_you():
-	"""Add donor name, donation amount to database and compose a thank you email."""
+	u"""Add donor name, donation amount to database and compose a thank you email."""
 
 	input_name = raw_input(u'Enter a first and last name')
 	if input_name == 'list':
@@ -51,9 +51,22 @@ def thank_you():
 
 
 def report():
-	""""""
+	u"""Display a list of donors sorted by total historical donation amount."""
 
-	print d
+	d_new = {}
+
+	for key in d.iterkeys():
+		name = key
+		values = d[key]
+		total = sum(values)
+		count = len(values)
+		average = sum(values)/len(values)
+		d_new[name] = (total, count, average)
+
+	sorted(d_new.items(), key=lambda x: x[1])
+
+	print "%(name)s    %(total)s    %(count)s    %(average)s" % locals()
+
 	return 'main'
 
 
