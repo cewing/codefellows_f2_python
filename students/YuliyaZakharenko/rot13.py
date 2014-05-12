@@ -28,14 +28,18 @@ def rot13(str):
 
 
 if __name__ == '__main__':
-    test_str = 'az'
+    test_str = 'abcdefghijklmnopqrstuvwxyz, ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     for i in range(len(test_str)):
-        int_letter = string.lowercase.find(test_str[i])
-        enc_letter = string.lowercase.find(rot13(test_str)[i])
-        if ord(test_str[i]) <= 109:
-            assert enc_letter - int_letter == 13   
-        elif ord(test_str[i]) > 109:
-            assert enc_letter - int_letter == -13 
+        if test_str[i] in string.lowercase:
+            if ord(test_str[i]) <= 109 and ord(test_str[i]) > 78:
+                assert ord(rot13(test_str)[i]) - ord(test_str[i]) == 13   
+            elif ord(test_str[i]) > 109:
+                assert ord(rot13(test_str)[i]) - ord(test_str[i]) == -13 
+        elif test_str[i] in string.uppercase:
+            if ord(test_str[i]) <= 77:
+                assert ord(rot13(test_str)[i]) - ord(test_str[i]) == 13   
+            elif ord(test_str[i]) > 77 and ord(test_str[i]) < 109:
+                assert ord(rot13(test_str)[i]) - ord(test_str[i]) == -13 
         print "Passed All Tests"   
 
      
