@@ -32,7 +32,7 @@ def sum_series(n, x=0, y=1):
 if __name__ == '__main__':
     # Fibonacci list of paired inputs and expected outputs.
     fiboInOut = [(0, 0), (1, 1), (2, 1), (3, 2), (4, 3), (5, 5), (6, 8),
-                 (7, 13), (8, 21), (9, 34), (10, 56)]
+                 (7, 13), (8, 21), (9, 34), (10, 55)]
     # Lucas list of paired inputs and expected outputs.
     lucasInOut = [(0, 2), (1, 1), (2, 3), (3, 4), (4, 7), (5, 11), (6, 18),
                   (7, 29), (8, 47), (9, 76), (10, 123)]
