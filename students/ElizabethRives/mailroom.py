@@ -1,5 +1,6 @@
 
 
+
 state = 'main'
 
 d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
@@ -31,12 +32,12 @@ def thank_you():
 
 	input_amount = raw_input(u'Enter a donation amount')
 	if input_amount.isdigit():
-		d[input_name].append((input_amount))
+		d[input_name].append(int(input_amount))
 	elif input_amount == 'menu':
 		return 'main'
 	else:
 		input_amount = raw_input(u'Enter a donation amount')
-		d[input_name].append((input_amount))
+		d[input_name].append(int(input_amount))
 		return input_amount
 					
 	print u"""Dear %s, 	
@@ -62,10 +63,13 @@ def report():
 		count = len(values)
 		average = sum(values)/len(values)
 		d_new[name] = (total, count, average)
-
+	
 	sorted(d_new.items(), key=lambda x: x[1])
 
-	print "%(name)s    %(total)s    %(count)s    %(average)s" % locals()
+	list(d_new.items())
+
+	for (k, v) in d_new.items(): 
+		print "%s\t %s\t  %s\t%s\t" % (k, v[0], v[1], v[2])
 
 	return 'main'
 
