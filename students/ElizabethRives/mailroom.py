@@ -2,98 +2,77 @@
 
 state = 'main'
 
-
-while True:
-
-
-	while state == 'main':
-
-
-		def create_database():
-			u"""Store donor names and donation amounts in a database."""
-
-			d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
-			return d
-			
-		database = create_database()
+d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
 
 
 
-		def menu():
-			u"""Prompt for user to send a thank you or create a report."""
+def menu():
+	action = raw_input("Send a Thank You or Create a Report?")
+	if action == 'q':
+		return 'quit'
+	elif action == 'Send a Thank You':
+		return 'send a thank you'
+	elif action == 'Create a Report':
+		return 'create a report'
 
-			print u'-- Press quit to exit program or menu to return to main menu --'
-			action = raw_input(u'Send a Thank You or Create a Report?')
-			if action == 'quit':
-				state = 'quit'
-			elif action == 'Send a Thank You':
-				state = 'Send a Thank You'
-			elif action == 'Create a Report':
-				state = 'Create a Report'
-			return action
-			return state
+def thank_you():
 
-		menu()
-
-
-	while state == 'Send a Thank You':
-			
-
-		def get_name():
-			u"""Look up donor by name or add new donor to database."""
-
-			input_name = raw_input(u'Enter a first and last name')
-			if input_name == 'list':
-				print database
-				input_name = raw_input(u'Enter a first and last name')
-			elif input_name not in database:
-				database[input_name] = []
-			return input_name
-				
-		name = get_name()
+	input_name = raw_input(u'Enter a first and last name')
+	if input_name == 'list':
+		print d
+		input_name = raw_input(u'Enter a first and last name')
+	elif input_name not in d:
+		d[input_name] = []
 
 
-		def get_amount():
-			u"""Add donation amount, for the above donor to database."""
+	input_amount = raw_input(u'Enter a donation amount')
+	if input_amount.isdigit():
+		d[input_name].append((input_amount))
+		print d
+	else:
+		input_amount = raw_input(u'Enter a donation amount')
+		d[input_name].append((input_amount))
+		print d
+		return input_amount
 
-			input_amount = raw_input(u'Enter a donation amount')
-			if input_amount.isdigit():
-				database[name].append((input_amount))
-			else:
-				input_amount = raw_input(u'Enter a donation amount')
-				database[name].append((input_amount))
-			return input_amount
-				
-		amount = get_amount()
-
-
-		def write_email():
-			u"""Compose a thank you email to the donor."""
-
-			print u"""Dear %s, 	
+					
+	print u"""Dear %s, 	
 
 		Thank you for your generous donation of $%s. Your contribution will help make the impossible, possible.
 
 		Sincerely,
 
-		OrganizationX""" % (name, amount)
+		OrganizationX""" % (input_name, input_amount)
 
-		write_email()
+thank_you()
 
+def report():
 
-	while state == 'Create a Report':
-			
+	print d
 
-		def print_report():
-			""""""
-				
-			print database
+report()
 
-		print_report()
-
-
+while True:
+	if state == 'main':
+		state = menu()
+	if state == 'send a thank you':
+		state = thank_you()
+	if state == 'create a report':
+		state = report()
 	if state == 'quit':
 		break
+
+
+
+
+
+		
+
+
+	
+			
+
+		
 
 
 
