@@ -31,7 +31,7 @@ if __name__ == "__main__":
     count = 0
     for m in range(4):
         for n in range(5):
-            assert(ack(m, n)) == testTable[count]
+            assert(ack(m, n) == testTable[count])
             count += 1
 
     print "Passed all tests"
