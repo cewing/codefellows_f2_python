@@ -48,80 +48,82 @@ def list_rm_all(val, lst):
             exists_flag = list_rm(val, lst)
         return True
 
-# Start of interactive prompt, "Series 1"
-fruit_list = ['Apples', 'Pears', 'Oranges', 'Peaches']
-display_list()
 
-print u"Would you like to add another?"
-nother_fruit = get_input()
-fruit_list.append(str(nother_fruit))
-display_list()
-
-print u"Which fruit number would you like to display?"
-while True:
-    fruit_number = get_input()
-    if within_list_index(fruit_number, fruit_list):
-        print u"Here's some %s." % fruit_list[int(fruit_number) - 1]
-        break
-    else:
-        print u"The fruits are ordered. Which number?"
-
-print u"Would you like to add another fruit?"
-nother_fruit = get_input()
-fruit_list = [nother_fruit] + fruit_list
-display_list()
-
-print u"Would you like to add another fruit?"
-nother_fruit = get_input()
-fruit_list.insert(0 ,nother_fruit)
-display_list()
-
-print u"Here are all fruits beginning with a 'P':"
-found_p = False
-for fruit in fruit_list:
-    if fruit[0].lower() == 'p': 
-        print fruit
-        found_p = True
-    else: pass
-else:
-    if not found_p:
-        print u"Sorry, I didn't actually see any 'P' fruits..."
-    else: pass
-
-# Start of remove methods, calling this "Series 2"
-display_list()
-fruit_list.pop()
-
-fruit_remove_flag = False
-while not fruit_remove_flag:
-    fruit_list *= 2 
+if __name__ == "__main__":
+    # Start of interactive prompt, "Series 1"
+    fruit_list = ['Apples', 'Pears', 'Oranges', 'Peaches']
     display_list()
-    print "Which fruit would you like to remove?"
-    fruit_to_rm = get_input()
-    fruit_remove_flag = list_rm_all(fruit_to_rm, fruit_list)
 
-display_list()
+    print u"Would you like to add another?"
+    nother_fruit = get_input()
+    fruit_list.append(str(nother_fruit))
+    display_list()
 
-# Asking if fruits are liked, "Series 3"
-for fruit in set(fruit_list):
+    print u"Which fruit number would you like to display?"
     while True:
-        print "Do you like %s? \n yes/no" % fruit.lower()
-        fruit_question = get_input()
-        if fruit_question == 'yes':
-            break
-        elif fruit_question == 'no':
-            list_rm_all(fruit, fruit_list)
+        fruit_number = get_input()
+        if within_list_index(fruit_number, fruit_list):
+            print u"Here's some %s." % fruit_list[int(fruit_number) - 1]
             break
         else:
-            pass
+            print u"The fruits are ordered. Which number?"
 
-display_list()
+    print u"Would you like to add another fruit?"
+    nother_fruit = get_input()
+    fruit_list = [nother_fruit] + fruit_list
+    display_list()
 
-# Series 4
-wonky_copy = list()
-for fruit in fruit_list:
-    wonky_copy.append(fruit[::-1])
-print "Here are your !stiurf:", wonky_copy
-stolen = fruit_list.pop()
-print "Sorry, I mean here are your fruits:", fruit_list
-print "<Computer steals: %s>" % stolen
+    print u"Would you like to add another fruit?"
+    nother_fruit = get_input()
+    fruit_list.insert(0 ,nother_fruit)
+    display_list()
+
+    print u"Here are all fruits beginning with a 'P':"
+    found_p = False
+    for fruit in fruit_list:
+        if fruit[0].lower() == 'p': 
+            print fruit
+            found_p = True
+        else: pass
+    else:
+        if not found_p:
+            print u"Sorry, I didn't actually see any 'P' fruits..."
+        else: pass
+
+    # Start of remove methods, calling this "Series 2"
+    display_list()
+    fruit_list.pop()
+
+    fruit_remove_flag = False
+    while not fruit_remove_flag:
+        fruit_list *= 2 
+        display_list()
+        print "Which fruit would you like to remove?"
+        fruit_to_rm = get_input()
+        fruit_remove_flag = list_rm_all(fruit_to_rm, fruit_list)
+
+    display_list()
+
+    # Asking if fruits are liked, "Series 3"
+    for fruit in set(fruit_list):
+        while True:
+            print "Do you like %s? \n yes/no" % fruit.lower()
+            fruit_question = get_input()
+            if fruit_question == 'yes':
+                break
+            elif fruit_question == 'no':
+                list_rm_all(fruit, fruit_list)
+                break
+            else:
+                pass
+
+    display_list()
+
+    # Series 4
+    wonky_copy = list()
+    for fruit in fruit_list:
+        wonky_copy.append(fruit[::-1])
+    print "Here are your !stiurf:", wonky_copy
+    stolen = fruit_list.pop()
+    print "Sorry, I mean here are your fruits:", fruit_list
+    print "<Computer steals: %s>" % stolen
