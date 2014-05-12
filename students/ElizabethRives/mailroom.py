@@ -10,7 +10,7 @@ def menu():
 	u"""Prompt the user to either send a thank you email or create a report."""
 
 	print '## -- Type q to exit program or menu to return to main menu -- '
-	action = raw_input("Send a Thank You or Create a Report?")
+	action = raw_input('Send a Thank You or Create a Report?')
 	if action == 'q':
 		return 'quit'
 	elif action == 'Send a Thank You':
@@ -39,7 +39,6 @@ def thank_you():
 	else:
 		input_amount = raw_input(u'Enter a donation amount')
 		d[input_name].append(int(input_amount))
-		return input_amount
 					
 	print u"""Dear %s, 	
 
@@ -70,7 +69,7 @@ def report():
 	y = sorted(x, key=lambda a: a[1])
 
 	for (k, v) in y: 
-		print "%s\t %s\t  %s\t%s\t" % (k, v[0], v[1], v[2])
+		print u'%s\t %s\t  %s\t%s\t' % (k, v[0], v[1], v[2])
 
 	return 'main'
 
