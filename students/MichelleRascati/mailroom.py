@@ -25,6 +25,7 @@ your support. \n \
 
 
 def create(c_list):
+    """Print a report of donations."""
     don_rep = []
     for donor in donations:
         total = sum(donor[1:])
