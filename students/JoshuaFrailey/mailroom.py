@@ -1,7 +1,5 @@
 import random
 
-random.seed(0)
-
 
 def _create_donor_list():
     u"""Return a random list of donors and donations."""
@@ -11,9 +9,12 @@ def _create_donor_list():
         ]
     donor_list = []
     random_name = random.choice(names)
-    while (len(donor_list) < 5) and random_name not in donor_list:
-        donor_list.append(random_name)
-        random_name = random.choice(names)
+    while (len(donor_list) < 5):
+        if random_name not in donor_list:
+            donor_list.append(random_name)
+            random_name = random.choice(names)
+        else:
+            random_name = random.choice(names)
     for donor in donor_list:
         for donations in range(random.randint(1, 3)):
             donor.append(round(random.random()*10000, 2))
@@ -62,9 +63,11 @@ def _print_donations(donations):
     donations_str = u""
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
-            donations_str += u"$" + unicode(donation)
+            donations_str += u"${}".format(unicode(donation))
+        elif i == len(donations)-2:
+            donations_str += u"${};".format(unicode(donation))
         else:
-            donations_str += u"$" + unicode(donation) + u", "
+            donations_str += u"${}, ".format(unicode(donation))
     return donations_str
 
 
@@ -84,15 +87,16 @@ def _generate_ty(donor):
     recent = donations.pop()
     donations.reverse()
     history = _print_donations(donations)
-    letter = u"\nDear {},\n\nLocal Chairty is very appreciative".format(donor)
+    letter = u"\nDear {},\n\nThe Boranga Protection Society".format(donor)
+    letter += u" is very appreciative"
     letter += u" of your recent, generous donation of ${}".format(recent)
     if history:
         letter += u". Much like your previous donations of {},".format(history)
         letter += u" this "
     else:
-        letter += u". This "
-    letter += u"donation will go to clothe the poor berengas who have been "
-    letter += u"so unjustly shermed.\n\nThank you,\n\nLocal Chairty\n"
+        letter += u". This"
+    letter += u" donation will go to clothe the poor borangas who have been"
+    letter += u" so unjustly shermed.\n\nThank you,\n\nThe B.P.S.\n"
     print letter
 
 
@@ -129,7 +133,7 @@ def _send_thankyou():
 
 def _add_amount(donor):
     u"""Ask for amount, validate it, and pass it."""
-    amount = unicode(raw_input(u"Enter the amount of the donation: "))
+    amount = unicode(raw_input(u"Enter the amount of the donation:\n-->"))
     while True:
         if amount in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
@@ -156,14 +160,28 @@ def _is_float(input_):
 
 def _create_report():
     u"""Print donation statistics for each donor."""
-    print "\n"
+    donor_stats = []
     for i, donor in enumerate(donor_list):
-        name = donor[0]
-        total = sum(donor[1:])
-        number = len(donor[1:])
-        average = round(sum(donor[1:])/(len(donor[1:])), 2)
-        print u"{width}${}{}${}".format(name, total, number, average, width=30)
+        donor_stats.append([donor[0]])
+        donor_stats[i].append(round(sum(donor[1:]), 2))
+        donor_stats[i].append(len(donor[1:]))
+        donor_stats[i].append(round(sum(donor[1:])/len(donor[1:]), 2))
+    donor_stats.sort(key=_second_element, reverse=True)
+    print "\n"
+    title = u"{:20}".format(u"Name")
+    title += u"{:11}".format(u"Total")
+    title += u"{:13}{:12}".format(u"Donations", u"Average")
+    print title
+    for i, donor in enumerate(donor_stats):
+        name, total, num, avg = donor[0], donor[1], donor[2], donor[3]
+        line = u"{:20}${:<11,}".format(name, total)
+        line += u"{:^13}${:<12,}".format(num, avg)
+        print line
     print u"\n"
+
+
+def _second_element(list_):
+    return list_[1]
 
 
 def _print_main_menu():
@@ -189,4 +207,4 @@ if __name__ == "__main__":
         elif input_.lower() in [u'3', u'e', u'exit']:
             break
         else:
-            input_ = unicode(raw_input(u"Please enter '1', '2', or '3'"))
+            input_ = unicode(raw_input(u"Please enter '1', '2', or '3'\n--> "))
