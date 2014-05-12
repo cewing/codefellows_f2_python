@@ -38,8 +38,7 @@ else:
 print fruits
 print len(fruits)
 # for i in range(len(fruits[:])) didn't work
-# need to figure out how to ask only once about a fruit even if there are multiple occurences in the copy of the list. 
-# then use while loop to delete all the occurences
+fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
 for i in fruits[:]:
     fruit = i.lower()
     fruit_like = raw_input("Do you like %s" %fruit)
@@ -51,6 +50,12 @@ for i in fruits[:]:
         while fruit_like not in ['No', 'no', 'Yes', 'yes']:
             fruit_like = raw_input("Please enter Yes or No")
 print fruits
+fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
+fruits_rev = []    
+for i in fruits:
+    fruits_rev.append(i[::-1])
+print fruits, fruits_rev  
+
 
 
 
