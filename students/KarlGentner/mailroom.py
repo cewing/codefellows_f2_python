@@ -24,11 +24,21 @@ def printDonors():
     print ("Donors:\n")
     for i in range(len(donors)):
         print donors[i][0]
+    print ("Donors:\n")
 
 
 # Print report
 def printReport():
     print "report"  # to be completed at a later time
+
+
+# Print thank You letter for person at index in donor's list.
+def printThankYou(index, amount):
+    print (u"Dear {name},\n\n" +
+           "Thank you for your recent donation of {donation}.\n" +
+           "The world is truly a better place because of people like you.\n" +
+           "Sincerely,\n\n" +
+           "The Charity Foundation\n").format(name=donors[index][0], donation=amount)
 
 
 # Return index of person in donor's list. Returns -1 if not in list.
@@ -40,9 +50,9 @@ def donorIndex(person):
     return index
 
 
-# Add donation to person''s history using index. Returns 'm' to break to main menu
+# Add donation to person's history using index. Returns 'm' to get to main menu
 def addDonation(index):
-    print ("------------------Add a Donation-----------------\n")
+
     userInput = ""
     while userInput == "" or isInt(userInput) is False:
         userInput = raw_input("Enter the new donation amount\n" +
@@ -51,7 +61,9 @@ def addDonation(index):
         # Back to main menu
         if userInput.lower() == 'm':
             return 'm'
-    donors[index][1].append(int(userInput))
+        else:
+            donors[index][1].append(int(userInput))
+            return userInput
 
 
 # Main Interaction
@@ -59,7 +71,7 @@ if __name__ == '__main__':
     # Main Menu
     userMain = ""
     while userMain != 's' and userMain != 'c' and userMain != 'q':
-        print ("--------------------Main Menu----------------------\n")
+        print ("-----------------Main Menu-------------------\n")
         userMain = raw_input("'s' to send a thank you\n" +
                              "'c' to create a report\n" +
                              "'q' to quit\n-->").decode()
@@ -69,9 +81,9 @@ if __name__ == '__main__':
             break
         # Enter Send a Thank You Menu
         while userMain == 's':
+            print ("---------------Send A Thank You--------------\n")
             userSend = ""
             while userSend == "" or isInt(userSend) is True:
-                print ("------------------Send A Thank You-----------------\n")
                 userSend = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
                                      "'list' to see the list of donors\n" +
                                      "'m' to return to main menu\n" +
@@ -85,10 +97,16 @@ if __name__ == '__main__':
                 userMain = ""
                 break
             # Find index of name and add donation
+            print ("----------------Add a Donation---------------\n")
             p_index = donorIndex(userSend)
             if p_index >= 0:
-                m_check = addDonation(p_index)
-                if m_check == 'm':
+                amount = addDonation(p_index)
+                if amount == 'm':
+                    userMain = ""
+                    break
+                else:
+                    print ("----------------Thank You Letter-------------\n")
+                    printThankYou(p_index, amount)
                     userMain = ""
                     break
             # If name is not in list,
@@ -97,8 +115,13 @@ if __name__ == '__main__':
                 donors.append([userSend, []])
                 p_index = donorIndex(userSend)
                 if p_index >= 0:
-                    m_check = addDonation(p_index)
-                    if m_check == 'm':
+                    amount = addDonation(p_index)
+                    if amount == 'm':
+                        userMain = ""
+                        break
+                    else:
+                        print ("-----------------Thank You Letter-----------\n")
+                        printThankYou(p_index, amount)
                         userMain = ""
                         break
         # Enter Create a Report Menu
