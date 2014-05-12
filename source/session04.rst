@@ -11,18 +11,49 @@ Session Four: Dictionaries, Sets, Exceptions, and Files
 Review/Questions
 ================
 
-Review of Previous Class
-------------------------
+Review of Previous Classes
+--------------------------
 
   * Sequences
-  * Lists
-  * Tuples
 
+    - Slicing
+    - Lists
+    - Tuples
+    - tuple vs lists - which to use?
+
+  * interating
+
+    - for
+    - while
+
+      - break and continue
+
+    - else with loops
 
 Any questions?
 
 Homework comments
 -----------------
+
+Building up a long string.
+
+The obvious thing to do is somethign like::
+
+  msg = u""
+  for piece in list_of_stuff:
+      msg += piece
+
+But: strings are immutuable -- python needs to create a new string each time you add a piece -- not efficient::
+
+   msg = []
+   for piece in list_of_stuff:
+       msg.append(piece)
+   u" ".join(msg)
+
+appending to lists is efficient -- and so is the join() method of strings.
+
+
+.. newslide::
 
 What is ``assert`` for?
 
