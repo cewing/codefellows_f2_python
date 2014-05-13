@@ -115,6 +115,7 @@ def _send_thankyou():
             donor = unicode(raw_input(prompt).title())
         elif donor in _get_donors():
             _add_amount(donor)
+            _generate_ty(donor)
             break
         else:
             while True:
