@@ -63,11 +63,11 @@ def _print_donations(donations):
     donations_str = u""
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
-            donations_str += u"${}".format(unicode(donation))
+            donations_str += u"${:,}".format(float(donation))
         elif i == len(donations)-2:
-            donations_str += u"${};".format(unicode(donation))
+            donations_str += u"${:,}, and ".format(float(donation))
         else:
-            donations_str += u"${}, ".format(unicode(donation))
+            donations_str += u"${:,}, ".format(float(donation))
     return donations_str
 
 
