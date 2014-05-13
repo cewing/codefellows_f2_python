@@ -11,7 +11,7 @@ def _validate_input(prompt, accept):  # Valid _input or Validate_input?
     while response not in accept_copy:
         prompt = u"That value was not valid. "
         prompt += u"Please choose from {} \n--> ".format(accept)
-        response = unicode(raw_input(prompt))
+        response = unicode(raw_input(prompt)).lower()
     return response
 
 
@@ -57,7 +57,7 @@ fruit_list.insert(0, u"Papaya")
 _print_basket(fruit_list)
 
 print u"Displaying all fruit that start with the letter 'P'"
-for i, fruit in enumerate(fruit_list):
+for fruit in fruit_list:
     if fruit.startswith(u"P"):
         print fruit,
 print ""
