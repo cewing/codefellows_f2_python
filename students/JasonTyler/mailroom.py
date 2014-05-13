@@ -57,7 +57,7 @@ def send_thankyou():
 def create_report():
     """
     Create a report of all donor donations
-    
+
     columns:
     -----
     name     total donated    number of donations    avg donation
@@ -69,7 +69,7 @@ def create_report():
         total = str(get_total_donation(donor))
         number = str(get_number_donations(donor))
         avg = str(get_average_donation(donor))
-        report_list.append([name, total, number, avg]) 
+        report_list.append([name, total, number, avg])
     print "name\t\ttotal\tnumber\taverage"
     print "----------------------------------------"
     for row in report_list:
@@ -88,21 +88,21 @@ def print_thankyou(donor_record):
 def create_donor(name_tuple, donation=None):
     """
     Create a new donor and return reference to donor_record
-    
+
     Only names with exactly two name_tuple terms are used. parse_str_to_donor_name()
-    should be used to feed name_tuple from raw input. 
-    """ 
+    should be used to feed name_tuple from raw input.
+    """
     try:
         first_name, last_name = name_tuple
     except ValueError:
         return False
     else:
         donor_list.append([first_name, last_name])
-        donor = donor_list[len(donor_list) -1]
+        donor = donor_list[len(donor_list) - 1]
         if not donation:
             pass
         else:
-            add_donation(donor, donation) 
+            add_donation(donor, donation)
     return donor
 
 
@@ -117,13 +117,13 @@ def get_donor(name):
         for donor_record in donor_list:
             if donor_record[0] == first_name and donor_record[1] == last_name:
                 return donor_record
-        else: 
+        else:
             return None
 
 
 def get_donor_from_str(string):
     """Get donor record from a string"""
-    name  = parse_str_to_donor_name(string)
+    name = parse_str_to_donor_name(string)
     return get_donor(name)
 
 
