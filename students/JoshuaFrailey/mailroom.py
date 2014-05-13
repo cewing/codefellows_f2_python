@@ -140,7 +140,6 @@ def _add_amount(donor):
         else:
             amount = _is_float(amount)
             _add_donation(donor, amount)
-            _generate_ty(donor)
             break
 
 
