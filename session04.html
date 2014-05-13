@@ -99,12 +99,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-reading-and-writing">File Reading and Writing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paths-and-directories">Paths and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="supplements/index.html">Supplemental Materials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="supplements/virtualenv.html">Working with Virtualenv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supplements/sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supplements/shell.html">Shell Customizations for Python Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supplements/kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supplements/kata_fourteen.html#objectives">Objectives</a></li>
 </ul>
 </li>
 </ul>
@@ -197,7 +200,6 @@
 </pre></div>
 </div>
 <p>(Asserts get ignored if optimization is turned on!)</p>
-<p>..newslide</p>
 <p>The rot13 solution:</p>
 <p>At least one of you found the &#8220;rot13&#8221; codec &#8211; that&#8217;s the really easy way to do it!</p>
 <p>A couple found the <tt class="docutils literal"><span class="pre">string.translate()</span></tt> function &#8211; anyone get it to work with unicode?</p>
@@ -225,10 +227,13 @@
 <h3>Dictionary Constructors<a class="headerlink" href="#dictionary-constructors" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="s">&#39;key1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),(</span><span class="s">&#39;key2&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;key2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
@@ -240,11 +245,15 @@
 <div class="section" id="dictionary-indexing">
 <h3>Dictionary Indexing<a class="headerlink" href="#dictionary-indexing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;score&#39;</span><span class="p">]</span>
 <span class="go">42</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">&#39;one&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s">&#39;zero&#39;</span><span class="p">}</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;zero&#39;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;non-existing key&#39;</span><span class="p">]</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -305,7 +314,7 @@
 </div>
 <div class="section" id="dictionary-iterating">
 <h3>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">for</span></tt>  iterates the keys</p>
+<p><tt class="docutils literal"><span class="pre">for</span></tt>  iterates over the keys</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="gp">In [16]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
@@ -335,13 +344,13 @@
 <div class="section" id="id1">
 <h3>dict keys and values<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Iterating on everything</p>
-<div class="highlight-python"><div class="highlight"><pre>In [26]: d = {&#39;name&#39;: &#39;Brian&#39;, &#39;score&#39;: 42}
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
-In [27]: for k, v in d.items():
-    print &quot;%s: %s&quot; % (k,v)
-   ....:
-score: 42
-name: Brian
+<span class="gp">In [27]: </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="go">    print &quot;%s: %s&quot; % (k,v)</span>
+<span class="gp">   ....:</span>
+<span class="go">score: 42</span>
+<span class="go">name: Brian</span>
 </pre></div>
 </div>
 </div>
@@ -360,24 +369,118 @@ name: Brian
 <p><a class="reference external" href="http://wiki.python.org/moin/TimeComplexity">http://wiki.python.org/moin/TimeComplexity</a></p>
 </div></blockquote>
 </div>
+<div class="section" id="other-dict-operations">
+<h3>Other dict operations:<a class="headerlink" href="#other-dict-operations" title="Permalink to this headline">¶</a></h3>
+<p>See them all here:</p>
+<p><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#mapping-types-dict">https://docs.python.org/2/library/stdtypes.html#mapping-types-dict</a></p>
+<p>Is it in there?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">d</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;that&#39;: 7, &#39;this&#39;: 5}</span>
+
+<span class="gp">In [6]: </span><span class="s">&#39;that&#39;</span> <span class="ow">in</span> <span class="n">d</span>
+<span class="gh">Out[6]: </span><span class="go">True</span>
+
+<span class="gp">In [7]: </span><span class="s">&#39;this&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span>
+<span class="gh">Out[7]: </span><span class="go">False</span>
+</pre></div>
+</div>
+<p>Containment is on the keys.</p>
+<p>Getting something: (like indexing)</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [9]: </span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;this&#39;</span><span class="p">)</span>
+<span class="gh">Out[9]: </span><span class="go">5</span>
+</pre></div>
+</div>
+<p>But you can specify a default</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a default&#39;</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go">u&#39;a default&#39;</span>
+</pre></div>
+</div>
+<p>Never raises an Exception (default default is None)</p>
+<p>iterating</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">item</span>
+<span class="gp">   ....:</span>
+<span class="go">(&#39;this&#39;, 5)</span>
+<span class="go">(&#39;that&#39;, 7)</span>
+<span class="gp">In [15]: </span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
+<span class="go">    print key</span>
+<span class="gp">   ....:</span>
+<span class="go">this</span>
+<span class="go">that</span>
+<span class="gp">In [16]: </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+<span class="go">    print val</span>
+<span class="gp">   ....:</span>
+<span class="go">5</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>the <tt class="docutils literal"><span class="pre">iter*</span></tt> methods don&#8217;t actually create the lists.</p>
+<p>&#8220;Popping&#8221;: getting the value while removing it</p>
+<p>pop out a particular key</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [19]: </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;this&#39;</span><span class="p">)</span>
+<span class="gh">Out[19]: </span><span class="go">5</span>
+
+<span class="gp">In [20]: </span><span class="n">d</span>
+<span class="gh">Out[20]: </span><span class="go">{&#39;that&#39;: 7}</span>
+</pre></div>
+</div>
+<p>pop out an arbitrary key, value pair</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="gh">Out[23]: </span><span class="go">(&#39;that&#39;, 7)</span>
+
+<span class="gp">In [24]: </span><span class="n">d</span>
+<span class="gh">Out[24]: </span><span class="go">{}</span>
+</pre></div>
+</div>
+<p>This one is handy:</p>
+<p><tt class="docutils literal"><span class="pre">setdefault(key[,</span> <span class="pre">default])</span></tt></p>
+<p>gets the value if it&#8217;s there, sets it if it&#8217;s not</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [27]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a value&#39;</span><span class="p">)</span>
+<span class="gh">Out[27]: </span><span class="go">u&#39;a value&#39;</span>
+
+<span class="gp">In [28]: </span><span class="n">d</span>
+<span class="gh">Out[28]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
+
+<span class="gp">In [29]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a value&#39;</span><span class="p">)</span>
+<span class="gh">Out[29]: </span><span class="go">u&#39;a value&#39;</span>
+
+<span class="gp">In [30]: </span><span class="n">d</span>
+<span class="gh">Out[30]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
+</pre></div>
+</div>
+<p>dict View objects:</p>
+<p>Like <tt class="docutils literal"><span class="pre">keys()</span></tt>, <tt class="docutils literal"><span class="pre">values()</span></tt>, <tt class="docutils literal"><span class="pre">items()</span></tt>, but maintain a link to the original dict</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [47]: </span><span class="n">d</span>
+<span class="gh">Out[47]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
+
+<span class="gp">In [48]: </span><span class="n">item_view</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">viewitems</span><span class="p">()</span>
+
+<span class="gp">In [49]: </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;something else&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;another value&#39;</span>
+
+<span class="gp">In [50]: </span><span class="n">item_view</span>
+<span class="gh">Out[50]: </span><span class="go">dict_items([(&#39;something else&#39;, u&#39;another value&#39;), (u&#39;something&#39;, u&#39;a value&#39;)])</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="sets">
 <h3>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">set</span></tt>  is an unordered collection of distinct values</p>
 <p>Essentially a dict with only keys</p>
-</div>
-<div class="section" id="set-constructors">
-<h3>Set Constructors<a class="headerlink" href="#set-constructors" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">()</span>
-<span class="go">set([])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">set([1, 2, 3])</span>
-<span class="go"># as of 2.7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-<span class="go">set([1, 2, 3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
-<span class="go">set([1, 2, 3])</span>
+<p>Set Constructors</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">set</span><span class="p">()</span>
+<span class="nb">set</span><span class="p">([])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -386,41 +489,44 @@ name: Brian
 <p><tt class="docutils literal"><span class="pre">Set</span></tt>  members must be hashable</p>
 <p>Like dictionary keys &#8211; and for same reason (efficient lookup)</p>
 <p>No indexing (unordered)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">TypeError</span>: <span class="n">&#39;set&#39; object does not support indexing</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s">&#39;set&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">indexing</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="set-methods">
 <h3>Set Methods<a class="headerlink" href="#set-methods" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>&gt;&gt; s = set([1])
-&gt;&gt;&gt; s.pop() # an arbitrary member
-1
-&gt;&gt;&gt; s.pop()
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-KeyError: &#39;pop from an empty set&#39;
-&gt;&gt;&gt; s = set([1, 2, 3])
-&gt;&gt;&gt; s.remove(2)
-&gt;&gt;&gt; s.remove(2)
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-KeyError: 2
+<div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c"># an arbitrary member</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">KeyError</span><span class="p">:</span> <span class="s">&#39;pop from an empty set&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">KeyError</span><span class="p">:</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>..nextslide:</p>
-<div class="highlight-python"><div class="highlight"><pre>::
+<p>All the &#8220;set&#8221; operations from math class...</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span> <span class="n">other</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div>s.isdisjoint(other)
-s.issubset(other)
-s.union(other, ...)
-s.intersection(other, ...)
-s.difference(other, ...)
-s.symmetric_difference( other, ...)</div></blockquote>
 </div>
 <div class="section" id="frozen-set">
 <h3>Frozen Set<a class="headerlink" href="#frozen-set" title="Permalink to this headline">¶</a></h3>
@@ -480,7 +586,6 @@ s.symmetric_difference( other, ...)</div></blockquote>
 </pre></div>
 </div>
 <p>It will almost always work &#8211; but the almost will drive you crazy</p>
-<p>..nextslide:</p>
 <p>Example from homework:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">num_in</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
@@ -494,13 +599,11 @@ s.symmetric_difference( other, ...)</div></blockquote>
 </pre></div>
 </div>
 <p>Or let the Exception be raised!</p>
-<p>..nextslide:: EAFP</p>
 <p>&#8220;it&#8217;s Easier to Ask Forgiveness than Permission&#8221;</p>
 <blockquote>
 <div>&#8211; Grace Hopper</div></blockquote>
 <p><a class="reference external" href="http://www.youtube.com/watch?v=AZDWveIdqjY">http://www.youtube.com/watch?v=AZDWveIdqjY</a></p>
 <p>(Pycon talk by Alex Martelli)</p>
-<p>..nextslide:: Do you catch all Exceptions?</p>
 <p>For simple scripts, let exceptions happen</p>
 <p>Only handle the exception if the code can and will do something about it.</p>
 <p>(much better debugging info when an error does occur)</p>
@@ -576,7 +679,6 @@ s.symmetric_difference( other, ...)</div></blockquote>
 </pre></div>
 </div>
 <p>For the most part, you can/should use a built in one</p>
-<p>..nextslide:</p>
 <p>Choose the best match you can for the built in Exception you raise.</p>
 <p>Example (for last week&#8217;s ackerman homework):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
@@ -617,7 +719,6 @@ f.close()</dd>
 </dl>
 <p><tt class="docutils literal"><span class="pre">secret_data</span></tt>  is a (unicode) string</p>
 <p>(There is also the regular <tt class="docutils literal"><span class="pre">open()</span></tt> built in, but it won&#8217;t handle unicode for you...)</p>
-<p>..nextslide:</p>
 <p>Binary Files</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
 <span class="n">secret_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -627,7 +728,6 @@ f.close()</dd>
 <p><tt class="docutils literal"><span class="pre">secret_data</span></tt>  is a byte string</p>
 <p>(with arbitrary bytes in it)</p>
 <p>(See the <tt class="docutils literal"><span class="pre">struct</span></tt>  module to unpack binary data )</p>
-<p>..nextslide:</p>
 <p>File Opening Modes</p>
 <div class="highlight-python"><div class="highlight"><pre>f = codecs.open(&#39;secrets.txt&#39;, [mode])
 &#39;r&#39;, &#39;w&#39;, &#39;a&#39;
@@ -639,7 +739,6 @@ U+
 </pre></div>
 </div>
 <p>Gotcha &#8211; &#8216;w&#8217; mode always clears the file</p>
-<p>..nextslide:: Text File Notes</p>
 <p>Text is default</p>
 <p>(more about unicode vs text vs binary here!)</p>
 <blockquote>
@@ -668,7 +767,6 @@ U+
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>..nextslide:</p>
 <p>Common Idioms</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">line</span>
@@ -757,9 +855,7 @@ os.path.abspath()
 os.path.relpath()￼
 </pre></div>
 </div>
-</div>
-<div class="section" id="nextslide-os-path-module">
-<h3>..nextslide:: os.path module<a class="headerlink" href="#nextslide-os-path-module" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
@@ -768,7 +864,6 @@ os.path.relpath()￼
 </pre></div>
 </div>
 <p>(all platform independent)</p>
-<p>..nextslide:: directories</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span>
@@ -799,8 +894,9 @@ in the current directory, one per line</p>
 </ul>
 </div></blockquote>
 </div>
+</div>
 <div class="section" id="id6">
-<h3>Homework<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h2>Homework<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Recommended Reading:</p>
 <blockquote>
 <div><ul class="simple">
@@ -808,7 +904,56 @@ in the current directory, one per line</p>
 <li>Unicode: <a class="reference external" href="http://www.joelonsoftware.com/articles/Unicode.html">http://www.joelonsoftware.com/articles/Unicode.html</a></li>
 </ul>
 </div></blockquote>
-<p>Do the Labs you didn&#8217;t finish in class</p>
+<div class="section" id="dictionaries-and-sets-lab">
+<h3>Dictionaries and Sets Lab<a class="headerlink" href="#dictionaries-and-sets-lab" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<ul class="simple">
+<li>Create a dictionary containing &#8220;name&#8221;, &#8220;city&#8221;, and &#8220;cake&#8221; for &#8220;Chris&#8221; from &#8220;Seattle&#8221; who likes &#8220;Chocolate&#8221;.</li>
+<li>Display the dictionary.</li>
+<li>Delete the entry for &#8220;cake&#8221;.</li>
+<li>Display the dictionary.</li>
+<li>Add an entry for &#8220;fruit&#8221; with &#8220;Mango&#8221; and display the dictionary.<ul>
+<li>Display the dictionary keys.</li>
+<li>Display the dictionary values.</li>
+<li>Display whether or not &#8220;cake&#8221; is a key in the dictionary (i.e. False) (now).</li>
+<li>Display whether or not &#8220;Mango&#8221; is a value in the dictionary.</li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+<ul class="simple">
+<li>Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li></li>
+</ol>
+<ul class="simple">
+<li>Using the dictionary from item 1: Make a dictionary using the same keys but with the number of &#8216;a&#8217;s in each value.</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li></li>
+</ol>
+<ul class="simple">
+<li>Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.</li>
+<li>Display the sets.</li>
+<li>Display if s3 is a subset of s2 (False)</li>
+<li>and if s4 is a subset of s2 (True).</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li></li>
+</ol>
+<ul class="simple">
+<li>Create a set with the letters in &#8216;Python&#8217; and add &#8216;i&#8217; to the set.</li>
+<li>Create a frozenset with the letters in &#8216;marathon&#8217;</li>
+<li>display the union and intersection of the two sets.</li>
+</ul>
+</div>
+<div class="section" id="text-and-files-and-dicts-and">
+<h3>Text and files and dicts, and...<a class="headerlink" href="#text-and-files-and-dicts-and" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">Coding Kata 14 - Dave Thomas
