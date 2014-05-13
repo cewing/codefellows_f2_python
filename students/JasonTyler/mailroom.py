@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Mailroom assignment"""
+"""Mailroom assignment, non-dictionary version"""
 
 # Each sublist referred to as a 'donor record'
 # with structure: [first_name, last_name, donation1, donation2...]
@@ -54,8 +54,31 @@ def send_thankyou():
     make_choice()
 
 
-def create_report(donor_record):
-    """Create a report of all donor donations"""
+def create_report():
+    """
+    Create a report of all donor donations
+    
+    columns:
+    -----    
+    name     total donated    number of donations    avg donation
+    -----
+    """
+    report_list = list()
+    for donor in donor_list:
+        name = " ". join([donor[0], donor[1]])
+        total = str(get_total_donation(donor))
+        number = str(get_number_donations(donor))
+        avg = str(get_average_donation(donor))
+        report_list.append([name, total, number, avg]) 
+    # print report_list
+    # return report_list
+    print "name\t\ttotal\tnumber\taverage"
+    print "----------------------------------------"
+    for row in report_list:
+        # print row
+        print "\t".join(row)
+        
+    # del report_list    
 
     # Exit function with make_choice call
     make_choice()
@@ -92,8 +115,6 @@ def get_donor(name):
     except (TypeError, IndexError):
         return None
     else:
-        print first_name
-        print name[0]
         for donor_record in donor_list:
             if donor_record[0] == first_name and donor_record[1] == last_name:
                 return donor_record
@@ -144,14 +165,28 @@ def add_donation(donor_record, donation):
         donor_record.append(donation)
         return True
 
+
 def get_average_donation(donor_record):
     """Get average donation from donor record"""
-    pass
+    total = get_total_donation(donor_record) 
+    number = get_number_donations(donor_record)
+    return float(total)/number
 
 
 def get_total_donation(donor_record):
     """Get total donation from donor record"""
-    pass
+    total = 0
+    for donation in donor_record:
+        if isinstance(donation, (int, float)):
+            total += donation
+        else:
+            pass
+    return total
+
+
+def get_number_donations(donor_record):
+    """Get number of donations from donor record"""
+    return (len(donor_record) - 2)
 
 
 def print_all_donor_names():
@@ -174,6 +209,6 @@ def quit_mailroom():
     exit(0)
 
 
-# Start everything off with an initial call
-make_choice()
-
+if __name__ == "__main__":
+    # Start everything off with an initial call
+    make_choice()
