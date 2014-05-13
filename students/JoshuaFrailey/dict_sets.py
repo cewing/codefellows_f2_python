@@ -1,0 +1,1 @@
+d = {u"name": u"Chris", u"city": u"Seattle", u"cake":u"Chocolate"}
