@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-reading-and-writing">File Reading and Writing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paths-and-directories">Paths and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="supplements/index.html">Supplemental Materials</a><ul>
@@ -541,11 +541,6 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="lab">
-<h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
-<p>Dictionary LAB:</p>
-<p><tt class="docutils literal"><span class="pre">code/dict_lab.html</span> <span class="pre">(rst)</span></tt></p>
-</div>
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
@@ -575,10 +570,8 @@
 </div>
 <div class="section" id="id4">
 <h3>Exceptions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>Use Exceptions, rather than your own tests</dt>
-<dd>&#8211; Don&#8217;t do this:</dd>
-</dl>
+<p>Use Exceptions, rather than your own tests:</p>
+<p>Don&#8217;t do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">do_something</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">):</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -586,12 +579,13 @@
 </pre></div>
 </div>
 <p>It will almost always work &#8211; but the almost will drive you crazy</p>
-<p>Example from homework:</p>
+<p>Example from homework</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">num_in</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>but &#8211; <tt class="docutils literal"><span class="pre">int(num_in)</span></tt> will only work if the string can be converted to an integer. So you can do:</p>
+<p>but &#8211; <tt class="docutils literal"><span class="pre">int(num_in)</span></tt> will only work if the string can be converted to an integer.</p>
+<p>So you can do</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
@@ -648,8 +642,8 @@
 </pre></div>
 </div>
 <p>Particularly useful if you catch more than one exception:</p>
-<div class="highlight-python"><div class="highlight"><pre>except (IOError, BufferError, OSError) as the_error:
-    do_something_with (the_error)
+<div class="highlight-python"><div class="highlight"><pre><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="n">BufferError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
+    <span class="n">do_something_with</span> <span class="p">(</span><span class="n">the_error</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -685,24 +679,13 @@
     <span class="k">raise</span> <span class="ne">ValueError</span>
 </pre></div>
 </div>
-<p>Is the <em>value</em> or the input the problem here?</p>
+<p>Is it the <em>value</em> or the input the problem here?</p>
 <p>Nope: the <em>type</em> is the problem:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">TypeError</span>
 </pre></div>
 </div>
-<p>(but should you be checking type anyway?)</p>
-</div>
-<div class="section" id="homework">
-<h3>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h3>
-<p>Exceptions Lab: Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt> :</p>
-<p>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions:
-<tt class="docutils literal"><span class="pre">EOFError</span></tt>  or <tt class="docutils literal"><span class="pre">KeyboardInterrupt</span></tt>  on end-of-file
-(EOF) or canceled input.</p>
-<p>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns
-<tt class="docutils literal"><span class="pre">None</span></tt>  rather rather than raising these exceptions, when
-the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt>
-(<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</p>
+<p>but should you be checking type anyway? (EAFP)</p>
 </div>
 </div>
 <div class="section" id="file-reading-and-writing">
@@ -710,13 +693,12 @@ the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  f
 <div class="section" id="files">
 <h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
 <p>Text Files</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>import codecs
-f = codecs.open(&#8216;secrets.txt&#8217;)
-secret_data = f.read()
-f.close()</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">codecs</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">)</span>
+<span class="n">secret_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
 <p><tt class="docutils literal"><span class="pre">secret_data</span></tt>  is a (unicode) string</p>
 <p>(There is also the regular <tt class="docutils literal"><span class="pre">open()</span></tt> built in, but it won&#8217;t handle unicode for you...)</p>
 <p>Binary Files</p>
@@ -729,18 +711,17 @@ f.close()</dd>
 <p>(with arbitrary bytes in it)</p>
 <p>(See the <tt class="docutils literal"><span class="pre">struct</span></tt>  module to unpack binary data )</p>
 <p>File Opening Modes</p>
-<div class="highlight-python"><div class="highlight"><pre>f = codecs.open(&#39;secrets.txt&#39;, [mode])
-&#39;r&#39;, &#39;w&#39;, &#39;a&#39;
-&#39;rb&#39;, &#39;wb&#39;, &#39;ab&#39;
-r+, w+, a+
-r+b, w+b, a+b
-U
-U+
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span>
+<span class="s">&#39;rb&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">,</span> <span class="s">&#39;ab&#39;</span>
+<span class="n">r</span><span class="o">+</span><span class="p">,</span> <span class="n">w</span><span class="o">+</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span>
+<span class="n">r</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">U</span>
+<span class="n">U</span><span class="o">+</span>
 </pre></div>
 </div>
 <p>Gotcha &#8211; &#8216;w&#8217; mode always clears the file</p>
 <p>Text is default</p>
-<p>(more about unicode vs text vs binary here!)</p>
 <blockquote>
 <div><ul class="simple">
 <li>Newlines are translated: <tt class="docutils literal"><span class="pre">\r\n</span> <span class="pre">-&gt;</span> <span class="pre">\n</span></tt></li>
@@ -772,6 +753,7 @@ U+
     <span class="k">print</span> <span class="n">line</span>
 </pre></div>
 </div>
+<p>(the file object is an iterator!)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">)</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
@@ -792,15 +774,15 @@ U+
 <div class="section" id="file-methods">
 <h3>File Methods<a class="headerlink" href="#file-methods" title="Permalink to this headline">¶</a></h3>
 <p>Commonly Used Methods</p>
-<div class="highlight-python"><div class="highlight"><pre>f.read() f.readline()  f.readlines()
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
-f.write(str) f.writelines(seq)
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 
-f.seek(offset)   f.tell()
+<span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>   <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
 
-f.flush()
+<span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-f.close()
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -820,12 +802,12 @@ f.close()
 </div>
 <div class="section" id="stringio">
 <h3>StringIO<a class="headerlink" href="#stringio" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>In [417]: import StringIO
-In [420]: f = StringIO.StringIO()
-In [421]: f.write(u&quot;somestuff&quot;)
-In [422]: f.seek(0)
-In [423]: f.read()
-Out[423]: &#39;somestuff&#39;
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">417</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">StringIO</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">420</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">421</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&quot;somestuff&quot;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">422</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">423</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">423</span><span class="p">]:</span> <span class="s">&#39;somestuff&#39;</span>
 </pre></div>
 </div>
 <p>(handy for testing file handling code...)</p>
@@ -871,32 +853,9 @@ os.path.relpath()￼
 </div>
 <p>(higher level stuff in <tt class="docutils literal"><span class="pre">shutil</span></tt>  module)</p>
 </div>
-<div class="section" id="id5">
-<h3>LAB<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>Paths and File Processing</p>
-<blockquote>
-<div><ul>
-<li><p class="first">write a program which prints the full path to all files
-in the current directory, one per line</p>
-</li>
-<li><dl class="first docutils">
-<dt>write a program which copies a file from a source, to a</dt>
-<dd><p class="first last">destination (without using shutil, or the OS copy command)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>update mail-merge from the earlier lab to write output</dt>
-<dd><p class="first last">to individual files on disk</p>
-</dd>
-</dl>
-</li>
-</ul>
-</div></blockquote>
 </div>
-</div>
-<div class="section" id="id6">
-<h2>Homework<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p>Recommended Reading:</p>
 <blockquote>
 <div><ul class="simple">
@@ -904,8 +863,17 @@ in the current directory, one per line</p>
 <li>Unicode: <a class="reference external" href="http://www.joelonsoftware.com/articles/Unicode.html">http://www.joelonsoftware.com/articles/Unicode.html</a></li>
 </ul>
 </div></blockquote>
-<div class="section" id="dictionaries-and-sets-lab">
-<h3>Dictionaries and Sets Lab<a class="headerlink" href="#dictionaries-and-sets-lab" title="Permalink to this headline">¶</a></h3>
+<p>Assigments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>dict/sets lab</li>
+<li>coding kata: trigrams</li>
+<li>Exceptions</li>
+<li>Update mailroom with dicts.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="id5">
+<h3>Dictionaries and Sets<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li></li>
 </ol>
@@ -958,16 +926,50 @@ in the current directory, one per line</p>
 <div><ul>
 <li><p class="first">Coding Kata 14 - Dave Thomas
 <a class="reference external" href="http://codekata.pragprog.com/2007/01/">http://codekata.pragprog.com/2007/01/</a> kata_fourteen_t.html</p>
+<p>and in this doc:</p>
+<p><a class="reference external" href="http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html">http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html</a></p>
 </li>
-<li><dl class="first docutils">
-<dt>Use The Adventures of Sherlock Holmes as input:</dt>
-<dd><p class="first last"><tt class="docutils literal"><span class="pre">code/sherlock.txt</span></tt>  (ascii)</p>
-</dd>
-</dl>
+<li><p class="first">Use The Adventures of Sherlock Holmes as input:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt">http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt</a></p>
+</div></blockquote>
 </li>
 <li><p class="first">This is intentionally open-ended and underspecified. There are many interesting decisions to make.</p>
 </li>
 <li><p class="first">Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>Exceptions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt> :</p>
+<ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">EOFError</span></tt>  or <tt class="docutils literal"><span class="pre">KeyboardInterrupt</span></tt>  on end-of-file
+(EOF) or canceled input.</p>
+<ul class="simple">
+<li>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">None</span></tt>  rather rather than raising these exceptions, when
+the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt>
+(<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</p>
+<ul class="simple">
+<li>Update your mailroom program to use exceptions (and IBAFP) to handle malformed numeric input</li>
+</ul>
+</div>
+<div class="section" id="paths-and-file-processing">
+<h3>Paths and File Processing<a class="headerlink" href="#paths-and-file-processing" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>write a program which prints the full path to all files in the current directory, one per line</li>
+<li>write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)</li>
+<li>update mailroom from last weeks homework to:<ul>
+<li>use dicts where appropriate</li>
+<li>write a full set of letters to everyone to individual files on disk</li>
+<li>see if you can use a dict to switch between the users selections</li>
+</ul>
 </li>
 </ul>
 </div></blockquote>
