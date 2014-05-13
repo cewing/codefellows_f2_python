@@ -22,6 +22,16 @@ def selectDonor():
 def getDonationAmount(theDonor):
     while True:
         theInput=raw_input(u"Enter a donation amount as a number: ")
+        theInput=unicode(theInput)
+        if theInput.isnumeric():
+            for donors in donorsANDdollars:
+                if donors[0]==theDonor:
+                    theInput=int(theInput)
+                    donors.append(theInput)
+                    return
+        else:
+            print "Please enter a number!"
+
 
 
 def create_Report():
@@ -34,8 +44,10 @@ for i in range(len(donorsANDdollars)):
     while answered == 0:
         choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2): ")
         if choice == u"1":
-            selectDonor()
-            send_ThankYou()
+            theDonor=selectDonor()
+            getDonationAmount(theDonor)
+            print donorsANDdollars
+            #send_ThankYou()
             answered=1
         elif choice == u"2":
             create_Report()
