@@ -48,7 +48,7 @@ def send_thankyou():
         donor = create_donor(donor_name)
         add_donation(donor, get_donation())
         print_thankyou(donor)
-    else: 
+    else:
         send_thankyou()
     # Exit function with make_choice call
     make_choice()
@@ -59,7 +59,7 @@ def create_report():
     Create a report of all donor donations
     
     columns:
-    -----    
+    -----
     name     total donated    number of donations    avg donation
     -----
     """
@@ -70,16 +70,10 @@ def create_report():
         number = str(get_number_donations(donor))
         avg = str(get_average_donation(donor))
         report_list.append([name, total, number, avg]) 
-    # print report_list
-    # return report_list
     print "name\t\ttotal\tnumber\taverage"
     print "----------------------------------------"
     for row in report_list:
-        # print row
         print "\t".join(row)
-        
-    # del report_list    
-
     # Exit function with make_choice call
     make_choice()
 
@@ -92,7 +86,12 @@ def print_thankyou(donor_record):
 
 
 def create_donor(name_tuple, donation=None):
-    """Create a new donor and return reference to donor record"""
+    """
+    Create a new donor and return reference to donor_record
+    
+    Only names with exactly two name_tuple terms are used. parse_str_to_donor_name()
+    should be used to feed name_tuple from raw input. 
+    """ 
     try:
         first_name, last_name = name_tuple
     except ValueError:
@@ -104,11 +103,11 @@ def create_donor(name_tuple, donation=None):
             pass
         else:
             add_donation(donor, donation) 
-    return donor 
+    return donor
 
 
 def get_donor(name):
-    """Use first_name and last_name to return a donor record"""
+    """Use first_name and last_name to return a donor_record"""
     try:
         first_name = name[0]
         last_name = name[1]
@@ -157,8 +156,8 @@ def get_donation():
 
 
 def add_donation(donor_record, donation):
-    """Add a donation to a donor record"""
-    valid = isinstance(donation, (int, float))    
+    """Add a donation to a donor_record"""
+    valid = isinstance(donation, (int, float))
     if not valid:
         return False
     else:
@@ -167,14 +166,14 @@ def add_donation(donor_record, donation):
 
 
 def get_average_donation(donor_record):
-    """Get average donation from donor record"""
-    total = get_total_donation(donor_record) 
+    """Get average donation for a donor from donor_record"""
+    total = get_total_donation(donor_record)
     number = get_number_donations(donor_record)
     return float(total)/number
 
 
 def get_total_donation(donor_record):
-    """Get total donation from donor record"""
+    """Get total donation for a donor from donor_record"""
     total = 0
     for donation in donor_record:
         if isinstance(donation, (int, float)):
@@ -185,7 +184,7 @@ def get_total_donation(donor_record):
 
 
 def get_number_donations(donor_record):
-    """Get number of donations from donor record"""
+    """Get number of donations for a donor from donor_record"""
     return (len(donor_record) - 2)
 
 
@@ -205,7 +204,7 @@ def get_input():
 
 
 def quit_mailroom():
-    """Exit out of mailroom"""
+    """Exit out of mailroom module"""
     exit(0)
 
 
