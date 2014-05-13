@@ -28,9 +28,13 @@ def getDonationAmount(theDonor):
                 if donors[0]==theDonor:
                     theInput=int(theInput)
                     donors.append(theInput)
-                    return
+                    return theInput
         else:
             print "Please enter a number!"
+
+
+def send_ThankYou(theDonor,theInput):
+    print "Thank you esteemed %s. We greatly appreciate your most recent, and wonderfully generous, donation of %s dollars. Please donate again soon."%(theDonor,theInput)
 
 
 
@@ -45,9 +49,8 @@ for i in range(len(donorsANDdollars)):
         choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2): ")
         if choice == u"1":
             theDonor=selectDonor()
-            getDonationAmount(theDonor)
-            print donorsANDdollars
-            #send_ThankYou()
+            theInput=getDonationAmount(theDonor)
+            send_ThankYou(theDonor,theInput)
             answered=1
         elif choice == u"2":
             create_Report()
