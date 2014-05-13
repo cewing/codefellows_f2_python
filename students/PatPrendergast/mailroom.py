@@ -20,7 +20,7 @@ def start():
         mail()
         start()
     elif action == u'r' or action == u'report':
-        report(reporting)
+        report(donors)
         start()
     elif action == u'q' or action == u'quit':
         exit(0)
@@ -76,15 +76,15 @@ def name_list(t):
     return names
 
 
-# not capturing added donors
 def report(t):
     ''' Print report: Donor name and Total Amount Given '''
     print ''
+    t = reporter_list(t)
     table_top = u'Name\t\t\t\tTotal Donation Amount\n'
     print table_top
     for e in t:
         name = e[0]
-        donations = sum(e[1:])
+        donations = e[1]
         print u"%s\t\t\t$%s" % (name, donations)
  
 
@@ -93,7 +93,7 @@ def reporter_list(t):
     for e in t:
         name = e[0]
         donations = sum(e[1:])
-        new_t.append([name, donations])
+        new_t.append([name, donations]) # tuple later 
     new_t.sort(key=sort_by_donation)
     return new_t
 
