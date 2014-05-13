@@ -4,13 +4,13 @@
 # designed to be run from master
 
 # make the docs
-# make html
+make html
 
-# git checkout gh-pages
+git checkout gh-pages
 
-# cp -R build/html/ ./
-# git add *
-# git commit -a
-# git push origin gh-pages
-# git push upstream gh-pages
-# git checkout master
+cp -R build/html/ ./
+git add *
+git commit -a
+git push origin gh-pages
+git push upstream gh-pages
+git checkout master

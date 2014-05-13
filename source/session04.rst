@@ -53,7 +53,7 @@ But: strings are immutuable -- python needs to create a new string each time you
 appending to lists is efficient -- and so is the join() method of strings.
 
 
-.. newslide::
+.. nextslide::
 
 What is ``assert`` for?
 
@@ -69,7 +69,7 @@ in operational code should be::
 
 (Asserts get ignored if optimization is turned on!)
 
-..newslide
+.. nextslide::
 
 The rot13 solution:
 
@@ -104,10 +104,13 @@ Dictionary Constructors
 
     >>> {'key1': 3, 'key2': 5}
     {'key1': 3, 'key2': 5}
+
     >>> dict([('key1', 3),('key2', 5)])
     {'key1': 3, 'key2': 5}
+
     >>> dict(key1=3, key2= 5)
     {'key1': 3, 'key2': 5}
+
     >>> d = {}
     >>> d['key1'] = 3
     >>> d['key2'] = 5
@@ -119,11 +122,15 @@ Dictionary Indexing
 ::
     
     >>> d = {'name': 'Brian', 'score': 42}
+
     >>> d['score']
     42
+
     >>> d = {1: 'one', 0: 'zero'}
+
     >>> d[0]
     'zero'
+
     >>> d['non-existing key']
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
@@ -149,7 +156,6 @@ Keys can be any immutable:
 
 
 Actually -- any "hashable" type.
-
 
 
 .. nextslide:: Hashing
@@ -185,7 +191,6 @@ Key to value:
 Value to key:
  * requires visiting the whole dict
 
-
 If you need to check dict values often, create another dict or set (up to you to keep them in sync)
 
 
@@ -206,7 +211,7 @@ Dictionaries have no defined order
 Dictionary Iterating
 --------------------
 
-``for``  iterates the keys
+``for``  iterates over the keys
 
 .. code-block:: ipython
 
@@ -243,8 +248,7 @@ dict keys and values
 
 Iterating on everything
 
-::
-
+.. code-block:: ipython
 
 	In [26]: d = {'name': 'Brian', 'score': 42}
 
@@ -271,6 +275,137 @@ Dictionary Performance
 
  http://wiki.python.org/moin/TimeComplexity
 
+
+Other dict operations:
+----------------------
+
+See them all here:
+
+https://docs.python.org/2/library/stdtypes.html#mapping-types-dict
+
+Is it in there?
+
+.. code-block:: ipython
+
+  In [5]: d
+  Out[5]: {'that': 7, 'this': 5}
+
+  In [6]: 'that' in d
+  Out[6]: True
+
+  In [7]: 'this' not in d
+  Out[7]: False
+
+Containment is on the keys.
+
+.. nextslide::
+
+Getting something: (like indexing)
+
+.. code-block:: ipython
+
+  In [9]: d.get('this')
+  Out[9]: 5
+
+But you can specify a default
+
+.. code-block:: ipython
+
+  In [11]: d.get(u'something', u'a default')
+  Out[11]: u'a default'
+
+Never raises an Exception (default default is None)
+
+.. nextslide::
+
+iterating
+
+.. code-block:: ipython
+
+  In [13]: for item in d.iteritems():
+     ....:     print item
+     ....:     
+  ('this', 5)
+  ('that', 7)
+  In [15]: for key in d.iterkeys():
+      print key
+     ....:     
+  this
+  that
+  In [16]: for val in d.itervalues():
+      print val
+     ....:     
+  5
+  7
+
+the ``iter*`` methods don't actually create the lists.
+
+.. nextslide::
+
+"Popping": getting the value while removing it
+
+pop out a particular key
+
+.. code-block:: ipython
+
+  In [19]: d.pop('this')
+  Out[19]: 5
+
+  In [20]: d
+  Out[20]: {'that': 7}
+
+pop out an arbitrary key, value pair
+
+.. code-block:: ipython
+
+  In [23]: d.popitem()
+  Out[23]: ('that', 7)
+
+  In [24]: d
+  Out[24]: {}
+
+.. nextslide::
+
+This one is handy:
+
+``setdefault(key[, default])``
+
+gets the value if it's there, sets it if it's not
+
+.. code-block:: ipython
+
+  In [27]: d.setdefault(u'something', u'a value')
+  Out[27]: u'a value'
+
+  In [28]: d
+  Out[28]: {u'something': u'a value'}
+
+  In [29]: d.setdefault(u'something', u'a value')
+  Out[29]: u'a value'
+
+  In [30]: d
+  Out[30]: {u'something': u'a value'}
+
+.. nextslide::
+
+dict View objects:
+
+Like ``keys()``, ``values()``, ``items()``, but maintain a link to the original dict
+
+.. code-block:: ipython
+
+  In [47]: d
+  Out[47]: {u'something': u'a value'}
+
+  In [48]: item_view = d.viewitems()
+
+  In [49]: d['something else'] = u'another value'
+
+  In [50]: item_view
+  Out[50]: dict_items([('something else', u'another value'), (u'something', u'a value')])
+
+
+
 Sets 
 -----
 
@@ -278,20 +413,21 @@ Sets
 
 Essentially a dict with only keys
 
-
 Set Constructors
-----------------
 
-::
+.. code-block:: ipython
 
     >>> set()
     set([])
+
     >>> set([1, 2, 3])
     set([1, 2, 3])
-    # as of 2.7
+
     >>> {1, 2, 3}
     set([1, 2, 3])
+
     >>> s = set()
+
     >>> s.update([1, 2, 3])
     >>> s
     set([1, 2, 3])
@@ -306,7 +442,7 @@ Like dictionary keys -- and for same reason (efficient lookup)
 
 No indexing (unordered)
 
-::
+.. code-block:: ipython
 
     >>> s[1]
     Traceback (most recent call last):
@@ -317,7 +453,7 @@ No indexing (unordered)
 Set Methods
 -----------
 
-::
+.. code-block:: ipython
 
     >> s = set([1])
     >>> s.pop() # an arbitrary member
@@ -333,15 +469,22 @@ Set Methods
       File "<stdin>", line 1, in <module>
     KeyError: 2
 
-..nextslide::
+.. nextslide::
+
+All the "set" operations from math class...
 
 ::
 
     s.isdisjoint(other)
+
     s.issubset(other)
+    
     s.union(other, ...)
+    
     s.intersection(other, ...)
+    
     s.difference(other, ...)
+    
     s.symmetric_difference( other, ...)
 
 Frozen Set
@@ -416,7 +559,7 @@ Use Exceptions, rather than your own tests
 
 It will almost always work -- but the almost will drive you crazy
 
-..nextslide::
+.. nextslide::
 
 Example from homework::
 
@@ -433,7 +576,7 @@ but -- ``int(num_in)`` will only work if the string can be converted to an integ
 Or let the Exception be raised!
 
 
-..nextslide:: EAFP
+.. nextslide:: EAFP
 
 
 "it's Easier to Ask Forgiveness than Permission"
@@ -445,7 +588,7 @@ http://www.youtube.com/watch?v=AZDWveIdqjY
 
 (Pycon talk by Alex Martelli)
 
-..nextslide:: Do you catch all Exceptions?
+.. nextslide:: Do you catch all Exceptions?
 
 For simple scripts, let exceptions happen
 
@@ -543,7 +686,7 @@ But...
 
 For the most part, you can/should use a built in one
 
-..nextslide::
+.. nextslide::
 
 Choose the best match you can for the built in Exception you raise.
 
@@ -597,7 +740,7 @@ Text Files
 
 (There is also the regular ``open()`` built in, but it won't handle unicode for you...)
 
-..nextslide::
+.. nextslide::
 
 Binary Files
 
@@ -615,7 +758,7 @@ Binary Files
 (See the ``struct``  module to unpack binary data )
 
 
-..nextslide::
+.. nextslide::
 
 
 File Opening Modes
@@ -633,7 +776,7 @@ File Opening Modes
 
 Gotcha -- 'w' mode always clears the file
 
-..nextslide:: Text File Notes
+.. nextslide:: Text File Notes
 
 Text is default
 
@@ -665,7 +808,7 @@ Reading part of a file
     f.close()
 
 
-..nextslide::
+.. nextslide::
 
 
 Common Idioms
@@ -775,7 +918,7 @@ os module
     os.path.relpath()￼
 
 
-..nextslide:: os.path module
+.. nextslide:: os.path module
 ----------------------------
 
 ::
@@ -789,7 +932,7 @@ os module
 
 (all platform independent)
 
-..nextslide:: directories
+.. nextslide:: directories
 
 ::
 
@@ -811,16 +954,69 @@ Paths and File Processing
   * update mail-merge from the earlier lab to write output
          to individual files on disk
 
-
+=========
 Homework
---------
+=========
 
 Recommended Reading:
 
   * Dive Into Python: Chapt. 13,14
   * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
 
-Do the Labs you didn't finish in class
+.. nextslide:: dict/set lab
+
+Dictionaries and Sets Lab
+---------------------------
+
+1.
+
+* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate".
+
+* Display the dictionary.
+
+* Delete the entry for "cake".
+
+* Display the dictionary.
+
+* Add an entry for "fruit" with "Mango" and display the dictionary.
+
+  - Display the dictionary keys.
+  - Display the dictionary values.
+  - Display whether or not "cake" is a key in the dictionary (i.e. False) (now).
+  - Display whether or not "Mango" is a value in the dictionary.
+
+.. nextslide::
+
+2.
+
+* Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).
+
+3.
+
+* Using the dictionary from item 1: Make a dictionary using the same keys but with the number of 'a's in each value.
+
+.. nextslide:: sets
+
+4.
+
+* Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.
+
+* Display the sets.
+
+* Display if s3 is a subset of s2 (False)
+
+* and if s4 is a subset of s2 (True).
+
+5.
+
+* Create a set with the letters in 'Python' and add 'i' to the set.
+
+* Create a frozenset with the letters in 'marathon'
+
+* display the union and intersection of the two sets.
+
+Text and files and dicts, and...
+---------------------------------
 
   * Coding Kata 14 - Dave Thomas 
     http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
