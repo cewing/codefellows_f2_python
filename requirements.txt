@@ -5,7 +5,7 @@ Pygments==1.6
 Sphinx==1.2.2
 docutils==0.11
 # The following is only required if you are on OS X
-# gnureadline==6.2.5
+gnureadline==6.2.5
 ipython==2.0.0
 six==1.6.1
 sphinx-rtd-theme==0.1.6
