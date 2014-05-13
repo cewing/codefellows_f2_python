@@ -473,7 +473,7 @@ Set Methods
 
 All the "set" operations from math class...
 
-::
+.. code-block:: python
 
     s.isdisjoint(other)
 
@@ -495,7 +495,7 @@ Another kind of set: ``frozenset``
 immutable -- for use as a key in a dict
 (or another set...)
 
-::
+.. code-block:: python
 
     >>> fs = frozenset((3,8,5))
     >>> fs.add(9)
@@ -504,23 +504,16 @@ immutable -- for use as a key in a dict
     AttributeError: 'frozenset' object has no attribute 'add'
 
 
-LAB
----
-
-Dictionary LAB:
-
-``code/dict_lab.html (rst)``
-
-
 ==========
 Exceptions
 ==========
 
 Exceptions
 ----------
+
 Another Branching structure:
 
-::
+.. code-block:: python
 
     try:
         do_something()
@@ -533,7 +526,7 @@ Exceptions
 ----------
 Never Do this:
 
-::
+.. code-block:: python
 
     try:
         do_something()
@@ -546,27 +539,33 @@ Never Do this:
 Exceptions
 ----------
 
-Use Exceptions, rather than your own tests
-  -- Don't do this:
+Use Exceptions, rather than your own tests:
 
-::
+Don't do this:
+
+.. code-block:: python
 
     do_something()
     if os.path.exists('missing.txt'):
         f = open('missing.txt')
         process(f)   # never called if file missing
 
-
 It will almost always work -- but the almost will drive you crazy
 
 .. nextslide::
 
-Example from homework::
+Example from homework
+
+.. code-block:: python
 
     if num_in.isdigit():
         num_in = int(num_in)
 
-but -- ``int(num_in)`` will only work if the string can be converted to an integer. So you can do::
+but -- ``int(num_in)`` will only work if the string can be converted to an integer.
+
+So you can do
+
+.. code-block:: python
 
     try:
         num_in = int(num_in)
@@ -600,7 +599,7 @@ Only handle the exception if the code can and will do something about it.
 Exceptions -- finally 
 ----------------------
 
-::
+.. code-block:: python
 
     try:
         do_something()
@@ -613,10 +612,11 @@ Exceptions -- finally
 
 The ``finally:``  clause will always run
 
+
 Exceptions -- else 
 -------------------
 
-::
+.. code-block:: python
     
     try:
         do_something()
@@ -633,7 +633,7 @@ you know where the Exception came from
 Exceptions -- using them 
 -------------------------
 
-::
+.. code-block:: python
 
     try:
         do_something()
@@ -645,7 +645,8 @@ Exceptions -- using them
 
 
 Particularly useful if you catch more than one exception:
-::
+
+.. code-block:: python
     
     except (IOError, BufferError, OSError) as the_error:
         do_something_with (the_error)
@@ -653,7 +654,8 @@ Particularly useful if you catch more than one exception:
 
 Raising Exceptions 
 -------------------
-::
+
+.. code-block:: python
     
     def divide(a,b):
         if b == 0:
@@ -672,11 +674,12 @@ when you call it:
 
 Built in Exceptions
 -------------------
+
 You can create your own custom exceptions
 
 But...
 
-::
+.. code-block:: python
 
     exp = \
      [name for name in dir(__builtin__) if "Error" in name]
@@ -695,29 +698,14 @@ Example (for last week's ackerman homework)::
   if (not isinstance(m, int)) or (not isinstance(n, int)):
       raise ValueError
 
-Is the *value* or the input the problem here?
+Is it the *value* or the input the problem here?
 
 Nope: the *type* is the problem::
 
   if (not isinstance(m, int)) or (not isinstance(n, int)):
       raise TypeError
 
-(but should you be checking type anyway?)
-
-
-Homework
----------
-
-Exceptions Lab: Improving ``raw_input`` :
-
-The ``raw_input()``  function can generate two exceptions:
-``EOFError``  or ``KeyboardInterrupt``  on end-of-file
-(EOF) or canceled input.
-
-Create a wrapper function, perhaps ``safe_input()``  that returns
-``None``  rather rather than raising these exceptions, when
-the user enters ``^C``  for Keyboard Interrupt, or ``^D`` 
-(``^Z``  on Windows) for End Of File.
+but should you be checking type anyway? (EAFP)
 
 
 ========================
@@ -729,7 +717,8 @@ Files
 
 Text Files
 
-::
+.. code-block:: python
+
     import codecs
     f = codecs.open('secrets.txt')
     secret_data = f.read()
@@ -744,7 +733,7 @@ Text Files
 
 Binary Files
 
-::
+.. code-block:: python
 
     f = open('secrets.txt', 'rb')
     secret_data = f.read()
@@ -763,7 +752,7 @@ Binary Files
 
 File Opening Modes
 
-::
+.. code-block:: python
 
     f = codecs.open('secrets.txt', [mode])
     'r', 'w', 'a'
@@ -779,8 +768,6 @@ Gotcha -- 'w' mode always clears the file
 .. nextslide:: Text File Notes
 
 Text is default
-
-(more about unicode vs text vs binary here!)
 
   * Newlines are translated: ``\r\n -> \n`` 
   *   -- reading and writing!
@@ -799,7 +786,7 @@ File Reading
 
 Reading part of a file
 
-::
+.. code-block:: python
 
     header_size = 4096
     f = open('secrets.txt')
@@ -813,12 +800,14 @@ Reading part of a file
 
 Common Idioms
 
-::
+.. code-block:: python
 
     for line in open('secrets.txt'):
         print line
 
-::
+(the file object is an iterator!)
+
+.. code-block:: python
 
     f = open('secrets.txt')
     while True:
@@ -831,7 +820,7 @@ Common Idioms
 File Writing
 ------------
 
-::
+.. code-block:: python
 
     outfile = open('output.txt', 'w')
     for i in range(10):
@@ -843,7 +832,7 @@ File Methods
 
 Commonly Used Methods
 
-::
+.. code-block:: python
 
     f.read() f.readline()  f.readlines()
     
@@ -870,10 +859,11 @@ Many classes implement the file interface:
 
 http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects
 
+
 StringIO
 --------
 
-::
+.. code-block:: python
     
     In [417]: import StringIO
     In [420]: f = StringIO.StringIO()
@@ -884,6 +874,7 @@ StringIO
 
 (handy for testing file handling code...)
 
+
 =====================
 Paths and Directories
 =====================
@@ -892,13 +883,15 @@ Paths
 -----
 
 Relative paths:
-::
+
+.. code-block:: python
 
     u'secret.txt'
     u'./secret.txt'
 
 Absolute paths:
-::
+
+.. code-block:: python
 
     u'/home/chris/secret.txt'
 
@@ -910,7 +903,7 @@ Either work with ``open()`` , etc.
 os module 
 ----------
 
-::
+.. code-block:: python
 
     os.getcwd() -- os.getcwdu()
     chdir(path)
@@ -921,7 +914,7 @@ os module
 .. nextslide:: os.path module
 ----------------------------
 
-::
+.. code-block:: python
 
     os.path.split()
     os.path.splitext()
@@ -934,7 +927,7 @@ os module
 
 .. nextslide:: directories
 
-::
+.. code-block:: python
 
     os.listdir()
     os.mkdir()
@@ -942,17 +935,6 @@ os module
 
 (higher level stuff in ``shutil``  module)
 
-LAB
----
-
-Paths and File Processing
-
-  * write a program which prints the full path to all files
-    in the current directory, one per line
-  * write a program which copies a file from a source, to a
-        destination (without using shutil, or the OS copy command)
-  * update mail-merge from the earlier lab to write output
-         to individual files on disk
 
 =========
 Homework
@@ -963,10 +945,16 @@ Recommended Reading:
   * Dive Into Python: Chapt. 13,14
   * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
 
-.. nextslide:: dict/set lab
+Assigments:
 
-Dictionaries and Sets Lab
----------------------------
+ * dict/sets lab
+ * coding kata: trigrams
+ * Exceptions
+ * Update mailroom with dicts.
+
+
+Dictionaries and Sets
+---------------------
 
 1.
 
@@ -1015,15 +1003,56 @@ Dictionaries and Sets Lab
 
 * display the union and intersection of the two sets.
 
+
 Text and files and dicts, and...
 ---------------------------------
 
   * Coding Kata 14 - Dave Thomas 
     http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
 
+    and in this doc:
+
+    http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html
+
   * Use The Adventures of Sherlock Holmes as input:
-        ``code/sherlock.txt``  (ascii)
+
+        http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt
 
   *  This is intentionally open-ended and underspecified. There are many interesting decisions to make.
 
   * Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
+
+Exceptions
+-----------
+
+Improving ``raw_input`` :
+
+* The ``raw_input()``  function can generate two exceptions:
+``EOFError``  or ``KeyboardInterrupt``  on end-of-file
+(EOF) or canceled input.
+
+
+* Create a wrapper function, perhaps ``safe_input()``  that returns
+``None``  rather rather than raising these exceptions, when
+the user enters ``^C``  for Keyboard Interrupt, or ``^D`` 
+(``^Z``  on Windows) for End Of File.
+
+* Update your mailroom program to use exceptions (and IBAFP) to handle malformed numeric input
+
+
+Paths and File Processing
+--------------------------
+
+  * write a program which prints the full path to all files in the current directory, one per line
+
+  * write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
+
+  * update mailroom from last weeks homework to:
+
+    - use dicts where appropriate
+    - write a full set of letters to everyone to individual files on disk
+    - see if you can use a dict to switch between the users selections
+
+
+
+

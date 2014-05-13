@@ -9,7 +9,7 @@ make html
 git checkout gh-pages
 
 cp -R build/html/ ./
-git add *
+git add * # not sure this works...
 git commit -a
 git push origin gh-pages
 git push upstream gh-pages
