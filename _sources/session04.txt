@@ -1052,6 +1052,8 @@ Paths and File Processing
     - use dicts where appropriate
     - write a full set of letters to everyone to individual files on disk
     - see if you can use a dict to switch between the users selections
+    - Try to use a dict and the .format() method to do the letter as one big template -- rather than building up a big string in parts.
+    
 
 
 
