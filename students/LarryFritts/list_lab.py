@@ -18,7 +18,8 @@ user_number = raw_input(u"Please enter a number between 1 - 5 ")
 print user_number,  u"corresponds to ", my_list[int(user_number) - 1], "\n"
 
 #step 4
-my_list[0] = u"Nectarines"
+new_fruit = [u"Nectarines"]
+my_list = new_fruit + my_list
 print my_list, "\n"
 
 #step 5

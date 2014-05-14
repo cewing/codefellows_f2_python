@@ -32,15 +32,14 @@ dict_second = dict(zip(a, b))
 print dict_second, "\n"
 
 print u"\n\nSeries 3...............................\n\n"
-a = tuple(range(16))
-b = []
-for x in range(16):
-    my_str = ""
-    for i in range(x):
-        my_str += 'a'
-    b.append(my_str)
-b = tuple(b)
-dict_third = dict(zip(a, b))
+dict_third = dict_first.copy()
+for k, v in dict_third.items():
+    count = 0
+    for c in v:
+        if c == u'a':
+            count += 1
+    dict_third[k] = count
+print dict_first
 print dict_third, "\n"
 
 print u"\n\nSeries 4...............................\n\n"
