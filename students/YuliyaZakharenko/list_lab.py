@@ -1,12 +1,16 @@
-#! /usr/bin python
-fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
+#! /usr/bin/env python
+original_fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
+fruits = original_fruits[:]
 print 'There are following fruits in the basket: ', fruits
 new_fruit = raw_input('What fruit would you like to add')
 fruits.append(new_fruit)
 print 'Now there are following fruits in the basket: ', fruits
 i = raw_input('Enter a number from 1 to 5')
-i = int(i)
-print i, fruits[i-1]
+while i not in ['1','2','3','4','5']:
+    i = raw_input('Enter a number from 1 to 5')
+if i in ['1','2','3','4','5']:
+    i = int(i)
+    print i, fruits[i-1]    
 fruits = ['Papayas'] + fruits
 print fruits
 fruits.insert(0, 'Apricots')
@@ -38,7 +42,7 @@ else:
 print fruits
 print len(fruits)
 # for i in range(len(fruits[:])) didn't work
-fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
+fruits = original_fruits[:]
 for i in fruits[:]:
     fruit = i.lower()
     fruit_like = raw_input("Do you like %s" %fruit)
@@ -50,7 +54,7 @@ for i in fruits[:]:
         while fruit_like not in ['No', 'no', 'Yes', 'yes']:
             fruit_like = raw_input("Please enter Yes or No")
 print fruits
-fruits = ['Apples', 'Pears', 'Oranges', 'Peaches']
+fruits = original_fruits[:]
 fruits_rev = []    
 for i in fruits:
     fruits_rev.append(i[::-1])
