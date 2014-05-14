@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 
-state = 'main'
+state = 'menu'
 
-d = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
+database = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
 
 
 def menu():
@@ -17,36 +17,31 @@ def menu():
 		return 'send a thank you'
 	elif action == 'Create a Report':
 		return 'create a report'
-
+	else: 
+		return menu()
+	
 
 def thank_you():
 	u"""Add donor name, donation amount to database and compose a thank you email."""
 
-	input_name = raw_input(u'Enter a first and last name')
+	input_name = raw_input(u'Enter a first and last name\n-- type list to display donors in the database -- ')
 	if input_name == 'list':
-		print d
+		print database
 		input_name = raw_input(u'Enter a first and last name')
 	if input_name == 'menu':
-		return 'main'
-	elif input_name not in d:
-		d[input_name] = []
+		return 'menu'
+	database.setdefault(input_name, [])
 
 	input_amount = raw_input(u'Enter a donation amount')
 	if input_amount.isdigit():
-		d[input_name].append(int(input_amount))
+		database[input_name].append(int(input_amount))
 	elif input_amount == 'menu':
-		return 'main'
+		return 'menu'
 	else:
 		input_amount = raw_input(u'Enter a donation amount')
-		d[input_name].append(int(input_amount))
+		database[input_name].append(int(input_amount))
 					
-	print u"""Dear %s, 	
-
-Thank you for your generous donation of $%s. Your contribution will help make the impossible, possible.
-
-Sincerely,
-
-OrganizationX""" % (input_name, input_amount)
+	print u"""Dear %s,\nThank you for your generous donation of $%s. Your contribution will help make the impossible, possible.\nSincerely,\nOrganizationX""" % (input_name, input_amount)
 
 	return 'send a thank you'
 
@@ -56,9 +51,9 @@ def report():
 
 	d_new = {}
 
-	for key in d.iterkeys():
+	for key in database.iterkeys():
 		name = key
-		values = d[key]
+		values = database[key]
 		total = sum(values)
 		count = len(values)
 		average = sum(values)/len(values)
@@ -71,14 +66,14 @@ def report():
 	for (k, v) in y: 
 		print u'%s\t %s\t  %s\t%s\t' % (k, v[0], v[1], v[2])
 
-	return 'main'
+	return 'menu'
 
 
 if __name__ == '__main__':
 
 
 	while True:
-		if state == 'main':
+		if state == 'menu':
 			state = menu()
 		if state == 'send a thank you':
 			state = thank_you()
