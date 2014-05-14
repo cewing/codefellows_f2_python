@@ -28,10 +28,10 @@ your support. \n \
 def create(c_list):
     """Print a report of donations."""
     don_rep = []
-    for donor in donations:
-        total = sum(donor[1:])
-        count = len(donor) - 1
-        don_rep.append([donor[0], total, count, total / count])
+    for donor in donations.keys():
+        total = sum(donations[donor])
+        count = len(donations[donor])
+        don_rep.append([donor, total, count, total / count])
     don_rep.sort(key=second, reverse=True)
     # Find longest name to use for formatting
     n_long = max([len(col[0]) for col in don_rep])
@@ -48,39 +48,38 @@ def second(l_list):
 
 
 if __name__ == '__main__':
-    donations = [[u'Larry', 10.00, 150.50, 75.00],
-                [u'Sue', 40.00, 35.00],
-                [u'Julie', 35.50],
-                [u'Bob', 60.25, 100.00],
-                [u'Karen', 83.50, 72.45, 90.25]]
+    donations = {u'Larry': [10.00, 150.50, 75.00],
+                 u'Sue': [40.00, 35.00],
+                 u'Julie': [35.50],
+                 u'Bob': [60.25, 100.00],
+                 u'Karen': [83.50, 72.45, 90.25]}
     while True:
         do = u''
-        while do not in (u'Send a Thank You', u'Create a Report', u'quit'):
-            do = u'' + safe_input("'Send a Thank You' or 'Create a Report'? \
-[or 'quit']: ")
+        while do.lower() not in (u'ty', u'cr', u'quit'):
+            do = u'' + safe_input("Send a Thank You [ty] or Create a Report \
+[cr] or [quit]? ")
 
-        if do == u'Send a Thank You':
+        if do.lower() == u'ty':
             # Prompt for full name
             name = ''
-            while name not in [col[0] for col in donations]:
+            while name not in donations.keys():
                 name = u'' + safe_input("Type full name for Thank You letter\
-or 'list' for a list of names. [or 'quit']: ")
-                if name == u'list':
-                    for val in donations:
-                        print val[0]
+or [list] for existing donors. (or [quit]): ")
+                if name.lower() == u'list':
+                    for donor in donations.keys():
+                        print donor
                 elif name == u'quit':
                     break
-                elif name not in [col[0] for col in donations]:
-                    donations.append([name])
+                elif name not in donations.keys():
+                    donations[name] = []
             if not name == u'quit':
                 amount = thanks(name)
                 if not amount is None:
-                    donations[[col[0] for col in donations].index(name)]\
-                        .append(amount)
+                    donations[name].append(amount)
                 else:
                     # Remove name if quit thanks()
-                    donations.pop()
-        elif do == u'Create a Report':
+                    del donations[name]
+        elif do.lower() == u'cr':
             create(donations)
-        elif do == u'quit':
+        elif do.lower() == u'quit':
             break
