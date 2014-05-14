@@ -202,13 +202,13 @@ def _print_main_menu():
 
 def safe_input(prompt):
     try:
-        raw_input(prompt)
+        input_ = unicode(raw_input(prompt))
     except KeyboardInterrupt:
         return None
     except EOFError:
         return None
     else:
-        return unicode(raw_input)
+        return unicode(input_)
 
 
 if __name__ == "__main__":
