@@ -69,16 +69,19 @@ def report():
 	return 'menu'
 
 
+lookup = {'1': thank_you, '2': report, 'menu': menu}
+
+
 if __name__ == '__main__':
 
 
 	while True:
 		if state == 'menu':
-			state = menu()
+			state = lookup['menu']()
 		if state == 'send a thank you':
-			state = thank_you()
+			state = lookup['1']()
 		if state == 'create a report':
-			state = report()
+			state = lookup['2']()
 		if state == 'quit':
 			break
 
