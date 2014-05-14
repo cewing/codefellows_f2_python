@@ -873,7 +873,6 @@ about Lists and Tuples.
 Miscellaneous List Methods
 --------------------------
 
-.. ifnoslides::
 
 These methods change a list in place and are not available on immutable
 sequence types.

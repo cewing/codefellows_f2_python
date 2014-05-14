@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Session Six: Something &mdash; Foundations 2: Python 1.0 documentation</title>
+  <title>Session Six: Object oriented programming. Classes, instances, and methods &mdash; Foundations 2: Python 1.0 documentation</title>
   
 
   
@@ -28,7 +28,9 @@
   
 
   
-    <link rel="top" title="Foundations 2: Python 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="Foundations 2: Python 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Session Seven: More OO: Inheritance, Duck Typing and Special Methods" href="session07.html"/>
+        <link rel="prev" title="Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming" href="session05.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -55,7 +57,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="session01.html">Session One: Introductions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="session01.html#introductions">Introductions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session01.html#introduction-to-this-class">Introduction to This class</a></li>
@@ -100,6 +102,21 @@
 <li class="toctree-l2"><a class="reference internal" href="session04.html#homework">Homework</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="session05.html">Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#review-questions">Review/Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#advanced-argument-passing">Advanced Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#list-and-dict-comprehensions">List and Dict Comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#anonymous-functions">Anonymous functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#functional-programming">Functional Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#homework">Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Session Six: Object oriented programming. Classes, instances, and methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#review-questions">Review/Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session07.html">Session Seven: More OO: Inheritance, Duck Typing and Special Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session08.html">Session Eight: Generators, Iterators, Decorators, and Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supplements/index.html">Supplemental Materials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="supplements/virtualenv.html">Working with Virtualenv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supplements/sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a></li>
@@ -131,7 +148,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Session Six: Something</li>
+    <li>Session Six: Object oriented programming. Classes, instances, and methods</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/session06.txt" rel="nofollow"> View page source</a>
@@ -142,14 +159,42 @@
 </div>
           <div role="main">
             
-  <div class="section" id="session-six-something">
-<h1>Session Six: Something<a class="headerlink" href="#session-six-something" title="Permalink to this headline">¶</a></h1>
-<p>In which we learn some stuff</p>
+  <div class="section" id="session-six-object-oriented-programming-classes-instances-and-methods">
+<h1>Session Six: Object oriented programming. Classes, instances, and methods<a class="headerlink" href="#session-six-object-oriented-programming-classes-instances-and-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="review-questions">
+<h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="review-of-previous-class">
+<h3>Review of Previous Class<a class="headerlink" href="#review-of-previous-class" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Argument Passing: <tt class="docutils literal"><span class="pre">*args</span></tt>, <tt class="docutils literal"><span class="pre">**kwargs</span></tt></li>
+<li>comprehensions</li>
+<li><tt class="docutils literal"><span class="pre">lambda</span></tt></li>
+</ul>
+</div>
+<div class="section" id="homework-review">
+<h3>Homework review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Homework Questions?</p>
+<p>My Solution to the trigram:</p>
+<p>(<tt class="docutils literal"><span class="pre">dict.setdefault()</span></tt>  trick...)</p>
+</div></blockquote>
+<p>To be completed...</p>
+</div>
+</div>
 </div>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="session07.html" class="btn btn-neutral float-right" title="Session Seven: More OO: Inheritance, Duck Typing and Special Methods"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="session05.html" class="btn btn-neutral" title="Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

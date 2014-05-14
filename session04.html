@@ -29,7 +29,7 @@
 
   
     <link rel="top" title="Foundations 2: Python 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Supplemental Materials" href="supplements/index.html"/>
+        <link rel="next" title="Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming" href="session05.html"/>
         <link rel="prev" title="Session Three: Sequences, Iteration and String Formatting" href="session03.html"/> 
 
   
@@ -102,6 +102,21 @@
 <li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="session05.html">Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#review-questions">Review/Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#advanced-argument-passing">Advanced Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#list-and-dict-comprehensions">List and Dict Comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#anonymous-functions">Anonymous functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#functional-programming">Functional Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session05.html#homework">Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session06.html">Session Six: Object oriented programming. Classes, instances, and methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session06.html#review-questions">Review/Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session07.html">Session Seven: More OO: Inheritance, Duck Typing and Special Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session08.html">Session Eight: Generators, Iterators, Decorators, and Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supplements/index.html">Supplemental Materials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="supplements/virtualenv.html">Working with Virtualenv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supplements/sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a></li>
@@ -837,7 +852,6 @@ os.path.abspath()
 os.path.relpath()￼
 </pre></div>
 </div>
-<hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
@@ -943,19 +957,10 @@ os.path.relpath()￼
 </div>
 <div class="section" id="id6">
 <h3>Exceptions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt> :</p>
+<p>Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt></p>
 <ul class="simple">
-<li>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions:</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">EOFError</span></tt>  or <tt class="docutils literal"><span class="pre">KeyboardInterrupt</span></tt>  on end-of-file
-(EOF) or canceled input.</p>
-<ul class="simple">
-<li>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">None</span></tt>  rather rather than raising these exceptions, when
-the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt>
-(<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</p>
-<ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions: <tt class="docutils literal"><span class="pre">EOFError</span></tt>  or <tt class="docutils literal"><span class="pre">KeyboardInterrupt</span></tt>  on end-of-file(EOF) or canceled input.</li>
+<li>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns <tt class="docutils literal"><span class="pre">None</span></tt>  rather rather than raising these exceptions, when the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt> (<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</li>
 <li>Update your mailroom program to use exceptions (and IBAFP) to handle malformed numeric input</li>
 </ul>
 </div>
@@ -984,7 +989,7 @@ the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  f
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="supplements/index.html" class="btn btn-neutral float-right" title="Supplemental Materials"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="session05.html" class="btn btn-neutral float-right" title="Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="session03.html" class="btn btn-neutral" title="Session Three: Sequences, Iteration and String Formatting"><span class="fa fa-arrow-circle-left"></span> Previous</a>
