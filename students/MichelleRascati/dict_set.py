@@ -16,15 +16,8 @@ print 'Dictionary Values:'
 for v in d.values():
     print v
 
-if 'cake' in d.keys():
-    print "'cake' is a key in the dictionary"
-else:
-    print "'cake' is not a key in the dictionary"
-
-if 'Mango' in d.values():
-    print "'Mango' is a value in the dictionary"
-else:
-    print "'Mango' is not a value in the dictionary"
+print 'cake in dictionary?', 'cake' in d.keys()
+print 'Mango in dictionary?', 'Mango' in d.values()
 
 ### 2 ###
 # Create list of 0-15
@@ -63,3 +56,8 @@ print s3.issubset(s2)
 print s4.issubset(s2)
 
 ### 5 ###
+sP = {'P', 'y', 't', 'h', 'o', 'n'}
+sP.add('i')
+frozen = frozenset({'m', 'a', 'r', 'a', 't', 'h', 'o', 'n'})
+print "Union:", sP.union(frozen)
+print "Intersection:", sP.intersection(frozen)
