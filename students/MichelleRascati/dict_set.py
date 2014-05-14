@@ -29,11 +29,15 @@ for num in z_15:
 # Zip two lists to make a dictionary
 d_hex = dict(zip(z_15, hex_z_15))
 
+print '0-15 and hex values:', d_hex
+
 ### 3 ###
-# Make a dictionary with keys in d but all values 'a'
+# Make a dictionary with keys in d number of 'a's as vals
 d_a = {}
 for k in d.keys():
-    d_a[k] = 'a'
+    d_a[k] = d[k].count('a')
+
+print "Number of a's in original dict", d_a
 
 ### 4 ###
 # Create a set of containing 0-20 divisible by 2, 3, and 4 respectively
