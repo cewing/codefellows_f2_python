@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+from safe_input import safe_input
 
 
 def thanks(ty_name):
     """Prompt for donation amount and return amount."""
-    amt = u'' + raw_input("What is %s's donation amount? " % ty_name)
+    amt = u'' + safe_input("What is %s's donation amount? " % ty_name)
     if amt == u'quit':
         return None
     else:
@@ -11,7 +12,7 @@ def thanks(ty_name):
             try:
                 amt = float(amt)
             except ValueError:
-                amt = u'' + raw_input("%s is not a number, please enter \
+                amt = u'' + safe_input("%s is not a number, please enter \
 donation amount [or 'quit']: " % amt)
                 if amt == u'quit':
                     return None
@@ -55,15 +56,15 @@ if __name__ == '__main__':
     while True:
         do = u''
         while do not in (u'Send a Thank You', u'Create a Report', u'quit'):
-            do = u'' + raw_input("'Send a Thank You' or 'Create a Report'? \
+            do = u'' + safe_input("'Send a Thank You' or 'Create a Report'? \
 [or 'quit']: ")
 
         if do == u'Send a Thank You':
             # Prompt for full name
             name = ''
             while name not in [col[0] for col in donations]:
-                name = u'' + raw_input("Type full name for Thank You letter or\
- 'list' for a list of names. [or 'quit']: ")
+                name = u'' + safe_input("Type full name for Thank You letter\
+or 'list' for a list of names. [or 'quit']: ")
                 if name == u'list':
                     for val in donations:
                         print val[0]
