@@ -195,6 +195,17 @@ def _print_main_menu():
         print line
 
 
+def safe_input(prompt):
+    try:
+        raw_input(prompt)
+    except KeyboardInterrupt:
+        return None
+    except EOFError:
+        return None
+    else:
+        return unicode(raw_input)
+
+
 if __name__ == "__main__":
     donor_list = _create_donor_list()
     while True:
