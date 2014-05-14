@@ -1,8 +1,11 @@
 #!/usr/local/bin/python
+my_list_orig = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 
 #series one
+my_list = my_list_orig[:]
+print u"\n\nSeries 1......................................"
+
 #step 1
-my_list = [u"Apples", u"Pears", u"Oranges", u"Peaches"]
 print my_list, "\n"
 
 #step 2
@@ -28,6 +31,9 @@ for fruit in my_list:
         print fruit
 
 #series two
+my_list = my_list_orig[:]
+print u"\n\nSeries 2......................................"
+
 #step 1
 print "\n", my_list, "\n"
 
@@ -52,6 +58,9 @@ while not found:
 print my_list, "\n"
 
 #series three
+my_list = my_list_orig[:]
+print u"\n\nSeries 3......................................"
+
 #step 1
 copy_list = my_list[:]
 for fruit in my_list:
@@ -63,12 +72,14 @@ for fruit in my_list:
         user_answer = user_answer.lower()
     if user_answer == u"no":
         copy_list.remove(fruit)
-    my_list = copy_list[:]
 
-
-print my_list, "\n"
+print copy_list, "\n"
 
 #series four
+my_list = my_list_orig[:]
+copy_list = my_list_orig[:]
+print u"\n\nSeries 4......................................"
+
 for i in range(len(copy_list)):
     fruit_reverse = []
     fruit = copy_list.pop(i)
