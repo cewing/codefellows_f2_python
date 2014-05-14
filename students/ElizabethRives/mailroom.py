@@ -58,6 +58,7 @@ def write_letters():
 	for (k, v) in database.iteritems():
 		letter_file.write('Dear {name},\nThank you for your generous donation of ${amount}. Your contribution will help make the impossible, possible.\nSincerely,\nOrganizationX\n\n'.format(name = k, amount = sum(v)))
 	
+	letter_file.close()
 	print u'Done...returning to main menu'
 	return 'menu'
     
@@ -65,11 +66,17 @@ def write_letters():
 def view_letters():
 	u"""View content of file containing all thank you letters written.""" 
 
-	letter_file = open('letterfile.txt', 'U')
-			
+	while True:
+		try:
+			letter_file = open('letterfile.txt', 'U')
+			break
+		except IOError:
+			print 'Sorry, file not found'
+			raise
 	for line in letter_file:
 		print line
 
+	letter_file.close()
 	return 'menu'
 
 
