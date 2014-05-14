@@ -16,6 +16,8 @@ def fibo (n):
 # Lucas
 def lucas(n):
     ''' computes the lucas series to n '''
+    if n < 0:
+        return None
     if n == 0:
         return 2
     elif  n == 1:
@@ -89,27 +91,40 @@ if __name__ == "__main__":
     ]
 
 
+
     for input, output in fibo_nums:
         assert fibo(input) == output
-    '''
+   
     for e in [3.5, 'a', [2,3,4]]:
         try:
             result = fibo(e)
-        except ValueError:
+        except TypeError:
             pass
         else:
             print u"a bad value did not raise the expected error"
-            assert(False)
-    '''
+   
 
     for input, output in lucas_nums:
         assert lucas(input) == output
 
+    for e in [3.5, 'a', [2,3,4]]:
+        try:
+            result = lucas(e)
+        except TypeError:
+            pass
+        else:
+            print u"a bad value did not raiseas the expected error"
+            assert False
+
     for input, output in fibo_nums:
         assert sum_series(input) == output
     for input, output in lucas_nums:
-        assert sum_series(input) == output
-
+        try:
+            assert sum_series(input) == output
+        except AssertionError:
+            pass
+        else:
+            print u"more bad values"
 
     print "All tests pass"
 

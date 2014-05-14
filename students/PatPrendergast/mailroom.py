@@ -121,7 +121,7 @@ def continue_adding(d):
         print''
         thanks = raw_input(u"Do you wish to mail a thank you right now? Y or N> ")
         if thanks == u'y' or thanks == u'Y':
-            print message.format(name=recipient(d), last_donation=last_donation(donation))
+            print message.format(name=recipient(d), last_donation=donation)
         else:
             start()
     else:
@@ -131,7 +131,10 @@ def continue_adding(d):
 
 def number_test(user_input):
     ''' Check to see donation amount given is a number '''
-    # donation.isdigit() and 
+    # if (not isinstance(m, int)) or (not isinstance(n, int)):
+    # raise TypeError
+
+
 
 
 # Lists of donor data

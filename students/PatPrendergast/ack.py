@@ -40,10 +40,15 @@ if __name__ == '__main__':
 
     for input, output in good_acker:
         assert ack(*input) == output
-'''
-    for input, output in bad_acker:
-        assert ack(*input) == output
-'''        
+    
+    for e in bad_acker:
+        try:
+            result = ack(e)
+        except TypeError:
+            pass
+        else:
+            print u"a bad value did not raise the expected error"
+                   
     print "All tests pass"
 
 
