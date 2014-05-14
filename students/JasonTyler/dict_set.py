@@ -29,9 +29,9 @@ print int_hex_combo_dict.keys()
 chris_a = dict((key, value.count('a')) for key, value in chris.items())
 print "chris_a dict:", chris_a
 
-s2 = [n for n in range(21) if n % 2 == 0]
-s3 = [n for n in range(21) if n % 3 == 0]
-s4 = [n for n in range(21) if n % 4 == 0]
+s2 = {n for n in range(21) if n % 2 == 0}
+s3 = {n for n in range(21) if n % 3 == 0}
+s4 = {n for n in range(21) if n % 4 == 0}
 
 print "set s2:", s2
 print "set s3:", s3
@@ -42,4 +42,9 @@ print "s4 subset of s2?", s4.issubset(s2)
 
 py_str = 'Python'
 py_set = set(py_str)
-py_set.append
+py_set.add('i')
+
+ma_set = frozenset('marathon')
+
+print "union of 'iPython' and 'marathon':", py_set.union(ma_set)
+print "intersection of 'iPython' and ' marathon':", py_set.intersection(ma_set)
