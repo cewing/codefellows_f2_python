@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-donorsANDdollars=[[u"James Bond",544,221,444],[u"Jacksn Pollock",332,112,3321],[u"Keanu Reaves",444,546,6643,45],[u"The Pope",32,5543,3],[u"France",2345,123,6543,42]]
+donorsANDdollars=[[u"James Bond",544,221,444],[u"Jackson Pollock",332,112,3321],[u"Keanu Reaves",444,546,6643,45],[u"The Pope",32,5543,3],[u"France",2345,123,6543,42]]
 def donors(donorsANDdollars):
     """Generate list of donors from main data structure."""
     donorsList = []
@@ -39,7 +39,32 @@ def send_ThankYou(theDonor,theInput):
 
 
 def create_Report():
-    pass
+    donorsANDdollars.sort(key=getTotal)
+    maxLength1 = max(len(aList[0]) for aList in donorsANDdollars)
+    maxLength2 = max(len(str(sum(aList[1:]))) for aList in donorsANDdollars)
+    maxLength3 = max(len(str(len(aList[1:]))) for aList in donorsANDdollars)
+
+
+    for aList in donorsANDdollars:
+        print aList[0],
+        print (maxLength1-len(aList[0]))*" ",
+        print sum(aList[1:]),
+        print (maxLength2-len(str(sum(aList[1:]))))*" ",
+        print len(aList[1:]),
+        print (maxLength3-len(str(len(aList[1:]))))*" ",
+        print sum(aList[1:])/len(aList[1:])
+    print donorsANDdollars
+
+def printElement(aThing):
+    maxLength = max(len(aList[0]) for aList in donorsANDdollars)
+
+
+def getTotal(aList):
+    return -1*sum(aList[1:])
+
+
+
+
 
 
 
