@@ -3,14 +3,14 @@
 
 state = 'menu'
 
-database = {'Philip Jordan': [500, 200], 'Tom Parker': [750, 800, 750], 'Lisa Smith': [500, 500], 'Wayne Tucker': [400, 500], 'Jane Winkle': [800, 800, 780]}
+database = {'Philip Jordan': [500.0, 200.0], 'Tom Parker': [750.0, 800.0, 750.0], 'Lisa Smith': [500.0, 500.0], 'Wayne Tucker': [400.0, 500.0], 'Jane Winkle': [800.0, 800.0, 780.0]}
 
 
 def menu():
-	u"""Prompt the user to either send a thank you email or create a report."""
+	u"""Prompt the user to choose from a menu of options."""
 
 	print '## -- Type q to exit program or menu to return to main menu -- '
-	action = raw_input('Please choose from the following menu:\n1. Record donors and contribution amounts\n2. Create a Report?\n3. Write Letters\n4. View Full Set of Letters\n')
+	action = raw_input('Please choose from the following menu:\n1. Record donors and contribution amounts\n2. Create a Report\n3. Write Letters\n4. View Full Set of Letters\n')
 	if action == 'q':
 		return 'quit'
 	elif action == '1':
@@ -56,17 +56,17 @@ def write_letters():
 	letter_file = open('letterfile.txt', 'w')
 
 	for (k, v) in database.iteritems():
-		letter_file.write('Dear %s,\nThank you for your generous donation of $%s. Your contribution will help make the impossible, possible.\nSincerely,\nOrganizationX\n\n' % (k, sum(v)))
+		letter_file.write('Dear {name},\nThank you for your generous donation of ${amount}. Your contribution will help make the impossible, possible.\nSincerely,\nOrganizationX\n\n'.format(name = k, amount = sum(v)))
 	
-	print 'Done...returning to main menu'
+	print u'Done...returning to main menu'
 	return 'menu'
     
 
 def view_letters():
 	u"""View content of file containing all thank you letters written.""" 
 
-	letter_file = open('letterfile.txt')
-
+	letter_file = open('letterfile.txt', 'U')
+			
 	for line in letter_file:
 		print line
 
@@ -91,12 +91,10 @@ def report():
 	y = sorted(x, key=lambda a: a[1])
 
 	for (k, v) in y: 
-		print u'%s\t %s\t  %s\t%s\t' % (k, v[0], v[1], v[2])
+		print u'{name}\t {total}\t {count}\t {average}\t'.format(name = k, total = v[0], count = v[1], average = v[2])
 
 	return 'menu'
 
-
-# A lookup dictionary to store user input and corresponding function calls
 
 lookup = {'1': add_to_database, '2': report, '3': write_letters, '4': view_letters, 'menu': menu}
 
