@@ -1,7 +1,9 @@
 def safe_input(prompt):
     try:
-        raw_input(prompt)
+        input_ = raw_input(prompt)
     except KeyboardInterrupt:
         return None
     except EOFError:
         return None
+    else:
+        return unicode(input_)
