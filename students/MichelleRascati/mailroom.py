@@ -2,20 +2,52 @@
 from safe_input import safe_input
 
 
-def thanks(ty_name):
-    """Prompt for donation amount and return amount."""
-    amt = u'' + safe_input("What is %s's donation amount? " % ty_name)
-    if amt == u'quit':
-        return None
-    else:
-        while True:
+def thanks(don_dict):
+    """Return updated donation list with new name and amount"""
+    # Prompt for full name, list of names, or quit.  Add a name to don_dict.
+    while True:
+        name = u'' + safe_input("Type full name for Thank You letter\
+or [list] for existing donors. (or [quit]): ")
+        if name.lower() == u'list':
+            for donor in don_dict.keys():
+                print donor
+        elif name == u'quit':
+            # Exit thanks() and return original don_dict
+            return don_dict
+        else:
+            don_dict.setdefault(name, [])
+            break
+
+    # Promt for amount until float
+    amount = u'' + safe_input("What is %s's donation amount? \
+(or [quit])" % ty_name)
+    if amount == u'quit':
+        # Exit thanks() and return don_dict w/ possible new name & no donations
+        return don_dict
+    while True:
+        try:
+            amount = float(amount)
+        except ValueError:
+            amt = u'' + safe_input("%s is not a number, please enter \
+donation amount [or 'quit']: " % amt)
+            if amt == u'quit':
+                ##TODO
+        else:
+            break
+
+        if not amount is None:
+            don_dict[name].append(amount), amount
+
+
+
+    while True:
             try:
                 amt = float(amt)
             except ValueError:
                 amt = u'' + safe_input("%s is not a number, please enter \
 donation amount [or 'quit']: " % amt)
                 if amt == u'quit':
-                    return None
+                    break
             else:
                 break
         print "Dear %s, \n \
@@ -60,25 +92,7 @@ if __name__ == '__main__':
 [cr] or [quit]? ")
 
         if do.lower() == u'ty':
-            # Prompt for full name
-            name = ''
-            while name not in donations.keys():
-                name = u'' + safe_input("Type full name for Thank You letter\
-or [list] for existing donors. (or [quit]): ")
-                if name.lower() == u'list':
-                    for donor in donations.keys():
-                        print donor
-                elif name == u'quit':
-                    break
-                elif name not in donations.keys():
-                    donations[name] = []
-            if not name == u'quit':
-                amount = thanks(name)
-                if not amount is None:
-                    donations[name].append(amount)
-                else:
-                    # Remove name if quit thanks()
-                    del donations[name]
+            thanks()
         elif do.lower() == u'cr':
             create(donations)
         elif do.lower() == u'quit':
