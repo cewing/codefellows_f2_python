@@ -907,7 +907,7 @@ First a slightly bigger, more interesting (or at least bigger..) dict:
    - create a sequence that holds all three sets
    - loop through that sequence to build the sets up -- so no repeated code.
 
-  c. Extra credit:  do it all as a one-liner by nesting a set comprehension in side s list comprehension..(OK, that may be getting carried away!)
+  c. Extra credit:  do it all as a one-liner by nesting a set comprehension inside a list comprehension.(OK, that may be getting carried away!)
 
 
 lambda and keyword argument magic
@@ -953,7 +953,7 @@ Do it with a list comprehension, instead of a for loop
 Functional files
 -----------------
 
-Write a program that takes a filname and "cleans" the file be removing all teh leading and trailing whitespace from each line.
+Write a program that takes a filename and "cleans" the file be removing all the leading and trailing whitespace from each line.
 
 Read in the original file and write out a new one, either creating a new file or overwriting the existing one.
 
