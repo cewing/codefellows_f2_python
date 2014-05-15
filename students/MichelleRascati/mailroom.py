@@ -20,7 +20,7 @@ or [list] for existing donors. (or [quit]): ")
 
     # Promt for amount until float
     amount = u'' + safe_input("What is %s's donation amount? \
-(or [quit])" % ty_name)
+(or [quit])" % name)
     if amount == u'quit':
         # Exit thanks() and return don_dict w/ possible new name & no donations
         return don_dict
@@ -28,33 +28,20 @@ or [list] for existing donors. (or [quit]): ")
         try:
             amount = float(amount)
         except ValueError:
-            amt = u'' + safe_input("%s is not a number, please enter \
-donation amount [or 'quit']: " % amt)
-            if amt == u'quit':
-                ##TODO
+            amount = u'' + safe_input("%s is not a number, please enter \
+donation amount [or 'quit']: " % amount)
+            if amount == u'quit':
+                break
         else:
             break
 
-        if not amount is None:
-            don_dict[name].append(amount), amount
-
-
-
-    while True:
-            try:
-                amt = float(amt)
-            except ValueError:
-                amt = u'' + safe_input("%s is not a number, please enter \
-donation amount [or 'quit']: " % amt)
-                if amt == u'quit':
-                    break
-            else:
-                break
+    if not amount is None:
+        don_dict[name].append(amount)
         print "Dear %s, \n \
     Thank you for your donation of $%.2f to our charity.  We appreciate \
 your support. \n \
-    Sincerely,\n Michelle Rascati" % (ty_name, amt)
-        return amt
+    Sincerely,\n Michelle Rascati" % (name, amount)
+    return don_dict
 
 
 def create(c_list):
@@ -92,7 +79,7 @@ if __name__ == '__main__':
 [cr] or [quit]? ")
 
         if do.lower() == u'ty':
-            thanks()
+            donations = thanks(donations)
         elif do.lower() == u'cr':
             create(donations)
         elif do.lower() == u'quit':
