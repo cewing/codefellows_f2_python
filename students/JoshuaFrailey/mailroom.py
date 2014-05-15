@@ -206,7 +206,7 @@ def safe_input(prompt):
 
 def safe_reprompt(prompt):
     input_ = safe_input(prompt)
-    while not input_:
+    while not input_ or input_.isspace():
         print u"\nI'm sorry, Dave. I'm afraid I can't do that.'"
         input_ = safe_input(prompt)
     return input_
