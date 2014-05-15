@@ -1,32 +1,29 @@
 import random
 
 
-def _create_donor_list():
+def _create_donor_dict():
     u"""Return a random list of donors and donations."""
     names = [
         [u"Jonathan Blow"], [u"Markus Persson"], [u"Mike Bithell"],
         [u"Calvin Goble"], [u"Alix Stolzer"], [u"Jeff Vogel"]
         ]
-    donor_list = []
+    donor_dict = {}
     random_name = random.choice(names)
-    while (len(donor_list) < 5):
-        if random_name not in donor_list:
-            donor_list.append(random_name)
+    while (len(donor_dict) < 5):
+        if random_name not in donor_dict:
+            donor_dict.setdefault(random_name, [])
             random_name = random.choice(names)
         else:
             random_name = random.choice(names)
-    for donor in donor_list:
+    for donor in donor_dict:
         for donations in range(random.randint(1, 3)):
-            donor.append(round(random.random()*10000, 2))
-    return donor_list
+            [donor] = round(random.random()*10000, 2)
+    return donor_dict
 
 
 def _get_donors():
     u"""Return a list of donor names."""
-    names = []
-    for donor in donor_list:
-        names.append(donor[0])
-    return names
+    return donor_dict.keys()
 
 
 def _print_donors():
@@ -41,21 +38,17 @@ def _print_donors():
 
 def _add_donor(name):
     u"""Append donor to donor list."""
-    donor_list.append([name.title()])
+    donor_dict.setdefault(name, [])
 
 
 def _add_donation(donor, amount):
     u"""Append donation for donor to donor list."""
-    donors = _get_donors()
-    i = donors.index(donor)
-    donor_list[i].append(amount)
+    donor_dict[donor] = amount
 
 
 def _get_donations(donor):
     u"""Return donations for a given donor."""
-    donors = _get_donors()
-    donor_pos = donors.index(donor)
-    return donor_list[donor_pos][1:]
+    return donor_dict[donor]
 
 
 def _print_donations(donations):
@@ -161,7 +154,7 @@ def _is_float(input_):
 def _create_report():
     u"""Print donation statistics for each donor."""
     donor_stats = []
-    for i, donor in enumerate(donor_list):
+    for i, donor in enumerate(donor_dict):
         donor_stats.append([donor[0]])
         donor_stats[i].append(round(sum(donor[1:]), 2))
         donor_stats[i].append(len(donor[1:]))
@@ -212,7 +205,7 @@ def safe_reprompt(prompt):
     return input_
 
 if __name__ == "__main__":
-    donor_list = _create_donor_list()
+    donor_dict = _create_donor_dict()
     while True:
         _print_main_menu()
         input_ = safe_reprompt("--> ")
