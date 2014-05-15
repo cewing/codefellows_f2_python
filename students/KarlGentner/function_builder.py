@@ -3,7 +3,5 @@
 
 
 def function_builder(n):
-    list = []
-    for i in range(n):
-        list.append(lambda x, y=i: x + y)
+    list = [lambda x, y=i: x+y for i in range(n)]
     return list
