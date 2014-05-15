@@ -1,3 +1,4 @@
+# Dictionaries
 d = {u"name": u"Chris", u"city": u"Seattle", u"cake": u"Chocolate"}
 print d
 d.pop(u"cake")
@@ -7,12 +8,13 @@ print d
 print d.keys()
 print d.values()
 print (u"cake" in d)
-print (u"Mango" in d.viewvalues())
+print (u"Mango" in d.values())
 int_to_hex = dict(zip(range(16), [hex(x) for x in range(16)]))
-# print int_to_hex
+print int_to_hex
 num_a = {}
 for k, v in d.items():
     num_a[k] = d[k].count(u"a")
+print num_a
 
 # Sets
 s2 = set()
