@@ -103,7 +103,7 @@ def _generate_ty(donor):
 def _send_thankyou():
     u"""Control flow for the 'Send Thank You' sub-menu."""
     _print_ty_menu()
-    donor = unicode(raw_input(u"--> ").title())
+    donor = safe_reprompt(u"--> ").title()
     while True:
         if donor in [u"Menu", u"M"]:
             break
@@ -112,7 +112,7 @@ def _send_thankyou():
             prompt = u"Type a name from the above list or enter the name of "
             prompt += u"a new donor. Type 'menu' to return to the main menu."
             prompt += u"\n--> "
-            donor = unicode(raw_input(prompt).title())
+            donor = safe_reprompt(prompt).title()
         elif donor in _get_donors():
             _add_amount(donor)
             _generate_ty(donor)
@@ -121,7 +121,7 @@ def _send_thankyou():
             while True:
                 prompt = u"Do you wish to add a donor named "
                 prompt += u"{} (Y/N)? \n--> ".format(donor)
-                input_ = unicode(raw_input(prompt))
+                input_ = safe_reprompt(prompt)
                 if input_.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
                     _add_amount(donor)
@@ -134,7 +134,7 @@ def _send_thankyou():
 
 def _add_amount(donor):
     u"""Ask for amount, validate it, and pass it."""
-    amount = unicode(raw_input(u"Enter the amount of the donation:\n-->"))
+    amount = safe_reprompt(u"Enter the amount of the donation:\n-->")
     while True:
         if amount in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
@@ -153,7 +153,7 @@ def _is_float(input_):
             amount = float(input_)
         except ValueError:
             prompt = u"Please only enter a number.\n--> "
-            input_ = unicode(raw_input(prompt))
+            input_ = safe_reprompt(prompt)
         else:
             return amount
 
@@ -195,11 +195,27 @@ def _print_main_menu():
         print line
 
 
+def safe_input(prompt):
+    try:
+        input_ = raw_input(prompt)
+    except (KeyboardInterrupt, EOFError):
+        return None
+    else:
+        return unicode(input_)
+
+
+def safe_reprompt(prompt):
+    input_ = safe_input(prompt)
+    while not input_ or input_.isspace():
+        print u"\nI'm sorry, Dave. I'm afraid I can't do that.'"
+        input_ = safe_input(prompt)
+    return input_
+
 if __name__ == "__main__":
     donor_list = _create_donor_list()
     while True:
         _print_main_menu()
-        input_ = unicode(raw_input("--> "))
+        input_ = safe_reprompt("--> ")
         if input_.lower() in [u'1', u's', u'send a thank you']:
             _send_thankyou()
         elif input_.lower() in [u'2', u'c', u'create a report']:
@@ -207,4 +223,4 @@ if __name__ == "__main__":
         elif input_.lower() in [u'3', u'e', u'exit']:
             break
         else:
-            input_ = unicode(raw_input(u"Please enter '1', '2', or '3'\n--> "))
+            input_ = safe_reprompt(u"Please enter '1', '2', or '3'\n--> ")
