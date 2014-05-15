@@ -39,13 +39,24 @@ for value in d.itervalues():
 
 # Display whether or not “cake” is a key in the dictionary (i.e. False) (now).
 if u'cake' in d:
-    print u"\nTrue: 'cake' is a key in the current dictionary"
+    print u"\n'cake' is a key in the current dictionary"
 else:
-    print u"\nFalse: 'cake' is NOT a key in the current dictionary"
+    print u"\n'cake' is NOT a key in the current dictionary"
 
 
 # Display whether or not “Mango” is a value in the dictionary.
+if u'Mango' in d.values():
+    print u"\n'Mango' is a value in the current dictionary"
+else:
+    print u"\n'Mango' is NOT a value in the current dictionary"
+
+
 # Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).
+nums = range(16)
+hexnums = [hex(x) for x in nums]
+z = dict(zip(nums, hexnums))
+
+
 # Using the dictionary from item 1: Make a dictionary using the same keys but with the number of ‘a’s in each value.
 # Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.
 # Display the sets.
