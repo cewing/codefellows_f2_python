@@ -12,6 +12,18 @@ donors = [[u'Amy Akin', [200.32, 450.12, 565.24]],
           [u'Eve Eastman', [1200.00]]]
 
 
+# safe input exception handler
+def safe_input(message):
+    while True:
+        try:
+            x = raw_input(message)
+            return x.lower()
+        except EOFError:
+            return None
+        except KeyboardInterrupt:
+            return None
+
+
 # isFloat helper - validate whether string can be cast into a float
 def isFloat(str):
     try:
@@ -139,20 +151,20 @@ if __name__ == '__main__':
     mainMenu = ""
     while mainMenu != 's' and mainMenu != 'c' and mainMenu != 'q':
         print ("-----------------Main Menu-------------------\n")
-        mainMenu = raw_input("'s' to send a thank you\n" +
-                             "'c' to create a report (requires full-width window)\n" +
-                             "'q' to quit\n-->").decode()
+        mainMenu = safe_input("'s' to send a thank you\n" +
+                              "'c' to create a report (requires full-width window)\n" +
+                              "'q' to quit\n-->")
         # Quit main menu
-        if mainMenu.lower() == 'q':
+        if mainMenu == 'q':
             break
         # Send a Thank You
-        while mainMenu.lower() == 's':
+        while mainMenu == 's':
             print ("---------------Send A Thank You--------------\n")
             if sendThankYou() == 'm':
                 mainMenu = ""
                 break
         # Create a Report
-        while mainMenu.lower() == 'c':
+        while mainMenu == 'c':
             print ("------------------Report---------------------\n")
             createReport()
             # Back to main menu
