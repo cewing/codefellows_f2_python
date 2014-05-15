@@ -42,24 +42,6 @@ def sum_series(n, o=0, p=1):
     else:
         return sum_series(n-1, o, p) + sum_series(n-2, o, p)
 
-print fibo(-1)
-print fibo(0)
-print fibo(1)
-print fibo(2)
-print fibo(3)
-print fibo(4)
-print fibo(5)
-print u'------'
-print lucas(0)
-print lucas(1)
-print lucas(2)
-print lucas(3)
-print lucas(4)
-print lucas(5)
-print u'------'
-print u'Fibonacci: ', sum_series(2, 0, 1)
-print u'Lucas: ', sum_series(5, 2, 1) 
-
 
 if __name__ == "__main__":
     """Test sequences against expected normal output and rubbish input."""
@@ -90,42 +72,23 @@ if __name__ == "__main__":
         (9, 76),
     ]
 
+    for num, output in fibo_nums:
+        assert fibo(num) == output
+        assert sum_series(num) == output
 
+    for num, output in lucas_nums:
+        assert lucas(num) == output
+        assert sum_series(num, 2, 1) == output
 
-    for input, output in fibo_nums:
-        assert fibo(input) == output
-   
-    for e in [3.5, 'a', [2,3,4]]:
+    for value in [2.4, 'z', [6]]:
         try:
-            result = fibo(e)
+            fibo(value)
+            lucas(value)
+            sum_series(value)
         except TypeError:
             pass
         else:
-            print u"a bad value did not raise the expected error"
-   
-
-    for input, output in lucas_nums:
-        assert lucas(input) == output
-
-    for e in [3.5, 'a', [2,3,4]]:
-        try:
-            result = lucas(e)
-        except TypeError:
-            pass
-        else:
-            print u"a bad value did not raiseas the expected error"
+            print u"A bad value should have given an approved error"
             assert False
 
-    for input, output in fibo_nums:
-        assert sum_series(input) == output
-    for input, output in lucas_nums:
-        try:
-            assert sum_series(input) == output
-        except AssertionError:
-            pass
-        else:
-            print u"more bad values"
-
     print "All tests pass"
-
-    
