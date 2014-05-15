@@ -101,8 +101,9 @@ Function arguments in variables
 -------------------------------
 
 function arguments are really just
- - a tuple (positional arguments) 
- - a dict (keyword arguments) 
+
+* a tuple (positional arguments) 
+* a dict (keyword arguments) 
 
 .. code-block:: python
 
@@ -132,6 +133,32 @@ You can also pull the parameters out in the function as a tuple and a dict:
     the positional arguments are: (2, 3)
     the keyword arguments are: {'this': 5, 'that': 7}
 
+Passing a dict to the ``string.format()`` method
+------------------------------------------------
+
+Now that you know that keyword args are really a dict, you can do this nifty trick:
+
+The ``format`` method takes keyword arguments:
+
+.. code-block:: ipython
+
+    In [24]: u"My name is {first} {last}".format(last=u"Barker", first=u"Chris")
+    Out[24]: u'My name is Chris Barker'
+
+Build a dict of the keys and values:
+
+.. code-block:: ipython  
+
+    In [25]: d = {u"last":u"Barker", u"first":u"Chris"}
+
+And pass to ``format()``with ``**``
+
+.. code-block:: ipython  
+
+    In [26]: u"My name is {first} {last}".format(**d)
+    Out[26]: u'My name is Chris Barker'
+
+
 
 
 LAB
@@ -151,6 +178,184 @@ keyword arguments
 * Have it print the colors (use strings for the colors)
 * Call it with a couple different parameters set
 * Have it pull the parameters out with ``*args, **kwargs`` 
+
+=====================================
+A bit more on mutability (and copies)
+=====================================
+
+mutable objects
+----------------
+
+We've talked about this: mutable objects can have their contents changed in place.
+
+Immutable objects can not.
+
+This has implications when you have a container with mutable objects in it:
+
+.. code-block:: ipython
+
+	In [28]: list1 = [ [1,2,3], ['a','b'] ]
+
+one way to make a copy of a list:
+
+.. code-block:: ipython
+
+	In [29]: list2 = list1[:]
+
+	In [30]: list2 is list1
+	Out[30]: False
+
+they are different lists.
+
+.. nextslide::
+
+What if we set an element to a new value?
+
+.. code-block:: ipython
+
+	In [31]: list1[0] = [5,6,7]
+
+	In [32]: list1
+	Out[32]: [[5, 6, 7], ['a', 'b']]
+
+	In [33]: list2
+	Out[33]: [[1, 2, 3], ['a', 'b']]
+
+So they are independent.
+
+.. nextslide::
+
+But what if we mutate an element?
+
+.. code-block:: ipython
+
+	In [34]: list1[1].append('c')
+
+	In [35]: list1
+	Out[35]: [[5, 6, 7], ['a', 'b', 'c']]
+
+	In [36]: list2
+	Out[36]: [[1, 2, 3], ['a', 'b', 'c']]
+
+uuh oh! mutating an element in one list mutated the one in the other list.
+
+.. nextslide::
+
+Why is that?
+
+.. code-block:: ipython
+
+	In [38]: list1[1] is list2[1]
+	Out[38]: True
+
+The elements are the same object!
+
+This is known as a "shallow" copy -- Python doesn't want to copy more than it needs to, so in this case, it makes a new list, but does not make copies of the contents.
+
+Same for dicts (and any container type)
+
+If the elements are immutable, it doesn't really make a differnce -- but be very careful with mutable elements.
+
+
+The copy module
+--------------------
+
+most objects have a way to make copies (``dict.copy()`` for instance).
+
+but if not, you can use the ``copy`` module to make a copy:
+
+.. code-block:: ipython
+
+	In [39]: import copy
+
+	In [40]: list3 = copy.copy(list2)
+
+	In [41]: list3
+	Out[41]: [[1, 2, 3], ['a', 'b', 'c']]
+
+This is also a shallow copy.
+
+.. nextslide::
+
+But there is another option:
+
+.. code-block:: ipython
+
+	In [3]: list1
+	Out[3]: [[1, 2, 3], ['a', 'b', 'c']]
+
+	In [4]: list2 = copy.deepcopy(list1)
+
+	In [5]: list1[0].append(4)
+
+	In [6]: list1
+	Out[6]: [[1, 2, 3, 4], ['a', 'b', 'c']]
+
+	In [7]: list2
+	Out[7]: [[1, 2, 3], ['a', 'b', 'c']]
+
+``deepcopy`` recurses through the object, making copies of everything as it goes.
+
+.. nextslide::
+
+
+I happened on this thread on stack overflow:
+
+http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep  
+
+
+The OP is pretty confused -- can you sort it out?
+
+Make sure you understand the difference between a reference, a shallow copy, and a deep copy.
+
+Mutables as default arguments:
+------------------------------
+
+Another "gotcha" is using mutables as default arguments:
+
+.. code-block:: ipython
+
+	In [11]: def fun(x, a=[]):
+	   ....:     a.append(x)
+	   ....:     print a
+	   ....: 
+
+This makes sense: maybe you'd pass in a list, but the default is an empty list.
+
+But:
+
+.. code-block:: ipython
+
+	In [12]: fun(3)
+	[3]
+
+	In [13]: fun(4)
+	[3, 4]
+
+Huh?!
+
+.. nextslide::
+
+Remember that that default argument is defined when the function is created: there will be only one list, and every time the function is called, that same list is used. 
+
+
+The solution:
+
+The standard practice for such a mutable default argument:
+
+.. code-block:: ipython
+
+	In [15]: def fun(x, a=None):
+	   ....:     if a is None:
+	   ....:         a = []
+	   ....:     a.append(x)
+	   ....:     print a
+	In [16]: fun(3)
+	[3]
+	In [17]: fun(4)
+	[4]
+
+You get a new list every time the function is called
 
 
 ============================
@@ -340,8 +545,9 @@ Content can only be an expression -- not a statement
 
 Anyone remember what the difference is?
 
-
 Called "Anonymous": it doesn't need a name.
+
+.. nextslide::
 
 It's a python object, it can be stored in a list or other container
 
@@ -743,6 +949,36 @@ Not clear? here's what you should get
 Extra credit:
 
 Do it with a list comprehension, instead of a for loop
+
+Functional files
+-----------------
+
+Write a program that takes a filname and "cleans" the file be removing all teh leading and trailing whitespace from each line.
+
+Read in the original file and write out a new one, either creating a new file or overwriting the existing one.
+
+Give your user the option of which to perform.
+
+Use ``map()`` to do the work.
+
+Write a second version using a comprehension.
+
+Hint:
+
+``sys.argv`` hold the command line arguments the user typed in. If the user types:
+
+::
+
+  $ python the_script a_file_name
+  
+Then:
+
+.. code-block:: python
+
+    import sys
+    filename = sys.argv[1] 
+
+will get ``filename == "a_file_name"``
 
 
 Recommended Reading

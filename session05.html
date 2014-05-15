@@ -105,6 +105,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Session Five: Advanced Argument passing, List and Dict Comprehensions, Lambda and Functional programming</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#review-questions">Review/Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-argument-passing">Advanced Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-bit-more-on-mutability-and-copies">A bit more on mutability (and copies)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-and-dict-comprehensions">List and Dict Comprehensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#anonymous-functions">Anonymous functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functional-programming">Functional Programming</a></li>
@@ -228,14 +229,11 @@
 </div>
 <div class="section" id="function-arguments-in-variables">
 <h3>Function arguments in variables<a class="headerlink" href="#function-arguments-in-variables" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>function arguments are really just</dt>
-<dd><ul class="first last simple">
+<p>function arguments are really just</p>
+<ul class="simple">
 <li>a tuple (positional arguments)</li>
 <li>a dict (keyword arguments)</li>
 </ul>
-</dd>
-</dl>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&quot;position: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s"> -- shape: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
@@ -260,6 +258,24 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="passing-a-dict-to-the-string-format-method">
+<h3>Passing a dict to the <tt class="docutils literal"><span class="pre">string.format()</span></tt> method<a class="headerlink" href="#passing-a-dict-to-the-string-format-method" title="Permalink to this headline">¶</a></h3>
+<p>Now that you know that keyword args are really a dict, you can do this nifty trick:</p>
+<p>The <tt class="docutils literal"><span class="pre">format</span></tt> method takes keyword arguments:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [24]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="s">u&quot;Barker&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="s">u&quot;Chris&quot;</span><span class="p">)</span>
+<span class="gh">Out[24]: </span><span class="go">u&#39;My name is Chris Barker&#39;</span>
+</pre></div>
+</div>
+<p>Build a dict of the keys and values:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&quot;last&quot;</span><span class="p">:</span><span class="s">u&quot;Barker&quot;</span><span class="p">,</span> <span class="s">u&quot;first&quot;</span><span class="p">:</span><span class="s">u&quot;Chris&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>And pass to <tt class="docutils literal"><span class="pre">format()``with</span> <span class="pre">``**</span></tt></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
+<span class="gh">Out[26]: </span><span class="go">u&#39;My name is Chris Barker&#39;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="lab">
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s do this right now:</p>
@@ -276,6 +292,126 @@
 <li>Call it with a couple different parameters set</li>
 <li>Have it pull the parameters out with <tt class="docutils literal"><span class="pre">*args,</span> <span class="pre">**kwargs</span></tt></li>
 </ul>
+</div>
+</div>
+<div class="section" id="a-bit-more-on-mutability-and-copies">
+<h2>A bit more on mutability (and copies)<a class="headerlink" href="#a-bit-more-on-mutability-and-copies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mutable-objects">
+<h3>mutable objects<a class="headerlink" href="#mutable-objects" title="Permalink to this headline">¶</a></h3>
+<p>We&#8217;ve talked about this: mutable objects can have their contents changed in place.</p>
+<p>Immutable objects can not.</p>
+<p>This has implications when you have a container with mutable objects in it:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>one way to make a copy of a list:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [29]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[:]</span>
+
+<span class="gp">In [30]: </span><span class="n">list2</span> <span class="ow">is</span> <span class="n">list1</span>
+<span class="gh">Out[30]: </span><span class="go">False</span>
+</pre></div>
+</div>
+<p>they are different lists.</p>
+<p>What if we set an element to a new value?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [31]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="gp">In [32]: </span><span class="n">list1</span>
+<span class="gh">Out[32]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;]]</span>
+
+<span class="gp">In [33]: </span><span class="n">list2</span>
+<span class="gh">Out[33]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;]]</span>
+</pre></div>
+</div>
+<p>So they are independent.</p>
+<p>But what if we mutate an element?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [34]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="gp">In [35]: </span><span class="n">list1</span>
+<span class="gh">Out[35]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [36]: </span><span class="n">list2</span>
+<span class="gh">Out[36]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p>uuh oh! mutating an element in one list mutated the one in the other list.</p>
+<p>Why is that?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="n">list2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gh">Out[38]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>The elements are the same object!</p>
+<p>This is known as a &#8220;shallow&#8221; copy &#8211; Python doesn&#8217;t want to copy more than it needs to, so in this case, it makes a new list, but does not make copies of the contents.</p>
+<p>Same for dicts (and any container type)</p>
+<p>If the elements are immutable, it doesn&#8217;t really make a differnce &#8211; but be very careful with mutable elements.</p>
+</div>
+<div class="section" id="the-copy-module">
+<h3>The copy module<a class="headerlink" href="#the-copy-module" title="Permalink to this headline">¶</a></h3>
+<p>most objects have a way to make copies (<tt class="docutils literal"><span class="pre">dict.copy()</span></tt> for instance).</p>
+<p>but if not, you can use the <tt class="docutils literal"><span class="pre">copy</span></tt> module to make a copy:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [39]: </span><span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="gp">In [40]: </span><span class="n">list3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+
+<span class="gp">In [41]: </span><span class="n">list3</span>
+<span class="gh">Out[41]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p>This is also a shallow copy.</p>
+<p>But there is another option:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">list1</span>
+<span class="gh">Out[3]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [4]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">list1</span>
+<span class="gh">Out[6]: </span><span class="go">[[1, 2, 3, 4], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [7]: </span><span class="n">list2</span>
+<span class="gh">Out[7]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">deepcopy</span></tt> recurses through the object, making copies of everything as it goes.</p>
+<p>I happened on this thread on stack overflow:</p>
+<p><a class="reference external" href="http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep">http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep</a></p>
+<p>The OP is pretty confused &#8211; can you sort it out?</p>
+<p>Make sure you understand the difference between a reference, a shallow copy, and a deep copy.</p>
+</div>
+<div class="section" id="mutables-as-default-arguments">
+<h3>Mutables as default arguments:<a class="headerlink" href="#mutables-as-default-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Another &#8220;gotcha&#8221; is using mutables as default arguments:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[]):</span>
+<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">a</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+<p>This makes sense: maybe you&#8217;d pass in a list, but the default is an empty list.</p>
+<p>But:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [12]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[3]</span>
+
+<span class="gp">In [13]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[3, 4]</span>
+</pre></div>
+</div>
+<p>Huh?!</p>
+<p>Remember that that default argument is defined when the function is created: there will be only one list, and every time the function is called, that same list is used.</p>
+<p>The solution:</p>
+<p>The standard practice for such a mutable default argument:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">   ....: </span>        <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">a</span>
+<span class="gp">In [16]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[3]</span>
+<span class="gp">In [17]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[4]</span>
+</pre></div>
+</div>
+<p>You get a new list every time the function is called</p>
 </div>
 </div>
 <div class="section" id="list-and-dict-comprehensions">
@@ -712,6 +848,25 @@ incremented by an increasing number.</p>
 </div>
 <p>Extra credit:</p>
 <p>Do it with a list comprehension, instead of a for loop</p>
+</div>
+<div class="section" id="functional-files">
+<h3>Functional files<a class="headerlink" href="#functional-files" title="Permalink to this headline">¶</a></h3>
+<p>Write a program that takes a filname and &#8220;cleans&#8221; the file be removing all teh leading and trailing whitespace from each line.</p>
+<p>Read in the original file and write out a new one, either creating a new file or overwriting the existing one.</p>
+<p>Give your user the option of which to perform.</p>
+<p>Use <tt class="docutils literal"><span class="pre">map()</span></tt> to do the work.</p>
+<p>Write a second version using a comprehension.</p>
+<p>Hint:</p>
+<p><tt class="docutils literal"><span class="pre">sys.argv</span></tt> hold the command line arguments the user typed in. If the user types:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python the_script a_file_name
+</pre></div>
+</div>
+<p>Then:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>will get <tt class="docutils literal"><span class="pre">filename</span> <span class="pre">==</span> <span class="pre">&quot;a_file_name&quot;</span></tt></p>
 </div>
 <div class="section" id="recommended-reading">
 <h3>Recommended Reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h3>
