@@ -1,8 +1,5 @@
 # Amanda L. Moen
 
-![Picture][1]
-
-[1]: https://media.licdn.com/media/p/7/000/1ab/0b5/310a22a.jpg "Profile Picture"
 
 ## A bit about me
 28 years old, grew up in Lake Stevens, Washington. Graduated high school in 2004.  Spend the next several years attending Everett Community College.  First 3 years I majored in Accounting, then I changed my major to elementary education.  Mostly, I was staying a full-time college student in order to maintain my health insurance through my mother's work.  (I would have loved to have taken a quarter off to figure things out.) Fall 2008, I decided to change my major to Computer Information Systems.  My reasoning behind that was along the lines of "When it comes to computers I know more than some, but less than others." So, I decided I want to learn more. the pay doesn't hurt, either.
@@ -18,4 +15,5 @@ I have ADD, Sensory Integration (or sensory processing disorder).  Since 2007 I 
 ## What I Like
 I like dogs, cats, and horses. I love to read and drive. I'd rather drive a vehicle with a manual transmission over an automatic. Taking ballet classes. And a ton more stuff. I like fish, but not shellfish.
 
-[My linkedin](www.linkedin.com/in/amandalmoen/)
+
+www.linkedin.com/in/AmandaLMoen/
