@@ -55,9 +55,14 @@ else:
 nums = range(16)
 hexnums = [hex(x) for x in nums]
 z = dict(zip(nums, hexnums))
+displayDict(z)
 
 
 # Using the dictionary from item 1: Make a dictionary using the same keys but with the number of ‘a’s in each value.
+a = {key: value.count('a') for key, value in d.iteritems()}
+displayDict(a)
+
+
 # Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.
 # Display the sets.
 # Display if s3 is a subset of s2 (False)
