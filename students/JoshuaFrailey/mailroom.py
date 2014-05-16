@@ -4,8 +4,8 @@ import random
 def _create_donor_dict():
     u"""Return a random list of donors and donations."""
     names = [
-        [u"Jonathan Blow"], [u"Markus Persson"], [u"Mike Bithell"],
-        [u"Calvin Goble"], [u"Alix Stolzer"], [u"Jeff Vogel"]
+        u"Jonathan Blow", u"Markus Persson", u"Mike Bithell",
+        u"Calvin Goble", u"Alix Stolzer", u"Jeff Vogel"
         ]
     donor_dict = {}
     random_name = random.choice(names)
@@ -17,7 +17,7 @@ def _create_donor_dict():
             random_name = random.choice(names)
     for donor in donor_dict:
         for donations in range(random.randint(1, 3)):
-            [donor] = round(random.random()*10000, 2)
+            donor_dict[donor].append(round(random.random()*10000, 2))
     return donor_dict
 
 
@@ -43,7 +43,7 @@ def _add_donor(name):
 
 def _add_donation(donor, amount):
     u"""Append donation for donor to donor list."""
-    donor_dict[donor] = amount
+    donor_dict[donor].append(amount)
 
 
 def _get_donations(donor):
@@ -76,10 +76,9 @@ def _print_ty_menu():
 
 def _generate_ty(donor):
     u"""Print the thank you letter."""
-    donations = _get_donations(donor)
-    recent = donations.pop()
-    donations.reverse()
-    history = _print_donations(donations)
+    ty = dict(donations=_get_donations(donor))
+    ty.update(recent=ty[donations].pop())
+    ty.update(history=_print_donations(ty[donations].reverse()))
     letter = u"\nDear {},\n\nThe Boranga Protection Society".format(donor)
     letter += u" is very appreciative"
     letter += u" of your recent, generous donation of ${}".format(recent)
@@ -96,7 +95,7 @@ def _generate_ty(donor):
 def _send_thankyou():
     u"""Control flow for the 'Send Thank You' sub-menu."""
     _print_ty_menu()
-    donor = safe_reprompt(u"--> ").title()
+    donor = _safe_reprompt(u"--> ").title()
     while True:
         if donor in [u"Menu", u"M"]:
             break
@@ -105,7 +104,7 @@ def _send_thankyou():
             prompt = u"Type a name from the above list or enter the name of "
             prompt += u"a new donor. Type 'menu' to return to the main menu."
             prompt += u"\n--> "
-            donor = safe_reprompt(prompt).title()
+            donor = _safe_reprompt(prompt).title()
         elif donor in _get_donors():
             _add_amount(donor)
             _generate_ty(donor)
@@ -114,7 +113,7 @@ def _send_thankyou():
             while True:
                 prompt = u"Do you wish to add a donor named "
                 prompt += u"{} (Y/N)? \n--> ".format(donor)
-                input_ = safe_reprompt(prompt)
+                input_ = _safe_reprompt(prompt)
                 if input_.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
                     _add_amount(donor)
@@ -127,7 +126,7 @@ def _send_thankyou():
 
 def _add_amount(donor):
     u"""Ask for amount, validate it, and pass it."""
-    amount = safe_reprompt(u"Enter the amount of the donation:\n-->")
+    amount = _safe_reprompt(u"Enter the amount of the donation:\n-->")
     while True:
         if amount in [u"m", u"menu", u"M", u"Menu", u"MENU"]:
             break
@@ -146,7 +145,7 @@ def _is_float(input_):
             amount = float(input_)
         except ValueError:
             prompt = u"Please only enter a number.\n--> "
-            input_ = safe_reprompt(prompt)
+            input_ = _safe_reprompt(prompt)
         else:
             return amount
 
@@ -188,7 +187,7 @@ def _print_main_menu():
         print line
 
 
-def safe_input(prompt):
+def _safe_input(prompt):
     try:
         input_ = raw_input(prompt)
     except (KeyboardInterrupt, EOFError):
@@ -197,23 +196,32 @@ def safe_input(prompt):
         return unicode(input_)
 
 
-def safe_reprompt(prompt):
-    input_ = safe_input(prompt)
+def _safe_reprompt(prompt):
+    input_ = _safe_input(prompt)
     while not input_ or input_.isspace():
-        print u"\nI'm sorry, Dave. I'm afraid I can't do that.'"
-        input_ = safe_input(prompt)
+        print u"\n'I'm sorry, Dave. I'm afraid I can't do that.'"
+        input_ = _safe_input(prompt)
     return input_
+
 
 if __name__ == "__main__":
     donor_dict = _create_donor_dict()
+    main_men_dict = {
+        k: _send_thankyou for k in [u'1', u's', u'send a thank you']
+        }
+    main_men_dict.update(
+        zip([u'2', u'c', u'create a report'], [_create_report]*3)
+        )
+    main_men_dict.update(
+        zip([u'3', u'e', u'exit'], [None]*3)
+        )
     while True:
         _print_main_menu()
-        input_ = safe_reprompt("--> ")
-        if input_.lower() in [u'1', u's', u'send a thank you']:
-            _send_thankyou()
-        elif input_.lower() in [u'2', u'c', u'create a report']:
-            _create_report()
-        elif input_.lower() in [u'3', u'e', u'exit']:
-            break
+        input_ = _safe_reprompt("--> ")
+        if input_ in main_men_dict:
+            try:
+                main_men_dict[input_]()
+            except TypeError:
+                break
         else:
-            input_ = safe_reprompt(u"Please enter '1', '2', or '3'\n--> ")
+            input_ = _safe_reprompt(u"Please enter '1', '2', or '3'\n--> ")
