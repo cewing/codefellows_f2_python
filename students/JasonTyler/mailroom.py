@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """Mailroom assignment, version refactored for dictionaries and the like"""
+import os
 
 
 # Donor dictionary where key is verbatim donor name
@@ -30,7 +31,7 @@ def make_choice():
     user_choice = get_input()
     try:
         choices.get(user_choice)()
-    except (KeyError):
+    except (KeyError, TypeError):
         print "Try again..."    
     else:
         pass        
@@ -176,12 +177,20 @@ def get_number_donations(donation_list):
 
 def print_donor_names():
     """Print list of donor names to terminal"""
-    print donors.keys()    
+    print donors.keys()
 
 
 def batch_print():
-    """Print Thank You's for all donors to file in ./thankyou_letters/"""
-    pass #TODO
+    """Print Thank You's for all donors to file in ./mailroom_letters/"""
+    working_dir = os.path.split(os.path.realpath(__file__))
+    letters_dir = os.path.join(working_dir[0], "mailroom_letters")
+    for donor in donors:
+        donor_file = os.path.join(letters_dir, "{}.txt".format(donor))
+        f = open(donor_file, 'w+')
+        f.write(return_thankyou(donor))
+        f.close()
+    print "'Thank You' files written to disk."
+
 
 def get_input():
     """Safely get user input and strip whitespace on ends"""
