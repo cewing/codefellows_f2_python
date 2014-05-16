@@ -45,16 +45,16 @@ for value in d.itervalues():
 
 # Display whether or not “cake” is a key in the dictionary (i.e. False) (now).
 if u'cake' in d:
-    print u"\n'cake' is a key in the current dictionary."
+    print u"\n'cake' is a key in dictionary 'd'."
 else:
-    print u"\n'cake' is NOT a key in the current dictionary."
+    print u"\n'cake' is NOT a key in dictionary 'd'."
 
 
 # Display whether or not “Mango” is a value in the dictionary.
 if u'Mango' in d.values():
-    print u"\n'Mango' is a value in the current dictionary."
+    print u"\n'Mango' is a value in dictionary 'd'."
 else:
-    print u"\n'Mango' is NOT a value in the current dictionary."
+    print u"\n'Mango' is NOT a value in dictionary 'd'."
 
 
 # Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).
@@ -67,7 +67,7 @@ displayDict(z)
 
 # Using the dictionary from item 1: Make a dictionary using the same keys but with the number of ‘a’s in each value.
 e = {key: value.count('a') for key, value in d.iteritems()}
-print u"\nDictionary 'e' with the number of a's in each value:"
+print u"\nDictionary 'e' : a copy of dictionary 'd' with the number of a's in each value:"
 displayDict(e)
 
 
