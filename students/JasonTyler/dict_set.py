@@ -10,11 +10,11 @@ print chris
 del chris['cake']
 print chris
 
-chris['fruit'] = 'mango'
+chris['fruit'] = 'Mango'
 print "keys:", chris.keys()
 print "vals:", chris.values()
-print "cake is key in dict 'chris'?", bool(chris.get('cake'))
-print "Mango is val in dict 'chris'?", bool(chris.values().count('Mango'))
+print "cake is key in dict 'chris'?", 'cake' in chris
+print "Mango is val in dict 'chris'?", 'Mango' in chris
 
 # instructions are slightly unclear, this is my best guess for the zipped
 # hex and int dict
@@ -23,8 +23,13 @@ hex_dict = dict((hex(int_), None) for int_ in range(16))
 int_hex_combo_dict = dict()
 
 for int_, hex_ in zip(int_dict, hex_dict):
-    int_hex_combo_dict.update({int_: None, hex_: None})
-print int_hex_combo_dict.keys()
+    int_hex_combo_dict.update({int_: hex_})
+print "int_hex_combo_dict:", int_hex_combo_dict
+
+del int_hex_combo_dict
+int_hex_combo_dict = {int_: hex_ for int_, hex_ in zip(int_dict, hex_dict)}
+print "int_hex_combo_dict, done again with dict comprehension:", int_hex_combo_dict
+
 
 chris_a = dict((key, value.count('a')) for key, value in chris.items())
 print "chris_a dict:", chris_a
