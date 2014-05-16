@@ -47,7 +47,11 @@ your support. \n \
 def create(c_list):
     """Print a report of donations."""
     don_rep = []
+    # Number of spaces in case of long names
+    n_long = 8
     for donor in donations.keys():
+        if len(donor) > n_long:
+            n_long = len(donor)
         total = sum(donations[donor])
         count = len(donations[donor])
         if count == 0:
@@ -55,14 +59,16 @@ def create(c_list):
         else:
             avg = total / count
         don_rep.append([donor, total, count, avg])
+    # Sort list by Total amount, greatest first
     don_rep.sort(key=second, reverse=True)
-    # Find longest name to use for formatting
-    n_long = max([len(col[0]) for col in don_rep])
-    print "%*s %8s %8s %8s" % (-n_long, "Name", "Total",
-                               "Count", "Average")
+
+    print "{name:<{n}} {total:>8} {count:>8} {average:>8}".\
+        format(n=n_long, name="Name", total="Total",
+               count="Count", average="Average")
     for donor in don_rep:
-        print "%*s %8.2f %8i %8.2f" % \
-            (-n_long, donor[0], donor[1], donor[2], donor[3])
+        print "{name:<{n}} {total:>8.2f} {count:>8} {average:>8.2f}".\
+            format(n=n_long, name=donor[0], total=donor[1],
+                   count=donor[2], average=donor[3])
 
 
 def second(l_list):
