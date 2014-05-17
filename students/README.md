@@ -1,102 +1,91 @@
-*********************
-Foundations 2: Python
-*********************
+# CodeFellows Foundations II: Python
 
-This repository houses presentations and class materials for the Code Fellows
-Foundations 2 course in Python programming.
+Assignments and submitted work for students of the [CodeFellows Foundations II
+course in the Python Stack](https://www.codefellows.org/learn-to-code).
 
-The documentation is written in `ReStructuredText`_ and output formats are
-included for html, epub and `html5slides`_ (via the excellent `hieroglyph`_
-package).
+## Useful Learning Resources
 
-.. _ReStructuredText: http://docutils.sourceforge.net/rst.html
-.. _html5slides: https://code.google.com/p/io-2012-slides/
-.. _hieroglyph: http://docs.hieroglyph.io/en/latest/index.html
+In addition to the material we cover in class, there are numerous online
+resources to help a newcomer get to know Python. The following list represents
+the best-known and best-regarded of the breed. If you are itching for a bit
+more work on your Python chops, you should try these out.
 
+### Python Language Resources
 
-Building The Documents
-======================
+As a Python programmer, you'll want to keep a bookmark pointed at the
+[official Python documentation](https://docs.python.org/2/), especially the
+documentation for the
+[standard library](https://docs.python.org/2/library/index.html). However,
+there are a number of additional resources you can (and should) use to help
+build your Python chops.
 
-To isolate the packages required to build this documentation from your system
-Python, create a `virtualenv`_. I highly recommend using `virtualenvwrapper`_
-to manage your virtual environments:
+#### For the beginner
 
+* [The Python Tutorial](https://docs.python.org/2/tutorial/): This is the
+  official tutorial from the Python website. No more authoritative source is
+  available.
 
-.. code-block:: bash
+* [Code Academy: Python Track](http://www.codecademy.com/tracks/python): Often
+  cited as a great resource, this site offers an entertaining and engaging
+  approach and in-browser work.
 
-    $ mkproject cff2py
-    New python executable in cff2py/bin/python
-    Installing setuptools, pip...done.
-    Creating /path/to/projects/cff2py
-    Setting project for cff2py to /path/to/projects/cff2py
-    (cff2py)$
+* [Learn Python the Hard Way](http://learnpythonthehardway.org/book/): Solid
+  and gradual. This course offers a great foundation for folks who have never
+  programmed in any language before.
 
-.. _virtualenv: http://virtualenv.org
-.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org:
+* [Dive Into Python 3](http://www.diveinto.org/python3/): The updated version
+  of a classic. This book offers an introduction to Python aimed at the student
+  who has experience programming in another language.
 
+* [Python for You and Me](http://pymbook.readthedocs.org/en/latest/): Simple
+  and clear. This is a great book for absolute newcomers, or to keep as a quick
+  reference as you get used to the language.
 
-Once a virtual environment is established, clone this repository:
+* [Think Python](http://greenteapress.com/thinkpython/): Methodical and
+  complete.  This book offers a very "computer science"-style introduction to
+  Python. It is really an intro to Python *in the service of* Computer Science,
+  though, so not so while helpful for the absolute newcomer, it isn't quite as "pythonic" as it might be.
 
-.. code-block:: bash
-
-    
-    (cff2py)$ git clone https://github.com/codefellows/sea-c15-python.git
-    ...
-    (cff2py)$ cd codefellows_f2_python
-
-Once that is complete, you can install all the required packages with `pip`_:
-
-.. _pip: http://www.pip-installer.org
-
-.. code-block:: bash
-
-    (cff2py)$ pip install -r requirements.txt
-
-Finally, build the documentation using one of the output targets. To build the
-plain html version, for example:
-
-.. code-block:: bash
-
-    (cff2py)$ make html
-    sphinx-build -b html -d build/doctrees   source build/html
-    Running Sphinx v1.2.2
-    ...
-    build succeeded.
-
-    Build finished. The HTML pages are in build/html.
-    (cff2py)$
-
-Or the html5 slides:
-
-.. code-block:: bash
-
-    (cff2py)$ make slides
-    sphinx-build -b slides -d build/doctrees   source build/slides
-    Running Sphinx v1.2.2
-    ...
-    Build finished. The HTML slides are in build/slides.
-
-At any time, you can return to working on this repository using the ``workon``
-command, provided by ``virtualenvwrapper``:
-
-.. code-block:: bash
-
-    $ workon cff2py
-    (cff2py)$
+* [Core Python Programming](http://corepython.com/): Only available as a dead
+ trees version, but if you like to have book to hold in your hands anyway, this
+ is the best textbook style introduction out there. It starts from the
+ beginning, but gets into the full language. Published in 2009, but still in
+ print, with updated appendixes available for new language features.
 
 
-License
-=======
 
-Copyright 2014 Christopher Barker and Cris Ewing.
+#### Next Steps
 
-Thanks to Jon Jacky and Brian Dorsey, who developed the materials from which
-this course was derived.
+* [New Coder](http://newcoder.io): Advertised as "Five lifejackets to throw to
+  the new coder", this site offers five very interesting tutorials written in
+  an engaging style. Not an introduction. More a second step.
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
-International License. To view a copy of this license, visit
-http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative
-Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+* [OpenHatch](https://openhatch.org/wiki/Intermediate_Python_Workshop/Projects):
+  The Open Hatch project offers a number of workshops with well-paced
+  intermediate tutorials for Python programming. A great place to go once you
+  have the basics down and are ready for more challenging work.
 
-A copy of this license in text format is included in this package under the
-``docs`` directory
+#### Evaluating Your Options
+
+The blurbs above are short descriptions of the material in each resource. I've
+drawn them both from my own usage of the various tools, and from
+[a wonderful set of online reviews](http://planningadinner.blogspot.com/search/label/So%20you%20want%20to%20learn%20Python.%20What%27s%20next%3F)
+done by Marta Maria Casetti on her blog,
+["Planning a Dinner"](http://planningadinner.blogspot.com/).
+[The poster she presented at PyCon 2014](http://planningadinner.blogspot.com/2014/04/the-poster.html)
+as a result of that research offers some great hints about the aspects of
+Python programming best covered by each resource. I would urge any new student
+of Python to take the time to look over this poster to help determine the best
+path forward for themselves.
+
+### iPython Interpreter Resources
+
+iPython is an enhanced interpreter that makes interactive experimentation at the command line much more pleasant and powerful.
+
+* [The iPython tutorial](http://ipython.org/ipython-doc/rel-0.10.2/html/interactive/tutorial.html)
+
+* [Using IPython for interactive work](http://ipython.org/ipython-doc/stable/interactive/index.html)
+  Learn about the abilities iPython provides for interactive sessions.
+
+* [The iPython Documentation](http://ipython.org/ipython-doc/stable/index.html)
+  Use this to learn more about iPython's amazing capabilities.
