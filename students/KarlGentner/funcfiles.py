@@ -8,20 +8,22 @@ filename = sys.argv[1]
 
 def cleanLines(filename, isOverwrite):
     # Create list of cleaned lines using map
-    f = codecs.open(filename, 'r+')
-    lineList = map(lambda line: line.strip(), f)
+    f = codecs.open(filename)
+    lineList = map(lambda line: line.strip() + "\n", f)
+    f.close()
     # Create list of cleaned lines using list comprehension
-    # lineList = [line.strip() for line in f]
+    # lineList = [line.strip() + "\n" for line in f]
     #
     # Overwrite existing file or write to a new file
     if isOverwrite is True:
+        f = codecs.open(filename, 'w')
         f.writelines(lineList)
+        f.close()
     else:
         newName = raw_input(u"Enter new filename-->") + ".txt"
-        n = codecs.open(newName, 'w')
-        n.writelines(lineList)
-
-
+        f = codecs.open(newName, 'w')
+        f.writelines(lineList)
+        f.close()
 
 
 if __name__ == '__main__':
@@ -41,3 +43,4 @@ if __name__ == '__main__':
         # Clean & write a new file
         if mainMenu.lower() == u'n':
             cleanLines(filename, False)
+            break
