@@ -4,7 +4,7 @@
 # Displays the current dictionary
 def displayDict(a_dict):
     for key, value in a_dict.iteritems():
-        print("{key} : {value}").format(key=key, value=value)
+        print(u"{key} : {value}").format(key=key, value=value)
 
 
 # Displays the current set
@@ -13,7 +13,8 @@ def displaySet(a_set):
         print x,
 
 
-# Create a dictionary containing “name”, “city”, and “cake” for “Chris” from “Seattle” who likes “Chocolate”.
+# Create a dictionary containing:
+# “name”, “city”, and “cake” for “Chris” from “Seattle” who likes “Chocolate”.
 d = {u'name': u'Chris', u'city': u'Seattle', u'cake': u'Chocolate'}
 print u"\nDictionary 'd':"
 displayDict(d)
@@ -27,7 +28,7 @@ displayDict(d)
 
 # Add an entry for “fruit” with “Mango” and display the dictionary.
 print u"\nDictionary 'd' with added 'fruit' entry of 'Mango':"
-d['fruit'] = 'Mango'
+d[u'fruit'] = u'Mango'
 displayDict(d)
 
 
@@ -57,28 +58,52 @@ else:
     print u"\n'Mango' is NOT a value in dictionary 'd'."
 
 
-# Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).
+# Using the dict constructor and zip, build a dictionary of numbers
+# from zero to fifteen and the hexadecimal equivalent (string is fine).
 nums = range(16)
-hexnums = [hex(x) for x in nums]
+hexnums = []
+for x in nums:
+    hexnums.append(hex(x))
 z = dict(zip(nums, hexnums))
 print u"\nDictionary 'z' with keys 0 to 15 and hexadecimal equivalent values:"
 displayDict(z)
 
 
-# Using the dictionary from item 1: Make a dictionary using the same keys but with the number of ‘a’s in each value.
-e = {key: value.count('a') for key, value in d.iteritems()}
-print u"\nDictionary 'e' : a copy of dictionary 'd' with the number of a's in each value:"
+# Using the dictionary from item 1: Make a dictionary using the same keys
+# but with the number of ‘a’s in each value.
+e = {}
+for key, value in d.iteritems():
+    e[key] = value.count(u'a')
+# OR with a dict expression...
+e = {key: value.count(u'a') for key, value in d.iteritems()}
+print (u"\nDictionary 'e' : a copy of dictionary 'd' " +
+       "with the number of a's in each value:")
 displayDict(e)
 
 
-# Create and displaysets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.
-s2 = {i for i in range(21) if i % 2 == 0}
+# Create and displaysets s2, s3 and s4 that contain numbers
+# from zero through twenty, divisible 2, 3 and 4.
+s2 = set()
+for i in range(21):
+    if i % 2 == 0:
+        s2.add(i)
+
 print u"\n\nSet s2 with numbers 0 though 20 that are divisible by 2:"
 displaySet(s2)
-s3 = {i for i in range(21) if i % 3 == 0}
+
+s3 = set()
+for i in range(21):
+    if i % 3 == 0:
+        s3.add(i)
+
 print u"\n\nSet s3 with numbers 0 though 20 that are divisible by 3:"
 displaySet(s3)
-s4 = {i for i in range(21) if i % 4 == 0}
+
+s4 = set()
+for i in range(21):
+    if i % 4 == 0:
+        s4.add(i)
+
 print u"\n\nSet s4 with numbers 0 though 20 that are divisible by 4:"
 displaySet(s4)
 
