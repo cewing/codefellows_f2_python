@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-donorsANDdollars=[[u"James Bond",544,221,444],[u"Jackson Pollock",332,112,3321],[u"Keanu Reaves",444,546,6643,45],[u"The Pope",32,5543,3],[u"France",2345,123,6543,42]]
+donorsANDdollars={u"James Bond":(544,221,444),u"Jackson Pollock":(332,112,3321),u"Keanu Reaves":(444,546,6643,45),u"The Pope":(32,5543,3),u"France":(2345,123,6543,42)}
 
 
 def donors(donorsANDdollars):
@@ -62,7 +62,6 @@ def create_Report():
         print len(aList[1:]),
         print (maxLength3-len(str(len(aList[1:]))))*" ",
         print sum(aList[1:])/len(aList[1:])
-    print donorsANDdollars
 
 
 def getTotal(aList):
