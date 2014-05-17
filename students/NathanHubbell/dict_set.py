@@ -1,5 +1,4 @@
-#Dictionaries
-
+#dictionaries
 dictionary = {"name":"Chris","city":"Seattle","cake":"Chocolate"}
 print dictionary
 dictionary.pop("cake")
@@ -34,8 +33,10 @@ for element in s:
     if not element%4:
         s4.add(element)
 
-print s2
-print s3
-print s4
+python = set([u"p",u"y",u"t",u"h",u"o",u"n"])
+python.add(u"i")
 
+marathon =frozenset((u"m",u"a",u"r",u"a",u"t",u"h",u"o",u"n"))
 
+print set.union(python,marathon)
+print set.intersection(python,marathon)
