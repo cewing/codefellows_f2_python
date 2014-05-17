@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from safe_input import safe_input
+import codecs
 
 
 def thanks(don_dict):
@@ -37,7 +38,11 @@ donation amount [or 'quit']: " % amount)
 
     # Add amount to current donor's list
     don_dict[name].append(amount)
-    print "Dear %s, \n \
+
+    l_file = "./mail/{}_ty.txt".format(name)
+    letter = codecs.open(l_file, 'w')
+    l_file.write("Dear {}, \n".format(name))
+    print  "\
     Thank you for your donation of $%.2f to our charity.  We appreciate \
 your support. \n \
     Sincerely,\n Michelle Rascati" % (name, amount)
