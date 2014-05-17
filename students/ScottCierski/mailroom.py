@@ -1,6 +1,8 @@
 # Usage Notes
 # Report formatting is designed for consoles with fixed length fonts
 
+def safe_input(input):
+    """Attempts to gracefully validate user inputs"""
 
 def main_prompt(donor_list):
     """Display main prompt for mailroom program"""
@@ -87,7 +89,7 @@ def send_thank_you_note(donor_list):
         print u""
         print donation_options_header_string
         print u"-" * len(donation_options_header_string)
-        print u"Enter a donation amount for %s: " % input_string
+        print u"Enter a donation amount for %s" % input_string
         print type_q_string
         input_donation = raw_input("Please make your selection: ")
 
@@ -97,24 +99,27 @@ def send_thank_you_note(donor_list):
         else:
 
             #Check to see if input is a number, reprompt if not
-            while unicode(input_donation).isnumeric() != True:
-                print u"Sorry, donation amount must be a number."
-                print u""
-                print donation_options_header_string
-                print u"-" * len(donation_options_header_string)
-                print u"Enter a donation amount for %s: " % input_string
-                print type_q_string
-                input_donation = raw_input("Please make your selection: ")
+            while input_donation != 'q':
+                try:
+                    input_donation = unicode(input_donation).isnumeric()
+                except:
+                    print u"Sorry, donation amount must be a number."
+                    print u""
+                    print donation_options_header_string
+                    print u"-" * len(donation_options_header_string)
+                    print u"Enter a donation amount for %s" % input_string
+                    print type_q_string
+                    input_donation = raw_input("Please make your selection: ")
+                else:
+                    # If the donor is new, add the new donor to the list
+                    if is_new_donor == True:
+                        print u"Adding %s to donor list." % input_string
+                        donor_list.append([input_string])
 
-            # If the donor is new, add the new donor to the list
-            if is_new_donor == True:
-                print u"Adding %s to donor list." % input_string
-                donor_list.append([input_string])
-
-            for a in donor_list:
-                if a[0] == input_string:
-                    a.append(int(input_donation))
-                    print u"Adding donation of %s for donor %s." % (input_donation, input_string)
+                    for a in donor_list:
+                        if a[0] == input_string:
+                            a.append(int(input_donation))
+                            print u"Adding donation of %s for donor %s." % (input_donation, input_string)
 
             # print donor_list
 
