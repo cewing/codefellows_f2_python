@@ -6,16 +6,38 @@ import codecs
 filename = sys.argv[1]
 
 
-def cleanLines(filename):
+def cleanLines(filename, isOverwrite):
     # Create list of cleaned lines using map
-    f = codecs.open(filename)
-    lineListMap = map(lambda line: line.strip(), f)
-    print lineListMap
+    f = codecs.open(filename, 'r+')
+    lineList = map(lambda line: line.strip(), f)
     # Create list of cleaned lines using list comprehension
-    f = codecs.open(filename)
-    lineListComp = [line.strip() for line in f]
-    print lineListComp
+    # lineList = [line.strip() for line in f]
+    #
+    # Overwrite existing file or write to a new file
+    if isOverwrite is True:
+        f.writelines(lineList)
+    else:
+        newName = raw_input(u"Enter new filename-->") + ".txt"
+        n = codecs.open(newName, 'w')
+        n.writelines(lineList)
+
+
 
 
 if __name__ == '__main__':
-    cleanLines(filename)
+    mainMenu = ""
+    while mainMenu != 'o' and mainMenu != 'n' and mainMenu != 'q':
+        print ("\n\n-----------------Clean Whitespaces-------------------\n")
+        mainMenu = raw_input(u"'o' to overwrite the existing file\n" +
+                             "'n' to create a new file\n" +
+                             "'q' to quit\n-->")
+        # Quit main menu
+        if mainMenu.lower() == u'q':
+            break
+        # Clean & Overwrite existing file
+        if mainMenu.lower() == u'o':
+            cleanLines(filename, True)
+            break
+        # Clean & write a new file
+        if mainMenu.lower() == u'n':
+            cleanLines(filename, False)
