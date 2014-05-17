@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from safe_input import safe_input
 import codecs
+import os
 
 
 def thanks(don_dict):
@@ -38,6 +39,12 @@ donation amount [or 'quit']: " % amount)
 
     # Add amount to current donor's list
     don_dict[name].append(amount)
+    # Create file
+    try:
+        os.mkdir('./mail')
+        print './mail folder created for saved letters.'
+    except OSError:
+        print './mail folder exists for saved letters.'
 
     l_file = "./mail/{}_ty.txt".format(name)
     letter = codecs.open(l_file, 'w')
@@ -46,6 +53,7 @@ donation amount [or 'quit']: " % amount)
 your support.\n\n\
 Sincerely,\nMichelle Rascati".format(name, amount))
     letter.close()
+    print 'Letter saved to ' + l_file
     return don_dict
 
 
