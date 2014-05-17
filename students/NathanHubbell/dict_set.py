@@ -32,6 +32,13 @@ for element in s:
 for element in s:
     if not element%4:
         s4.add(element)
+print s2
+print s3
+print s4
+
+print s3.issubset(s2)
+print s4.issubset(s2)
+
 
 python = set([u"p",u"y",u"t",u"h",u"o",u"n"])
 python.add(u"i")
