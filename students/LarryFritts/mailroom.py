@@ -81,8 +81,15 @@ def add_donation(name, new=False):
     print u"\n\nAdded %.2f to %s" %(amount, name)
     print u"\n\nCreating 'Thank You' note!"
 
+    thankyou(name, amount)
+
 def thankyou(name, amount):
-    pass
+    try:
+        output_letter = open(name + '.txt', 'w')
+        letter = "Dear {}:\n\n\tThank you for your recent donation of {}\n\nSincerely, Donation Company".format(name, amount)
+        output_letter.write(letter)
+    except IOError:
+        print u"Unable to open file for writing."
 
 def create_report():
     pass
