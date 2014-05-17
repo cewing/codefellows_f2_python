@@ -101,8 +101,8 @@ def send_thank_you_note(donor_list):
             #Check to see if input is a number, reprompt if not
             while input_donation != 'q':
                 try:
-                    input_donation = unicode(input_donation).isnumeric()
-                except:
+                    input_donation = unicode(int(input_donation))
+                except ValueError:
                     print u"Sorry, donation amount must be a number."
                     print u""
                     print donation_options_header_string
@@ -120,6 +120,8 @@ def send_thank_you_note(donor_list):
                         if a[0] == input_string:
                             a.append(int(input_donation))
                             print u"Adding donation of %s for donor %s." % (input_donation, input_string)
+
+                    break
 
             # print donor_list
 
