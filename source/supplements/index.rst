@@ -8,3 +8,5 @@ Supplemental Materials
     sublime_as_ide
     shell
     kata_fourteen
+    unicode
+    
