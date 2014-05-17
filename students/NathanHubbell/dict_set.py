@@ -18,3 +18,24 @@ for keys in hexDict:
 
 #Sets
 s = set(range(20))
+s2=set([])
+s3=set([])
+s4=set([])
+
+for element in s:
+    if not element%2:
+        s2.add(element)
+
+for element in s:
+    if not element%3:
+        s3.add(element)
+
+for element in s:
+    if not element%4:
+        s4.add(element)
+
+print s2
+print s3
+print s4
+
+
