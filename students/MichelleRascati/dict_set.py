@@ -1,24 +1,13 @@
 ### 1 ###
 # Create Dictionary
-d = dict(name='Chris', city='Seattle', cake='Chocolate')
+food_prefs = dict(name=u'Chris', city=u'Seattle', cake=u'Chocolate',
+            fruit=u'mango', salad=u'greek', pasta=u'lasagna')
 # Display Dictionary
-print d
- # Delete entry for 'cake'
-del d['cake']
-# Display Dictionary
-print d
-# Add entry for 'fruit' with 'Mango' and Display Dictionary
-d['fruit'] = 'Mango'
-print 'Dictionary Keys:'
-for k in d.keys():
-    print k
-print 'Dictionary Values:'
-for v in d.values():
-    print v
+print '1) {} is from {}, and he likes {} cake, {} fruit, {} salad, and {} pasta.'.format(
+    food_prefs['name'], food_prefs['city'], food_prefs['cake'], food_prefs['fruit'],
+    food_prefs['salad'], food_prefs['pasta'])
 
-print 'cake in dictionary?', 'cake' in d.keys()
-print 'Mango in dictionary?', 'Mango' in d.values()
-
+break
 ### 2 ###
 # Create list of 0-15
 z_15 = range(16)
