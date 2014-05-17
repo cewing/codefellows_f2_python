@@ -41,11 +41,11 @@ donation amount [or 'quit']: " % amount)
 
     l_file = "./mail/{}_ty.txt".format(name)
     letter = codecs.open(l_file, 'w')
-    l_file.write("Dear {}, \n".format(name))
-    print  "\
-    Thank you for your donation of $%.2f to our charity.  We appreciate \
-your support. \n \
-    Sincerely,\n Michelle Rascati" % (name, amount)
+    letter.write("Dear {}, \n\n\
+\tThank you for your donation of ${:.2f} to our charity.  We appreciate \
+your support.\n\n\
+Sincerely,\nMichelle Rascati".format(name, amount))
+    letter.close()
     return don_dict
 
 
