@@ -69,16 +69,15 @@ def getTotal(aList):
 
 
 #####Main Body######
-for i in range(len(donorsANDdollars)):
-    while True:
-        choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2) (At any time you may enter (Q) to Quit): ")
-        if choice == u"1":
-            theDonor=selectDonor()
-            theInput=getDonationAmount(theDonor)
-            send_ThankYou(theDonor,theInput)
-        elif choice == u"2":
-            create_Report()
-        elif choice.lower() == u"q":
-            break
-        else:
-            print "I did not recognize that response."
+while True:
+    choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2) (At any time you may enter (Q) to Quit): ")
+    if choice == u"1":
+        theDonor=selectDonor()
+        theInput=getDonationAmount(theDonor)
+        send_ThankYou(theDonor,theInput)
+    elif choice == u"2":
+        create_Report()
+    elif choice.lower() == u"q":
+        break
+    else:
+        print "I did not recognize that response."
