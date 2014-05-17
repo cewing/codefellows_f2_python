@@ -14,5 +14,20 @@ with open(filename) as open_file:
 content = text[text.find('the golden bird') : text.find('end of project gutenbergs grimms fairy tales')]
 words = content.split()
 
-lookup = {}
+d = {}
+
+x = [(words[i-2], words[i-1], words[i]) for i in range(len(words) - 1)]
+
+for a, b, c in x:
+	d[a, b] = []
+
+for a, b, c in x:
+	d[a, b].append(c)
+
+
+
+
+
+
+
 
