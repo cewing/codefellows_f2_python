@@ -18,3 +18,9 @@ def _syntax_error () :
 def _attribute_error () :
     num = 42
     print num.__fail__
+
+# _name_error()
+# _type_error()
+# _syntax_error()
+# _attribute_error ()
+
