@@ -14,7 +14,9 @@ def donors(donorsANDdollars):
 def selectDonor():
     while True:
         theInput=raw_input(u"Enter a new name or one on the list to send a thank you. Type 'list' to see the list. Name: ")
-        if theInput == u"list":
+        if theInput.lower()==u"q":
+            return -1
+        elif theInput == u"list":
             print donors(donorsANDdollars)
         elif theInput in donors(donorsANDdollars):
             return theInput
@@ -23,16 +25,21 @@ def selectDonor():
             return theInput
 
 
+
 def getDonationAmount(theDonor):
     while True:
         theInput=raw_input(u"Enter a donation amount as a number: ")
         theInput=unicode(theInput)
+        if theInput.lower() == 'q':
+            return -1
         if theInput.isnumeric():
             for donors in donorsANDdollars:
                 if donors[0]==theDonor:
                     theInput=int(theInput)
                     donors.append(theInput)
                     return theInput
+        elif theInput==None:
+            break
         else:
             print "Please enter a number!"
 
@@ -73,7 +80,11 @@ while True:
     choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2) (At any time you may enter (Q) to Quit): ")
     if choice == u"1":
         theDonor=selectDonor()
+        if theDonor == -1:
+            break
         theInput=getDonationAmount(theDonor)
+        if theInput == -1:
+            break
         send_ThankYou(theDonor,theInput)
     elif choice == u"2":
         create_Report()
