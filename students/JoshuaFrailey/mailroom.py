@@ -48,20 +48,22 @@ def _add_donation(donor, amount):
 
 def _get_donations(donor):
     u"""Return donations for a given donor."""
-    return donor_dict[donor]
+    l = []
+    l.extend(donor_dict[donor])
+    return l
 
 
 def _print_donations(donations):
     u"""Print donations for a given donor."""
-    donations_str = u""
+    list_ = []
     for i, donation in enumerate(donations):
         if i == len(donations)-1:
-            donations_str += u"${:,}".format(float(donation))
+            list_.append(u"${:,}".format(float(donation)))
         elif i == len(donations)-2:
-            donations_str += u"${:,}, and ".format(float(donation))
+            list_.append(u"${:,}, and ".format(float(donation)))
         else:
-            donations_str += u"${:,}, ".format(float(donation))
-    return donations_str
+            list_.append(u"${:,}, ".format(float(donation)))
+    return "".join(list_)
 
 
 def _print_ty_menu():
@@ -70,26 +72,27 @@ def _print_ty_menu():
     menu.append(u"Enter a donor's full name to add a donation and generate")
     menu.append(u"a personalized letter. Type 'list' to see a list of all")
     menu.append(u"donors. Type 'menu' to return to the main menu.")
-    for line in menu:
-        print line
+    print "".join(menu)
 
 
 def _generate_ty(donor):
     u"""Print the thank you letter."""
-    ty = dict(donations=_get_donations(donor))
-    ty.update(recent=ty[donations].pop())
-    ty.update(history=_print_donations(ty[donations].reverse()))
-    letter = u"\nDear {},\n\nThe Boranga Protection Society".format(donor)
-    letter += u" is very appreciative"
-    letter += u" of your recent, generous donation of ${}".format(recent)
-    if history:
-        letter += u". Much like your previous donations of {},".format(history)
-        letter += u" this "
+    d = {u"donor": donor, u"donations": _get_donations(donor)}
+    d[u"recent"] = d[u"donations"].pop()
+    d[u"history"] = _print_donations(d[u"donations"][::-1])
+    print d[u"donations"]
+    print d[u"history"]
+    letter = [u"\nDear {donor},\n\nThe Boranga Protection Society"]
+    letter.append(u" is very appreciative")
+    letter.append(u" of your recent, generous donation of ${recent}")
+    if d[u"history"]:
+        letter.append(u". Much like your previous donations of {history},")
+        letter.append(" this ")
     else:
-        letter += u". This"
-    letter += u" donation will go to clothe the poor borangas who have been"
-    letter += u" so unjustly shermed.\n\nThank you,\n\nThe B.P.S.\n"
-    print letter
+        letter.append(u". This")
+    letter.append(u" donation will go to clothe the poor borangas who have")
+    letter.append(u" been so unjustly shermed.\n\nThank you,\n\nThe B.P.S.\n")
+    print "".join(letter).format(**d)
 
 
 def _send_thankyou():
@@ -183,7 +186,7 @@ def _print_main_menu():
     menu.append(u'1: Send a Thank You')
     menu.append(u'2: Create a Report')
     menu.append(u'3: Exit')
-    for line in menu:
+    for line in menu:  # Not sure if this is better or worse than using join.
         print line
 
 
