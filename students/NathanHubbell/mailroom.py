@@ -13,9 +13,9 @@ def donors(donorsANDdollars):
 
 def selectDonor():
     while True:
-        theInput=raw_input(u"Enter a new name or one on the list to send a thank you. Type 'list' to see the list. Name: ")
+        theInput=safe_input(u"Enter a new name or one on the list to send a thank you. Type 'list' to see the list. Name: ")
         if theInput.lower()==u"q":
-            return -1
+            return None
         elif theInput == u"list":
             print donors(donorsANDdollars)
         elif theInput in donors(donorsANDdollars):
@@ -25,13 +25,12 @@ def selectDonor():
             return theInput
 
 
-
 def getDonationAmount(theDonor):
     while True:
-        theInput=raw_input(u"Enter a donation amount as a number: ")
+        theInput=safe_input(u"Enter a donation amount as a number: ")
         theInput=unicode(theInput)
         if theInput.lower() == 'q':
-            return -1
+            return None
         if theInput.isnumeric():
             for donors in donorsANDdollars:
                 if donors[0]==theDonor:
@@ -66,24 +65,29 @@ def create_Report():
     print donorsANDdollars
 
 
-
 def getTotal(aList):
     return -1*sum(aList[1:])
 
-
-
-
-
+def safe_input(text):
+    try:
+        input = raw_input(unicode(text))
+        return input
+    except KeyboardInterrupt:
+        return None
+    except EOFError:
+        return None
 
 #####Main Body######
 while True:
-    choice = raw_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2) (At any time you may enter (Q) to Quit): ")
-    if choice == u"1":
+    choice = safe_input(u"Please input 1 or 2. Send a Thank You(1) or Create a Report(2) (At any time you may enter (Q) to Quit): ")
+    if choice == None:
+        break
+    elif choice == u"1":
         theDonor=selectDonor()
-        if theDonor == -1:
+        if theDonor == None:
             break
         theInput=getDonationAmount(theDonor)
-        if theInput == -1:
+        if theInput == None:
             break
         send_ThankYou(theDonor,theInput)
     elif choice == u"2":
