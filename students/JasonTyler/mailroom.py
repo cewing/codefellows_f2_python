@@ -59,7 +59,8 @@ def send_thankyou():
             create_donor(user_choice)
             print return_thankyou(user_choice)
     
-    return send_thankyou() #not sure about this yet.
+    return send_thankyou()
+
 
 def create_report():
     """
@@ -79,6 +80,8 @@ def create_report():
     print "\n",
     print "name\t\ttotal\tnumber\taverage"
     print "----------------------------------------"
+    # Sorting from highest total donations to least
+    report_list = reversed(sorted(report_list, key=lambda element:int(element[1])))    
     for row in report_list:
         print "\t".join(row)
     print "\n",
@@ -156,7 +159,7 @@ def get_average_donation(donation_list):
     """Get average donation for a donor from donation_list"""
     total = get_total_donation(donation_list)
     number = get_number_donations(donation_list)
-    return float(total)/number
+    return total/number
 
 
 def get_total_donation(donation_list):
@@ -164,7 +167,7 @@ def get_total_donation(donation_list):
     total = 0
     for donation in donation_list:
         if isinstance(donation, (int, float)):
-            total += donation
+            total += int(donation)
         else:
             pass
     return total
@@ -184,6 +187,12 @@ def batch_print():
     """Print Thank You's for all donors to file in ./mailroom_letters/"""
     working_dir = os.path.split(os.path.realpath(__file__))
     letters_dir = os.path.join(working_dir[0], "mailroom_letters")
+    # Attempting to make ./mailroom_letters dir, should it not exist. 
+    if not os.path.isdir(letters_dir):
+        os.mkdir(letters_dir)
+    else:
+        pass
+
     for donor in donors:
         donor_file = os.path.join(letters_dir, "{}.txt".format(donor))
         f = open(donor_file, 'w+')
