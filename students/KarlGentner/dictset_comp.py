@@ -55,19 +55,19 @@ print u"\nDictionary 'z' with keys 0 to 15 and hexadecimal equivalent values:"
 displayDict(z)
 
 # 3. Previous dict with a dict comprehension
-z = {i: hex(x) for x in range(16) for i in range(16)}
+z = {i: hex(i) for i in range(16)}
 
-print (u"\nOne liner- Dictionary 'z' with keys 0 to 15" +
+print (u"\nOne liner- Dictionary 'z' with keys 0 to 15 " +
        "and hexadecimal equivalent values:")
 displayDict(z)
 
 
 # 4. Using the dictionary from item 1: Make a dictionary using the same keys
-# but with the number of ‘a’s in each value. You can do this either
-# by editing the dict in place, or making a new one.
+# but with the number of a's in each value.
+# Do this either by editing the dict in place, or making a new one.
 # If you edit in place, make a copy first!
 e = {key: value.count('a') for key, value in food_prefs.iteritems()}
-print (u"\nDictionary 'e' : a copy of dictionary 'food_prefs'" +
+print (u"\nDictionary 'e' : a copy of 'food_prefs' " +
        "with the number of a's in each value:")
 displayDict(e)
 
@@ -88,7 +88,6 @@ print u"\n\nSet s4:"
 displaySet(s4)
 
 
-# 5-2. What if you had a lot more than 3? – Don’t Repeat Yourself (DRY)
 # 5-2-i. create a sequence that holds all three sets
 # 5-2-ii. loop through that sequence to build the sets up .
 lsthree = [{}, {}, {}]
@@ -113,6 +112,6 @@ def divSetGen(n, divRange):
      from 0 to 'divRange', divisible by the list index + 2 """
     return [{i for i in range(divRange+1) if i % (x+2) == 0} for x in range(n)]
 
-lsfive = divSetGen(5, 20)
-print u"\n\n My add-on: Function returns list with sets s2, s3, s4, and s5:"
-displayListSet(lsfive)
+lsfour = divSetGen(4, 20)
+print u"\n\nMy add-on: Function returns list with sets s2, s3, s4, and s5:"
+displayListSet(lsfour)
