@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-#mailroom.py
+# mailroom2.py - If you want an actual file of each letter un-comment
+# the two lines in the mail function (around lines 46-47)
 
 #Mail Merge:  a program for tracking and resonding to donors and donations
 
@@ -43,7 +44,8 @@ def start():
 
 # Mail is now an automatic part of accepting a donation.
 def mail(donor_name):
-    #open file w, then print to file...
+    #outfile = open(donor_name+'.txt', 'w')
+    #outfile.write(message.format(name=recipient(donor_name), last_donation=last_donation(donor_name)))
     print message.format(name=recipient(donor_name), last_donation=last_donation(donor_name))
 
 def recipient(donor_name):
