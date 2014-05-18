@@ -25,13 +25,16 @@ for a, b, c in x:
 for a, b, c in x:
 	d[a, b].append(c)
 
-a, b = ['this', 'is']
+a, b = ['this'], ['is']
 
-new_text = []
+new_text = [['this'], ['is']]
 
-for i in range(len(new_text)):
-	b, a = b, d[a, b]
-	new_text.append(a)
+while True:
+
+	for i in range(len(new_text)):
+		a, b = b, d[tuple(a + b)]
+		new_text.append(b)
+
 
 
 
