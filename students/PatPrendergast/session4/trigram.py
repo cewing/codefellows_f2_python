@@ -28,6 +28,9 @@ def create_trigrams(word_list):
             trigrams[key].append(word_list[i+2])
     return trigrams
 
+def rewrite_text(text):
+    pass
+
 if __name__ == '__main__':
     word_list = process_text_to_list('short_holmes.txt')
     trigrams = create_trigrams(word_list) # call the process file function

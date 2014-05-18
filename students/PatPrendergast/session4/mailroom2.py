@@ -5,23 +5,18 @@
 
 #Mail Merge:  a program for tracking and resonding to donors and donations
 
-"""
-INTERPRETER WON'T TAKE DICT SYNTAX... FIX IT HOW?
-menu_dict = {('l', 'list'): name_list(),
-             ('d', 'donation'): receive_donation() 
-             ('r', 'report'): report(donors), 
-             ('q', 'quit'): exit(0)}
+
 
 def start():
     ''' Show menu of actions, receive user instructions on how to proceed '''
     print top_menu
-    action = raw_input('What would you like to do: ')
+    action = raw_input(u'What would you like to do: ')
+    print action
+    print menu_dict.keys()
     action.lower()
-    for k, v in menu_dict.items():
-        if action in k:
-            return v
-"""
+    menu_dict[action]()
 
+"""
 def start():
     ''' Show menu of actions, recieve user instructions on how to proceed '''
     print top_menu
@@ -41,7 +36,7 @@ def start():
     else:
         print u'Did not recognize that response.'
         start()
-
+"""
 # Mail is now an automatic part of accepting a donation.
 def mail(donor_name):
     #outfile = open(donor_name+'.txt', 'w')
@@ -122,7 +117,7 @@ def name_list():
     for key in sorted(donors.keys()):
         print key
 
-def report(donor_list):
+def report():
     ''' Print report: Donor name and Total Amount Given '''
     print ''
     table_top = u'Name\t\t\t\tTotal Donation Amount\n'
@@ -130,6 +125,12 @@ def report(donor_list):
     for key, value in sorted(donors.iteritems(), key=lambda (k,v): (v,k)):
         print u"%s\t\t\t$%s" % (key, str(sum(value)))
     # sorted([(value,key) for (key,value) in mydict.items()])
+
+menu_dict = {u'l': name_list, # either just one or both on their own.
+             (u'd', u'donation'): receive_donation, 
+             (u'r', u'report'): report, 
+             (u'q', u'quit'): exit}
+
 
 # Lists of donor data
 donors = {  u'Peter Parker': [10, 20, 30], 
