@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-
+import sys
 import codecs
 import string
 
@@ -64,7 +64,8 @@ def formatAlteredText(wordlist):
 
 
 if __name__ == '__main__':
-    f = codecs.open("sherlock.txt")
+    filename = sys.argv[1]
+    f = codecs.open(filename)
     text = f.read()
     f.close()
     d = createTrigramDict(text)
