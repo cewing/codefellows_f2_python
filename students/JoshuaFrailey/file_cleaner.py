@@ -3,23 +3,46 @@ import codecs
 
 
 def _overwrite(file_name):
-    f = codecs.open(file_name, "r+w")
-    l = f.readlines()
-    print l
-    w = map(_clean, l)
-    f.seek(0)
-    print w
-    f.writelines(w)
-    f.flush()
+    f = codecs.open(file_name)
+    lines = f.readlines()
+    clean_lines = map(_clean, lines)
+    f = codecs.open(file_name, "w")
+    f.writelines(clean_lines)
+    f.close()
+
+
+def _overwrite_list_comp(file_name):
+    f = codecs.open(file_name)
+    lines = f.readlines()
+    clean_lines = [u"{}\n".format(u" ".join(line.split())) for line in lines]
+    f = codecs.open(file_name, "w")
+    f.writelines(clean_lines)
+    f.close()
 
 
 def _rewrite(file_name):
-    pass
+    f = codecs.open(file_name)
+    lines = f.readlines()
+    clean_lines = [u"{}\n".format(u" ".join(line.split())) for line in lines]
+    f.close()
+    f = codecs.open(u"clean_{}".format(file_name), "w")
+    f.writelines(clean_lines)
+    f.close()
+
+
+def _rewrite_list_comp(file_name):
+    f = codecs.open(file_name)
+    lines = f.readlines()
+    clean_lines = map(_clean, lines)
+    f.close()
+    f = codecs.open(u"clean_{}".format(file_name), "w")
+    f.writelines(clean_lines)
+    f.close()
 
 
 def _clean(line):
     l = " ".join(line.split())
-    return u"{}".format(l)
+    return u"{}\n".format(l)
 
 if __name__ == "__main__":
     try:
@@ -34,8 +57,10 @@ if __name__ == "__main__":
     d.update(zip([u"3", u"e", u"exit"], [None]*3))
     while True:
         try:
-            d[unicode(raw_input(u"--> ")).lower()]()
+            d[unicode(raw_input(u"--> ")).lower()](file_name)
         except TypeError:
             break
         except KeyError:
             print u"Please choose from 1, 2, 3"
+        else:
+            break
