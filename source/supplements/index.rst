@@ -7,6 +7,5 @@ Supplemental Materials
     virtualenv
     sublime_as_ide
     shell
-    kata_fourteen
     unicode
     

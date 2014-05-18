@@ -1,14 +1,12 @@
-========================
-Coding Kata 14: trigrams
-=========================
+Kata Fourteen: Tom Swift Under Milk Wood
+========================================= 
 
 Adapted from Dave Thomas's work:
 
 http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
 
 
-Kata Fourteen: Tom Swift Under Milk Wood
-=========================================	
+
 
 Trigrams can be used to mutate text into new, surreal, forms. But what
 heuristics do we apply to get a reasonable result?
@@ -97,7 +95,7 @@ can be surprising.
 For this kata, try implementing a trigram algorithm that generates a couple
 of hundred words of text using a book-sized file as input.
 `Project Gutenberg <http://www.gutenberg.org/>`_ is a good source of online
-books (Tom Swift and His Airship is `here <http://sailor.gutenberg.org/etext02/03tom10.txt>`_.
+books (Tom Swift and His Airship is `here <http://sailor.gutenberg.org/etext02/03tom10.txt>`_.)
 
 Be warned that these files have DOS line endings (carriage return followed by
 newline).
@@ -112,7 +110,7 @@ And a shorter copy for testing:
 
 
 Objectives
-===========
+-----------
 
 Kata’s are about trying something many times. In this one, what
 we’re experimenting with is not just the code, but the heuristics of
