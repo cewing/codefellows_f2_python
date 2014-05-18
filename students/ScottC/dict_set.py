@@ -110,7 +110,7 @@ def item_4():
 
 
 def item_5():
-    """Create a sets and a frozenset and performs actions with them"""
+    """Create a set and a frozenset and performs actions with them"""
 
     print u"*** Item 5 ***"
     print u""
