@@ -3,7 +3,7 @@
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
 ******************************************************************************************
-Session Six: Object oriented programming. Classes, instances, and methods, and subclassing
+Session Six: Object oriented programming: Classes, instances, attributes, and subclassing
 ******************************************************************************************
 
 
@@ -15,7 +15,9 @@ Review of Previous Class
 ------------------------
 
 * Argument Passing: ``*args``, ``**kwargs``
+
 * comprehensions
+
 * ``lambda``
 
 
@@ -27,6 +29,7 @@ Homework review
   My Solution to the trigram:
   
   (``dict.setdefault()``  trick...)
+
   
 ===========================
 Object Oriented Programming
@@ -41,9 +44,12 @@ One reason for this:
 
 Folks can't even agree on what OO "really" means
 
-See: The Quarks of Object-Oriented Development - Deborah J. Armstrong:
+See: The Quarks of Object-Oriented Development
+
+  - Deborah J. Armstrong
 
 http://agp.hx0.ru/oop/quarks.pdf
+
 
 .. nextslide::
 

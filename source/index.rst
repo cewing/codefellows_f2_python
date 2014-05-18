@@ -12,6 +12,7 @@ In This Course
     session06
     session07
     session08
+    homework/index
     supplements/index
 
 These materials copyright Cris Ewing and Christopher Barker, with thanks to
