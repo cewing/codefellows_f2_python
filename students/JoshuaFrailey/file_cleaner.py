@@ -50,11 +50,15 @@ if __name__ == "__main__":
     except IndexError:
         file_name = unicode(raw_input(u"Enter file name\n--> "))
     menu = [u"Remove whitespace by\n1: Overwriting the file\n"]
-    menu.append(u"2: Writing a new file\n3: Exit")
+    menu.append(u"2: Writing a new file\n3: Overwriting the file with ")
+    menu.append(u"list comprehension\n4: Writing a new file with list ")
+    menu.append(u"comprehension\n5: Exit")
     print "".join(menu)
     d = dict(zip([u"1", u"overwrite", u"o"], [_overwrite]*3))
     d.update(zip([u"2", u"write", u"w", u"n", u"new"], [_rewrite]*5))
-    d.update(zip([u"3", u"e", u"exit"], [None]*3))
+    d.update(zip([u"5", u"e", u"exit"], [None]*3))
+    d[u"3"] = _overwrite_list_comp
+    d[u"4"] = _rewrite_list_comp
     while True:
         try:
             d[unicode(raw_input(u"--> ")).lower()](file_name)
