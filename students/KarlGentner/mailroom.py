@@ -1,15 +1,12 @@
 #!/usr/bin/python
 
 
-import copy
-
-
 # Original donor list with names and past donations
-donors = [[u'Amy Akin', [200.32, 450.12, 565.24]],
-          [u'Bob Bueller', [3234.44, 76348.03]],
-          [u'Carol Carlson', [101.78, 201.92, 303.89]],
-          [u'Dave Davis', [100.45, 20.45]],
-          [u'Eve Eastman', [1200.00]]]
+donorDict = {u'Amy Akin': [200.32, 450.12, 565.24],
+             u'Bob Bueller': [3234.44, 76348.03],
+             u'Carol Carlson': [101.78, 201.92, 303.89],
+             u'Dave Davis': [100.45, 20.45],
+             u'Eve Eastman': [1200.00]}
 
 
 # safe input exception handler
@@ -34,129 +31,104 @@ def isFloat(str):
 
 
 # Print the list of donors' names
-def printDonors():
-    print ("\n")
-    print ("Donors:\n")
-    for i in range(len(donors)):
-        print donors[i][0]
-    print ("\n")
-
-
-# Return index of person in donor's list. Returns -1 if not in list.
-def findDonor(person):
-    index = -1
-    for i in range(len(donors)):
-        if person.lower() == donors[i][0].lower():
-            index = i
-    return index
+def printDonors(d):
+    print (u"\n")
+    print (u"Donors:\n")
+    for key in d.iterkeys():
+        print(u"{key}").format(key=key)
+    print (u"\n")
 
 
 # Print thank You letter for person at index in donor's list.
-def printThankYou(donorIndex, amount):
+def printThankYou(person, amount):
     amount = str(int(amount*100))
     amount = (u"{dollars}.{cents}").format(dollars=amount[:len(amount)-2],
                                            cents=amount[len(amount)-2:])
-    print ("\n")
+    print (u"\n")
     print (u"Dear {name},\n\n" +
            "Thank you for your recent donation of ${donation}.\n" +
            "The world is truly a better place because of people like you.\n\n" +
            "Sincerely,\n" +
-           "The Charity Foundation\n").format(name=donors[donorIndex][0], donation=amount)
+           "The Charity Foundation\n").format(name=person, donation=amount)
 
 
 # Add Donation interaction. Returns 'm' if user wants to return to main menu.
-def addDonation(donorIndex):
+def addDonation(person):
     while True:
-        amount = safe_input("Enter the new donation amount\n" +
-                            "'m' to return to main menu\n" +
-                            "-->")
-        if isFloat(amount) is False or amount.startswith('-'):
-            print ("\n\nThat input is not understood. Please try again.\n")
+        amount = safe_input(u"Enter the new donation amount\n" +
+                            u"'m' to return to main menu\n" +
+                            u"-->")
         # Back to main menu
-        elif amount.lower() == 'm':
-            return 'm'
+        if amount.lower() == u'm':
+            return u'm'
+        elif isFloat(amount) is False or amount.startswith('-'):
+            print (u"\n\nThat input is not understood. Please try again.\n")
         else:
             # Add donation to person's history
             amount = round(float(amount), 2)
-            donors[donorIndex][1].append(amount)
+            donorDict[person].append(amount)
             # Generate 'Thank You Letter'
-            printThankYou(donorIndex, amount)
-            return 'm'
+            printThankYou(person, amount)
+            return u'm'
 
 
 # Send Thank You interaction. Returns 'm' if user wants to return to main menu
 def sendThankYou():
     while True:
-        person = safe_input("Enter the full name of an existing donor (OR) new donor\n" +
-                            "'list' to see the list of existing donors\n" +
-                            "'m' to return to main menu\n" +
-                            "-->")
+        person = safe_input(u"Enter the full name of an existing donor (OR) new donor\n" +
+                            u"'list' to see the list of existing donors\n" +
+                            u"'m' to return to main menu\n" +
+                            u"-->")
         if isFloat(person) is True:
-            print ("\n\nThat input is not understood. Please try again.\n")
-        elif person.lower() == "list":
-            printDonors()
+            print (u"\n\nThat input is not understood. Please try again.\n")
+        elif person.lower() == u"list":
+            printDonors(donorDict)
             continue
         # If 'm' then return to main menu
-        elif person.lower() == 'm':
-            return 'm'
+        elif person.lower() == u'm':
+            return u'm'
         else:
             # if name does not already exist in donor list, add it
-            if findDonor(person) < 0:
-                donors.append([person, []])
+            donorDict.setdefault(person, [])
             # Add a donation
-            if addDonation(findDonor(person)) == 'm':
-                return 'm'
+            if addDonation(person) == u'm':
+                return u'm'
 
 
 # Create & print report
 def createReport():
-    report = copy.deepcopy(donors)
-    # add data to new columns of report: total, avg, num
-    for i in range(len(report)):
-        donations = report[i][1]
-        total = 0.00
-        for j in range(len(donations)):
-            total += round(donations[j], 2)
+    reportDict = {}
+    # add new data to report: total, avg, num
+    for key in donorDict.iterkeys():
+        donations = donorDict[key]
+        total = sum(donations)
         num = len(donations)
         if num == 0:
             average = 0.00
         else:
             average = round(total / num, 2)
-        report[i].insert(1, average)
-        report[i].insert(1, str(num))
-        report[i].insert(1, total)
-    # sort by total donation amount
-    report = sorted(report, key=lambda donor: donor[1])
-    # add dollar signs to total & avg
-    for i in range(len(report)):
-        # ******** This works, but it's admittedly very clunky ********
-        report[i][1] = str(int(report[i][1] * 100))
-        report[i][1] = "$" + report[i][1][:len(report[i][1])-2] + "." + report[i][1][len(report[i][1])-2:]
-        report[i][3] = str(int(report[i][3] * 100))
-        report[i][3] = "$" + report[i][3][:len(report[i][3])-2] + "." + report[i][3][len(report[i][3])-2:]
-    # print report in table
-    print "NAME".rjust(25), "TOTAL DONATIONS".rjust(26),
-    print "NUM OF DONATIONS".rjust(27), "AVG DONATION".rjust(28),
-    print "\n"
-    for i in range(len(report)):
-        print report[i][0].rjust(25), report[i][1].rjust(26),
-        print report[i][2].rjust(27), report[i][3].rjust(28),
-        print "\n"
+        reportDict[key] = [total, num, average]
+
+    # create a list from reportDict, sorted by total donation amount
+    report = sorted(reportDict.items(), key=lambda donor: donor[0])
+    # print report
+    for (name, data) in report:
+        print (u'{name}\t\t$ {total:<1}\t\t{num}\t$ {avg}').format(name=name, total=data[0], num=data[1], avg=data[2])
 
 
 # Main Interaction
 if __name__ == '__main__':
     while True:
-        mainMenu = safe_input("'s' to send a thank you\n" +
-                              "'c' to create a report (requires full-width window)\n" +
-                              "'q' to quit\n-->")
-        if mainMenu.lower() == 'q':
+        mainMenu = safe_input(u"'s' to send a thank you\n" +
+                              u"'c' to create a report (requires full-width window)\n" +
+                              u"'q' to quit\n-->")
+        if mainMenu.lower() == u'q':
             break
-        elif mainMenu.lower() == 's':
+        elif mainMenu.lower() == u's':
             # returns m if user wants to return to main menu
-            if sendThankYou() == 'm':
+            if sendThankYou() == u'm':
                 continue
-        elif mainMenu.lower() == 'c':
+        elif mainMenu.lower() == u'c':
             createReport()
         else:
-            print ("\n\nThat input is not understood. Please try again.\n")
+            print (u"\n\nThat input is not understood. Please try again.\n")
