@@ -77,7 +77,7 @@ def addDonation(donorIndex):
         # Add donation to person's history
         amount = round(float(amount), 2)
         donors[donorIndex][1].append(amount)
-        print ("----------------Thank You Letter-------------\n")
+        print ("\n")
         # Generate 'Thank You Letter'
         printThankYou(donorIndex, amount)
         return 'm'
@@ -104,7 +104,6 @@ def sendThankYou():
     if donorIndex < 0:
         donors.append([person, []])
     # Add a donation
-    print ("----------------Add a Donation---------------\n")
     if addDonation(donorIndex) == 'm':
         return 'm'
 
@@ -147,24 +146,17 @@ def createReport():
 
 # Main Interaction
 if __name__ == '__main__':
-    # Accept user input: Main Menu
-    mainMenu = ""
-    while mainMenu != 's' and mainMenu != 'c' and mainMenu != 'q':
-        print ("-----------------Main Menu-------------------\n")
+    while True:
         mainMenu = safe_input("'s' to send a thank you\n" +
                               "'c' to create a report (requires full-width window)\n" +
                               "'q' to quit\n-->")
-        # Quit main menu
         if mainMenu == 'q':
             break
-        # Send a Thank You
-        while mainMenu == 's':
-            print ("---------------Send A Thank You--------------\n")
+        elif mainMenu == 's':
+            # returns m if user wants to return to main menu
             if sendThankYou() == 'm':
-                mainMenu = ""
-                break
-        # Create a Report
-        if mainMenu == 'c':
-            print ("------------------Report---------------------\n")
+                continue
+        elif mainMenu == 'c':
             createReport()
-            mainMenu = ""
+        else:
+            print ("\n\nThat input is not understood. Please try again.\n")
