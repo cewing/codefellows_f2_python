@@ -30,6 +30,10 @@ trigram_text = [words[1], words[2]]
 i = 0
 while True:
     choices = list(trigrams[(trigram_text[i], trigram_text[i + 1])])
+    #End if by chance the last pair of generated words were not in a trigram
+    if len(choices) == 0:
+        break
+
     next_word = random.choice(choices)
     trigram_text.append(next_word)
     i += 1
