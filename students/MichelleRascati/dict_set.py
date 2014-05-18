@@ -7,20 +7,24 @@ print '1) {} is from {}, and he likes {} cake, {} fruit, {} salad, and {} pasta.
     food_prefs['name'], food_prefs['city'], food_prefs['cake'], food_prefs['fruit'],
     food_prefs['salad'], food_prefs['pasta'])
 
-break
+
 ### 2 ###
 # Create list of 0-15
 z_15 = range(16)
 # Create list of 0-15 in hexidecimal
-hex_z_15 = []
-for num in z_15:
-    hex_z_15.append(hex(num))
+hex_z_15 = [hex(num) for num in z_15 ]
 # Zip two lists to make a dictionary
 d_hex = dict(zip(z_15, hex_z_15))
 
-print '0-15 and hex values:', d_hex
+print '2) 0-15 and hex values:', d_hex
 
 ### 3 ###
+# Create dict of hex values with dict comprehension
+hex_dict = {i: hex(i) for i in range (16)}
+
+print '3) 0-15 and hex values:', hex_dict
+
+
 # Make a dictionary with keys in d number of 'a's as vals
 d_a = {}
 for k in d.keys():
