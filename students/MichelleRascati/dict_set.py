@@ -24,13 +24,11 @@ hex_dict = {i: hex(i) for i in range (16)}
 
 print '3) 0-15 and hex values:', hex_dict
 
-
+### 4 ###
 # Make a dictionary with keys in d number of 'a's as vals
-d_a = {}
-for k in d.keys():
-    d_a[k] = d[k].count('a')
+food_prefs_a = {k:food_prefs[k].count('a') for k in food_prefs.keys()}
 
-print "Number of a's in original dict", d_a
+print "4) Number of a's in original dict", food_prefs_a
 
 ### 4 ###
 # Create a set of containing 0-20 divisible by 2, 3, and 4 respectively
