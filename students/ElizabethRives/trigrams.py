@@ -43,7 +43,9 @@ for i in range(int(length) + 1):
 	a, b = b, random.choice(d[tuple([a] + [b])])
 	new_text.append(b)
 
-print u'{}'.format(" ".join(new_text))
+with open('new_book.txt', 'w') as new_book:
+	new_book.write(u'{}'.format(" ".join(new_text)))
+
 
 
 
