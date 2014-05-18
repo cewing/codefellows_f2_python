@@ -69,7 +69,7 @@ def addDonation(donorIndex):
     while isFloat(amount) is False and amount != 'm' or amount.startswith('-') is True:
         amount = raw_input("Enter the new donation amount\n" +
                            "'m' to return to main menu\n" +
-                           "-->").decode()
+                           "-->")
     # Back to main menu
     if amount.lower() == 'm':
         return 'm'
@@ -91,7 +91,7 @@ def sendThankYou():
         person = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
                            "'list' to see the list of existing donors\n" +
                            "'m' to return to main menu\n" +
-                           "-->").decode()
+                           "-->")
         # List the donors
         if person.lower() == "list":
             printDonors()
@@ -164,9 +164,7 @@ if __name__ == '__main__':
                 mainMenu = ""
                 break
         # Create a Report
-        while mainMenu == 'c':
+        if mainMenu == 'c':
             print ("------------------Report---------------------\n")
             createReport()
-            # Back to main menu
             mainMenu = ""
-            break
