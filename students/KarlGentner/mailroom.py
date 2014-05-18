@@ -17,7 +17,7 @@ def safe_input(message):
     while True:
         try:
             x = raw_input(message)
-            return x.lower()
+            return x
         except EOFError:
             return None
         except KeyboardInterrupt:
@@ -85,27 +85,27 @@ def addDonation(donorIndex):
 
 # Send Thank You interaction. Returns 'm' if user wants to return to main menu
 def sendThankYou():
-    # Accept user input: existing donor or new donor
-    person = ""
-    while person == "" or isFloat(person) is True:
-        person = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
-                           "'list' to see the list of existing donors\n" +
-                           "'m' to return to main menu\n" +
-                           "-->")
-        # List the donors
-        if person.lower() == "list":
+    while True:
+        person = safe_input("Enter the full name of an existing donor (OR) new donor\n" +
+                            "'list' to see the list of existing donors\n" +
+                            "'m' to return to main menu\n" +
+                            "-->")
+        if isFloat(person) is True:
+            print ("\n\nThat input is not understood. Please try again.\n")
+        elif person.lower() == "list":
             printDonors()
-            person = ""
-    # Back to main menu
-    if person.lower() == 'm':
-        return 'm'
-    # if name does not already exist in donor list, add it
-    donorIndex = findDonor(person)
-    if donorIndex < 0:
-        donors.append([person, []])
-    # Add a donation
-    if addDonation(donorIndex) == 'm':
-        return 'm'
+            continue
+        # If 'm' then return to main menu
+        elif person.lower() == 'm':
+            return 'm'
+        else:
+            # if name does not already exist in donor list, add it
+            # donorIndex = findDonor(person)
+            if findDonor(person) < 0:
+                donors.append([person, []])
+            # Add a donation
+            if addDonation(findDonor(person)) == 'm':
+                return 'm'
 
 
 # Create & print report
@@ -150,13 +150,13 @@ if __name__ == '__main__':
         mainMenu = safe_input("'s' to send a thank you\n" +
                               "'c' to create a report (requires full-width window)\n" +
                               "'q' to quit\n-->")
-        if mainMenu == 'q':
+        if mainMenu.lower() == 'q':
             break
-        elif mainMenu == 's':
+        elif mainMenu.lower() == 's':
             # returns m if user wants to return to main menu
             if sendThankYou() == 'm':
                 continue
-        elif mainMenu == 'c':
+        elif mainMenu.lower() == 'c':
             createReport()
         else:
             print ("\n\nThat input is not understood. Please try again.\n")
