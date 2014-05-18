@@ -56,6 +56,7 @@ def printThankYou(donorIndex, amount):
     amount = str(int(amount*100))
     amount = (u"{dollars}.{cents}").format(dollars=amount[:len(amount)-2],
                                            cents=amount[len(amount)-2:])
+    print ("\n")
     print (u"Dear {name},\n\n" +
            "Thank you for your recent donation of ${donation}.\n" +
            "The world is truly a better place because of people like you.\n\n" +
@@ -65,22 +66,22 @@ def printThankYou(donorIndex, amount):
 
 # Add Donation interaction. Returns 'm' if user wants to return to main menu.
 def addDonation(donorIndex):
-    amount = ""
-    while isFloat(amount) is False and amount != 'm' or amount.startswith('-') is True:
-        amount = raw_input("Enter the new donation amount\n" +
-                           "'m' to return to main menu\n" +
-                           "-->")
-    # Back to main menu
-    if amount.lower() == 'm':
-        return 'm'
-    else:
-        # Add donation to person's history
-        amount = round(float(amount), 2)
-        donors[donorIndex][1].append(amount)
-        print ("\n")
-        # Generate 'Thank You Letter'
-        printThankYou(donorIndex, amount)
-        return 'm'
+    while True:
+        amount = safe_input("Enter the new donation amount\n" +
+                            "'m' to return to main menu\n" +
+                            "-->")
+        if isFloat(amount) is False or amount.startswith('-'):
+            print ("\n\nThat input is not understood. Please try again.\n")
+        # Back to main menu
+        elif amount.lower() == 'm':
+            return 'm'
+        else:
+            # Add donation to person's history
+            amount = round(float(amount), 2)
+            donors[donorIndex][1].append(amount)
+            # Generate 'Thank You Letter'
+            printThankYou(donorIndex, amount)
+            return 'm'
 
 
 # Send Thank You interaction. Returns 'm' if user wants to return to main menu
@@ -100,7 +101,6 @@ def sendThankYou():
             return 'm'
         else:
             # if name does not already exist in donor list, add it
-            # donorIndex = findDonor(person)
             if findDonor(person) < 0:
                 donors.append([person, []])
             # Add a donation
