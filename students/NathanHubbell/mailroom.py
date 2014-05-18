@@ -3,14 +3,6 @@
 donorsANDdollars={u"James Bond":[544,221,444],u"Jackson Pollock":[332,112,3321],u"Keanu Reaves":[444,546,6643,45],u"The Pope":[32,5543,3],u"France":[2345,123,6543,42]}
 
 
-#def donors(donorsANDdollars):
-#    """Generate list of donors from main data structure."""
-#    donorsList = []
-#    for i in range(len(donorsANDdollars)):
-#        donorsList.append(donorsANDdollars[i][0])
-#    return donorsList
-
-
 def selectDonor():
     while True:
         theInput=safe_input(u"Enter a new name or one on the list to send a thank you. Type 'list' to see the list. Name: ")
