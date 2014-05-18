@@ -25,7 +25,7 @@ for i in range(len(words) - 3):
     follows.add(words[i + 2])
 
 #Use the trigrams generated above to build a new list of words.
-#The first 2 words match the input text, for readability.
+#The first 2 words match the input text, for improved readability.
 trigram_text = [words[1], words[2]]
 i = 0
 while True:
