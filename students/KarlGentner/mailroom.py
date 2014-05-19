@@ -121,7 +121,7 @@ def main():
     menu = {u's': sendThankYou, u'c': createReport, u'q': exit}
     while True:
         choice = safe_input(u"'s' to send a thank you\n" +
-                            u"'c' to create a report (requires full-width window)\n" +
+                            u"'c' to create a report\n" +
                             u"'q' to quit\n-->")
         try:
             menu[choice]()
