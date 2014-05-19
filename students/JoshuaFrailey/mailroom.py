@@ -157,16 +157,18 @@ def _create_report():
     u"""Print donation statistics for each donor."""
     donor_stats = []
     for i, donor in enumerate(donor_dict):
-        donor_stats.append([donor[0]])
-        donor_stats[i].append(round(sum(donor[1:]), 2))
-        donor_stats[i].append(len(donor[1:]))
-        donor_stats[i].append(round(sum(donor[1:])/len(donor[1:]), 2))
+        donor_stats.append([donor])
+        donor_stats[i].append(round(sum(donor_dict[donor]), 2))
+        donor_stats[i].append(len(donor_dict[donor]))
+        donor_stats[i].append(
+            round(sum(donor_dict[donor])/len(donor_dict[donor]), 2)
+            )
     donor_stats.sort(key=_second_element, reverse=True)
     print "\n"
-    title = u"{:20}".format(u"Name")
-    title += u"{:11}".format(u"Total")
-    title += u"{:13}{:12}".format(u"Donations", u"Average")
-    print title
+    title = [u"{:20}".format(u"Name")]
+    title.append(u"{:11}".format(u"Total"))
+    title.append(u"{:13}{:12}".format(u"Donations", u"Average"))
+    print u" ".join(title)
     for i, donor in enumerate(donor_stats):
         name, total, num, avg = donor[0], donor[1], donor[2], donor[3]
         line = u"{:20}${:<11,}".format(name, total)
@@ -191,6 +193,7 @@ def _print_main_menu():
 
 
 def _safe_input(prompt):
+    u"""Return user input that does not cause KeyboardInterrupt or EOFError."""
     try:
         input_ = raw_input(prompt)
     except (KeyboardInterrupt, EOFError):
@@ -200,6 +203,7 @@ def _safe_input(prompt):
 
 
 def _safe_reprompt(prompt):
+    u"""Return user input with reprmopt if input is not proper."""
     input_ = _safe_input(prompt)
     while not input_ or input_.isspace():
         print u"\n'I'm sorry, Dave. I'm afraid I can't do that.'"
