@@ -21,15 +21,13 @@ action = raw_input('1. Overwrite existing file\n2. Create a new file')
 
 if action == '1':
 	y = map(clean, lines)
-	z = "".join(i for i in y)
 	open_file = open(filename, 'w')
-	open_file.write(str(z))
+	open_file.write(str('{}').format("".join(let for line in y for let in line)))
 elif action == '2':
 	y = map(clean, lines)
-	z = "".join(i for i in y)
 	new_filename = raw_input('Enter the name of the file to save it to')
 	new_file = open(new_filename, 'w')
-	new_file.write(str(z))
+	new_file.write(str('{}').format("".join(let for line in y for let in line)))
 
 # Using a list comprehension 
 
@@ -42,5 +40,4 @@ elif action == '2':
 	new_filename = raw_input('Enter the name of the file to save it to')
 	new_file = open(new_filename, 'w')
 	new_file.write(str(clean_lines))
-
 
