@@ -52,8 +52,8 @@ print "\n\n\n\n"
 s_ = set('python')
 s_.update('i')
 fs = frozenset('marathon')
-print s3.union(fs)
-print s3.intersection(fs)
+print s_.union(fs)
+print s_.intersection(fs)
 
 
 
