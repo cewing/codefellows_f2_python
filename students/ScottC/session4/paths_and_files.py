@@ -22,7 +22,7 @@ def file_copy():
 
     source_file = raw_input("Enter the name of an existing source file and press Enter: ")
     
-    while source_file != None:
+    while source_file is not None:
         try:
             f = open(source_file)
         except IOError:
