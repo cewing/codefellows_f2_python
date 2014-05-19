@@ -13,15 +13,15 @@ with open(filename) as open_file:
 content = text[text.find(u'the golden bird') : text.find(u'end of project gutenbergs grimms fairy tales')]
 words = content.split()
 
-d = {}
+lookup = {}
 
 x = [(words[i-2], words[i-1], words[i]) for i in range(len(words) - 1)]
 
 for a, b, c in x:
-	d[a, b] = []
+	lookup[a, b] = []
 	
 for a, b, c in x:
-	d[a, b].append(c)
+	lookup[a, b].append(c)
 
 
 def menu():
@@ -47,17 +47,17 @@ def word_pair(length):
 def generate_text(length, first_word, second_word):
 	u"""Create new next based on trigram analysis."""
 
-	while (first_word, second_word) in d:
+	import random
+
+	while (first_word, second_word) in lookup:
 
 		a, b = first_word.lower(), second_word.lower()
 
 		new_text = [first_word, second_word.lower()]
 
-		import random
-
 		for i in range(int(length) + 1):
 			try:
-				a, b = b, random.choice(d[a, b])
+				a, b = b, random.choice(lookup[a, b])
 				new_text.append(b)
 			except KeyError:
 				pass
@@ -77,6 +77,8 @@ def generate_text(length, first_word, second_word):
 
 	else:
 		print u'That word pair does not exist in the book, please try again.'
+		suggestion = random.choice(lookup.keys())
+		print u'If you need a word pair, try these: {two_words}'.format(two_words = suggestion)
 		return word_pair(length)
 
 
