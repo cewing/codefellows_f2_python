@@ -23,6 +23,7 @@ In This Course
 .. ifnotslides::
 
     Lectures:
+    ---------
     
     .. toctree::
         :maxdepth: 1
@@ -37,6 +38,7 @@ In This Course
         session08
 
     Materials:
+    ----------
 
     .. toctree::
         :maxdepth: 2
