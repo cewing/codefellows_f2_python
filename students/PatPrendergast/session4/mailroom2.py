@@ -6,40 +6,17 @@
 #Mail Merge:  a program for tracking and resonding to donors and donations
 
 
-
 def start():
     ''' Show menu of actions, receive user instructions on how to proceed '''
     print top_menu
     action = raw_input(u'What would you like to do: ')
-    print action
-    print menu_dict.keys()
     action.lower()
     menu_dict[action]()
+    start()
 
-"""
-def start():
-    ''' Show menu of actions, recieve user instructions on how to proceed '''
-    print top_menu
-    action = raw_input('What would you like to do: ')
-    action.lower()
-    if action == u'l' or action == u'list':
-        name_list()
-        start()
-    elif action == u'd' or action == u'donation':
-        receive_donation()
-        start()
-    elif action == u'r' or action == u'report':
-        report(donors)
-        start()
-    elif action == u'q' or action == u'quit':
-        exit(0)
-    else:
-        print u'Did not recognize that response.'
-        start()
-"""
 # Mail is now an automatic part of accepting a donation.
 def mail(donor_name):
-    #outfile = open(donor_name+'.txt', 'w')
+    #outfile = open(donor_name + '.txt', 'w')
     #outfile.write(message.format(name=recipient(donor_name), last_donation=last_donation(donor_name)))
     print message.format(name=recipient(donor_name), last_donation=last_donation(donor_name))
 
@@ -81,22 +58,20 @@ def safe_input_name(question):
     except KeyboardInterrupt:
         print 'Quitting?'
         safe_input_name(request)
-    else:
-        user_input = raw_input('Please repeat that: ')
-    return user_input
+    
 
 def safe_input_num():
     """Return the correct raw input"""
     try:
         request = raw_input(u'Amount given: ')
         if int(request) > 0:
-            return request
+            return int(request)
     except (EOFError, KeyboardInterrupt):
         return None
-    else:
-        user_input = raw_input('Please repeat that: ')
-    return user_input
-
+    except ValueError:
+        print "Please type a number."
+        return safe_input_num()
+    
 # Main Menu functions
 def receive_donation():
     ''' Add a donation to donor list using helper functions for 
@@ -123,13 +98,14 @@ def report():
     table_top = u'Name\t\t\t\tTotal Donation Amount\n'
     print table_top
     for key, value in sorted(donors.iteritems(), key=lambda (k,v): (v,k)):
+        print value
         print u"%s\t\t\t$%s" % (key, str(sum(value)))
     # sorted([(value,key) for (key,value) in mydict.items()])
 
 menu_dict = {u'l': name_list, # either just one or both on their own.
-             (u'd', u'donation'): receive_donation, 
-             (u'r', u'report'): report, 
-             (u'q', u'quit'): exit}
+             u'd': receive_donation, 
+             u'r': report, 
+             u'q': exit}
 
 
 # Lists of donor data

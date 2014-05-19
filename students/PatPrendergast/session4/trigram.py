@@ -28,11 +28,16 @@ def create_trigrams(word_list):
             trigrams[key].append(word_list[i+2])
     return trigrams
 
-def rewrite_text(text):
-    pass
+def rewrite_text():
+    rewritten = ''
+    for key, value in trigrams.items():
+        value = value[random.randint(0,len(value)-1)]
+        rewritten += ' ' + value
+    return rewritten
 
 if __name__ == '__main__':
-    word_list = process_text_to_list('short_holmes.txt')
-    trigrams = create_trigrams(word_list) # call the process file function
-    print trigrams
+    word_list = process_text_to_list('holmes.txt')
+    trigrams = create_trigrams(word_list)
+    rewritten = rewrite_text()
+    print rewritten
     
