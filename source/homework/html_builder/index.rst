@@ -6,52 +6,29 @@ Html Renderer
 Goal:
 ------
 
-The goal is to creata a set of classes to render html pages -- in a "pretty printed" way i.e nicely indented and human readable. We'll try to get to all the features required to render:
+The goal is to creata a set of classes to render html pages -- in a "pretty printed" way. i.e nicely indented and human readable. We'll try to get to all the features required to render:
       
 :download:`sample_html.html  <./sample_html.html>`
-
-:download:`sherlock.txt  <./sherlock.txt>`.
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python. 
 
 General Instructions:
 ---------------------
 
-For each step, add the required functionality. There is example code to run your code for each step in: ``code\session06\html_calling_code.py``
+For each step, add the required functionality. There is example code to run your code for each step in: ``code\session06\run_html_render.py``
 
-You should be able to run that code at each step, uncomments each step as you go.
+name your file: ``html_render.py`` -- so it can be imported by ``run_html_render.py``
 
-then call the ``render()`` method to render your page. You may want to use sys.stdout to render to the terminal
+You should be able to run that code at each step, uncommenting each new step in ``run_html_render.py`` as you go.
 
-.. code-block:: python 
+It builds up a html tree, and then calls the ``render()`` method of your element to render th page.
 
-  import sys
-  ....
-  page.render(sys.stdout)
+It uses a ``cStringIO`` object (like a file, but in memory) to render otmemoery, then dumps it to the console, and writes a file. Take alook at the code at the end to make sure you undersand it.
 
-or you can use a regular file
+The html generated at each step is in the files: test_html_ouput?.html
 
-.. code-block:: python 
+At each step, your results should look similar that those (maybe not identical...)
 
-  outfile = open('test.html', 'w')
-  ...
-  page.render(outfile)
-
-or use a cStringIO object (like a file, but in memory)
-
-.. code-block:: python 
-
-    import cStringIO
-    
-    ...
-    
-    f = cStringIO.StringIO()
-
-    page.render(f)
-
-    # now print it to the screen:
-    f.reset()
-    print f.read()
 
 Step 1:
 -------
@@ -68,23 +45,20 @@ The constructor signature should look like
 
 where ``content`` is a string
 
-It should have an ``append`` method that can add another string to the content
+It should have an ``append`` method that can add another string to the content.
   
-It should have a ``render(file_out, ind = "")`` method that renders the tag
-and the strings in the content.
+It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
 
-``file_out`` could be any file-like object (i.e have a ``write()`` method ).
+``file_out`` could be any file-like object (i.e. have a ``write()`` method ).
      
-``ind`` is a string with the indentation level in it -- i.e the amount that the tag should be indented for pretty printing (maybe 4 spaces per level).
+``ind`` is a string with the indentation level in it -- the amount that the tag should be indented for pretty printing.
+ - This is a little tricky: ind will be the amount that this element should be indented already. It will be from zero (and empty string) to a lot of spaces, depending on how deep it is in the tree.
 
 The amount of indentation should be set by the class attribute: ``indent``
-     
-You can test with ``sys.stdout`` to print to the console, and/or use a
-``cStringIO.sStringIO`` object to store it in a string - or pass a file object in.
-     
+          
 You should now be able to render an html tag with text in it as contents.
 
-See: step 1. in html_calling_code.py.
+See: step 1. in ``run_html_render.py``
      
 Step 2:
 --------
@@ -93,15 +67,15 @@ Create a couple subclasses of ``Element``, for a ``<body>`` tag and ``<p>`` tag.
 
 Now you can render a few different types of element.
    
-Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains.
+Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so the the nested elements get indented correctly.
 
-Figure out a way to deal with the fact the the contents elements could be either simple strings or Elements with render methods...(there are a few ways to handle that...)
+Figure out a way to deal with the fact the the contained elements could be either simple strings or Elements with render methods...(there are a few ways to handle that...)
 
 You should now be able to render a basic web page with an html tag around
 the whole thing, a ``<body>`` tag inside, and multiple ``<p>`` tags inside that,
-with text inside that.
+with text inside that. And all indended nicely.
 
-See ``step2.html``
+See ``test_html_output2.html``
 
 Step 3:
 --------
@@ -110,7 +84,7 @@ Create a ``<head>`` element -- simple subclass.
 
 Create a ``OneLineTag`` subclass of ``Element``:
 
-It should override the render method, to render everything on one line -- for the simple tags, like::
+* It should override the render method, to render everything on one line -- for the simple tags, like::
     
     <title> PythonClass - Session 6 example </title>
     
@@ -119,13 +93,13 @@ Create a ``Title`` subclass of ``OneLineTag`` class for the title.
 You should now be able to render an html doc with a head element, with a
 title element in that, and a body element with some <P> elements and some text.
 
-See ``step3.html``
+See ``test_html_output3.html``
   
 Step 4:
 --------
 
 Extend the ``Element`` class to accept a set of attributes as keywords to the
-constructor, ie.     (html_calling_code.py)
+constructor, ie. (run_html_render.py)
 
 .. code-block:: python
   
@@ -137,7 +111,7 @@ The render method will need to be extended to render the attributes properly.
 
 You can now render some ``<p>`` tags (and others) with attributes  
 
-See ``step4.html``
+See ``test_html_output4.html``
     
 Step 5:
 --------
@@ -151,7 +125,7 @@ attributes, if any.
    
 Create a couple subclasses of ``SelfClosingTag`` for and <hr /> and <br />
 
-See ``step5.html``
+See ``test_html_output5.html``
    
 Step 6: 
 -------
@@ -167,7 +141,9 @@ where link is the link, and content is what you see. It can be called like so::
 You should be able to subclass from ``Element``, and only override the ``__init__`` --- Calling the ``Element`` ``__init__`` from the  ``A __init__``
        
 You can now add a link to your web page.
-    
+
+See ``test_html_output6.html``
+
 Step 7:
 --------
 
@@ -187,6 +163,8 @@ header level. i.e <h1>, <h2>, <h3>, called like::
 for an <h2> header
    
 It can subclass from ``OneLineTag`` -- overriding the ``__init__``, then calling the superclass ``__init__``
+
+See ``test_html_output7.html``
    
 Step 8:
 --------
@@ -202,7 +180,7 @@ The doctype and encoding are HTML 5 and you can check this at: http://validator.
 You now have a pretty full-featured html renderer -- play with it, add some
 new tags, etc....
 
-
+See ``test_html_output8.html``
 
 
    
