@@ -8,7 +8,7 @@ readfile = codecs.open('HOLMES.txt','r')
 
 #Generate Dictionary
 lineCount=0
-number_of_lines=50
+number_of_lines=13000
 for aline in readfile:
     lineCount=lineCount+1
     if lineCount == number_of_lines:
@@ -24,6 +24,23 @@ for aline in readfile:
             trigramfirst[twoWords].append(followingWord)
 
 
+finalResult=""
+
+thisCount=0
 
 
 
+def makeOutput(start,thisCount):
+    nextword = trigramfirst[start]
+
+    start = start.split()
+    nextKey = "%s %s"%(start[1],nextword[0])
+    print start[1]
+    #finalResult = finalResult+nextKey
+    thisCount=thisCount+1
+    if thisCount < 12:
+        makeOutput(nextKey,thisCount)
+
+
+
+makeOutput("cleared up",1)
