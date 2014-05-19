@@ -50,9 +50,17 @@ def printDonations(person):
         print(u"$ {donation}\t Thank You Sent: {thankCheck}").format(donation=str(donation), thankCheck=str(thankCheck))
 
 
-# Print thank You letter given a person and donation amount.
-# If fullSet = True, then the donation amount is a sum of all donations.
-# and the word "combined" is added to the letter
+# For loop for printing all un-written thank you letters.
+def printAllBroker():
+    for key in donorDict.iterkeys():
+        fileNum = 0
+        for (donation, thankCheck) in donorDict[key]:
+            fileNum += 1
+            if thankCheck is False:
+                printThankYou(key, donation, fileNum)
+
+
+# Print thank You letter given a person, donation amount, and file number for tracking
 def printThankYou(person, amount, fileNum):
     thankYouLetter = [u"\n",
                       (u"Dear {name},\n").format(name=person),
@@ -73,13 +81,14 @@ def printThankYou(person, amount, fileNum):
 # Add Donation interaction. Returns 'm' if user wants to return to main menu.
 def addDonation(person):
     while True:
+        print ("\n----------------Add a Donation---------------\n")
         print(u"\nEnter a new or existing donation amount for {name}\n" +
               u"(OR)\n" +
               u"'list' to see {name}'s list of existing donations\n" +
-              u"'p' to return to previous menu\n").format(name=person)
+              u"'m' to return to previous menu\n").format(name=person)
         amount = safe_input(u"-->")
-        if amount.lower() == u'p':
-            return u'p'
+        if amount.lower() == u'm':
+            return u'm'
         elif amount.lower() == u'list':
             printDonations(person)
             continue
@@ -88,36 +97,43 @@ def addDonation(person):
         else:
             amount = round(float(amount), 2)
             # If new donation, add  to person's history
+            # If not new, determine list placement
             while True:
-                selection = safe_input(u"Is this a new donation?(y/n)-->")
-                if selection.lower() == u'y':
-                    tempList = [amount, False]
-                    donorDict[person].append(tempList)
+                choice = safe_input(u"Is this a new donation?(y/n)-->")
+                if choice.lower() == u'y':
+                    #tempList = [amount, False]
+                    donorDict[person].append([amount, False])
                     fileNum = len(donorDict[person])
                     break
-                elif selection.lower() == u'n':
+                elif choice.lower() == u'n':
                     fileNum = 0
                     for (donation, thankCheck) in donorDict[person]:
                         fileNum += 1
                         if amount == donation:
                             break
+                        else:
+                            print (u"\n\nThis donation does NOT already exist.\n")
+                            print (u"Adding amount as new donation.")
+                            donorDict[person].append([amount, False])
+                            fileNum = len(donorDict[person])
+                            break
                     break
                 else:
                     print (u"\n\nThat input is not understood. Please try again.\n")
-            # Generate single 'Thank You Letter' for current donation amount
-            printThankYou(person, amount, fileNum)
-            continue
+        # Generate single 'Thank You Letter' for current donation amount
+        printThankYou(person, amount, fileNum)
 
 
 # Send Thank You interaction. Returns 'm' if user wants to return to main menu
 def sendThankYou():
+    print ("\n---------------Send A Thank You--------------\n")
     while True:
         print(u"\nTo create a thank you letter for a new donation,\n" +
               u"enter the full name of an existing donor or new donor\n" +
               u"(OR)\n" +
               u"'list' to see the list of existing donors\n" +
               u"'a' to create thank you letters for all existing donors\n" +
-              u"'p' to return to previous menu\n")
+              u"'m' to return to previous menu\n")
         person = safe_input(u"-->")
         if isFloat(person) is True:
             print (u"\n\nThat input is not understood. Please try again.\n")
@@ -125,27 +141,23 @@ def sendThankYou():
             printDonors(donorDict)
             continue
         # If 'm' then return to main menu
-        elif person.lower() == u'p':
-            return u'p'
+        elif person.lower() == u'm':
+            return u'm'
             # if 'all', print a letter for each donor's donation
         elif person.lower() == u'a':
-            for key in donorDict.iterkeys():
-                fileNum = 0
-                for (donation, thankCheck) in donorDict[key]:
-                    fileNum +=1
-                    if thankCheck is False:
-                        printThankYou(key, donation, fileNum)
+            printAllBroker()
             continue
         else:
             # if name does not already exist in donor list, add it
             donorDict.setdefault(person, [])
             # Add a donation
-            if addDonation(person) == u'p':
+            if addDonation(person) == u'm':
                 continue
 
 
 # Create & print report
 def createReport():
+    print ("\n------------------Report---------------------\n")
     reportDict = {}
     # add new data to report: total, avg, num
     for key in donorDict.iterkeys():
@@ -160,15 +172,16 @@ def createReport():
         reportDict[key] = [total, num, average]
 
     # create a list from reportDict, sorted by total donation amount
-    report = sorted(reportDict.items(), key=lambda donor: donor[0])
+    report = sorted(reportDict.items(), key=lambda donor: donor[1])
     # print report
     for (name, data) in report:
-        print (u'{name}\t\t$ {total:<1}\t\t{num}\t$ {avg}').format(name=name, total=data[0], num=data[1], avg=data[2])
+        print (u'{name}\t$ {total:^1}\t{num:^20}\t$ {avg}').format(name=name, total=data[0], num=data[1], avg=data[2])
 
 
 # Main Menu
 def main():
     menu = {u's': sendThankYou, u'c': createReport, u'q': exit}
+    print ("\n-----------------Main Menu-------------------\n")
     while True:
         print(u"\n's' to send a thank you\n" +
               u"'c' to create a report\n" +
