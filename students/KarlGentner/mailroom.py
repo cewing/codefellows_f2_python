@@ -4,7 +4,7 @@
 import codecs
 
 
-# Original donor list with names and past donations
+# Original donor dict with names and past donations
 donorDict = {u'Amy Akin': [[200.32, False], [450.12, False], [565.24, False]],
              u'Bob Bueller': [[3234.44, False], [76348.03, False]],
              u'Carol Carlson': [[101.78, False], [201.92, False], [303.89, False]],
@@ -33,7 +33,7 @@ def isFloat(str):
         return False
 
 
-# Print the list of donors' names
+# Print donors' names
 def printDonors(d):
     print (u"\n")
     print (u"Donors:\n")
@@ -42,7 +42,7 @@ def printDonors(d):
     print (u"\n")
 
 
-# Print the list of donors' donations
+# Print donors' donations
 def printDonations(person):
     print (u"\n")
     print (u"{name}'s donations:\n").format(name=person)
@@ -60,7 +60,7 @@ def printAllBroker():
                 printThankYou(key, donation, fileNum)
 
 
-# Print thank You letter given a person, donation amount, and file number for tracking
+# Print thank you letter given a person, donation amount, and file number for naming
 def printThankYou(person, amount, fileNum):
     thankYouLetter = [u"\n",
                       (u"Dear {name},\n").format(name=person),
@@ -78,7 +78,7 @@ def printThankYou(person, amount, fileNum):
     donorDict[person][fileNum-1][1] = True
 
 
-# Add Donation interaction. Returns 'm' if user wants to return to main menu.
+# Add Donation interaction. Returns 'm' if user wants to return to previous menu.
 def addDonation(person):
     while True:
         print ("\n----------------Add a Donation---------------\n")
@@ -96,12 +96,12 @@ def addDonation(person):
             print (u"\n\nThat input is not understood. Please try again.\n")
         else:
             amount = round(float(amount), 2)
+            print amount
             # If new donation, add  to person's history
             # If not new, determine list placement
             while True:
                 choice = safe_input(u"Is this a new donation?(y/n)-->")
                 if choice.lower() == u'y':
-                    #tempList = [amount, False]
                     donorDict[person].append([amount, False])
                     fileNum = len(donorDict[person])
                     break
@@ -111,9 +111,9 @@ def addDonation(person):
                         fileNum += 1
                         if amount == donation:
                             break
-                        else:
-                            print (u"\n\nThis donation does NOT already exist.\n")
-                            print (u"Adding amount as new donation.")
+                        elif fileNum == len(donorDict[person]):
+                            print (u"\n\n** This donation does NOT already exist - " +
+                                   u"Adding amount as new donation.**")
                             donorDict[person].append([amount, False])
                             fileNum = len(donorDict[person])
                             break
@@ -128,8 +128,8 @@ def addDonation(person):
 def sendThankYou():
     print ("\n---------------Send A Thank You--------------\n")
     while True:
-        print(u"\nTo create a thank you letter for a new donation,\n" +
-              u"enter the full name of an existing donor or new donor\n" +
+        print(u"\nEnter the full name of an existing donor or new donor\n" +
+              u"to create a thank you letter for a new donation.\n" +
               u"(OR)\n" +
               u"'list' to see the list of existing donors\n" +
               u"'a' to create thank you letters for all existing donors\n" +
