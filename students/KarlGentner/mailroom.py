@@ -149,9 +149,10 @@ def createReport():
     reportDict = {}
     # add new data to report: total, avg, num
     for key in donorDict.iterkeys():
-        donations = donorDict[key]
-        total = sum(donations)
-        num = len(donations)
+        total = 0.00
+        for (donation, thankCheck) in donorDict[key]:
+            total += donation
+        num = len(donorDict[key])
         if num == 0:
             average = 0.00
         else:
