@@ -1,46 +1,41 @@
 #!/usr/bin/env python
-import codecs, os, sys, string
+import codecs, os, sys, string, random
 table = string.maketrans("","")
-trigramfirst = {"two words":["aword","anotherword","aword"]}
-trigramDictTwoWords = {"two words":{"followingword":1,"anotherFollowingWord":5}}
-readfile = codecs.open('HOLMES.txt','r')
+trigramfirst = {}
+readfile = codecs.open('kipling.txt','r')
+
+def makeOutput(firstWord,secondWord):
+    try:
+        nextword = trigramfirst["%s %s"%(firstWord,secondWord)]
+        randomword= random.choice(nextword)
+        return randomword
+    except KeyError:
+        print "This is the end."
+    except RuntimeError:
+        print "an endless loop an endless loop an..."
 
 
-#Generate Dictionary
-lineCount=0
-number_of_lines=13000
-for aline in readfile:
-    lineCount=lineCount+1
-    if lineCount == number_of_lines:
-        break
-    cleanLine = aline.translate(table,string.punctuation).lower().strip()
-    wordlist = cleanLine.split(" ")
-    for i in range(2,len(wordlist)):
-        twoWords="%s %s"%(wordlist[i-2],wordlist[i-1])
-        followingWord=wordlist[i]
-        if twoWords not in trigramfirst:
-            trigramfirst[twoWords] = [followingWord]
-        else:
-            trigramfirst[twoWords].append(followingWord)
+def readChunk():
+    return readfile.read(10000)
 
 
-finalResult=""
-
-thisCount=0
-
-
-
-def makeOutput(start,thisCount):
-    nextword = trigramfirst[start]
-
-    start = start.split()
-    nextKey = "%s %s"%(start[1],nextword[0])
-    print start[1]
-    #finalResult = finalResult+nextKey
-    thisCount=thisCount+1
-    if thisCount < 12:
-        makeOutput(nextKey,thisCount)
+def fillDictionary(trigramfirst):
+    for piece in iter(readChunk, ''):
+        wordlist = piece.translate(table,string.punctuation).lower().strip().split()
+        for i in range(2,len(wordlist)):
+            twoWords="%s %s"%(wordlist[i-2],wordlist[i-1])
+            followingWord=wordlist[i]
+            if twoWords not in trigramfirst:
+                trigramfirst[twoWords] = [followingWord]
+            else:
+                trigramfirst[twoWords].append(followingWord)
 
 
-
-makeOutput("cleared up",1)
+###MAIN BODY###
+fillDictionary(trigramfirst)
+firstWord,secondWord=u"too",u"much"
+result = firstWord
+for i in range(50):
+    result="%s %s"%(result,secondWord)
+    firstWord,secondWord = secondWord,makeOutput(firstWord,secondWord)
+print result
