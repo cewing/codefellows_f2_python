@@ -554,7 +554,7 @@ When to Subclass
 
 "Has a" relationship: Composition
 
-.. nextlide::
+.. nextslide::
 
 "Is a" vs "Has a"
 
