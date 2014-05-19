@@ -71,11 +71,6 @@ def send_thank_you_note(donor_dict):
         main_prompt(donor_dict)
         return
     else:
-        # Create a new list just of donor names
-        # donor_dict_names = []
-        # for k in donor_dict.keys():
-        #     donor_dict_names.append(a[0])
-
         # If donor not already in dict, set a flag
         # Do not add the donor yet, since the user may elect to quit before also adding a donation
         is_new_donor = False;
@@ -95,7 +90,6 @@ def send_thank_you_note(donor_dict):
             main_prompt(donor_dict)
             return
         else:
-
             #Check to see if input is a number, reprompt if not
             while unicode(input_donation).isnumeric() != True:
                 print u"Sorry, donation amount must be a number."
@@ -115,8 +109,17 @@ def send_thank_you_note(donor_dict):
             else:
                 donor_dict[input_string].append(int(input_donation))
 
-            # Print thank you email to the console
-            print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
+            # Print thank you emails to the console
+            print u""
+            print u"Printing thank you emails for all donors..."
+            #print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
+            #print u"{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} salad, and {pasta} pasta.".format(**d1)
+            for k, v in donor_dict.items():
+                # This does not work for some reason...
+                #print u"Dear {k}, thank you for your generous donation.".format(donor_dict.keys())
+                
+                # ...so I used this instead
+                print u"Dear %s, thank you for your generous donation total of $%s." % (k, sum(v))
 
     # Send user back to main prompt
     main_prompt(donor_dict)
