@@ -3,7 +3,7 @@ def safe_input(safe_string):
     try:
         out = raw_input(safe_string)
     except (EOFError, KeyboardInterrupt):
-        return None
+        return ''
     else:
         return out
 
