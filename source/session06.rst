@@ -30,6 +30,9 @@ Homework review
   
   (``dict.setdefault()``  trick...)
 
+  passing ``**kwargs`` to string.format()
+
+  If it seems harder than it should be -- it is!
   
 ===========================
 Object Oriented Programming
