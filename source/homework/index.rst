@@ -5,5 +5,5 @@ Homework Materials
     :maxdepth: 1
 
     kata_fourteen
-    html_builder/index
+    html_builder
 

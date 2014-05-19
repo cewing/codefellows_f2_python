@@ -21,11 +21,11 @@ name your file: ``html_render.py`` -- so it can be imported by ``run_html_render
 
 You should be able to run that code at each step, uncommenting each new step in ``run_html_render.py`` as you go.
 
-It builds up a html tree, and then calls the ``render()`` method of your element to render th page.
+It builds up a html tree, and then calls the ``render()`` method of your element to render the page.
 
 It uses a ``cStringIO`` object (like a file, but in memory) to render otmemoery, then dumps it to the console, and writes a file. Take alook at the code at the end to make sure you undersand it.
 
-The html generated at each step is in the files: test_html_ouput?.html
+The html generated at each step is in the files: ``test_html_ouput?.html``
 
 At each step, your results should look similar that those (maybe not identical...)
 
@@ -49,10 +49,11 @@ It should have an ``append`` method that can add another string to the content.
   
 It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
 
-``file_out`` could be any file-like object (i.e. have a ``write()`` method ).
+``file_out`` could be any file-like object ( i.e. have a ``write()`` method ).
      
-``ind`` is a string with the indentation level in it -- the amount that the tag should be indented for pretty printing.
- - This is a little tricky: ind will be the amount that this element should be indented already. It will be from zero (and empty string) to a lot of spaces, depending on how deep it is in the tree.
+``ind`` is a string with the indentation level in it: the amount that the tag should be indented for pretty printing.
+
+ - This is a little tricky: ``ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree.
 
 The amount of indentation should be set by the class attribute: ``indent``
           
@@ -67,9 +68,9 @@ Create a couple subclasses of ``Element``, for a ``<body>`` tag and ``<p>`` tag.
 
 Now you can render a few different types of element.
    
-Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so the the nested elements get indented correctly.
+Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly.
 
-Figure out a way to deal with the fact the the contained elements could be either simple strings or Elements with render methods...(there are a few ways to handle that...)
+Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...).
 
 You should now be able to render a basic web page with an html tag around
 the whole thing, a ``<body>`` tag inside, and multiple ``<p>`` tags inside that,
@@ -91,7 +92,7 @@ Create a ``OneLineTag`` subclass of ``Element``:
 Create a ``Title`` subclass of ``OneLineTag`` class for the title.
   
 You should now be able to render an html doc with a head element, with a
-title element in that, and a body element with some <P> elements and some text.
+title element in that, and a body element with some ``<P>`` elements and some text.
 
 See ``test_html_output3.html``
   
@@ -99,7 +100,7 @@ Step 4:
 --------
 
 Extend the ``Element`` class to accept a set of attributes as keywords to the
-constructor, ie. (run_html_render.py)
+constructor, ie. (``run_html_render.py``)
 
 .. code-block:: python
   

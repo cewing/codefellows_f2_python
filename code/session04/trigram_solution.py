@@ -60,6 +60,7 @@ for i in range(len(words) - 2):
     pair = tuple( words[i:i+2] ) # a tuple so it can be a key in the dict
     follower = words[i+2]
     word_pairs.setdefault(pair,[]).append(follower)
+
     # setdefault() returns the value if pair is already in the dict
     #    if it's not, it adds it, setting the value to a an empty list 
     #    then it returns the list, which we then append the following
@@ -70,7 +71,7 @@ for i in range(len(words) - 2):
     #     word_pairs[pair] = [follower]
 
 
-# A little reporting
+# A little reporting for testing
 #for pair, followers in word_pairs.items():
 #    if len(followers) > 1:
 #        print pair, followers
