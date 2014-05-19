@@ -62,20 +62,23 @@ def printAllBroker():
 
 # Print thank you letter given a person, donation amount, and file number for naming
 def printThankYou(person, amount, fileNum):
-    thankYouLetter = [u"\n",
-                      (u"Dear {name},\n").format(name=person),
-                      u"\n",
-                      (u"Thank you for your donation of ${donation}.\n").format(donation=str(amount)),
-                      u"The world is truly a better place because of people like you.\n",
-                      u"\n",
-                      u"Sincerely,\n",
-                      u"The Charity Foundation\n"]
-    filename = (u"{name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
-    f = codecs.open(filename, 'w')
-    f.writelines(thankYouLetter)
-    f.close()
-    print(u"\nThank you letter saved as {name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
-    donorDict[person][fileNum-1][1] = True
+    if donorDict[person][fileNum-1][1] is True:
+        print(u"\n**** This thank you letter has already been created. ****")
+    else:
+        thankYouLetter = [u"\n",
+                          (u"Dear {name},\n").format(name=person),
+                          u"\n",
+                          (u"Thank you for your donation of ${donation}.\n").format(donation=str(amount)),
+                          u"The world is truly a better place because of people like you.\n",
+                          u"\n",
+                          u"Sincerely,\n",
+                          u"The Charity Foundation\n"]
+        filename = (u"{name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
+        f = codecs.open(filename, 'w')
+        f.writelines(thankYouLetter)
+        f.close()
+        print(u"\nThank you letter saved as {name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
+        donorDict[person][fileNum-1][1] = True
 
 
 # Add Donation interaction. Returns 'm' if user wants to return to previous menu.
