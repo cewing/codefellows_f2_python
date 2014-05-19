@@ -19,32 +19,72 @@ x = [(words[i-2], words[i-1], words[i]) for i in range(len(words) - 1)]
 
 for a, b, c in x:
 	d[a, b] = []
-
+	
 for a, b, c in x:
 	d[a, b].append(c)
 
-action = raw_input(u'Please choose from the following options:\n1. Create an entirely new book\n2. Specify the number of words to generate\n')
 
-if action == '1':
-	length = len(words)
-elif action == '2':
-	length = raw_input(u'How many words would you like to generate?\n')
+def menu():
+	u"""Prompt the user to choose between creating an entire new book or limit the characters to a specified length."""
 
-first_word = raw_input(u'Please enter the first word you would like to begin the text\n')
-second_word = raw_input(u'Please enter a second word to follow the first\n')
+	action = raw_input(u'Please choose from the following options:\n1. Create an entirely new book\n2. Specify the number of words to generate\n')
 
-a, b = first_word.lower(), second_word.lower()
+	if action == '1':
+		length = len(words)
+	elif action == '2':
+		length = raw_input(u'How many words would you like to generate?\n')
+	word_pair(length)
 
-new_text = [first_word, second_word.lower()]
 
-import random
+def word_pair(length):
+	u"""Ask the user to enter two words to begin the new book."""
 
-for i in range(int(length) + 1):
-	a, b = b, random.choice(d[tuple([a] + [b])])
-	new_text.append(b)
+	first_word = raw_input(u'Please enter the first word you would like to begin the text\n')
+	second_word = raw_input(u'Please enter a second word to follow the first\n')
+	generate_text(length, first_word, second_word)
 
-with open('new_book.txt', 'w') as new_book:
-	new_book.write(u'{}'.format(" ".join(new_text)))
+
+def generate_text(length, first_word, second_word):
+	u"""Create new next based on trigram analysis."""
+
+	while (first_word, second_word) in d:
+
+		a, b = first_word.lower(), second_word.lower()
+
+		new_text = [first_word, second_word.lower()]
+
+		import random
+
+		for i in range(int(length) + 1):
+			try:
+				a, b = b, random.choice(d[a, b])
+				new_text.append(b)
+			except KeyError:
+				pass
+
+		print u'{text}'.format(text = " ".join(new_text))
+
+		save = raw_input(u'Would you like to save this as a new book?\n1. Yes\n2. No\n')
+
+		if save == '1':
+			book_title = raw_input(u'What title would you like for your book?\n')
+			with open('new_book.txt', 'w') as new_book:
+				new_book.write(u'{title}\n\n{text}'.format(title = book_title.upper(), text = " ".join(new_text)))
+			break
+		elif save == '2':
+			print u'Thanks and goodbye'
+			break
+
+	else:
+		print u'That word pair does not exist in the book, please try again.'
+		return word_pair(length)
+
+
+menu()
+
+
+
+
 
 
 
