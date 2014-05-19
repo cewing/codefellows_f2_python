@@ -5,11 +5,11 @@ import codecs
 
 
 # Original donor list with names and past donations
-donorDict = {u'Amy Akin': [200.32, 450.12, 565.24],
-             u'Bob Bueller': [3234.44, 76348.03],
-             u'Carol Carlson': [101.78, 201.92, 303.89],
-             u'Dave Davis': [100.45, 20.45],
-             u'Eve Eastman': [1200.00]}
+donorDict = {u'Amy Akin': [[200.32, False], [450.12, False], [565.24, False]],
+             u'Bob Bueller': [[3234.44, False], [76348.03, False]],
+             u'Carol Carlson': [[101.78, False], [201.92, False], [303.89, False]],
+             u'Dave Davis': [[100.45, False], [20.45, False]],
+             u'Eve Eastman': [[1200.00, False]]}
 
 
 # safe input exception handler
@@ -46,37 +46,34 @@ def printDonors(d):
 def printDonations(person):
     print (u"\n")
     print (u"{name}'s donations:\n").format(name=person)
-    for donation in donorDict[person]:
-        print(u"$ " + str(donation))
+    for (donation, thankCheck) in donorDict[person]:
+        print(u"$ {donation}\t Thank You Sent: {thankCheck}").format(donation=str(donation), thankCheck=str(thankCheck))
 
 
 # Print thank You letter given a person and donation amount.
 # If fullSet = True, then the donation amount is a sum of all donations.
 # and the word "combined" is added to the letter
-def printThankYou(person, amount, fullSet=False):
-    if fullSet:
-        combined = u'combined '
-    else:
-        combined = u''
+def printThankYou(person, amount, fileNum):
     thankYouLetter = [u"\n",
                       (u"Dear {name},\n").format(name=person),
                       u"\n",
-                      (u"Thank you for your {combined}donation of ${donation}.\n").format(combined=combined, donation=amount),
+                      (u"Thank you for your donation of ${donation}.\n").format(donation=str(amount)),
                       u"The world is truly a better place because of people like you.\n",
                       u"\n",
                       u"Sincerely,\n",
                       u"The Charity Foundation\n"]
-    filename = (u"{name}.txt").format(name=person)
+    filename = (u"{name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
     f = codecs.open(filename, 'w')
     f.writelines(thankYouLetter)
     f.close()
-    print(u"\nThank you letter saved as {name}.txt").format(name=person)
+    print(u"\nThank you letter saved as {name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
+    donorDict[person][fileNum-1][1] = True
 
 
 # Add Donation interaction. Returns 'm' if user wants to return to main menu.
 def addDonation(person):
     while True:
-        print(u"\nEnter a donation amount for {name}\n" +
+        print(u"\nEnter a new or existing donation amount for {name}\n" +
               u"(OR)\n" +
               u"'list' to see {name}'s list of existing donations\n" +
               u"'p' to return to previous menu\n").format(name=person)
@@ -89,18 +86,26 @@ def addDonation(person):
         elif isFloat(amount) is False or amount.startswith('-'):
             print (u"\n\nThat input is not understood. Please try again.\n")
         else:
+            amount = round(float(amount), 2)
             # If new donation, add  to person's history
             while True:
                 selection = safe_input(u"Is this a new donation?(y/n)-->")
                 if selection.lower() == u'y':
-                    donorDict[person].append(round(float(amount), 2))
+                    tempList = [amount, False]
+                    donorDict[person].append(tempList)
+                    fileNum = len(donorDict[person])
                     break
                 elif selection.lower() == u'n':
+                    fileNum = 0
+                    for (donation, thankCheck) in donorDict[person]:
+                        fileNum += 1
+                        if amount == donation:
+                            break
                     break
                 else:
                     print (u"\n\nThat input is not understood. Please try again.\n")
             # Generate single 'Thank You Letter' for current donation amount
-            printThankYou(person, amount)
+            printThankYou(person, amount, fileNum)
             continue
 
 
@@ -112,7 +117,7 @@ def sendThankYou():
               u"(OR)\n" +
               u"'list' to see the list of existing donors\n" +
               u"'a' to create thank you letters for all existing donors\n" +
-              u"'m' to return to main menu\n")
+              u"'p' to return to previous menu\n")
         person = safe_input(u"-->")
         if isFloat(person) is True:
             print (u"\n\nThat input is not understood. Please try again.\n")
@@ -120,13 +125,16 @@ def sendThankYou():
             printDonors(donorDict)
             continue
         # If 'm' then return to main menu
-        elif person.lower() == u'm':
-            return u'm'
-            # if 'all', print a letter for each donor's total donation
+        elif person.lower() == u'p':
+            return u'p'
+            # if 'all', print a letter for each donor's donation
         elif person.lower() == u'a':
             for key in donorDict.iterkeys():
-                total = sum(donorDict[key])
-                printThankYou(key, total, True)
+                fileNum = 0
+                for (donation, thankCheck) in donorDict[key]:
+                    fileNum +=1
+                    if thankCheck is False:
+                        printThankYou(key, donation, fileNum)
             continue
         else:
             # if name does not already exist in donor list, add it
