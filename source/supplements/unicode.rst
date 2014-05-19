@@ -1,10 +1,13 @@
-********
-Unicode
-********
 
-========
+.. _unicode_suppliment:
+
+*******
 Unicode
-========
+*******
+
+==================
+Unicode in Python
+==================
 
 Background
 -----------
@@ -15,7 +18,7 @@ A good starting point for Unicode:
 The Absolute Minimum Every Software Developer Absolutely,
 Positively Must Know About Unicode and Character Sets (No Excuses!)
 
-http://www.joelonsoftware.com/articles/Unicode.html}
+http://www.joelonsoftware.com/articles/Unicode.html
 
 Go read it!
 
@@ -140,10 +143,12 @@ Unicode LAB
 * Find some nifty non-ascii characters you might use.
 
   - Create a unicode object with them in two different ways.
+  - :download:`here  <./hello_unicode.py>` is one example
 
-* In the "code" dir for this week, there are two files:
-  - ``text.utf16``  
-  - ``text.utf32``  
+* Here are two files:
+
+  - :download:`text.utf16  <./text.utf16>`.
+  - :download:`text.utf32  <./text.utf32>`.
   - read the contents into unicode objects
 
 * write some of the text from the first exercise to file.
@@ -153,6 +158,5 @@ Unicode LAB
 
 (reference: http://inamidst.com/stuff/unidata/)
 
-NOTE: if your terminal does not support unicode -- you'll get an error trying
-to print. Try a different terminal or IDE, or google for a solution
+NOTE: if your terminal does not support unicode -- you'll get an error trying to print. Try a different terminal or IDE, or google for a solution
 

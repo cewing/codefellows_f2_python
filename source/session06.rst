@@ -34,6 +34,27 @@ Homework review
 
   If it seems harder than it should be -- it is!
   
+Unicode Notes
+-------------
+
+Side notes on unicode:
+
+To put unicode in your source file, put:
+
+.. code-block:: python  
+
+  #!/usr/bin/env python
+  # -*- coding: utf-8 -*-
+
+at the top of your file. 
+
+and be sure to save it as utf-8! (file->save with encoding in Sublime)
+
+Additional notes on using Unicode in Python see:
+
+ :ref:`unicode_suppliment`
+
+
 ===========================
 Object Oriented Programming
 ===========================
@@ -75,9 +96,9 @@ OO can help with all that, but:
 .. nextslide::
 
 
-Python is a Dynamic Language}
+Python is a Dynamic Language
 
-That clashes with "pure" OO}
+That clashes with "pure" OO
 
 Think in terms of what makes sense for your project
  -- not any one paradigm of software design.
@@ -99,7 +120,7 @@ http://en.wikipedia.org/wiki/Object-oriented_programming}
 Even simpler:
 
 
-Objects are data and the functions that act on them in one place.
+"Objects are data and the functions that act on them in one place."
 
 This is the core of "encapsulation"
 
@@ -159,13 +180,14 @@ object
   The general case of a instance -- really any value (in Python anyway)
 
 attribute
-  Something that belongs to an object (or class)
-    - generally thought of as a variable, or single object, as opposed to a ...
+  Something that belongs to an object (or class): generally thought of as a variable, or single object, as opposed to a
 
 method
   A function that belongs to a class
 
-(Note that in python, functions are first class objects, to a method *is* an attribute)
+.. nextslide::
+
+Note that in python, functions are first class objects, so a method *is* an attribute
 
 
 ==============
@@ -284,12 +306,12 @@ Does this look familiar from C-style procedural programming?
             self.x = x
             self.y = y
 
+.. nextslide::
 
 Anything assigned to a ``self.``  attribute is kept in the instance
 name space -- ``self`` *is* the instance.
 
 That's where all the instance-specific data is.
-
 
 .. code-block:: python  
 
@@ -300,6 +322,7 @@ That's where all the instance-specific data is.
             self.x = x
             self.y = y
 
+.. nextslide::
 
 Anything assigned in the class scope is a class attribute -- every
 instance of the class shares the same one.
@@ -308,7 +331,6 @@ Note: the methods defined by ``def`` are class attributes as well.
 
 The class is one namespace, the instance is another.
 
-.. nextslide::
 
 .. code-block:: python  
 
@@ -360,36 +382,29 @@ Gotcha!
 
     TypeError: grow() takes at most 2 arguments (3 given)
 
-Huh???? I only gave 2}
+Huh???? I only gave 2
 
 ``self`` is implicitly passed in for you by python.
+
+(demo of bound vs. unbound methods)
 
 LAB / homework
 ---------------
 
 Let's say you need to render some html..
 
-The goal is to build a set of classes that render an html page:
+The goal is to build a set of classes that render an html page.
 
 ``code/session06/sample_html.html`` 
 
 We'll start with a single class, then add some sub-classes to specialize the behavior
 
-More details in ``code/session06/LAB_instuctions.rst`` 
+Details in:
 
-.. nextslide::
+ :ref:`homework_html_renderer`
 
-Step 1:
 
-* Create an "Element" class for rendering an html element (xml element).
-* It should have class attributes for the tag name  and the
-  indentation
-* the constructor signature should look like:
-    ``Element(content=None)``  where content is a string
-* It should have an "append" method that can add another string to the content
-* It should have a ``render(file_out, ind = "")``  method that renders the tag and the strings in the content.
-     ``file_out``  could be any file-like object.
-     ``ind``  is a string with enough spaces to indent properly.
+Let's see if we can do step 1. in class...
 
 
 =======================
@@ -457,19 +472,14 @@ Same thing, but with methods (remember, a method *is* an attribute in python)
 .. code-block:: python 
 
     class Circle(object):
-
     ...
-
         def grow(self, factor=2):
             """grows the circle's diameter by factor"""
             self.diameter = self.diameter * factor
-
     ...
 
     class NewCircle(Circle):
-
     ...
-
         def grow(self, factor=2):
             """grows the area by factor..."""
             self.diameter = self.diameter * math.sqrt(2)
@@ -489,30 +499,8 @@ rule, your code will collapse like (sorry) a house of cards.
 
 [ThinkPython 18.10]
 
-LAB / Homework
----------------
 
-Step 2:
-
-*  Create a couple subclasses of ``Element`` , for a ``<body>``  tag and ``<p>``  tag. Simply override the ``tag``  class attribute.
-* Extend the ``Element.render()``  method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()``  method of the elements it contains.
-* Deal with the content items that could be either simple strings or ``Element`` s with ``render``  methods ... there are a few ways to handle that.
-
-.. nextslide::
-
-Step 3:
-
-* Create a ``<head>``  element -- simple subclass.
-* Create a ``OneLineTag``  subclass of Element: It should override the render method, to render everything on one line -- for the simple tags, like:
-
-        ``<title> PythonClass - Class 6 example </title>`` 
-
-* Create a Title subclass of ``OneLineTag``  class for the title.
-* You should now be able to render an html doc with a head element, with a ``title``  element in that, and a body element with some ``<P>`` elements and some text.
-
-.. nextslide::
-
-Demo of class vs. instance attributes
+( Demo of class vs. instance attributes )
 
 ===================
 More on Subclassing
@@ -520,13 +508,13 @@ More on Subclassing
 
 Overriding \_\_init\_\_
 -----------------------
+
 ``__init__`` common method to override}
 
-You often need to call the super class ``__init__``  as well}
+You often need to call the super class ``__init__``  as well
 
-::
+.. code-block:: python  
     
-
     class Circle(object):
         color = "red"
         def __init__(self, diameter):
@@ -543,10 +531,9 @@ exception to: "don't change the method signature" rule.
 
 More subclassing
 ----------------
-You can also call the superclass' other methods:}
+You can also call the superclass' other methods:
 
-::
-    
+.. code-block:: python  
 
     class Circle(object):
     ...
@@ -558,19 +545,18 @@ You can also call the superclass' other methods:}
             return Circle.get_area(self, self.radius*2)
 
 
-
-There is nothing special about ``__init__``  except that it gets called automatically.
-
-When to Subclass
-----------------
-
-"Is a" relationship: Subclass/inheritance}
-
-"Has a" relationship: Composition}
+There is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance.
 
 When to Subclass
 ----------------
-"Is a" vs "Has a" }
+
+"Is a" relationship: Subclass/inheritance
+
+"Has a" relationship: Composition
+
+.. nextlide::
+
+"Is a" vs "Has a"
 
 You may have a class that needs to accumulate an arbitrary number of objects.
 
@@ -578,20 +564,23 @@ A list can do that -- so should you subclass list?
 
 Ask yourself:
 
--- Is your class a list (with some extra functionality)?
+-- **Is** your class a list (with some extra functionality)?
+
 or
--- Does you class HAVE a list?
+
+-- Does you class **have** a list?
 
 You only want to subclass list if your class could be used anywhere a list can be used.
 
+
 Attribute resolution order
 --------------------------
+
 When you access an attribute:
 
-``An_Instance.something`` }
+``An_Instance.something``
 
-Python looks for it in this order:}
-
+Python looks for it in this order:
 
   * Is it an instance attribute ?
   * Is it a class attribute ?
@@ -601,153 +590,11 @@ Python looks for it in this order:}
 
 
 It can get more complicated...
-{\small
-http://www.python.org/getit/releases/2.3/mro/} 
-http://python-history.blogspot.com/2010/06/method-resolution-order.html}
-}
 
-What are Python classes, really?
---------------------------------
-Putting aside the OO theory...}
+http://www.python.org/getit/releases/2.3/mro/
 
-Python classes are:}
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
-  * Namespaces
-  
-    * One for the class object
-    * One for each instance
-  
-  * Attribute resolution order
-  * Auto tacking-on of ``self`` 
-
-
-That's about it -- really!}
-
-Type-Based dispatch
--------------------
-From Think Python:}
-::
-    
-
-      if isinstance(other, A_Class):
-          Do_something_with_other
-      else:
-          Do_something_else
-
-
-
-Usually better to use "duck typing" (polymorphism)}
-
-But when it's called for:}
-
-    * ``isinstance()`` 
-    * ``issubclass()`` 
-
-
-GvR: "Five Minute Multi- methods in Python":
-http://www.artima.com/weblogs/viewpost.jsp?thread=101605} }
-
-LAB
----
-We're going to do the rest: steps 4 - 8}
-
-(Still using ``week-06/code/htmlrender`` )
-
-Step 4:
-
-* Extend the Element class to accept a set of attributes as keywords to the
-  constructor, i.e.:
-
-.. code-block:: python  
-
-  Element("some text content",
-          id="TheList",
-          style="line-height:200\%")
-
-
-( remember ``**kwargs``  ? )
-
-* The render method will need to be extended to render the attributes properly.
-
-
-You can now render some ``<p>``  tags (and others) with attributes
-
-.. nextslide::
-
-Step 5:
-
-* Create a ``SelfClosingTag``  subclass of ``Element`` , to render tags like: ``<hr /> and <br />``  (horizontal rule and line break).
-* You will need to override the render method to render just the one tag and attributes.
-* create a couple subclasses of SelfClosingTag for ``<hr>`` and ``<br />``  (Line break) or ??? if you like
-   
-You can now render an html page with a proper ``<head>``  (``<meta />``  and ``<title>``  elements)
-
-.. nextslide::
-
-*  Create an ``A``  class for an anchor (link) element. Its constructor should look like: ``A(self, link, content)``  -- where link is the link, and content is what you see. It can be called like so: ``A("http://google.com", "link")`` 
-* You should be able to subclass from ``Element`` , and only override the ``__init__`` -- Calling the ``Element __init__``  from the  ``A __init__`` 
-
-
-You can now add a link to your web page.
-
-Step 7:
-
-* Create ``Ul``  class for an unordered list (really simple subclass of Element)
-* Create ``Li``  class for an element in a list (also really simple)
-* add a list to your web page.
-* Create a Header class -- this one should take an integer argument for the header level. i.e ``<h1>, <h2>, <h3>`` , called like:
-* ``H(2, "The text of the header")``  for an ``<h2>``  header
-* It can subclass from ``OneLineTag``  -- overriding the ``__init__`` , then callingthe superclass ``__init__`` 
-
-
-Step 8:
-
-* Update the Html element class to render the "``<!DOCTYPE html>`` " tag at the head of the page, before the ``html``  element.
-* You can do this by subclassing ``Element`` , overriding ``render()`` , but then calling ``Element.render()``  from ``Html.render()`` .
-* Create a subclass of ``SelfClosingTag``  for ``<meta charset="UTF-8" />``  and add the meta element to the beginning of the head element to give your document an encoding.
-* The doctype and encoding are HTML 5 and you can check this at: validator.w3.org.
-
-
-You now have a pretty full-featured html renderer
-
-Review of HTML renderer lab
----------------------------
-You have built an html generator, using:}
-  
-* A Base Class with a couple methods
-* Subclasses overriding class attributes
-* Subclasses overriding a method
-* Subclasses overriding the ``__init__`` 
-  
-
-These are the core OO approaches
-
-If you don't have it working, or don't think you "get" it: work on it for homework, and ask questions.
-
-
-Attribute resolution order
---------------------------
-
-How does Python find an attribute?
-
-When you access an attribute:
-
-``An_Instance.something``
-
-Python looks for it in this order:
-
-* Is it an instance attribute ?
-* Is it a class attribute ?
-* Is it a superclass attribute ?
-* Is it a super-superclass attribute ?
-* ...
-
-
-It can get more complicated...
-
-http://www.python.org/getit/releases/2.3/mro/} 
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html}
 
 What are Python classes, really?
 --------------------------------
@@ -756,14 +603,13 @@ Putting aside the OO theory...
 
 Python classes are:
 
-* Namespaces
+  * Namespaces
   
- - One for the class object
- - One for each instance
+    * One for the class object
+    * One for each instance
   
-* Attribute resolution order
-
-* Auto tacking-on of ``self`` 
+  * Attribute resolution order
+  * Auto tacking-on of ``self`` 
 
 
 That's about it -- really!
@@ -778,30 +624,22 @@ Type-Based dispatch
       else:
           Do_something_else
 
-Usually better to use "duck typing" (polymorphism)}
+
+Usually better to use "duck typing" (polymorphism)
 
 But when it's called for:
 
-* ``isinstance()`` 
-* ``issubclass()`` 
-
+    * ``isinstance()`` 
+    * ``issubclass()`` 
 
 GvR: "Five Minute Multi- methods in Python":
 
 http://www.artima.com/weblogs/viewpost.jsp?thread=101605
 
+http://www.python.org/getit/releases/2.3/mro/
 
-Review of HTML renderer assignment:
-------------------------------------
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
-You have built an html generator, using:
-  
-* A Base Class with a couple methods
-* Subclasses overriding class attributes
-* Subclasses overriding a method
-* Subclasses overriding the ``__init__`` 
-  
-These are the core OO approaches
 
 
 Wrap Up
@@ -835,7 +673,27 @@ Stop Writing Classes: Jack Diederich
 http://pyvideo.org/video/880/stop-writing-classes}}
 
 "If your class has only two methods -- and one of them is ``__init__`` 
--- you don't need a class "
+
+  - you don't need a class "
+
+
+Homework
+--------
+
+Build an html rendering system:
+
+ :ref:`homework_html_renderer`
+
+You will build an html generator, using:
+  
+* A Base Class with a couple methods
+* Subclasses overriding class attributes
+* Subclasses overriding a method
+* Subclasses overriding the ``__init__`` 
+  
+
+These are the core OO approaches
+
 
 
 

@@ -1,3 +1,4 @@
+.. _homework_html_renderer:
 
 ==============
 Html Renderer
