@@ -7,3 +7,5 @@ Supplemental Materials
     virtualenv
     sublime_as_ide
     shell
+    unicode
+    
