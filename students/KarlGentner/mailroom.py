@@ -116,19 +116,18 @@ def createReport():
         print (u'{name}\t\t$ {total:<1}\t\t{num}\t$ {avg}').format(name=name, total=data[0], num=data[1], avg=data[2])
 
 
-# Main Interaction
-if __name__ == '__main__':
+# Main Menu
+def main():
+    menu = {u's': sendThankYou, u'c': createReport, u'q': exit}
     while True:
-        mainMenu = safe_input(u"'s' to send a thank you\n" +
-                              u"'c' to create a report (requires full-width window)\n" +
-                              u"'q' to quit\n-->")
-        if mainMenu.lower() == u'q':
-            break
-        elif mainMenu.lower() == u's':
-            # returns m if user wants to return to main menu
-            if sendThankYou() == u'm':
-                continue
-        elif mainMenu.lower() == u'c':
-            createReport()
-        else:
-            print (u"\n\nThat input is not understood. Please try again.\n")
+        choice = safe_input(u"'s' to send a thank you\n" +
+                            u"'c' to create a report (requires full-width window)\n" +
+                            u"'q' to quit\n-->")
+        try:
+            menu[choice]()
+        except KeyError:
+            print u"\n\nThat input is not understood. Please try again.\n"
+
+
+if __name__ == '__main__':
+    main()
