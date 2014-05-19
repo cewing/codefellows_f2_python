@@ -52,7 +52,6 @@ def generate_text(length, first_word, second_word):
 	while (first_word, second_word) in lookup:
 
 		a, b = first_word.lower(), second_word.lower()
-
 		new_text = [first_word, second_word.lower()]
 
 		for i in range(int(length) + 1):
@@ -69,7 +68,7 @@ def generate_text(length, first_word, second_word):
 		if save == '1':
 			book_title = raw_input(u'What title would you like for your book?\n')
 			with open('new_book.txt', 'w') as new_book:
-				new_book.write(u'{title}\n\n{text}'.format(title = book_title.upper(), text = " ".join(new_text)))
+				new_book.write('{title}\n\n{text}'.format(title = book_title, text = " ".join(new_text))) 
 			break
 		elif save == '2':
 			print u'Thanks and goodbye'
