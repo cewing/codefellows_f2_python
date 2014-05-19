@@ -1,4 +1,5 @@
 import random
+import codecs
 
 
 def _create_donor_dict():
@@ -69,8 +70,8 @@ def _print_donations(donations):
 def _print_ty_menu():
     u"""Print the 'Send Thank You' sub-menu."""
     menu = []
-    menu.append(u"Enter a donor's full name to add a donation and generate")
-    menu.append(u"a personalized letter. Type 'list' to see a list of all")
+    menu.append(u"Enter a donor's full name to add a donation and generate ")
+    menu.append(u"a personalized letter. Type 'list' to see a list of all ")
     menu.append(u"donors. Type 'menu' to return to the main menu.")
     print "".join(menu)
 
@@ -80,8 +81,6 @@ def _generate_ty(donor):
     d = {u"donor": donor, u"donations": _get_donations(donor)}
     d[u"recent"] = d[u"donations"].pop()
     d[u"history"] = _print_donations(d[u"donations"][::-1])
-    print d[u"donations"]
-    print d[u"history"]
     letter = [u"\nDear {donor},\n\nThe Boranga Protection Society"]
     letter.append(u" is very appreciative")
     letter.append(u" of your recent, generous donation of ${recent}")
@@ -92,7 +91,7 @@ def _generate_ty(donor):
         letter.append(u". This")
     letter.append(u" donation will go to clothe the poor borangas who have")
     letter.append(u" been so unjustly shermed.\n\nThank you,\n\nThe B.P.S.\n")
-    print "".join(letter).format(**d)
+    return "".join(letter).format(**d)
 
 
 def _send_thankyou():
@@ -110,7 +109,7 @@ def _send_thankyou():
             donor = _safe_reprompt(prompt).title()
         elif donor in _get_donors():
             _add_amount(donor)
-            _generate_ty(donor)
+            print _generate_ty(donor)
             break
         else:
             while True:
@@ -120,7 +119,7 @@ def _send_thankyou():
                 if input_.lower() in [u"y", u"yes"]:
                     _add_donor(donor)
                     _add_amount(donor)
-                    _generate_ty(donor)
+                    print _generate_ty(donor)
                     break
                 else:
                     break
@@ -185,9 +184,10 @@ def _print_main_menu():
     u"""Print the the menu options"""
     menu = []
     menu.append(u"Please select from the following: ")
-    menu.append(u'1: Send a Thank You')
-    menu.append(u'2: Create a Report')
-    menu.append(u'3: Exit')
+    menu.append(u"1: Send a Thank You")
+    menu.append(u"2: Create a Report")
+    menu.append(u"3: Print letters for all donors")
+    menu.append(u"4: Exit")
     for line in menu:  # Not sure if this is better or worse than using join.
         print line
 
@@ -211,6 +211,16 @@ def _safe_reprompt(prompt):
     return input_
 
 
+def _save_letters():
+    u"""Write thank you letters to a file for each donor."""
+    for donor in donor_dict:
+        f = codecs.open(u"{}.txt".format(donor), "w")
+        f.write(_generate_ty(donor))
+        f.close()
+        print u"Letter for {} saved as {}.txt".format(donor, donor)
+    print u"All letters saved!"
+
+
 if __name__ == "__main__":
     donor_dict = _create_donor_dict()
     main_men_dict = {
@@ -220,7 +230,10 @@ if __name__ == "__main__":
         zip([u'2', u'c', u'create a report'], [_create_report]*3)
         )
     main_men_dict.update(
-        zip([u'3', u'e', u'exit'], [None]*3)
+        zip([u'3', u'p', u'print'], [_save_letters]*3)
+        )
+    main_men_dict.update(
+        zip([u'4', u'e', u'exit'], [None]*3)
         )
     while True:
         _print_main_menu()
