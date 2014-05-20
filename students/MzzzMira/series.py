@@ -11,7 +11,7 @@ def sum_series (k, m=0, n=1) :
     if k<0 : return None
     if m == 2 and n == 1 : return lucas(k)
     if m == 0 and n == 1 : return fibonacci(k)
-    return sum_series ()
+    return sum_series (k-1, n, m+n)
     
 
 def fibonacci(k):
