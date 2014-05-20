@@ -16,16 +16,11 @@ for i in range(len(story)-3):
 def get_seed():
     seed_words = word_dict.keys()
     rnd_value = int(random.random() * len(seed_words))
-    return seed_words[rnd_value].split()
-
-seed_phrase = (get_seed())
-word0 = seed_phrase[0]
-word1 = seed_phrase[1]
-new_story.append(word0)
-new_story.append(word1)
-
-
-
+    seed_phrase = seed_words[rnd_value].split()
+    word0 = seed_phrase[0]
+    word1 = seed_phrase[1]
+    new_story.append(word0)
+    new_story.append(word1)
 
 for i in range(200):
     try:
@@ -34,12 +29,8 @@ for i in range(200):
         key_word = word1 + ' ' + word2
         word3 = word_dict[key_word][int(random.random() * len(word_dict[key_word]))]
         new_story.append(word3)
-    except KeyError:
-        seed_phrase = (get_seed())
-        word0 = seed_phrase[0]
-        word1 = seed_phrase[1]
-        new_story.append(word0)
-        new_story.append(word1)
+    except (KeyError, IndexError):
+        get_seed()
         i = i + 2
 
 print " ".join(new_story)
