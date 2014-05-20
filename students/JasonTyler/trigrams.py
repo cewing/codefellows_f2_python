@@ -1,6 +1,6 @@
 """Trigrams assignment"""
-
 import re
+import random
 
 test_fragment = """
 One night--it was on the twentieth of March, 1888--I was
@@ -21,37 +21,88 @@ problem. I rang the bell and was shown up to the chamber which
 had formerly been in part my own.
 """
 
+
 wee_test = "one night--it was on the twentieth of March, 1888--I was returning from a journey to a patient"
 
-trigrams = dict()
-def trigram(string):
-    bits = split_all(string)
-    #print {bit: bit.isalpha() for bit in bits }
 
-    for i in range(len(bits) - 2):
-        if bits[i].isalpha():
-            if trigrams.has_key(bits[i]):
-                trigrams[bits[i]].extend(bits[i + 1: i + 3])
-            else:
-                trigrams[bits[i]] = list(bits[i + 1: i + 3])
-
-
-def split_all(string):
+def generate_trigram_puntuation_free(string):
     """
-    Split a string such that punctuation is separated
+    Generate a trigrams dictionary from a string.
+
+    This particular version ignores punctuation; i.e. it will pick n-grams
+    across punctuation boundaries, even if those boundaries are periods marks.
+    """
+    bits = split_all(string)
+    # Clean bits such that it contains only words
+    bits = [bit for bit in bits if bit.isalpha()]
+    # Generate trigrams from bits list
+    trigrams = dict()
+    for i in range(len(bits) - 2):
+        key = " ".join(bits[i: i + 2])
+        try:
+            trigrams[key].append(bits[i + 2])
+        except KeyError:
+            trigrams[key] = []
+            trigrams[key].append(bits[i + 2])
+    return trigrams
+
+def generate_trigram(string):
+    """
+    Generate a trigrams dictionary from a string.
+
+    This particular version retains punctuation; i.e. it keys verbatim n-word 
+    phrases with adjacent non-whitespace punctuation. 
+    """
+    bits = string.split()
+    # TODO: Might have to insert a statement to guard against insertion of non-alpha
+    # containing n-grams. Will wait for real file input. 
+
+    ## Clean bits such that it contains only words
+    #bits = [bit for bit in bits if bit.isalpha()]
+    ## Generate trigrams from bits list
+    #trigrams = dict()
+    #for i in range(len(bits) - 2):
+    #    key = " ".join(bits[i: i + 2])
+    #    try:
+    #        trigrams[key].append(bits[i + 2])
+    #    except KeyError:
+    #        trigrams[key] = []
+    #        trigrams[key].append(bits[i + 2])
+    #return trigrams
+
+def translate_trigram(string, trigrams): #TODO: Not working yet.
+    """Translate a string using a trigram dict"""
+    bits = split_all(string, True)
+    for i in range(len(bits)):
+        
+
+    #for i in range(len(bits)):
+    #    if bits[i].isalpha():
+    #        # Return a random word from trigrams list, if available
+    #        key = " ".join(bits[i: i + 2])
+    #        try:
+    #            trans_bit = random.choice(trigrams.get()
+    #        except TypeError:
+    #            pass
+    #        else:
+    #            bits[i] = trans_bit 
+    #return "".join(bits)
+
+
+def read_file_as_string():
     
+def split_all(string, retain_whitespace=False):
+    """
+    Split string such that alpha blocks are isalpha; retain whitespace if True
+    
+    example
     >>>str = "why, hello?!"
     >>>print split(str)
     ['why', ',', 'hello', '?', '!']
     >>>print str.split() 
     ['why,', 'hello?!']
     """
-    return re.findall(r"\w+|[^\w\s]", string, re.UNICODE)
-
-trigram(wee_test)
-print trigrams
-
-new_wee_string = str()
-for word in wee_test:
-    for i in len(wee_test):
-        
+    if not retain_whitespace:
+        return re.findall(r"\w+|[^\w\s]", string, re.UNICODE)
+    else:
+        return re.findall(r"\w+|[^\w]", string, re.UNICODE)
