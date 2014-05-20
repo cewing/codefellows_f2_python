@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """Python class example."""
-import codecs, os
+import codecs, os, inspect
 cwd=os.getcwd()
 
 class Html(object):
@@ -8,16 +8,26 @@ class Html(object):
     indentation="    "
 
     def __init__(self,initContent=None):
-        self.content=[initContent]
-
-    def append(self,text):
-        self.content.append(text)
+        if initContent:
+            self.content=[initContent]
+        else:
+            self.content=[]
+    def append(self,input):
+        self.content.append(input)
 
     def render(self,file_out, ind=""):
-        file_out.write("<%s>\n%s%s%s\n</%s>"%(self.tag_name,self.indentation,ind,self.content,self.tag_name))
+        file_out.write("<%s>\n%s%s"%(self.tag_name,self.indentation,ind))
+        
+        for element in self.content:
+            if isinstance(element,(Body,P)):
+                element.render(file_out)
+            else:
+                file_out.write("%s"%(element))
+        
+        file_out.write("\n</%s>"%(self.tag_name))
 
 class Body(Html):
-    pass
+    tag_name="body"
 
 class P(Body):
-    pass
+    tag_name="p"
