@@ -30,21 +30,15 @@ food_prefs_a = {k:food_prefs[k].count('a') for k in food_prefs.keys()}
 
 print "4) Number of a's in original dict", food_prefs_a
 
-### 4 ###
+### 5 ###
 # Create a set of containing 0-20 divisible by 2, 3, and 4 respectively
-s2 = set()
-s3 = set()
-s4 = set()
-for n in range(21):
-    if n % 2 == 0:
-        s2.add(n)
-    if n % 3 == 0:
-        s3.add(n)
-    if n % 4 == 0:
-        s4.add(n)
-print s2
-print s3
-print s4
+s2 = {n for n in range(21) if n%2}
+s3 = {n for n in range(21) if n%3}
+s4 = {n for n in range(21) if n%4}
+
+print 's2:', s2
+print 's3:', s3
+print 's4:', s4
 # Display if s3 is subset of s2
 print s3.issubset(s2)
 # Display if s4 is subset of s2
