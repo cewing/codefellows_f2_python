@@ -17,11 +17,9 @@ lookup = {}
 x = [(words[i-2], words[i-1], words[i]) for i in range(len(words) - 1)]
 
 for a, b, c in x:
-	lookup[a, b] = []
-	
-for a, b, c in x:
+	lookup.setdefault((a, b), [])
 	lookup[a, b].append(c)
-
+	
 
 def menu():
 	u"""Prompt the user to choose between creating an entire new book or limit the characters to a specified length."""
