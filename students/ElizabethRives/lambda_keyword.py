@@ -5,7 +5,6 @@ def make_list(n):
 	functions = []
 	for i in range(n):
 		functions.append(lambda x, i=i: i + x)
-	print functions
 	return functions
 
 make = make_list(5)
