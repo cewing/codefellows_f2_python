@@ -16,7 +16,8 @@ class Element(object):
     def render(self,file_out, ind=""):
         file_out.write("<%s>\n%s%s%s\n</%s>"%(self.tag_name,self.indentation,ind,self.content,self.tag_name))
 
-#rend=Element("hello")
-#rend.append(" hello again")
-#rend.render("renderTest")
-#print rend.content
+class Body(Element):
+    pass
+
+class P(Body):
+    pass
