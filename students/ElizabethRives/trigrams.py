@@ -10,8 +10,7 @@ punct = list(punctuation)
 with open(filename) as open_file:
 	text = "".join(let.lower() for line in open_file for let in line if let not in punct)
 
-content = text[text.find(u'the golden bird') : text.find(u'end of project gutenbergs grimms fairy tales')]
-words = content.split()
+words = text.split()
 
 lookup = {}
 
