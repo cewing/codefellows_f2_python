@@ -32,10 +32,13 @@ print "4) Number of a's in original dict", food_prefs_a
 
 ### 5 ###
 # Create a set of containing 0-20 divisible by 2, 3, and 4 respectively
-s2 = {n for n in range(21) if n%2}
-s3 = {n for n in range(21) if n%3}
-s4 = {n for n in range(21) if n%4}
+s2 = {n for n in range(21) if not n%2}
+s3 = {n for n in range(21) if not n%3}
+s4 = {n for n in range(21) if not n%4}
 
+#(s2, s3, s4) = ({n for n in range(21) if n % x} for x in range(2,5))
+
+print '5)'
 print 's2:', s2
 print 's3:', s3
 print 's4:', s4
