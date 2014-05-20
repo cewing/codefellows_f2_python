@@ -1,29 +1,5 @@
 
-.. _unicode_suppliment:
-
-*******
-Unicode
-*******
-
-===================
-Unicode in Python 2
-===================
-
-Background
------------
-
-A good starting point for Unicode:
-
-
-The Absolute Minimum Every Software Developer Absolutely,
-Positively Must Know About Unicode and Character Sets (No Excuses!)
-
-http://www.joelonsoftware.com/articles/Unicode.html
-
-Go read it!
-
-.. Unicode in Python 2 slides file, created by
-   hieroglyph-quickstart on Thu Mar 20 20:21:45 2014.
+.. _unicode_supplement:
 
 
 ===================
@@ -33,6 +9,9 @@ Unicode in Python 2
 A quick run-down of Unicode, its use in Python 2, and some of the gotchas that arise.
 
  - Chris Barker
+
+History
+=======
 
 
 What the heck is Unicode anyway?
@@ -94,13 +73,15 @@ http://www.joelonsoftware.com/articles/Unicode.html
 
 Unicode is a biggie
 
+(actually, dealing with numbers rather than bytes is big -- but we take that
+for granted)
 
 
-(actually, dealing with numbers rather than bytes is big -- but we take that for granted)
-
+Mechanics
+=========
 
 What are strings?
-..................
+-----------------
 
 Py2 strings are sequences of bytes
 
@@ -226,8 +207,7 @@ Decode on input
 
 Encode on output
 
-Many packages do this for you:
-    XML processing, databases, ...
+Many packages do this for you: *XML processing, databases, ...*
 
 **Gotcha:**
 
@@ -318,8 +298,9 @@ UTF-16 criticism
 -----------------
 
 There is a lot of criticism on the net about UTF-16 -- it's kind of the worst of both worlds:
-  * You can't assume every character is the same number of bytes
-  * It takes up more memory than UTF-8
+
+* You can't assume every character is the same number of bytes
+* It takes up more memory than UTF-8
 
 `UTF Considered Harmful <http://programmers.stackexchange.com/questions/102205/should-utf-16-be-considered-harmful>`_
 
@@ -420,8 +401,9 @@ Unicode in Python 3
 The "string" object is unicode.
 
 Py3 has two distinct concepts:
-  * "text" -- uses the str object (which is always unicode!)
-  * "binary data" -- uses bytes or bytearray
+
+* "text" -- uses the str object (which is always unicode!)
+* "binary data" -- uses bytes or bytearray
 
 Everything that's about text is unicode.
 
@@ -430,6 +412,10 @@ Everything that requires binary data uses bytes.
 It's all much cleaner.
 
 (by the way, the recent implementations are very efficient...)
+
+
+Exercises
+=========
 
 Basic Unicode LAB
 -------------------
@@ -452,9 +438,12 @@ and/ or
 
 * write some of the text from the first exercise to file -- read that file back in.
 
+.. nextslide:: Some Help
+
 reference: http://inamidst.com/stuff/unidata/
 
-NOTE: if your terminal does not support unicode -- you'll get an error trying to print. Try a different terminal or IDE, or google for a solution
+NOTE: if your terminal does not support unicode -- you'll get an error trying
+to print. Try a different terminal or IDE, or google for a solution.
 
 Challenge Unicode LAB
 ----------------------
