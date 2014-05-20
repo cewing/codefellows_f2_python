@@ -1,6 +1,8 @@
+#!/usr/bin/env python
 """Trigrams assignment"""
 import re
 import random
+
 
 test_fragment = """
 One night--it was on the twentieth of March, 1888--I was
@@ -25,7 +27,7 @@ had formerly been in part my own.
 wee_test = "one night--it was on the twentieth of March, 1888--I was returning from a journey to a patient"
 
 
-def generate_trigram_puntuation_free(string):
+def generate_trigram_clean(string):
     """
     Generate a trigrams dictionary from a string.
 
@@ -46,6 +48,7 @@ def generate_trigram_puntuation_free(string):
             trigrams[key].append(bits[i + 2])
     return trigrams
 
+
 def generate_trigram(string):
     """
     Generate a trigrams dictionary from a string.
@@ -55,12 +58,6 @@ def generate_trigram(string):
     may contain ending punctuation as well. 
     """
     bits = string.split()
-    # TODO: Might have to insert a statement to guard against insertion of non-alpha
-    # containing n-grams. Will wait for real file input. 
-
-    ## Clean bits such that it contains only words
-    #bits = [bit for bit in bits if bit.isalpha()]
-    ## Generate trigrams from bits list
     trigrams = dict()
     for i in range(len(bits) - 2):
         key = " ".join(bits[i: i + 2])
@@ -70,6 +67,7 @@ def generate_trigram(string):
             trigrams[key] = []
             trigrams[key].append(bits[i + 2])
     return trigrams
+
 
 def translate_trigram(string, trigrams):
     """
@@ -87,23 +85,14 @@ def translate_trigram(string, trigrams):
         else:
             bits[i + 2] = random.choice(alternates)
     return " ".join(bits) 
-        
-
-    #for i in range(len(bits)):
-    #    if bits[i].isalpha():
-    #        # Return a random word from trigrams list, if available
-    #        key = " ".join(bits[i: i + 2])
-    #        try:
-    #            trans_bit = random.choice(trigrams.get()
-    #        except TypeError:
-    #            pass
-    #        else:
-    #            bits[i] = trans_bit 
-    #return "".join(bits)
 
 
-def read_file_as_string():
-    
+def read_file_as_string(filename):
+    with open(filename) as file:
+        epic_string = file.read()
+    return epic_string 
+
+
 def split_all(string, retain_whitespace=False):
     """
     Split string such that alpha blocks are isalpha; retain whitespace if True
@@ -119,3 +108,22 @@ def split_all(string, retain_whitespace=False):
         return re.findall(r"\w+|[^\w\s]", string, re.UNICODE)
     else:
         return re.findall(r"\w+|[^\w]", string, re.UNICODE)
+
+
+def update_dictlist(dict1, dict2):
+    """Update dict1 in-place using key, values in dict2 if key doesn't yet exist"""
+    for key, item in dict2.iteritems():
+        if not dict1.has_key(key):
+            dict1.setdefault(key, []).extend(item)
+        else:
+            pass
+
+
+if __name__ == "__main__":
+    # Using sherlock.txt and two methods of generating trigrams to translate test_fragment
+    trigrams = generate_trigram(read_file_as_string('sherlock.txt'))
+    trigrams2 = generate_trigram_clean(read_file_as_string('sherlock.txt'))
+    update_dictlist(trigrams, trigrams2)
+    translated_test_fragment = translate_trigram(test_fragment, trigrams)
+    print translated_test_fragment
+
