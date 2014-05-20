@@ -24,15 +24,18 @@ Review of Previous Class
 Homework review
 ---------------
   
-  Homework Questions?
+Homework Questions?
   
-  My Solution to the trigram:
+My Solution to the trigram:
   
-  (``dict.setdefault()``  trick...)
+(``dict.setdefault()``  trick...)
 
-  passing ``**kwargs`` to string.format()
+Either pop() or del for delting from dict.
 
-  If it seems harder than it should be -- it is!
+passing ``**kwargs`` to string.format()
+
+If it seems harder than it should be -- it is!
+
   
 Unicode Notes
 -------------
