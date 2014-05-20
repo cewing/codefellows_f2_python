@@ -1,16 +1,9 @@
 
 
-Unicode, Advanced Argument passing
-List and Dict Comprehensions, Testing
-*****************************************************************************************************************************
-Intro to Python: Week 1 Introduction  to Python  Unicode, Advanced Argument passing List and Dict Comprehensions, Testing 
-*****************************************************************************************************************************
+*************************************************************************
+Unicode, Advanced Argument passing List and Dict Comprehensions, Testing 
+*************************************************************************
 
-
-frame
------
-\frametitle{Table of Contents}
-  \tableofcontents
 
 ================
 Review/Questions
@@ -24,28 +17,13 @@ Review of Previous Class
   * Files, etc.
 
 
-Lightning Talks
----------------
-
-Lightning talks today:}
-
-
-Rithy Chhen
-
-Howard Edson
-
-Dong Kang
-
-Steven Werner
-}
-
-
 Homework review
 ---------------
   
-  Homework Questions? }
+  Homework Questions?
   
-  My Solution}
+  My Solution:
+  
   (``dict.setdefault()``  trick...)
   
 
