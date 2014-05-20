@@ -8,4 +8,3 @@ Supplemental Materials
     sublime_as_ide
     shell
     unicode
-    
