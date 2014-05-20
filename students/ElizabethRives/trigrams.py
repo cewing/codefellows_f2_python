@@ -34,14 +34,16 @@ def menu():
 
 
 def word_pair(length):
-	u"""Ask the user to enter two words to begin the new book."""
+	u"""Ask the user to write the first sentence of their book."""
 
-	first_word = raw_input(u'Please enter the first word you would like to begin the text\n')
-	second_word = raw_input(u'Please enter a second word to follow the first\n')
-	generate_text(length, first_word, second_word)
+	first_sentence = raw_input(u'Please write the first sentence of your new book\n')
+	sentence_list = first_sentence.split()
+	first_word = sentence_list[-2]
+	second_word = sentence_list[-1]
+	generate_text(length, first_word, second_word, first_sentence)
 
 
-def generate_text(length, first_word, second_word):
+def generate_text(length, first_word, second_word, sentence_list):
 	u"""Create new next based on trigram analysis."""
 
 	import random
@@ -58,6 +60,8 @@ def generate_text(length, first_word, second_word):
 			except KeyError:
 				pass
 
+		new_text.insert(0, sentence_list)
+
 		print u'{text}'.format(text = " ".join(new_text))
 
 		save = raw_input(u'Would you like to save this as a new book?\n1. Yes\n2. No\n')
@@ -72,11 +76,10 @@ def generate_text(length, first_word, second_word):
 			break
 
 	else:
-		print u'That word pair does not exist in the book, please try again.'
-		suggestion = random.choice(lookup.keys())
-		print u'If you need a word pair, try these: {two_words}'.format(two_words = suggestion)
-		return word_pair(length)
-
+		next = random.choice(lookup.keys())
+		first_word = next[0]
+		second_word = next[1]
+		return generate_text(length, first_word, second_word, sentence_list)
 
 menu()
 
