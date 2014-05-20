@@ -177,8 +177,10 @@ def createReport():
     # create a list from reportDict, sorted by total donation amount
     report = sorted(reportDict.items(), key=lambda donor: donor[1])
     # print report
+    print (u'{name:<20}{total:<19}{num:<15}{avg}').format(name=u"NAME", total=u"TOTAL", num=u"NUMBER OF", avg=u"AVERAGE")
+    print (u'{name:<20}{total:<19}{num:<15}{avg}\n').format(name=u"", total=u"DONATIONS", num=u"DONATIONS", avg=u"DONATION")
     for (name, data) in report:
-        print (u'{name}\t$ {total:^1}\t{num:^20}\t$ {avg}').format(name=name, total=data[0], num=data[1], avg=data[2])
+        print (u'{name:<20}$ {total:<17}{num:<15}$ {avg:<20}').format(name=name, total=data[0], num=data[1], avg=data[2])
 
 
 # Main Menu
