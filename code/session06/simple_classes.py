@@ -5,6 +5,8 @@ simple_classes.py
 demonstrating the basics of a class
 """
 
+import math
+
 ## create a point class
 class Point(object):
     def __init__(self, x, y):
@@ -45,6 +47,7 @@ print p3.get_color()
 
 class Circle(object):
     color = "red"
+    styles = ['dashed']
     def __init__(self, diameter):
         self.diameter = diameter
 
@@ -55,6 +58,9 @@ class Circle(object):
         :param factor=2: factor by which to grow the circle
         """        
         self.diameter = self.diameter * factor
+
+    def add_style(self, style):
+        self.styles.append(style)
 
     def get_area(self):
         return math.pi * self.diameter / 2.0
