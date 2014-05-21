@@ -34,10 +34,10 @@ elif action == '2':
 if action == '1':
 	clean_lines = [line.strip() for line in open(filename, 'U')]
 	open_file = open(filename, 'w')
-	open_file.write(str(clean_lines))
+	open_file.writelines(clean_lines)
 elif action == '2':
 	clean_lines = [line.strip() for line in open(filename, 'U')]
 	new_filename = raw_input('Enter the name of the file to save it to')
 	new_file = open(new_filename, 'w')
-	new_file.write(str(clean_lines))
+	new_file.writelines(clean_lines)
 
