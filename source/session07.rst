@@ -511,7 +511,9 @@ well.
 
 .. _Here is a low level look: https://docs.python.org/2/howto/descriptor.html
 
-.. nextslide:: Kicking the Tires
+
+Kicking the Tires
+-----------------
 
 Let's pause for a moment here to try some of this out.
 
@@ -668,7 +670,8 @@ Be a bit cautious about the code examples in that last one. It uses quite a bit
 of old-style class definitions, which should not be emulated.
 
 
-.. nextslide:: Kicking the Tires
+Kicking the Tires
+-----------------
 
 Extend your "Circle" class:
 
@@ -686,5 +689,25 @@ Extend your "Circle" class:
     In [26]: c1*3
     Out[26]: Circle(9)
 
+If you have time: compare them... (``c1 > c2`` , etc)
 
-If you have time: compare them... (``c1 > c2`` , etc)}
+
+Homework
+========
+
+Create a Python module that emulates a deck of playing cards.
+
+Your deck of cards should behave like a standard Python container.
+
+It should also support the iterator protocol.
+
+You should be able to shuffle the deck, resulting in a random ordering of the
+cards.
+
+You should also be able to sort the deck so that the cards are ordered by suit
+and face value.
+
+
+
+
+
