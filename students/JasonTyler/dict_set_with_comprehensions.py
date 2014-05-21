@@ -11,11 +11,13 @@ food_prefs = {"name": u"Chris",
 print """
       {name} is from {city}, and he likes {cake} cake, 
       {fruit} fruit, {salad} salad, and {pasta} pasta.
-      """.format(name=food_prefs[u'name'], city=food_prefs[u'city'], cake=food_prefs[u'cake'], 
-          fruit=food_prefs[u'fruit'], salad=food_prefs[u'salad'], pasta=food_prefs[u'pasta'])
+      """.format(**food_prefs)
 
 hex_int_dict = {i: hex(i) for i in range(16)}
 print 'hex_int_dict:', hex_int_dict
+
+a_food_prefs = {keys: name.count('a') for keys, name in food_prefs.iteritems()} 
+print 'a_food_prefs dict:', a_food_prefs
 
 s2 = {i for i in range(21) if not i % 2}
 s3 = {i for i in range(21) if not i % 3}
