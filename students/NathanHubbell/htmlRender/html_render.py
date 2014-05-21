@@ -16,15 +16,17 @@ class Html(object):
         self.content.append(input)
 
     def render(self,file_out, ind=""):
-        file_out.write("<%s>\n%s%s"%(self.tag_name,self.indentation,ind))
+        file_out.write("<%s>\n%s"%(self.tag_name,self.indentation))
         
         for element in self.content:
             if isinstance(element,(Body,P)):
-                element.render(file_out)
+                file_out.write("%s"%(ind))
+                element.render(file_out,"    ")
+                file_out.write("%s"%(ind))
             else:
-                file_out.write("%s"%(element))
+                file_out.write("%s%s%s\n%s%s"%(ind,ind,element,ind,ind))
         
-        file_out.write("\n</%s>"%(self.tag_name))
+        file_out.write("</%s>\n"%(self.tag_name))
 
 class Body(Html):
     tag_name="body"
