@@ -8,7 +8,10 @@ Session Seven: More OO
 
 .. rst-class:: large centered
 
-Multiple Inheritance, Special Methods, Properties, Class and Static Methods
+| Multiple Inheritance,
+| Properties,
+| Class and Static Methods,
+| Special and Magic Methods
 
 
 More on Subclassing
@@ -163,3 +166,112 @@ http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
 (Both worth reading....)
 
 
+Properties
+==========
+
+.. rst-class:: left
+.. container::
+
+    One of the strengths of Python is lack of clutter.
+
+    Attributes are simple and concise:
+
+    .. code-block:: ipython
+
+        In [5]: class C(object):
+                def __init__(self):
+                        self.x = 5
+        In [6]: c = C()
+        In [7]: c.x
+        Out[7]: 5
+        In [8]: c.x = 8
+        In [9]: c.x
+        Out[9]: 8
+
+
+Getter and Setters?
+-------------------
+
+But what if you need to add behavior later?
+
+.. rst-class:: build
+
+* do some calculation
+* check data validity
+* keep things in sync
+
+
+.. nextslide::
+
+.. code-block:: ipython
+
+    In [5]: class C(object):
+       ...:     def __init__(self):
+       ...:         self.x = 5
+       ...:     def get_x(self):
+       ...:         return self.x
+       ...:     def set_x(self, x):
+       ...:         self.x = x
+       ...:
+    In [6]: c = C()
+    In [7]: c.get_x()
+    Out[7]: 5
+    In [8]: c.set_x(8)
+    In [9]: c.get_x()
+    Out[9]: 8
+
+
+<shudder> This is ugly and verbose -- `Java`_?
+
+.. _Java: http://dirtsimple.org/2004/12/python-is-not-java.html
+
+.. nextslide:: properties
+
+When (and if) you need them:
+
+.. code-block:: python
+
+    class C(object):
+        def __init__(self, x=5):
+            self._x = x
+        def _getx(self):
+            return self._x
+        def _setx(self, value):
+            self._x = value
+        def _delx(self):
+            del self._x
+        x = property(_getx, _setx, _delx, doc="docstring")
+
+Now the interface is still like simple attribute access!
+
+.. rst-class:: centered small
+
+[demo: :download:`properties_example.py <./supplements/properties_example.py>`]
+
+
+.. nextslide:: "Read Only" Attributes
+
+Not all the arguments to ``property`` are required.
+
+You can use this to create attributes that are "read only":
+
+.. code-block:: ipython
+
+    In [11]: class D(object):
+       ....:     def __init__(self, x=5):
+       ....:         self._x = 5
+       ....:     def getx(self):
+       ....:         return self._x
+       ....:     x = property(getx, doc="I am read only")
+       ....:
+    In [12]: d = D()
+    In [13]: d.x
+    Out[13]: 5
+    In [14]: d.x = 6
+    ---------------------------------------------------------------------------
+    AttributeError                            Traceback (most recent call last)
+    <ipython-input-14-c83386d97be3> in <module>()
+    ----> 1 d.x = 6
+    AttributeError: can't set attribute
+
+.. nextslide:: Syntactic Sugar
