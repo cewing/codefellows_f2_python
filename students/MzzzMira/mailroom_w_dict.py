@@ -1,4 +1,6 @@
 #!/usr/bin/python
+import codecs
+import os
 
 def print_ (type_) :
     print
@@ -93,9 +95,27 @@ if __name__ == '__main__' :
     
 
     #write a program which prints the full path to all files in the current directory, one per line
-    
+    for files in os.listdir(os.getcwd()) :
+        print ' {:20s} {:30s}'.format(files,os.path.abspath(files))
+        #print files,
+        #print os.path.abspath(files)
     
     #write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
+    source_      = '/Users/muazzezmira/projects/cff2py/sea-c15-python/students/MzzzMira/sherlock.txt'
+    destination_ = '/Users/muazzezmira/projects/cff2py/sea-c15-python/students/MzzzMira/dest'
+    file_name    = os.path.split(source_)[1]
+    #file_path    = os.path.split(source_)[0]
+    f_source     = open(source_, 'r')
+    os.chdir (destination_)
+    f_dest       = open(file_name, 'w+')
+    while True :
+        line = f_source.readline()
+        if not line : 
+            break
+        f_dest.writelines(line)
+        
+    
+    
     
 
 
