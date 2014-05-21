@@ -2,16 +2,238 @@
 .. Foundations 2: Python slides file, created by
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
-**********************
-Session Seven: More OO
-**********************
+*******************************
+Session Seven: Testing, More OO
+*******************************
 
 .. rst-class:: large centered
 
+| Testing,
 | Multiple Inheritance,
 | Properties,
 | Class and Static Methods,
 | Special (Magic) Methods
+
+
+Review/Questions
+================
+
+Review of Previous Class
+------------------------
+
+* Unicode
+
+* Object Oriented Programming
+
+
+Homework review
+---------------
+
+Homework Questions?
+
+How is progress going on the HTML Renderer?
+
+
+Testing
+=======
+
+.. rst-class:: build left
+.. container::
+
+    You've already seen some a very basic testing strategy.
+
+    You've written some tests using that strategy.
+
+    These tests were pretty basic, and a bit awkward in places (testing error
+    conditions in particular).
+
+    .. rst-class:: centered
+
+    **It gets better**
+
+Test Runners
+------------
+
+So far our tests have been limited to code in an ``if __name__ == "__main__":``
+block.
+
+.. rst-class:: build
+
+* They are run only when the file is executed
+* They are always run when the file is executed
+* You can't do anything else when the file is executed without running tests.
+
+.. rst-class:: build
+.. container::
+
+    This is not optimal.
+
+    Python provides testing systems to help.
+
+
+.. nextslide:: Standard Library: ``unittest``
+
+The original testing system in Python.
+
+You write subclasses of the ``unittest.TestCase`` class:
+
+.. code-block:: python
+
+    # in test.py
+    import unittest
+
+    class MyTests(unittest.TestCase):
+        def test_tautology(self):
+            self.assertEquals(1, 1)
+
+Then you run the tests by using the ``main`` function from the ``unittest``
+module:
+
+.. code-block:: python
+
+    # in test.py
+    if __name__ == '__main__':
+        unittest.main()
+
+.. nextslide:: Testing Your Code
+
+This way, you can write your code in one file and test it from another:
+
+.. code-block:: python
+
+    # in my_mod.py
+    def my_func(val1, val2):
+        return val1 * val2
+
+    # in test_my_mod.py
+    import unittest
+    from my_mod import my_func
+
+    class MyFuncTestCase(unittest.TestCase):
+        def test_my_func(self):
+            test_vals = (2, 3)
+            expected = reduce(lambda x, y: x * y, test_vals)
+            actual = my_func(*test_vals)
+            self.assertEquals(expected, actual)
+
+    if __name__ == '__main__':
+        unittest.main()
+
+.. nextslide:: Advantages of ``unittest``
+
+.. rst-class:: build
+.. container::
+
+    The ``unittest`` module is great.
+
+    It comes with the standard Python distribution, no installation required.
+
+    It provides a wide variety of assertions for testing all sorts of situations.
+
+    It allows for a setup and tear down workflow both before and after all tests
+    and before and after each test.
+
+    It's well known and well understood.
+
+.. nextslide:: Disadvantages:
+
+.. rst-class:: build
+.. container::
+
+
+    It's Object Oriented, and quite heavy.
+
+    It uses the framework design pattern, so knowing how to use the features
+    means learning what to override.
+
+    Needing to override means you have to be cautious.
+
+    Test discovery is both inflexible and brittle.
+
+.. nextslide:: Other Options
+
+There are several other options for running tests in Python.
+
+
+* `Nose`_
+* `pytest`_
+* ... (many frameworks supply their own test runners)
+
+We are going to play today with pytest
+
+.. _Nose: https://nose.readthedocs.org/
+.. _pytest: http://pytest.org/latest/
+
+
+.. nextslide:: Installing ``pytest``
+
+The first step is to install the package:
+
+.. code-block:: bash
+
+    $ workon cff2py
+    (cff2py)$ pip install pytest
+
+Once this is complete, you should have a ``py.test`` command you can run at the
+command line:
+
+.. code-block:: bash
+
+    (cff2py)$ py.test
+
+If you have any tests in your repository, that will find and run them.
+
+.. rst-class:: build
+.. container::
+
+    **Do you?**
+
+.. nextslide:: Pre-existing Tests
+
+I've added two files to the ``code/session07`` folder, along with a python
+source code file called ``circle.py``.
+
+The results you should have seen when you ran ``py.test`` above come partly
+from these files.
+
+Let's take a few minutes to look these files over.
+
+[demo]
+
+.. nextslide:: What's Happening Here.
+
+When you run the ``py.test`` command, ``pytest`` starts in your current working
+directory and searches the filesystem for things that might be tests.
+
+It follows some simple rules:
+
+.. rst-class:: build
+
+* Any python file that starts with ``test_`` or ``_test`` is imported.
+* Any functions in them that start with ``test_`` are run as tests.
+* Any classes that start with ``Test`` are treated similarly, with methods that
+  begin with ``test_`` treated as tests.
+
+
+.. nextslide::
+
+This test running framework is simple, flexible and configurable.
+
+`Read the documentation`_ for more information.
+
+.. _Read the documentation: http://pytest.org/latest/getting-started.html#getstarted
+
+.. nextslide:: Test Driven Development
+
+What we've just done here is the first step in what is called **Test Driven
+Development**.
+
+A bunch of tests exist, but the code to make them pass does not yet exist.
+
+The red we see in the terminal when we run our tests is a goad to us to write
+the code that fixes these tests.
+
+Let's do that next!
 
 
 More on Subclassing
@@ -515,9 +737,9 @@ well.
 Kicking the Tires
 -----------------
 
-Let's pause for a moment here to try some of this out.
+Copy the file ``code/session07/circly.py`` to your student folder.
 
-Write a simple "Circle" class that will behave thusly:
+In it, write a simple "Circle" class:
 
 .. code-block:: ipython
 
@@ -536,6 +758,24 @@ area computed on the fly.
 
 Extra Credit: use a class method to make an alternate constructor that takes
 the diameter instead.
+
+
+.. nextslide::
+
+Also copy the file ``test_circle1.py`` to your student folder.
+
+As you work, run the tests:
+
+.. code-block:: bash
+
+    (cff2py)$ py.test test_circle1.py
+
+As each of the requirements from above are fulfilled, you'll see tests 'turn
+green'.
+
+When all your tests are passing, you've completed the job.
+
+(This clear finish line is another of the advantages of TDD)
 
 
 Special Methods
@@ -692,22 +932,45 @@ Extend your "Circle" class:
 If you have time: compare them... (``c1 > c2`` , etc)
 
 
+.. nextslide::
+
+As you work, run the tests in ``test_circle2.py``:
+
+.. code-block:: bash
+
+    (cff2py)$ py.test test_circle2.py
+
+As each of the requirements from above are fulfilled, you'll see tests 'turn
+green'.
+
+When all your tests are passing, you've completed the job.
+
+
 Homework
 ========
 
-Create a Python module that emulates a deck of playing cards.
+.. rst-class:: centered large
 
-Your deck of cards should behave like a standard Python container.
-
-It should also support the iterator protocol.
-
-You should be able to shuffle the deck, resulting in a random ordering of the
-cards.
-
-You should also be able to sort the deck so that the cards are ordered by suit
-and face value.
+Testing, Testing, 1 2 3
 
 
+Assignment
+----------
 
+If you are not yet done, complete the ``Circle`` class so that all tests in
+``test_circle2.py`` pass.
 
+Go back over some of your assignments from the last weeks.
+
+Convert tests that are currently in the ``if __name__ == '__main__':`` blocks
+into standalone pytest files.
+
+Name each test file so that it is clear with which source file it belongs::
+
+    test_rot13.py -> rot13.py
+
+Add unit tests for the HTML Renderer that you are currently constructing.
+
+Create at least 4 test files with tests that well exercise the features built
+in each source file.
 
