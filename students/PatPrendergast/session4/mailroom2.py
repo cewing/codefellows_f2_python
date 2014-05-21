@@ -10,9 +10,12 @@ def start():
     ''' Show menu of actions, receive user instructions on how to proceed '''
     print top_menu
     action = raw_input(u'What would you like to do: ')
-    action.lower()
-    menu_dict[action]()
-    start()
+    if action in menu_dict.keys():
+        action.lower()
+        menu_dict[action]()
+        start()
+    else:
+        start()
 
 # Mail is now an automatic part of accepting a donation.
 def mail(donor_name):
@@ -44,20 +47,21 @@ def receive(donor_name):
     ''' Helper to add money once donor is added 
     or found to exist from check_list function '''
     amount = safe_input_num()
-    donors[donor_name].append(amount) # FIX
+    donors[donor_name].append(amount) 
  
 # Two safe inputs, one for the name, one for the num.
 def safe_input_name(question):
     """Return the correct raw input"""
     try:
         request = raw_input(question)
-        return str(request)
+        if request == '' or request == None:
+            start()
+        else:
+            return str(request)
     except EOFError:
-        print "Got Nothing."
-        safe_input_name(request)
+        return safe_input_name(question)  
     except KeyboardInterrupt:
-        print 'Quitting?'
-        safe_input_name(request)
+        return safe_input_name(question)
     
 
 def safe_input_num():
@@ -67,7 +71,7 @@ def safe_input_num():
         if int(request) > 0:
             return int(request)
     except (EOFError, KeyboardInterrupt):
-        return None
+        return safe_input_num()
     except ValueError:
         print "Please type a number."
         return safe_input_num()
@@ -98,14 +102,17 @@ def report():
     table_top = u'Name\t\t\t\tTotal Donation Amount\n'
     print table_top
     for key, value in sorted(donors.iteritems(), key=lambda (k,v): (v,k)):
-        print value
         print u"%s\t\t\t$%s" % (key, str(sum(value)))
     # sorted([(value,key) for (key,value) in mydict.items()])
 
-menu_dict = {u'l': name_list, # either just one or both on their own.
-             u'd': receive_donation, 
-             u'r': report, 
-             u'q': exit}
+menu_dict = {u'l': name_list,
+            u'list': name_list,
+            u'd': receive_donation, 
+            u'donation': receive_donation,
+            u'r': report, 
+            u'report': report,
+            u'q': exit,
+            u'quit': exit}
 
 
 # Lists of donor data
