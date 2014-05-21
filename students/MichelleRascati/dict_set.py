@@ -3,10 +3,8 @@
 food_prefs = dict(name=u'Chris', city=u'Seattle', cake=u'Chocolate',
                   fruit=u'mango', salad=u'greek', pasta=u'lasagna')
 # Display Dictionary
-print '1) {} is from {}, and he likes {} cake, {} fruit, {} salad, and {} \
-pasta.'.format(
-    food_prefs['name'], food_prefs['city'], food_prefs['cake'],
-    food_prefs['fruit'], food_prefs['salad'], food_prefs['pasta'])
+print '1) {name} is from {city}, and he likes {cake} cake, {fruit} fruit, \
+{salad} salad, and {pasta} pasta.'.format(**food_prefs)
 
 
 ### 2 ###
