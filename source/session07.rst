@@ -11,7 +11,7 @@ Session Seven: More OO
 | Multiple Inheritance,
 | Properties,
 | Class and Static Methods,
-| Special and Magic Methods
+| Special (Magic) Methods
 
 
 More on Subclassing
@@ -274,4 +274,417 @@ You can use this to create attributes that are "read only":
     ----> 1 d.x = 6
     AttributeError: can't set attribute
 
+
 .. nextslide:: Syntactic Sugar
+
+This *imperative* style of adding a ``property`` to you class is clear, but
+it's still a little verbose.
+
+It also has the effect of leaving all those defined method objects laying
+around:
+
+.. code-block:: ipython
+
+    In [19]: d.x
+    Out[19]: 5
+    In [20]: d.getx
+    Out[20]: <bound method D.getx of <__main__.D object at 0x1043a4a10>>
+    In [21]: d.getx()
+    Out[21]: 5
+
+.. nextslide::
+
+Python provides us with a way to solve both these issues at once, using a
+syntactic feature called **decorators** (more about these next session):
+
+.. code-block:: ipython
+
+    In [22]: class E(object):
+       ....:     def __init__(self, x=5):
+       ....:         self._x = x
+       ....:     @property
+       ....:     def x(self):
+       ....:         return self._x
+       ....:     @x.setter
+       ....:     def x(self, value):
+       ....:         self._x = value
+       ....:
+    In [23]: e = E()
+    In [24]: e.x
+    Out[24]: 5
+    In [25]: e.x = 6
+    In [26]: e.x
+    Out[26]: 6
+
+
+Static and Class Methods
+========================
+
+.. rst-class:: left build
+.. container::
+
+    You've seen how methods of a class are *bound* to an instance when it is
+    created.
+
+    And you've seen how the argument ``self`` is then automatically passed to
+    the method when it is called.
+
+    And you've seen how you can call *unbound* methods on a class object so
+    long as you pass an instance of that class as the first argument.
+
+    .. rst-class:: centered
+
+    **But what if you don't want or need an instance?**
+
+
+Static Methods
+--------------
+
+A *static method* is a method that doesn't get self:
+
+.. code-block:: ipython
+
+    In [36]: class StaticAdder(object):
+       ....:     def add(a, b):
+       ....:         return a + b
+       ....:     add = staticmethod(add)
+       ....:
+
+    In [37]: StaticAdder.add(3, 6)
+    Out[37]: 9
+
+.. rst-class:: centered
+
+[demo: :download:`static_method.py <./supplements/static_method.py>`]
+
+
+.. nextslide:: Syntactic Sugar
+
+Like ``properties``, static methods can be written *declaratively* using the
+``staticmethod`` built-in as a *decorator*:
+
+.. code-block:: python
+
+    class StaticAdder(object):
+        @staticmethod
+        def add(a, b):
+            return a + b
+
+.. nextslide:: Why?
+
+.. rst-class:: build
+.. container::
+
+    Where are static methods useful?
+
+    Usually they aren't
+
+    99% of the time, it's better just to write a module-level function
+
+    An example from the Standard Library (tarfile.py):
+
+    .. code-block:: python
+        
+        class TarInfo(object):
+            # ...
+            @staticmethod
+            def _create_payload(payload):
+                """Return the string payload filled with zero bytes
+                   up to the next 512 byte border.
+                """
+                blocks, remainder = divmod(len(payload), BLOCKSIZE)
+                if remainder > 0:
+                    payload += (BLOCKSIZE - remainder) * NUL
+                return payload
+
+
+Class Methods
+-------------
+
+A class method gets the class object, rather than an instance, as the first
+argument
+
+.. code-block:: ipython
+
+    In [41]: class Classy(object):
+       ....:     x = 2
+       ....:     def a_class_method(cls, y):
+       ....:         print "in a class method: ", cls
+       ....:         return y ** cls.x
+       ....:     a_class_method = classmethod(a_class_method)
+       ....:
+    In [42]: Classy.a_class_method(4)
+    in a class method:  <class '__main__.Classy'>
+    Out[42]: 16
+
+.. rst-class:: centered
+
+[demo: :download:`class_method.py <./supplements/class_method.py>`]
+
+.. nextslide:: Syntactic Sugar
+
+Once again, the ``classmethod`` built-in can be used as a *decorator* for a
+more declarative style of programming:
+
+.. code-block:: python
+
+    class Classy(object):
+        x = 2
+        @classmethod
+        def a_class_method(cls, y):
+            print "in a class method: ", cls
+            return y ** cls.x
+
+.. nextslide:: Why?
+
+.. rst-class:: build
+.. container::
+
+    Unlike static methods, class methods are quite common.
+
+    They have the advantage of being friendly to subclassing.
+
+    Consider this:
+
+    .. code-block:: ipython
+    
+        In [44]: class SubClassy(Classy):
+           ....:     x = 3
+           ....:
+
+        In [45]: SubClassy.a_class_method(4)
+        in a class method:  <class '__main__.SubClassy'>
+        Out[45]: 64
+
+.. nextslide:: Alternate Constructors
+
+Because of this friendliness to subclassing, class methods are often used to
+build alternate constructors.
+
+Consider the case of wanting to build a dictionary with a given iterable of
+keys:
+
+.. code-block:: ipython
+
+    In [57]: d = dict([1,2,3])
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-57-50c56a77d95f> in <module>()
+    ----> 1 d = dict([1,2,3])
+
+    TypeError: cannot convert dictionary update sequence element #0 to a sequence
+
+
+.. nextslide:: ``dict.fromkeys()``
+
+The stock constructor for a dictionary won't work this way. So the dict object
+implements an alternate constructor that *can*.
+
+.. code-block:: python
+
+    @classmethod
+    def fromkeys(cls, iterable, value=None):
+        '''OD.fromkeys(S[, v]) -> New ordered dictionary with keys from S.
+        If not specified, the value defaults to None.
+
+        '''
+        self = cls()
+        for key in iterable:
+            self[key] = value
+        return self
+
+(this is actually from the OrderedDict implementation in ``collections.py``)
+
+See also datetime.datetime.now(), etc....
+
+.. nextslide:: Curious?
+
+Properties, Static Methods and Class Methods are powerful features of Pythons
+OO model.
+
+They are implemented using an underlying structure called *descriptors*
+
+`Here is a low level look`_ at how the descriptor protocol works.
+
+The cool part is that this mechanism is available to you, the programmer, as
+well.
+
+.. _Here is a low level look: https://docs.python.org/2/howto/descriptor.html
+
+.. nextslide:: Kicking the Tires
+
+Let's pause for a moment here to try some of this out.
+
+Write a simple "Circle" class that will behave thusly:
+
+.. code-block:: ipython
+
+    In [13]: c = Circle(3)
+    In [15]: c.diameter
+    Out[15]: 6.0
+    In [16]: c.diameter = 8
+    In [17]: c.radius
+    Out[17]: 4.0
+    In [18]: c.area
+    Out[18]: 50.26548245743669
+
+
+Use ``properties`` so you can keep the radius and diameter in sync, and the
+area computed on the fly.
+
+Extra Credit: use a class method to make an alternate constructor that takes
+the diameter instead.
+
+
+Special Methods
+===============
+
+.. rst-class:: left
+.. container::
+
+    Special methods (also called *magic* methods) are the secret sauce to Python's
+    Duck typing.
+
+    Defining the appropriate special methods in your classes is how you make your
+    class act like standard classes.
+
+What's in a Name?
+-----------------
+
+We've seen at least one special method so far::
+
+    __init__
+
+It's all in the double underscores...
+
+Pronounced "dunder" (or "under-under")
+
+try: ``dir(2)``  or ``dir(list)``
+
+.. nextslide:: Protocols
+
+.. rst-class:: build
+.. container::
+
+    The set of special methods needed to emulate a particular type of Python object
+    is called a *protocol*.
+
+    Your classes can "become" like Python built-in classes by implementing the
+    methods in a given protocol.
+
+    Remember, these are more *guidelines* than laws.  Implement what you need.
+
+
+.. nextslide:: The Numerics Protocol
+
+Do you want your class to behave like a number? Implement these methods:
+
+.. code-block:: python
+
+    object.__add__(self, other)
+    object.__sub__(self, other)
+    object.__mul__(self, other)
+    object.__floordiv__(self, other)
+    object.__mod__(self, other)
+    object.__divmod__(self, other)
+    object.__pow__(self, other[, modulo])
+    object.__lshift__(self, other)
+    object.__rshift__(self, other)
+    object.__and__(self, other)
+    object.__xor__(self, other)
+    object.__or__(self, other)
+
+.. nextslide:: The Container Protocol
+
+Want to make a container type? Here's what you need:
+
+.. code-block:: python
+
+    object.__len__(self)
+    object.__getitem__(self, key)
+    object.__setitem__(self, key, value)
+    object.__delitem__(self, key)
+    object.__iter__(self)
+    object.__reversed__(self)
+    object.__contains__(self, item)
+    object.__getslice__(self, i, j)
+    object.__setslice__(self, i, j, sequence)
+    object.__delslice__(self, i, j)
+
+
+.. nextslide:: An Example
+
+Each of these methods supports a common Python operation.
+
+For example, to make '+' work with a sequence type in a vector-like fashion, implement ``__add__``:
+
+.. code-block:: python
+
+    def __add__(self, v):
+        """return the element-wise vector sum of self and v
+        """
+        assert len(self) == len(v)
+        return vector([x1 + x2 for x1, x2 in zip(self, v)])
+
+.. rst-class:: centered
+
+[a more complete example may be seen :download:`here <./supplements/vector.py>`]
+
+
+.. nextslide:: Generally Useful Special Methods
+
+You only *need* to define the special methods that will be used by your class.
+
+However, even in the absence of wanting to duck-type, you should almost always
+define these:
+
+``object.__str__``:
+  Called by the str() built-in function and by the print statement to compute
+  the *informal* string representation of an object.
+
+``object.__unicode__``:
+  Called by the unicode() built-in function.  This converts an object to an
+  *informal* unicode representation.
+
+``object.__repr__``:
+  Called by the repr() built-in function and by string conversions (reverse
+  quotes) to compute the *official* string representation of an object.
+
+  (ideally: ``eval( repr(something) ) == something``)
+
+.. nextslide:: Summary
+
+Use special methods when you want your class to act like a "standard" class in
+some way.
+
+Look up the special methods you need and define them.
+
+There's more to read about the details of implementing these methods:
+
+* https://docs.python.org/2/reference/datamodel.html#special-method-names
+* http://www.rafekettler.com/magicmethods.html
+
+Be a bit cautious about the code examples in that last one. It uses quite a bit
+of old-style class definitions, which should not be emulated.
+
+
+.. nextslide:: Kicking the Tires
+
+Extend your "Circle" class:
+
+* Add ``__str__``  and ``__repr__``  methods
+* Write an ``__add__``  method so you can add two circles
+* Make it so you can multiply a circle by a number....
+
+.. code-block:: ipython
+
+    In [22]: c1 = Circle(3)
+    In [23]: c2 = Circle(4)
+    In [24]: c3 = c1+c2
+    In [25]: c3.radius
+    Out[25]: 7
+    In [26]: c1*3
+    Out[26]: Circle(9)
+
+
+If you have time: compare them... (``c1 > c2`` , etc)}
