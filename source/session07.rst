@@ -2,122 +2,84 @@
 .. Foundations 2: Python slides file, created by
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
-*****************************************************************************
-Session Seven: More OO: Special Methods, Properties, class and static methods
-*****************************************************************************
+**********************
+Session Seven: More OO
+**********************
 
-===================
+.. rst-class:: large centered
+
+Multiple Inheritance, Special Methods, Properties, Class and Static Methods
+
+
 More on Subclassing
 ===================
 
-Overriding __init__
------------------------
+Watch This Video:
 
-``__init__`` common method to override
+http://pyvideo.org/video/879/the-art-of-subclassing
 
-You often need to call the super class ``__init__``  as well}
+.. rst-class:: left
 
-.. code-block:: python  
-    
-    class Circle(object):
-        color = "red"
-        def __init__(self, diameter):
-            self.diameter = diameter
-    ...
+Seriously, well worth the time.
 
-    class CircleR(Circle):
-        def __init__(self, radius):
-            diameter = radius*2
-            Circle.__init__(self, diameter)
+What's a Subclass For?
+----------------------
 
+The most salient points from that video are as follows:
 
-exception to the "don't change the method signature" rule.
+**Subclassing is not for Specialization**
+
+**Subclassing is for Reusing Code**
+
+**Bear in mind that the subclass is in charge**
 
 
-More subclassing
-----------------
-
-You can also call the superclass' other methods:
-
-.. code-block:: python  
-
-    class Circle(object):
-    ...
-        def get_area(self, diameter):
-            return math.pi * (diameter/2.0)**2
-
-    class CircleR2(Circle):
-    ...
-        def get_area(self):
-            return Circle.get_area(self, self.radius*2)
-
-There is nothing special about ``__init__``  except that it gets called automatically when a new instance is created.
-
-When to Subclass
-----------------
-
-"Is a" relationship: Subclass/inheritance}
-
-"Has a" relationship: Composition}
-
-.. nextslide::
-
-"Is a" vs "Has a"
-
-You may have a class that needs to accumulate an arbitrary number of objects.
-
-A list can do that -- so should you subclass list?
-
-Ask yourself:
-
-* Is your class a list (with some extra functionality)?
-
-or
-
-* Does you class HAVE a list?
-
-You only want to subclass list if your class could be used anywhere a list can be used.
-
-====================
 Multiple Inheritance
-====================
-
-multiple inheritance
 --------------------
-Multiple inheritance: Pulling from more than one class
 
-.. code-block:: python  
+Multiple inheritance: Inheriting from more than one class
+
+Simply provide more than one parent.
+
+.. code-block:: python
 
     class Combined(Super1, Super2, Super3):
         def __init__(self, something, something else):
+            # some custom initialization here.
             Super1.__init__(self, ......)
             Super2.__init__(self, ......)
             Super3.__init__(self, ......)
+            # possibly more custom initialization
 
 
 (calls to the super class ``__init__``  are optional -- case dependent)
 
-.. nextslide::
+.. nextslide:: Method Resolution Order
 
-Attribute resolution -- left to right}
+.. code-block:: python
+
+    class Combined(Super1, Super2, Super3)
+
+Attributes are located bottom-to-top, left-to-right
 
 * Is it an instance attribute ?
 * Is it a class attribute ?
 * Is it a superclass attribute ?
-  
-   - is the it an attribute of the left-most superclass?
-   - is the it an attribute of the next superclass?
-   -  and so on up the hierarchy...
-  
+
+  * is the it an attribute of the left-most superclass?
+  * is the it an attribute of the next superclass?
+  * and so on up the hierarchy...
+
 * Is it a super-superclass attribute ?
 * ... also left to right ...
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
-Mix-ins
--------
+.. nextslide:: Mix-ins
 
-Why would you want to do this?}
+Provides an subset of expected functionality in a re-usable package.
+
+Why would you want to do this?
 
 Hierarchies are not always simple:
 
@@ -133,27 +95,33 @@ Hierarchies are not always simple:
     
 Where do you put a Platypus?
 
-Real World Example: ``FloatCanvas``
+Real World Example: `FloatCanvas`_
 
-New Style classes
------------------
+.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
 
-You will see reference to "new style" classes
+**Careful About This Pattern**
 
-These derive from ``object`` 
 
-Introduced in python2.2 to better merge types and classes, and clean up a few things.
+.. nextslide:: New-Style Classes
 
-Differences in method resolution order and properties.
+All the class definitions we've been showing inherit from ``object``.
 
-Mostly the same, often makes no difference.
+This is referred to as a "new style" class.
 
-My advice: always subclass from ``object``.
+They were introduced in python2.2 to better merge types and classes, and clean
+up a few things.
 
-super
------
+There are differences in method resolution order and properties.
 
-``super()``: use it to call a superclass method, rather than explicitly calling it.
+**Always Make New-Style Classes.**
+
+The differences are subtle, and may not appear until they jump up to bite you.
+
+
+.. nextslide:: ``super()``
+
+``super()``: use it to call a superclass method, rather than explicitly calling
+the unbound method on the superclass.
 
 instead of:
 
@@ -173,9 +141,14 @@ You can do:
             super(A, self).__init__(self, *argw, **kwargs)
             ...
 
+.. nextslide:: Caveats
+
 Caution: There are some subtle differences with multiple inheritance.
 
-.. nextslide::
+You can use explicit calling to ensure that the 'right' method is called.
+
+
+.. nextslide:: Background
 
 Two seminal articles about ``super()``:
 
