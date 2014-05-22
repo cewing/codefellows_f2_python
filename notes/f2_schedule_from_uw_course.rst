@@ -66,6 +66,12 @@ Testing as asserts in main
   - importing from a module while in the interpreter
   - executing module code with 'if __name__ == "__main__":' blocks
 
+Homework
+--------
+
+* Ackermann's Function with tests
+* Mathematical series functions with tests
+
 
 Class 3:
 ========
@@ -77,6 +83,14 @@ Sequences: Strings, Tuples, Lists
 Iteration, Looping and control flow.
 
 String methods and formatting
+
+Homework
+--------
+
+* List Lab (list manipulation and basic user input)
+* ROT13 (string manipulation)
+* Mailroom Madness (user input interactions, list processing, control flow,
+  string formatting)
 
 
 Class 4:
