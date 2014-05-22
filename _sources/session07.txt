@@ -363,7 +363,7 @@ You can do:
 
     class A(B):
         def __init__(self, *args, **kwargs)
-            super(A, self).__init__(self, *argw, **kwargs)
+            super(A, self).__init__(*argw, **kwargs)
             ...
 
 .. nextslide:: Caveats
