@@ -13,7 +13,7 @@ class Element(object):
 
     def render(self, file_out, ind=""):
 
-        file_out.write('<%s>\n'%self.tag)
+        file_out.write('\n<%s>\n' % self.tag)
         for item in self.content:
             try:
             #if its a Element obj, call its render method
@@ -23,7 +23,7 @@ class Element(object):
             # else:
             except AttributeError:
                 file_out.write(self.indent+ind+item+'\n')
-        file_out.write('\n</%s>'%self.tag)
+        file_out.write('\n</%s>' % self.tag)
 
     def append(self, a_string):
             self.content.append(a_string)
