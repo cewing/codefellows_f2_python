@@ -12,6 +12,7 @@ class Element(object):
     
     tag = ''
     indent = '    '
+    #html_attributes dict?
 
     def __init__(self, content=None):
         if content is not None:
@@ -19,14 +20,14 @@ class Element(object):
         else:
             self.content = []
 
-    def render(self, file_out, ind=''):
+    def render(self, file_out, ind='', **html_attributes):
         
-        file_out.write('\n%s<%s>\n' % (ind, self.tag))
+        file_out.write('\n%s<%s %s>' % (ind, self.tag, html_attributes))
         for item in self.content:
             try:
                 item.render(file_out, ind+self.indent)
             except AttributeError:
-                file_out.write(self.indent + ind + item +'\n')
+                file_out.write('\n' + self.indent + ind + item)
         file_out.write('\n%s<%s/> ' % (ind, self.tag))
 
     def append(self, a_string):
@@ -41,3 +42,42 @@ class Body(Element):
 
 class P(Element):
     tag = u'p'
+
+class Head(Element):
+    tag = u'head'
+
+
+class OneLineTag(Element):
+    ''' Renders a one line tage where appropriate from the Element class '''
+    def render(self, file_out, ind=''):
+        file_out.write('\n%s<%s>' % (ind, self.tag))
+        for item in self.content:
+            try:
+                item.render(file_out, ind+self.indent)
+            except AttributeError:
+                file_out.write(item)
+        file_out.write('<%s/> ' % (self.tag))
+
+class Title(OneLineTag):
+    tag = u'title'
+        
+
+class SelfClosingTag(Element):
+    ''' Renders a one line tage where appropriate from the Element class '''
+    def render(self, file_out, ind=''):
+        file_out.write('\n%s<%s ' % (ind, self.tag))
+        for item in self.content:
+            try:
+                item.render(file_out, ind+self.indent)
+            except AttributeError:
+                file_out.write(item)
+        file_out.write('/> ')
+
+class Hr(SelfClosingTag):
+    tag = u'hr/'
+
+class Br(SelfClosingTag):
+    tag = u'br/'
+
+class A(SelfClosingTag):
+    pass
