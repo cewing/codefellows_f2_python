@@ -14,10 +14,12 @@ import math
 from circle import Circle
 #from circle_solution1 import Circle
 
+
 def test_create():
     c = Circle(4)
 
     assert c.radius == 4
+
 
 def test_change_radius():
     c = Circle(3)
@@ -25,10 +27,12 @@ def test_change_radius():
 
     assert c.radius == 4
 
+
 def test_diameter():
     c = Circle(4)
 
     assert c.diameter == 8
+
 
 def test_change_diameter():
     c = Circle(2)
@@ -40,10 +44,12 @@ def test_change_diameter():
     assert c.radius == 3
     assert c.diameter == 6
 
+
 def test_area():
     c = Circle(4)
 
     assert c.area == math.pi*16
+
 
 def test_set_area():
     c = Circle(4)
@@ -59,8 +65,3 @@ def test_set_area():
 
 #   assert c.diameter == 8
 #   assert c.radius == 4
-
-
-
-
-
