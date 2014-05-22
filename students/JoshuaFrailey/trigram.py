@@ -1,5 +1,6 @@
 import codecs
 import random
+import string
 
 
 def _build_trigram(words):
@@ -31,6 +32,12 @@ def _build_story(trigram, seed=None):
         new_seed.append(next_word)
         seed = u" ".join(new_seed)
     f.close()
+
+def _collect_stats(words):
+    stats = {}
+    for word in words:
+        if word.endswith() in string.punctuation:
+            stats.setdefault(word[:len(word)-1], {})
 
 if __name__ == "__main__":
     words = _file_to_list("sherlock_small.txt")
