@@ -2,7 +2,7 @@
 import string
 
 def get_file(filename):
-    
+    ''' Opens file, strips whitespace '''
     try:
         fop = open(filename, 'r')
         contents = fop.readlines()
@@ -12,7 +12,9 @@ def get_file(filename):
     contents = map(str.strip, contents)
     return contents
 
+
 def write_to(word_list, filename):
+    ''' Gets filename writes to file. '''
     write_to = raw_input(u'''Writing to a file...
 Do you wish to overwrite the original file? Y or N>''')
     if write_to == u'Y' or write_to == u'y':
@@ -27,6 +29,7 @@ Do you wish to overwrite the original file? Y or N>''')
         for line in word_list:
             fop.write(line)
         fop.close()
+
 
 filename = raw_input(u'What file do you wish to open?')
 contents = get_file(filename)
