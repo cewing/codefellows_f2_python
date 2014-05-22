@@ -21,13 +21,13 @@ class Element(object):
 
     def render(self, file_out, ind=''):
         
-        file_out.write('\n<%s>\n' % self.tag)
+        file_out.write('\n%s<%s>\n' % (ind, self.tag))
         for item in self.content:
             try:
-                item.render(file_out, ind + self.indent)
+                item.render(file_out, ind+self.indent)
             except AttributeError:
                 file_out.write(self.indent + ind + item +'\n')
-        file_out.write('\n<%s/> ' % self.tag)
+        file_out.write('\n%s<%s/> ' % (ind, self.tag))
 
     def append(self, a_string):
         self.content.append(a_string)
