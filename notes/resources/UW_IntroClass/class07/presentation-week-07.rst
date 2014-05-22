@@ -420,51 +420,34 @@ http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
 
 Wrap Up
 -------
-Thinking OO in Python:}
 
-Think about what makes sense for your code:}
+Thinking OO in Python:
 
-  * Code re-use}
-  * Clean APIs}
-  * ... }
+Think about what makes sense for your code:
+
+* Code re-use
+* Clean APIs
+* ... 
 
 
-Don't be a slave to what OO is \emph{supposed} to look like. }
+Don't be a slave to what OO is *supposed* to look like.
 
-Let OO work for you, not \emph{create} work for you}
+Let OO work for you, not *create* work for you}
 
-Wrap Up
--------
-OO in Python:}
+.. nextslide::
 
-The Art of Subclassing}: Raymond Hettinger
+OO in Python:
+
+The Art of Subclassing: Raymond Hettinger
 
 http://pyvideo.org/video/879/the-art-of-subclassing}}
 
 "classes are for code re-use -- not creating taxonomies"
 
-Stop Writing Classes}: Jack Diederich
+Stop Writing Classes: Jack Diederich
 
 http://pyvideo.org/video/880/stop-writing-classes}}
 
 "If your class has only two methods -- and one of them is ``__init__`` 
 -- you don't need a class "
 
-Homework
---------
-Finish the labs.}
-
-Watch the videos.}
-
-Readup more on OO design.}
-
-Your Project:}
-
-  * By next week, send me a project proposal: can be short and sweet.
-  * Think about how you might use OO:
-  
-    * What classes naturally fall out of the problem?
-    * NOTE: maybe none!
-  
-
-\end{document}
