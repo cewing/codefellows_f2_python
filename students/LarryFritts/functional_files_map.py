@@ -7,11 +7,10 @@ read_file = codecs.open(filename, 'r')
 working_str = read_file.readlines()
 read_file.close()
 
-final_str = []
 def strip_lines(line):
-    final_str.append(line.strip())
+    return line.strip()
 
-map(strip_lines, working_str)
+final_str = map(strip_lines, working_str)
 
 
 user_input = raw_input(u"\nDo you want to write to the same file (y/n)? ")

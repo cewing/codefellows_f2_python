@@ -8,8 +8,12 @@ working_str = read_file.readlines()
 read_file.close()
 
 final_str = []
-for i in working_str:
-    final_str.append(i.strip())
+def strip_lines(line):
+    final_str.append(line.strip())
+
+map(strip_lines, working_str)
+#for i in working_str:
+#    final_str.append(i.strip())
 
 
 user_input = raw_input(u"\nDo you want to write to the same file (y/n)? ")
