@@ -15,16 +15,17 @@ if __name__ == '__main__' :
 
     filename = sys.argv[1]
     f_source = open (filename, 'rb')
+    lines = f_source.readlines()
     
-    if choice_ == "yes" : f_dest   = open(filename , 'w+')
-    else : f_dest   = open(filename+"_new" , 'w+')
+    if choice_ == "yes" : 
+        f_dest   = open(filename , 'w')
+    else : 
+        f_dest   = open("new_"+filename, 'w+')
     
-    while True :
-        lines = f_source.readlines()
-        if not lines :
-            break
-        # with map :
-        #lines = map (lambda x : x.strip()+"\r\n" , lines)
-        # with comprehension
-        lines = [x.strip()+"\r\n" for x in lines]
-        f_dest.writelines (lines)
+    # with map :
+    #lines = map (lambda x : x.strip()+"\n" , lines)
+    # with comprehension
+    lines = [x.strip()+"\r\n" for x in lines]
+    f_dest.writelines (lines)
+        
+        
