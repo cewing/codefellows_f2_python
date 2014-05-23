@@ -9,7 +9,11 @@ Session One: Introductions
     :align: center
     :width: 38%
 
-xkcd.com/353
+.. rst-class:: credit
+
+`xkcd.com/353`_
+
+.. _xkcd.com/353: http://xkcd.com/353
 
 Introductions
 =============

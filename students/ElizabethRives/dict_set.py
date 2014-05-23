@@ -20,6 +20,8 @@ for x in y:
 new_dict = dict(zip(y, h_list))
 print new_dict
 
+new_dict = {y: hex(y) for y in range(16)}
+
 dict_four = {}
 
 for key in my_dict.iterkeys():
