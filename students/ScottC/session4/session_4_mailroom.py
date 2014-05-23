@@ -112,14 +112,15 @@ def send_thank_you_note(donor_dict):
             # Print thank you emails to the console
             print u""
             print u"Printing thank you emails for all donors..."
+            print donor_dict
             #print u"Dear %s, thank you for your generous donation of $%s." % (input_string, input_donation)
             #print u"{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} salad, and {pasta} pasta.".format(**d1)
             for k, v in donor_dict.items():
-                # This does not work for some reason...
-                #print u"Dear {k}, thank you for your generous donation.".format(donor_dict.keys())
+                # This uses str.format()
+                print u"Dear {0}, thank you for your generous donation total of {1}.".format(k, sum(v))
                 
-                # ...so I used this instead
-                print u"Dear %s, thank you for your generous donation total of $%s." % (k, sum(v))
+                # This uses %s
+                #print u"Dear %s, thank you for your generous donation total of $%s." % (k, sum(v))
 
     # Send user back to main prompt
     main_prompt(donor_dict)
