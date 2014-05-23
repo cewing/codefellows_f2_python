@@ -4,7 +4,7 @@ import os
 
 def print_ (type_) :
     print
-    if type_ == 'name' : 
+    if type_ == 'name' :
         for key in donation_l.keys() : print key,
     print
 
@@ -13,7 +13,7 @@ def add_donor (donor_) :
         if i == donor_ : break
     else :
         print u"Adding new donor to the Donation List"
-        donation_l[donor_] = []            
+        donation_l[donor_] = []
     
 def ask_for_amount () :
     amount = unicode(raw_input(u"Enter a donation amount : "))
@@ -46,11 +46,11 @@ def send_mail () :
 
 
 def ave_amount (donor) :
-    ave_  = 0
+    ave_ = 0
     count = 0
     for i in donation_l.get(donor) :
         count += 1
-        ave_  += float(i)
+        ave_ += float(i)
     else :
         ave_ = ave_ / count
     return round(ave_,2)
@@ -62,8 +62,8 @@ def create_report () :
     for i in donation_l.iterkeys() :
         new_list.append([find_total_amount(i), i, ave_amount(i)])
     
-    new_list.sort()    
-    print u" Donor Name      Total Donated   Ave. Donation  "
+    new_list.sort()
+    print u" Donor Name Total Donated Ave. Donation "
     print u"=============== =============== =============== "
     for i in new_list :
         print ' {:14s} {:14.2f} {:15.2f}'.format(i[1],i[0],i[2])
@@ -73,7 +73,7 @@ def create_report () :
 
 
 if __name__ == '__main__' :
-    keys       = [u"David", u"Mark", u"Alice", u"Cindy", u"Martin" ]
+    keys = [u"David", u"Mark", u"Alice", u"Cindy", u"Martin" ]
     values = [ [50,150,150], [50,50,50], [80,100,100], [100,50,100], [200,150,150] ]
     donation_l = dict(zip(keys, values))
     
@@ -81,7 +81,7 @@ if __name__ == '__main__' :
     
     while not time_to_exit :
         choice_ = raw_input (u"What do you want to do?\n1) Send a thank you mail\n2) Create a report\n3) Exit\n")
-        if   choice_ == '1' : 
+        if choice_ == '1' :
             send_mail ()
             print
         elif choice_ == '2' :
@@ -92,6 +92,7 @@ if __name__ == '__main__' :
         else :
             print u"Please enter a valid choice!"
 
+
     
 
     #write a program which prints the full path to all files in the current directory, one per line
@@ -99,24 +100,16 @@ if __name__ == '__main__' :
         print ' {:20s} {:30s}'.format(files,os.path.abspath(files))
         #print files,
         #print os.path.abspath(files)
-    
     #write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
-    source_      = '/Users/muazzezmira/projects/cff2py/sea-c15-python/students/MzzzMira/sherlock.txt'
-    destination_ = '/Users/muazzezmira/projects/cff2py/sea-c15-python/students/MzzzMira/dest'
-    file_name    = os.path.split(source_)[1]
-    #file_path    = os.path.split(source_)[0]
-    f_source     = open(source_, 'r')
+    file_name    = 'series.py'
+    source_      = os.path.abspath(file_name)
+    new_dest_    = 'dest'
+    os.mkdir (new_dest_)
+    destination_ = os.path.join(os.getcwd()+'/'+new_dest_)
+    print destination_
+    f_source = open(source_, 'r')
     os.chdir (destination_)
-    f_dest       = open(file_name, 'w+')
-    while True :
-        line = f_source.readline()
-        if not line : 
-            break
-        f_dest.writelines(line)
-        
+    f_dest = open(file_name, 'w+')
+    lines = f_source.readlines()
+    f_dest.writelines(lines)
     
-    
-    
-
-
-
