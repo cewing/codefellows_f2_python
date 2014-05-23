@@ -10,7 +10,7 @@ Python class example.
 # Fill it all in here.
 class Element(object):
     tag = u"html"
-    indent = u"    "
+    indent = u"  "
 
     def __init__(self, content=None):
         if content is not None:
@@ -23,8 +23,28 @@ class Element(object):
         self.content.append(text)
 
     def render(self, file_out, ind=u""):
-        """Render tag and string in conent."""
-        file_out.write(u'<{}>\n'.format(self.tag))
+        """Render tag and string in conent.
+
+        Keyword arguments:
+        file_out -- File name in which to output render
+        ind -- amount to indent tag (default "")
+        """
+        file_out.write(u'{}<{}>\n'.format(ind, self.tag))
         for item in self.content:
-            file_out.write(self.indent + ind + item + '\n')
-        file_out.write(u'</{}>\n'.format(self.tag))
+            try:
+                item.render(file_out, self.indent + ind)
+            except AttributeError:
+                file_out.write(self.indent + ind + item + '\n')
+        file_out.write(u'{}</{}>\n'.format(ind, self.tag))
+
+
+class Html(Element):
+    tag = u"html"
+
+
+class Body(Element):
+    tag = u"body"
+
+
+class P(Element):
+    tag = u"p"
