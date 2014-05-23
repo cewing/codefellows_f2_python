@@ -8,10 +8,10 @@ def sum_series (k, m=0, n=1) :
                 (2,1) combination will run lucas function
                 other values will run other series
     """
-    if k<0 : return None
-    if m == 2 and n == 1 : return lucas(k)
-    if m == 0 and n == 1 : return fibonacci(k)
-    return sum_series (k-1, n, m+n)
+    if k < 0    : return None
+    if k == 0   : return m
+    if k == 1   : return n)
+    return sum_series (k-1, m, n) + sum_series (k-2, m, n)
     
 
 def fibonacci(k):
@@ -31,7 +31,7 @@ def lucas(k) :
         Input  : n - the position, bigger than 0
         Output : the value at nth position
     """
-    if k < 0  : return None
+    if k < 0  : return
     if k == 0 : return 2
     if k == 1 : return 1
     return lucas(k-1) + lucas(k-2)
@@ -95,6 +95,7 @@ if __name__ == '__main__' :
 
     for i,j,k, expected in sum_series_tests :
         assert sum_series (i,j,k) == expected
+        
     else :
         print u"Sum_series Function Tests Passed\n"
 
