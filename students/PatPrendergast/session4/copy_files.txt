@@ -1,0 +1,119 @@
+###Git routines
+
+
+#Getting changes from upstream and adding yours...
+
+You can incorporate this into your daily workflow:
+
+$ git checkout master
+$ git fetch upstream master
+$ git merge upstream/master
+$ git push origin master
+[do some work]
+$ git commit -m "here is a good commit message"
+$ git push origin master
+[make a pull request]
+
+
+#Cloning a repo from GitHub.
+(using venv and venvwrapper)
+
+mkproject __name__
+Go to github and get link from repo (copy and paste)
+workon __name__
+git clone https://github.com/__yourname__/__reponame__.git
+cd __reponame__
+pip install -r requirements.txt  
+(? or ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-
+future pip install -r requirements.txt)
+
+Adding to Git
+
+
+git add, add the new folder and file to your clone of the repository.
+git commit, commit your changes to your clone (write a good commit message). If you later edit your file, don’t forget to commit those changes too.
+git push, push your commits to your fork on GitHub. Usually 'origin master'
+In GitHub’s Web UI (green square in your repo), make a pull request to the original CodeFellows repository.
+
+
+
+Mark's Git Branch Workflow
+
+
+
+Git branches are a way of taking some working code, making some changes 
+that might break it, testing it and making sure it works, then merging 
+it back into your working code, all the while never having to sacrifice 
+the working state of your project. If you haven't been using branches 
+yet, then everything you've been doing is on the "master" branch. So if 
+you run the command:
+
+$ git branch
+
+it shows you all the branches you have active and an asterisk next to 
+the one you currently have active
+
+foo-branch
+* master
+other-branch
+
+To switch to a new branch, you have to "check it out" and it will 
+automatically switch all the files in your repo to match the state of 
+that branch.
+
+$ git checkout foo-branch
+$ git branch
+
+* foo-branch
+master
+other-branch
+
+Starting a new branch initializes that branch with all the files as 
+they exist in whatever branch you currently have checked out. To do 
+that you run the command:
+
+$ git branch new-branch
+$ git checkout new-branch
+
+And now you've activated that new branch and can start working on it. 
+When you've done some work an have been adding and committing, eventually 
+it becomes time to push. Github will also allow you to use branches, 
+so where before you would push from origin to master, you can run:
+
+$ git push -u origin new-branch
+
+And Github will automatically put your code into that new branch. The 
+-u flag is there so that the next time you run "git pull" or "git push" 
+without any other arguments, it will default to "origin new-branch." 
+So you can omit the -u and be explicit about your remote and branch names.
+
+
+You can select which branch you're viewing on Github by clicking on the 
+gray button near the top of a repo that is labeled "branch" and selecting
+from the drop down menu.
+
+So to create a new branch for a new pull request: When you're ready to 
+start working, make sure you're on the master branch and run 
+
+$ git branch week-4
+(call it whatever you like)
+
+Then check out that branch
+
+$git checkout week-4
+
+Then do your work on that branch, adding and committing at an appropriate 
+clip, and then when you're ready to submit:
+
+$ git push -u origin week-4
+
+You can then go to your Github repo, switch to the week-4 branch, and 
+then create a pull request like normal. This way you're only doing a 
+pull request on changes to that branch. Feel free to email me with more 
+questions.
+
+Good luck and happy Gitting!
+
+--
+Mark J. Charyk
+markcharyk@gmail.com###Git routines
