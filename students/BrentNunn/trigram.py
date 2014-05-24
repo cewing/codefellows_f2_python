@@ -9,8 +9,6 @@ import sys
 def get_text(text_file):
     """get a text file and split the contents into a word list"""
     try:
-        #f = codecs.open('sherlock_small.txt', 'U')
-        #f = codecs.open('sherlock.txt', 'U')
         f = codecs.open(text_file)
     except Exception, e:
         print 'Missing input file'
@@ -41,7 +39,6 @@ def trigram_output(trigrams, first_words = None, length=200):
     
     #User has option to "prime" the output with initial list of words, for readability.
     if first_words:
-        #trigram_text = [first_words[1], first_words[2]]
         trigram_text = first_words
     else:
         trigram_text = list(random.choice(trigrams.keys()))
