@@ -9,7 +9,7 @@ class Element(object):
         if content is not None:
             self.content = [None]
         else:
-            self.content = []
+        self.content = []
 
     def render(self, file_out, ind=""):
 
@@ -32,6 +32,7 @@ class Element(object):
 class Html(Element):
         tag = u"html"
         indent = "    "
+
 
 
 class Body(Element):
