@@ -55,7 +55,7 @@ and be sure to save it as utf-8! (file->save with encoding in Sublime)
 
 Additional notes on using Unicode in Python see:
 
- :ref:`unicode_suppliment`
+ :ref:`unicode_supplement`
 
 
 ===========================
