@@ -33,11 +33,38 @@ def _build_story(trigram, seed=None):
         seed = u" ".join(new_seed)
     f.close()
 
+
 def _collect_stats(words):
     stats = {}
+    punctuation_dict = {punc: 0 for punc in string.punctuation}
+    punctuation_dict[u"Capital"] = 0
+    punctuation_dict[u"None"] = 0
+    punctuation_dict[u"Count"] = 0
     for word in words:
-        if word.endswith() in string.punctuation:
-            stats.setdefault(word[:len(word)-1], {})
+        if word[0].isupper():
+            try:
+                stats[word.lower()][u"Capital"] += 1
+                stats[word.lower()][u"Count"] += 1
+            except KeyError:
+                stats.setdefault(word.lower(), punctuation_dict.copy())[u"Capital"] += 1
+                stats[word.lower()][u"Count"] += 1
+        word = word.lower()
+        if word[-1] in string.punctuation:
+            try:
+                stats[word[:-1]][word[-1]] += 1
+                stats[word[:-1]][u"Count"] += 1
+            except KeyError:
+                stats.setdefault(word[:-1], punctuation_dict.copy())[word[-1]] += 1
+                stats[word[:-1]][u"Count"] += 1
+        else:
+            try:
+                stats[word][u"None"] += 1
+                stats[word][u"Count"] += 1
+            except KeyError:
+                stats.setdefault(word, punctuation_dict.copy())[u"None"] += 1
+                stats[word][u"Count"] += 1
+    return stats
+
 
 if __name__ == "__main__":
     words = _file_to_list("sherlock_small.txt")
