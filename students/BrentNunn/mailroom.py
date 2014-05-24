@@ -37,8 +37,8 @@ def get_donation(donor):
             print u"Please enter a numeric donation value"
 
 
-def send_thanks():
-    """Say thank you to a donor"""
+def thanks_menu():
+    """Menu for thanking donors"""
 
     update_donors_list()
 
@@ -100,6 +100,20 @@ def create_report():
         print "{:<30}{:>12,}{:>7,}{:>12,}".format(row[0], row[1], row[2], row[3])
 
 
+def safe_input(*prompt):
+    """Wrapping raw_input() to catch typical end of input exceptions"""
+    try:
+        if len(prompt) > 0:
+            user_in = raw_input(prompt[0])
+        else:
+            user_in = raw_input()
+
+    except (KeyboardInterrupt, EOFError):
+        return None
+    else:
+        return user_in
+
+
 if __name__ == '__main__':
     print u"\nWelcome to the Mail Room, Donors Application."
 
@@ -109,10 +123,10 @@ while True:
     print u"'R' = create a Report"
     print u"'Q' = Quit"
 
-    selection = raw_input("\nEnter your selection: ")
+    selection = safe_input("\nEnter your selection: ")
 
     if selection == 'T' or selection == 't':
-        send_thanks()
+        thanks_menu()
     elif selection == 'R' or selection == 'r':
         create_report()
     elif selection == 'Q' or selection == 'q':
