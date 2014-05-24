@@ -31,11 +31,13 @@ class Element(object):
 
 class Html(Element):
         tag = u"html"
+        indent = "    "
 
 
 class Body(Element):
         tag = u"body"
-
+        indent = "    "
 
 class P(Element):
         tag = u"p"
+        indent = "    "
