@@ -11,27 +11,26 @@ Python class example.
 class Element(object):
     tag = ''
     indent = "    "
-    def __init__(self, content= None):
+    def __init__(self, content= None, **kwargs):
         if content is not None:
             self.content = [content]
         else:
             self.content = []
-    def render(self, file_out, ind = ""):
+        
+        self.attributes = kwargs
 
-        file_out.write('\n%s<%s>\n' % (ind, self.tag) )
+    def render(self, file_out, ind = ""):
+        attributes = ''
+        for (k,v) in self.attributes.items():
+            attributes = ' {key} = "{value}"'.format(key = k, value = v)
+        file_out.write('\n%s<%s%s>\n' % (ind, self.tag, attributes))
         for item in self.content:
             try:
-            """you can check if the item is an instance of the element. it might be a string then .write will work. 
-            or might be the element with tags
-            if instance then item.render
-            if string file_out.write
-
-            """
                 item.render(file_out, ind + self.indent)
             except AttributeError:
                 file_out.write(self.indent+ind)
-                file_out.write(item+'\n')
-        file_out.write('<%s/%s>' % (ind, self.tag))
+                file_out.write(item)
+        file_out.write('\n%s</%s>' % (ind, self.tag))
     def append(self, a_string):
         self.content.append(a_string)
 
@@ -43,3 +42,26 @@ class Body(Element):
 
 class P(Element):
     tag = 'p'
+class Head(Element):
+    tag = 'head'
+class Title(Element):
+    tag = 'title'
+    def render(self, file_out, ind = ""):
+
+        file_out.write('\n%s<%s>' % (ind, self.tag) )
+        for item in self.content:
+            try:
+
+                item.render(file_out, ind + self.indent)
+            except AttributeError:
+                file_out.write(self.indent+ind)
+                file_out.write(item)
+        file_out.write('%s</%s>' % (ind, self.tag))
+
+
+
+"""you can check if the item is an instance of the element. it might be a string then .write will work. 
+or might be the element with tags
+if instance then item.render
+if string file_out.write
+"""    
