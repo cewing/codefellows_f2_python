@@ -51,6 +51,10 @@ class Title(Element):
     indent = "    "
 
 
-#class Hr(Element):
-#    tag = 'hr'
+class Hr(Element):
+    tag = 'hr'
+    indent = "    "
+
+    def render(self, file_out, ind=""):
+        file_out.write(self.indent + '<%s\> \n' %self.tag)
 
