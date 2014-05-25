@@ -14,19 +14,18 @@ class Element(object):
     indent = '    '
     #html_attributes dict?
 
-    def __init__(self, content=None, **html_attributes):
-        self.html_attributes = html_attributes
+    def __init__(self, content=None):
         if content is not None:
             self.content = [content]
         else:
             self.content = []
 
     def render(self, file_out, ind=''):
-        html_attributes = ['%s="%s"' % (k, v) for k, v in self.html_attributes.items()]
-        file_out.write('\n%s<%s %s>' % (ind, self.tag, ' '.join(html_attributes)))
+        
+        file_out.write('\n%s<%s>' % (ind, self.tag))
         for item in self.content:
             try:
-                item.render(file_out, ind + self.indent)
+                item.render(file_out, ind+self.indent)
             except AttributeError:
                 file_out.write('\n' + self.indent + ind + item)
         file_out.write('\n%s<%s/> ' % (ind, self.tag))
@@ -66,7 +65,7 @@ class Title(OneLineTag):
 class SelfClosingTag(Element):
     ''' Renders a one line tage where appropriate from the Element class '''
     def render(self, file_out, ind=''):
-        file_out.write('\n%s<%s>' % (ind, self.tag))
+        file_out.write('\n%s<%s />' % (ind, self.tag))
 
 class Hr(SelfClosingTag):
     tag = u'hr/'
@@ -74,16 +73,5 @@ class Hr(SelfClosingTag):
 class Br(SelfClosingTag):
     tag = u'br/'
 
-class A(Element):
-    """ link and content rendered as Element's html_attributes with explicit use of 'href' """
-    def __init__(self, link, content, **kwargs): # kwargs allows for other attributes, if necessary
-        super(A, self).__init__(content, href=link, **kwargs) 
-                                                                            
-class Ul(Element):
-    tag = u'ul'
-
-class Li(Element):
-    tag = u'li'
-
-class Header(Element):
+class A(SelfClosingTag):
     pass
