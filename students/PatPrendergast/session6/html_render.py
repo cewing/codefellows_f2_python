@@ -22,7 +22,7 @@ class Element(object):
 
     def render(self, file_out, ind='', **html_attributes):
         
-        file_out.write('\n%s<%s %s=%s>' % (ind, self.tag, (i for i in html_attributes.items()))
+        file_out.write('\n%s<%s %s=%s>' % (ind, self.tag, {i:j for i, j in html_attributes.items()})
         for item in self.content:
             try:
                 item.render(file_out, ind+self.indent)
