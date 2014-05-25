@@ -3,27 +3,25 @@
 
 class Element(object):
     tag = u""
-    indent = "    "
+    indent = u""
 
     def __init__(self, content=None):
         if content is not None:
-            self.content = [None]
+            self.content = [content]
         else:
-        self.content = []
+            self.content = []
 
-    def render(self, file_out, ind=""):
+    def render(self, file_out, ind=u"    "):
 
-        file_out.write('\n<%s>\n' % self.tag)
+        file_out.write(self.indent + u'<%s>\n' % self.tag)
         for item in self.content:
             try:
-            #if its a Element obj, call its render method
-            #if isinstance(item, Element):
-                item.render(file_out, ind+self.indent)
+                # if its a Element obj, call its render method
+                item.render(file_out, self.indent + ind)
             # if not, just write it
-            # else:
             except AttributeError:
-                file_out.write(self.indent+ind+item+'\n')
-        file_out.write('\n</%s>' % self.tag)
+                file_out.write(self.indent+ind+item + u'\n')
+        file_out.write(self.indent + u'</%s>\n' % self.tag)
 
     def append(self, a_string):
             self.content.append(a_string)
@@ -31,14 +29,21 @@ class Element(object):
 
 class Html(Element):
         tag = u"html"
-        indent = "    "
-
 
 
 class Body(Element):
         tag = u"body"
-        indent = "    "
+
 
 class P(Element):
         tag = u"p"
-        indent = "    "
+        indent = u"    "
+
+
+class Head(Element):
+    tag = u"head"
+
+
+class Title(Element):
+    tag = u"title"
+    indent = u"    "
