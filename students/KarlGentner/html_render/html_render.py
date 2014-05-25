@@ -4,16 +4,19 @@
 class Element(object):
     tag = u""
     indent = u""
+    style = u""
 
-    def __init__(self, content=None):
+    def __init__(self, content=None, **kwargs):
         if content is not None:
             self.content = [content]
         else:
             self.content = []
+        if kwargs:
+            for key, value in kwargs.iteritems():
+                self.style = key + '= "' + value + '"'
 
     def render(self, file_out, ind=u"    "):
-
-        file_out.write(self.indent + u'<%s>\n' % self.tag)
+        file_out.write(self.indent+u'<%s %s>\n' % (self.tag, self.style))
         for item in self.content:
             try:
                 # if its a Element obj, call its render method
@@ -21,7 +24,7 @@ class Element(object):
             # if not, just write it
             except AttributeError:
                 file_out.write(self.indent+ind+item + u'\n')
-        file_out.write(self.indent + u'</%s>\n' % self.tag)
+        file_out.write(self.indent+u'</%s>\n' % self.tag)
 
     def append(self, a_string):
             self.content.append(a_string)
