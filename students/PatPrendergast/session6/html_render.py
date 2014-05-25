@@ -37,6 +37,15 @@ class Element(object):
 class Html(Element):
     tag = u'html'
 
+    def render(self, file_out, ind=''):
+        file_out.write('<!DOCTYPE html>')
+        file_out.write('\n%s<%s>' % (ind, self.tag))
+        for item in self.content:
+            try:
+                item.render(file_out, ind + self.indent)
+            except AttributeError:
+                file_out.write('\n' + self.indent + ind + item)
+        file_out.write('\n%s<%s/> ' % (ind, self.tag))
 
 class Body(Element):
     tag = u'body'
@@ -46,7 +55,15 @@ class P(Element):
 
 class Head(Element):
     tag = u'head'
-
+    def render(self, file_out, ind=''):
+        file_out.write('\n%s<%s>' % (ind, self.tag))
+        file_out.write('<meta charset="UTF-8" />')
+        for item in self.content:
+            try:
+                item.render(file_out, ind + self.indent)
+            except AttributeError:
+                file_out.write('\n' + self.indent + ind + item)
+        file_out.write('\n%s<%s/> ' % (ind, self.tag))
 
 class OneLineTag(Element):
     ''' Renders a one line tage where appropriate from the Element class '''
@@ -54,7 +71,7 @@ class OneLineTag(Element):
         file_out.write('\n%s<%s >' % (ind, self.tag))
         for item in self.content:
             try:
-                item.render(file_out, ind+self.indent)
+                item.render(file_out, ind + self.indent)
             except AttributeError:
                 file_out.write(item)
         file_out.write('<%s/> ' % (self.tag))
@@ -85,5 +102,10 @@ class Ul(Element):
 class Li(Element):
     tag = u'li'
 
-class Header(Element):
-    pass
+class Header(OneLineTag):
+    """docstring for Header"""
+    def __init__(self, integer, content, **html_attributes):
+        super(Header, self).__init__(content, **html_attributes)
+        self.integer = integer
+        self.tag = 'h'+str(integer)
+        
