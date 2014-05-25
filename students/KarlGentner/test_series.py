@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-code that tests the ack method defined in ack.py
+code that tests the fibonacci, lucas, and sum_series methods defined in series.py
 
 can be run with py.test
 """
