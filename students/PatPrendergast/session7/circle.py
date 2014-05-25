@@ -13,10 +13,9 @@ class Circle(object):
         self.radius = radius
 
     def diameter(self, radius):
-        diameter = radius * 2
-        return diameter
+        return self.radius * 2
 
     def area(self, radius):
-        area = math.pi * radius**2
-        return area
-
+        return math.pi * self.radius**2
+        
+        
