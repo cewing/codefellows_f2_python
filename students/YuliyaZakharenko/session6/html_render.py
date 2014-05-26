@@ -22,7 +22,7 @@ class Element(object):
     def render(self, file_out, ind = ""):
         attributes = ''
         for (k,v) in self.attributes.items():
-            attributes = ' {key} = "{value}"'.format(key = k, value = v)
+            attributes += (' {key} = "{value}"'.format(key = k, value = v))
         file_out.write('\n%s<%s%s>\n' % (ind, self.tag, attributes))
         for item in self.content:
             try:
@@ -57,7 +57,26 @@ class Title(Element):
                 file_out.write(self.indent+ind)
                 file_out.write(item)
         file_out.write('%s</%s>' % (ind, self.tag))
+class SelfClosingTag(Element):
+    def render(self, file_out, ind = ""):
+        attributes = ''
+        for (k,v) in self.attributes.items():
+            attributes += ' {key} = "{value}"'.format(key = k, value = v)
+        file_out.write('\n%s<%s%s />\n' % (ind, self.tag, attributes))
+class Hr(SelfClosingTag):
+    tag = 'hr'
+class Br(SelfClosingTag):
+    tag = 'br'
+class A(Element):
+    tag = 'a'
+    def __init__(self, link = None, content=None):
+        link = dict(href = link)
+        Element.__init__(self, content, **link)
+        
 
+
+
+    
 
 
 """you can check if the item is an instance of the element. it might be a string then .write will work. 
