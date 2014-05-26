@@ -7,7 +7,7 @@ import math
 
 
 class Circle(object):
-    """docstring for  Circle"""
+    u"""Create a representation of a circle with a given radius."""
     def __init__(self, radius):
         self._radius = radius
 
@@ -33,6 +33,7 @@ class Circle(object):
 
     @classmethod
     def from_diameter(cls, diameter):
+        u"""Create a representation of a circle with a given diameter."""
         return cls(diameter / 2.0)
 
     def __str__(self):
