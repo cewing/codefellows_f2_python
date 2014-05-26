@@ -48,3 +48,31 @@ class Body(Element):
 
 class P(Element):
     tag = u"p"
+
+
+class Head(Element):
+    tag = u"head"
+
+
+class OneLineTag(Element):
+    indent = ""
+
+    def render(self, file_out, ind=""):
+        """Render a one line tag and string in conent.
+
+        Keyword arguments:
+        file_out -- File name in which to output render
+        ind -- amount to indent tag (default "")
+        """
+        file_out.write(u'{}<{}>'.format(ind, self.tag))
+        for item in self.content:
+            try:
+                item.render(file_out, self.indent + ind)
+            except AttributeError:
+                file_out.write(self.indent + ind + item)
+        file_out.write(u'{}</{}>\n'.format(ind, self.tag))
+
+
+class Title(OneLineTag):
+    tag = u"title"
+    indent = ""
