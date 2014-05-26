@@ -14,7 +14,7 @@
 
 import sys
 import string
-
+import random
 
 def trigrams(is_verbose, input_file):
     """Reads a text file and assembles a dict of word level trigrams"""
@@ -27,8 +27,8 @@ def trigrams(is_verbose, input_file):
             print u"Source file '%s' does not exist, exiting." % (input_file)
             return
         else:
-            print u"Building trigram dictionary, please wait..."
             print u""
+            print u"Building trigram dictionary, please wait..."
             break
 
     # Initialize empty string, empty list, empty dict
@@ -49,10 +49,10 @@ def trigrams(is_verbose, input_file):
     
     if is_verbose == True:
         word_string_title = u"Here is the complete sanitized word string:"
+        print u""
         print word_string_title
         print u"-" * len(word_string_title)
         print word_string
-        print u""
 
     # Split and load it into list
     for word in word_string.split():
@@ -60,10 +60,10 @@ def trigrams(is_verbose, input_file):
 
     if is_verbose == True:
         word_list_title = u"Here is the complete word list:"
+        print u""
         print word_list_title
         print u"-" * len(word_list_title)
         print word_list
-        print u""
 
     # Build a dict of trigrams:
     # The dict key is a tuple of two adjacent words
@@ -78,6 +78,7 @@ def trigrams(is_verbose, input_file):
 
     if is_verbose == True:
         word_groups_title = u"Here are the groups of three words:"
+        print u""
         print word_groups_title
         print u"-" * len(word_groups_title)
 
@@ -97,101 +98,53 @@ def trigrams(is_verbose, input_file):
         word_2 += 1
         word_3 += 1
 
-    if is_verbose == True:
-        print u""
+    print u""
+    print u"Trigram dictionary complete!"
 
     if is_verbose == True:
         trigram_dict_title = u"Here is the complete trigram dict:"
+        print u""
         print trigram_dict_title
         print u"-" * len(trigram_dict_title)
         print trigram_dict
-        print u""
-
-    # Seed the new text as an empty list
-    new_text = []
-
-    # Print the trigrams on screen for the user
-    list_trigrams(trigram_dict, new_text)
-
-
-def trigrams_ux(trigram_dict, new_text):
-    """Reads a text file and assembles a dict of word level trigrams"""
-    menu_title = u"Fun With Trigrams"
-    menu_options = u"Options:"
-    menu_trigram_number = u"Enter a key from the trigam to use it to contruct a new text"
-    menu_list_trigrams=u"Type L to see the LIST of trigrams"
-    menu_see_output = u"Type S to SEE the constructed text"
-    menu_reset_output = u"Type R to RESET the constructed text"
-    menu_quit = u"Type Q to quit"
-    menu_enter_choice = u"Enter your choice: "
-    menu_invalid_choice = "Valid options are a trigram number, L, S, R or Q: "
-
-    # Print menu
-    print u""
-    print menu_title
-    print u"-" * len(menu_title)
-    print menu_options
-    print menu_trigram_number
-    print menu_list_trigrams
-    print menu_see_output
-    print menu_reset_output
-    print menu_quit
-    
-    # Convert to lower case before validating, so user can input either upper or lower case
-    input_string = raw_input(menu_enter_choice).lower()
-
-    # Validate inputs
-    while input_string not in ('l', 's', 'r', 'q') and input_string not in trigram_dict.keys():
-        print menu_invalid_choice
-        print u""
-        print menu_title
-        print u"-" * len(menu_title)
-        print menu_options
-        print menu_trigram_number
-        print menu_list_trigrams
-        print menu_see_output
-        print menu_reset_output
-        print menu_quit
-        input_string = raw_input(menu_enter_choice).lower()
-        print u""
-
-    if input_string == u"q":
-        print u"Good bye."
-        return
-    elif input_string == u"l":
-        list_trigrams(trigram_dict)
-    elif input_string in trigram_dict.keys:
-        print u"good"
-
-
-def construct_text(trigram_dict, new_text):
-    """Build the new text using the trigram dictionary as seed data"""
-    
-    input_string = raw_input(u"Enter dict key: ")
-
-    try:
-        print trigram_dict[input_string]
-    except KeyError:
-        print u"key not in dict"
-
-
-def list_trigrams(trigram_dict, new_text):
-    """Lists the trigrams"""
 
     # Print the "interesting" trigrams, i.e. the ones with more than one item in the value list
-    print_interesting_trigrams_title = u"Here are the trigrams to choose from:"
-    print print_interesting_trigrams_title
-    print u"-" * len(print_interesting_trigrams_title)
+    if is_verbose == True:
+        print_interesting_trigrams_title = u"Here are the trigrams with more than one value word:"
+        print u""
+        print print_interesting_trigrams_title
+        print u"-" * len(print_interesting_trigrams_title)
 
-    counter = 0
-    for k, v in trigram_dict.items():
-        if len(v) > 1:
-            print counter, k, v
-            counter += 1
+        for k, v in trigram_dict.items():
+            if len(v) > 1:
+                print k, v
 
-    # Call the UX function to allow the user to interact with the trigram data and build new outputs
-    trigrams_ux(trigram_dict, new_text)
+    # Use the trigrams diciotnary to build a new text
+    new_text_title = u"A Wild New Text Appears!"
+    print u""
+    print new_text_title
+    print u"-" * len(new_text_title)
 
+    # Set the new text string and its size
+    new_text = u""
+    new_text_iteration_count = 20
+
+    # Take some random keys from the trigram dict, and for each key take a random value
+    # Construct a new text with these random values
+    for i in range(new_text_iteration_count):
+
+        # Grab a random key
+        random_key = random.choice(trigram_dict.keys())
+
+        # Grab a random value from that key
+        value_list = trigram_dict[random_key]
+        random_value = random.choice(value_list)
+
+        # Add to the new text
+        new_text = new_text + '{0} {1} {2} '.format(random_key[0], random_key[1], random_value)
+        
+    # Print the completed new text
+    print new_text
 
 # Main block
 if __name__ == '__main__':
@@ -209,5 +162,4 @@ if __name__ == '__main__':
         print usage_message
         quit()
 
-    print u""
     trigrams(is_verbose, input_file)
