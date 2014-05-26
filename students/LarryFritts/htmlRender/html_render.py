@@ -13,7 +13,7 @@ class Element(object):
             self.content = []
         if kwargs:
             for k, v in kwargs.items():
-                self.attr_str = self.attr_str + k + ' = ' + v + ' '
+                self.attr_str = self.attr_str + k + '=' + '"' + v + '" '
 
     def append(self, str):
         self.content.append(str)
@@ -28,11 +28,25 @@ class Element(object):
                 item.render(file_out, ind=self.indent)
             except AttributeError:
                 file_out.write(self.indent + ind  + item + '\n')
-        file_out.write(self.indent + '<\%s>\n' %self.tag)
+        file_out.write(self.indent + '</%s>\n' %self.tag)
 
 class Html(Element):
     tag = 'html'
     indent = ""
+
+    def render(self, file_out, ind=indent):
+        file_out.write("<!DOCTYPE html>\n")
+        if self.attr_str:
+            file_out.write(self.indent + '<%s %s>\n' %(self.tag, self.attr_str))
+        else:
+            file_out.write(self.indent + '<%s>\n' %self.tag)
+        for item in self.content:
+            try:
+                item.render(file_out, ind=self.indent)
+            except AttributeError:
+                file_out.write(self.indent + ind  + item + '\n')
+        file_out.write(self.indent + '</%s>\n' %self.tag)
+
 
 class Body(Element):
     tag = 'body'
@@ -55,14 +69,14 @@ class Hr(Element):
     indent = "    "
 
     def render(self, file_out, ind=""):
-        file_out.write(self.indent + '<%s \> \n' %self.tag)
+        file_out.write(self.indent + '<%s /> \n' %self.tag)
 
 class Br(Element):
     tag = 'br'
     indent = "    "
 
     def render(self, file_out, ind=""):
-        file_out.write(self.indent + '<%s \> \n' %self.tag)
+        file_out.write(self.indent + '<%s /> \n' %self.tag)
 
 class A(Element):
     tag = 'a'
@@ -81,7 +95,7 @@ class A(Element):
                 item.render(file_out, ind="")
             except AttributeError:
                 file_out.write(item)
-        file_out.write(self.indent + '<\%s> ' %self.tag)
+        file_out.write(self.indent + '</%s> ' %self.tag)
 
 class H(Element):
     tag = "h"
@@ -103,7 +117,7 @@ class H(Element):
                 item.render(file_out, ind=self.indent)
             except AttributeError:
                 file_out.write(item)
-        file_out.write('<\%s>\n' %self.tag)
+        file_out.write('</%s>\n ' %self.tag)
 
 class Ul(Element):
     tag = "ul"
@@ -112,3 +126,18 @@ class Ul(Element):
 class Li(Element):
     tag = "li"
     indent = "        "
+
+class Meta(Element):
+    tag = "meta"
+    indent = ""
+
+    def render(self, file_out, ind=indent):
+        if self.attr_str:
+            file_out.write(self.indent + '<%s %s>\n' %(self.tag, self.attr_str))
+        else:
+            file_out.write(self.indent + '<%s>\n' %self.tag)
+        for item in self.content:
+            try:
+                item.render(file_out, ind=self.indent)
+            except AttributeError:
+                file_out.write(self.indent + ind  + item + '\n')
