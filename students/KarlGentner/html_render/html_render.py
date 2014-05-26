@@ -31,42 +31,17 @@ class Element(object):
             self.content.append(a_string)
 
 
-class Html(Element):
-        tag = u"html"
-
-
-class Body(Element):
-        tag = u"body"
-
-
-class P(Element):
-        tag = u"p"
-        indent = u"    "
-
-
-class Head(Element):
-    tag = u"head"
-
-
 class OneLineTag(Element):
     indent = u""
-    # over-riding render method so that there are no line breaks in tag
 
     def render(self, file_out, ind=u"    "):
         file_out.write(self.indent+u'<%s%s%s>' % (self.tag, self.attributes, self.link))
         for item in self.content:
             try:
-                # if its a Element obj, call its render method
                 item.render(file_out, self.indent + ind)
-            # if not, just write it
             except AttributeError:
                 file_out.write(item)
         file_out.write(u'</%s>\n' % self.tag)
-
-
-class Title(OneLineTag):
-    tag = u"title"
-    indent = u"    "
 
 
 class SelfClosingTag(Element):
@@ -74,24 +49,67 @@ class SelfClosingTag(Element):
         file_out.write(self.indent+u'<%s%s%s' % (self.tag, self.attributes, self.link))
         for item in self.content:
             try:
-                # if its a Element obj, call its render method
                 item.render(file_out, self.indent + ind)
-            # if not, just write it
             except AttributeError:
                 file_out.write(self.indent+ind+item)
         file_out.write(u' />\n')
 
 
+# html
+class Html(Element):
+    tag = u"html"
+
+    def render(self, file_out, ind=u"    "):
+        file_out.write(u'<!DOCTYPE html>\n'+self.indent+u'<%s%s%s>\n' % (self.tag, self.attributes, self.link))
+        for item in self.content:
+            try:
+                item.render(file_out, self.indent + ind)
+            except AttributeError:
+                file_out.write(self.indent+ind+item + u'\n')
+        file_out.write(self.indent+u'</%s>\n' % self.tag)
+
+
+# body
+class Body(Element):
+    tag = u"body"
+
+
+# paragraph
+class P(Element):
+    tag = u"p"
+    indent = u"    "
+
+
+# head
+class Head(Element):
+    tag = u"head"
+
+
+# title
+class Title(OneLineTag):
+    tag = u"title"
+    indent = u"    "
+
+
+# meta
+class Meta(SelfClosingTag):
+    tag = u"meta"
+    indent = u"    "
+
+
+# horizontal rule
 class Hr(SelfClosingTag):
     tag = u"hr"
     indent = u"    "
 
 
+# line break
 class Br(SelfClosingTag):
     tag = u"br"
     indent = u"    "
 
 
+# anchor
 class A(OneLineTag):
     tag = u"a"
     indent = u"    "
@@ -102,21 +120,25 @@ class A(OneLineTag):
         Element.__init__(self, content)
 
 
+# unorcered list
 class Ul(Element):
     tag = u"ul"
     indent = u"    "
 
 
+# ordered list
 class Ol(Element):
     tag = u"ol"
     indent = u"    "
 
 
+# list item
 class Li(Element):
     tag = u"li"
     indent = u"        "
 
 
+# heading
 class H(OneLineTag):
     tag = u"h"
     indent = u"    "
