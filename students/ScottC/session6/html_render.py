@@ -76,7 +76,7 @@ class SelfClosingTag(Element):
         file_out.write('{0}<{1}{2}/>\n'.format(ind, self.tag, html_attributes_string))
 
 
-class Hr(SelfClosingTag):
+class Hr(SelfClosingTag):a_dict['href'] = link
     tag = u'hr'
 
 
@@ -88,15 +88,11 @@ class A(Element):
     tag = u'a'
 
     def __init__(self, link, content, **kwargs):
+        # Add an item to the kwargs dict, with a key of 'href' and a value of the incoming link
+        kwargs['href'] = link
+        # Call the __init__ method of super(), and pass content and kwargs (which now contains a key of 'href' with a value of link)
+        super(A, self).__init__(content = content, **kwargs):
 
-        if content is not None:
-            self.content = [link, content]
-        else:
-            self.content = u''
-        
-        # self.link = link
-        # self.content = content
-        self.html_attributes_dict = kwargs
 
         # Output should look like this:
         # And this is a 
