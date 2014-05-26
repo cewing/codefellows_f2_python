@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+""" classes and subclasses for rendering html with indentation"""
 
 class Element(object):
     tag = u""
@@ -13,7 +13,7 @@ class Element(object):
             self.content = []
         if kwargs:
             for key, value in kwargs.iteritems():
-                self.attributes += ' ' + key + '="' + value + '" '
+                self.attributes += ' ' + key + '="' + value + '"'
 
     def render(self, file_out, indent=u""):
         file_out.write(indent+u'<%s%s%s>\n' % (self.tag, self.attributes, self.link))
@@ -140,3 +140,5 @@ class H(OneLineTag):
         if size is not None:
             self.tag = (u"h%s" % str(size))
         Element.__init__(self, content)
+
+##########################################################
