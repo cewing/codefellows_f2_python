@@ -22,7 +22,7 @@ class Element(object):
         #ind = amount of indent "so far"
         html_attributes_string = u""
         for key, value in self.html_attributes_dict.iteritems():
-            html_attributes_string = html_attributes_string + '"{0} = {1}"'.format(key,value)
+            html_attributes_string = html_attributes_string + '{0} = "{1}"'.format(key,value)
 
         # Write the opening tag
         file_out.write('{0}<{1} {2}>\n'.format(ind, self.tag, html_attributes_string))
@@ -76,7 +76,7 @@ class SelfClosingTag(Element):
         file_out.write('{0}<{1}{2}/>\n'.format(ind, self.tag, html_attributes_string))
 
 
-class Hr(SelfClosingTag):a_dict['href'] = link
+class Hr(SelfClosingTag):
     tag = u'hr'
 
 
@@ -88,11 +88,12 @@ class A(Element):
     tag = u'a'
 
     def __init__(self, link, content, **kwargs):
+
         # Add an item to the kwargs dict, with a key of 'href' and a value of the incoming link
         kwargs['href'] = link
-        # Call the __init__ method of super(), and pass content and kwargs (which now contains a key of 'href' with a value of link)
-        super(A, self).__init__(content = content, **kwargs):
 
+        # Call the __init__ method of super(), and pass content and kwargs (which now contains a key of 'href' with a value of link)
+        super(A, self).__init__(content = content, **kwargs)
 
         # Output should look like this:
         # And this is a 
