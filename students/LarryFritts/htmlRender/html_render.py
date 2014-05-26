@@ -13,7 +13,7 @@ class Element(object):
             self.content = []
         if kwargs:
             for k, v in kwargs.items():
-                self.attr_str = k + ' = ' + v
+                self.attr_str = self.attr_str + k + ' = ' + v + ' '
 
     def append(self, str):
         self.content.append(str)
@@ -82,3 +82,33 @@ class A(Element):
             except AttributeError:
                 file_out.write(item)
         file_out.write(self.indent + '<\%s> ' %self.tag)
+
+class H(Element):
+    tag = "h"
+    indent = "        "
+
+    def __init__(self, level, content):
+        self.tag = self.tag + str(level)
+        self.content = content
+        super(H, self).__init__(self.content)
+
+    def render(self, file_out, ind=indent):
+        if self.attr_str:
+            file_out.write(self.indent + '<%s %s>' %(self.tag, self.attr_str))
+        else:
+            file_out.write(self.indent + '<%s>' %self.tag)
+
+        for item in self.content:
+            try:
+                item.render(file_out, ind=self.indent)
+            except AttributeError:
+                file_out.write(item)
+        file_out.write('<\%s>\n' %self.tag)
+
+class Ul(Element):
+    tag = "ul"
+    indent = "    "
+
+class Li(Element):
+    tag = "li"
+    indent = "        "
