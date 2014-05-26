@@ -1,15 +1,27 @@
 #!/usr/bin/python
 
 
-import copy
+import codecs
 
 
-# Original donor list with names and past donations
-donors = [[u'Amy Akin', [200.32, 450.12, 565.24]],
-          [u'Bob Bueller', [3234.44, 76348.03]],
-          [u'Carol Carlson', [101.78, 201.92, 303.89]],
-          [u'Dave Davis', [100.45, 20.45]],
-          [u'Eve Eastman', [1200.00]]]
+# Original donor dict with names and past donations
+donorDict = {u'Amy Akin': [[200.32, False], [450.12, False], [565.24, False]],
+             u'Bob Bueller': [[3234.44, False], [76348.03, False]],
+             u'Carol Carlson': [[101.78, False], [201.92, False], [303.89, False]],
+             u'Dave Davis': [[100.45, False], [20.45, False]],
+             u'Eve Eastman': [[1200.00, False]]}
+
+
+# safe input exception handler
+def safe_input(message):
+    while True:
+        try:
+            x = raw_input(message)
+            return x
+        except EOFError:
+            return None
+        except KeyboardInterrupt:
+            return None
 
 
 # isFloat helper - validate whether string can be cast into a float
@@ -21,140 +33,170 @@ def isFloat(str):
         return False
 
 
-# Print the list of donors' names
-def printDonors():
-    print ("\n")
-    print ("Donors:\n")
-    for i in range(len(donors)):
-        print donors[i][0]
-    print ("\n")
+# Print donors' names
+def printDonors(d):
+    print (u"\n")
+    print (u"Donors:\n")
+    for key in d.iterkeys():
+        print(u"{key}").format(key=key)
+    print (u"\n")
 
 
-# Return index of person in donor's list. Returns -1 if not in list.
-def findDonor(person):
-    index = -1
-    for i in range(len(donors)):
-        if person.lower() == donors[i][0].lower():
-            index = i
-    return index
+# Print donors' donations
+def printDonations(person):
+    print (u"\n")
+    print (u"{name}'s donations:\n").format(name=person)
+    for (donation, thankCheck) in donorDict[person]:
+        print(u"$ {donation}\t Thank You Sent: {thankCheck}").format(donation=str(donation), thankCheck=str(thankCheck))
 
 
-# Print thank You letter for person at index in donor's list.
-def printThankYou(donorIndex, amount):
-    amount = str(int(amount*100))
-    amount = (u"{dollars}.{cents}").format(dollars=amount[:len(amount)-2],
-                                           cents=amount[len(amount)-2:])
-    print (u"Dear {name},\n\n" +
-           "Thank you for your recent donation of ${donation}.\n" +
-           "The world is truly a better place because of people like you.\n\n" +
-           "Sincerely,\n" +
-           "The Charity Foundation\n").format(name=donors[donorIndex][0], donation=amount)
+# For loop for printing all un-written thank you letters.
+def printAllBroker():
+    for key in donorDict.iterkeys():
+        fileNum = 0
+        for (donation, thankCheck) in donorDict[key]:
+            fileNum += 1
+            if thankCheck is False:
+                printThankYou(key, donation, fileNum)
 
 
-# Add Donation interaction. Returns 'm' if user wants to return to main menu.
-def addDonation(donorIndex):
-    amount = ""
-    while isFloat(amount) is False and amount != 'm' or amount.startswith('-') is True:
-        amount = raw_input("Enter the new donation amount\n" +
-                           "'m' to return to main menu\n" +
-                           "-->").decode()
-    # Back to main menu
-    if amount.lower() == 'm':
-        return 'm'
+# Print thank you letter given a person, donation amount, and file number for naming
+def printThankYou(person, amount, fileNum):
+    if donorDict[person][fileNum-1][1] is True:
+        print(u"\n**** This thank you letter has already been created. ****")
     else:
-        # Add donation to person's history
-        amount = round(float(amount), 2)
-        donors[donorIndex][1].append(amount)
-        print ("----------------Thank You Letter-------------\n")
-        # Generate 'Thank You Letter'
-        printThankYou(donorIndex, amount)
-        return 'm'
+        thankYouLetter = [u"\n",
+                          (u"Dear {name},\n").format(name=person),
+                          u"\n",
+                          (u"Thank you for your donation of ${donation}.\n").format(donation=str(amount)),
+                          u"The world is truly a better place because of people like you.\n",
+                          u"\n",
+                          u"Sincerely,\n",
+                          u"The Charity Foundation\n"]
+        filename = (u"{name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
+        f = codecs.open(filename, 'w')
+        f.writelines(thankYouLetter)
+        f.close()
+        print(u"\nThank you letter saved as {name}{fileNum}.txt").format(name=person, fileNum=str(fileNum))
+        donorDict[person][fileNum-1][1] = True
+
+
+# Add Donation interaction. Returns 'm' if user wants to return to previous menu.
+def addDonation(person):
+    while True:
+        print ("\n----------------Add a Donation---------------\n")
+        print(u"\nEnter a new or existing donation amount for {name}\n" +
+              u"(OR)\n" +
+              u"'list' to see {name}'s list of existing donations\n" +
+              u"'m' to return to previous menu\n").format(name=person)
+        amount = safe_input(u"-->")
+        if amount.lower() == u'm':
+            return u'm'
+        elif amount.lower() == u'list':
+            printDonations(person)
+            continue
+        elif isFloat(amount) is False or amount.startswith('-'):
+            print (u"\n\nThat input is not understood. Please try again.\n")
+        else:
+            amount = round(float(amount), 2)
+            print amount
+            # If new donation, add  to person's history
+            # If not new, determine list placement
+            while True:
+                choice = safe_input(u"Is this a new donation?(y/n)-->")
+                if choice.lower() == u'y':
+                    donorDict[person].append([amount, False])
+                    fileNum = len(donorDict[person])
+                    break
+                elif choice.lower() == u'n':
+                    fileNum = 0
+                    for (donation, thankCheck) in donorDict[person]:
+                        fileNum += 1
+                        if amount == donation:
+                            break
+                        elif fileNum == len(donorDict[person]):
+                            print (u"\n\n** This donation does NOT already exist - " +
+                                   u"Adding amount as new donation.**")
+                            donorDict[person].append([amount, False])
+                            fileNum = len(donorDict[person])
+                            break
+                    break
+                else:
+                    print (u"\n\nThat input is not understood. Please try again.\n")
+        # Generate single 'Thank You Letter' for current donation amount
+        printThankYou(person, amount, fileNum)
 
 
 # Send Thank You interaction. Returns 'm' if user wants to return to main menu
 def sendThankYou():
-    # Accept user input: existing donor or new donor
-    person = ""
-    while person == "" or isFloat(person) is True:
-        person = raw_input("Enter the full name of an existing donor (OR) new donor\n" +
-                           "'list' to see the list of existing donors\n" +
-                           "'m' to return to main menu\n" +
-                           "-->").decode()
-        # List the donors
-        if person.lower() == "list":
-            printDonors()
-            person = ""
-    # Back to main menu
-    if person.lower() == 'm':
-        return 'm'
-    # if name does not already exist in donor list, add it
-    donorIndex = findDonor(person)
-    if donorIndex < 0:
-        donors.append([person, []])
-    # Add a donation
-    print ("----------------Add a Donation---------------\n")
-    if addDonation(donorIndex) == 'm':
-        return 'm'
+    print ("\n---------------Send A Thank You--------------\n")
+    while True:
+        print(u"\nEnter the full name of an existing donor or new donor\n" +
+              u"to create a thank you letter for a new donation.\n" +
+              u"(OR)\n" +
+              u"'list' to see the list of existing donors\n" +
+              u"'a' to create thank you letters for all existing donors\n" +
+              u"'m' to return to previous menu\n")
+        person = safe_input(u"-->")
+        if isFloat(person) is True:
+            print (u"\n\nThat input is not understood. Please try again.\n")
+        elif person.lower() == u"list":
+            printDonors(donorDict)
+            continue
+        # If 'm' then return to main menu
+        elif person.lower() == u'm':
+            return u'm'
+            # if 'all', print a letter for each donor's donation
+        elif person.lower() == u'a':
+            printAllBroker()
+            continue
+        else:
+            # if name does not already exist in donor list, add it
+            donorDict.setdefault(person, [])
+            # Add a donation
+            if addDonation(person) == u'm':
+                continue
 
 
 # Create & print report
 def createReport():
-    report = copy.deepcopy(donors)
-    # add data to new columns of report: total, avg, num
-    for i in range(len(report)):
-        donations = report[i][1]
+    print ("\n------------------Report---------------------\n")
+    reportDict = {}
+    # add new data to report: total, avg, num
+    for key in donorDict.iterkeys():
         total = 0.00
-        for j in range(len(donations)):
-            total += round(donations[j], 2)
-        num = len(donations)
+        for (donation, thankCheck) in donorDict[key]:
+            total += donation
+        num = len(donorDict[key])
         if num == 0:
             average = 0.00
         else:
             average = round(total / num, 2)
-        report[i].insert(1, average)
-        report[i].insert(1, str(num))
-        report[i].insert(1, total)
-    # sort by total donation amount
-    report = sorted(report, key=lambda donor: donor[1])
-    # add dollar signs to total & avg
-    for i in range(len(report)):
-        # ******** This works, but it's admittedly very clunky ********
-        report[i][1] = str(int(report[i][1] * 100))
-        report[i][1] = "$" + report[i][1][:len(report[i][1])-2] + "." + report[i][1][len(report[i][1])-2:]
-        report[i][3] = str(int(report[i][3] * 100))
-        report[i][3] = "$" + report[i][3][:len(report[i][3])-2] + "." + report[i][3][len(report[i][3])-2:]
-    # print report in table
-    print "NAME".rjust(25), "TOTAL DONATIONS".rjust(26),
-    print "NUM OF DONATIONS".rjust(27), "AVG DONATION".rjust(28),
-    print "\n"
-    for i in range(len(report)):
-        print report[i][0].rjust(25), report[i][1].rjust(26),
-        print report[i][2].rjust(27), report[i][3].rjust(28),
-        print "\n"
+        reportDict[key] = [total, num, average]
+
+    # create a list from reportDict, sorted by total donation amount
+    report = sorted(reportDict.items(), key=lambda donor: donor[1])
+    # print report
+    print (u'{name:<20}{total:<19}{num:<15}{avg}').format(name=u"NAME", total=u"TOTAL", num=u"NUMBER OF", avg=u"AVERAGE")
+    print (u'{name:<20}{total:<19}{num:<15}{avg}\n').format(name=u"", total=u"DONATIONS", num=u"DONATIONS", avg=u"DONATION")
+    for (name, data) in report:
+        print (u'{name:<20}$ {total:<17}{num:<15}$ {avg:<20}').format(name=name, total=data[0], num=data[1], avg=data[2])
 
 
-# Main Interaction
+# Main Menu
+def main():
+    menu = {u's': sendThankYou, u'c': createReport, u'q': exit}
+    print ("\n-----------------Main Menu-------------------\n")
+    while True:
+        print(u"\n's' to send a thank you\n" +
+              u"'c' to create a report\n" +
+              u"'q' to quit\n")
+        choice = safe_input(u"-->")
+        try:
+            menu[choice]()
+        except KeyError:
+            print u"\n\nThat input is not understood. Please try again.\n"
+
+
 if __name__ == '__main__':
-    # Accept user input: Main Menu
-    mainMenu = ""
-    while mainMenu != 's' and mainMenu != 'c' and mainMenu != 'q':
-        print ("-----------------Main Menu-------------------\n")
-        mainMenu = raw_input("'s' to send a thank you\n" +
-                             "'c' to create a report (requires full-width window)\n" +
-                             "'q' to quit\n-->").decode()
-        # Quit main menu
-        if mainMenu.lower() == 'q':
-            break
-        # Send a Thank You
-        while mainMenu.lower() == 's':
-            print ("---------------Send A Thank You--------------\n")
-            if sendThankYou() == 'm':
-                mainMenu = ""
-                break
-        # Create a Report
-        while mainMenu.lower() == 'c':
-            print ("------------------Report---------------------\n")
-            createReport()
-            # Back to main menu
-            mainMenu = ""
-            break
+    main()

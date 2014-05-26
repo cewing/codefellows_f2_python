@@ -9,8 +9,8 @@ my_dict['fruit'] = 'Mango'
 print my_dict
 print my_dict.keys()
 print my_dict.values()
-print 'cake' in my_dict
-print 'Mango' in my_dict.values()
+print u'cake' in my_dict
+print u'Mango' in my_dict.values()
 
 
 y = range(16)
@@ -58,5 +58,3 @@ python.update('i')
 marathon = frozenset(n for n in 'marathon')
 
 python | marathon, python & marathon
-
-
