@@ -12,11 +12,12 @@ class Element(object):
     tag = u"html"
     indent = u"  "
 
-    def __init__(self, content=None):
+    def __init__(self, content=None, **kwargs):
         if content is not None:
             self.content = [content]
         else:
             self.content = []
+        self.attr = kwargs
 
     def append(self, text):
         """Add text string to content."""
@@ -29,7 +30,9 @@ class Element(object):
         file_out -- File name in which to output render
         ind -- amount to indent tag (default "")
         """
-        file_out.write(u'{}<{}>\n'.format(ind, self.tag))
+        attr_list = [u' {}="{}"'.format(k, v) for k, v in self.attr.items()]
+        attr_str = u"".join(attr_list)
+        file_out.write(u'{}<{}{}>\n'.format(ind, self.tag, attr_str))
         for item in self.content:
             try:
                 item.render(file_out, self.indent + ind)
@@ -55,7 +58,6 @@ class Head(Element):
 
 
 class OneLineTag(Element):
-    indent = ""
 
     def render(self, file_out, ind=""):
         """Render a one line tag and string in conent.
@@ -67,12 +69,11 @@ class OneLineTag(Element):
         file_out.write(u'{}<{}>'.format(ind, self.tag))
         for item in self.content:
             try:
-                item.render(file_out, self.indent + ind)
+                item.render(file_out)
             except AttributeError:
-                file_out.write(self.indent + ind + item)
-        file_out.write(u'{}</{}>\n'.format(ind, self.tag))
+                file_out.write(item)
+        file_out.write(u'</{}>\n'.format(self.tag))
 
 
 class Title(OneLineTag):
     tag = u"title"
-    indent = ""
