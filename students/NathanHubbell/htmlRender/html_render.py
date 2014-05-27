@@ -14,7 +14,6 @@ class Element(object):
         else:
             self.content=[]
         self.kwargs=kwargs
-        print kwargs
 
     def append(self,input):
         self.content.append(input)
@@ -22,8 +21,12 @@ class Element(object):
     def render(self,file_out, ind=""):
         if self.kwargs != {}:
             file_out.write("%s<%s "%(ind,self.tag_name))
+            commaCount=0
             for key in self.kwargs:
-                file_out.write("%s=\"%s\""%(key,self.kwargs[key]))
+                if commaCount<1:
+                    file_out.write("%s=\"%s\""%(key,self.kwargs[key]))
+                else:
+                    file_out.write(", %s=\"%s\""%(key,self.kwargs[key]))
             file_out.write(">\n")
         else:
             file_out.write("%s<%s>\n"%(ind,self.tag_name))
