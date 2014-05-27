@@ -31,7 +31,7 @@ class Element(object):
         else:
             file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
-            if isinstance(element,(Body,P,Head,Title,Hr,Br)):
+            if isinstance(element,(Body,P,Head,Title,Hr,Br,A)):
                 element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
             else:
                 file_out.write("%s%s%s\n"%(ind,self.indentation,element))
@@ -43,7 +43,18 @@ class OneLineTag(Element):
 
 class SelfClosingTag(Element):
     def render(self,file_out, ind=""):
-        file_out.write("%s<%s />\n"%(ind,self.tag_name))
+        if self.content:
+            file_out.write("%s<%s %s/>\n"%(ind,self.tag_name,self.content[0]))
+        else:
+            file_out.write("%s<%s />\n"%(ind,self.tag_name))
+class A(SelfClosingTag):
+    tag_name="href"
+    def __init__(self, link, content):
+        self.link = link
+        if content:
+            self.content=[content]
+        else:
+            self.content=[]
 
 class Html(Element):
     tag_name="html"
@@ -65,3 +76,4 @@ class Hr(SelfClosingTag):
 
 class Br(SelfClosingTag):
     tag_name="br"
+
