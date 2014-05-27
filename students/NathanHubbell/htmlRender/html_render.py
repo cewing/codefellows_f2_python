@@ -16,15 +16,13 @@ class Html(object):
         self.content.append(input)
 
     def render(self,file_out, ind=""):
-        file_out.write("<%s>\n%s"%(self.tag_name,self.indentation))
+        file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
             if isinstance(element,(Body,P,Head,Title)):
-                file_out.write("%s"%(ind))
-                element.render(file_out,"    ") #consider using: element.render(file_out,ind + self.indentation)
-                file_out.write("%s"%(ind))
+                element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
             else:
-                file_out.write("%s%s%s\n%s%s"%(ind,ind,element,ind,ind))
-        file_out.write("</%s>\n"%(self.tag_name))
+                file_out.write("%s%s%s\n"%(ind,self.indentation,element))
+        file_out.write("%s</%s>\n"%(ind,self.tag_name))
 
 class Body(Html):
     tag_name="body"
@@ -36,8 +34,8 @@ class Head(Html):
     tag_name="head"
 
 class OneLineTag(Html):
-   def render(self,file_out, ind=""):
-       file_out.write("<%s> %s </%s>\n"%(self.tag_name,self.content,self.tag_name))
+    def render(self,file_out, ind=""):
+        file_out.write("%s<%s> %s </%s>\n"%(ind,self.tag_name,self.content[0],self.tag_name))
 
 class Title(OneLineTag):
     tag_name="title"
