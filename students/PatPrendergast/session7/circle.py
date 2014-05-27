@@ -1,13 +1,11 @@
 #!/usr/bin/env python
-"""circle class --
 
-fill this in so it will pass all the tests.
-"""
 import math
 
 
 class Circle(object):
-    ''' Creates a circle object with diameter, radius and area attributes'''
+    ''' Creates a circle object with properties to connec diameter, 
+    radius and area attributes. '''
 
     def __init__(self, radius):
         self.radius = radius
@@ -34,16 +32,48 @@ class Circle(object):
 
     area = property(_get_area)
 
-    def __str__(Circle):
-        return 'Circle'
+    def __str__(self):
+        return 'Circle with radius: %f' % (self.radius)
 
     def __repr__(self):
-        """
-        String representation, uses list (superclass) representation
-        """
-        return 'Circle(%s)' % super(vector, self).__repr__()
+        return 'Circle(%s)' % self.radius
 
     def __add__(c1, c2):
         return Circle(c1.radius + c2.radius)
-        
-        
+
+    def __mul__(c1, value):
+        return Circle(c1.radius * value)
+
+    def __eq__(c1, c2):
+        return c1.radius == c2.radius
+
+    def __lt__(c1, c2):
+        return c1.radius < c2.radius
+
+    def __gt__(c1, c2):
+        return c1.radius > c2.radius
+
+    def __le__(c1, c2):
+        return c1.radius <= c2.radius
+
+    def __ge__(c1, c2):
+        return c1.radius >= c2.radius
+
+    def __ne__(c1, c2):
+        return c1.radius != c2.radius
+
+
+""" 
+__cmp__ key for special methods:  
+
+    x<y calls x.__lt__(y),
+    x<=y calls x.__le__(y),
+    x==y calls x.__eq__(y), 
+    x!=y and x<>y call x.__ne__(y),
+    x>y calls x.__gt__(y),
+    and x>=y calls x.__ge__(y).
+
+    (from https://docs.python.org/2/reference/datamodel.html)
+"""
+
+
