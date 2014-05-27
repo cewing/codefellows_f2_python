@@ -10,7 +10,7 @@ Python class example.
 # Fill it all in here.
 class Element(object):
     tag = u"html"
-    indent = u"  "
+    indent = u"    "
 
     def __init__(self, content=None, **kwargs):
         if content is not None:
@@ -66,7 +66,9 @@ class OneLineTag(Element):
         file_out -- File name in which to output render
         ind -- amount to indent tag (default "")
         """
-        file_out.write(u'{}<{}>'.format(ind, self.tag))
+        attr_str = u"".join([u' {}="{}"'.format(k, v) for k, v in
+                            self.attr.items()])
+        file_out.write(u'{}<{}{}>'.format(ind, self.tag, attr_str))
         for item in self.content:
             try:
                 item.render(file_out)
@@ -104,3 +106,11 @@ class Hr(SelfClosingTag):
 
 class Br(SelfClosingTag):
     tag = u"br"
+
+
+class A(OneLineTag):
+    tag = 'a'
+
+    def __init__(self, link, content):
+        kwargs = {'href': link}
+        Element.__init__(self, content, **kwargs)
