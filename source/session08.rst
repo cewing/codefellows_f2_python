@@ -417,7 +417,7 @@ Rather: you can loop through anything that satisfies the "iterator protocol"
 http://docs.python.org/library/stdtypes.html#iterator-types
 
 The Iterator Protocol
------------------
+----------------------
 
 An iterator must have the following methods:
 
@@ -426,14 +426,14 @@ An iterator must have the following methods:
     an_iterator.__iter__()
 
 Returns the iterator object itself. This is required to allow both containers
-and iterators to be used with the for and in statements.
+and iterators to be used with the ``for`` and ``in`` statements.
 
 .. code-block:: python
     
     an_iterator.next()
 
 Returns the next item from the container. If there are no further items,
-raise the ``StopIteration`` exception.
+raises the ``StopIteration`` exception.
 
 List as an Iterator:
 --------------------
@@ -524,7 +524,8 @@ And then pick up again:
         print i
 
 * Does ``xrange()``  behave the same?
-    -- make yours match ``xrange()``
+    
+  - make yours match ``xrange()``
 
 Generators
 ----------
@@ -538,9 +539,9 @@ Conceptually:
   Iterators are about various ways to loop over data, generators generate the data on the fly
 
 Practically:
-  You can use either either way (and a generator is one type of iterator)
+  You can use either either way (and a generator is one type of iterator
 
-Generators do some of the book-keeping for you.
+  Generators do some of the book-keeping for you.
 
 yield
 -----
@@ -577,7 +578,7 @@ Really just a shorthand for an iterator class that does the book keeping for you
 
 An example: like ``xrange()``
 
-.. code-block python::
+.. code-block:: python
 
     def y_xrange(start, stop, step=1):
         i = start
@@ -585,10 +586,10 @@ An example: like ``xrange()``
             yield i
             i += step
 
-Real World Example:
+Real World Example from FloatCanvas:
 
-.. _FloatCanvas: 
 https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L100
+
 
 .. nextslide::
 
@@ -618,7 +619,7 @@ More about iterators and generators:
 
 http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
 
-``yield_example.py`` 
+``code/session08/yield_example.py`` 
 
 
 generator comprehension
@@ -639,10 +640,9 @@ yet another way to make a generator:
 
 More interesting if [1, 2, 3] is also a generator
 
-LAB
----
+Generator LAB
+--------------
 
-Generator lab:
 
 Write a few generators:
 
@@ -651,9 +651,41 @@ Write a few generators:
 * Fibonacci sequence
 * Prime numbers
 
+(test code in ``test_generator.py``)
 
-``code/generatorLAB.rst``
-``code/test_generator.py``
+Descriptions:
+
+Sum of the integers:
+  keep adding the next integer
+
+  0 + 1 + 2 + 3 + 4 + 5 + ...
+
+  so the sequence is:
+
+  0, 1, 3, 6, 10, 15 ..... 
+
+.. nextslide::
+
+Doubler:
+  Each value is double the previous value:
+
+  1, 2, 4, 8, 16, 32,
+
+Fibonacci sequence:
+  The fibonacci sequence as a generator:
+
+  f(n) = f(n-1) + f(n-2)
+
+  1, 1, 2, 3, 5, 8, 13, 21, 34...
+
+Prime numbers:
+  Generate the prime numbers (numbers only divisible by them self and 1):
+
+  2, 3, 5, 7, 11, 13, 17, 19, 23...
+
+Others to try:
+  Try x^2, x^3, counting by threes, x^e, counting by minus seven, ...
+
 
 
 Homework
