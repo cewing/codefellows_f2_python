@@ -137,11 +137,13 @@ class Li(Element):
     tag = u'li'
 
 
-class Header(OneLineTag):
-    tag = u'h'
-    
+class H(OneLineTag):
+    #tag = u'h'
+
     def __init__(self, header_level, content, **kwargs):
 
-        header_level = self.header_level
+        self.tag = u'h' + str(header_level)
 
-        super(Header, self).__init__(content = content, **kwargs)
+        #tag = self.tag
+
+        super(H, self).__init__(content = content, **kwargs)
