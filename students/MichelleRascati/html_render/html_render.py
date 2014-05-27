@@ -44,6 +44,10 @@ class Element(object):
 class Html(Element):
     tag = u"html"
 
+    def render(self, file_out, ind=u""):
+        file_out.write('<!DOCTYPE html>\n')
+        Element.render(self, file_out, ind)
+
 
 class Body(Element):
     tag = u"body"
@@ -130,3 +134,10 @@ class H(OneLineTag):
     def __init__(self, n, content):
         self.tag = "{}{}".format(self.tag, n)
         OneLineTag.__init__(self, content)
+
+
+class Meta(SelfClosingTag):
+    tag = u"meta"
+
+    def __init__(self, **kwargs):
+        SelfClosingTag.__init__(self, None, **kwargs)
