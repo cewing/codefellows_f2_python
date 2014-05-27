@@ -22,10 +22,10 @@ class Element(object):
         #ind = amount of indent "so far"
         html_attributes_string = u""
         for key, value in self.html_attributes_dict.iteritems():
-            html_attributes_string = html_attributes_string + '{0} = "{1}"'.format(key,value)
+            html_attributes_string = html_attributes_string + ' {0}="{1}"'.format(key,value)
 
         # Write the opening tag
-        file_out.write('{0}<{1} {2}>\n'.format(ind, self.tag, html_attributes_string))
+        file_out.write('{0}<{1}{2}>\n'.format(ind, self.tag, html_attributes_string))
 
         # Iterate through the items in list self.content
         for item in self.content:
@@ -51,7 +51,35 @@ class Head(Element):
     tag = u'head'
 
 
-class Title(Element):
+class OneLineTag(Element):
+
+    # Override render method to render everything on one line
+    def render(self, file_out, ind = ""):
+
+       #ind = amount of indent "so far"
+        html_attributes_string = u""
+        for key, value in self.html_attributes_dict.iteritems():
+            html_attributes_string = html_attributes_string + ' {0}="{1}"'.format(key,value)
+
+        # Write the opening tag
+        file_out.write('{0}<{1}{2}>'.format(ind, self.tag, html_attributes_string))
+
+        # Iterate through the items in list self.content
+        for item in self.content:
+
+            # If item is tag, render it this way
+            if isinstance(item, Element):
+                item.render(file_out, ind + self.indent)
+            
+            # Otherwise item is NOT a tag, so render it differently
+            else:
+                file_out.write(item)
+
+        # Write the closing tag
+        file_out.write('</{0}>\n'.format(self.tag))
+
+
+class Title(OneLineTag):
     tag = u'title'
 
 
@@ -99,3 +127,21 @@ class A(Element):
         # And this is a 
         # <a href="http://google.com">link</a>
         # to google
+
+
+class Ul(Element):
+    tag = u'ul'
+
+
+class Li(Element):
+    tag = u'li'
+
+
+class Header(OneLineTag):
+    tag = u'h'
+    
+    def __init__(self, header_level, content, **kwargs):
+
+        header_level = self.header_level
+
+        super(Header, self).__init__(content = content, **kwargs)

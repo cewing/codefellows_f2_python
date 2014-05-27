@@ -122,31 +122,6 @@ def render(page, filename):
 # # Step 6
 # #########
 
-page = hr.Html()
-
-head = hr.Head()
-head.append(hr.Title(u"PythonClass = Revision 1087:"))
-
-page.append(head)
-
-body = hr.Body()
-
-body.append(hr.P(u"Here is a paragraph of text -- there could be more of them, but this is enough to show that we can do some text",
-              style=u"text-align: center; font-style: oblique;"))
-
-body.append(hr.Hr())
-
-body.append(u"And this is a ")
-body.append( hr.A(u"http://google.com", "link") )
-body.append(u"to google")
-
-page.append(body)
-
-render(page, u"test_html_output6.html")
-
-# # Step 7
-# #########
-
 # page = hr.Html()
 
 # head = hr.Head()
@@ -156,30 +131,55 @@ render(page, u"test_html_output6.html")
 
 # body = hr.Body()
 
-# body.append( hr.H(2, u"PythonClass - Class 6 example") )
-
 # body.append(hr.P(u"Here is a paragraph of text -- there could be more of them, but this is enough to show that we can do some text",
 #               style=u"text-align: center; font-style: oblique;"))
 
 # body.append(hr.Hr())
 
-# list = hr.Ul(id=u"TheList", style=u"line-height:200%")
-
-# list.append( hr.Li(u"The first item in a list") )
-# list.append( hr.Li(u"This is the second item", style="color: red") )
-
-# item = hr.Li()
-# item.append(u"And this is a ")
-# item.append( hr.A(u"http://google.com", u"link") )
-# item.append(u"to google")
-
-# list.append(item)
-
-# body.append(list)
+# body.append(u"And this is a ")
+# body.append( hr.A(u"http://google.com", "link") )
+# body.append(u"to google")
 
 # page.append(body)
 
-# render(page, u"test_html_output7.html")
+# render(page, u"test_html_output6.html")
+
+# # Step 7
+# #########
+
+page = hr.Html()
+
+head = hr.Head()
+head.append(hr.Title(u"PythonClass = Revision 1087:"))
+
+page.append(head)
+
+body = hr.Body()
+
+body.append( hr.H(2, u"PythonClass - Class 6 example") )
+
+body.append(hr.P(u"Here is a paragraph of text -- there could be more of them, but this is enough to show that we can do some text",
+              style=u"text-align: center; font-style: oblique;"))
+
+body.append(hr.Hr())
+
+list = hr.Ul(id=u"TheList", style=u"line-height:200%")
+
+list.append( hr.Li(u"The first item in a list") )
+list.append( hr.Li(u"This is the second item", style="color: red") )
+
+item = hr.Li()
+item.append(u"And this is a ")
+item.append( hr.A(u"http://google.com", u"link") )
+item.append(u"to google")
+
+list.append(item)
+
+body.append(list)
+
+page.append(body)
+
+render(page, u"test_html_output7.html")
 
 # # Step 8
 # ########
