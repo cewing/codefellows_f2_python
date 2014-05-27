@@ -31,11 +31,19 @@ class Element(object):
         else:
             file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
-            if isinstance(element,(Body,P,Head,Title)):
+            if isinstance(element,(Body,P,Head,Title,Hr,Br)):
                 element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
             else:
                 file_out.write("%s%s%s\n"%(ind,self.indentation,element))
         file_out.write("%s</%s>\n"%(ind,self.tag_name))
+
+class OneLineTag(Element):
+    def render(self,file_out, ind=""):
+        file_out.write("%s<%s> %s </%s>\n"%(ind,self.tag_name,self.content[0],self.tag_name))
+
+class SelfClosingTag(Element):
+    def render(self,file_out, ind=""):
+        file_out.write("%s<%s />\n"%(ind,self.tag_name))
 
 class Html(Element):
     tag_name="html"
@@ -49,9 +57,11 @@ class P(Element):
 class Head(Element):
     tag_name="head"
 
-class OneLineTag(Element):
-    def render(self,file_out, ind=""):
-        file_out.write("%s<%s> %s </%s>\n"%(ind,self.tag_name,self.content[0],self.tag_name))
-
 class Title(OneLineTag):
     tag_name="title"
+
+class Hr(SelfClosingTag):
+    tag_name="hr"
+
+class Br(SelfClosingTag):
+    tag_name="br"
