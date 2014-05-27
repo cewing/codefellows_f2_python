@@ -138,12 +138,13 @@ class Li(Element):
 
 
 class H(OneLineTag):
-    #tag = u'h'
 
     def __init__(self, header_level, content, **kwargs):
 
         self.tag = u'h' + str(header_level)
 
-        #tag = self.tag
-
         super(H, self).__init__(content = content, **kwargs)
+
+
+class Meta(SelfClosingTag):
+    tag = u'meta'
