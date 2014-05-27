@@ -1,7 +1,7 @@
 class Element(object):
 
-    tag = 'html'
-    indent = '    '
+    tag = u''
+    indent = u'    '
 
     def __init__(self, content = None, **kwargs):
 
@@ -45,6 +45,15 @@ class Element(object):
 
 class Html(Element):
     tag = u'html'
+
+    # Override Element's render() method
+    def render(self, file_out, ind = ""):
+
+        # Write the initial doctype tag
+        file_out.write('<!DOCTYPE html>\n')
+
+        # Call to super (which is an instance of Element's render() method) to render <html> tags
+        super(Html, self).render(file_out = file_out, ind = ind)
 
 
 class Head(Element):
@@ -98,10 +107,10 @@ class SelfClosingTag(Element):
         #ind = amount of indent "so far"
         html_attributes_string = u""
         for key, value in self.html_attributes_dict.iteritems():
-            html_attributes_string = html_attributes_string + '"{0} = {1}"'.format(key,value)
+            html_attributes_string = html_attributes_string + '{0}="{1}"'.format(key,value)
 
-        # Write the opening tag
-        file_out.write('{0}<{1}{2}/>\n'.format(ind, self.tag, html_attributes_string))
+        # Write the self closing tag
+        file_out.write('{0}<{1} {2}/>\n'.format(ind, self.tag, html_attributes_string))
 
 
 class Hr(SelfClosingTag):
