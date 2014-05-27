@@ -13,15 +13,20 @@ class Element(object):
             self.content=[initContent]
         else:
             self.content=[]
-        #if kwargs:
-        print kwargs
         self.kwargs=kwargs
+        print kwargs
 
     def append(self,input):
         self.content.append(input)
 
     def render(self,file_out, ind=""):
-        file_out.write("%s<%s %s>\n"%(ind,self.kwargs,self.tag_name))
+        if self.kwargs != {}:
+            file_out.write("%s<%s "%(ind,self.tag_name))
+            for key in self.kwargs:
+                file_out.write("%s=\"%s\""%(key,self.kwargs[key]))
+            file_out.write(">\n")
+        else:
+            file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
             if isinstance(element,(Body,P,Head,Title)):
                 element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
@@ -31,7 +36,6 @@ class Element(object):
 
 class Html(Element):
     tag_name="html"
-
 
 class Body(Element):
     tag_name="body"
@@ -48,4 +52,3 @@ class OneLineTag(Element):
 
 class Title(OneLineTag):
     tag_name="title"
-
