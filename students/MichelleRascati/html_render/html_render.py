@@ -30,8 +30,8 @@ class Element(object):
         file_out -- File name in which to output render
         ind -- amount to indent tag (default "")
         """
-        attr_list = [u' {}="{}"'.format(k, v) for k, v in self.attr.items()]
-        attr_str = u"".join(attr_list)
+        attr_str = u"".join([u' {}="{}"'.format(k, v) for k, v in
+                            self.attr.items()])
         file_out.write(u'{}<{}{}>\n'.format(ind, self.tag, attr_str))
         for item in self.content:
             try:
@@ -77,3 +77,30 @@ class OneLineTag(Element):
 
 class Title(OneLineTag):
     tag = u"title"
+
+
+class SelfClosingTag(Element):
+    def render(self, file_out, ind=""):
+        """Render a self closing tag and string in content.
+
+        Keyword arguments:
+        file_out -- File name in which to output render
+        ind -- amount to indent tag (default "")
+        """
+        attr_str = u"".join([u' {}="{}"'.format(k, v) for k, v in
+                            self.attr.items()])
+        file_out.write(u'{}<{}{}'.format(ind, self.tag, attr_str))
+        for item in self.content:
+            try:
+                item.render(file_out)
+            except AttributeError:
+                file_out.write(item)
+        file_out.write(u' />\n'.format(self.tag))
+
+
+class Hr(SelfClosingTag):
+    tag = u"hr"
+
+
+class Br(SelfClosingTag):
+    tag = u"br"
