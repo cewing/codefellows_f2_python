@@ -32,5 +32,43 @@ class Circle(object):
         self._area=math.pi*(diameter/2)**2
 
 
+    def __str__(self):
+        return "Circle with radius: %s00000"%repr(float(self.radius))
+    def __repr__(self):
+        return "Circle(%s)"%str(self.radius)
+    def __add__(self,other):
+        return Circle(self.radius+other.radius)
+    def __mul__(self,other):
+        return Circle(self.radius*other)
+
+    def __gt__(self,other):
+        if self.radius > other.radius:
+            return True
+        else:
+            return False
+
+    def __lt__(self,other):
+        if self.radius < other.radius:
+            return True
+        else:
+            return False
 
 
+    def __eq__(self,other):
+        if self.radius == other.radius:
+            return True
+        else:
+            return False
+
+
+    def __le__(self,other):
+        if self.radius <= other.radius:
+            return True
+        else:
+            return False
+
+    def __ge__(self,other):
+        if self.radius >= other.radius:
+            return True
+        else:
+            return False
