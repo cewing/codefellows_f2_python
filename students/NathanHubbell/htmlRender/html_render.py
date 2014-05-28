@@ -31,7 +31,7 @@ class Element(object):
         else:
             file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
-            if isinstance(element,(Body,P,Head,Title,Hr,Br,A,H,Ul,Li)):
+            if isinstance(element,(Body,P,Head,Title,Hr,Br,A,H,Ul,Li,Meta)):
                 element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
             else:
                 file_out.write("%s%s%s\n"%(ind,self.indentation,element))
@@ -58,6 +58,9 @@ class A(SelfClosingTag):
 
 class Html(Element):
     tag_name="html"
+    def render(self,file_out, ind=""):
+        file_out.write("<!DOCTYPE %s>\n"%(self.tag_name))
+        Element.render(self,file_out,ind)
 
 class Body(Element):
     tag_name="body"
@@ -82,6 +85,9 @@ class Hr(SelfClosingTag):
 
 class Br(SelfClosingTag):
     tag_name="br"
+
+class Meta(SelfClosingTag):
+    tag_name="meta"
 
 class H(OneLineTag):
     tag_name="h"
