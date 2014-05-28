@@ -66,6 +66,7 @@ def test_files():
     f1 = open(u"test_html_render.html", 'r')
     f2 = open(u"test_html_output8.html", 'r')
     assert f1.read() == f2.read()
+    f1.close(), f2.close()
 
 """
 # what value are we testng for...
@@ -86,4 +87,4 @@ def test_tag_html():
 '''
 """
 
-# f.close()
+
