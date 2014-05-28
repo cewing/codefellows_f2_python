@@ -18,7 +18,7 @@ def Name():
 
 def Type():
     u"""Raises a TypeError."""
-    print 4/u"the" # 4 is an int; "the" is a string. 
+    print 4/u"the" # 4 is an int; "the" is a string.
         #Math can't be done with non-ints or non-floats.
 
 def Syntax(n):
