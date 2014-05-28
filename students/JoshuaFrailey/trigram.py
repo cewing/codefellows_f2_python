@@ -23,7 +23,7 @@ def _build_story(trigram, seed=None):
     u"""Write a story from the given trigram and seed phrase; print to file."""
     if not seed:
         seed = random.choice(trigram.keys())
-    f = codecs.open("tirgram.txt", "w")
+    f = codecs.open("trigram.txt", "w")
     f.write(seed)
     while seed in trigram:
         next_word = random.choice(trigram[seed])
@@ -46,7 +46,9 @@ def _collect_stats(words):
                 stats[word.lower()][u"Capital"] += 1
                 stats[word.lower()][u"Count"] += 1
             except KeyError:
-                stats.setdefault(word.lower(), punctuation_dict.copy())[u"Capital"] += 1
+                stats.setdefault(
+                    word.lower(), punctuation_dict.copy()
+                    )[u"Capital"] += 1
                 stats[word.lower()][u"Count"] += 1
         word = word.lower()
         if word[-1] in string.punctuation:
@@ -54,7 +56,9 @@ def _collect_stats(words):
                 stats[word[:-1]][word[-1]] += 1
                 stats[word[:-1]][u"Count"] += 1
             except KeyError:
-                stats.setdefault(word[:-1], punctuation_dict.copy())[word[-1]] += 1
+                stats.setdefault(
+                    word[:-1], punctuation_dict.copy()
+                    )[word[-1]] += 1
                 stats[word[:-1]][u"Count"] += 1
         else:
             try:
@@ -64,6 +68,15 @@ def _collect_stats(words):
                 stats.setdefault(word, punctuation_dict.copy())[u"None"] += 1
                 stats[word][u"Count"] += 1
     return stats
+
+
+# def _build_stats(stats):
+#     capitals = {}
+#     punctuation = {}
+#     for word in stats:
+#         capitals[word] = stats[word][u"Capital"] / float(stats[word][u"Count"])
+#         punctuation[word].setdefault()
+
 
 
 if __name__ == "__main__":
