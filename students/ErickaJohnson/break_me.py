@@ -11,21 +11,21 @@
 #for review: NameError, TypeError, SyntaxError, AttributeError
 #Use the Python standard library reference on Built In Exceptions as a
 #reference
-
 def Name():
     u"""Raises a NameError."""
     print s # Variable s is not defined.
 
 def Type():
     u"""Raises a TypeError."""
-    print 4/u"the" # 4 is an int; "the" is a string.
+    return 4/u"the" # 4 is an int; "the" is a string.
         #Math can't be done with non-ints or non-floats.
 
 def Syntax(n):
     u"""Raises a SyntaxError."""
     if 4 > n #There should be a semi-colon at the end of this line.
-        print u"n is smaller than 4."
+        return u"n is smaller than 4."
 
-def Attribute(n): #*************This is throwing up a SyntaxError instead. Come back to this.**************************
+def Attribute(n):
     u"""Raises a AttributeError."""
-    print 5.lower() #5 is an int and can't be turned into a lowercase.
+    n = 1
+    print  n.something #'something' has no attribute connected to it.
