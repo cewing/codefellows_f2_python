@@ -31,7 +31,7 @@ class Element(object):
         else:
             file_out.write("%s<%s>\n"%(ind,self.tag_name))
         for element in self.content:
-            if isinstance(element,(Body,P,Head,Title,Hr,Br,A)):
+            if isinstance(element,(Body,P,Head,Title,Hr,Br,A,H,Ul,Li)):
                 element.render(file_out,ind + self.indentation) #consider using: element.render(file_out,ind + self.indentation)
             else:
                 file_out.write("%s%s%s\n"%(ind,self.indentation,element))
@@ -68,6 +68,12 @@ class P(Element):
 class Head(Element):
     tag_name="head"
 
+class Ul(Element):
+    tag_name="ul"
+
+class Li(Element):
+    tag_name="li"
+
 class Title(OneLineTag):
     tag_name="title"
 
@@ -76,4 +82,12 @@ class Hr(SelfClosingTag):
 
 class Br(SelfClosingTag):
     tag_name="br"
+
+class H(OneLineTag):
+    tag_name="h"
+    def __init__(self,num,content):
+        tag_name = "h" + str(num)
+        self.content = content
+
+
 
