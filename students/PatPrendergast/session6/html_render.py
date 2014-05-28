@@ -1,18 +1,11 @@
 #!/usr/bin/env python
 
-"""
-Python class example.
 
-"""
-
-# The start of it all:
-# Fill it all in here.
 class Element(object):
     ''' Describe the Html render class'''
     
     tag = ''
     indent = '    '
-    #html_attributes dict?
 
     def __init__(self, content=None, **html_attributes):
         self.html_attributes = html_attributes
