@@ -86,21 +86,6 @@ class H(OneLineTag):
     def __init__(self, header_level, content=None):
         OneLineTag.__init__(self, content)
         #how to get the header level and pass it into the tag argument
-        self.tag = 'h%i' %header_level
+        self.tag- = 'h%i' %header_level
 class Meta(SelfClosingTag):
     tag = 'meta'
-
-
-
-
-
-
-
-    
-
-
-"""you can check if the item is an instance of the element. it might be a string then .write will work. 
-or might be the element with tags
-if instance then item.render
-if string file_out.write
-"""    
