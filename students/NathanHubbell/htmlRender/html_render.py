@@ -86,8 +86,8 @@ class Br(SelfClosingTag):
 class H(OneLineTag):
     tag_name="h"
     def __init__(self,num,content):
-        tag_name = "h" + str(num)
-        self.content = content
+        H.tag_name = "h" + str(num)
+        self.content = [content]
 
 
 
