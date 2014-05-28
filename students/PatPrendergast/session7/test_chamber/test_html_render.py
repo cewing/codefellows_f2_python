@@ -60,8 +60,14 @@ body.append(list)
 page.append(body)
 
 render(page, u"test_html_render.html")
-# f = f = open(u"test_html_render.html", 'r')
 
+def test_files():
+    '''Check test and output files are the same.'''
+    f1 = open(u"test_html_render.html", 'r')
+    f2 = open(u"test_html_output8.html", 'r')
+    assert f1.read() == f2.read()
+
+"""
 # what value are we testng for...
 def test_tag_html():
     item = hr.Li()
@@ -78,6 +84,6 @@ def test_tag_html():
     to google
 <li/> 
 '''
-
+"""
 
 # f.close()
