@@ -7,8 +7,8 @@ def _build_trigram(words):
     u"""Return a dictionary of trigrams from the input text"""
     trigram = {}
     for i in range(len(words)-2):
-        key = u"{} {}".format(words[i], words[i+1])
-        trigram.setdefault(key, []).append(words[i+2])
+        key = u"{} {}".format(_strip(words[i]), _strip(words[i+1]))
+        trigram.setdefault(key, []).append(_strip(words[i+2]))
     return trigram
 
 
@@ -19,7 +19,7 @@ def _file_to_list(filename):
     return u" ".join(lines).split()
 
 
-def _build_story(trigram, seed=None):
+def _build_story(trigram, stats, seed=None):
     u"""Write a story from the given trigram and seed phrase; print to file."""
     if not seed:
         seed = random.choice(trigram.keys())
@@ -27,7 +27,9 @@ def _build_story(trigram, seed=None):
     f.write(seed)
     while seed in trigram:
         next_word = random.choice(trigram[seed])
-        f.write(u" {} ".format(next_word))
+        cap = _add_cap(stats, next_word)
+        punc = _add_punctuation(stats, next_word)
+        f.write(u" {}{}".format(cap, punc))
         new_seed = seed.split()[1:]
         new_seed.append(next_word)
         seed = u" ".join(new_seed)
@@ -70,16 +72,31 @@ def _collect_stats(words):
     return stats
 
 
-# def _build_stats(stats):
-#     capitals = {}
-#     punctuation = {}
-#     for word in stats:
-#         capitals[word] = stats[word][u"Capital"] / float(stats[word][u"Count"])
-#         punctuation[word].setdefault()
+def _add_cap(stats, word):
+    chance = random.random()
+    if chance <= (stats[word][u"Capital"] / float(stats[word][u"Count"])):
+        return word.capitalize()
+    else:
+        return word
 
+
+def _add_punctuation(stats, word):
+    for mark in string.punctuation:
+        chance = random.random()
+        if chance <= (stats[word][mark] / float(stats[word][u"Count"])):
+            return unicode(mark)
+    return u""
+
+
+def _strip(word):
+    if word[-1] in string.punctuation:
+        return word[:-1].lower()
+    else:
+        return word.lower()
 
 
 if __name__ == "__main__":
     words = _file_to_list("sherlock_small.txt")
+    stats = _collect_stats(words)
     trigram = _build_trigram(words)
-    _build_story(trigram)
+    _build_story(trigram, stats)
