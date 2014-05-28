@@ -36,11 +36,10 @@ s4 = {i for i in range(1,20) if not i%4}
 s = []
 for j in range(2,5) :
     s.append({i for i in range(1,20) if not i%j})
-
+print s
 
 # Extra credit: do it all as a one-liner by nesting a set comprehension inside a list comprehension. (OK, that may be getting carried away!)
-s = []
 s1 = [{i for i in range(1,20) if not i%j} for j in range(2,5)]
-
+print s1
 
 
