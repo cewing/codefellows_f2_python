@@ -69,9 +69,6 @@ def create_report () :
         print ' {:14s} {:14.2f} {:15.2f}'.format(i[1],i[0],i[2])
         
 
-
-
-
 if __name__ == '__main__' :
     keys = [u"David", u"Mark", u"Alice", u"Cindy", u"Martin" ]
     values = [ [50,150,150], [50,50,50], [80,100,100], [100,50,100], [200,150,150] ]
@@ -92,21 +89,17 @@ if __name__ == '__main__' :
         else :
             print u"Please enter a valid choice!"
 
-
-    
-
     #write a program which prints the full path to all files in the current directory, one per line
     for files in os.listdir(os.getcwd()) :
         print ' {:20s} {:30s}'.format(files,os.path.abspath(files))
-        #print files,
         #print os.path.abspath(files)
     #write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
     file_name    = 'series.py'
     source_      = os.path.abspath(file_name)
     new_dest_    = 'dest'
-    os.mkdir (new_dest_)
+    if not os.path.isdir(os.path.abspath(new_dest_)) :
+        os.mkdir (new_dest_)
     destination_ = os.path.join(os.getcwd()+'/'+new_dest_)
-    print destination_
     f_source = open(source_, 'r')
     os.chdir (destination_)
     f_dest = open(file_name, 'w+')
