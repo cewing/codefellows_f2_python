@@ -86,6 +86,7 @@ class Br(SelfClosingTag):
 
 class A(Element):
     """ link and content rendered as Element's html_attributes with explicit use of 'href' """
+    tag = 'a'
     def __init__(self, link, content, **kwargs): # kwargs allows for other attributes, if necessary
         super(A, self).__init__(content, href=link, **kwargs) 
                                                                             

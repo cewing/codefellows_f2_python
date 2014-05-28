@@ -60,14 +60,24 @@ body.append(list)
 page.append(body)
 
 render(page, u"test_html_render.html")
-f = f = open(u"test_html_render.html", 'r')
+# f = f = open(u"test_html_render.html", 'r')
 
+# what value are we testng for...
 def test_tag_html():
-    
-    hr...  ==  f....
+    item = hr.Li()
+    item.append(u"And this is a ")
+    item.append( hr.A(u"http://google.com", "link") )
+    item.append(u"to google")
+        assert item == 
+'''
+<li >
+    And this is a 
+    <a href="http://google.com">
+        link
+    <a/> 
+    to google
+<li/> 
+'''
 
-    
-tests...
 
-
-f.close()
+# f.close()
