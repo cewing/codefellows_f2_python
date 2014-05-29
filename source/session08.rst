@@ -957,3 +957,20 @@ Python Power
 Assignments
 -----------
 
+Task 1: Timing Context Manager
+
+Create a context manager that will print to stdout the elapsed time taken to
+run all the code inside the context:
+
+.. code-block:: ipython
+
+    In [3]: with Timer() as t:
+       ...:     for i in range(100000):
+       ...:         i = i ** 20
+       ...:
+    this code took 0.206805 seconds
+
+**Extra Credit**: allow the ``Timer`` context manager to take a file-like
+object as an argument (the default should be sys.stdout). The results of the
+timing should be printed to the file-like object.
+
