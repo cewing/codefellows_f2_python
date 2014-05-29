@@ -998,3 +998,29 @@ run all the code inside the context:
 object as an argument (the default should be sys.stdout). The results of the
 timing should be printed to the file-like object.
 
+
+.. nextslide::
+
+Task 2: ``p-wrapper`` Decorator
+
+Write a simple decorator you can apply to a function that returns a string.
+Decorating such a function should result in the original output, wrapped by an
+HTML 'p' tag:
+
+.. code-block:: ipython
+
+    In [4]: @p_wrapper
+       ...: def return_a_string(string):
+       ...:     return string
+       ...:
+
+    In [5]: return_a_string("this is a string")
+    Out[5]: '<p> this is a string </p>'
+
+.. nextslide::
+
+Task 3: Generator Homework (documented above)
+
+Task 4: Iterator Homework (documented above)
+
+
