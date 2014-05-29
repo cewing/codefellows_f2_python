@@ -10,7 +10,8 @@ import math
 class Circle(object):
     def __init__(self, radius):
         self._radius = radius
-        self._diameter = radius * 2.0
+        self._diameter = radius * 2
+        self._area = math.pi * radius ** 2
 
     @property
     def radius(self):
@@ -20,6 +21,7 @@ class Circle(object):
     def radius(self, value):
         self._radius = value
         self._diameter = value * 2.0
+        self._area = math.pi * radius ** 2
 
     @property
     def diameter(self):
@@ -29,3 +31,13 @@ class Circle(object):
     def diameter(self, value):
         self._diameter = value
         self._radius = value / 2.0
+        self._area = math.pi * (value / 2.0) ** 2
+
+    @property
+    def area(self):
+        return self._area
+
+    @area.setter
+    def area(self, value):
+        self._area = value
+        self._radius = math.sqrt(value / math.pi)
