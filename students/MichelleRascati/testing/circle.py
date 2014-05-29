@@ -19,6 +19,10 @@ class Circle(object):
     def __repr__(self):
         return u"Circle({})".format(self._radius)
 
+    def __add__(self, c2):
+        rad_new = self._radius + c2._radius
+        return Circle(rad_new)
+
     @property
     def radius(self):
         return self._radius
@@ -42,8 +46,3 @@ class Circle(object):
     @property
     def area(self):
         return self._area
-
-    @area.setter
-    def area(self, value):
-        self._area = value
-        self._radius = math.sqrt(value / math.pi)
