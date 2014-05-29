@@ -156,10 +156,10 @@ Create ``Li`` class for an element in a list (also really simple)
 Add a list to your web page.
    
 Create a ``Header`` class -- this one should take an integer argument for the
-header level. i.e <h1>, <h2>, <h3>, called like::
+header level. i.e <h1>, <h2>, <h3>, called like
 
-.. code-block:: python  
-
+.. code-block:: python
+  
    H(2, "The text of the header")
 
 for an <h2> header
