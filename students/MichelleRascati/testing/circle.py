@@ -13,6 +13,9 @@ class Circle(object):
         self._diameter = radius * 2
         self._area = math.pi * radius ** 2
 
+    def __str__(self):
+        return 'Circle with radius: {:f}'.format(self._radius)
+
     @property
     def radius(self):
         return self._radius
@@ -20,8 +23,8 @@ class Circle(object):
     @radius.setter
     def radius(self, value):
         self._radius = value
-        self._diameter = value * 2.0
-        self._area = math.pi * radius ** 2
+        self._diameter = value * 2
+        self._area = math.pi * value ** 2
 
     @property
     def diameter(self):
