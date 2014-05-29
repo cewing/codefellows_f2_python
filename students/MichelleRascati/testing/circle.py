@@ -49,8 +49,6 @@ class Circle(object):
     @radius.setter
     def radius(self, value):
         self._radius = value
-        self._diameter = value * 2.0
-        self._area = math.pi * value ** 2.0
 
     @property
     def diameter(self):
@@ -61,7 +59,6 @@ class Circle(object):
     def diameter(self, value):
         self._diameter = value
         self._radius = value / 2.0
-        self._area = math.pi * (value / 2.0) ** 2
 
     @property
     def area(self):
