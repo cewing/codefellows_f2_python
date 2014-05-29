@@ -31,8 +31,6 @@ def prime():
     num = 2
     while True:
         for i in range(2,num+1):
-            if num==i:
-                yield num
-            elif num%i==0:
-                break
+            if num==i:  yield num
+            elif num%i==0:  break
         num+=1
