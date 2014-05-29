@@ -85,6 +85,9 @@ article {
   .centered {
     text-align: center;
   }
+  .left {
+    text-align: left;
+  }
   .large {
     font-weight: bold;
     font-size: 65px;
@@ -99,6 +102,10 @@ article {
     font-weight: bold;
     font-size: 45px;
     line-height: 45px;
+  }
+  .credit {
+    font-size: 75%;
+    text-align: left;
   }
   .line-block {
     .line {
@@ -119,6 +126,21 @@ article {
   .docutils {
     &.literal {
       font-family: 'Droid Sans Mono', 'Courier New', monospace;
+    }
+  }
+  .toctree-wrapper {
+    li {
+      a {
+        text-decoration: none;
+        border-bottom: none;
+      }
+    }
+  }
+  table.docutils {
+    tr {
+      td {
+        vertical-align: top;
+      }
     }
   }
 }

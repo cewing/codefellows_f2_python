@@ -1,5 +1,7 @@
 ## I am Pat Prendergast
 
+####This is my Python Homework repo
+
 ####The Past
 I grew up in California, *Palo Alto* to be specific. Software development was everywhere in my town growing up.  I learned some **BASIC** in grade school, probably soon after it was invented.  Alright, I am not _that_ old. I had to rebel, so software was out.
 
