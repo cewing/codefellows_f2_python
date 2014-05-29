@@ -11,11 +11,3 @@ def ack(m, n):
         return ack(m-1, 1)
     else:
         return ack(m-1, ack(m, n-1))
-
-# test
-if __name__ == '__main__':
-    ackTable = ((1, 2, 3, 4), (2, 3, 4, 5), (3, 5, 7, 9), (5, 13, 29, 61))
-    for i, x in enumerate(ackTable):
-        for j, y in enumerate(x):
-            assert ack(i, j) == y
-    print "All Tests Pass"
