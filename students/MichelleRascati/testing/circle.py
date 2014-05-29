@@ -14,7 +14,10 @@ class Circle(object):
         self._area = math.pi * radius ** 2
 
     def __str__(self):
-        return 'Circle with radius: {:f}'.format(self._radius)
+        return u'Circle with radius: {:f}'.format(self._radius)
+
+    def __repr__(self):
+        return u"Circle({})".format(self._radius)
 
     @property
     def radius(self):
