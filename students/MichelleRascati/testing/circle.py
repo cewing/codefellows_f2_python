@@ -10,8 +10,6 @@ import math
 class Circle(object):
     def __init__(self, radius):
         self._radius = radius
-        self._diameter = radius * 2.0
-        self._area = math.pi * radius ** 2
 
     def __str__(self):
         return u'Circle with radius: {:f}'.format(self._radius)
@@ -29,6 +27,21 @@ class Circle(object):
         rad_new = self._radius * m
         return Circle(rad_new)
 
+    def __eq__(self, c2):
+        return self.diameter == c2.diameter
+
+    def __gt__(self, c2):
+        return self.diameter > c2.diameter
+
+    def __lt__(self, c2):
+        return self.diameter < c2.diameter
+
+    def __ge__(self, c2):
+        return self.diameter >= c2.diameter
+
+    def __le__(self, c2):
+        return self.diameter <= c2.diameter
+
     @property
     def radius(self):
         return self._radius
@@ -41,6 +54,7 @@ class Circle(object):
 
     @property
     def diameter(self):
+        self._diameter = self._radius * 2.0
         return self._diameter
 
     @diameter.setter
@@ -51,4 +65,5 @@ class Circle(object):
 
     @property
     def area(self):
+        self._area = math.pi * self._radius ** 2
         return self._area
