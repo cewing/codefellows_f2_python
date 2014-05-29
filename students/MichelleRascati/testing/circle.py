@@ -10,7 +10,7 @@ import math
 class Circle(object):
     def __init__(self, radius):
         self._radius = radius
-        self._diameter = radius * 2
+        self._diameter = radius * 2.0
         self._area = math.pi * radius ** 2
 
     def __str__(self):
@@ -20,7 +20,13 @@ class Circle(object):
         return u"Circle({})".format(self._radius)
 
     def __add__(self, c2):
+        """Return Circle with sum of input radii"""
         rad_new = self._radius + c2._radius
+        return Circle(rad_new)
+
+    def __mul__(self, m):
+        """Return Circle m times as large"""
+        rad_new = self._radius * m
         return Circle(rad_new)
 
     @property
@@ -30,8 +36,8 @@ class Circle(object):
     @radius.setter
     def radius(self, value):
         self._radius = value
-        self._diameter = value * 2
-        self._area = math.pi * value ** 2
+        self._diameter = value * 2.0
+        self._area = math.pi * value ** 2.0
 
     @property
     def diameter(self):
