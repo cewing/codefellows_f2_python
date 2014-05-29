@@ -480,7 +480,32 @@ A simple version of ``xrange()``
             else:
                 raise StopIteration
 
-(demo)
+(demo: ``code/iterator_1.py``)
+
+What does ``for`` do?
+----------------------
+
+Now that we know the iterator protocol, we can write something like a for loop:
+
+(``code/session08/my_for.py``)
+
+.. code-block:: python
+
+    def my_for(an_iterable, func):
+        """
+        Emulation of a for loop.
+
+        func() will be called with each item in an_iterable
+        """
+        # equiv of "for i in l:"
+        iterator = l.__iter__()
+        while True:
+            try:
+                i = iterator.next()
+            except StopIteration:
+                break
+            func(i)
+
 
 Itertools
 ---------
@@ -500,8 +525,8 @@ They can be used with anything that expexts an iterator:
 
 For example. 
 
-LAB
----
+LAB / Homework
+--------------
 
 In the ``code/session08`` dir, you will find: ``iterator_1.py``
 
@@ -640,8 +665,8 @@ yet another way to make a generator:
 
 More interesting if [1, 2, 3] is also a generator
 
-Generator LAB
---------------
+Generator LAB / Homework
+-------------------------
 
 
 Write a few generators:
@@ -651,7 +676,7 @@ Write a few generators:
 * Fibonacci sequence
 * Prime numbers
 
-(test code in ``test_generator.py``)
+(test code in ``code/session08/test_generator.py``)
 
 Descriptions:
 
@@ -790,7 +815,7 @@ There are a couple of ways you can go.
 If the resource in questions has a ``.close()`` method, then you can simply use
 the ``closing`` context manager from ``contextlib`` to handle the issue:
 
-.. code-block:: class
+.. code-block:: python
 
     import urllib
     from contextlib import closing
@@ -799,8 +824,7 @@ the ``closing`` context manager from ``contextlib`` to handle the issue:
         # do something with the open resource
     # and here, it will be closed automatically
 
-But what if the thing doesn't have a ``close()`` method, or you're creating
-the thing and it shouldn't?
+But what if the thing doesn't have a ``close()`` method, or you're creating the thing and it shouldn't?
 
 .. nextslide:: Do It Yourself
 

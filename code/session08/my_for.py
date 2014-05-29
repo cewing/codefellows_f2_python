@@ -26,7 +26,7 @@ def my_for(an_iterable, func):
             i = iterator.next()
         except StopIteration:
             break
-        func(str(i))
+        func(i)
 
 
 if __name__ == "__main__":
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     my_for(t, print_func)
 
-    
+
 
 
 
