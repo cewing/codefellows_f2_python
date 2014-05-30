@@ -26,4 +26,15 @@ def test_element():
     page.append(p1)
     p2 = u"P2"
     page.append(p2)
-    assert render(page) == u"<html>\n    {}\n    {}\n</html>".format(p1, p2)
+    assert render(page) == u"<html>\n    {}\n    {}\n</html>\n".format(p1, p2)
+
+
+def test_html():
+    page = hr.Html()
+    assert render(page) == u"<!DOCTYPE html>\n<html>\n</html>\n"
+
+
+def test_body():
+    body = hr.Body()
+    body.append("text")
+    assert render(body) == u"<body>\n    text\n</body>\n"
