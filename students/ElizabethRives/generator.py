@@ -1,41 +1,45 @@
 #!/usr/bin/env python
 
 
-def sum_integers(n): 
+import itertools
+
+
+def intsum(): 
 	u"""Generate a sequence that adds the next integer."""
 
 	a = 0
-
-	for i in range(-1, n):
-		a += i + 1
+	yield a
+	
+	for y in itertools.count(1, 1):
+		a = a + y
 		yield a
 
 
-def doubler(n): 
+def doubler(): 
 	u"""Generate a sequence that doubles the previous value."""
 
 	a = 1
 	yield a
 
-	for i in range(n):
+	while True:
 		a = 2 * a
 		yield a
 
 
-def fibonacci(n):
+def fib():
 	u"""Generate the fibonacci series."""
 	
 	a, b = 0, 1
 
-	for i in range(n):
+	while True:
 		a, b = b, a + b
 		yield a
 
 
-def prime_numbers(n):
+def prime():
 	u"""Simply generate the prime numbers."""
 
-	for i in range(2, n):
+	for i in itertools.count(2, 1):
 		for a in range(2, i):
 			if i%a == 0:
 				break
