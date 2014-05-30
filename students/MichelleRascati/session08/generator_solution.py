@@ -36,3 +36,15 @@ def fib():
         yield i
         i = i + last
         last = i - last
+
+
+def prime():
+    i = 1
+    ilist = [1]
+    while True:
+        while ilist != []:
+            i += 1
+            ilist = [1 for x in range(2, i) if not i % x]
+        yield i
+        ilist = [1]
+            
