@@ -562,6 +562,22 @@ raises the <tt class="docutils literal"><span class="pre">StopIteration</span></
 </div>
 <p>(demo: <tt class="docutils literal"><span class="pre">code/iterator_1.py</span></tt>)</p>
 </div>
+<div class="section" id="iter">
+<h3><tt class="docutils literal"><span class="pre">iter()</span></tt><a class="headerlink" href="#iter" title="Permalink to this headline">¶</a></h3>
+<p>How doyou get the iterator object (the thing with the next() method) from an &#8220;iterable&#8221;?</p>
+<p>The <tt class="docutils literal"><span class="pre">iter()</span></tt> function:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [20]: </span><span class="nb">iter</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gh">Out[20]: </span><span class="go">&lt;listiterator at 0x101e01350&gt;</span>
+
+<span class="gp">In [21]: </span><span class="nb">iter</span><span class="p">(</span><span class="s">&quot;a string&quot;</span><span class="p">)</span>
+<span class="gh">Out[21]: </span><span class="go">&lt;iterator at 0x101e01090&gt;</span>
+
+<span class="gp">In [22]: </span><span class="nb">iter</span><span class="p">(</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;tuple&#39;</span><span class="p">)</span> <span class="p">)</span>
+<span class="gh">Out[22]: </span><span class="go">&lt;tupleiterator at 0x101e01710&gt;</span>
+</pre></div>
+</div>
+<p>for an arbitrary object, <tt class="docutils literal"><span class="pre">iter()</span></tt> calls the <tt class="docutils literal"><span class="pre">__iter__</span></tt> method. But it knows about some object (<tt class="docutils literal"><span class="pre">str</span></tt>, for instance) that don&#8217;t have a <tt class="docutils literal"><span class="pre">__iter__</span></tt> method.</p>
+</div>
 <div class="section" id="what-does-for-do">
 <h3>What does <tt class="docutils literal"><span class="pre">for</span></tt> do?<a class="headerlink" href="#what-does-for-do" title="Permalink to this headline">¶</a></h3>
 <p>Now that we know the iterator protocol, we can write something like a for loop:</p>
@@ -573,7 +589,7 @@ raises the <tt class="docutils literal"><span class="pre">StopIteration</span></
 <span class="sd">    func() will be called with each item in an_iterable</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c"># equiv of &quot;for i in l:&quot;</span>
-    <span class="n">iterator</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">__iter__</span><span class="p">()</span>
+    <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">an_iterable</span><span class="p">)</span>
     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">i</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
@@ -639,7 +655,7 @@ build an iterator that iterates over sequences in various common ways</p>
 <p><tt class="docutils literal"><span class="pre">yield</span></tt>  is a way to make a quickie generator with a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">a_generator_function</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
     <span class="n">some_stuff</span>
-    <span class="k">yield</span><span class="p">(</span><span class="n">something</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="n">something</span>
 </pre></div>
 </div>
 <p>Generator functions &#8220;yield&#8221; a value, rather than returning a value.</p>

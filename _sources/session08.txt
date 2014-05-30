@@ -482,6 +482,27 @@ A simple version of ``xrange()``
 
 (demo: ``code/iterator_1.py``)
 
+``iter()``
+-----------
+
+How doyou get the iterator object (the thing with the next() method) from an "iterable"?
+
+The ``iter()`` function:
+
+.. code-block:: ipython
+
+    In [20]: iter([2,3,4])
+    Out[20]: <listiterator at 0x101e01350>
+
+    In [21]: iter("a string")
+    Out[21]: <iterator at 0x101e01090>
+
+    In [22]: iter( ('a', 'tuple') )
+    Out[22]: <tupleiterator at 0x101e01710>
+
+for an arbitrary object, ``iter()`` calls the ``__iter__`` method. But it knows about some object (``str``, for instance) that don't have a ``__iter__`` method.
+
+
 What does ``for`` do?
 ----------------------
 
@@ -498,7 +519,7 @@ Now that we know the iterator protocol, we can write something like a for loop:
         func() will be called with each item in an_iterable
         """
         # equiv of "for i in l:"
-        iterator = l.__iter__()
+        iterator = iter(an_iterable)
         while True:
             try:
                 i = iterator.next()
@@ -577,7 +598,7 @@ yield
 
     def a_generator_function(params):
         some_stuff
-        yield(something)
+        yield something
 
 Generator functions "yield" a value, rather than returning a value.
 
