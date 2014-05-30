@@ -27,3 +27,12 @@ def doubler():
     while True:
         yield i
         i = i * 2
+
+
+def fib():
+    i = 1
+    last = 0
+    while True:
+        yield i
+        i = i + last
+        last = i - last
