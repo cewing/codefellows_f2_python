@@ -12,15 +12,11 @@ def render(page):
     """
     render the tree of elements
 
-    This uses cSstringIO to render to memory, then dump to console and
-    write to file -- very handy!
+    This uses cSstringIO to render to memory, then returns
     """
-
     f = cStringIO.StringIO()
     page.render(f)
-
     f.reset()
-
     return f.read()
 
 
@@ -30,5 +26,4 @@ def test_element():
     page.append(p1)
     p2 = u"P2"
     page.append(p2)
-    print render(page)
-    assert render(page) == "<html>\n    {}\n    {}\n</html>".format(p1, p2)
+    assert render(page) == u"<html>\n    {}\n    {}\n</html>".format(p1, p2)
