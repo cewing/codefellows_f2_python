@@ -20,3 +20,10 @@ def intsum2():
         yield i
         n += 1
         i = i + n
+
+
+def doubler():
+    i = 1
+    while True:
+        yield i
+        i = i * 2
