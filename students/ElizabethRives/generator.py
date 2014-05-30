@@ -10,8 +10,8 @@ def intsum():
 	a = 0
 	yield a
 	
-	for y in itertools.count(1, 1):
-		a = a + y
+	for i in itertools.count(1, 1):
+		a = a + i
 		yield a
 
 
