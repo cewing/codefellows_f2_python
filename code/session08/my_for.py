@@ -2,6 +2,8 @@
 
 """
 hand writing 'for'
+
+demonstrates how for interacts with an iterable
 """
 
 import sys
@@ -20,7 +22,7 @@ def my_for(an_iterable, func):
 
     """
     # equiv of "for i in l:"
-    iterator = l.__iter__()
+    iterator = iter(an_iterable)
     while True:
         try:
             i = iterator.next()
@@ -37,7 +39,7 @@ if __name__ == "__main__":
     l = [1,2,3,4,5,]
     my_for(l, print_func)
 
-    t = (3,4,5,6)
+    t = ('a','b','c','d')
 
     my_for(t, print_func)
 
