@@ -30,24 +30,16 @@ Your instructors
 
 | Christopher Barker
 | (pythonchb at gmail dot com)
-
+|
 
 .. nextslide::
 
 .. rst-class:: center large
 
-| Cris Ewing
-| (cris at crisewing dot com)
 
-
-Your TA
--------
-
-.. rst-class:: center large
-
-| Mark Charyk
-| (markcharyk at gmail dot com)
-
+| Dan Hable
+| (dhable at at gmail dot com)
+|
 
 Introduction to This class
 ==========================
@@ -64,7 +56,7 @@ A rendered HTML copy of the slides for this course may be found online at:
 
 .. rst-class:: centered
 
-http://codefellows.github.io/sea-c15-python/
+http://codefellows.github.io/sea-f2-python-sept14/
 
 
 What is Python?
@@ -92,7 +84,7 @@ Features:
 
 .. rst-class:: build
 
-* Unlike C, C++, C\#, Java ... More like Ruby, Lisp, Perl, Matlab, Mathematica
+* Unlike C, C++, C\#, Java ... More like Ruby, Lisp, Perl, Javascript
   ...
 * Dynamic - no type declarations
 
@@ -128,21 +120,20 @@ Strong typing.
 
 .. code-block:: ipython
 
-    In [2]: a = 5
+    In [1]: a = 5
 
-    In [3]: type(a)
-    Out[3]: int
+    In [2]: type(a)
+    Out[2]: int
 
-    In [4]: b = b'5'
+    In [3]: b = '5'
 
-    In [5]: type(b)
-    Out[5]: str
+    In [4]: type(b)
+    Out[4]: str
 
 .. rst-class:: build
 
 * **everything** has a type.
 * the *type* of a thing determines what it can do.
-
 
 Duck Typing
 -----------
@@ -167,7 +158,7 @@ Python 2.x
 .. rst-class:: build
 
 * "Classic" Python
-* evolved from original
+* Evolved from original
 
 Python 3.x ("py3k")
 
@@ -180,7 +171,7 @@ Python 3.x ("py3k")
 
 .. nextslide::
 
-This program uses Python 2.7 not Python 3.
+This class uses Python 2.7 not Python 3.
 
 .. rst-class:: build
 

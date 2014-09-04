@@ -1,5 +1,0 @@
-file1 = open("/home/nathan/projects/cff2py/sea-c15-python/students/NathanHubbell/print len(\"hjhjhj\")","r")
-file2 = open("/home/nathan/projects/cff2py/sea-c15-python/students/NathanHubbell/newName","w")
-file2.write(file1.read())
-file1.close()
-file2.close()
