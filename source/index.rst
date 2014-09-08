@@ -48,5 +48,5 @@ In This Course
 
 .. rst-class:: credit
 
-These materials copyright Cris Ewing and Christopher Barker, with thanks to
+These materials copyright Christopher Barker and Cris Ewing, with thanks to
 Jon Jacky and Brian Dorsey for the materials from which these were derived.

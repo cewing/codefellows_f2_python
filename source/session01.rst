@@ -38,7 +38,7 @@ Your instructors
 
 
 | Dan Hable
-| (dhable at at gmail dot com)
+| (dhable at gmail dot com)
 |
 
 Introduction to This class
@@ -54,9 +54,13 @@ Course Materials Online
 
 A rendered HTML copy of the slides for this course may be found online at:
 
-.. rst-class:: centered
-
 http://codefellows.github.io/sea-f2-python-sept14/
+
+Also there are homework descriptions and supplemental materials.
+
+The source of these materials are in Chris' gitHub repo:
+
+http://github.com/PythonCHB/codefellows_f2_python
 
 
 What is Python?
@@ -86,20 +90,21 @@ Features:
 
 * Unlike C, C++, C\#, Java ... More like Ruby, Lisp, Perl, Javascript
   ...
-* Dynamic - no type declarations
 
-  * programs are shorter
-  * programs are more flexible
-  * less code means fewer bugs
+* **Dynamic** -- no type declarations
 
-* Interpreted - no separate compile, build steps - programming process is
+  * Programs are shorter
+  * Programs are more flexible
+  * Less code means fewer bugs
+
+* **Interpreted** -- no separate compile, build steps - programming process is
   simpler
 
 
 What's a Dynamic language
 -------------------------
 
-Dynamic typing.
+**Dynamic typing**.
 
 * Type checking and dispatch happen at run-time
 
@@ -116,7 +121,7 @@ Dynamic typing.
 
 .. nextslide::
 
-Strong typing.
+**Strong typing**.
 
 .. code-block:: ipython
 
@@ -171,7 +176,7 @@ Python 3.x ("py3k")
 
 .. nextslide::
 
-This class uses Python 2.7 not Python 3.
+This class uses Python 2.7 not Python 3.x
 
 .. rst-class:: build
 
@@ -228,7 +233,7 @@ Python comes with a built-in interpreter.
 
 You see it when you type ``python`` at the command line:
 
-.. code-block:: bash
+.. code-block:: pycon
 
     $ python
     Python 2.7.5 (default, Aug 25 2013, 00:04:04)
@@ -314,7 +319,7 @@ Your Editor
 
 Typing code in an interpreter is great for exploring.
 
-Eventually, you want to save the work you are doing in a more permanent
+But for anything "real", you'll want to save the work you are doing in a more permanent
 fashion.
 
 This is where an Editor fits in.
@@ -327,12 +332,17 @@ MS Word is **not** a text editor.
 
 Nor is *TextEdit* on a Mac.
 
+``Notepad`` is a text editor -- but a crappy one.
+
+You need a real "programmers text editor":
+
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
 
 .. nextslide:: Minimum Requirements
 
-At a minumum, your editor should have:
+
+At a minimum, your editor should have:
 
 .. rst-class:: build
 
@@ -350,7 +360,7 @@ In addition, great features to add include:
 
 Have an editor that does all this? Feel free to use it.
 
-If not, may I suggest ``Sublime Text``?
+If not, I suggest ``Sublime Text``?
 
 
 Why No IDE?
@@ -365,6 +375,8 @@ An IDE often weighs a great deal
 
 Setting up IDEs to work with different projects can be challenging and
 time-consuming.
+
+Particularly when you are first learning, you don't want too much done for you.
 
 .. nextslide::
 
@@ -394,7 +406,7 @@ This helps to ensure that you will be able to work.
 Step 1: Python 2.7
 ------------------
 
-.. rst-class:: center large
+.. rst-class:: large
 
 You have this already, RIGHT?
 
@@ -407,6 +419,8 @@ You have this already, RIGHT?
     >>> ^D
     $
 
+If not:
+ * `For the mac  <./supplements/python_for_mac.html>`_
 
 Step 2: Pip
 -----------
