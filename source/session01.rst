@@ -41,7 +41,7 @@ Your instructors
 | (dhable at gmail dot com)
 |
 
-Introduction to This class
+Introduction to This Class
 ==========================
 
 .. rst-class:: center large
@@ -454,7 +454,7 @@ Let's start by installing the only two packages you will install in your global
 environment.
 
 
-Step 3: Virtualenv
+Step 3: Optional -- Virtualenv
 ------------------
 
 Python packages come in many versions.
@@ -465,206 +465,34 @@ Often you need one version for one project, and a different one for another.
 
 You can then install potentially conflicting software safely.
 
+For this class, this is no big deal, but as you start to work on "real" projects, it can be a key tool.
+
 .. _Virtualenv: http://www.virtualenv.org/
 
-.. nextslide:: Installing Virtualenv
+If you want to install it, here are some notes:
 
-We will use ``pip`` to do this.
+`Intro to VirtualEnv <./supplements/virtualenv.html>`_
 
-.. code-block:: bash
 
-    $ sudo pip install virtualenv
-    Downloading/unpacking virtualenv
-      Downloading virtualenv-1.11.2-py2.py3-none-any.whl (2.8MB): 2.8MB downloaded
-    Installing collected packages: virtualenv
-    Successfully installed virtualenv
-    Cleaning up...
-    $ 
-
-.. nextslide:: Using Virtualenv
-
-Once that completes, you can create a new virtualenv using the ``virtualenv``
-command at the command line:
-
-.. code-block:: bash
-
-    $ virtualenv <name>
-
-``<name>`` is an arbitrary designator that means something to you
-
-Once you've created a virtualenv, you can ``activate`` it, install packages in
-it, and ``deactivate`` it when you are done.
-
-If you've finished working with an environment, you can simply throw away the
-directory created by the command.  Your system will be unharmed.
-
-.. ifslides::
-
-    .. rst-class:: centered
-
-    [DEMO]
-
-
-Step 4: Virtualenvwrapper
--------------------------
-
-Virtualenv allows you to create isolated Python environments in which to work.
-
-But once you have a number of projects, how do you keep track of the virtualenvs?
-
-You use `virtualenvwrapper`_
-
-.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org
-
-This extension to ``virtualenv`` provides a number of useful commands you can
-use to manage your environments.
-
-.. nextslide:: Installing Virtualenvwrapper
-
-Again, we'll use ``pip`` to install the new tool:
-
-.. code-block:: bash
-
-    $ sudo pip install virtualenvwrapper
-    Downloading/unpacking virtualenvwrapper
-      Downloading virtualenvwrapper-4.2.tar.gz (125kB): 125kB downloaded
-      Running setup.py (path:/private/tmp/pip_build_root/virtualenvwrapper/setup.py) egg_info for package virtualenvwrapper
-      ...
-    Successfully installed virtualenvwrapper virtualenv-clone stevedore
-    Cleaning up...
-    $
-
-.. nextslide:: System Wiring
-
-To get the most out of ``virtualenvwrapper`` you'll want to add a couple of
-environmental variables to your shell.
-
-Open a command prompt and navigate to your home directory with the ``cd``
-command:
-
-.. code-block:: bash
-
-    $ cd
-
-Then list *all* the files in your home directory with ``ls -a``:
-
-.. code-block:: bash
-
-    $ ls -a
-    ...
-    .profile
-    ...
-
-.. nextslide:: Setting Environment Variables
-
-You should find a file called ``.profile`` (or ``.bashrc``, ``.bash_profile``,
-``.bash_login``)
-
-Open that file in your text editor and add the following lines:
-
-.. code-block:: bash
-
-    export WORKON_HOME=~/.virtualenvs
-    export PROJECT_HOME=~/projects
-    source /usr/local/bin/virtualenvwrapper.sh
-
-The above system path may not be correct. If you do not have a file
-``virtualenvwrapper.sh`` in ``/usr/local/bin`` you can run ``$ which
-virtualenvwrapper.sh`` to find out where it ended up.
-
-Save the file, and then quit and restart your command line
-
-.. nextslide:: Providing Homes
-
-These variables tell ``virtualenvwrapper`` where to put new envs and projects.
-
-You need to create these two directories so that they are there to be found.
-
-At your command line, type the following:
-
-.. code-block:: bash
-
-    $ cd
-    $ mkdir .virtualenvs
-    $ mkdir projects
-
-.. ifnotslides::
-
-    You can also work through a more thorough tutorial on using virtualenv and
-    virtualenvwrapper in the class `supplemental materials`_.
-    
-    .. _supplemental materials: supplements/virtualenv.html
-
-Now, you're ready to make your class environment.
-
-
-Step 5: Make a Class Environment
---------------------------------
-
-``Virtualenvwrapper`` provides a command that allows you to accomplish a number
-of related tasks at once:
-
-.. rst-class:: build
-
-* It creates a new virtual environment in your ``WORKON_HOME``
-* It creates a project folder with the same name in your ``PROJECT_HOME``
-* It changes your working directory into that new project directory
-* It activates your new virtual environment
-
-.. nextslide::
-
-The command is ``mkproject``.  Use it to create a new project for your
-class work:
-
-.. code-block:: bash
-
-    $ mkproject cff2py
-    New python executable in cff2py/bin/python
-    Installing setuptools, pip...done.
-    Creating /Users/cewing/projects/cff2py
-    Setting project for foo to /Users/cewing/projects/cff2py
-    (cff2py)$ which python
-    /Users/cewing/.virtualenvs/cff2py/bin/python
-    (cff2py)$ pwd
-    /Users/cewing/projects/cff2py
-
-.. nextslide:: Using the Environment
-
-That's great!  We have a home for our class work.
-
-But how do we get back here easily?
-
-``Virtualenvwrapper`` to the rescue, again:
-
-.. code-block:: bash
-
-    (cff2py)$ deactivate
-    $ cd
-    $ which python
-    /usr/bin/python
-    $ pwd
-    /Users/cewing
-    $ workon cff2py
-    (cff2py)$ which python
-    /Users/cewing/.virtualenvs/cff2py/bin/python
-    (cff2py)$ pwd
-    /Users/cewing/projects/cff2py
-
-Nice, eh?
-
-
-Step 6: Clone Class Repository
+Step 4: Clone Class Repository
 ------------------------------
+
+`gitHub <www.github.com>`_ is an industry-standard system for collaboration on software projects -- particularly open source ones.
+
+We will use it this class to manage submitting and reviewing your work, etc.
+
+**Wait!** Don't have a gitHub account? Set one up now.
 
 Next, you'll make a copy of the class repository using ``git``.
 
-The canonical copy is in the CodeFellows organization on GitHub.
+The canonical copy is in the CodeFellows organization on GitHub:
 
-https://github.com/codefellows/sea-c15-python
+https://github.com/codefellows/sea-f2-python-sept14
 
-Open that URL, and click on the ``Fork`` button at the top right corner.
+Open that URL, and click on the *Fork* button at the top right corner.
 
 This will make a copy of this repository in *your* github account.
+
 
 .. nextslide:: Clone Your Fork
 
@@ -674,52 +502,44 @@ At your command line, run the following commands:
 
 .. code-block:: bash
 
-    $ workon cff2py
-    (cff2py)$ git clone https://github.com/<yourname>/sea-c15-python.git
+    $ cd your_working_directory_for_the_class
+    $ git clone https://github.com/<yourname>/sea-f2-python-sept14.git
 
-If you have an SSH key set up for github, you'll want to do this instead:
+(you can copy and paste that link from the gitHub page)
+
+If you have an SSH key set up for gitHub, you'll want to do this instead:
 
 .. code-block:: bash
 
-    git@github.com:<yourname>/sea-c15-python.git
+    git@github.com:<yourname>/sea-f2-python-sept14.git
 
 **Remember**, <yourname> should be replaced by your github account name.
 
 
-Step 7: Install Requirements
+Step 5: Install Requirements
 ----------------------------
 
-In the class repository, you'll find a file called ``requirements.txt``.
+As this is an intro class, we are going to use almost entirely features of standand library. But there are a couple things you may want:
 
-This file lists additional Python packages that are required in order for the
-code in the repository to run.
-
-You can install these requirements in one go using ``pip`` (make sure your
-virtualenv is active):
+**iPython**
 
 .. code-block:: bash
 
-    (cff2py)$ cd sea-c15-python
-    (cff2py)$ pip install -r requirements.txt
-    ...
+  $pip install ipython
 
-**Please Note**
-
-If you are working on OS X, you will likely need to change your ``pip install``
-command as follows:
+If you are using SublimeText, you may want:
 
 .. code-block:: bash
 
-    ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -r requirements.txt
-
-Also Note that on OS X you will want to uncomment the requirement for
-gnureadline in ``requirements.txt``
-
+  $ pip install PdbSublimeTextSupport
 
 Introduction to iPython
 =======================
 
-As part of the *requirements* you have now installed `iPython`_.
+iPython Overview
+------------------
+
+You have now installed `iPython`_.
 
 iPython is an advanced Python interpreter that offers enhancements.
 
@@ -928,9 +748,13 @@ Python uses whitespace to delineate structure.
 
 This means that in Python, whitespace is **significant**.
 
+(but **ONLY** for newlines and indentation)
+
 The standard is to indent with **4 spaces**.
 
 **SPACES ARE NOT TABS**
+
+**TABS ARE NOT SPACES**
 
 
 .. nextslide::
@@ -971,6 +795,9 @@ But they are not:
 
 NEVER INDENT WITH TABS
 
+make sure your editor is set to use spaces only --
+
+ideally even when you hit the <tab> key
 
 Values
 ------
@@ -1000,8 +827,9 @@ Numbers:
   - integers: ``456``
 
 Text:
-  -  ``u"a bit of text``
+  -  ``u"a bit of text"``
   -  ``u'a bit of text'``
+  - (either single or double quotes work -- why?)
 
 Boolean values:
   -  ``True``
@@ -1022,8 +850,8 @@ An expression is made up of values and operators
 
 * Integer vs. float arithmetic
 
-  * (Python 3 smooths this out
-  * Always use ``/`` when you want float results, ``//`` when you want floored results
+  * (Python 3 smooths this out)
+  * Always use ``/`` when you want float results, ``//`` when you want floored (integer) results
 
 * Type conversions
 
@@ -1779,7 +1607,7 @@ The values you pass in are *bound* to the symbols inside the function and used.
 The ``if`` Statement
 ---------------------
 
-In order to do anything interesting at all (including this weeks homework), you need to be able to make a decision.
+In order to do anything interesting at all (including this week's homework), you need to be able to make a decision.
 
 .. nextslide::
 
@@ -1828,15 +1656,16 @@ Task 1
 * Create a new folder in the ``students`` folder in the class repository.
 
   * Create the folder in your clone of your fork of the repository.
-  * Name it with your own name in CamelCase, like: ``CrisEwing``.
+  * Name it with your own name in CamelCase, like: ``CrisBarker``.
   * In the folder create one new file, named ``README.md``
   * In that new file, write up a few paragraphs about yourself.
 
-    * Use proper `markdown`_ syntax.
+    * Use proper `markdown`_ syntax. (or `reStructuredText`_)
     * Include at least two headings, of different levels.
     * Include at least one link.
 
 .. _markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+.. _reStructuredText: http:rst_link
 
 .. nextslide::
 
@@ -1855,8 +1684,16 @@ Task 2
 
 **Set Up a Great Dev Environment**
 
-Work through the supplemental tutorials on setting up `SublimeText`_ and your
+Make sure you have the basics of command line usage down:
+
+Work through the supplemental tutorials on setting up your
 `Command Line`_ for good development support.
+
+MAke sure you've got your editor set up productively -- at the very very least, make sure it does Python indentation well.
+
+If you are using SublimeText, here are some notes to make it super-nifty:
+
+Setting up `SublimeText`_ .
 
 At the end, your editor should support tab completion and pep8 and pyflakes
 linting. Your command line should be able to show you what virtualenv is active
@@ -1865,7 +1702,6 @@ and give you information about your git repository when you are inside one.
 If you are not using SublimeText, look for plugins that accomplish the same
 goals for your own editor.  If none are available, please consider a change of
 editor.
-
 
 .. _SublimeText: supplements/sublime_as_ide.html
 .. _Command Line: supplements/shell.html
