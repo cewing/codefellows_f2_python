@@ -1,13 +1,16 @@
 .. _homework_html_renderer:
 
-==============
-Html Renderer
-==============
+==================================
+HTML Renderer Homework Assignment
+==================================
+
+HTML Render
+============
 
 Goal:
 ------
 
-The goal is to creata a set of classes to render html pages -- in a "pretty printed" way. i.e nicely indented and human readable. We'll try to get to all the features required to render:
+The goal is to create a set of classes to render html pages -- in a "pretty printed" way. i.e nicely indented and human readable. We'll try to get to all the features required to render:
       
 :download:`sample_html.html  <./sample_html.html>`
 
@@ -24,7 +27,7 @@ You should be able to run that code at each step, uncommenting each new step in 
 
 It builds up a html tree, and then calls the ``render()`` method of your element to render the page.
 
-It uses a ``cStringIO`` object (like a file, but in memory) to render otmemoery, then dumps it to the console, and writes a file. Take alook at the code at the end to make sure you undersand it.
+It uses a ``cStringIO`` object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the code at the end to make sure you understand it.
 
 The html generated at each step is in the files: ``test_html_ouput?.html``
 
@@ -51,6 +54,8 @@ It should have an ``append`` method that can add another string to the content.
 It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
 
 ``file_out`` could be any file-like object ( i.e. have a ``write()`` method ).
+
+.. nextslide::
      
 ``ind`` is a string with the indentation level in it: the amount that the tag should be indented for pretty printing.
 

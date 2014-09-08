@@ -420,7 +420,12 @@ You have this already, RIGHT?
     $
 
 If not:
+
  * `For the mac  <./supplements/python_for_mac.html>`_
+
+ * `For linux  <./supplements/python_for_linux.html>`_
+
+ * `For windows  <./supplements/python_for_windows.html>`_
 
 Step 2: Pip
 -----------
@@ -455,7 +460,7 @@ environment.
 
 
 Step 3: Optional -- Virtualenv
-------------------
+-------------------------------
 
 Python packages come in many versions.
 
@@ -624,6 +629,30 @@ This is the stuff I use every day:
 
 
 That's it -- you can get a lot done with those.
+
+How to run a python file
+=========================
+
+A file with python code in it is a 'module' or 'script'
+
+(more on the distiction later on...)
+
+It should be named with the ``.py`` extension: ``some_name.py``
+
+To run it, you have a couple options:
+
+1) call python on the command line, and pass in your module name
+
+..code-block:: bash
+
+  $ python the_name_of_the_script.py
+
+2) run ``iPython``, and run it from within iPython with the ``run`` command
+
+..code-block:: ipython
+
+  In [1]: run the_file.py
+
 
 
 Basic Python Syntax
@@ -1656,7 +1685,7 @@ Task 1
 * Create a new folder in the ``students`` folder in the class repository.
 
   * Create the folder in your clone of your fork of the repository.
-  * Name it with your own name in CamelCase, like: ``CrisBarker``.
+  * Name it with your own name in CamelCase, like: ``ChrisBarker``.
   * In the folder create one new file, named ``README.md``
   * In that new file, write up a few paragraphs about yourself.
 
@@ -1689,7 +1718,9 @@ Make sure you have the basics of command line usage down:
 Work through the supplemental tutorials on setting up your
 `Command Line`_ for good development support.
 
-MAke sure you've got your editor set up productively -- at the very very least, make sure it does Python indentation well.
+Make sure you've got your editor set up productively -- at the very very least, make sure it does Python indentation well.
+
+**Advanced Editor Setup:**
 
 If you are using SublimeText, here are some notes to make it super-nifty:
 
@@ -1737,26 +1768,28 @@ Task 4
 
 **Explore Errors**
 
-* Make a branch of your clone of the class repository called ``errors``
-  * ``git checkout -b errors``
-  * ``git push -u origin errors``
+* Create a new directory in your personal folder in the ``students`` folder of the class repository::
+  
+  $ mkdir session01
+  $ cd session01
 
-* Create a new file called ``break_me.py``.
+* Make sure you create it in your clone of your fork of the repository.
 
-  * Create it inside your personal folder in the ``students`` folder of the
-    class repository
-  * Make sure you create it in your clone of your fork of the repository.
-  * Use ``git add`` to add the file to the repository.
+* Add a new file to it called ``break_me.py``
+
+* Use ``git add`` to add the file to the repository.
 
 .. nextslide::
 
-* In the file write four simple Python functions
+* In the ``break_me.py`` file write four simple Python functions:
 
   * Each function, when called, should cause an exception to happen
   * Each function should result in one of the four common exceptions from our
     lecture.
 
-    * for review: NameError, TypeError, SyntaxError, AttributeError
+    * for review: ``NameError``, ``TypeError``, ``SyntaxError``, ``AttributeError``
+
+(hint -- the interpreter will quit when it hits a Exception -- so you can comment out all but the one you are testing at the moment)
 
   * Use the Python standard library reference on `Built In Exceptions`_ as a
     reference
