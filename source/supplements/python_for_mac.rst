@@ -39,15 +39,24 @@ git
 
 Get a git client -- the gitHub GUI client may be nice -- I honestly don't know.
 
-I use the command line client from:
+There are a coupole options for a commadn line client. The version from:
 
 http://git-scm.com/download/mac
 
-To use that, you will need the XCode command line tools, which you can get from the Apple App Store.
+Works great, but you need the XCode command line tools, which you can get from the Apple App Store. This is a good option is you think you'll need a complier at some point anyway.
 
 (If you try running "git" on the command line after installing, it should send you there). 
 
-Warning: it is a BIG download. Once installed, run it so it can initialize itself. Then the git command should work:
+Warning: it is a BIG download. Once installed, run it so it can initialize itself.
+
+Antoher option is the git client from:
+
+http://sourceforge.net/projects/git-osx-installer/
+
+It's a bigger install, but has everything you need out of teh box -- no need to install XCode.
+
+
+After either of these is installed, the ``git`` command should work:
 
 .. code-block:: bash
 

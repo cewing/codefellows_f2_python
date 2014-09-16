@@ -65,8 +65,10 @@ Cloned repositories get an *origin* remote for free:
 .. code-block:: bash
 
     $ git remote -v
-    origin  git@github.com:cewing/sea-c15-python.git (fetch)
-    origin  git@github.com:cewing/sea-c15-python.git (push)
+    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
+    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
+
+This shows that the local repo on my machine *originated* from the one in my gitHub account (the one it was cloned from)
 
 .. nextslide:: Adding a Remote
 
@@ -81,12 +83,13 @@ to the original copy of the material in the ``codefellows`` account.
 
 .. code-block:: bash
 
-    $ git remote add upstream https://github.com/codefellows/sea-c15-python.git
-    $ git remote -v
-    origin  git@github.com:cewing/sea-c15-python.git (fetch)
-    origin  git@github.com:cewing/sea-c15-python.git (push)
-    upstream    https://github.com/codefellows/sea-c15-python.git (fetch)
-    upstream    https://github.com/codefellows/sea-c15-python.git (push)
+  $ git remote add upstream https://github.com/codefellows/sea-f2-python-sept14.git
+
+  $ git remote -v
+  origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
+  origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
+  upstream  https://github.com/codefellows/sea-f2-python-sept14.git (fetch)
+  upstream  https://github.com/codefellows/sea-f2-python-sept14.git (push)
 
 .. nextslide:: Fetching Everything.
 
@@ -103,14 +106,15 @@ Then you can see the branches you have locally available:
 
 .. code-block:: bash
 
-    $ git branch -a
-      gh-pages
-    * master
-      upstream-master
-      remotes/origin/HEAD -> origin/master
-      ...
-      remotes/upstream/gh-pages
-      ...
+  $ git branch -a
+  * master
+    remotes/origin/HEAD -> origin/master
+    remotes/origin/gh-pages
+    remotes/origin/master
+    remotes/upstream/gh-pages
+    remotes/upstream/master
+
+(the gh-pages branch is used to publish these notes)
 
 .. nextslide:: Fetching Upstream Changes
 
@@ -122,7 +126,7 @@ Start by making sure you are on your own master branch:
 
     $ git checkout master
 
-This is really really important.  Take the time to ensure you are where you
+This is **really really** important.  Take the time to ensure you are where you
 think you are.
 
 .. nextslide:: Merging Upstream Changes
@@ -131,13 +135,23 @@ Then, fetch the upstream master branch and merge it into your master:
 
 .. code-block:: bash
 
-    $ git fetch upstream master
-    From github.com:codefellows/sea-c15-python
-     * branch            master     -> FETCH_HEAD
-    $ git merge upstream/master
-    Updating 137a1db..2119f9b
-    Fast-forward
-    ...
+  $ git fetch upstream master
+  From https://github.com/codefellows/sea-f2-python-sept14
+   * branch            master     -> FETCH_HEAD
+
+  $ git merge upstream/master
+  Updating 3239de7..9ddbdbb
+  Fast-forward
+   Examples/README.rst              |  4 ++++
+  ...
+   create mode 100644 Examples/README.rst
+  ...
+
+NOTE: you can do that in one step with:
+
+.. code-block:: bash
+
+  $ git pull upstream master
 
 .. nextslide:: Pushing to Origin
 
@@ -156,21 +170,20 @@ In order to preserve them in your fork on GitHub, you'll have to push:
     ...
     $
 
+(A simple ``git push`` will usually do the right thing)
+
 .. nextslide:: Daily Workflow
 
-You can incorporate this into your daily workflow:
-
-.. code-block:: bash
+You can incorporate this into your daily workflow: ::
 
     $ git checkout master
-    $ git fetch upstream master
-    $ git merge upstream/master
-    $ git push origin master
+    $ git pull upstream master
+    $ git push
     [do some work]
-    $ git commit -m "here is a good commit message"
-    $ git push origin master
+    $ git commit -a 
+    [add a good commit message]
+    $ git push
     [make a pull request]
-
 
 Quick Intro to Basics
 =====================
@@ -253,7 +266,7 @@ use ``if..elif..elif..else``
 
 A way to store a bunch of stuff in order
 
-called "array" in other languages
+Pretty much like an "array" or "vector" in other languages
 
 .. code-block:: python
 
@@ -385,6 +398,9 @@ in ALL_CAPS
     INSTALLED_APPS = [u'foo', u'bar', u'baz']
     CONFIGURATION_KEY = u'some secret value'
     ...
+
+This is just a convention, but it's a good one to follow.
+
 
 .. nextslide:: Global Gotcha
 
@@ -642,7 +658,7 @@ Recursion is especially useful for a particular set of problems.
 
 For example, take the case of the *factorial* function.
 
-In mathmatics, the *factorial* of an integer is the result of multiplying that
+In mathematics, the *factorial* of an integer is the result of multiplying that
 integer by every integer smaller than it down to 1.
 
 ::
@@ -691,8 +707,7 @@ What is true or false in Python?
 
 * The Booleans: ``True``  and ``False`` 
 * "Something or Nothing"
-
-http://mail.python.org/pipermail/python-dev/2002-April/022107.html 
+*  http://mail.python.org/pipermail/python-dev/2002-April/022107.html 
 
 
 .. nextslide::
@@ -710,6 +725,8 @@ Determining Truthiness:
 
 * ``None`` 
 * ``False`` 
+* **Nothing:**
+
 * zero of any numeric type: ``0, 0L, 0.0, 0j``.
 * any empty sequence, for example, ``"", (), []``.
 * any empty mapping, for example, ``{}`` .
@@ -717,7 +734,7 @@ Determining Truthiness:
   or ``__len__()`` method, when that method returns the integer zero or bool
   value ``False``.
 
-http://docs.python.org/library/stdtypes.html
+* http://docs.python.org/library/stdtypes.html
 
 .. nextslide:: What is True?
 
@@ -728,17 +745,19 @@ Everything Else
 
 .. nextslide:: Pythonic Booleans
 
-Any object in Python, when passed to the ``bool()`` type operator, will
+Any object in Python, when passed to the ``bool()`` type object, will
 evaluate to ``True`` or ``False``.
 
-When you use the ``if`` keyword, it automatically does this to the statement
-provided.
+When you use the ``if`` keyword, it automatically does this to the statement provided.
 
 Which means that this is redundant, and not Pythonic:
 
 .. code-block:: python
 
     if xx == True:
+        do_something()
+    # or even worse:
+    if bool(xx) == True:
         do_something()
 
 Instead, use what Python gives you:
@@ -750,7 +769,7 @@ Instead, use what Python gives you:
 
 
 and, or and not
----------------
+----------------
 
 Python has three boolean keywords, ``and``, ``or`` and ``not``.
 
@@ -861,6 +880,7 @@ Remember this puzzle from your CodingBat exercises?
             return True
 
 Though correct, that's not a particularly Pythonic way of solving the problem.
+
 Here's a better solution:
 
 .. code-block:: python
@@ -926,7 +946,8 @@ Exercises
   * Re-write a couple of CodingBat exercises, using a conditional expression
   * Re-write a couple of CodingBat exercises, returning the direct boolean results
 
-(use whichever you like, or the ones in: ``code/codingbat.rst``  )
+use whichever you like, or the ones in:
+:download:`codingbat.rst <../code/session02/codingbat.rst>`
 
 
 Code Structure, Modules, and Namespaces
@@ -1034,7 +1055,7 @@ To a first approximation, you can think of the files you write that end in
 
 A package is a module with other modules in it.
 
-On a filesystem, this is represented as a folder that contains one or more
+On a filesystem, this is represented as a directory that contains one or more
 ``.py`` files, one of which **must** be called ``__init__.py``.
 
 When you have a package, you can import the package, or any of the modules
@@ -1126,8 +1147,7 @@ There are a few ways to do this:
 * ``$ python hello.py``   -- must be in current working directory
 * ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system
 * ``$ ./hello.py``        -- put ``#!/usr/env/python``  at top of module (Unix)
-* ``run hello.py``     -- at the IPython prompt -- running a module brings the
-  names into the interactive namespace
+* ``In [149]: run hello.py``     -- at the IPython prompt -- running a module brings its names into the interactive namespace
 
 
 .. nextslide:: Running a Module
@@ -1242,18 +1262,19 @@ Experiment with importing different ways:
     print os.path
 
 
-You wouldn't want to import * those -- check out
+You wouldn't want to import * those!
+
+  -- check out
 
 .. code-block:: python
 
     os.path.split('/foo/bar/baz.txt')
     os.path.join('/foo/bar', 'baz.txt')
 
-
 Homework
 ========
 
-You have two tasks to complete by Wednesday:
+You have two tasks to complete by next class:
 
 Task 1
 ------
@@ -1267,8 +1288,7 @@ The Ackermann function, A(m, n), is defined::
 
 See http://en.wikipedia.org/wiki/Ackermann_function.
 
-Create a new module called ``ack.py`` in your student folder. In that module,
-write a function named ``ack`` that performs Ackermann's function.
+Create a new module called ``ack.py`` in a ``session02`` folder in your student folder. In that module, write a function named ``ack`` that performs Ackermann's function.
 
 * Write a good ``docstring`` for your function according to PEP 257.
 * Ackermann's function is not defined for input values less than 0.  Validate
@@ -1291,11 +1311,11 @@ your implementation. Include good commit messages that explain concisely both
 *what* you are doing and *why*.
 
 When you are finished, push your changes to your fork of the class repository
-in GitHub. Then make a pull request and submit your assignment in canvas.
+in GitHub. Then make a pull request and submit your assignment in Canvas.
 
 ::
 
-    - Adapted from "Think Python": Chapter 6, excercise 5.
+    - Adapted from "Think Python": Chapter 6, exercise 5.
 
 Task 2
 ------
@@ -1306,9 +1326,7 @@ This gives us::
 
     0, 1, 1, 2, 3, 5, 8, 13, ...
 
-Create a new module ``series.py`` in your student folder. In it, add a function
-called ``fibonacci``. The function should have one parameter ``n``. The
-function should return the ``nth`` value in the fibonacci series.
+Create a new module ``series.py`` in the ``session02`` folder in your student folder. In it, add a function called ``fibonacci``. The function should have one parameter ``n``. The function should return the ``nth`` value in the fibonacci series.
 
 Ensure that your function has a well-formed ``docstring``
 
@@ -1338,7 +1356,7 @@ optional parameters. The required parameter will determine which element in the
 series to print. The two optional parameters will have default values of 0 and
 1 and will determine the first two values for the series to be produced.
 
-Calling this function with no optional paramters will produce numbers from the
+Calling this function with no optional parameters will produce numbers from the
 *fibonacci series*.  Calling it with the optional arguments 2 and 1 will
 produce values from the *lucas numbers*. Other values for the optional
 parameters will produce other series.

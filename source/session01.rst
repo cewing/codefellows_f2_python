@@ -29,7 +29,7 @@ Your instructors
 .. rst-class:: center large
 
 | Christopher Barker
-| (pythonchb at gmail dot com)
+| (PythonCHB at gmail dot com)
 |
 
 .. nextslide::
@@ -40,6 +40,17 @@ Your instructors
 | Dan Hable
 | (dhable at gmail dot com)
 |
+
+Who are you?
+-------------
+
+.. rst-class:: center large
+
+  Tell us a tiny bit about yourself:
+
+* name
+* programming background
+* what do you hope to get from this class
 
 Introduction to This Class
 ==========================
@@ -62,6 +73,17 @@ The source of these materials are in Chris' gitHub repo:
 
 http://github.com/PythonCHB/codefellows_f2_python
 
+Class email list: We will be using this list to communicate for this class:
+
+sea-c25@codefellows.com 
+
+**Canvas**:
+
+We will be using Canvas to track your homework submission, but not much else:
+
+https://canvas.instructure.com/courses/881467
+
+You should have received and email invitation to join the class.
 
 What is Python?
 ---------------
@@ -183,10 +205,12 @@ This class uses Python 2.7 not Python 3.x
 * Adoption of Python 3 is growing fast
 
   * A few key packages still not supported (https://python3wos.appspot.com/)
+  * Most code in the wild is still 2.x
 
-* Most code in the wild is still 2.x
 * You *can* learn to write Python that is forward compatible from 2.x to 3.x
 * We will be teaching from that perspective.
+
+* If you find yourself needing to work with Python 2 and 3, there are ways to write compatible code: https://wiki.python.org/moin/PortingPythonToPy3k
 
 
 Introduction to Your Environment
@@ -309,7 +333,7 @@ This allows you quite a bit of latitude in exploring what Python is.
 In addition to the built-in interpreter, there are several more advanced
 interpreters available to you.
 
-We'll be using one in this course called ``iPython``.
+We'll be using one in this course called ``iPython``
 
 More on this soon.
 
@@ -334,7 +358,7 @@ Nor is *TextEdit* on a Mac.
 
 ``Notepad`` is a text editor -- but a crappy one.
 
-You need a real "programmers text editor":
+You need a real "programmers text editor"
 
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
@@ -360,7 +384,9 @@ In addition, great features to add include:
 
 Have an editor that does all this? Feel free to use it.
 
-If not, I suggest ``Sublime Text``?
+If not, I suggest ``Sublime Text``:
+
+http://www.sublimetext.com/
 
 
 Why No IDE?
@@ -430,7 +456,7 @@ If not:
 Step 2: Pip
 -----------
 
-Python comes with quite a bit.
+Python comes with quite a bit ("batteries included").
 
 Sometimes you need a bit more.
 
@@ -440,11 +466,14 @@ You install it by downloading and then executing an installer script:
 
 .. code-block:: bash
 
-    $ curl -O https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100 1526k  100 1526k    0     0   189k      0  0:00:08  0:00:08 --:--:--  203k
+    $ curl -O https://bootstrap.pypa.io/get-pip.py
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+    100 1309k  100 1309k    0     0   449k      0  0:00:02  0:00:02 --:--:--  449k
+
     $ python get-pip.py
+
+(or go to: http://pip.readthedocs.org/en/latest/installing.html)
 
 .. nextslide:: Using Pip
 
@@ -455,8 +484,10 @@ Once you've installed pip, you use it to install Python packages by name:
     $ pip install foobar
     ...
 
-Let's start by installing the only two packages you will install in your global
-environment.
+To find packages (and their proper names), you can search the python package index (PyPI):
+
+https://pypi.python.org/pypi
+
 
 
 Step 3: Optional -- Virtualenv
@@ -631,7 +662,7 @@ This is the stuff I use every day:
 That's it -- you can get a lot done with those.
 
 How to run a python file
-=========================
+--------------------------
 
 A file with python code in it is a 'module' or 'script'
 
@@ -643,15 +674,21 @@ To run it, you have a couple options:
 
 1) call python on the command line, and pass in your module name
 
-..code-block:: bash
+.. code-block:: bash
 
   $ python the_name_of_the_script.py
 
 2) run ``iPython``, and run it from within iPython with the ``run`` command
 
-..code-block:: ipython
+.. code-block:: ipython
 
   In [1]: run the_file.py
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+        [demo]
 
 
 
@@ -1261,6 +1298,8 @@ You define a ``string`` value by writing a *literal*:
     In [4]: u'a string with an embedded "quote"'
     Out[4]: u'a string with an embedded "quote"'
 
+(what's the '``u``' about?)
+
 .. nextslide::
 
 .. code-block:: ipython
@@ -1376,12 +1415,12 @@ There are several exceptions that you are likely to see a lot of:
 
 .. rst-class:: build
 
-* NameError: indicates that you have tried to use a symbol that is not bound to
+* ``NameError``: indicates that you have tried to use a symbol that is not bound to
   a value.
-* TypeError: indicates that you have tried to use the wrong kind of object for
+* ``TypeError``: indicates that you have tried to use the wrong kind of object for
   an operation.
-* SyntaxError: indicates that you have mis-typed something.
-* AttributeError: indicates that you have tried to access an attribute or
+* ``SyntaxError``: indicates that you have mis-typed something.
+* ``AttributeError``: indicates that you have tried to access an attribute or
   method that an object does not have (this often means you have a different
   type of object than you expect)
 
@@ -1391,6 +1430,7 @@ Functions
 
 What is a function?
 
+.. rst-class:: build
 
 A function is a self-contained chunk of code
 
@@ -1682,6 +1722,8 @@ Task 1
 
 **Tell Us About Yourself**
 
+This is a way for you to learn a bit about gitHub, and how you are going to submit most of your homework.
+
 * Create a new folder in the ``students`` folder in the class repository.
 
   * Create the folder in your clone of your fork of the repository.
@@ -1694,7 +1736,8 @@ Task 1
     * Include at least one link.
 
 .. _markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-.. _reStructuredText: http:rst_link
+
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
 
 .. nextslide::
 

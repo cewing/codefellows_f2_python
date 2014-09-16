@@ -58,9 +58,10 @@ There are seven builtin types in Python that are *sequences*:
 * tuples
 * bytearrays
 * buffers
-* xrange objects
+* array.arrays
+* xrange objects (almost)
 
-For this class, you won't see much beyond the string types, lists, tuples.
+For this class, you won't see much beyond the string types, lists, tuples -- the rest are pretty special purpose.
 
 But what we say today applies to all sequences (with minor caveats)
 
@@ -156,7 +157,37 @@ You do not have to provide both ``start`` and ``finish``:
 
 Either ``0`` or ``len(s)`` will be assumed, respectively.
 
-As a corollary: ``seq[:b] + seq[b:] == seq``.
+You can combine this with the negative index to get the end of a sequence:
+
+.. code-block:: ipython
+
+    In [4]: s = u'this_could_be_a_filename.txt'
+    In [5]: s[:-4]
+    Out[5]: u'this_could_be_a_filename'
+    In [6]: s[-4:]
+    Out[6]: u'.txt'
+
+
+Why start from zero?
+--------------------
+
+Python indexing feels 'weird' to some folks -- particularly those that don't come with a background in the C family of languages.
+
+Why is the "first" item indexed with zero?
+
+Why is the last item in the slice **not** included?
+
+Because these lead to some nifty properties::
+
+    len(seq[a:b]) == b-a
+
+    seq[:b] + seq[b:] == seq
+
+    len(seq[:b]) == b
+
+    len(seq[-b:]) == b
+
+There are very many fewer "off by one" errors as a result.
 
 
 .. nextslide:: Slicing
@@ -292,12 +323,13 @@ Remember, Python sequences are zero-indexed, so the last index in a sequence is
 
     In [38]: count = len(s)
     In [39]: s[count]
-    ---------------------------------------------------------------------------
-    IndexError                                Traceback (most recent call last)
+    ------------------------------------------------------------
+    IndexError                Traceback (most recent call last)
     <ipython-input-39-5a33b9d3e525> in <module>()
     ----> 1 s[count]
-
     IndexError: string index out of range
+
+Even better: use ``s[-1]``
 
 
 Miscellaneous
@@ -624,19 +656,24 @@ Why?
 
 Easy container setup, or deadly trap?
 
+(note: you can nest lists to make a 2D-ish array)
+
 .. code-block:: ipython
 
-    In [62]: bins = [[]] * 5
-    In [63]: words = [u'one', u'three', u'rough', u'sad', u'goof']
-    In [64]: for word in words:
-       ....:     bins[len(word) - 1].append(word)
+    In [13]: bins = [ [] ] * 5
+
+    In [14]: bins
+    Out[14]: [[], [], [], [], []]
+
+    In [15]: words = [u'one', u'three', u'rough', u'sad', u'goof']
+
+    In [16]: for word in words:
+       ....:     bins[len(word)-1].append(word)
        ....:
-    In [65]:
 
 So, what is going to be in ``bins`` now?
 
-
-.. nextslide:: There is Only One Bin
+.. nextslide:: There is Only **One** Bin
 
 .. code-block:: ipython
 
@@ -655,8 +692,7 @@ We got a list containing five pointers to a single *mutable* object.
 
 .. nextslide:: Mutable Default Argument
 
-Watch out especially for passing mutable objects as default values for function
-parameters:
+Watch out especially for passing mutable objects as default values for function parameters:
 
 .. code-block:: ipython
 
@@ -676,11 +712,19 @@ Mutable Sequence Methods
 
 .. rst-class:: left
 
-In addition to all the methods supported by sequences we've seen above, mutable
-sequences (the List), have a number of other methods that are used to change
-the list.
+In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are
+used to change the list.
 
-You've already seen changing a single element of a list by assignment:
+You can find all these in the Standard Library Documentation:
+
+http://www.python.org/2/library/stdtypes.html#mutable-sequence-types
+
+Assignment
+-----------
+
+You've already seen changing a single element of a list by assignment.
+
+Pretty much the same as "arrays" in most languages:
 
 .. code-block:: ipython
 
@@ -1124,7 +1168,6 @@ Executed only when the loop exits normally (not via break):
        .....:         break
        .....: else:
        .....:     print 'finished'
-       .....:
     finished
     In [148]: for x in range(10):
        .....:     if x == 5:
@@ -1132,9 +1175,9 @@ Executed only when the loop exits normally (not via break):
        .....:         break
        .....: else:
        .....:     print 'finished'
-       .....:
     5
 
+This is a really nice unique Python feature!
 
 While Loops
 -----------
@@ -1149,9 +1192,9 @@ It continues to execute the body until condition is not ``True``::
 
 .. nextslide:: ``while`` vs. ``for``
 
-``while``  is more general than ``for``  --
+``while``  is more general than ``for``
 
-you can always express for as while,
+-- you can always express ``for`` as ``while``,
 
 but not always vice-versa.
 
@@ -1159,7 +1202,7 @@ but not always vice-versa.
 
 loop body must make progress, so condition can become ``False``
 
-potential error: infinite loops:
+potential error -- infinite loops:
 
 .. code-block:: python
 
@@ -1168,7 +1211,7 @@ potential error: infinite loops:
         print i
 
 
-.. nextslide:: Terminating a While Loop
+.. nextslide:: Terminating a while Loop
 
 Use ``break``:
 
@@ -1182,7 +1225,7 @@ Use ``break``:
        .....:
     1 2 3 4 5 6 7 8 9 10
 
-.. nextslide:: Terminating a While Loop
+.. nextslide:: Terminating a while Loop
 
 Set a flag:
 
@@ -1223,10 +1266,12 @@ In both loops, the statements in the ``else`` block are only executed if the
 loop terminates normally (no ``break``)
 
 
-String Formatting
+String Features
 =================
 
-Fun with Strings
+.. rst-class:: center large
+
+  Fun with Strings
 
 
 Manipulations
@@ -1348,7 +1393,7 @@ The counts must agree:
     TypeError: not enough arguments for format string
 
 
-.. nextslide:: MOAR Placeholders
+.. nextslide::
 
 Named placeholders:
 
@@ -1367,8 +1412,7 @@ You can use values more than once, and skip values:
 
 .. nextslide:: New Formatting
 
-In more recent versions of Python (2.6+) this is `being phased out`_ in favor of
-the ``.format()`` method on strings.
+In more recent versions of Python (2.6+) this is `being phased out`_ in favor of the ``.format()`` method on strings.
 
 .. code-block:: ipython
 
@@ -1396,8 +1440,8 @@ One Last Trick
 
 .. rst-class:: left
 
-For some of your homework, you'll need to interact with a user at the command
-line.
+For some of your homework, you'll need to interact with a user at the
+command line.
 
 .. rst-class:: left
 
@@ -1428,8 +1472,8 @@ List Lab (after http://www.upriss.org.uk/python/session5.html)
 
 In your student folder, create a new file called ``list_lab.py``.
 
-The file should be an executable python script. That is to say that one should
-be able to run the script directly like so:
+The file should be an executable python script. That is to say that one
+should be able to run the script directly like so:
 
 .. code-block:: bash
 
@@ -1439,7 +1483,7 @@ Add the file to your clone of the repository and commit changes frequently
 while working on the following tasks. When you are done, push your changes to
 GitHub and issue a pull request.
 
-When the script is run. it should accomplish the following four series of
+When the script is run, it should accomplish the following four series of
 actions:
 
 .. nextslide:: Series 1
@@ -1515,8 +1559,7 @@ you do find it, using it is completely fair game.
 
 .. _the documentation for strings: https://docs.python.org/2/library/stdtypes.html#string-methods
 
-As usual, add your new file to your local clone right away.  Make commits early
-and often and include commit messages that are descriptive and concise.
+As usual, add your new file to your local clone right away.  Make commits early and often and include commit messages that are descriptive and concise.
 
 When you are done, push your changes to github and issue a pull request.
 
@@ -1524,15 +1567,13 @@ When you are done, push your changes to github and issue a pull request.
 Task 3
 ------
 
-Mail Room
+"Mail Room"
 
 You work in the mail room at a local charity. Part of your job is to write
-incredibly boring, repetetive emails thanking your donors for their generous
-gifts. You are tired of doing this over an over again, so you've decided to let
-Python help you out of a jam.
+incredibly boring, repetitive emails thanking your donors for their generous
+gifts. You are tired of doing this over an over again, so you've decided to let Python help you out of a jam.
 
-Write a small command-line script called ``mailroom.py``.  As with Task 1, This
-script should be executable. The script should accomplish the following goals:
+Write a small command-line script called ``mailroom.py``.  As with Task 1, This script should be executable. The script should accomplish the following goals:
 
 * It should have a data structure that holds a list of your donors and a
   history of the amounts they have donated. This structure should be populated
@@ -1563,22 +1604,23 @@ script should be executable. The script should accomplish the following goals:
 * If the user (you) selected 'Create a Report' Print a list of your donors,
   sorted by total historical donation amount.
 
-  * Include Donor Name, total donated, number of donations and average donation
+  - Include Donor Name, total donated, number of donations and average donation
     amount as values in each row.
-  * Using string formatting, format the output rows as nicely as possible.  The
+  - Using string formatting, format the output rows as nicely as possible.  The
     end result should be tabular (values in each column should align with those
     above and below)
-  * After printing this report, return to the original prompt.
+  - After printing this report, return to the original prompt.
 
 * At any point, the user should be able to quit their current task and return
   to the original prompt.
+
 * From the original prompt, the user should be able to quit the script cleanly
 
 .. nextslide:: Guidelines
 
-First, factor your script into separate functions. Each of the above tasks can
-be accomplished by a series of steps.  Write discreet functions that accomplish
-individual steps and call them.
+First, factor your script into separate functions. Each of the above
+tasks can be accomplished by a series of steps.  Write discreet functions
+that accomplish individual steps and call them.
 
 Second, use loops to control the logical flow of your program. Interactive
 programs are a classic use-case for the ``while`` loop.
@@ -1588,12 +1630,12 @@ Put the functions you write into the script at the top.
 Put your main interaction into an ``if __name__ == '__main__'`` block.
 
 Finally, use only functions and the basic Python data types you've learned
-about so far. There is no need to go any farther that that for this assignment.
+about so far. There is no need to go any farther than that for this assignment.
 
 .. nextslide:: Submission
 
-As always, put the new file in your student directory and add it to your clone
-early. Make frequent commits with good, clear messages about what you are
-doing and why.
+As always, put the new file in your student directory in a ``session03``
+directory, and add it to your clone early. Make frequent commits with
+good, clear messages about what you are doing and why.
 
 When you are done, push your changes and make a pull request.
