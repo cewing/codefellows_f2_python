@@ -32,18 +32,63 @@ Review of Previous Classes
 
 Any questions?
 
+.. nextslide::
+
+A couple other nifty utilties with for loops:
+
+**tuple unpacking:**
+
+remember this?
+
+.. code-block:: python
+
+    x, y = 3, 4
+
+You can do that in a for loop, also:
+
+.. code-block:: ipython
+
+  In [4]: l = [(1, 2), (3, 4), (5, 6)]
+
+  In [5]: for i, j in l:
+              print "i:%i, j:%i"%(i, j)
+
+  i:1, j:2
+  i:3, j:4
+  i:5, j:6
+
+Looping through two loops at once:
+----------------------------------
+
+**zip:**
+
+.. code-block:: ipython
+
+    In [10]: l1 = [1, 2, 3]
+
+    In [11]: l2 = [3, 4, 5]
+
+    In [12]: for i, j in zip(l1, l2):
+       ....:     print "i:%i, j:%i"%(i, j)
+       ....:
+    i:1, j:3
+    i:2, j:4
+    i:3, j:5
+
+
+
 Homework comments
 -----------------
 
 Building up a long string.
 
-The obvious thing to do is somethign like::
+The obvious thing to do is something like::
 
   msg = u""
   for piece in list_of_stuff:
       msg += piece
 
-But: strings are immutuable -- python needs to create a new string each time you add a piece -- not efficient::
+But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient::
 
    msg = []
    for piece in list_of_stuff:
@@ -66,19 +111,29 @@ in operational code should be::
     if m < 0:
         raise ValueError
 
+I'll cover Exceptions later this class...
 
 (Asserts get ignored if optimization is turned on!)
 
-.. nextslide::
 
-The rot13 solution:
+=================
+A little warm up
+=================
 
-At least one of you found the "rot13" codec -- that's the really easy way to do it!
+Fun with strings
+------------------
 
-A couple found the ``string.translate()`` function -- anyone get it to work with unicode?
+* Rewrite: ``the first 3 numbers are: %i, %i, %i"%(1,2,3)``
 
-Did you notice that rot13(rot13(a_string)) == a_string?
+    - for an arbitrary number of numbers...
 
+* Write a format string that will take:
+
+    -  ``( 2, 123.4567, 10000)``
+
+    -       and produce:
+
+    - `` "file_002 :   123.46, 1e+04" ``
 
 =====================
 Dictionaries and Sets
@@ -184,14 +239,17 @@ Same average time regardless of size
 
 Note: Python name look-ups are implemented with dict -- it's highly optimized
 
-
 Key to value:
+
  * lookup is one way
 
 Value to key:
+
  * requires visiting the whole dict
 
-If you need to check dict values often, create another dict or set (up to you to keep them in sync)
+If you need to check dict values often, create another dict or set
+
+(up to you to keep them in sync)
 
 
 Dictionary Ordering (not)
@@ -572,7 +630,7 @@ So you can do
     except ValueError:
         print u"Input must be an integer, try again."
 
-Or let the Exception be raised!
+Or let the Exception be raised....
 
 
 .. nextslide:: EAFP
@@ -589,15 +647,15 @@ http://www.youtube.com/watch?v=AZDWveIdqjY
 
 .. nextslide:: Do you catch all Exceptions?
 
-For simple scripts, let exceptions happen
+For simple scripts, let exceptions happen.
 
 Only handle the exception if the code can and will do something about it.
 
 (much better debugging info when an error does occur)
 
 
-Exceptions -- finally 
-----------------------
+Exceptions -- finally
+---------------------
 
 .. code-block:: python
 
@@ -613,11 +671,11 @@ Exceptions -- finally
 The ``finally:``  clause will always run
 
 
-Exceptions -- else 
+Exceptions -- else
 -------------------
 
 .. code-block:: python
-    
+
     try:
         do_something()
         f = open('missing.txt')
@@ -630,8 +688,8 @@ Advantage:
 
 you know where the Exception came from
 
-Exceptions -- using them 
--------------------------
+Exceptions -- using them
+------------------------
 
 .. code-block:: python
 
@@ -647,16 +705,16 @@ Exceptions -- using them
 Particularly useful if you catch more than one exception:
 
 .. code-block:: python
-    
+
     except (IOError, BufferError, OSError) as the_error:
         do_something_with (the_error)
 
 
-Raising Exceptions 
+Raising Exceptions
 -------------------
 
 .. code-block:: python
-    
+
     def divide(a,b):
         if b == 0:
             raise ZeroDivisionError("b can not be zero")
@@ -719,15 +777,16 @@ Text Files
 
 .. code-block:: python
 
-    import codecs
-    f = codecs.open('secrets.txt')
+    import io
+    f = io.open('secrets.txt', codec='utf-8')
     secret_data = f.read()
     f.close()
 
+``secret_data`` is a (unicode) string
 
-``secret_data``  is a (unicode) string
+``codec`` defaults to ``sys.getdefaultencoding()`` -- often NOT what you want.
 
-(There is also the regular ``open()`` built in, but it won't handle unicode for you...)
+(There is also the regular ``open()`` built in, but it won't handle Unicode for you...)
 
 .. nextslide::
 
@@ -735,14 +794,13 @@ Binary Files
 
 .. code-block:: python
 
-    f = open('secrets.txt', 'rb')
+    f = io.open('secrets.bin', 'rb')
     secret_data = f.read()
     f.close()
 
-
 ``secret_data``  is a byte string
 
-(with arbitrary bytes in it)
+(with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file.)
 
 (See the ``struct``  module to unpack binary data )
 
@@ -754,7 +812,7 @@ File Opening Modes
 
 .. code-block:: python
 
-    f = codecs.open('secrets.txt', [mode])
+    f = io.open('secrets.txt', [mode])
     'r', 'w', 'a'
     'rb', 'wb', 'ab'
     r+, w+, a+
@@ -762,24 +820,49 @@ File Opening Modes
     U
     U+
 
+These follow the Unix conventions, and aren't all that well documented on the Python docs. But these BSD docs make it pretty clear:
 
-Gotcha -- 'w' mode always clears the file
+http://www.manpagez.com/man/3/fopen/
+
+**Gotcha** -- 'w' modes always clear the file
 
 .. nextslide:: Text File Notes
 
 Text is default
 
-  * Newlines are translated: ``\r\n -> \n`` 
+  * Newlines are translated: ``\r\n -> \n``
   *   -- reading and writing!
-  * Use \*nix-style in your code: ``\n`` 
-  * Open text files with ``'U'``  "Universal" flag
+  * Use \*nix-style in your code: ``\n``
+  * ``io.open()`` returns various "stream" objects -- but they act like file objects.
+  * In text mode, io.open() defaults to "Universal" newline mode.
 
 
 Gotcha:
 
   * no difference between text and binary on \*nix
   * breaks on Windows
-  
+
+
+.. nextslide:: Other parameters to ``io.open()``:
+
+``io.open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True)``
+
+ * ``file`` is generally a file name or full path
+
+ * ``mode`` is the mode for opening: 'r', 'w', etc.
+
+ * ``buffering`` controls the buffering mode (0 for no buffering)
+
+ * ``encoding`` sets the unicode encoding -- only for text files -- when set, you can ONLY write unicode object to the file.
+
+ * ``errors`` sets the encoding error mode: 'strict', 'ignore', 'replace',...
+
+ * ``newline`` controls Universal Newline mode: lets you write DOS-type files on \*nix, for instance (text mode only).
+
+ * ``closedfd`` controls close()  behavior if a file descriptor, rather than a name is passed in (advanced usage!)
+
+(https://docs.python.org/2/library/io.html?highlight=io.open#io.open)
+
 
 File Reading
 ------------
@@ -794,7 +877,6 @@ Reading part of a file
     secret_rest = f.read()
     f.close()
 
-
 .. nextslide::
 
 
@@ -802,14 +884,14 @@ Common Idioms
 
 .. code-block:: python
 
-    for line in open('secrets.txt'):
+    for line in io.open('secrets.txt'):
         print line
 
 (the file object is an iterator!)
 
 .. code-block:: python
 
-    f = open('secrets.txt')
+    f = io.open('secrets.txt')
     while True:
         line = f.readline()
         if not line:
@@ -822,7 +904,7 @@ File Writing
 
 .. code-block:: python
 
-    outfile = open('output.txt', 'w')
+    outfile = io.open('output.txt', 'w')
     for i in range(10):
         outfile.write("this is line: %i\n"%i)
 
@@ -835,13 +917,13 @@ Commonly Used Methods
 .. code-block:: python
 
     f.read() f.readline()  f.readlines()
-    
+
     f.write(str) f.writelines(seq)
-    
+
     f.seek(offset)   f.tell()
-    
+
     f.flush()
-    
+
     f.close()
 
 
@@ -852,19 +934,18 @@ File Like Objects
 Many classes implement the file interface:
 
   * loggers
-  * ``sys.stdout`` 
-  * ``urllib.open()`` 
+  * ``sys.stdout``
+  * ``urllib.open()``
   * pipes, subprocesses
   * StringIO
 
-http://docs.python.org/library/stdtypes.html#bltin-­‐file-­‐objects
-
+https://docs.python.org/2/library/stdtypes.html#file-objects
 
 StringIO
 --------
 
 .. code-block:: python
-    
+
     In [417]: import StringIO
     In [420]: f = StringIO.StringIO()
     In [421]: f.write(u"somestuff")
@@ -881,6 +962,8 @@ Paths and Directories
 
 Paths
 -----
+
+Paths are generally handled with simple strings (or Unicode strings)
 
 Relative paths:
 
@@ -900,12 +983,12 @@ Either work with ``open()`` , etc.
 
 (working directory only makes sense with command-line programs...)
 
-os module 
+os module
 ----------
 
 .. code-block:: python
 
-    os.getcwd() -- os.getcwdu()
+    os.getcwd() -- os.getcwdu() (u for Unicode)
     chdir(path)
     os.path.abspath()
     os.path.relpath()￼
@@ -934,17 +1017,46 @@ os module
 
 (higher level stuff in ``shutil``  module)
 
+pathlib
+-------
+
+``pathlib`` is a new package for handling paths in an OO way:
+
+http://pathlib.readthedocs.org/en/pep428/
+
+It is now part of the Python3 standard library, and has been back-ported for use with Python2:
+
+.. code-block:: bash
+
+    $ pip install pathlib
+
+All the stuff in os.path and more:
+
+.. code-block:: ipython
+
+    In [64]: import pathlib
+    In [65]: pth = pathlib.Path('./')
+    In [66]: pth.is_dir()
+    Out[66]: True
+    In [67]: pth.absolute()
+    Out[67]: PosixPath('/Users/Chris/PythonStuff/CodeFellowsClass/sea-f2-python-sept14/Examples/Session04')
+    In [68]: for f in pth.iterdir():
+                 print f
+    junk2.txt
+    junkfile.txt
+    ...
 
 =========
 Homework
 =========
 
 Recommended Reading:
-
+---------------------
   * Dive Into Python: Chapt. 13,14
   * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
 
-Assigments:
+Assignments:
+-------------
 
  * dict/sets lab
  * coding kata: trigrams
@@ -1006,7 +1118,7 @@ Dictionaries and Sets
 Text and files and dicts, and...
 ---------------------------------
 
-  * Coding Kata 14 - Dave Thomas 
+  * Coding Kata 14 - Dave Thomas
     http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
 
     and in this doc:
@@ -1028,7 +1140,6 @@ Improving ``raw_input``
 
 * The ``raw_input()``  function can generate two exceptions: ``EOFError``  or ``KeyboardInterrupt``  on end-of-file(EOF) or canceled input.
 
-
 * Create a wrapper function, perhaps ``safe_input()``  that returns ``None``  rather rather than raising these exceptions, when the user enters ``^C``  for Keyboard Interrupt, or ``^D`` (``^Z``  on Windows) for End Of File.
 
 * Update your mailroom program to use exceptions (and IBAFP) to handle malformed numeric input
@@ -1047,8 +1158,4 @@ Paths and File Processing
     - write a full set of letters to everyone to individual files on disk
     - see if you can use a dict to switch between the users selections
     - Try to use a dict and the .format() method to do the letter as one big template -- rather than building up a big string in parts.
-    
-
-
-
 

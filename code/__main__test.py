@@ -13,10 +13,9 @@ if __name__ == '__main__':
     print "Now running code in the __main__ clause"
     # some test or example code here
 
-    result = input("Say Something! >> ")
+    result = raw_input("Say Something!")
 
     print "you said:", result
-    print type(result)
 
 else:
     print "not running as __main__"
