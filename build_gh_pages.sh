@@ -6,11 +6,10 @@
 # make the docs
 make html
 
-git checkout gh-pages
+# copy to other repo (on the gh-pages branch)
+cp -R build/html/ ../gh-pages-version/
 
-cp -R build/html/ ./
-git add * # not sure this works...
+cd ../gh-pages-version
+git add * # in case there are new files added
 git commit -a
-git push origin gh-pages
-git push upstream gh-pages
-git checkout master
+git push

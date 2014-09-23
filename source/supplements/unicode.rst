@@ -40,15 +40,16 @@ Enter Unicode
 --------------
 
 The Unicode idea is pretty simple:
-  
-  * one "code point" for all characters in all languages
+* one "code point" for all characters in all languages
 
 But how do you express that in bytes?
   * Early days: we can fit all the code points in a two byte integer (65536 characters)
+
   * Turns out that didn't work -- now need 32 bit integer to hold all of unicode "raw" (UTC-4)
 
 Enter "encodings":
   * An encoding is a way to map specific bytes to a code point.
+
   * Each code point can have one or more bytes.
 
 
@@ -87,34 +88,38 @@ Py2 strings are sequences of bytes
 
 Unicode strings are sequences of platonic characters
 
-It's almost one code point per character -- but there are complications with combined characters: accents, etc.)
+It's almost one code point per character -- but there are complications
+with combined characters: accents, etc.
 
 Platonic characters cannot be written to disk or network!
 
 (ANSI: one character == one byte -- so easy!)
 
 
-Strings vs unicode 
+Strings vs unicode
 -------------------
 
 Python 2 has two types that let you work with text:
 
-
 * ``str``
-* ``unicode`` 
+
+* ``unicode``
 
 And two ways to work with binary data:
 
 * ``str``
+
 * ``bytes()``  (and ``bytearray``)
-* but:
+
+**but:**
 
 .. code-block:: ipython
 
    In [86]: str is bytes
    Out[86]: True
 
-``bytes`` is there for py3 compatibility - -but it's good for making your intentions clear, too.
+``bytes`` is there for py3 compatibility - -but it's good for making your
+intentions clear, too.
 
 
 Unicode
@@ -150,7 +155,8 @@ The codecs module
   import codecs
   codecs.encode()
   codecs.decode()
-  codecs.open() # very handy!
+  codecs.open() # better to use ``io.open``
+
 
 Encoding and Decoding
 ----------------------

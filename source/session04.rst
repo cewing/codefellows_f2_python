@@ -1119,7 +1119,8 @@ Text and files and dicts, and...
 ---------------------------------
 
   * Coding Kata 14 - Dave Thomas
-    http://codekata.pragprog.com/2007/01/ kata_fourteen_t.html
+
+    http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
 
     and in this doc:
 
