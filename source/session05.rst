@@ -892,7 +892,7 @@ Note: the % "mod" operator computes the remainder, e.g. ``5 % 2`` is 1.
 
 
 ``dict`` and ``set`` comprehensions
-----------------------------
+------------------------------------
 
 Let's revisiting the dict/set lab -- see how much you can do with
 comprehensions instead.
@@ -916,7 +916,7 @@ First a slightly bigger, more interesting (or at least bigger..) dict:
 get something like:
 
     "Chris is from Seattle, and he likes chocolate cake, mango fruit,
-greek salad, and lasagna pasta"
+     greek salad, and lasagna pasta"
 
 2. Using a list comprehension, build a dictionary of numbers from zero
 to fifteen and the hexadecimal equivalent (string is fine).

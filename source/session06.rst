@@ -23,35 +23,34 @@ Review of Previous Class
 
 Homework review
 ---------------
-  
+
 Homework Questions?
-  
-My Solution to the trigram:
-  
-(``dict.setdefault()``  trick...)
-
-Either pop() or del for delting from dict.
-
-passing ``**kwargs`` to string.format()
 
 If it seems harder than it should be -- it is!
 
-  
+My Solution to the trigram:
+
+ * (``dict.setdefault()``  trick...)
+
+``global`` keyword?
+
 Unicode Notes
 -------------
 
-Side notes on unicode:
-
 To put unicode in your source file, put:
 
-.. code-block:: python  
+.. code-block:: python
 
   #!/usr/bin/env python
   # -*- coding: utf-8 -*-
 
-at the top of your file. 
+at the top of your file ... and be sure to save it as utf-8!
+(file->save with encoding in Sublime)
 
-and be sure to save it as utf-8! (file->save with encoding in Sublime)
+You also might want to put::
+
+    from __future__ import unicode_literals
+
 
 Additional notes on using Unicode in Python see:
 
@@ -82,12 +81,15 @@ http://agp.hx0.ru/oop/quarks.pdf
 
 Is Python a "True" Object-Oriented Language?
 
-(Doesn't support full encapsulation, doesn't require
-objects, etc...)
+(Doesn't support full encapsulation, doesn't *require*
+classes,  etc...)
 
 .. nextslide::
 
-I don't Care!
+.. rst-class:: center large
+
+    I don't Care!
+
 
 Good software design is about code re-use, clean separation of concerns,
 refactorability, testability, etc...
@@ -97,7 +99,6 @@ OO can help with all that, but:
   * It can get in the way
 
 .. nextslide::
-
 
 Python is a Dynamic Language
 
@@ -109,14 +110,15 @@ Think in terms of what makes sense for your project
 
 .. nextslide::
 
+So what is "object oriented programming"?
 
-"Objects can be thought of as wrapping their data 
-within a set of functions designed to ensure that 
-the data are used appropriately, and to assist in 
-that use"
+    "Objects can be thought of as wrapping their data
+    within a set of functions designed to ensure that
+    the data are used appropriately, and to assist in
+    that use"
 
 
-http://en.wikipedia.org/wiki/Object-oriented_programming}
+http://en.wikipedia.org/wiki/Object-oriented_programming
 
 .. nextslide::
 
@@ -154,8 +156,6 @@ You can do OO in C
   * inheritance
 
 
-Object Oriented Programming
-
 .. nextslide::
 
 OO is the dominant model for the past couple decades
@@ -169,9 +169,7 @@ You will need to use it:
 (Even a fair bit of the standard library is Object Oriented)
 
 
-.. nextslide::
-
-Some definitions:
+.. nextslide:: Some definitions
 
 class
   A category of objects: particular data and behavior: A "circle" (same as a type in python)
@@ -183,14 +181,17 @@ object
   The general case of a instance -- really any value (in Python anyway)
 
 attribute
-  Something that belongs to an object (or class): generally thought of as a variable, or single object, as opposed to a
+  Something that belongs to an object (or class): generally thought of
+  as a variable, or single object, as opposed to a ...
 
 method
   A function that belongs to a class
 
 .. nextslide::
 
-Note that in python, functions are first class objects, so a method *is* an attribute
+.. rst-class:: center
+
+    Note that in python, functions are first class objects, so a method *is* an attribute
 
 
 ==============
@@ -204,7 +205,7 @@ The ``class``  statement
 
 ``class``  creates a new type object:
 
-.. code-block:: ipython 
+.. code-block:: ipython
 
     In [4]: class C(object):
         pass
@@ -293,8 +294,8 @@ The instance of the class is passed as the first parameter for every method.
 
 "``self``" is only a convention -- but you DO want to use it.
 
-.. code-block:: python  
-    
+.. code-block:: python
+
     class Point(object):
         def a_function(self, x, y):
     ...
@@ -302,12 +303,6 @@ The instance of the class is passed as the first parameter for every method.
 
 Does this look familiar from C-style procedural programming?
 
-.. code-block:: python
-
-    class Point(object):
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
 
 .. nextslide::
 
@@ -316,7 +311,7 @@ name space -- ``self`` *is* the instance.
 
 That's where all the instance-specific data is.
 
-.. code-block:: python  
+.. code-block:: python
 
     class Point(object):
         size = 4
@@ -404,8 +399,9 @@ We'll start with a single class, then add some sub-classes to specialize the beh
 
 Details in:
 
- :ref:`homework_html_renderer`
+:ref:`homework_html_renderer`
 
+|
 
 Let's see if we can do step 1. in class...
 
@@ -424,7 +420,7 @@ Objects are defined by classes, classes can inherit attributes and behavior from
 
 The resulting classes are known as derived classes or subclasses.
 
-(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29})
+(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29)
 
 Subclassing
 -----------
@@ -437,12 +433,12 @@ You can also add new attributes to extend the behavior.
 
 The simplest subclass in Python:
 
-.. code-block:: python 
+.. code-block:: python
 
-    class A_Subclass(The_SuperClass):
+    class A_subclass(The_superclass):
         pass
 
-``A_subclass``  now has exactly the same behavior as ``The_SuperClass`` 
+``A_subclass``  now has exactly the same behavior as ``The_superclass``
 
 NOTE: when we put ``object`` in there, it means we are deriving from object -- getting core functionality of all objects.
 
@@ -451,7 +447,7 @@ Overriding attributes
 
 Overriding is as simple as creating a new attribute with the same name:
 
-.. code-block:: python     
+.. code-block:: python
 
     class Circle(object):
         color = "red"
@@ -472,7 +468,7 @@ Overriding methods
 
 Same thing, but with methods (remember, a method *is* an attribute in python)
 
-.. code-block:: python 
+.. code-block:: python
 
     class Circle(object):
     ...
@@ -492,13 +488,16 @@ all the instances will have the new method
 
 .. nextslide::
 
-Here's a program design suggestion: whenever you override a method, the
-interface of the new method should be the same as the old.  It should take
-the same parameters, return the same type, and obey the same preconditions
-and postconditions.  If you obey this rule, you will find that any function
-designed to work with an instance of a superclass, like a Deck, will also work
-with instances of subclasses like a Hand or PokerHand.  If you violate this
-rule, your code will collapse like (sorry) a house of cards.
+Here's a program design suggestion:
+  whenever you override a method, the
+  interface of the new method should be the same as the old.  It should take
+  the same parameters, return the same type, and obey the same preconditions
+  and postconditions.
+
+  If you obey this rule, you will find that any function
+  designed to work with an instance of a superclass, like a Deck, will also work
+  with instances of subclasses like a Hand or PokerHand.  If you violate this
+  rule, your code will collapse like (sorry) a house of cards.
 
 [ThinkPython 18.10]
 
@@ -516,8 +515,8 @@ Overriding \_\_init\_\_
 
 You often need to call the super class ``__init__``  as well
 
-.. code-block:: python  
-    
+.. code-block:: python
+
     class Circle(object):
         color = "red"
         def __init__(self, diameter):
@@ -542,13 +541,16 @@ You can also call the superclass' other methods:
     ...
         def get_area(self, diameter):
             return math.pi * (diameter/2.0)**2
+
+
     class CircleR2(Circle):
     ...
         def get_area(self):
             return Circle.get_area(self, self.radius*2)
 
+There is nothing special about ``__init__``  except that it gets called
+automatically when you instantiate an instance.
 
-There is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance.
 
 When to Subclass
 ----------------
@@ -607,20 +609,23 @@ Putting aside the OO theory...
 Python classes are:
 
   * Namespaces
-  
+
     * One for the class object
     * One for each instance
-  
+
   * Attribute resolution order
-  * Auto tacking-on of ``self`` 
+  * Auto tacking-on of ``self`` when methods are called
 
 
 That's about it -- really!
 
+
 Type-Based dispatch
 -------------------
 
-.. code-block:: python  
+You'll see code that looks like this:
+
+.. code-block:: python
 
       if isinstance(other, A_Class):
           Do_something_with_other
@@ -632,8 +637,10 @@ Usually better to use "duck typing" (polymorphism)
 
 But when it's called for:
 
-    * ``isinstance()`` 
-    * ``issubclass()`` 
+    * ``isinstance()``
+    * ``issubclass()``
+
+.. nextslide::
 
 GvR: "Five Minute Multi- methods in Python":
 
@@ -642,7 +649,6 @@ http://www.artima.com/weblogs/viewpost.jsp?thread=101605
 http://www.python.org/getit/releases/2.3/mro/
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
 
 
 Wrap Up
@@ -654,30 +660,28 @@ Think about what makes sense for your code:
 
 * Code re-use
 * Clean APIs
-* ... 
-
+* ...
 
 Don't be a slave to what OO is *supposed* to look like.
 
-Let OO work for you, not *create* work for you}
+Let OO work for you, not *create* work for you
 
 .. nextslide::
 
 OO in Python:
 
-The Art of Subclassing: Raymond Hettinger
+The Art of Subclassing: *Raymond Hettinger*
 
-http://pyvideo.org/video/879/the-art-of-subclassing}}
+http://pyvideo.org/video/879/the-art-of-subclassing
 
 "classes are for code re-use -- not creating taxonomies"
 
-Stop Writing Classes: Jack Diederich
+Stop Writing Classes: *Jack Diederich*
 
-http://pyvideo.org/video/880/stop-writing-classes}}
+http://pyvideo.org/video/880/stop-writing-classes
 
-"If your class has only two methods -- and one of them is ``__init__`` 
-
-  - you don't need a class "
+"If your class has only two methods -- and one of them is ``__init__``
+-- you don't need a class"
 
 
 Homework
@@ -685,18 +689,16 @@ Homework
 
 Build an html rendering system:
 
- :ref:`homework_html_renderer`
+:ref:`homework_html_renderer`
+
+|
 
 You will build an html generator, using:
-  
+
 * A Base Class with a couple methods
 * Subclasses overriding class attributes
 * Subclasses overriding a method
-* Subclasses overriding the ``__init__`` 
-  
+* Subclasses overriding the ``__init__``
 
 These are the core OO approaches
-
-
-
 
