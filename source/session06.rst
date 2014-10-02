@@ -245,7 +245,7 @@ About the simplest class you can write
 Basic Structure of a real class:
 
 .. code-block:: python
-    
+
     class Point(object):
     # everything defined in here is in the class namespace
 
@@ -261,7 +261,7 @@ Basic Structure of a real class:
     print "p.y is:", p.y
 
 
-see: ``code/simple_class``
+see: ``Examples/Session06/simple_class``
 
 .. nextslide::
 
@@ -271,7 +271,7 @@ The ``__init__``  special method is called when a new instance of a class is cre
 
 You can use it to do any set-up you need
 
-.. code-block:: python  
+.. code-block:: python
 
     class Point(object):
         def __init__(self, x, y):
@@ -393,7 +393,7 @@ Let's say you need to render some html..
 
 The goal is to build a set of classes that render an html page.
 
-``code/session06/sample_html.html`` 
+``Examples/Session06/sample_html.html``
 
 We'll start with a single class, then add some sub-classes to specialize the behavior
 
@@ -401,7 +401,6 @@ Details in:
 
 :ref:`homework_html_renderer`
 
-|
 
 Let's see if we can do step 1. in class...
 

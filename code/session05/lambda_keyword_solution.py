@@ -1,20 +1,21 @@
 #!/usr/bin/env python
 
 """
-example code for using lambda, keywords, and keyword scope
+Example code for using lambda, keywords, and keyword scope
 
 
 The challenge:
 
 Write a function that returns a list of n functions,
 such that each one, when called, will return the input value,
-incremented by an increaseing number.
+incremented by an increasing number.
 
-you should use a for loop, lambda, and a keyword argument
+You should use a for loop, lambda, and a keyword argument
 
-extra credit: do it with a list comprhension, instead of a for loop
+extra credit: do it with a list comprehension, instead of a for loop
 
 """
+
 
 def function_builder(n):
 
@@ -23,6 +24,7 @@ def function_builder(n):
         l.append( lambda x, i=i: x+i )
     return l
 
+
 def function_builder2(n):
 
     return [ lambda x, i=i: x+i for i in range(n) ]
@@ -30,7 +32,7 @@ def function_builder2(n):
 
 if __name__ == "__main__":
     ## some simples tests
-    
+
     # uncomment to test second version
     # function_builder = function_builder2
 

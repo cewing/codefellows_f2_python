@@ -44,7 +44,8 @@ Decorators
     other objects.
 
     Because of this fact, you can write functions that take functions as
-    arguments and/or return functions as values:
+    arguments and/or return functions as values (we played with this a
+    bit with the function generator assignment):
 
     .. code-block:: python
 
@@ -56,18 +57,19 @@ Decorators
 A Definition
 ------------
 
-There are many things you can do with a simple pattern like this one.  So many,
-that we give it a special name:
+There are many things you can do with a simple pattern like this one.
 
-.. rst-class:: centered
+So many, that we give it a special name:
+
+.. rst-class:: centered mlarge
 
 **Decorator**
 
 .. rst-class:: build
 .. container::
 
-    A decorator is a function that takes a function as an argument and
-    returns a function as a return value.
+    "A decorator is a function that takes a function as an argument and
+    returns a function as a return value."
 
     That's nice and all, but why is that useful?
 
@@ -213,8 +215,7 @@ So in fact the definition should be updated as follows:
 
 .. rst-class:: centered
 
-A decorator is a callable that takes a callable as an argument and
-returns a callable as a return value.
+     "A decorator is a callable that takes a callable as an argument and returns a callable as a return value.""
 
 An Example
 ----------
@@ -320,18 +321,20 @@ for you to be writing your own.
 
 Let's see a few that might help you with work you've been doing recently.
 
-For example, a ``staticmethod()`` can be implemented with a decorator
+For example, we saw that  ``staticmethod()`` can be implemented with a decorator
 expression:
 
 .. code-block:: python
 
-    # the way we saw last week:
     class C(object):
         def add(a, b):
             return a + b
         add = staticmethod(add)
 
-    # and the decorator form
+Can be implimented as:
+
+.. code-block:: python
+
     class C(object):
         @staticmethod
         def add(a, b):
@@ -339,17 +342,21 @@ expression:
 
 .. nextslide::
 
-The ``classmethod()`` builtin can do the same thing:
+And the ``classmethod()`` builtin can do the same thing:
+
+In imperative style...
 
 .. code-block:: python
 
-    # in imperative style:
     class C(object):
         def from_iterable(cls, seq):
             # method body
         from_iterable = classmethod(from_iterable)
 
-    # and in declarative style
+and in declarative style:
+
+.. code-block:: python
+
     class C(object):
         @classmethod
         def from_iterable(cls, seq):
@@ -359,7 +366,7 @@ The ``classmethod()`` builtin can do the same thing:
 
 Perhaps most commonly, you'll see the ``property()`` builtin used this way.
 
-Last week we saw this code:
+Remember this from last week?
 
 .. code-block:: python
 
@@ -375,9 +382,7 @@ Last week we saw this code:
         x = property(getx, setx, delx,
                      "I'm the 'x' property.")
 
-.. nextslide::
-
-Used in a decorator statement, it looks like this:
+.. nextslide:: The Decorator version
 
 .. code-block:: python
 
@@ -398,15 +403,18 @@ Note that in this case, the decorator object returned by the property decorator
 itself implements additional decorators as attributes on the returned method
 object.
 
+Does this make more sense now?
+
 Iterators and Generators
 =========================
 
 Iterators
 ---------
+
 Iterators are one of the main reasons Python code is so readable:
 
 .. code-block:: python
-    
+
     for x in just_about_anything:
         do_stuff(x)
 
@@ -458,15 +466,15 @@ List as an Iterator:
     StopIteration     Traceback (most recent call last)
     <ipython-input-15-1a7db9b70878> in <module>()
     ----> 1 list_iter.next()
-    StopIteration: 
+    StopIteration:
 
 Making an Iterator
 -------------------
 
-A simple version of ``xrange()``
+A simple version of ``xrange()`` (whoo hoo!)
 
 .. code-block:: python
-    
+
     class IterateMe_1(object):
         def __init__(self, stop=5):
             self.current = 0
@@ -480,7 +488,7 @@ A simple version of ``xrange()``
             else:
                 raise StopIteration
 
-(demo: ``code/iterator_1.py``)
+(demo: ``Examples/Session08/iterator_1.py``)
 
 ``iter()``
 -----------
@@ -508,14 +516,13 @@ What does ``for`` do?
 
 Now that we know the iterator protocol, we can write something like a for loop:
 
-(``code/session08/my_for.py``)
+(``Examples/Session08/my_for.py``)
 
 .. code-block:: python
 
     def my_for(an_iterable, func):
         """
         Emulation of a for loop.
-
         func() will be called with each item in an_iterable
         """
         # equiv of "for i in l:"
@@ -540,19 +547,20 @@ NOTE:
 
 iterators are not *only* for ``for``
 
-They can be used with anything that expexts an iterator:
+They can be used with anything that expects an iterator:
 
 ``sum``, ``tuple``, ``sorted``, and ``list``
 
-For example. 
+For example.
 
 LAB / Homework
 --------------
 
-In the ``code/session08`` dir, you will find: ``iterator_1.py``
+In the ``Examples/Session08`` dir, you will find: ``iterator_1.py``
 
-* Extend (``iterator_1.py`` ) to be more like ``xrange()`` -- add three input parameters: ``iterator_2(start, stop, step=1)`` 
-  
+* Extend (``iterator_1.py`` ) to be more like ``xrange()`` --
+  add three input parameters: ``iterator_2(start, stop, step=1)``
+
 * See what happens if you break out in the middle of the loop:
 
 .. code-block:: python
@@ -565,12 +573,12 @@ In the ``code/session08`` dir, you will find: ``iterator_1.py``
 And then pick up again:
 
 .. code-block:: python
-    
+
     for i in it:
         print i
 
 * Does ``xrange()``  behave the same?
-    
+
   - make yours match ``xrange()``
 
 Generators
@@ -582,10 +590,11 @@ Generators give you the iterator immediately:
 
 
 Conceptually:
-  Iterators are about various ways to loop over data, generators generate the data on the fly
+  Iterators are about various ways to loop over data, generators generate
+  the data on the fly
 
 Practically:
-  You can use either either way (and a generator is one type of iterator
+  You can use either either way (and a generator is one type of iterator)
 
   Generators do some of the book-keeping for you.
 
@@ -665,7 +674,7 @@ More about iterators and generators:
 
 http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
 
-``code/session08/yield_example.py`` 
+``Examples/Session08/yield_example.py``
 
 
 generator comprehension
@@ -697,7 +706,7 @@ Write a few generators:
 * Fibonacci sequence
 * Prime numbers
 
-(test code in ``code/session08/test_generator.py``)
+(test code in ``Examples/Session08/test_generator.py``)
 
 Descriptions:
 
@@ -708,7 +717,7 @@ Sum of the integers:
 
   so the sequence is:
 
-  0, 1, 3, 6, 10, 15 ..... 
+  0, 1, 3, 6, 10, 15 .....
 
 .. nextslide::
 
@@ -779,7 +788,7 @@ You can write more robust code for handling your resources:
     # do something with file_content here
 
 But what exceptions do you want to catch?  And do you really want to have to
-remember all that **every** time you open a resource?
+remember all that **every** time you open a file (or other resource)?
 
 .. nextslide:: It Gets Better
 
@@ -998,6 +1007,16 @@ Homework
 
 Python Power
 
+Beautiful, Idiomatic Python
+----------------------------
+
+Transforming Code into Beautiful, Idiomatic Python:
+
+https://www.youtube.com/watch?v=OSGv2VnC0go
+
+Raymond hettinger (again) talks about Pythonic code.
+
+A lot of it is about using iterators -- now you know what those really are.
 
 Assignments
 -----------
@@ -1037,6 +1056,9 @@ HTML 'p' tag:
 
     In [5]: return_a_string("this is a string")
     Out[5]: '<p> this is a string </p>'
+
+Note that this is a **very** simple version of the very useful decorators
+provided by Web Frameworks.
 
 .. nextslide::
 

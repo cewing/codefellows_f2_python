@@ -21,10 +21,15 @@ Review/Questions
 Review of Previous Class
 ------------------------
 
-* Unicode
+* Did anyone look more deeply into Unicode?
+
+  - Any questions about that?
 
 * Object Oriented Programming
 
+  - Questions about concept?
+
+  - Questions about Python implimentation?
 
 Homework review
 ---------------
@@ -124,7 +129,7 @@ This way, you can write your code in one file and test it from another:
 .. rst-class:: build
 .. container::
 
-    The ``unittest`` module is great.
+    The ``unittest`` module is pretty full featured
 
     It comes with the standard Python distribution, no installation required.
 
@@ -142,6 +147,8 @@ This way, you can write your code in one file and test it from another:
 
 
     It's Object Oriented, and quite heavy.
+
+      - modeled after Java's ``junit`` and it shows...
 
     It uses the framework design pattern, so knowing how to use the features
     means learning what to override.
@@ -171,7 +178,6 @@ The first step is to install the package:
 
 .. code-block:: bash
 
-    $ workon cff2py
     (cff2py)$ pip install pytest
 
 Once this is complete, you should have a ``py.test`` command you can run at the
@@ -190,7 +196,7 @@ If you have any tests in your repository, that will find and run them.
 
 .. nextslide:: Pre-existing Tests
 
-I've added two files to the ``code/session07`` folder, along with a python
+I've added two files to the ``Examples/Session07`` folder, along with a python
 source code file called ``circle.py``.
 
 The results you should have seen when you ran ``py.test`` above come partly
@@ -235,6 +241,7 @@ the code that fixes these tests.
 
 Let's do that next!
 
+[lab time!]
 
 More on Subclassing
 ===================
@@ -243,9 +250,13 @@ Watch This Video:
 
 http://pyvideo.org/video/879/the-art-of-subclassing
 
-.. rst-class:: left
 
-Seriously, well worth the time.
+| 
+| 
+| 
+
+( I pointed you to it last week, but Seriously, well worth the time. )
+
 
 What's a Subclass For?
 ----------------------
@@ -257,6 +268,8 @@ The most salient points from that video are as follows:
 **Subclassing is for Reusing Code**
 
 **Bear in mind that the subclass is in charge**
+
+Is any of this starting to make sense with the HTML builder example?
 
 
 Multiple Inheritance
@@ -276,8 +289,11 @@ Simply provide more than one parent.
             Super3.__init__(self, ......)
             # possibly more custom initialization
 
-
 (calls to the super class ``__init__``  are optional -- case dependent)
+
+Now you have one class with functionaility of ALL the superclasess!
+
+But what if the same attribute exists in more than one superclass?
 
 .. nextslide:: Method Resolution Order
 
@@ -298,13 +314,15 @@ Attributes are located bottom-to-top, left-to-right
 * Is it a super-superclass attribute ?
 * ... also left to right ...
 
+(This is not **at all** simple!)
+
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
 .. nextslide:: Mix-ins
 
-Provides an subset of expected functionality in a re-usable package.
+Why would you want multiple inheritance? -- one reason is mix-ins.
 
-Why would you want to do this?
+Provides an subset of expected functionality in a re-usable package.
 
 Hierarchies are not always simple:
 
@@ -313,11 +331,11 @@ Hierarchies are not always simple:
   * Mammal
 
     * GiveBirth()
-    
+
   * Bird
-    
+
     * LayEggs()
-    
+
 Where do you put a Platypus?
 
 Real World Example: `FloatCanvas`_
@@ -342,6 +360,7 @@ There are differences in method resolution order and properties.
 
 The differences are subtle, and may not appear until they jump up to bite you.
 
+(which they will the rest of this class session!)
 
 .. nextslide:: ``super()``
 
@@ -350,27 +369,42 @@ the unbound method on the superclass.
 
 instead of:
 
-.. code-block:: python  
+.. code-block:: python
 
     class A(B):
         def __init__(self, *args, **kwargs)
-            B.__init__(self, *argw, **kwargs)
+            B.__init__(self, *args, **kwargs)
             ...
 
 You can do:
 
-.. code-block:: python  
+.. code-block:: python
 
     class A(B):
         def __init__(self, *args, **kwargs)
-            super(A, self).__init__(*argw, **kwargs)
+            super(A, self).__init__(*args, **kwargs)
             ...
 
 .. nextslide:: Caveats
 
 Caution: There are some subtle differences with multiple inheritance.
 
-You can use explicit calling to ensure that the 'right' method is called.
+One in the syntax: I always need to think hard to understand all that:
+
+.. code-block:: python
+
+    super(A, self).__init__(*args, **kwargs)
+
+This means something like:
+
+"create a ``super`` object for the superclass of class A, with this
+instance. Then call ``__init__`` on that object."
+
+Important note: ``super()`` **does not** return the superclass object!
+
+|
+
+But you can use explicit calling to ensure that the 'right' method is called.
 
 
 .. nextslide:: Background
@@ -386,6 +420,38 @@ https://fuhm.net/super-harmful/
 http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
 
 (Both worth reading....)
+
+While appearing to be contradictory, they both have the same final message...
+
+super() issues...
+-----------------
+
+Both articles actually say similar things:
+
+* The method being called by super() needs to exist
+* Every occurrence of the method needs to use super():
+
+  - Use it consistently, and document that you use it, as it is part of
+    the external interface for your class, like it or not.
+
+.. nextslide:: calling super()
+
+The caller and callee need to have a matching argument signature:
+
+Never call super with anything but the exact arguments you received,
+unless you really know what you're doing.
+
+If you add one or more optional arguments, always accept:
+
+.. code-block:: python
+
+    *args, **kwargs
+
+and call super like:
+
+.. code-block:: python
+
+    super(MyClass, self).method(args_declared, *args, **kwargs)
 
 
 Properties
@@ -466,9 +532,8 @@ When (and if) you need them:
 
 Now the interface is still like simple attribute access!
 
-.. rst-class:: centered small
 
-[demo: :download:`properties_example.py <./supplements/properties_example.py>`]
+[demo: ``Examples/Session07/properties_example.py``]
 
 
 .. nextslide:: "Read Only" Attributes
@@ -575,9 +640,8 @@ A *static method* is a method that doesn't get self:
     In [37]: StaticAdder.add(3, 6)
     Out[37]: 9
 
-.. rst-class:: centered
 
-[demo: :download:`static_method.py <./supplements/static_method.py>`]
+[demo: ``Examples/Session07/static_method.py``]
 
 
 .. nextslide:: Syntactic Sugar
@@ -606,7 +670,7 @@ Like ``properties``, static methods can be written *declaratively* using the
     An example from the Standard Library (tarfile.py):
 
     .. code-block:: python
-        
+
         class TarInfo(object):
             # ...
             @staticmethod
@@ -639,9 +703,9 @@ argument
     in a class method:  <class '__main__.Classy'>
     Out[42]: 16
 
-.. rst-class:: centered
 
-[demo: :download:`class_method.py <./supplements/class_method.py>`]
+
+[demo: ``Examples/Session07/class_method.py``]
 
 .. nextslide:: Syntactic Sugar
 
@@ -737,9 +801,10 @@ well.
 Kicking the Tires
 -----------------
 
-Copy the file ``code/session07/circly.py`` to your student folder.
+Copy the file ``Example/Session07/circle.py`` to your student folder.
+(we used it for out testing try out...)
 
-In it, write a simple "Circle" class:
+In it, update the simple "Circle" class:
 
 .. code-block:: ipython
 
@@ -866,11 +931,11 @@ For example, to make '+' work with a sequence type in a vector-like fashion, imp
         """return the element-wise vector sum of self and v
         """
         assert len(self) == len(v)
-        return vector([x1 + x2 for x1, x2 in zip(self, v)])
+        return Vector([x1 + x2 for x1, x2 in zip(self, v)])
 
 .. rst-class:: centered
 
-[a more complete example may be seen :download:`here <./supplements/vector.py>`]
+[a more complete example: ``Examples/Session07/vector.py>``]
 
 
 .. nextslide:: Generally Useful Special Methods
