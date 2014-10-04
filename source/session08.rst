@@ -1007,16 +1007,25 @@ Homework
 
 Python Power
 
-Beautiful, Idiomatic Python
-----------------------------
+More reading, etc:
+------------------
 
-Transforming Code into Beautiful, Idiomatic Python:
+**Iterators, generators, and containers:**
 
-https://www.youtube.com/watch?v=OSGv2VnC0go
+A nice post that clearly lays out how all these things fit together:
+
+http://nvie.com/posts/iterators-vs-generators/
+
+|
+|
+
+**Transforming Code into Beautiful, Idiomatic Python:**
 
 Raymond hettinger (again) talks about Pythonic code.
 
 A lot of it is about using iterators -- now you know what those really are.
+
+https://www.youtube.com/watch?v=OSGv2VnC0go
 
 Assignments
 -----------

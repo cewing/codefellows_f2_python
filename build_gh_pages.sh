@@ -20,3 +20,7 @@ git add * # in case there are new files added
 git commit -a
 git push
 
+# while we're at it, push the class repo too:
+cd ../sea-f2-python-sept14/
+git commit -a
+git push
