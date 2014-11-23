@@ -14,21 +14,21 @@ Review/Questions
 Review of Previous Classes
 --------------------------
 
-  * Sequences
+* Sequences
 
-    - Slicing
-    - Lists
-    - Tuples
-    - tuple vs lists - which to use?
+  - Slicing
+  - Lists
+  - Tuples
+  - tuple vs lists - which to use?
 
-  * interating
+* interating
 
-    - for
-    - while
+  - for
+  - while
 
-      - break and continue
+    - break and continue
 
-    - else with loops
+  - else with loops
 
 Any questions?
 
@@ -125,15 +125,15 @@ Fun with strings
 
 * Rewrite: ``the first 3 numbers are: %i, %i, %i"%(1,2,3)``
 
-    - for an arbitrary number of numbers...
+  - for an arbitrary number of numbers...
 
 * Write a format string that will take:
 
-    -  ``( 2, 123.4567, 10000)``
+  - ``( 2, 123.4567, 10000)``
 
-    -       and produce:
+  - and produce:
 
-    - `` "file_002 :   123.46, 1e+04" ``
+  - `` "file_002 :   123.46, 1e+04" ``
 
 =====================
 Dictionaries and Sets
@@ -145,12 +145,12 @@ Python calls it a ``dict``
 
 Other languages call it:
 
-  * dictionary
-  * associative array
-  * map
-  * hash table
-  * hash
-  * key-value pair
+* dictionary
+* associative array
+* map
+* hash table
+* hash
+* key-value pair
 
 
 Dictionary Constructors
@@ -196,9 +196,9 @@ Dictionary Indexing
 
 Keys can be any immutable:
 
-  * number
-  * string
-  * tuple
+* number
+* string
+* tuple
 
 .. code-block:: ipython
 
@@ -241,11 +241,11 @@ Note: Python name look-ups are implemented with dict -- it's highly optimized
 
 Key to value:
 
- * lookup is one way
+* lookup is one way
 
 Value to key:
 
- * requires visiting the whole dict
+* requires visiting the whole dict
 
 If you need to check dict values often, create another dict or set
 
@@ -320,18 +320,18 @@ Iterating on everything
 Dictionary Performance 
 -----------------------
 
-  * indexing is fast and constant time: O(1)
+* indexing is fast and constant time: O(1)
 
-  * ``x in s`` constant time: O(1)
+* ``x in s`` constant time: O(1)
 
-  * visiting all is proportional to n: O(n)
+* visiting all is proportional to n: O(n)
 
-  * inserting is constant time: O(1)
+* inserting is constant time: O(1)
 
-  * deleting is constant time: O(1)
+* deleting is constant time: O(1)
 
 
- http://wiki.python.org/moin/TimeComplexity
+http://wiki.python.org/moin/TimeComplexity
 
 
 Other dict operations:
@@ -830,36 +830,36 @@ http://www.manpagez.com/man/3/fopen/
 
 Text is default
 
-  * Newlines are translated: ``\r\n -> \n``
-  *   -- reading and writing!
-  * Use \*nix-style in your code: ``\n``
-  * ``io.open()`` returns various "stream" objects -- but they act like file objects.
-  * In text mode, io.open() defaults to "Universal" newline mode.
+* Newlines are translated: ``\r\n -> \n``
+*   -- reading and writing!
+* Use \*nix-style in your code: ``\n``
+* ``io.open()`` returns various "stream" objects -- but they act like file objects.
+* In text mode, io.open() defaults to "Universal" newline mode.
 
 
 Gotcha:
 
-  * no difference between text and binary on \*nix
-  * breaks on Windows
+* no difference between text and binary on \*nix
+* breaks on Windows
 
 
 .. nextslide:: Other parameters to ``io.open()``:
 
 ``io.open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True)``
 
- * ``file`` is generally a file name or full path
+* ``file`` is generally a file name or full path
 
- * ``mode`` is the mode for opening: 'r', 'w', etc.
+* ``mode`` is the mode for opening: 'r', 'w', etc.
 
- * ``buffering`` controls the buffering mode (0 for no buffering)
+* ``buffering`` controls the buffering mode (0 for no buffering)
 
- * ``encoding`` sets the unicode encoding -- only for text files -- when set, you can ONLY write unicode object to the file.
+* ``encoding`` sets the unicode encoding -- only for text files -- when set, you can ONLY write unicode object to the file.
 
- * ``errors`` sets the encoding error mode: 'strict', 'ignore', 'replace',...
+* ``errors`` sets the encoding error mode: 'strict', 'ignore', 'replace',...
 
- * ``newline`` controls Universal Newline mode: lets you write DOS-type files on \*nix, for instance (text mode only).
+* ``newline`` controls Universal Newline mode: lets you write DOS-type files on \*nix, for instance (text mode only).
 
- * ``closedfd`` controls close()  behavior if a file descriptor, rather than a name is passed in (advanced usage!)
+* ``closedfd`` controls close()  behavior if a file descriptor, rather than a name is passed in (advanced usage!)
 
 (https://docs.python.org/2/library/io.html?highlight=io.open#io.open)
 
@@ -933,11 +933,11 @@ File Like Objects
 
 Many classes implement the file interface:
 
-  * loggers
-  * ``sys.stdout``
-  * ``urllib.open()``
-  * pipes, subprocesses
-  * StringIO
+* loggers
+* ``sys.stdout``
+* ``urllib.open()``
+* pipes, subprocesses
+* StringIO
 
 https://docs.python.org/2/library/stdtypes.html#file-objects
 
@@ -1052,16 +1052,17 @@ Homework
 
 Recommended Reading:
 ---------------------
-  * Dive Into Python: Chapt. 13,14
-  * Unicode: http://www.joelonsoftware.com/articles/Unicode.html
+
+* Dive Into Python: Chapt. 13,14
+* Unicode: http://www.joelonsoftware.com/articles/Unicode.html
 
 Assignments:
 -------------
 
- * dict/sets lab
- * coding kata: trigrams
- * Exceptions
- * Update mailroom with dicts.
+* dict/sets lab
+* coding kata: trigrams
+* Exceptions
+* Update mailroom with dicts.
 
 
 Dictionaries and Sets
@@ -1118,21 +1119,21 @@ Dictionaries and Sets
 Text and files and dicts, and...
 ---------------------------------
 
-  * Coding Kata 14 - Dave Thomas
+* Coding Kata 14 - Dave Thomas
 
-    http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
+  http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
 
-    and in this doc:
+  and in this doc:
 
-    http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html
+  http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html
 
-  * Use The Adventures of Sherlock Holmes as input:
+* Use The Adventures of Sherlock Holmes as input:
 
-        http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt
+  http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt
 
-  *  This is intentionally open-ended and underspecified. There are many interesting decisions to make.
+* This is intentionally open-ended and underspecified. There are many interesting decisions to make.
 
-  * Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
+* Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
 
 Exceptions
 -----------
@@ -1149,14 +1150,14 @@ Improving ``raw_input``
 Paths and File Processing
 --------------------------
 
-  * write a program which prints the full path to all files in the current directory, one per line
+* write a program which prints the full path to all files in the current directory, one per line
 
-  * write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
+* write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
 
-  * update mailroom from last weeks homework to:
+* update mailroom from last weeks homework to:
 
-    - use dicts where appropriate
-    - write a full set of letters to everyone to individual files on disk
-    - see if you can use a dict to switch between the users selections
-    - Try to use a dict and the .format() method to do the letter as one big template -- rather than building up a big string in parts.
+  - use dicts where appropriate
+  - write a full set of letters to everyone to individual files on disk
+  - see if you can use a dict to switch between the users selections
+  - Try to use a dict and the .format() method to do the letter as one big template -- rather than building up a big string in parts.
 

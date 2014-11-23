@@ -935,16 +935,17 @@ Better With Booleans
 Exercises
 ---------
 
-  * Look up the ``%``  operator. What do these do?
+* Look up the ``%``  operator. What do these do?
 
-    * ``10 % 7 == 3``
-    * ``14 % 7 == 0``
-  *  Write a program that prints the numbers from 1 to 100 inclusive. But for
-     multiples of three print "Fizz" instead of the number and for the
-     multiples of five print "Buzz". For numbers which are multiples of both
-     three and five print "FizzBuzz" instead.
-  * Re-write a couple of CodingBat exercises, using a conditional expression
-  * Re-write a couple of CodingBat exercises, returning the direct boolean results
+  * ``10 % 7 == 3``
+  * ``14 % 7 == 0``
+
+*  Write a program that prints the numbers from 1 to 100 inclusive. But for
+   multiples of three print "Fizz" instead of the number and for the
+   multiples of five print "Buzz". For numbers which are multiples of both
+   three and five print "FizzBuzz" instead.
+* Re-write a couple of CodingBat exercises, using a conditional expression
+* Re-write a couple of CodingBat exercises, returning the direct boolean results
 
 use whichever you like, or the ones in:
 :download:`codingbat.rst <../code/session02/codingbat.rst>`
@@ -1288,7 +1289,9 @@ The Ackermann function, A(m, n), is defined::
 
 See http://en.wikipedia.org/wiki/Ackermann_function.
 
-Create a new module called ``ack.py`` in a ``session02`` folder in your student folder. In that module, write a function named ``ack`` that performs Ackermann's function.
+Create a new module called ``ack.py`` in a ``session02`` folder in your student
+folder. In that module, write a function named ``ack`` that performs
+Ackermann's function.
 
 * Write a good ``docstring`` for your function according to PEP 257.
 * Ackermann's function is not defined for input values less than 0.  Validate
@@ -1300,8 +1303,9 @@ The wikipedia page provides a table of output values for inputs between 0 and
 4. Using this table, add a ``if __name__ == "__main__":`` block to test your
 function.
 
-Test each pair of inputs between 0 and 4 and assert that the result produced by
-your function is the result expected by the wikipedia table.
+Test each pair of inputs for ``m`` between 0 and 3 and ``n`` between 0 and 4.
+Assert that the result produced by your function is the result expected by
+the wikipedia table. What happens for values of ``m`` greater than 3?
 
 When your module is run from the command line, these tests should be executed.
 If they all pass, print "All Tests Pass" as the result.

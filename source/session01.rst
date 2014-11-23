@@ -23,23 +23,21 @@ Introductions
 In which we meet each-other
 
 
-Your instructors
-----------------
+Your instructor
+---------------
 
 .. rst-class:: center large
 
-| Christopher Barker
-| (PythonCHB at gmail dot com)
-|
+| Cris Ewing
+| (cris at crisewing dot com)
 
-.. nextslide::
+Your TAs
+--------
 
 .. rst-class:: center large
 
-
-| Dan Hable
-| (dhable at gmail dot com)
-|
+| Nathan Hubbell
+| Josh Frailey
 
 Who are you?
 -------------
@@ -52,6 +50,55 @@ Who are you?
 * programming background
 * what do you hope to get from this class
 
+
+Course Materials Online
+=======================
+
+Where to Find Your Stuff
+
+GitHub
+------
+
+There are two repositories in GitHub you will want to bookmark:
+
+* https://github.com/codefellows/sea-c28-students
+* https://github.com/cewing/codefellows_f2_python
+
+The former is the student class repository.  You will fork this repository into
+your own github account and do all your coursework in your personal folder you
+create inside the ``Students`` folder.
+
+The latter is the source of the lecture slides you will see in class. A
+rendered HTML copy of these slides may be found online at:
+
+http://codefellows.github.io/sea-c28-students
+
+You will also find homework descriptions and supplemental materials there.
+
+Canvas
+------
+
+We will be using Canvas to track your homework submission.  Grades will be
+entered here as well:
+
+https://canvas.instructure.com/courses/896777
+
+
+Elsewhere
+---------
+
+Class email list:
+  Code Fellows provides an email list for us. We will use this list for
+  announcements. Please make sure that you are receiving the messages sent to
+  this list:
+
+  sea-c28@codefellows.com
+
+Class `Gitter <https://gitter.im/cewing>`_ Chatroom:
+  The student repository README contains a link to the class chatroom. You can
+  use this to communicate with students and instructors.
+
+
 Introduction to This Class
 ==========================
 
@@ -59,31 +106,6 @@ Introduction to This Class
 
 Python Programming
 
-
-Course Materials Online
------------------------
-
-A rendered HTML copy of the slides for this course may be found online at:
-
-http://codefellows.github.io/sea-f2-python-sept14/
-
-Also there are homework descriptions and supplemental materials.
-
-The source of these materials are in Chris' gitHub repo:
-
-http://github.com/PythonCHB/codefellows_f2_python
-
-Class email list: We will be using this list to communicate for this class:
-
-sea-c25@codefellows.com 
-
-**Canvas**:
-
-We will be using Canvas to track your homework submission, but not much else:
-
-https://canvas.instructure.com/courses/881467
-
-You should have received and email invitation to join the class.
 
 What is Python?
 ---------------
@@ -447,11 +469,9 @@ You have this already, RIGHT?
 
 If not:
 
- * `For the mac  <./supplements/python_for_mac.html>`_
-
- * `For linux  <./supplements/python_for_linux.html>`_
-
- * `For windows  <./supplements/python_for_windows.html>`_
+* `For the mac  <./supplements/python_for_mac.html>`_
+* `For linux  <./supplements/python_for_linux.html>`_
+* `For windows  <./supplements/python_for_windows.html>`_
 
 Step 2: Pip
 -----------
@@ -637,7 +657,7 @@ This is the stuff I use every day:
 
 * any shell command:
 
- - ``! the_shell_command``
+  - ``! the_shell_command``
 
 * pasting from the clipboard:
 
@@ -1832,10 +1852,11 @@ Task 4
 
     * for review: ``NameError``, ``TypeError``, ``SyntaxError``, ``AttributeError``
 
-(hint -- the interpreter will quit when it hits a Exception -- so you can comment out all but the one you are testing at the moment)
-
   * Use the Python standard library reference on `Built In Exceptions`_ as a
     reference
+
+(hint -- the interpreter will quit when it hits a Exception -- so you can
+comment out all but the one you are testing at the moment)
 
 .. nextslide::
 
