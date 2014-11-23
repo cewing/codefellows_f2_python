@@ -1,4 +1,4 @@
-$main-color: #515151;
+$main-color: #393939;
 
 body {
   -webkit-transition: opacity 200ms ease-in;
@@ -19,6 +19,7 @@ slides > slide {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  color: #393939;
 }
 .highlight-code slide.current pre > * {
   opacity: 0.25;
@@ -59,6 +60,19 @@ aside.gdbar {
   -o-transition: all 0.1s ease-out 0.1s;
   transition: all 0.1s ease-out 0.1s;
   /* Better to transition only on background-size, but not sure how to do that with the mixin. */
+  width: 300px;  
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #333), color-stop(100%, #333)) no-repeat;
+  background: -webkit-linear-gradient(left, #333, #333) no-repeat;
+  background: -moz-linear-gradient(left, #333, #333) no-repeat;
+  background: -o-linear-gradient(left, #333, #333) no-repeat;
+  background: linear-gradient(left, #333, #333) no-repeat;
+  img {
+    height: auto;
+    width: 250px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
 }
 
 em {
@@ -186,5 +200,32 @@ article {
   }
   article {
     text-align: left;
+  }
+}
+
+aside {
+  &.gdbar {
+    width: 300px;  
+    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #333), color-stop(100%, #333)) no-repeat;
+    background: -webkit-linear-gradient(left, #333, #333) no-repeat;
+    background: -moz-linear-gradient(left, #333, #333) no-repeat;
+    background: -o-linear-gradient(left, #333, #333) no-repeat;
+    background: linear-gradient(left, #333, #333) no-repeat;
+    img {
+      height: auto;
+      width: 250px;
+      position: absolute;
+      right: 0;
+      top: 5px;
+    }
+  }
+}
+
+.figure {
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    border: none;
   }
 }
