@@ -61,19 +61,19 @@ GitHub
 
 There are two repositories in GitHub you will want to bookmark:
 
-* https://github.com/codefellows/sea-c28-students
-* https://github.com/cewing/codefellows_f2_python
+Student Homework Repository:
+  https://github.com/codefellows/sea-c28-students
 
-The former is the student class repository.  You will fork this repository into
-your own github account and do all your coursework in your personal folder you
-create inside the ``Students`` folder.
+  Fork this repository to your own github account and do homework there.
 
-The latter is the source of the lecture slides you will see in class. A
-rendered HTML copy of these slides may be found online at:
+Course Materials Repository:
+  https://github.com/cewing/codefellows_f2_python
 
-http://codefellows.github.io/sea-c28-students
+  Contains lecture material sources, supplemental materials and homework
+  assignments
 
-You will also find homework descriptions and supplemental materials there.
+  A rendered HTML copy of all these class materials may be found online at
+  http://codefellows.github.io/sea-c28-students
 
 Canvas
 ------
@@ -94,9 +94,11 @@ Class email list:
 
   sea-c28@codefellows.com
 
-Class `Gitter <https://gitter.im/cewing>`_ Chatroom:
+Class `Gitter <https://gitter.im/codefellows/sea-c28-students>`_ Chatroom:
   The student repository README contains a link to the class chatroom. You can
-  use this to communicate with students and instructors.
+  use this to communicate with students and instructors:
+
+  https://gitter.im/codefellows/sea-c28-students
 
 
 Introduction to This Class
@@ -231,20 +233,27 @@ This class uses Python 2.7 not Python 3.x
 
 * You *can* learn to write Python that is forward compatible from 2.x to 3.x
 * We will be teaching from that perspective.
+* If you find yourself needing to work with Python 2 and 3, there are ways to
+  write compatible code:
 
-* If you find yourself needing to work with Python 2 and 3, there are ways to write compatible code: https://wiki.python.org/moin/PortingPythonToPy3k
-
+  * https://wiki.python.org/moin/PortingPythonToPy3k
+  * http://python3porting.com (particulary the chapters on modern idioms and
+    supporting Python 2 and 3)
+  * http://python-future.org/compatible_idioms.html
 
 Introduction to Your Environment
 ================================
 
-There are three basic elements to your environment when working with Python:
+.. rst-class:: Left
+.. container::
 
-.. rst-class:: build
+    There are three basic elements to your environment when working with Python:
 
-* Your Command Line
-* Your Interpreter
-* Your Editor
+    .. rst-class:: build
+
+    * Your Command Line
+    * Your Interpreter
+    * Your Editor
 
 
 Your Command Line (cli)
