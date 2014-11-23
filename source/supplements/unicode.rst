@@ -6,9 +6,13 @@
 Unicode in Python 2
 ===================
 
-A quick run-down of Unicode, its use in Python 2, and some of the gotchas that arise.
+.. rst-class:: left
+.. container::
 
- - Chris Barker
+    A quick run-down of Unicode, its use in Python 2, and some of the gotchas
+    that arise.
+
+    - Chris Barker
 
 History
 =======
@@ -388,14 +392,14 @@ But: some more obscure calls don't support unicode filenames:
 .. nextslide::
 
 Exception messages:
- 
- * Py2 Exceptions use str when they print messages.
- 
- * But what if you pass in a unicode object?
 
-   * It is encoded with the default encoding.
+* Py2 Exceptions use str when they print messages.
 
- * ``UnicodeDecodeError`` Inside an Exception????
+* But what if you pass in a unicode object?
+
+  * It is encoded with the default encoding.
+
+* ``UnicodeDecodeError`` Inside an Exception????
 
  NOPE: it swallows it instead.
 
@@ -433,14 +437,14 @@ Basic Unicode LAB
 
 * Read the contents into unicode objects:
 
- - :download:`ICanEatGlass.utf8.txt <./ICanEatGlass.utf8.txt>`
- - :download:`ICanEatGlass.utf16.txt <./ICanEatGlass.utf16.txt>`
+  - :download:`ICanEatGlass.utf8.txt <./ICanEatGlass.utf8.txt>`
+  - :download:`ICanEatGlass.utf16.txt <./ICanEatGlass.utf16.txt>`
 
-and/ or
+  and/ or
 
- - :download:`text.utf8 <./text.utf8>`
- - :download:`text.utf16 <./text.utf16>`
- - :download:`text.utf32 <./text.utf32>`
+  - :download:`text.utf8 <./text.utf8>`
+  - :download:`text.utf16 <./text.utf16>`
+  - :download:`text.utf32 <./text.utf32>`
 
 * write some of the text from the first exercise to file -- read that file back in.
 

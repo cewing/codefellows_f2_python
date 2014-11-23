@@ -148,7 +148,7 @@ This way, you can write your code in one file and test it from another:
 
     It's Object Oriented, and quite heavy.
 
-      - modeled after Java's ``junit`` and it shows...
+    It was modeled after Java's ``junit`` and it shows...
 
     It uses the framework design pattern, so knowing how to use the features
     means learning what to override.

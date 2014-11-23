@@ -30,7 +30,7 @@ If it seems harder than it should be -- it is!
 
 My Solution to the trigram:
 
- * (``dict.setdefault()``  trick...)
+* (``dict.setdefault()``  trick...)
 
 ``global`` keyword?
 
@@ -41,8 +41,8 @@ To put unicode in your source file, put:
 
 .. code-block:: python
 
-  #!/usr/bin/env python
-  # -*- coding: utf-8 -*-
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
 
 at the top of your file ... and be sure to save it as utf-8!
 (file->save with encoding in Sublime)
@@ -54,7 +54,7 @@ You also might want to put::
 
 Additional notes on using Unicode in Python see:
 
- :ref:`unicode_supplement`
+    :ref:`unicode_supplement`
 
 
 ===========================
@@ -70,9 +70,11 @@ One reason for this:
 
 Folks can't even agree on what OO "really" means
 
-See: The Quarks of Object-Oriented Development
+See:
 
-  - Deborah J. Armstrong
+    The Quarks of Object-Oriented Development
+
+    -- Deborah J. Armstrong
 
 http://agp.hx0.ru/oop/quarks.pdf
 
@@ -135,11 +137,11 @@ In Python: just another namespace.
 
 The OO buzzwords:
 
-  * data abstraction
-  * encapsulation
-  * modularity
-  * polymorphism
-  * inheritance
+* data abstraction
+* encapsulation
+* modularity
+* polymorphism
+* inheritance
 
 Python does all of this, though it doesn't enforce it.
 
@@ -152,8 +154,8 @@ You can do OO in C
 
 "OO languages" give you some handy tools to make it easier (and safer):
 
-  * polymorphism (duck typing gives you this anyway)
-  * inheritance
+* polymorphism (duck typing gives you this anyway)
+* inheritance
 
 
 .. nextslide::
@@ -247,7 +249,7 @@ Basic Structure of a real class:
 .. code-block:: python
 
     class Point(object):
-    # everything defined in here is in the class namespace
+        # everything defined in here is in the class namespace
 
         def __init__(self, x, y):
             self.x = x
@@ -586,11 +588,11 @@ When you access an attribute:
 
 Python looks for it in this order:
 
-  * Is it an instance attribute ?
-  * Is it a class attribute ?
-  * Is it a superclass attribute ?
-  * Is it a super-superclass attribute ?
-  * ...
+* Is it an instance attribute?
+* Is it a class attribute?
+* Is it a superclass attribute?
+* Is it a super-superclass attribute?
+* ...
 
 
 It can get more complicated...
@@ -607,13 +609,13 @@ Putting aside the OO theory...
 
 Python classes are:
 
-  * Namespaces
+* Namespaces
 
-    * One for the class object
-    * One for each instance
+  * One for the class object
+  * One for each instance
 
-  * Attribute resolution order
-  * Auto tacking-on of ``self`` when methods are called
+* Attribute resolution order
+* Auto tacking-on of ``self`` when methods are called
 
 
 That's about it -- really!
@@ -636,8 +638,8 @@ Usually better to use "duck typing" (polymorphism)
 
 But when it's called for:
 
-    * ``isinstance()``
-    * ``issubclass()``
+* ``isinstance()``
+* ``issubclass()``
 
 .. nextslide::
 

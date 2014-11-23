@@ -5,9 +5,6 @@ Adapted from Dave Thomas's work:
 
 http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
 
-
-
-
 Trigrams can be used to mutate text into new, surreal, forms. But what
 heuristics do we apply to get a reasonable result?
 
@@ -20,7 +17,7 @@ Swift adventure on demand?
 
 OK, perhaps not. But that won’t stop us trying. I coded up a quick
 program to generate some swash-buckling scientific adventure on demand. It
-came up with:
+came up with::
 
     ... it was in the wind that was what he thought was his companion. I
     think would be a good one and accordingly the ship their situation
@@ -69,9 +66,8 @@ we could start with "I may". The only possible next word is
 
   I may I
 
-The last two words are "may I", so the next word is
-"wish". We then look up "I wish", and find our choice
-is constrained to another "I".::
+The last two words are "may I", so the next word is "wish". We then look up "I
+wish", and find our choice is constrained to another "I".::
 
    I may I wish I
 
@@ -80,9 +76,8 @@ choose "may"::
 
    I may I wish I may
 
-Now we’re back where we started from, with "I may."
-Following the same sequence, but choosing "might" this time, we
-get::
+Now we’re back where we started from, with "I may." Following the same
+sequence, but choosing "might" this time, we get::
 
    I may I wish I may I wish I might
 
