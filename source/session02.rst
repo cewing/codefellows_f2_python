@@ -1108,12 +1108,15 @@ Import
 When you import a module, or a symbol from a module, the Python code is
 *compiled* to **bytecode**.
 
-The result is a ``module.pyc`` file.
+.. rst-class:: build
+.. container::
 
-This process **executes all code at the module scope**.
+    The result is a ``module.pyc`` file.
 
-For this reason, it is good to avoid module-scope statements that have global
-side-effects.
+    This process **executes all code at the module scope**.
+
+    For this reason, it is good to avoid module-scope statements that have
+    global side-effects.
 
 
 .. nextslide:: Re-import
