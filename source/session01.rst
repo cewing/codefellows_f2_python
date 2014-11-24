@@ -826,12 +826,12 @@ Any python object can be printed (though it might not be pretty...)
 
 .. code-block:: ipython
 
-    In [1]: class bar(object):
+    In [1]: class Bar(object):
        ...:     pass
        ...:
 
-    In [2]: print(bar)
-    <class '__main__.bar'>
+    In [2]: print(Bar)
+    <class '__main__.Bar'>
 
 
 .. nextslide:: Code Blocks
@@ -1088,7 +1088,7 @@ You can also do "in-place" assignment with ``+=``.
     In [37]: a
     Out[37]: 3
 
-also: ``-=, *=, /=, **=, \%=``
+also: ``-=, *=, /=, **=, %=``
 
 (not quite -- really in-place assignment for mutables....)
 
