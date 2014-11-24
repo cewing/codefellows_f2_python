@@ -1147,39 +1147,49 @@ There are a few ways to do this:
 
 * ``$ python hello.py``   -- must be in current working directory
 * ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system
-* ``$ ./hello.py``        -- put ``#!/usr/env/python``  at top of module (Unix)
-* ``In [149]: run hello.py``     -- at the IPython prompt -- running a module brings its names into the interactive namespace
+* ``$ ./hello.py``        -- put ``#!/usr/bin/env python``  at top of module
+  (Unix)
+* ``In [149]: run hello.py``     -- at the IPython prompt -- running a module
+  brings its names into the interactive namespace
 
 
 .. nextslide:: Running a Module
 
 Like importing, running a module executes all statements at the module level.
 
-But there's an important difference.
+.. rst-class:: build
+.. container::
 
-When you *import* a module, the value of the symbol ``__name__`` in the module
-is the same as the filename.
+    But there's an important difference.
 
-When you *run* a module, the value of the symbol ``__name__`` is ``__main__``.
+    When you *import* a module, the value of the symbol ``__name__`` in the
+    module is the same as the filename.
 
-This allows you to create blocks of code that are executed *only when you run a
-module*
+    When you *run* a module, the value of the symbol ``__name__`` is
+    ``__main__``.
 
-.. code-block:: python
+    This allows you to create blocks of code that are executed *only when you
+    run a module*
 
-    if __name__ == '__main__':
-        # Do something interesting here
-        # It will only happen when the module is run
+    .. code-block:: python
+
+        if __name__ == '__main__':
+            # Do something interesting here
+            # It will only happen when the module is run
 
 .. nextslide:: "main" blocks
 
 This is useful in a number of cases.
 
-You can put code here that lets your module be a utility script
+.. rst-class:: build
+.. container::
 
-You can put code here that demonstrates the functions contained in your module
+    You can put code here that lets your module be a utility script
 
-You can put code here that proves that your module works.
+    You can put code here that demonstrates the functions contained in your
+    module
+
+    You can put code here that proves that your module works.
 
 .. ifslides::
 
@@ -1212,6 +1222,8 @@ your code.
 
 In-Class Lab
 ============
+
+.. rst-class:: center large
 
 Import Interactions
 
@@ -1275,7 +1287,9 @@ You wouldn't want to import * those!
 Homework
 ========
 
-You have two tasks to complete by next class:
+.. rst-class:: center large
+
+Two Tasks by Monday
 
 Task 1
 ------
@@ -1288,6 +1302,9 @@ The Ackermann function, A(m, n), is defined::
         A(m−1, A(m, n−1))   if  m > 0  and  n > 0.
 
 See http://en.wikipedia.org/wiki/Ackermann_function.
+
+Make a new branch ``session02`` in your repository.  Do your work for this
+session on that branch.
 
 Create a new module called ``ack.py`` in a ``session02`` folder in your student
 folder. In that module, write a function named ``ack`` that performs
