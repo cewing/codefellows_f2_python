@@ -313,13 +313,13 @@ Try it out:
 
 .. code-block:: pycon
 
-    >>> print u"hello world!"
+    >>> print(u"hello world!")
     hello world!
     >>> 4 + 5
     9
     >>> 2 ** 8 - 1
     255
-    >>> print u"one string" + u" plus another"
+    >>> print(u"one string" + u" plus another")
     one string plus another
     >>>
 
@@ -654,7 +654,7 @@ Start it up
     $ipython
 
     $ ipython
-    Python 2.7.6 (v2.7.6:3a1db0d2747e, Nov 10 2013, 00:42:54) 
+    Python 2.7.6 (v2.7.6:3a1db0d2747e, Nov 10 2013, 00:42:54)
     Type "copyright", "credits" or "license" for more information.
 
     IPython 2.0.0 -- An enhanced Interactive Python.
@@ -699,7 +699,7 @@ This is the stuff I use every day:
 
 * tab completion:
 
-  - ``something.<tab>`` 
+  - ``something.<tab>``
 
 * running a python file:
 
@@ -776,7 +776,7 @@ Statements:
 
     In [6]: # statements do not return a value, may contain an expression
 
-    In [7]: print u"this"
+    In [7]: print(u"this")
     this
 
     In [8]: line_count = 42
@@ -784,33 +784,34 @@ Statements:
     In [9]:
 
 
-.. nextslide:: The Print Statement
+.. nextslide:: The Print Function
 
 It's kind of obvious, but handy when playing with code:
 
 .. code-block:: ipython
 
-    In [1]: print u"something"
+    In [1]: from __future__ import print_function
+    In [2]: print(u"something")
     something
 
-You can print multiple things: 
+You can print multiple things:
 
 .. code-block:: ipython
 
-    In [2]: print u"the value is", 5
+    In [3]: print(u"the value is", 5)
     the value is 5
 
 
 .. nextslide::
 
-Python automatically adds a newline, which you can suppress with a comma:
+Python automatically adds a newline, which you can change with ``end`` argument:
 
 
 .. code-block:: ipython
 
     In [12]: for i in range(5):
-       ....:     print u"the value is",
-       ....:     print i
+       ....:     print(u"the value is", end=' ')
+       ....:     print(i)
        ....:
     the value is 0
     the value is 1
@@ -825,12 +826,12 @@ Any python object can be printed (though it might not be pretty...)
 
 .. code-block:: ipython
 
-    In [1]: class bar(object):
+    In [1]: class Bar(object):
        ...:     pass
        ...:
 
-    In [2]: print bar
-    <class '__main__.bar'>
+    In [2]: print(Bar)
+    <class '__main__.Bar'>
 
 
 .. nextslide:: Code Blocks
@@ -846,7 +847,7 @@ Blocks of code are delimited by a colon and indentation:
 .. code-block:: python
 
     for i in range(100):
-        print i**2
+        print(i**2)
 
 .. code-block:: python
 
@@ -877,12 +878,12 @@ These two blocks look the same:
 .. code-block:: python
 
     for i in range(100):
-        print i**2
+        print(i**2)
 
 .. code-block:: python
 
     for i in range(100):
-        print i**2
+        print(i**2)
 
 
 .. nextslide::
@@ -892,12 +893,12 @@ But they are not:
 .. code-block:: python
 
     for i in range(100):
-    \s\s\s\sprint i**2
+    \s\s\s\sprint(i**2)
 
 .. code-block:: python
 
     for i in range(100):
-    \tprint i**2
+    \tprint(i**2)
 
 **ALWAYS INDENT WITH 4 SPACES**
 
@@ -1087,7 +1088,7 @@ You can also do "in-place" assignment with ``+=``.
     In [37]: a
     Out[37]: 3
 
-also: ``-=, *=, /=, **=, \%=``
+also: ``-=, *=, /=, **=, %=``
 
 (not quite -- really in-place assignment for mutables....)
 
@@ -1402,7 +1403,7 @@ If you try to use any of the keywords as symbols, you will cause a
 .. code-block:: ipython
 
     In [14]: def a_function(else=u'something'):
-       ....:     print else
+       ....:     print(else)
        ....:
       File "<ipython-input-14-1dbbea504a9e>", line 1
         def a_function(else=u'something'):
@@ -1488,7 +1489,7 @@ A function is a self-contained chunk of code
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
 
-(DRY) 
+(DRY)
 
 
 Or just to keep the code clean
@@ -1543,7 +1544,7 @@ function defs must be executed before the functions can be called:
 .. code-block:: ipython
 
     In [18]: def simple():
-       ....:     print u"I am a simple function"
+       ....:     print(u"I am a simple function")
        ....:
 
     In [19]: simple()
@@ -1574,8 +1575,8 @@ back is
 .. code-block:: ipython
 
     In [5]: def exceptional():
-       ...:     print u"I am exceptional!"
-       ...:     print 1/0
+       ...:     print(u"I am exceptional!")
+       ...:     print(1/0)
        ...:
     In [6]: def passive():
        ...:     pass
@@ -1608,8 +1609,8 @@ Functions: Tracebacks
 
     <ipython-input-5-d8100c70edef> in exceptional()
           1 def exceptional():
-          2     print u"I am exceptional!"
-    ----> 3     print 1/0
+          2     print(u"I am exceptional!")
+    ----> 3     print(1/0)
           4
 
     ZeroDivisionError: integer division or modulo by zero
@@ -1639,7 +1640,7 @@ if you don't explicilty put ``return``  there, Python will:
        ...:
     In [10]: fun()
     In [11]: result = fun()
-    In [12]: print result
+    In [12]: print(result)
     None
 
 note that the interpreter eats ``None``
@@ -1660,7 +1661,7 @@ This is useful when debugging!
     In [14]: def no_error():
        ....:     return u'done'
        ....:     # no more will happen
-       ....:     print 1/0
+       ....:     print(1/0)
        ....:
     In [15]: no_error()
     Out[15]: u'done'
@@ -1704,7 +1705,7 @@ In a ``def`` statement, the values written *inside* the parens are
 
     In [22]: def fun(x, y, z):
        ....:     q = x + y + z
-       ....:     print x, y, z, q
+       ....:     print(x, y, z, q)
        ....:
 
 x, y, z are *local* symbols -- so is q
@@ -1734,11 +1735,11 @@ In order to do anything interesting at all (including this week's homework), you
 
     In [12]: def test(a):
        ....:     if a == 5:
-       ....:         print u"that's the value I'm looking for!"
+       ....:         print(u"that's the value I'm looking for!")
        ....:     elif a == 7:
-       ....:         print u"that's an OK number"
+       ....:         print(u"that's an OK number")
        ....:     else:
-       ....:         print u"that number won't do!"
+       ....:         print(u"that number won't do!")
 
     In [13]: test(5)
     that's the value I'm looking for!
