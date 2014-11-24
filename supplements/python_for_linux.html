@@ -1,0 +1,214 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Setting up Linux for Python and this class &mdash; Foundations 2: Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <link rel="top" title="Foundations 2: Python" href="../index.html" />
+    <link rel="up" title="Supplemental Materials" href="index.html" />
+    <link rel="next" title="Working with Virtualenv" href="virtualenv.html" />
+    <link rel="prev" title="Setting up Windows for Python and this class" href="python_for_windows.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="https://dgosxlrnzhofi.cloudfront.net/assets/logo-3fc81b216ed94ef783583de4160a97ef.svg"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Setting up Linux for Python and this class</h1>
+    </hgroup>
+    <article class="">
+      <p>NOTE: this is from memory: no system to test on right now.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting The Tools</h2>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Python</h3>
+    </hgroup>
+    <article class="">
+      <p>You probably already have python. Try:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python
+Python 2.7.8 <span class="o">(</span>v2.7.8:ee879c0ffa11, Jun <span class="m">29</span> 2014, 21:07:35<span class="o">)</span>
+<span class="o">[</span>GCC 4.2.1 <span class="o">(</span>Apple Inc. build 5666<span class="o">)</span> <span class="o">(</span>dot 3<span class="o">)]</span> on linux
+</pre></div>
+</div>
+<p>You can see what version you've got. If you don't have 2.7.*, then you'll need to go try to find a newer version -- your distribution may have a package named something like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>apt-get install python2.7
+</pre></div>
+</div>
+<p>Or <tt class="docutils literal"><span class="pre">yum</span> <span class="pre">install</span></tt> or ???</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Terminal</h3>
+    </hgroup>
+    <article class="">
+      <p>Every Linux box has a terminal emulator -- find and use it.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>git</h3>
+    </hgroup>
+    <article class="">
+      <p>git is likely to be there on your system already, but if not:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$apt</span>-get install git
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>pip</h3>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">pip</span></tt> is the Python package installer.</p>
+<p>Many python packages are also available directly from your distro -- but you'll get the latest and greatest if you use <tt class="docutils literal"><span class="pre">pip</span></tt> to install it instead.</p>
+<p>To get pip, the first option is to use your system package manager, something like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$apt</span>-get install python-pip
+</pre></div>
+</div>
+<p>If that doesn't work, you can get it from:</p>
+<p><a class="reference external" href="https://pip.pypa.io/en/latest/installing.html">https://pip.pypa.io/en/latest/installing.html</a></p>
+<p>download <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> from that site, and run it with python:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python get-pip.py
+</pre></div>
+</div>
+<p>It should download and install <tt class="docutils literal"><span class="pre">pip</span></tt> (and <tt class="docutils literal"><span class="pre">setuptools</span></tt>)</p>
+<p>You can now use pip to install other packages.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>iPython</h3>
+    </hgroup>
+    <article class="">
+      <p>One we are going to use in class is <tt class="docutils literal"><span class="pre">iPython</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install ipython
+</pre></div>
+</div>
+<p>You should now be able to run <tt class="docutils literal"><span class="pre">iPython</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython
+    Python 2.7.8 (v2.7.8:ee879c0ffa11, Jun 29 2014, 21:07:35)
+    Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+
+    IPython 2.0.0 -- An enhanced Interactive Python.
+    ?         -&gt; Introduction and overview of IPython&#39;s features.
+    %quickref -&gt; Quick reference.
+    help      -&gt; Python&#39;s own help system.
+    object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra details.
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="https://dgosxlrnzhofi.cloudfront.net/assets/logo-3fc81b216ed94ef783583de4160a97ef.svg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+      <p>&nbsp;</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

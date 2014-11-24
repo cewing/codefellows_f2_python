@@ -1,0 +1,214 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Setting up Windows for Python and this class &mdash; Foundations 2: Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <link rel="top" title="Foundations 2: Python" href="../index.html" />
+    <link rel="up" title="Supplemental Materials" href="index.html" />
+    <link rel="next" title="Setting up Linux for Python and this class" href="python_for_linux.html" />
+    <link rel="prev" title="Setting up your Mac for Python and this class" href="python_for_mac.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="https://dgosxlrnzhofi.cloudfront.net/assets/logo-3fc81b216ed94ef783583de4160a97ef.svg"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Setting up Windows for Python and this class</h1>
+    </hgroup>
+    <article class="">
+      <p>NOTE: this is from memory: no system to test on right now.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting The Tools</h2>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Python</h3>
+    </hgroup>
+    <article class="">
+      <p>There are a number of python distributions available -- many designed for easier support of scientific programming:</p>
+<p>Anaconda
+Enthought Canopy
+Python(x,y)</p>
+<p>But for core use, the installer from python.org is the way to go:</p>
+<p><a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<p>You want the installer for Python 2.7.8 -- probably 64 bit, though if you have a 32 bit sytem, you can get that. There is essentially no difference for the purposes of this course.</p>
+<p>Double click and install.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Terminal</h3>
+    </hgroup>
+    <article class="">
+      <p>You can use the &quot;DOS Box&quot; as a terminal, though the newer &quot;powershell&quot; is a better option.</p>
+<p>But to use the Python in the terminal efectively, you need to put a couple paths on your &quot;PATH&quot; environment variable:</p>
+<p><a class="reference external" href="http://www.computerhope.com/issues/ch000549.htm">http://www.computerhope.com/issues/ch000549.htm</a></p>
+<p>You want to add:</p>
+<p><tt class="docutils literal"><span class="pre">C:\Python2.7</span></tt></p>
+<p>and</p>
+<p><tt class="docutils literal"><span class="pre">C:\Python2.7\Scripts</span></tt></p>
+<p>to <tt class="docutils literal"><span class="pre">PATH</span></tt></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>git</h3>
+    </hgroup>
+    <article class="">
+      <p>Get a git client -- the gitHub GUI client may be nice -- I honestly don't know.</p>
+<p>There is also ToroiseGit:</p>
+<p><a class="reference external" href="https://code.google.com/p/tortoisegit/">https://code.google.com/p/tortoisegit/</a></p>
+<p>which integrates git with the filemanager. But for the purposes of learning, it may be better to use a command line client:</p>
+<p><a class="reference external" href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></p>
+<p>I think that gives you a &quot;Git bash shell&quot; -- a command window that gives you a *nix - like command line shell.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>pip</h3>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">pip</span></tt> is the Python package installer. Unfortunately, it doesn't come out of the box with Python2.7, so you need to install it:</p>
+<p><a class="reference external" href="https://pip.pypa.io/en/latest/installing.html">https://pip.pypa.io/en/latest/installing.html</a></p>
+<p>download <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> from that site, and run it with python:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python get-pip.py
+</pre></div>
+</div>
+<p>It should download and install <tt class="docutils literal"><span class="pre">pip</span></tt> (and <tt class="docutils literal"><span class="pre">setuptools</span></tt>)</p>
+<p>You can now use pip to install other packages.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>iPython</h3>
+    </hgroup>
+    <article class="">
+      <p>One we are going to use in class is <tt class="docutils literal"><span class="pre">iPython</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install ipython
+</pre></div>
+</div>
+<p>You should now be able to run <tt class="docutils literal"><span class="pre">iPython</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython
+    Python 2.7.8 (v2.7.8:ee879c0ffa11, Jun 29 2014, 21:07:35)
+    Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+
+    IPython 2.0.0 -- An enhanced Interactive Python.
+    ?         -&gt; Introduction and overview of IPython&#39;s features.
+    %quickref -&gt; Quick reference.
+    help      -&gt; Python&#39;s own help system.
+    object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra details.
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="https://dgosxlrnzhofi.cloudfront.net/assets/logo-3fc81b216ed94ef783583de4160a97ef.svg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+      <p>&nbsp;</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
