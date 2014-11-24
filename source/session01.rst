@@ -784,7 +784,8 @@ Statements:
     In [9]:
 
 
-.. nextslide:: Printing
+Printing
+--------
 
 In Python 2.x, printing is a statement. In Python 3, it was changed to a
 function.
