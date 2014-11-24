@@ -784,7 +784,25 @@ Statements:
     In [9]:
 
 
-.. nextslide:: The Print Function
+.. nextslide:: Printing
+
+In Python 2.x, printing is a statement. In Python 3, it was changed to a
+function.
+
+.. rst-class:: build
+.. container::
+
+    You can get the Python 3 behavior in Python 2.6+ using the ``__future__``
+    module.
+
+    .. code-block:: python
+
+        from __future__ import print_function
+
+    For purposes of writing cross-compatible code, this is a good idea.  Please
+    use this idiom in your code.
+
+.. nextslide::
 
 It's kind of obvious, but handy when playing with code:
 
