@@ -1070,7 +1070,8 @@ Dictionaries and Sets
 
 1.
 
-* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate".
+* Create a dictionary containing "name", "city", and "cake" for "Chris" from
+  "Seattle" who likes "Chocolate".
 
 * Display the dictionary.
 
@@ -1089,17 +1090,20 @@ Dictionaries and Sets
 
 2.
 
-* Using the dict constructor and zip, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine).
+* Using the dict constructor and zip, build a dictionary of numbers from zero
+  to fifteen and the hexadecimal equivalent (string is fine).
 
 3.
 
-* Using the dictionary from item 1: Make a dictionary using the same keys but with the number of 'a's in each value.
+* Using the dictionary from item 1: Make a dictionary using the same keys but
+  with the number of 'a's in each value.
 
 .. nextslide:: sets
 
 4.
 
-* Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.
+* Create sets s2, s3 and s4 that contain numbers from zero through twenty,
+  divisible 2, 3 and 4.
 
 * Display the sets.
 
@@ -1140,19 +1144,25 @@ Exceptions
 
 Improving ``raw_input``
 
-* The ``raw_input()``  function can generate two exceptions: ``EOFError``  or ``KeyboardInterrupt``  on end-of-file(EOF) or canceled input.
+* The ``raw_input()``  function can generate two exceptions: ``EOFError``  or
+  ``KeyboardInterrupt``  on end-of-file(EOF) or canceled input.
 
-* Create a wrapper function, perhaps ``safe_input()``  that returns ``None``  rather rather than raising these exceptions, when the user enters ``^C``  for Keyboard Interrupt, or ``^D`` (``^Z``  on Windows) for End Of File.
+* Create a wrapper function, perhaps ``safe_input()``  that returns ``None``
+  rather rather than raising these exceptions, when the user enters ``^C``  for
+  Keyboard Interrupt, or ``^D`` (``^Z``  on Windows) for End Of File.
 
-* Update your mailroom program to use exceptions (and IBAFP) to handle malformed numeric input
+* Update your mailroom program to use exceptions (and IBAFP) to handle
+  malformed numeric input
 
 
 Paths and File Processing
 --------------------------
 
-* write a program which prints the full path to all files in the current directory, one per line
+* write a program which prints the full path to all files in the current
+  directory, one per line
 
-* write a program which copies a file from a source, to a destination (without using shutil, or the OS copy command)
+* write a program which copies a file from a source, to a destination (without
+  using shutil, or the OS copy command)
 
 * update mailroom from last weeks homework to:
 

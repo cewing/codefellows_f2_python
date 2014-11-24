@@ -1571,9 +1571,11 @@ Task 3
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
-gifts. You are tired of doing this over an over again, so you've decided to let Python help you out of a jam.
+gifts. You are tired of doing this over an over again, so you've decided to let
+Python help you out of a jam.
 
-Write a small command-line script called ``mailroom.py``.  As with Task 1, This script should be executable. The script should accomplish the following goals:
+Write a small command-line script called ``mailroom.py``.  As with Task 1, This
+script should be executable. The script should accomplish the following goals:
 
 * It should have a data structure that holds a list of your donors and a
   history of the amounts they have donated. This structure should be populated
