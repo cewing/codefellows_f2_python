@@ -270,6 +270,12 @@ I suggest running through the **cli** tutorial at "learn code the hard way":
 
 .. _http://cli.learncodethehardway.org/book: http://cli.learncodethehardway.org/book
 
+You can also read the materials from the Code Fellows Unix & Git workshop:
+
+`http://cewing.github.io/cf-uge`_
+
+.. _http://cewing.github.io/cf-uge: http://cewing.github.io/cf-uge
+
 
 .. nextslide:: Command Line Enhancements
 
@@ -383,16 +389,19 @@ This is where an Editor fits in.
 
 Any good text editor will do.
 
-MS Word is **not** a text editor.
+.. rst-class:: build
+.. container::
 
-Nor is *TextEdit* on a Mac.
+    MS Word is **not** a text editor.
 
-``Notepad`` is a text editor -- but a crappy one.
+    Nor is *TextEdit* on a Mac.
 
-You need a real "programmers text editor"
+    ``Notepad`` is a text editor -- but a crappy one.
 
-A text editor saves only what it shows you, with no special formatting
-characters hidden behind the scenes.
+    You need a real "programmers text editor"
+
+    A text editor saves only what it shows you, with no special formatting
+    characters hidden behind the scenes.
 
 .. nextslide:: Minimum Requirements
 
@@ -413,11 +422,14 @@ In addition, great features to add include:
 * Jump-to-definition
 * Interactive follow-along for debugging
 
-Have an editor that does all this? Feel free to use it.
+.. rst-class:: build
+.. container::
 
-If not, I suggest ``Sublime Text``:
+    Have an editor that does all this? Feel free to use it.
 
-http://www.sublimetext.com/
+    If not, I suggest ``Sublime Text`` (2 or 3):
+
+    http://www.sublimetext.com/
 
 
 Why No IDE?
@@ -425,15 +437,19 @@ Why No IDE?
 
 I am often asked this question.
 
-An IDE does not give you much that you can't get with a good editor plus a good
-interpreter.
+.. rst-class:: build
+.. container::
 
-An IDE often weighs a great deal
+    An IDE does not give you much that you can't get with a good editor plus a
+    good interpreter.
 
-Setting up IDEs to work with different projects can be challenging and
-time-consuming.
+    An IDE often weighs a great deal
 
-Particularly when you are first learning, you don't want too much done for you.
+    Setting up IDEs to work with different projects can be challenging and
+    time-consuming.
+
+    Particularly when you are first learning, you don't want too much done for
+    you.
 
 .. nextslide::
 
@@ -513,7 +529,8 @@ Once you've installed pip, you use it to install Python packages by name:
     $ pip install foobar
     ...
 
-To find packages (and their proper names), you can search the python package index (PyPI):
+To find packages (and their proper names), you can search the python package
+index (PyPI):
 
 https://pypi.python.org/pypi
 
@@ -530,7 +547,8 @@ Often you need one version for one project, and a different one for another.
 
 You can then install potentially conflicting software safely.
 
-For this class, this is no big deal, but as you start to work on "real" projects, it can be a key tool.
+For this class, this is no big deal, but as you start to work on "real"
+projects, it can be a key tool.
 
 .. _Virtualenv: http://www.virtualenv.org/
 
@@ -542,7 +560,8 @@ If you want to install it, here are some notes:
 Step 4: Clone Class Repository
 ------------------------------
 
-`gitHub <www.github.com>`_ is an industry-standard system for collaboration on software projects -- particularly open source ones.
+`gitHub <www.github.com>`_ is an industry-standard system for collaboration on
+software projects -- particularly open source ones.
 
 We will use it this class to manage submitting and reviewing your work, etc.
 
@@ -552,12 +571,11 @@ Next, you'll make a copy of the class repository using ``git``.
 
 The canonical copy is in the CodeFellows organization on GitHub:
 
-https://github.com/codefellows/sea-f2-python-sept14
+https://github.com/codefellows/sea-c28-students
 
 Open that URL, and click on the *Fork* button at the top right corner.
 
 This will make a copy of this repository in *your* github account.
-
 
 .. nextslide:: Clone Your Fork
 
@@ -917,6 +935,8 @@ Values
 Literals for the Basic Value types:
 ------------------------------------
 
+.. rst-class:: build
+
 Numbers:
   - floating point: ``3.4``
   - integers: ``456``
@@ -931,6 +951,7 @@ Boolean values:
   -  ``False``
 
 (There are intricacies to all of these that we'll get into later)
+
 
 Values in Action
 ----------------
@@ -1743,7 +1764,9 @@ exercises in Python programming
 Homework
 ========
 
-Four Tasks by Next Monday
+.. rst-class:: center large
+
+    Three Tasks by Wednesday
 
 
 Task 1
@@ -1751,13 +1774,14 @@ Task 1
 
 **Tell Us About Yourself**
 
-This is a way for you to learn a bit about gitHub, and how you are going to submit most of your homework.
+This is a way for you to learn a bit about gitHub, and how you are going to
+submit most of your homework.
 
 * Create a new folder in the ``students`` folder in the class repository.
 
   * Create the folder in your clone of your fork of the repository.
   * Name it with your own name in CamelCase, like: ``ChrisBarker``.
-  * In the folder create one new file, named ``README.md``
+  * In the folder create one new file, named ``README.md`` (or ``README.rst``)
   * In that new file, write up a few paragraphs about yourself.
 
     * Use proper `markdown`_ syntax. (or `reStructuredText`_)
@@ -1779,6 +1803,8 @@ This is a way for you to learn a bit about gitHub, and how you are going to subm
 * In GitHub's Web UI, make a ``pull request`` to the original CodeFellows
   repository.
 
+Remember, GitHub is a public place.  Your work in this repository is visible to
+the world.
 
 Task 2
 ------
@@ -1790,58 +1816,37 @@ Make sure you have the basics of command line usage down:
 Work through the supplemental tutorials on setting up your
 `Command Line`_ for good development support.
 
-Make sure you've got your editor set up productively -- at the very very least, make sure it does Python indentation well.
+In particular, ensure that you have command-line support for git.
+
+Then, make sure you've got your editor set up productively -- at the very very
+least, make sure it does Python indentation well.
+
+.. _Command Line: supplements/shell.html
+
+.. nextslide::
 
 **Advanced Editor Setup:**
 
-If you are using SublimeText, here are some notes to make it super-nifty:
-
-Setting up `SublimeText`_ .
+If you are using SublimeText, `here are some notes`_ to make it super-nifty.
 
 At the end, your editor should support tab completion and pep8 and pyflakes
-linting. Your command line should be able to show you what virtualenv is active
-and give you information about your git repository when you are inside one.
+linting.
 
 If you are not using SublimeText, look for plugins that accomplish the same
-goals for your own editor.  If none are available, please consider a change of
-editor.
+goals for your own editor.
 
-.. _SublimeText: supplements/sublime_as_ide.html
-.. _Command Line: supplements/shell.html
+If none are available, please consider a change of editor.
+
+.. _here are some notes: supplements/sublime_as_ide.html
+
 
 Task 3
-------
-
-**Python Pushups**
-
-To get a bit of exercise solving some puzzles with Python, work on the Python
-exercises at `CodingBat`_.
-
-Begin by making an account on the site. Once you have done so, go to the
-'prefs' link at the top right and enter your name so we know who you are.
-
-In addition, add the following email address to the 'Share To' box.  This will
-allow your instructors to see the work you have done.
-
-::
-
-    pyinstructor@codefellows.com
-
-There are 8 sets of puzzles. Do as many as you can, starting with the Warmups.
-
-.. _CodingBat: http://codingbat.com
-
-**Please Note:** Do Not send emails to the above email address, they will not
-be answered.
-
-
-Task 4
 ------
 
 **Explore Errors**
 
 * Create a new directory in your personal folder in the ``students`` folder of the class repository::
-  
+
   $ mkdir session01
   $ cd session01
 

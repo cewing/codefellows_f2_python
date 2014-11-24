@@ -83,13 +83,13 @@ to the original copy of the material in the ``codefellows`` account.
 
 .. code-block:: bash
 
-  $ git remote add upstream https://github.com/codefellows/sea-f2-python-sept14.git
+    $ git remote add upstream https://github.com/codefellows/sea-f2-python-sept14.git
 
-  $ git remote -v
-  origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
-  origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
-  upstream  https://github.com/codefellows/sea-f2-python-sept14.git (fetch)
-  upstream  https://github.com/codefellows/sea-f2-python-sept14.git (push)
+    $ git remote -v
+    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
+    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
+    upstream  https://github.com/codefellows/sea-f2-python-sept14.git (fetch)
+    upstream  https://github.com/codefellows/sea-f2-python-sept14.git (push)
 
 .. nextslide:: Fetching Everything.
 
@@ -106,13 +106,13 @@ Then you can see the branches you have locally available:
 
 .. code-block:: bash
 
-  $ git branch -a
-  * master
-    remotes/origin/HEAD -> origin/master
-    remotes/origin/gh-pages
-    remotes/origin/master
-    remotes/upstream/gh-pages
-    remotes/upstream/master
+    $ git branch -a
+    * master
+      remotes/origin/HEAD -> origin/master
+      remotes/origin/gh-pages
+      remotes/origin/master
+      remotes/upstream/gh-pages
+      remotes/upstream/master
 
 (the gh-pages branch is used to publish these notes)
 
@@ -135,17 +135,17 @@ Then, fetch the upstream master branch and merge it into your master:
 
 .. code-block:: bash
 
-  $ git fetch upstream master
-  From https://github.com/codefellows/sea-f2-python-sept14
-   * branch            master     -> FETCH_HEAD
+    $ git fetch upstream master
+    From https://github.com/codefellows/sea-f2-python-sept14
+     * branch            master     -> FETCH_HEAD
 
-  $ git merge upstream/master
-  Updating 3239de7..9ddbdbb
-  Fast-forward
-   Examples/README.rst              |  4 ++++
-  ...
-   create mode 100644 Examples/README.rst
-  ...
+    $ git merge upstream/master
+    Updating 3239de7..9ddbdbb
+    Fast-forward
+     Examples/README.rst              |  4 ++++
+    ...
+     create mode 100644 Examples/README.rst
+    ...
 
 NOTE: you can do that in one step with:
 
@@ -940,15 +940,12 @@ Exercises
   * ``10 % 7 == 3``
   * ``14 % 7 == 0``
 
-*  Write a program that prints the numbers from 1 to 100 inclusive. But for
-   multiples of three print "Fizz" instead of the number and for the
-   multiples of five print "Buzz". For numbers which are multiples of both
-   three and five print "FizzBuzz" instead.
-* Re-write a couple of CodingBat exercises, using a conditional expression
-* Re-write a couple of CodingBat exercises, returning the direct boolean results
-
-use whichever you like, or the ones in:
-:download:`codingbat.rst <../code/session02/codingbat.rst>`
+* Write a program that prints the numbers from 1 to 100 inclusive. But for
+  multiples of three print "Fizz" instead of the number and for the multiples
+  of five print "Buzz". For numbers which are multiples of both three and five
+  print "FizzBuzz" instead.
+* If you finish that, try your hand at writing solutions to one or more of the
+  problems in :download:`codingbat.rst <../code/session02/codingbat.rst>`
 
 
 Code Structure, Modules, and Namespaces
