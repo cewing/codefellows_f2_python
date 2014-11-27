@@ -136,7 +136,7 @@ Then, fetch the upstream master branch and merge it into your master:
 .. code-block:: bash
 
     $ git fetch upstream master
-    From https://github.com/codefellows/sea-f2-python-sept14
+    From https://github.com/codefellows/sea-c28-students.git
      * branch            master     -> FETCH_HEAD
 
     $ git merge upstream/master
