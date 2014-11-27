@@ -55,9 +55,7 @@ to override from the default set into your personal settings.
 Here's a reasonable set of preliminary settings (theme, color scheme and font
 are quite personal, find ones that suit you.):
 
-.. code-block:: json
-
-    source
+.. code-block:: js
 
     {
         "color_scheme": "Packages/User/Cobalt (SL).tmTheme",
@@ -81,16 +79,21 @@ are quite personal, find ones that suit you.):
             100  // maximum allowable length
         ],
         "word_wrap": false, // I hate auto-wrapped text.
-        "wrap_width": 79 // This is used by a plugin elsewhere
+        "wrap_width": 79, // This is used by a plugin elsewhere
         "tab_size": 4,
         "translate_tabs_to_spaces": true,
-        "use_tab_stops": true,
+        "use_tab_stops": true
     }
 
 
 Especially important is the setting ``translate_tabs_to_spaces``, which ensures
 that any time you hit a tab key, the single ``\t`` character is replaced by four
 ``\s`` characters.  In Python this is **vital**!
+
+.. note:: Remember, the font, color scheme and theme settings above are those I
+          use. You will need to install extra packages to get them.
+
+
 
 
 Extending the Editor
@@ -106,6 +109,16 @@ Python!
 
 .. _Package Control: https://sublime.wbond.net
 .. _ones you write yourself: http://docs.sublimetext.info/en/latest/extensibility/plugins.html
+
+Installing Package Control
+--------------------------
+
+.. note::
+    Some earlier versions of Sublime Text came with the package control system
+    already installed. This is no longer the case. You'll need to install it
+    yourself. Follow the instructions at
+    `https://sublime.wbond.net/installation <https://sublime.wbond.net/installation>`_.
+
 
 
 To install a plugin using Package Control, open the ``command palette`` with
@@ -151,8 +164,9 @@ There are two to choose from:
 .. _SublimeCodeIntel: https://sublime.wbond.net/packages/SublimeCodeIntel
 .. _SublimeJedi: https://sublime.wbond.net/packages/Jedi%20-%20Python%20autocompletion
 
-I've installed ``SublimeJedi``, and used the following settings *per project* to
-ensure that all relevant code is found:
+I've installed ``SublimeJedi``, and used settings similar to these
+`for each project <http://www.joshuawinn.com/understanding-projects-in-sublime-text-saving-switching-etc/>`_
+to ensure that all relevant code is found:
 
 .. code-block:: json
 
@@ -176,7 +190,13 @@ The ``python_interpreter_path`` allows me to indicate which Python executable
 should be introspected for symbol definitions.
 
 The ``python_package_paths`` setting allows designating additional paths that
-will be searched for Python packages containing symbols. 
+will be searched for Python packages containing symbols. In the above case, I
+am using `buildout <http://buildout.org>`_ to manage installed packages, and
+the `omelette <https://pypi.python.org/pypi/collective.recipe.omelette/>`_
+recipe to provide a single folder in which all installed code can be
+referenced. If you work with `virtualenv <http://virtualenv.readthedocs.org>`_
+or some other sandbox system, your value for ``python_package_paths`` will look
+quite different.
 
 .. image:: /_static/tab_completion.png
     :width: 600px

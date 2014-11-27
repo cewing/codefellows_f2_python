@@ -65,8 +65,8 @@ Cloned repositories get an *origin* remote for free:
 .. code-block:: bash
 
     $ git remote -v
-    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
-    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
+    origin  https://github.com/cewing/sea-c28-students.git (fetch)
+    origin  https://github.com/cewing/sea-c28-students.git (push)
 
 This shows that the local repo on my machine *originated* from the one in my gitHub account (the one it was cloned from)
 
@@ -83,13 +83,13 @@ to the original copy of the material in the ``codefellows`` account.
 
 .. code-block:: bash
 
-    $ git remote add upstream https://github.com/codefellows/sea-f2-python-sept14.git
+    $ git remote add upstream https://github.com/codefellows/sea-c28-students.git
 
     $ git remote -v
-    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (fetch)
-    origin  https://github.com/PythonCHB/sea-f2-python-sept14.git (push)
-    upstream  https://github.com/codefellows/sea-f2-python-sept14.git (fetch)
-    upstream  https://github.com/codefellows/sea-f2-python-sept14.git (push)
+    origin  https://github.com/cewing/sea-c28-students.git (fetch)
+    origin  https://github.com/cewing/sea-c28-students.git (push)
+    upstream  https://github.com/codefellows/sea-c28-students.git (fetch)
+    upstream  https://github.com/codefellows/sea-c28-students.git (push)
 
 .. nextslide:: Fetching Everything.
 
@@ -136,7 +136,7 @@ Then, fetch the upstream master branch and merge it into your master:
 .. code-block:: bash
 
     $ git fetch upstream master
-    From https://github.com/codefellows/sea-f2-python-sept14
+    From https://github.com/codefellows/sea-c28-students.git
      * branch            master     -> FETCH_HEAD
 
     $ git merge upstream/master

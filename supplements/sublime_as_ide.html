@@ -51,10 +51,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <link rel="top" title="Foundations 2: Python" href="../index.html" />
-    <link rel="up" title="Supplemental Materials" href="index.html" />
-    <link rel="next" title="Shell Customizations for Python Development" href="shell.html" />
-    <link rel="prev" title="Working with Virtualenv" href="virtualenv.html" /> 
+    <link rel="top" title="Foundations 2: Python" href="../index.html" /> 
 </head>
 <body style="opacity: 0">
 
@@ -136,40 +133,43 @@ and choose which to override.</p>
 to override from the default set into your personal settings.</p>
 <p>Here's a reasonable set of preliminary settings (theme, color scheme and font
 are quite personal, find ones that suit you.):</p>
-<div class="highlight-json"><div class="highlight"><pre>source
-
-{
-    &quot;color_scheme&quot;: &quot;Packages/User/Cobalt (SL).tmTheme&quot;,
-    &quot;theme&quot;: &quot;Soda Light 3.sublime-theme&quot;,
-    // A font face that helps distinguish between 0 (the number) and &#39;O&#39; (the letter)
-    // among other problem characters.
-    &quot;font_face&quot;: &quot;DroidSansMonoSlashed&quot;,
-    // getting older. I wonder if comfy font size increases as a linear
-    //  function of age?
-    &quot;font_size&quot;: 15,
-    &quot;ignored_packages&quot;:
-    [
-        // I&#39;m not a vi user, so this is of no use to me.
-        &quot;Vintage&quot;
-    ],
-    &quot;rulers&quot;:
-    [
-        // set text rulers so I can judge line length for pep8
-        72, // docstrings
-        79, // optimum code line length
-        100  // maximum allowable length
-    ],
-    &quot;word_wrap&quot;: false, // I hate auto-wrapped text.
-    &quot;wrap_width&quot;: 79 // This is used by a plugin elsewhere
-    &quot;tab_size&quot;: 4,
-    &quot;translate_tabs_to_spaces&quot;: true,
-    &quot;use_tab_stops&quot;: true,
-}
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Packages/User/Cobalt (SL).tmTheme&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;theme&quot;</span><span class="o">:</span> <span class="s2">&quot;Soda Light 3.sublime-theme&quot;</span><span class="p">,</span>
+    <span class="c1">// A font face that helps distinguish between 0 (the number) and &#39;O&#39; (the letter)</span>
+    <span class="c1">// among other problem characters.</span>
+    <span class="s2">&quot;font_face&quot;</span><span class="o">:</span> <span class="s2">&quot;DroidSansMonoSlashed&quot;</span><span class="p">,</span>
+    <span class="c1">// getting older. I wonder if comfy font size increases as a linear</span>
+    <span class="c1">//  function of age?</span>
+    <span class="s2">&quot;font_size&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s2">&quot;ignored_packages&quot;</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="c1">// I&#39;m not a vi user, so this is of no use to me.</span>
+        <span class="s2">&quot;Vintage&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rulers&quot;</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="c1">// set text rulers so I can judge line length for pep8</span>
+        <span class="mi">72</span><span class="p">,</span> <span class="c1">// docstrings</span>
+        <span class="mi">79</span><span class="p">,</span> <span class="c1">// optimum code line length</span>
+        <span class="mi">100</span>  <span class="c1">// maximum allowable length</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;word_wrap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// I hate auto-wrapped text.</span>
+    <span class="s2">&quot;wrap_width&quot;</span><span class="o">:</span> <span class="mi">79</span><span class="p">,</span> <span class="c1">// This is used by a plugin elsewhere</span>
+    <span class="s2">&quot;tab_size&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;use_tab_stops&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Especially important is the setting <tt class="docutils literal"><span class="pre">translate_tabs_to_spaces</span></tt>, which ensures
 that any time you hit a tab key, the single <tt class="docutils literal"><span class="pre">\t</span></tt> character is replaced by four
 <tt class="docutils literal"><span class="pre">\s</span></tt> characters.  In Python this is <strong>vital</strong>!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Remember, the font, color scheme and theme settings above are those I
+use. You will need to install extra packages to get them.</p>
+</div>
 
 
 
@@ -186,6 +186,23 @@ installing and uninstalling plugins, and even updates installed plugins for
 you. You can also manually install plugins that haven't made it to the big-time
 yet, including <a class="reference external" href="http://docs.sublimetext.info/en/latest/extensibility/plugins.html">ones you write yourself</a>. Happily, the plugin system is
 Python!</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Installing Package Control</h3>
+    </hgroup>
+    <article class="">
+      <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some earlier versions of Sublime Text came with the package control system
+already installed. This is no longer the case. You'll need to install it
+yourself. Follow the instructions at
+<a class="reference external" href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a>.</p>
+</div>
 <p>To install a plugin using Package Control, open the <tt class="docutils literal"><span class="pre">command</span> <span class="pre">palette</span></tt> with
 <tt class="docutils literal"><span class="pre">shift-super-P</span></tt> (<tt class="docutils literal"><span class="pre">ctrl-shift-P</span></tt> on Windows/Linux). The <tt class="docutils literal"><span class="pre">super</span></tt> key is <tt class="docutils literal"><span class="pre">command</span></tt>
 or <tt class="docutils literal"><span class="pre">⌘</span></tt> on OS X. When the palette opens, typing <tt class="docutils literal"><span class="pre">install</span></tt> will bring up the
@@ -229,8 +246,9 @@ it's own plugin system.  It is a bit heavy and requires building an index.</li>
 <li><a class="reference external" href="https://sublime.wbond.net/packages/Jedi%20-%20Python%20autocompletion">SublimeJedi</a> only supports Python, but is faster and keeps an index on its
 own.</li>
 </ol>
-<p>I've installed <tt class="docutils literal"><span class="pre">SublimeJedi</span></tt>, and used the following settings <em>per project</em> to
-ensure that all relevant code is found:</p>
+<p>I've installed <tt class="docutils literal"><span class="pre">SublimeJedi</span></tt>, and used settings similar to these
+<a class="reference external" href="http://www.joshuawinn.com/understanding-projects-in-sublime-text-saving-switching-etc/">for each project</a>
+to ensure that all relevant code is found:</p>
 <div class="highlight-json"><div class="highlight"><pre>{
     &quot;folders&quot;:
     [
@@ -251,7 +269,13 @@ ensure that all relevant code is found:</p>
 <p>The <tt class="docutils literal"><span class="pre">python_interpreter_path</span></tt> allows me to indicate which Python executable
 should be introspected for symbol definitions.</p>
 <p>The <tt class="docutils literal"><span class="pre">python_package_paths</span></tt> setting allows designating additional paths that
-will be searched for Python packages containing symbols.</p>
+will be searched for Python packages containing symbols. In the above case, I
+am using <a class="reference external" href="http://buildout.org">buildout</a> to manage installed packages, and
+the <a class="reference external" href="https://pypi.python.org/pypi/collective.recipe.omelette/">omelette</a>
+recipe to provide a single folder in which all installed code can be
+referenced. If you work with <a class="reference external" href="http://virtualenv.readthedocs.org">virtualenv</a>
+or some other sandbox system, your value for <tt class="docutils literal"><span class="pre">python_package_paths</span></tt> will look
+quite different.</p>
 <a class="reference internal image-reference" href="../_images/tab_completion.png"><img alt="Tab completion provided by SublimeJedi" class="align-center" src="../_images/tab_completion.png" style="width: 600px;" /></a>
 <p>Once configured, you should be able to use the <tt class="docutils literal"><span class="pre">ctrl-shift-G</span></tt> keyboard
 shortcut to jump directly to the definition of a symbol. You can also use
@@ -280,7 +304,7 @@ simplified and thus made easier to understand and more testable.</p>
 <p>There is a nice plugin for the SublimeLinter that <a class="reference external" href="https://sublime.wbond.net/packages/SublimeLinter-flake8">utilizes flake8</a>. For it to
 work, the plugin will need to have a Python executable that has the Python
 tools it needs installed.</p>
-<p>Use <a class="reference external" href="http://virtualenv.org">virtualenv</a> to accomplish this. First, create a virtualenv and activate
+<p>Use <a href="#id2"><span class="problematic" id="id3">`virtualenv`_</span></a> to accomplish this. First, create a virtualenv and activate
 it:</p>
 <div class="highlight-bash"><div class="highlight"><pre>$ cd /Users/cewing/virtualenvs
 $ virtualenv sublenv
