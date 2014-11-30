@@ -532,7 +532,7 @@ multiple names (or no name)
     In [25]: a = (1, 2, name)
     In [26]: b = (3, 4, other)
     In [27]: for i in range(3):
-       ....:     print a[i] is b[i],
+       ....:     print(a[i] is b[i], end=' ')
        ....:
     False False True
 
@@ -968,13 +968,13 @@ List Performance
 * indexing is fast and constant time: O(1)
 * x in s proportional to n: O(n)
 * visiting all is proportional to n: O(n)
-* operating on the end of list is fast and constant time: O(1) 
+* operating on the end of list is fast and constant time: O(1)
 
   * append(), pop()
 
 * operating on the front (or middle) of the list depends on n: O(n)
 
-  * pop(0), insert(0, v) 
+  * pop(0), insert(0, v)
   * But, reversing is fast. Also, collections.deque
 
  http://wiki.python.org/moin/TimeComplexity
@@ -997,7 +997,7 @@ Otherwise ... taste and convention
 .. nextslide:: Convention
 
 Lists are Collections (homogeneous):
--- contain values of the same type 
+-- contain values of the same type
 -- simplifies iterating, sorting, etc
 
 tuples are mixed types:
@@ -1056,9 +1056,10 @@ We've seen simple iteration over a sequence with ``for ... in``:
 .. code-block:: ipython
 
     In [170]: for x in "a string":
-       .....:         print x
+       .....:         print(x)
        .....:
     a
+
     s
     t
     r
@@ -1082,7 +1083,7 @@ If you need an index, though you can use ``enumerate``:
 .. code-block:: ipython
 
     In [140]: for idx, letter in enumerate(u'Python'):
-       .....:     print idx, letter,
+       .....:     print(idx, letter, end=' ')
        .....:
     0 P 1 y 2 t 3 h 4 o 5 n
 
@@ -1094,7 +1095,7 @@ The ``range`` builtin is useful for looping a known number of times:
 .. code-block:: ipython
 
     In [171]: for i in range(5):
-       .....:     print i
+       .....:     print(i)
        .....:
     0
     1
@@ -1133,7 +1134,7 @@ The ``break`` keyword will cause a loop to immediately terminate:
 .. code-block:: ipython
 
     In [141]: for i in range(101):
-       .....:     print i
+       .....:     print(i)
        .....:     if i > 50:
        .....:         break
        .....:
@@ -1151,7 +1152,7 @@ allow iteration to continue:
        .....:         break
        .....:     if i < 25:
        .....:         continue
-       .....:     print i,
+       .....:     print(i),
        .....:
        25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50
 
@@ -1167,14 +1168,14 @@ Executed only when the loop exits normally (not via break):
        .....:     if x == 11:
        .....:         break
        .....: else:
-       .....:     print 'finished'
+       .....:     print(u'finished')
     finished
     In [148]: for x in range(10):
        .....:     if x == 5:
-       .....:         print x
+       .....:         print(x)
        .....:         break
        .....: else:
-       .....:     print 'finished'
+       .....:     print(u'finished')
     5
 
 This is a really nice unique Python feature!
@@ -1208,7 +1209,7 @@ potential error -- infinite loops:
 
     i = 0;
     while i < 5:
-        print i
+        print(i)
 
 
 .. nextslide:: Terminating a while Loop
@@ -1221,7 +1222,7 @@ Use ``break``:
        .....:     i += 1
        .....:     if i > 10:
        .....:         break
-       .....:     print i
+       .....:     print(i, end=' ')
        .....:
     1 2 3 4 5 6 7 8 9 10
 
@@ -1235,7 +1236,7 @@ Set a flag:
     In [157]: keep_going = True
     In [158]: while keep_going:
        .....:     num = random.choice(range(5))
-       .....:     print num
+       .....:     print(num)
        .....:     if num == 3:
        .....:         keep_going = False
        .....:
@@ -1249,7 +1250,7 @@ Use a condition:
 
     In [161]: while i < 10:
        .....:     i += random.choice(range(4))
-       .....:     print i
+       .....:     print(i)
        .....:
     0 0 2 3 4 6 8 8 8 9 12
 
@@ -1332,10 +1333,10 @@ To get the value:
 .. code-block:: ipython
 
     In [109]: for i in 'Chris':
-       .....:     print ord(i),
+       .....:     print(ord(i), end=' ')
     67 104 114 105 115
     In [110]: for i in (67,104,114,105,115):
-       .....:     print chr(i),
+       .....:     print(chr(i), end=' ')
     C h r i s
 
 
@@ -1451,7 +1452,7 @@ There's a nice builtin function to do this - ``raw_input``:
 
 .. code-block:: python
 
-    In [196]: fred = raw_input('type something-->')
+    In [196]: fred = raw_input(u'type something-->')
     type something-->;alksdjf
     In [197]: fred
     Out[197]: ';alksdjf'
