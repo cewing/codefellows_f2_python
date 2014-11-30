@@ -180,7 +180,7 @@ You can incorporate this into your daily workflow: ::
     $ git pull upstream master
     $ git push
     [do some work]
-    $ git commit -a 
+    $ git commit -a
     [add a good commit message]
     $ git push
     [make a pull request]
@@ -206,13 +206,13 @@ conditionals and looping...
 .. code-block:: python
 
     if a:
-        print 'a'
+        print(u'a')
     elif b:
-        print 'b'
+        print(u'b')
     elif c:
-        print 'c'
+        print(u'c')
     else:
-        print 'that was unexpected'
+        print(u'that was unexpected')
 
 
 .. nextslide:: if
@@ -222,14 +222,14 @@ What's the difference between these two:
 .. code-block:: python
 
     if a:
-        print 'a'
+        print(u'a')
     elif b:
-        print 'b'
+        print(u'b')
     ## versus...
     if a:
-        print 'a'
+        print(u'a')
     if b:
-        print 'b'
+        print(u'b')
 
 
 .. nextslide:: switch?
@@ -257,7 +257,7 @@ Many languages have a ``switch`` construct:
 
 **Not Python**
 
-use ``if..elif..elif..else`` 
+use ``if..elif..elif..else``
 
 (or a dictionary, or subclassing....)
 
@@ -270,8 +270,8 @@ Pretty much like an "array" or "vector" in other languages
 
 .. code-block:: python
 
-    a_list = [2,3,5,9]
-    a_list_of_strings = ['this', 'that', 'the', 'other']
+    a_list = [2, 3, 5, 9]
+    a_list_of_strings = [u'this', u'that', u'the', u'other']
 
 
 .. nextslide:: tuples
@@ -280,8 +280,8 @@ Another way to store an ordered list of things
 
 .. code-block:: python
 
-    a_tuple = (2,3,4,5)
-    a_tuple_of_strings = ('this', 'that', 'the', 'other')
+    a_tuple = (2, 3, 4, 5)
+    a_tuple_of_strings = (u'this', u'that', u'the', u'other')
 
 
 Tuples are **not** the same as lists.
@@ -297,10 +297,10 @@ When you need to do something to everything in a sequence
 
 .. code-block:: ipython
 
-    In [10]: a_list = [2,3,4,5]
+    In [10]: a_list = [2, 3, 4, 5]
 
     In [11]: for item in a_list:
-       ....:     print item
+       ....:     print(item)
        ....:
     2
     3
@@ -320,7 +320,7 @@ Use it when you need to do something a set number of times
     Out[12]: [0, 1, 2, 3, 4, 5]
 
     In [13]: for i in range(6):
-       ....:     print "*",
+       ....:     print(u'*', end=u' ')
        ....:
     * * * * * *
 
@@ -345,7 +345,7 @@ Defining a function:
 .. code-block:: python
 
     def fun(x, y):
-        z = x+y
+        z = x + y
         return z
 
 
@@ -366,7 +366,7 @@ given block.
     In [15]: y = 33
     In [16]: z = 34
     In [17]: def fun(y, z):
-       ....:     print x, y, z
+       ....:     print(x, y, z)
        ....:
     In [18]: fun(3, 4)
     32 3 4
@@ -413,8 +413,8 @@ Take a look at this function definition:
     In [22]: def f():
        ....:     y = x
        ....:     x = 5
-       ....:     print x
-       ....:     print y
+       ....:     print(x)
+       ....:     print(y)
        ....:
 
 What is going to happen when we call ``f``
@@ -435,8 +435,8 @@ Try it and see:
           1 def f():
     ----> 2     y = x
           3     x = 5
-          4     print x
-          5     print y
+          4     print(x)
+          5     print(y)
 
     UnboundLocalError: local variable 'x' referenced before assignment
 
@@ -452,7 +452,7 @@ So far we've seen simple parameter lists:
 .. code-block:: python
 
     def fun(x, y, z):
-        print x, y, z
+        print(x, y, z)
 
 These types of parameters are called *positional*
 
@@ -467,7 +467,7 @@ You can provide *default values* for parameters in a function definition:
 .. code-block:: ipython
 
     In [24]: def fun(x=1, y=2, z=3):
-       ....:     print x, y, z
+       ....:     print(x, y, z)
        ....:
 
 When parameters are given with default values, they become *optional*
@@ -523,14 +523,14 @@ The key is the ``*`` (splat) or ``**`` (double-splat) operator:
 .. code-block:: ipython
 
     In [31]: def fun(*args, **kwargs):
-       ....:     print args, kwargs
+       ....:     print(args, kwargs)
        ....:
     In [32]: fun(1)
     (1,) {}
-    In [33]: fun(1, 2, zombies="brains")
-    (1, 2) {'zombies': 'brains'}
-    In [34]: fun(1, 2, 3, zombies="brains", vampires="blood")
-    (1, 2, 3) {'vampires': 'blood', 'zombies': 'brains'}
+    In [33]: fun(1, 2, zombies=u"brains")
+    (1, 2) {'zombies': u'brains'}
+    In [34]: fun(1, 2, 3, zombies=u"brains", vampires=u"blood")
+    (1, 2, 3) {'vampires': u'blood', 'zombies': u'brains'}
 
 **args** and **kwargs** are *conventional* names for these.
 
@@ -687,12 +687,12 @@ Exercises
 Try your hand at writing a function that computes the distance between two
 points::
 
-    dist = sqrt( (x1-x2)**2 + (y1-y2)**2 )
+    dist = sqrt( (x1 - x2)**2 + (y1 - y2)**2 )
 
 Experiment with ``locals`` by adding this statement to the function you just
 wrote:::
 
-    print locals()
+    print(locals())
 
 
 Boolean Expressions
@@ -705,9 +705,9 @@ What is true or false in Python?
 
 .. rst-class:: build
 
-* The Booleans: ``True``  and ``False`` 
+* The Booleans: ``True``  and ``False``
 * "Something or Nothing"
-*  http://mail.python.org/pipermail/python-dev/2002-April/022107.html 
+*  http://mail.python.org/pipermail/python-dev/2002-April/022107.html
 
 
 .. nextslide::
@@ -723,8 +723,8 @@ Determining Truthiness:
 
 .. rst-class:: build
 
-* ``None`` 
-* ``False`` 
+* ``None``
+* ``False``
 * **Nothing:**
 
 * zero of any numeric type: ``0, 0L, 0.0, 0j``.
@@ -981,7 +981,7 @@ You can put a one-liner after the colon:
 .. code-block:: ipython
 
     In [167]: x = 12
-    In [168]: if x > 4: print x
+    In [168]: if x > 4: print(x)
     12
 
 But this should only be done if it makes your code **more** readable.
@@ -1270,9 +1270,9 @@ Experiment with importing different ways:
 .. code-block:: python
 
     import sys
-    print sys.path
+    print(sys.path)
     import os
-    print os.path
+    print(os.path)
 
 
 You wouldn't want to import * those!
@@ -1281,8 +1281,8 @@ You wouldn't want to import * those!
 
 .. code-block:: python
 
-    os.path.split('/foo/bar/baz.txt')
-    os.path.join('/foo/bar', 'baz.txt')
+    os.path.split(u'/foo/bar/baz.txt')
+    os.path.join(u'/foo/bar', u'baz.txt')
 
 Homework
 ========

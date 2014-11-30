@@ -586,7 +586,7 @@ At your command line, run the following commands:
 .. code-block:: bash
 
     $ cd your_working_directory_for_the_class
-    $ git clone https://github.com/<yourname>/sea-f2-python-sept14.git
+    $ git clone https://github.com/<yourname>/sea-c28-students.git
 
 (you can copy and paste that link from the gitHub page)
 
@@ -594,7 +594,7 @@ If you have an SSH key set up for gitHub, you'll want to do this instead:
 
 .. code-block:: bash
 
-    git@github.com:<yourname>/sea-f2-python-sept14.git
+    git@github.com:<yourname>/sea-c28-students.git
 
 **Remember**, <yourname> should be replaced by your github account name.
 
