@@ -5,14 +5,13 @@
 Session Four: Dictionaries, Sets, Exceptions, and Files
 *******************************************************
 
-
-
-================
 Review/Questions
 ================
 
 Review of Previous Classes
 --------------------------
+
+.. rst-class:: build
 
 * Sequences
 
@@ -30,7 +29,9 @@ Review of Previous Classes
 
   - else with loops
 
-Any questions?
+.. container::
+
+    Any questions?
 
 .. nextslide::
 
@@ -48,14 +49,14 @@ You can do that in a for loop, also:
 
 .. code-block:: ipython
 
-  In [4]: l = [(1, 2), (3, 4), (5, 6)]
+    In [3]: from __future__ import print_function
+    In [4]: l = [(1, 2), (3, 4), (5, 6)]
+    In [5]: for i, j in l:
+                print("i:%i, j:%i" % (i, j))
 
-  In [5]: for i, j in l:
-              print "i:%i, j:%i"%(i, j)
-
-  i:1, j:2
-  i:3, j:4
-  i:5, j:6
+    i:1, j:2
+    i:3, j:4
+    i:5, j:6
 
 Looping through two loops at once:
 ----------------------------------
@@ -65,11 +66,9 @@ Looping through two loops at once:
 .. code-block:: ipython
 
     In [10]: l1 = [1, 2, 3]
-
     In [11]: l2 = [3, 4, 5]
-
     In [12]: for i, j in zip(l1, l2):
-       ....:     print "i:%i, j:%i"%(i, j)
+       ....:     print("i:%i, j:%i" % (i, j))
        ....:
     i:1, j:3
     i:2, j:4
@@ -84,19 +83,19 @@ Building up a long string.
 
 The obvious thing to do is something like::
 
-  msg = u""
-  for piece in list_of_stuff:
-      msg += piece
+    msg = u""
+    for piece in list_of_stuff:
+        msg += piece
 
-But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient::
+But: strings are immutable -- python needs to create a new string each time you
+add a piece -- not efficient::
 
-   msg = []
-   for piece in list_of_stuff:
-       msg.append(piece)
-   u" ".join(msg)
+    msg = []
+    for piece in list_of_stuff:
+        msg.append(piece)
+    u" ".join(msg)
 
 appending to lists is efficient -- and so is the join() method of strings.
-
 
 .. nextslide::
 
@@ -116,7 +115,6 @@ I'll cover Exceptions later this class...
 (Asserts get ignored if optimization is turned on!)
 
 
-=================
 A little warm up
 =================
 
@@ -135,12 +133,13 @@ Fun with strings
 
   - `` "file_002 :   123.46, 1e+04" ``
 
-=====================
+
 Dictionaries and Sets
 =====================
 
 Dictionary
 ----------
+
 Python calls it a ``dict``
 
 Other languages call it:
@@ -155,17 +154,15 @@ Other languages call it:
 
 Dictionary Constructors
 -----------------------
+
 .. code-block:: python
 
     >>> {'key1': 3, 'key2': 5}
     {'key1': 3, 'key2': 5}
-
     >>> dict([('key1', 3),('key2', 5)])
     {'key1': 3, 'key2': 5}
-
-    >>> dict(key1=3, key2= 5)
+    >>> dict(key1=3, key2=5)
     {'key1': 3, 'key2': 5}
-
     >>> d = {}
     >>> d['key1'] = 3
     >>> d['key2'] = 5
@@ -174,18 +171,15 @@ Dictionary Constructors
 
 Dictionary Indexing
 -------------------
-::
-    
-    >>> d = {'name': 'Brian', 'score': 42}
 
+.. code-block:: python
+
+    >>> d = {'name': 'Brian', 'score': 42}
     >>> d['score']
     42
-
     >>> d = {1: 'one', 0: 'zero'}
-
     >>> d[0]
     'zero'
-
     >>> d['non-existing key']
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
@@ -194,7 +188,7 @@ Dictionary Indexing
 
 .. nextslide::
 
-Keys can be any immutable:
+Keys can be any **immutable** object:
 
 * number
 * string
@@ -217,21 +211,26 @@ Actually -- any "hashable" type.
 
 Hash functions convert arbitrarily large data to a small proxy (usually int)
 
-Always return the same proxy for the same input
+.. rst-class:: build
+.. container::
 
-MD5, SHA, etc
+    Always return the same proxy for the same input
 
-Dictionaries hash the key to an integer proxy and use it to find the key and value.
+    MD5, SHA, etc
 
-Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one)
+    Dictionaries hash the key to an integer proxy and use it to find the key
+    and value.
 
-What would happen if the proxy changed after storing a key?
+    Key lookup is efficient because the hash function leads directly to a
+    bucket with very few keys (often just one)
 
-Hashability requires immutability
+    What would happen if the proxy changed after storing a key?
 
-Key lookup is very efficient
+    Hashability requires immutability
 
-Same average time regardless of size
+    Key lookup is very efficient
+
+    Same average time regardless of size
 
 
 .. nextslide:: Dictionary indexing
@@ -239,22 +238,24 @@ Same average time regardless of size
 
 Note: Python name look-ups are implemented with dict -- it's highly optimized
 
-Key to value:
+.. rst-class:: build
+.. container::
 
-* lookup is one way
+    Key to value:
 
-Value to key:
+    * lookup is one way
 
-* requires visiting the whole dict
+    Value to key:
 
-If you need to check dict values often, create another dict or set
+    * requires visiting the whole dict
 
-(up to you to keep them in sync)
+    If you need to check dict values often, create another dict or set
+
+    (up to you to keep them in sync)
 
 
 Dictionary Ordering (not)
 -------------------------
-
 
 Dictionaries have no defined order
 
@@ -266,6 +267,14 @@ Dictionaries have no defined order
     In [354]: d.keys()
     Out[354]: ['three', 'two', 'one']
 
+.. rst-class:: build
+.. container::
+
+    You will be fooled by what you see into thinking that the order of pairs
+    can be relied on.
+
+    It cannot.
+
 Dictionary Iterating
 --------------------
 
@@ -273,13 +282,13 @@ Dictionary Iterating
 
 .. code-block:: ipython
 
-	In [15]: d = {'name': 'Brian', 'score': 42}
+    In [15]: d = {'name': 'Brian', 'score': 42}
 
-	In [16]: for x in d:                       
-	    print x
-	   ....:     
-	score
-	name
+    In [16]: for x in d:
+       ....:     print(x)
+       ....:
+    score
+    name
 
 
 (note the different order...)
@@ -289,16 +298,16 @@ dict keys and values
 
 .. code-block:: ipython
 
-	In [20]: d = {'name': 'Brian', 'score': 42}
+    In [20]: d = {'name': 'Brian', 'score': 42}
 
-	In [21]: d.keys()
-	Out[21]: ['score', 'name']
+    In [21]: d.keys()
+    Out[21]: ['score', 'name']
 
-	In [22]: d.values()
-	Out[22]: [42, 'Brian']
+    In [22]: d.values()
+    Out[22]: [42, 'Brian']
 
-	In [23]: d.items()
-	Out[23]: [('score', 42), ('name', 'Brian')]
+    In [23]: d.items()
+    Out[23]: [('score', 42), ('name', 'Brian')]
 
 
 dict keys and values
@@ -308,28 +317,27 @@ Iterating on everything
 
 .. code-block:: ipython
 
-	In [26]: d = {'name': 'Brian', 'score': 42}
+    In [26]: d = {'name': 'Brian', 'score': 42}
 
-	In [27]: for k, v in d.items():
-	    print "%s: %s" % (k,v)
-	   ....:     
-	score: 42
-	name: Brian
+    In [27]: for k, v in d.items():
+       ....:     print("%s: %s" % (k,v))
+       ....:
+    score: 42
+    name: Brian
 
 
-Dictionary Performance 
+Dictionary Performance
 -----------------------
 
 * indexing is fast and constant time: O(1)
 
-* ``x in s`` constant time: O(1)
+* Membership (``x in s``) constant time: O(1)
 
 * visiting all is proportional to n: O(n)
 
 * inserting is constant time: O(1)
 
 * deleting is constant time: O(1)
-
 
 http://wiki.python.org/moin/TimeComplexity
 
@@ -345,38 +353,39 @@ Is it in there?
 
 .. code-block:: ipython
 
-  In [5]: d
-  Out[5]: {'that': 7, 'this': 5}
+    In [5]: d
+    Out[5]: {'that': 7, 'this': 5}
 
-  In [6]: 'that' in d
-  Out[6]: True
+    In [6]: 'that' in d
+    Out[6]: True
 
-  In [7]: 'this' not in d
-  Out[7]: False
+    In [7]: 'this' not in d
+    Out[7]: False
 
-Containment is on the keys.
+Membership is on the keys.
 
-.. nextslide::
+.. nextslide:: Getting Something
 
-Getting something: (like indexing)
-
-.. code-block:: ipython
-
-  In [9]: d.get('this')
-  Out[9]: 5
-
-But you can specify a default
+(like indexing)
 
 .. code-block:: ipython
 
-  In [11]: d.get(u'something', u'a default')
-  Out[11]: u'a default'
+    In [9]: d.get('this')
+    Out[9]: 5
 
-Never raises an Exception (default default is None)
+.. rst-class:: build
+.. container::
 
-.. nextslide::
+    But you can specify a default
 
-iterating
+    .. code-block:: ipython
+
+        In [11]: d.get(u'something', u'a default')
+        Out[11]: u'a default'
+
+    Never raises an Exception (default default is None)
+
+.. nextslide:: Iterating
 
 .. code-block:: ipython
 
@@ -386,45 +395,44 @@ iterating
   ('this', 5)
   ('that', 7)
   In [15]: for key in d.iterkeys():
-      print key
-     ....:     
+     ....:     print key
+     ....:
   this
   that
   In [16]: for val in d.itervalues():
-      print val
-     ....:     
+     ....:     print val
+     ....:
   5
   7
 
-the ``iter*`` methods don't actually create the lists.
+the ``iter*`` methods *don't actually create the lists*.
 
-.. nextslide::
+.. nextslide:: Popping
 
-"Popping": getting the value while removing it
+gets the value at a given key while removing it
 
-pop out a particular key
+.. rst-class:: build
+.. container::
 
-.. code-block:: ipython
+    Pop just a key
 
-  In [19]: d.pop('this')
-  Out[19]: 5
+    .. code-block:: ipython
 
-  In [20]: d
-  Out[20]: {'that': 7}
+        In [19]: d.pop('this')
+        Out[19]: 5
+        In [20]: d
+        Out[20]: {'that': 7}
 
-pop out an arbitrary key, value pair
+    pop out an arbitrary key, value pair
 
-.. code-block:: ipython
+    .. code-block:: ipython
 
-  In [23]: d.popitem()
-  Out[23]: ('that', 7)
+        In [23]: d.popitem()
+        Out[23]: ('that', 7)
+        In [24]: d
+        Out[24]: {}
 
-  In [24]: d
-  Out[24]: {}
-
-.. nextslide::
-
-This one is handy:
+.. nextslide:: Handy Method
 
 ``setdefault(key[, default])``
 
@@ -432,17 +440,16 @@ gets the value if it's there, sets it if it's not
 
 .. code-block:: ipython
 
-  In [27]: d.setdefault(u'something', u'a value')
-  Out[27]: u'a value'
+    In [26]: d = {}
 
-  In [28]: d
-  Out[28]: {u'something': u'a value'}
-
-  In [29]: d.setdefault(u'something', u'a value')
-  Out[29]: u'a value'
-
-  In [30]: d
-  Out[30]: {u'something': u'a value'}
+    In [27]: d.setdefault(u'something', u'a value')
+    Out[27]: u'a value'
+    In [28]: d
+    Out[28]: {u'something': u'a value'}
+    In [29]: d.setdefault(u'something', u'a different value')
+    Out[29]: u'a value'
+    In [30]: d
+    Out[30]: {u'something': u'a value'}
 
 .. nextslide::
 
@@ -454,20 +461,18 @@ Like ``keys()``, ``values()``, ``items()``, but maintain a link to the original 
 
   In [47]: d
   Out[47]: {u'something': u'a value'}
-
   In [48]: item_view = d.viewitems()
+  In [49]: item_view
+  Out[49]: dict_items([(u'something', u'a value')])
+  In [50]: d['something else'] = u'another value'
 
-  In [49]: d['something else'] = u'another value'
+  In [51]: item_view
+  Out[51]: dict_items([('something else', u'another value'), (u'something', u'a value')])
 
-  In [50]: item_view
-  Out[50]: dict_items([('something else', u'another value'), (u'something', u'a value')])
+Sets
+----
 
-
-
-Sets 
------
-
-``set``  is an unordered collection of distinct values
+A ``set``  is an unordered collection of distinct values
 
 Essentially a dict with only keys
 
@@ -496,16 +501,19 @@ Set Properties
 
 ``Set``  members must be hashable
 
-Like dictionary keys -- and for same reason (efficient lookup)
+.. rst-class:: build
+.. container::
 
-No indexing (unordered)
+    Like dictionary keys -- and for same reason (efficient lookup)
 
-.. code-block:: ipython
+    No indexing (unordered)
 
-    >>> s[1]
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    TypeError: 'set' object does not support indexing
+    .. code-block:: ipython
+
+        >>> s[1]
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+        TypeError: 'set' object does not support indexing
 
 
 Set Methods
@@ -513,7 +521,7 @@ Set Methods
 
 .. code-block:: ipython
 
-    >> s = set([1])
+    >>> s = set([1])
     >>> s.pop() # an arbitrary member
     1
     >>> s.pop()
@@ -562,26 +570,26 @@ immutable -- for use as a key in a dict
     AttributeError: 'frozenset' object has no attribute 'add'
 
 
-==========
 Exceptions
 ==========
+
+.. rst-class:: left
+.. container::
+
+    Another Branching structure:
+
+    .. code-block:: python
+
+        try:
+            do_something()
+            f = open('missing.txt')
+            process(f)   # never called if file missing
+        except IOError:
+            print "couldn't open missing.txt"
 
 Exceptions
 ----------
 
-Another Branching structure:
-
-.. code-block:: python
-
-    try:
-        do_something()
-        f = open('missing.txt')
-        process(f)   # never called if file missing
-    except IOError:
-        print "couldn't open missing.txt"
-
-Exceptions
-----------
 Never Do this:
 
 .. code-block:: python
@@ -628,18 +636,18 @@ So you can do
     try:
         num_in = int(num_in)
     except ValueError:
-        print u"Input must be an integer, try again."
+        print(u"Input must be an integer, try again.")
 
 Or let the Exception be raised....
 
 
 .. nextslide:: EAFP
 
+::
 
-"it's Easier to Ask Forgiveness than Permission"
+    "it's Easier to Ask Forgiveness than Permission"
 
- -- Grace Hopper
-
+    -- Grace Hopper
 
 http://www.youtube.com/watch?v=AZDWveIdqjY
 
@@ -664,7 +672,7 @@ Exceptions -- finally
         f = open('missing.txt')
         process(f)   # never called if file missing
     except IOError:
-        print "couldn't open missing.txt"
+        print(u"couldn't open missing.txt")
     finally:
         do_some_clean-up
 
@@ -680,13 +688,12 @@ Exceptions -- else
         do_something()
         f = open('missing.txt')
     except IOError:
-        print "couldn't open missing.txt"
+        print(u"couldn't open missing.txt")
     else:
         process(f) # only called if there was no exception
 
 Advantage:
-
-you know where the Exception came from
+  you know where the Exception came from
 
 Exceptions -- using them
 ------------------------
@@ -701,17 +708,19 @@ Exceptions -- using them
         the_error.extra_info = "some more information"
         raise
 
+.. rst-class:: build
+.. container::
 
-Particularly useful if you catch more than one exception:
+    Particularly useful if you catch more than one exception:
 
-.. code-block:: python
+    .. code-block:: python
 
-    except (IOError, BufferError, OSError) as the_error:
-        do_something_with (the_error)
+        except (IOError, BufferError, OSError) as the_error:
+            do_something_with (the_error)
 
 
 Raising Exceptions
--------------------
+------------------
 
 .. code-block:: python
 
@@ -721,52 +730,55 @@ Raising Exceptions
         else:
             return a / b
 
+.. rst-class:: build
+.. container::
 
-when you call it:
+    when you call it:
 
-.. code-block:: ipython
+    .. code-block:: ipython
 
-    In [515]: divide (12,0)
-    ZeroDivisionError: b can not be zero
+        In [515]: divide (12,0)
+        ZeroDivisionError: b can not be zero
 
 
 Built in Exceptions
 -------------------
 
-You can create your own custom exceptions
+You can create your own custom exceptions, but...
 
-But...
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    .. code-block:: python
 
-    exp = \
-     [name for name in dir(__builtin__) if "Error" in name]
-    len(exp)
-    32
+        exp = [name for name in dir(__builtin__) if "Error" in name]
+        len(exp)
+        32
 
-
-For the most part, you can/should use a built in one
+    For the most part, you can/should use a built in one
 
 .. nextslide::
 
 Choose the best match you can for the built in Exception you raise.
 
-Example (for last week's ackerman homework)::
+.. rst-class:: build
+.. container::
 
-  if (not isinstance(m, int)) or (not isinstance(n, int)):
-      raise ValueError
+    Example (for last week's ackerman homework)::
 
-Is it the *value* or the input the problem here?
+        if (not isinstance(m, int)) or (not isinstance(n, int)):
+            raise ValueError
 
-Nope: the *type* is the problem::
+    Is the *value* of the input the problem here?
 
-  if (not isinstance(m, int)) or (not isinstance(n, int)):
-      raise TypeError
+    Nope: the *type* is the problem::
 
-but should you be checking type anyway? (EAFP)
+        if (not isinstance(m, int)) or (not isinstance(n, int)):
+            raise TypeError
+
+    but should you be checking type anyway? (EAFP)
 
 
-========================
 File Reading and Writing
 ========================
 
@@ -778,15 +790,17 @@ Text Files
 .. code-block:: python
 
     import io
-    f = io.open('secrets.txt', codec='utf-8')
+    f = io.open('secrets.txt', encoding='utf-8')
     secret_data = f.read()
     f.close()
 
 ``secret_data`` is a (unicode) string
 
-``codec`` defaults to ``sys.getdefaultencoding()`` -- often NOT what you want.
+``encoding`` defaults to ``sys.getdefaultencoding()`` -- often NOT what you
+want.
 
-(There is also the regular ``open()`` built in, but it won't handle Unicode for you...)
+(There is also the regular ``open()`` built in, but it won't handle Unicode for
+you...)
 
 .. nextslide::
 
@@ -802,11 +816,10 @@ Binary Files
 
 (with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file.)
 
-(See the ``struct``  module to unpack binary data )
+(See the ``struct``  module to unpack formatted binary data)
 
 
 .. nextslide::
-
 
 File Opening Modes
 
@@ -820,7 +833,8 @@ File Opening Modes
     U
     U+
 
-These follow the Unix conventions, and aren't all that well documented on the Python docs. But these BSD docs make it pretty clear:
+These follow the Unix conventions, and aren't all that well documented on the
+Python docs. But these BSD docs make it pretty clear:
 
 http://www.manpagez.com/man/3/fopen/
 
@@ -833,7 +847,8 @@ Text is default
 * Newlines are translated: ``\r\n -> \n``
 *   -- reading and writing!
 * Use \*nix-style in your code: ``\n``
-* ``io.open()`` returns various "stream" objects -- but they act like file objects.
+* ``io.open()`` returns various "stream" objects -- but they act like file
+  objects.
 * In text mode, io.open() defaults to "Universal" newline mode.
 
 
@@ -853,13 +868,16 @@ Gotcha:
 
 * ``buffering`` controls the buffering mode (0 for no buffering)
 
-* ``encoding`` sets the unicode encoding -- only for text files -- when set, you can ONLY write unicode object to the file.
+* ``encoding`` sets the unicode encoding -- only for text files -- when set,
+  you can ONLY write unicode object to the file.
 
 * ``errors`` sets the encoding error mode: 'strict', 'ignore', 'replace',...
 
-* ``newline`` controls Universal Newline mode: lets you write DOS-type files on \*nix, for instance (text mode only).
+* ``newline`` controls Universal Newline mode: lets you write DOS-type files on
+  \*nix, for instance (text mode only).
 
-* ``closedfd`` controls close()  behavior if a file descriptor, rather than a name is passed in (advanced usage!)
+* ``closedfd`` controls close()  behavior if a file descriptor, rather than a
+  name is passed in (advanced usage!)
 
 (https://docs.python.org/2/library/io.html?highlight=io.open#io.open)
 
@@ -887,16 +905,19 @@ Common Idioms
     for line in io.open('secrets.txt'):
         print line
 
-(the file object is an iterator!)
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    (the file object is an iterator!)
 
-    f = io.open('secrets.txt')
-    while True:
-        line = f.readline()
-        if not line:
-            break
-        do_something_with_line()
+    .. code-block:: python
+
+        f = io.open('secrets.txt')
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            do_something_with_line()
 
 
 File Writing
@@ -916,11 +937,11 @@ Commonly Used Methods
 
 .. code-block:: python
 
-    f.read() f.readline()  f.readlines()
+    f.read() f.readline() f.readlines()
 
     f.write(str) f.writelines(seq)
 
-    f.seek(offset)   f.tell()
+    f.seek(offset) f.tell()
 
     f.flush()
 
@@ -932,6 +953,8 @@ File Like Objects
 
 
 Many classes implement the file interface:
+
+.. rst-class:: build
 
 * loggers
 * ``sys.stdout``
@@ -956,7 +979,6 @@ StringIO
 (handy for testing file handling code...)
 
 
-=====================
 Paths and Directories
 =====================
 
@@ -1030,6 +1052,8 @@ It is now part of the Python3 standard library, and has been back-ported for use
 
     $ pip install pathlib
 
+.. nextslide::
+
 All the stuff in os.path and more:
 
 .. code-block:: ipython
@@ -1046,7 +1070,7 @@ All the stuff in os.path and more:
     junkfile.txt
     ...
 
-=========
+
 Homework
 =========
 
@@ -1060,9 +1084,9 @@ Assignments:
 -------------
 
 * dict/sets lab
-* coding kata: trigrams
 * Exceptions
-* Update mailroom with dicts.
+* coding kata: trigrams
+* Mailroom Madness
 
 
 Dictionaries and Sets
@@ -1129,15 +1153,17 @@ Text and files and dicts, and...
 
   and in this doc:
 
-  http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html
+  http://codefellows.github.io/sea-c28-students/supplements/kata_fourteen.html
 
 * Use The Adventures of Sherlock Holmes as input:
 
-  http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt
+  http://codefellows.github.io/sea-c28-students/_downloads/sherlock.txt
 
-* This is intentionally open-ended and underspecified. There are many interesting decisions to make.
+* This is intentionally open-ended and underspecified. There are many
+  interesting decisions to make.
 
-* Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
+* Experiment with different lengths for the lookup key. (3 words, 4 words, 3
+  letters, etc)
 
 Exceptions
 -----------
@@ -1151,8 +1177,8 @@ Improving ``raw_input``
   rather rather than raising these exceptions, when the user enters ``^C``  for
   Keyboard Interrupt, or ``^D`` (``^Z``  on Windows) for End Of File.
 
-* Update your mailroom program to use exceptions (and IBAFP) to handle
-  malformed numeric input
+* Use this wrapper to get input from users in your mailroom program and use
+  exceptions (and EAFP) to handle malformed numeric input
 
 
 Paths and File Processing
@@ -1164,10 +1190,17 @@ Paths and File Processing
 * write a program which copies a file from a source, to a destination (without
   using shutil, or the OS copy command)
 
-* update mailroom from last weeks homework to:
+
+Mailroom Madness
+----------------
+
+* Using all you've learned so far, complete your mailroom program according to
+  the pseudocode and flow chart you created last session.
 
   - use dicts where appropriate
-  - write a full set of letters to everyone to individual files on disk
   - see if you can use a dict to switch between the users selections
-  - Try to use a dict and the .format() method to do the letter as one big template -- rather than building up a big string in parts.
+  - Try to use a dict and the .format() method to do the letter as one big
+    template -- rather than building up a big string in parts.
+  - For extra fun, see if you can use a file to preserve the donation list and
+    changes made to it while the program is running.
 
