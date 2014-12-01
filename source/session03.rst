@@ -879,10 +879,18 @@ For example:
     In [123]: for x in list:
        .....:     list.remove(x)
        .....:
-    In [124]: list
-    Out[124]: [1, 3, 5, 7, 9]
 
-Was that what you expected?
+.. rst-class:: build
+.. container::
+
+    What is the expected outcome of this code?
+
+    .. code-block:: ipython
+
+        In [124]: list
+        Out[124]: [1, 3, 5, 7, 9]
+
+    Was that what you expected?
 
 .. nextslide:: The Solution
 
@@ -977,7 +985,7 @@ List Performance
   * pop(0), insert(0, v)
   * But, reversing is fast. Also, collections.deque
 
- http://wiki.python.org/moin/TimeComplexity
+http://wiki.python.org/moin/TimeComplexity
 
 
 Choosing Lists or Tuples
@@ -1078,14 +1086,17 @@ Contrast this with other languages, where you must build and use an ``index``:
         var value = arr[i];
         alert(i + ") " + value);
 
-If you need an index, though you can use ``enumerate``:
+.. rst-class:: build
+.. container::
 
-.. code-block:: ipython
+    If you need an index, though you can use ``enumerate``:
 
-    In [140]: for idx, letter in enumerate(u'Python'):
-       .....:     print(idx, letter, end=' ')
-       .....:
-    0 P 1 y 2 t 3 h 4 o 5 n
+    .. code-block:: ipython
+
+        In [140]: for idx, letter in enumerate(u'Python'):
+           .....:     print(idx, letter, end=' ')
+           .....:
+        0 P 1 y 2 t 3 h 4 o 5 n
 
 
 .. nextslide:: ``range`` and For Loops
@@ -1469,7 +1480,7 @@ Homework
 Task 1
 ------
 
-List Lab (after http://www.upriss.org.uk/python/session5.html)
+**List Lab** (after http://www.upriss.org.uk/python/session5.html)
 
 In your student folder, create a new file called ``list_lab.py``.
 
@@ -1479,6 +1490,8 @@ should be able to run the script directly like so:
 .. code-block:: bash
 
     $ ./list_lab.py
+
+Remember the **hash-bang** (``#!/usr/bin/env python``)!
 
 Add the file to your clone of the repository and commit changes frequently
 while working on the following tasks. When you are done, push your changes to
@@ -1536,7 +1549,7 @@ Once more, using the list from series 1:
 Task 2
 ------
 
-ROT13
+**ROT13**
 
 The ROT13 encryption scheme is a simple substitution cypher where each letter
 in a text is replace by the letter 13 away from it (imagine the alphabet as a
@@ -1568,25 +1581,49 @@ When you are done, push your changes to github and issue a pull request.
 Task 3
 ------
 
-"Mail Room"
+**Mail Room**
+
+This is an abstract task. Given a list of goals for a software project, you
+create a plan for completing these goals. After next session, you'll program
+your plan.
+
+To accomplish this task, you'll need to write some *pseudocode*. Like this:
+
+.. code-block:: python
+
+    def get_user_input(prompt, validator=None):
+        """request input from the user with `prompt` and return the result
+
+        optionally, validate the input with a function `validator` which must
+        take one argument, the input from the user and must return the input if
+        valid, and None if not valid
+        """
+        reply = None
+        while reply is None:
+            reply = ask_for_input(prompt)
+            if there_is_a_validator:
+                validate_the_reply
+        return reply
+
+.. nextslide:: Our Goals
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
 gifts. You are tired of doing this over an over again, so you've decided to let
 Python help you out of a jam.
 
-Write a small command-line script called ``mailroom.py``.  As with Task 1, This
-script should be executable. The script should accomplish the following goals:
+You want to write a small command-line script that can handle some of the tasks
+associated with this job for you. Here's a list of the things you want to be
+able to do:
 
-* It should have a data structure that holds a list of your donors and a
-  history of the amounts they have donated. This structure should be populated
-  at first with at least five donors, with between 1 and 3 donations each
-* The script should prompt the user (you) to choose from a menu of 2 actions:
-  'Send a Thank You' or 'Create a Report'.
+* The script should have a data structure that holds a list of your donors and
+  a history of the amounts they have donated.
+* When run, the script should prompt the user to choose from a menu of 2
+  actions: 'Send a Thank You' or 'Create a Report'.
 
 .. nextslide:: Sending a Thank You
 
-* If the user (you) selects 'Send a Thank You', prompt for a Full Name.
+* If the user selects 'Send a Thank You', prompt for a Full Name.
 
   * If the user types 'list', show them a list of the donor names and re-prompt
   * If the user types a name not in the list, add that name to the data
@@ -1614,31 +1651,35 @@ script should be executable. The script should accomplish the following goals:
     above and below)
   - After printing this report, return to the original prompt.
 
+.. nextslide:: Quitting the Script
+
 * At any point, the user should be able to quit their current task and return
   to the original prompt.
-
 * From the original prompt, the user should be able to quit the script cleanly
 
 .. nextslide:: Guidelines
 
-First, factor your script into separate functions. Each of the above
-tasks can be accomplished by a series of steps.  Write discreet functions
-that accomplish individual steps and call them.
+Begin by thinking of each individual step as a stand-alone operation. What kind
+of function would you need to write to accomplish a single step from the above
+list of steps?
 
-Second, use loops to control the logical flow of your program. Interactive
-programs are a classic use-case for the ``while`` loop.
+Write a series of *pseudocode* functions to accomplish the tasks identified by
+the list of steps above.
 
-Put the functions you write into the script at the top.
+Continue by planning the *flow* of your script.  What should happen first,
+second? How will you move from one step to the next?
 
-Put your main interaction into an ``if __name__ == '__main__'`` block.
+You may find that creating a *flow chart* that shows how you expect your script
+to work can help you to visualize this process.
 
-Finally, use only functions and the basic Python data types you've learned
-about so far. There is no need to go any farther than that for this assignment.
+You can use a program to create a flow chart, or a free web service like
+`draw.io <https://www.draw.io>`_. Or you can simply sketch something by hand.
 
 .. nextslide:: Submission
 
-As always, put the new file in your student directory in a ``session03``
-directory, and add it to your clone early. Make frequent commits with
-good, clear messages about what you are doing and why.
+To submit this homework, attach a file containing your pseudocode functions and
+a screenshot of your flow chart to the submission page in canvas.
 
-When you are done, push your changes and make a pull request.
+We will discuss the implementation of this program in more detail during
+session 4, so make sure you think this through so you can participate in that
+discussion.
