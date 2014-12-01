@@ -338,13 +338,13 @@ conditionals and looping...</p>
     <article class="">
       <p><tt class="docutils literal"><span class="pre">if</span></tt> and <tt class="docutils literal"><span class="pre">elif</span></tt> allow you to make decisions:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;a&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;a&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">b</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;b&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;b&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">c</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;c&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;c&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;that was unexpected&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;that was unexpected&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -359,14 +359,14 @@ conditionals and looping...</p>
     <article class="">
       <p>What's the difference between these two:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;a&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;a&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">b</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;b&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;b&#39;</span><span class="p">)</span>
 <span class="c">## versus...</span>
 <span class="k">if</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;a&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;a&#39;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;b&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;b&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -421,8 +421,8 @@ conditionals and looping...</p>
     <article class="">
       <p>A way to store a bunch of stuff in order</p>
 <p>Pretty much like an &quot;array&quot; or &quot;vector&quot; in other languages</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
-<span class="n">a_list_of_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;this&#39;</span><span class="p">,</span> <span class="s">&#39;that&#39;</span><span class="p">,</span> <span class="s">&#39;the&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">a_list_of_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;this&#39;</span><span class="p">,</span> <span class="s">u&#39;that&#39;</span><span class="p">,</span> <span class="s">u&#39;the&#39;</span><span class="p">,</span> <span class="s">u&#39;other&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 
@@ -436,8 +436,8 @@ conditionals and looping...</p>
     </hgroup>
     <article class="">
       <p>Another way to store an ordered list of things</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">a_tuple_of_strings</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;this&#39;</span><span class="p">,</span> <span class="s">&#39;that&#39;</span><span class="p">,</span> <span class="s">&#39;the&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">a_tuple_of_strings</span> <span class="o">=</span> <span class="p">(</span><span class="s">u&#39;this&#39;</span><span class="p">,</span> <span class="s">u&#39;that&#39;</span><span class="p">,</span> <span class="s">u&#39;the&#39;</span><span class="p">,</span> <span class="s">u&#39;other&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Tuples are <strong>not</strong> the same as lists.</p>
@@ -454,10 +454,10 @@ conditionals and looping...</p>
     <article class="">
       <p>Sometimes called a 'determinate' loop</p>
 <p>When you need to do something to everything in a sequence</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
 <span class="gp">In [11]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">item</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="go">2</span>
 <span class="go">3</span>
@@ -481,7 +481,7 @@ conditionals and looping...</p>
 <span class="gh">Out[12]: </span><span class="go">[0, 1, 2, 3, 4, 5]</span>
 
 <span class="gp">In [13]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">u&#39;*&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39; &#39;</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="go">* * * * * *</span>
 </pre></div>
@@ -521,7 +521,7 @@ conditionals and looping...</p>
     <article class="">
       <p>Defining a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
     <span class="k">return</span> <span class="n">z</span>
 </pre></div>
 </div>
@@ -543,7 +543,7 @@ given block.</p>
 <span class="gp">In [15]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">33</span>
 <span class="gp">In [16]: </span><span class="n">z</span> <span class="o">=</span> <span class="mi">34</span>
 <span class="gp">In [17]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [18]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="go">32 3 4</span>
@@ -603,8 +603,8 @@ in ALL_CAPS</p>
 <span class="gp">In [22]: </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 <span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">x</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">y</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 </pre></div>
 </div>
@@ -630,8 +630,8 @@ in ALL_CAPS</p>
 <span class="g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
 <span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 <span class="g-Whitespace">      </span><span class="mi">3</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="g-Whitespace">      </span><span class="mi">4</span>     <span class="k">print</span> <span class="n">x</span>
-<span class="g-Whitespace">      </span><span class="mi">5</span>     <span class="k">print</span> <span class="n">y</span>
+<span class="g-Whitespace">      </span><span class="mi">4</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="g-Whitespace">      </span><span class="mi">5</span>     <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 <span class="ne">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment
 </pre></div>
@@ -650,7 +650,7 @@ the global value already bound.</p>
     <article class="">
       <p>So far we've seen simple parameter lists:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>These types of parameters are called <em>positional</em></p>
@@ -668,7 +668,7 @@ parameters <em>in the order they are listed</em></p>
     <article class="">
       <p>You can provide <em>default values</em> for parameters in a function definition:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [24]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 </pre></div>
 </div>
@@ -735,14 +735,14 @@ provide any <em>positional</em> arguments:</p>
 <em>positional</em> or <em>keyword</em> arguments.</p>
 <p>The key is the <tt class="docutils literal"><span class="pre">*</span></tt> (splat) or <tt class="docutils literal"><span class="pre">**</span></tt> (double-splat) operator:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [31]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [32]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">(1,) {}</span>
-<span class="gp">In [33]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">zombies</span><span class="o">=</span><span class="s">&quot;brains&quot;</span><span class="p">)</span>
-<span class="go">(1, 2) {&#39;zombies&#39;: &#39;brains&#39;}</span>
-<span class="gp">In [34]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">zombies</span><span class="o">=</span><span class="s">&quot;brains&quot;</span><span class="p">,</span> <span class="n">vampires</span><span class="o">=</span><span class="s">&quot;blood&quot;</span><span class="p">)</span>
-<span class="go">(1, 2, 3) {&#39;vampires&#39;: &#39;blood&#39;, &#39;zombies&#39;: &#39;brains&#39;}</span>
+<span class="gp">In [33]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">zombies</span><span class="o">=</span><span class="s">u&quot;brains&quot;</span><span class="p">)</span>
+<span class="go">(1, 2) {&#39;zombies&#39;: u&#39;brains&#39;}</span>
+<span class="gp">In [34]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">zombies</span><span class="o">=</span><span class="s">u&quot;brains&quot;</span><span class="p">,</span> <span class="n">vampires</span><span class="o">=</span><span class="s">u&quot;blood&quot;</span><span class="p">)</span>
+<span class="go">(1, 2, 3) {&#39;vampires&#39;: u&#39;blood&#39;, &#39;zombies&#39;: u&#39;brains&#39;}</span>
 </pre></div>
 </div>
 <p><strong>args</strong> and <strong>kwargs</strong> are <em>conventional</em> names for these.</p>
@@ -920,12 +920,12 @@ integer by every integer smaller than it down to 1.</p>
     <article class="">
       <p>Try your hand at writing a function that computes the distance between two
 points:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Experiment with <tt class="docutils literal"><span class="pre">locals</span></tt> by adding this statement to the function you just
 wrote::</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="nb">locals</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
 </pre></div>
 </div>
 
@@ -1278,7 +1278,7 @@ problems in <a class="reference download internal" href="_downloads/codingbat.rs
     <article class="">
       <p>You can put a one-liner after the colon:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [167]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="gp">In [168]: </span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span> <span class="n">x</span>
+<span class="gp">In [168]: </span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="go">12</span>
 </pre></div>
 </div>
@@ -1615,16 +1615,16 @@ your code.</p>
     <article class="">
       <p>Experiment with importing different ways:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
+<span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You wouldn't want to import * those!</p>
 <q>
 -- check out</q>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/foo/bar/baz.txt&#39;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;/foo/bar&#39;</span><span class="p">,</span> <span class="s">&#39;baz.txt&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">u&#39;/foo/bar/baz.txt&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">u&#39;/foo/bar&#39;</span><span class="p">,</span> <span class="s">u&#39;baz.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 
