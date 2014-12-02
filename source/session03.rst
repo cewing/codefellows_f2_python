@@ -717,7 +717,7 @@ used to change the list.
 
 You can find all these in the Standard Library Documentation:
 
-http://www.python.org/2/library/stdtypes.html#mutable-sequence-types
+http://docs.python.org/2/library/stdtypes.html#mutable-sequence-types
 
 Assignment
 -----------
