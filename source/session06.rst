@@ -285,6 +285,7 @@ Basic Structure of a real class:
         # everything defined in here is in the class namespace
 
         def __init__(self, x, y):
+            # everything attached to self is in the instance namespace
             self.x = x
             self.y = y
 
@@ -296,115 +297,126 @@ Basic Structure of a real class:
     print "p.y is:", p.y
 
 
-see: ``Examples/Session06/simple_class``
+see: ``Examples/Session06/simple_classes.py``
 
-.. nextslide::
+.. nextslide:: The Initializer
 
-The Initializer
+The ``__init__``  special method is called when a new instance of a class is
+created.
 
-The ``__init__``  special method is called when a new instance of a class is created.
+.. rst-class:: build
+.. container::
 
-You can use it to do any set-up you need
+    You can use it to do any set-up you need
 
-.. code-block:: python
+    .. code-block:: python
 
-    class Point(object):
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
+        class Point(object):
+            def __init__(self, x, y):
+                self.x = x
+                self.y = y
 
 
-It gets the arguments passed when you call the class object:
+    It gets the arguments passed when you *call* the class object:
 
-.. code-block:: python  
+    .. code-block:: python  
 
-    Point(x, y)
+        Point(x, y)
 
-.. nextslide::
-
+.. nextslide:: ``self``
 
 What is this ``self`` thing?
 
-The instance of the class is passed as the first parameter for every method.
+.. rst-class:: build
+.. container::
 
-"``self``" is only a convention -- but you DO want to use it.
+    The instance of the class is passed as the first parameter for every method.
 
-.. code-block:: python
+    Using ``self`` is only a convention -- but you DO want to use it.
 
-    class Point(object):
-        def a_function(self, x, y):
-    ...
+    .. code-block:: python
+
+        class Point(object):
+            def a_function(self, x, y):
+        ...
+
+    Does this look familiar from C-style procedural programming?
 
 
-Does this look familiar from C-style procedural programming?
+.. nextslide:: The Instance Namespace
 
-
-.. nextslide::
-
-Anything assigned to a ``self.``  attribute is kept in the instance
+Anything assigned to a ``self.<xyz>``  attribute is kept in the *instance*
 name space -- ``self`` *is* the instance.
 
-That's where all the instance-specific data is.
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    That's where all the instance-specific data is.
 
-    class Point(object):
-        size = 4
-        color= "red"
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
+    .. code-block:: python
 
-.. nextslide::
+        class Point(object):
+            size = 4
+            color= "red"
+            def __init__(self, x, y):
+                self.x = x
+                self.y = y
 
-Anything assigned in the class scope is a class attribute -- every
-instance of the class shares the same one.
+.. nextslide:: The Class Namespace
 
-Note: the methods defined by ``def`` are class attributes as well.
+Anything assigned in the class scope is a class attribute
 
-The class is one namespace, the instance is another.
+.. rst-class:: build
+.. container::
+
+    Every *instance* of the class shares the same one.
+
+    Note: the methods defined by ``def`` are class attributes as well.
+
+    .. container::
+    
+        The class is one namespace, the instance is another.
+
+        .. code-block:: python  
+
+            class Point(object):
+                size = 4
+                color= "red"
+            ...
+                def get_color():
+                    return self.color
+            >>> p3.get_color()
+             'red'
+
+    Class attributes are accessed with ``self``  also.
 
 
-.. code-block:: python  
-
-    class Point(object):
-        size = 4
-        color= "red"
-    ...
-        def get_color():
-            return self.color
-    >>> p3.get_color()
-     'red'
-
-
-class attributes are accessed with ``self``  also.
-
-
-.. nextslide::
+.. nextslide:: Class Methods
 
 Typical methods:
 
-.. code-block:: python  
+.. rst-class:: build
+.. container::
 
-    class Circle(object):
-        color = "red"
+    .. code-block:: python  
 
-        def __init__(self, diameter):
-            self.diameter = diameter
+        class Circle(object):
+            color = "red"
 
-        def grow(self, factor=2):
-            self.diameter = self.diameter * factor
+            def __init__(self, diameter):
+                self.diameter = diameter
+
+            def grow(self, factor=2):
+                self.diameter = self.diameter * factor
 
 
-Methods take some parameters, manipulate the attributes in ``self``.
+    Methods take some parameters, manipulate the attributes in ``self``.
 
-They may or may not return something useful.
+    They may or may not return something useful.
 
-.. nextslide::
+.. nextslide:: Gotcha!
 
-Gotcha!
-
-.. code-block:: python  
+.. code-block:: python
 
     ...
         def grow(self, factor=2):
@@ -415,42 +427,61 @@ Gotcha!
 
     TypeError: grow() takes at most 2 arguments (3 given)
 
-Huh???? I only gave 2
+.. rst-class:: build
+.. container::
 
-``self`` is implicitly passed in for you by python.
+    Huh???? I only gave 2
 
-(demo of bound vs. unbound methods)
+    ``self`` is implicitly passed in for you by python.
 
-LAB / homework
----------------
+    (demo of bound vs. unbound methods)
+
+.. nextslide::
+
+Using ``self`` explicitly like this can seem a bit confusing
+
+.. rst-class:: build
+.. container::
+
+    But like most of Python's quirks, there's a rationale behind it
+
+    Our BDFL has made the decision that ``self`` will stay, and written
+    extensively about why:
+
+    http://neopythonic.blogspot.com/2008/10/why-explicit-self-has-to-stay.html
+
+LAB / Homework
+--------------
 
 Let's say you need to render some html..
 
-The goal is to build a set of classes that render an html page.
+.. rst-class:: build
+.. container::
 
-``Examples/Session06/sample_html.html``
+    The goal is to build a set of classes that render an html page.
 
-We'll start with a single class, then add some sub-classes to specialize the behavior
+    ``Examples/Session06/sample_html.html``
 
-Details in:
+    We'll start with a single class, then add some sub-classes to specialize the behavior
 
-:ref:`homework_html_renderer`
+    Details in:
 
+    :ref:`homework_html_renderer`
 
-Let's see if we can do step 1. in class...
+    Let's see if we can do step 1. in class...
 
-
-=======================
 Subclassing/Inheritance
 =======================
 
 Inheritance
 -----------
 
-In object-oriented programming (OOP), inheritance is a way to reuse code of existing objects, or to establish a subtype from an existing object.
+In object-oriented programming (OOP), inheritance is a way to reuse code of
+existing objects, or to establish a subtype from an existing object.
 
 
-Objects are defined by classes, classes can inherit attributes and behavior from pre-existing classes called base classes or super classes.
+Objects are defined by classes, classes can inherit attributes and behavior
+from pre-existing classes called base classes or super classes.
 
 The resulting classes are known as derived classes or subclasses.
 
@@ -461,7 +492,8 @@ Subclassing
 
 A subclass "inherits" all the attributes (methods, etc) of the parent class.
 
-You can then change ("override") some or all of the attributes to change the behavior.
+You can then change ("override") some or all of the attributes to change the
+behavior.
 
 You can also add new attributes to extend the behavior.
 
@@ -474,7 +506,8 @@ The simplest subclass in Python:
 
 ``A_subclass``  now has exactly the same behavior as ``The_superclass``
 
-NOTE: when we put ``object`` in there, it means we are deriving from object -- getting core functionality of all objects.
+NOTE: when we put ``object`` in there, it means we are deriving from object --
+getting core functionality of all objects.
 
 Overriding attributes
 ---------------------
@@ -523,50 +556,52 @@ all the instances will have the new method
 .. nextslide::
 
 Here's a program design suggestion:
-  whenever you override a method, the
-  interface of the new method should be the same as the old.  It should take
-  the same parameters, return the same type, and obey the same preconditions
-  and postconditions.
+  whenever you override a method, the interface of the new method should be the
+  same as the old.  It should take the same parameters, return the same type,
+  and obey the same preconditions and postconditions.
 
-  If you obey this rule, you will find that any function
-  designed to work with an instance of a superclass, like a Deck, will also work
-  with instances of subclasses like a Hand or PokerHand.  If you violate this
-  rule, your code will collapse like (sorry) a house of cards.
+  If you obey this rule, you will find that any function designed to work with
+  an instance of a superclass, like a Deck, will also work with instances of
+  subclasses like a Hand or PokerHand.  If you violate this rule, your code
+  will collapse like (sorry) a house of cards.
 
 [ThinkPython 18.10]
 
-
 ( Demo of class vs. instance attributes )
 
-===================
+
 More on Subclassing
 ===================
 
-Overriding \_\_init\_\_
+Overriding ``__init__``
 -----------------------
 
-``__init__`` common method to override}
+Wanting or needing to override ``__init__`` is very common
 
-You often need to call the super class ``__init__``  as well
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    You often need to call the super class ``__init__``  as well
 
-    class Circle(object):
-        color = "red"
-        def __init__(self, diameter):
-            self.diameter = diameter
-    ...
-    class CircleR(Circle):
-        def __init__(self, radius):
-            diameter = radius*2
-            Circle.__init__(self, diameter)
+    Think "everything the parent does, plus this stuff too"
 
+    .. code-block:: python
 
+        class Circle(object):
+            color = "red"
+            def __init__(self, diameter):
+                self.diameter = diameter
+        ...
+        class CircleR(Circle):
+            def __init__(self, radius):
+                diameter = radius*2
+                Circle.__init__(self, diameter)
 
-exception to: "don't change the method signature" rule.
+    exception to: "don't change the method signature" rule.
 
 More subclassing
 ----------------
+
 You can also call the superclass' other methods:
 
 .. code-block:: python  
@@ -589,9 +624,12 @@ automatically when you instantiate an instance.
 When to Subclass
 ----------------
 
-"Is a" relationship: Subclass/inheritance
+.. rst-class:: build
+.. container::
 
-"Has a" relationship: Composition
+    "Is a" relationship: Subclass/inheritance
+
+    "Has a" relationship: Composition
 
 .. nextslide::
 
@@ -609,7 +647,8 @@ or
 
 -- Does you class **have** a list?
 
-You only want to subclass list if your class could be used anywhere a list can be used.
+You only want to subclass list if your class could be used anywhere a list can
+be used.
 
 
 Attribute resolution order
@@ -621,18 +660,22 @@ When you access an attribute:
 
 Python looks for it in this order:
 
+.. rst-class:: build
+
 * Is it an instance attribute?
 * Is it a class attribute?
 * Is it a superclass attribute?
 * Is it a super-superclass attribute?
 * ...
 
+.. rst-class:: build
+.. container::
 
-It can get more complicated...
+    It can get more complicated...
 
-http://www.python.org/getit/releases/2.3/mro/
+    http://www.python.org/getit/releases/2.3/mro/
 
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
+    http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
 
 What are Python classes, really?
@@ -640,19 +683,22 @@ What are Python classes, really?
 
 Putting aside the OO theory...
 
-Python classes are:
+.. rst-class:: build
+.. container::
 
-* Namespaces
+    Python classes are:
 
-  * One for the class object
-  * One for each instance
+    .. rst-class:: build
 
-* Attribute resolution order
-* Auto tacking-on of ``self`` when methods are called
+    * Namespaces
 
+      * One for the class object
+      * One for each instance
 
-That's about it -- really!
+    * Attribute resolution order
+    * Auto tacking-on of ``self`` when methods are called
 
+    That's about it -- really!
 
 Type-Based dispatch
 -------------------
@@ -666,13 +712,17 @@ You'll see code that looks like this:
       else:
           Do_something_else
 
+.. rst-class:: build
+.. container::
 
-Usually better to use "duck typing" (polymorphism)
+    Usually better to use "duck typing" (polymorphism)
 
-But when it's called for:
+    But when it's called for:
 
-* ``isinstance()``
-* ``issubclass()``
+    .. rst-class:: build
+
+    * ``isinstance()``
+    * ``issubclass()``
 
 .. nextslide::
 
@@ -700,9 +750,7 @@ Don't be a slave to what OO is *supposed* to look like.
 
 Let OO work for you, not *create* work for you
 
-.. nextslide::
-
-OO in Python:
+.. nextslide:: OO in Python:
 
 The Art of Subclassing: *Raymond Hettinger*
 
@@ -714,8 +762,8 @@ Stop Writing Classes: *Jack Diederich*
 
 http://pyvideo.org/video/880/stop-writing-classes
 
-"If your class has only two methods -- and one of them is ``__init__``
--- you don't need a class"
+"If your class has only two methods and one of them is ``__init__``, you don't
+need a class"
 
 
 Homework
