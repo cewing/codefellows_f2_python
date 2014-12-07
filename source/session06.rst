@@ -2,22 +2,23 @@
 .. Foundations 2: Python slides file, created by
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
-******************************************************************************************
-Session Six: Object oriented programming: Classes, instances, attributes, and subclassing
-******************************************************************************************
+*************************************************
+Session Six: Intro to Object Oriented Programming
+*************************************************
+
+Classes, instances, attributes, and subclassing
 
 
-================
 Review/Questions
 ================
 
 Review of Previous Class
 ------------------------
 
+.. rst-class:: build
+
 * Argument Passing: ``*args``, ``**kwargs``
-
 * comprehensions
-
 * ``lambda``
 
 
@@ -26,13 +27,18 @@ Homework review
 
 Homework Questions?
 
-If it seems harder than it should be -- it is!
+.. rst-class:: build
+.. container::
 
-My Solution to the trigram:
+    If it seems harder than it should be -- it is!
 
-* (``dict.setdefault()``  trick...)
+    A solution to the trigram:
 
-``global`` keyword?
+    .. rst-class:: build
+
+    * (``dict.setdefault()``  trick...)
+    * ``global`` keyword?
+
 
 Unicode Notes
 -------------
@@ -51,35 +57,38 @@ You also might want to put::
 
     from __future__ import unicode_literals
 
-
 Additional notes on using Unicode in Python see:
 
     :ref:`unicode_supplement`
 
 
-===========================
+
 Object Oriented Programming
 ===========================
+
+.. rst-class:: left
+.. container::
+
+    More about Python implementation than OO design/strengths/weaknesses
+
+    .. rst-class:: build
+    .. container::
+    
+        One reason for this:
+
+        Folks can't even agree on what OO "really" means
+
+        See:
+
+            The Quarks of Object-Oriented Development
+
+            -- Deborah J. Armstrong
+
+        http://agp.hx0.ru/oop/quarks.pdf
+
 
 Object Oriented Programming
 ---------------------------
-
-More about Python implementation than OO design/strengths/weaknesses
-
-One reason for this:
-
-Folks can't even agree on what OO "really" means
-
-See:
-
-    The Quarks of Object-Oriented Development
-
-    -- Deborah J. Armstrong
-
-http://agp.hx0.ru/oop/quarks.pdf
-
-
-.. nextslide::
 
 Is Python a "True" Object-Oriented Language?
 
@@ -92,33 +101,37 @@ classes,  etc...)
 
     I don't Care!
 
+.. rst-class:: build
+.. container::
 
-Good software design is about code re-use, clean separation of concerns,
-refactorability, testability, etc...
+    Good software design is about code re-use, clean separation of concerns,
+    refactorability, testability, etc...
 
-OO can help with all that, but:
-  * It doesn't guarantee it
-  * It can get in the way
+    OO can help with all that, but:
+      * It doesn't guarantee it
+      * It can get in the way
 
 .. nextslide::
 
 Python is a Dynamic Language
 
-That clashes with "pure" OO
+.. rst-class:: build
+.. container::
 
-Think in terms of what makes sense for your project
- -- not any one paradigm of software design.
+    That clashes with "pure" OO
+
+    Think in terms of what makes sense for your project -- not any one paradigm
+    of software design.
 
 
 .. nextslide::
 
 So what is "object oriented programming"?
 
-    "Objects can be thought of as wrapping their data
+    Objects can be thought of as wrapping their data
     within a set of functions designed to ensure that
     the data are used appropriately, and to assist in
-    that use"
-
+    that use
 
 http://en.wikipedia.org/wiki/Object-oriented_programming
 
@@ -126,24 +139,31 @@ http://en.wikipedia.org/wiki/Object-oriented_programming
 
 Even simpler:
 
+.. rst-class:: build
+.. container::
 
-"Objects are data and the functions that act on them in one place."
+    "Objects are data and the functions that act on them in one place."
 
-This is the core of "encapsulation"
+    This is the core of "encapsulation"
 
-In Python: just another namespace.
+    In Python: just another namespace.
 
 .. nextslide::
 
 The OO buzzwords:
 
-* data abstraction
-* encapsulation
-* modularity
-* polymorphism
-* inheritance
+.. rst-class:: build
+.. container::
 
-Python does all of this, though it doesn't enforce it.
+    .. rst-class:: build
+
+    * data abstraction
+    * encapsulation
+    * modularity
+    * polymorphism
+    * inheritance
+
+    Python does all of this, though it doesn't enforce them.
 
 .. nextslide::
 
@@ -151,30 +171,39 @@ You can do OO in C
 
 (see the GTK+ project)
 
+.. rst-class:: build
+.. container::
 
-"OO languages" give you some handy tools to make it easier (and safer):
+    "OO languages" give you some handy tools to make it easier (and safer):
 
-* polymorphism (duck typing gives you this anyway)
-* inheritance
+    .. rst-class:: build
 
+    * polymorphism (duck typing gives you this anyway)
+    * inheritance
 
 .. nextslide::
 
-OO is the dominant model for the past couple decades
+OO has been the dominant model for the past couple decades
 
-You will need to use it:
+.. rst-class:: build
+.. container::
 
-- It's a good idea for a lot of problems
+    You will need to use it:
 
-- You'll need to work with OO packages
+    - It's a good idea for a lot of problems
 
-(Even a fair bit of the standard library is Object Oriented)
+    - You'll need to work with OO packages
+
+    (Even a fair bit of the standard library is Object Oriented)
 
 
 .. nextslide:: Some definitions
 
+.. rst-class:: build
+
 class
-  A category of objects: particular data and behavior: A "circle" (same as a type in python)
+  A category of objects: particular data and behavior: A "circle" (same as a
+  type in python)
 
 instance
   A particular object of a class: a specific circle
@@ -183,47 +212,51 @@ object
   The general case of a instance -- really any value (in Python anyway)
 
 attribute
-  Something that belongs to an object (or class): generally thought of
-  as a variable, or single object, as opposed to a ...
+  Something that belongs to an object (or class): generally thought of as a
+  variable, or single object, as opposed to a ...
 
 method
   A function that belongs to a class
 
 .. nextslide::
 
-.. rst-class:: center
+.. rst-class:: center large
 
-    Note that in python, functions are first class objects, so a method *is* an attribute
+    Note that in python, functions are first class objects, so a method *is* an
+    attribute
 
-
-==============
 Python Classes
 ==============
+
+.. rst-class:: left
+.. container::
+
+    The ``class``  statement
+
+    .. rst-class:: build
+    .. container::
+
+        ``class``  creates a new type object:
+
+        .. code-block:: ipython
+
+            In [4]: class C(object):
+               ...:     pass
+               ...:
+            In [5]: type(C)
+            Out[5]: type
+
+        A class is a type -- interesting!
+
+        It is created when the statement is run -- much like ``def``
+
+        You don't *have* to subclass from ``object``, but you *should*
+
+        (note on "new style" classes)
+
 
 Python Classes
 --------------
-
-The ``class``  statement
-
-``class``  creates a new type object:
-
-.. code-block:: ipython
-
-    In [4]: class C(object):
-        pass
-       ...:
-    In [5]: type(C)
-    Out[5]: type
-
-A class is a type -- interesting!
-
-It is created when the statement is run -- much like ``def``
-
-You don't *have* to subclass from ``object``, but you *should* 
-
-(note on "new style" classes)
-
-.. nextslide::
 
 About the simplest class you can write
 
