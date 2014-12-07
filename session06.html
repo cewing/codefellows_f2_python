@@ -10,7 +10,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 <html>
 <head>
-  <title>Session Six: Object oriented programming: Classes, instances, attributes, and subclassing &mdash; Foundations 2: Python</title>
+  <title>Session Six: Intro to Object Oriented Programming &mdash; Foundations 2: Python</title>
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -72,10 +72,11 @@ URL: https://code.google.com/p/io-2012-slides
   
     <slide class="level-1">
     <hgroup>
-      <h1>Session Six: Object oriented programming: Classes, instances, attributes, and subclassing</h1>
+      <h1>Session Six: Intro to Object Oriented Programming</h1>
     </hgroup>
     <article class="">
-      
+      <p>Classes, instances, attributes, and subclassing</p>
+
 
 
 
@@ -95,7 +96,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Review of Previous Class</h3>
     </hgroup>
     <article class="">
-      <ul class="simple">
+      <ul class="build simple">
 <li>Argument Passing: <tt class="docutils literal"><span class="pre">*args</span></tt>, <tt class="docutils literal"><span class="pre">**kwargs</span></tt></li>
 <li>comprehensions</li>
 <li><tt class="docutils literal"><span class="pre">lambda</span></tt></li>
@@ -111,12 +112,14 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>Homework Questions?</p>
+<div class="build container">
 <p>If it seems harder than it should be -- it is!</p>
-<p>My Solution to the trigram:</p>
-<ul class="simple">
+<p>A solution to the trigram:</p>
+<ul class="build simple">
 <li>(<tt class="docutils literal"><span class="pre">dict.setdefault()</span></tt>  trick...)</li>
+<li><tt class="docutils literal"><span class="pre">global</span></tt> keyword?</li>
 </ul>
-<p><tt class="docutils literal"><span class="pre">global</span></tt> keyword?</p>
+</div>
 
 
 
@@ -151,17 +154,9 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Object Oriented Programming</h2>
     </hgroup>
     <article class="">
-      
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Object Oriented Programming</h3>
-    </hgroup>
-    <article class="">
-      <p>More about Python implementation than OO design/strengths/weaknesses</p>
+      <div class="left container">
+<p>More about Python implementation than OO design/strengths/weaknesses</p>
+<div class="build container">
 <p>One reason for this:</p>
 <p>Folks can't even agree on what OO &quot;really&quot; means</p>
 <p>See:</p>
@@ -170,6 +165,8 @@ The Quarks of Object-Oriented Development</q>
 <div class="author">
 Deborah J. Armstrong</div>
 <p><a class="reference external" href="http://agp.hx0.ru/oop/quarks.pdf">http://agp.hx0.ru/oop/quarks.pdf</a></p>
+</div>
+</div>
 
 
 
@@ -194,6 +191,7 @@ classes,  etc...)</p>
     </hgroup>
     <article class="">
       <p class="center large">I don't Care!</p>
+<div class="build container">
 <p>Good software design is about code re-use, clean separation of concerns,
 refactorability, testability, etc...</p>
 <dl class="docutils">
@@ -204,6 +202,7 @@ refactorability, testability, etc...</p>
 </ul>
 </dd>
 </dl>
+</div>
 
 
 
@@ -215,11 +214,11 @@ refactorability, testability, etc...</p>
     </hgroup>
     <article class="">
       <p>Python is a Dynamic Language</p>
+<div class="build container">
 <p>That clashes with &quot;pure&quot; OO</p>
-<dl class="docutils">
-<dt>Think in terms of what makes sense for your project</dt>
-<dd>-- not any one paradigm of software design.</dd>
-</dl>
+<p>Think in terms of what makes sense for your project -- not any one paradigm
+of software design.</p>
+</div>
 
 
 
@@ -232,10 +231,10 @@ refactorability, testability, etc...</p>
     <article class="">
       <p>So what is &quot;object oriented programming&quot;?</p>
 <q>
-&quot;Objects can be thought of as wrapping their data
+Objects can be thought of as wrapping their data
 within a set of functions designed to ensure that
 the data are used appropriately, and to assist in
-that use&quot;</q>
+that use</q>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Object-oriented_programming">http://en.wikipedia.org/wiki/Object-oriented_programming</a></p>
 
 
@@ -248,9 +247,11 @@ that use&quot;</q>
     </hgroup>
     <article class="">
       <p>Even simpler:</p>
+<div class="build container">
 <p>&quot;Objects are data and the functions that act on them in one place.&quot;</p>
 <p>This is the core of &quot;encapsulation&quot;</p>
 <p>In Python: just another namespace.</p>
+</div>
 
 
 
@@ -262,14 +263,16 @@ that use&quot;</q>
     </hgroup>
     <article class="">
       <p>The OO buzzwords:</p>
-<ul class="simple">
+<div class="build container">
+<ul class="build simple">
 <li>data abstraction</li>
 <li>encapsulation</li>
 <li>modularity</li>
 <li>polymorphism</li>
 <li>inheritance</li>
 </ul>
-<p>Python does all of this, though it doesn't enforce it.</p>
+<p>Python does all of this, though it doesn't enforce them.</p>
+</div>
 
 
 
@@ -282,11 +285,13 @@ that use&quot;</q>
     <article class="">
       <p>You can do OO in C</p>
 <p>(see the GTK+ project)</p>
+<div class="build container">
 <p>&quot;OO languages&quot; give you some handy tools to make it easier (and safer):</p>
-<ul class="simple">
+<ul class="build simple">
 <li>polymorphism (duck typing gives you this anyway)</li>
 <li>inheritance</li>
 </ul>
+</div>
 
 
 
@@ -297,13 +302,15 @@ that use&quot;</q>
       <h3>Object Oriented Programming</h3>
     </hgroup>
     <article class="">
-      <p>OO is the dominant model for the past couple decades</p>
+      <p>OO has been the dominant model for the past couple decades</p>
+<div class="build container">
 <p>You will need to use it:</p>
 <ul class="simple">
 <li>It's a good idea for a lot of problems</li>
 <li>You'll need to work with OO packages</li>
 </ul>
 <p>(Even a fair bit of the standard library is Object Oriented)</p>
+</div>
 
 
 
@@ -314,16 +321,17 @@ that use&quot;</q>
       <h3>Some definitions</h3>
     </hgroup>
     <article class="">
-      <dl class="docutils">
+      <dl class="build docutils">
 <dt>class</dt>
-<dd>A category of objects: particular data and behavior: A &quot;circle&quot; (same as a type in python)</dd>
+<dd>A category of objects: particular data and behavior: A &quot;circle&quot; (same as a
+type in python)</dd>
 <dt>instance</dt>
 <dd>A particular object of a class: a specific circle</dd>
 <dt>object</dt>
 <dd>The general case of a instance -- really any value (in Python anyway)</dd>
 <dt>attribute</dt>
-<dd>Something that belongs to an object (or class): generally thought of
-as a variable, or single object, as opposed to a ...</dd>
+<dd>Something that belongs to an object (or class): generally thought of as a
+variable, or single object, as opposed to a ...</dd>
 <dt>method</dt>
 <dd>A function that belongs to a class</dd>
 </dl>
@@ -337,7 +345,8 @@ as a variable, or single object, as opposed to a ...</dd>
       <h3>Object Oriented Programming</h3>
     </hgroup>
     <article class="">
-      <p class="center">Note that in python, functions are first class objects, so a method <em>is</em> an attribute</p>
+      <p class="center large">Note that in python, functions are first class objects, so a method <em>is</em> an
+attribute</p>
 
 
 
@@ -348,20 +357,12 @@ as a variable, or single object, as opposed to a ...</dd>
       <h2>Python Classes</h2>
     </hgroup>
     <article class="">
-      
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Python Classes</h3>
-    </hgroup>
-    <article class="">
-      <p>The <tt class="docutils literal"><span class="pre">class</span></tt>  statement</p>
+      <div class="left container">
+<p>The <tt class="docutils literal"><span class="pre">class</span></tt>  statement</p>
+<div class="build container">
 <p><tt class="docutils literal"><span class="pre">class</span></tt>  creates a new type object:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="go">    pass</span>
+<span class="gp">   ...: </span>    <span class="k">pass</span>
 <span class="gp">   ...:</span>
 <span class="gp">In [5]: </span><span class="nb">type</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 <span class="gh">Out[5]: </span><span class="go">type</span>
@@ -371,6 +372,8 @@ as a variable, or single object, as opposed to a ...</dd>
 <p>It is created when the statement is run -- much like <tt class="docutils literal"><span class="pre">def</span></tt></p>
 <p>You don't <em>have</em> to subclass from <tt class="docutils literal"><span class="pre">object</span></tt>, but you <em>should</em></p>
 <p>(note on &quot;new style&quot; classes)</p>
+</div>
+</div>
 
 
 
@@ -411,6 +414,7 @@ as a variable, or single object, as opposed to a ...</dd>
     <span class="c"># everything defined in here is in the class namespace</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c"># everything attached to self is in the instance namespace</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 
@@ -422,7 +426,7 @@ as a variable, or single object, as opposed to a ...</dd>
 <span class="k">print</span> <span class="s">&quot;p.y is:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span>
 </pre></div>
 </div>
-<p>see: <tt class="docutils literal"><span class="pre">Examples/Session06/simple_class</span></tt></p>
+<p>see: <tt class="docutils literal"><span class="pre">Examples/Session06/simple_classes.py</span></tt></p>
 
 
 
@@ -430,11 +434,12 @@ as a variable, or single object, as opposed to a ...</dd>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Python Classes</h3>
+      <h3>The Initializer</h3>
     </hgroup>
     <article class="">
-      <p>The Initializer</p>
-<p>The <tt class="docutils literal"><span class="pre">__init__</span></tt>  special method is called when a new instance of a class is created.</p>
+      <p>The <tt class="docutils literal"><span class="pre">__init__</span></tt>  special method is called when a new instance of a class is
+created.</p>
+<div class="build container">
 <p>You can use it to do any set-up you need</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -442,9 +447,10 @@ as a variable, or single object, as opposed to a ...</dd>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 </pre></div>
 </div>
-<p>It gets the arguments passed when you call the class object:</p>
+<p>It gets the arguments passed when you <em>call</em> the class object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 
 
@@ -453,18 +459,20 @@ as a variable, or single object, as opposed to a ...</dd>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Python Classes</h3>
+      <h3><tt class="docutils literal"><span class="pre">self</span></tt></h3>
     </hgroup>
     <article class="">
       <p>What is this <tt class="docutils literal"><span class="pre">self</span></tt> thing?</p>
+<div class="build container">
 <p>The instance of the class is passed as the first parameter for every method.</p>
-<p>&quot;<tt class="docutils literal"><span class="pre">self</span></tt>&quot; is only a convention -- but you DO want to use it.</p>
+<p>Using <tt class="docutils literal"><span class="pre">self</span></tt> is only a convention -- but you DO want to use it.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>
 </pre></div>
 </div>
 <p>Does this look familiar from C-style procedural programming?</p>
+</div>
 
 
 
@@ -472,11 +480,12 @@ as a variable, or single object, as opposed to a ...</dd>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Python Classes</h3>
+      <h3>The Instance Namespace</h3>
     </hgroup>
     <article class="">
-      <p>Anything assigned to a <tt class="docutils literal"><span class="pre">self.</span></tt>  attribute is kept in the instance
+      <p>Anything assigned to a <tt class="docutils literal"><span class="pre">self.&lt;xyz&gt;</span></tt>  attribute is kept in the <em>instance</em>
 name space -- <tt class="docutils literal"><span class="pre">self</span></tt> <em>is</em> the instance.</p>
+<div class="build container">
 <p>That's where all the instance-specific data is.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>
@@ -486,6 +495,7 @@ name space -- <tt class="docutils literal"><span class="pre">self</span></tt> <e
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 </pre></div>
 </div>
+</div>
 
 
 
@@ -493,12 +503,14 @@ name space -- <tt class="docutils literal"><span class="pre">self</span></tt> <e
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Python Classes</h3>
+      <h3>The Class Namespace</h3>
     </hgroup>
     <article class="">
-      <p>Anything assigned in the class scope is a class attribute -- every
-instance of the class shares the same one.</p>
+      <p>Anything assigned in the class scope is a class attribute</p>
+<div class="build container">
+<p>Every <em>instance</em> of the class shares the same one.</p>
 <p>Note: the methods defined by <tt class="docutils literal"><span class="pre">def</span></tt> are class attributes as well.</p>
+<div class="container">
 <p>The class is one namespace, the instance is another.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>
@@ -510,7 +522,9 @@ instance of the class shares the same one.</p>
  <span class="s">&#39;red&#39;</span>
 </pre></div>
 </div>
-<p>class attributes are accessed with <tt class="docutils literal"><span class="pre">self</span></tt>  also.</p>
+</div>
+<p>Class attributes are accessed with <tt class="docutils literal"><span class="pre">self</span></tt>  also.</p>
+</div>
 
 
 
@@ -518,10 +532,11 @@ instance of the class shares the same one.</p>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Python Classes</h3>
+      <h3>Class Methods</h3>
     </hgroup>
     <article class="">
       <p>Typical methods:</p>
+<div class="build container">
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
 
@@ -534,6 +549,32 @@ instance of the class shares the same one.</p>
 </div>
 <p>Methods take some parameters, manipulate the attributes in <tt class="docutils literal"><span class="pre">self</span></tt>.</p>
 <p>They may or may not return something useful.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Gotcha!</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
+<span class="o">...</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">205</span><span class="p">]:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">206</span><span class="p">]:</span> <span class="n">C</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">grow</span><span class="p">()</span> <span class="n">takes</span> <span class="n">at</span> <span class="n">most</span> <span class="mi">2</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">3</span> <span class="n">given</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="build container">
+<p>Huh???? I only gave 2</p>
+<p><tt class="docutils literal"><span class="pre">self</span></tt> is implicitly passed in for you by python.</p>
+<p>(demo of bound vs. unbound methods)</p>
+</div>
 
 
 
@@ -544,20 +585,13 @@ instance of the class shares the same one.</p>
       <h3>Python Classes</h3>
     </hgroup>
     <article class="">
-      <p>Gotcha!</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
-    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
-<span class="o">...</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">205</span><span class="p">]:</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">206</span><span class="p">]:</span> <span class="n">C</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">grow</span><span class="p">()</span> <span class="n">takes</span> <span class="n">at</span> <span class="n">most</span> <span class="mi">2</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">3</span> <span class="n">given</span><span class="p">)</span>
-</pre></div>
+      <p>Using <tt class="docutils literal"><span class="pre">self</span></tt> explicitly like this can seem a bit confusing</p>
+<div class="build container">
+<p>But like most of Python's quirks, there's a rationale behind it</p>
+<p>Our BDFL has made the decision that <tt class="docutils literal"><span class="pre">self</span></tt> will stay, and written
+extensively about why:</p>
+<p><a class="reference external" href="http://neopythonic.blogspot.com/2008/10/why-explicit-self-has-to-stay.html">http://neopythonic.blogspot.com/2008/10/why-explicit-self-has-to-stay.html</a></p>
 </div>
-<p>Huh???? I only gave 2</p>
-<p><tt class="docutils literal"><span class="pre">self</span></tt> is implicitly passed in for you by python.</p>
-<p>(demo of bound vs. unbound methods)</p>
 
 
 
@@ -565,16 +599,18 @@ instance of the class shares the same one.</p>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>LAB / homework</h3>
+      <h3>LAB / Homework</h3>
     </hgroup>
     <article class="">
       <p>Let's say you need to render some html..</p>
+<div class="build container">
 <p>The goal is to build a set of classes that render an html page.</p>
 <p><tt class="docutils literal"><span class="pre">Examples/Session06/sample_html.html</span></tt></p>
 <p>We'll start with a single class, then add some sub-classes to specialize the behavior</p>
 <p>Details in:</p>
 <p><a class="reference internal" href="homework/html_builder.html#homework-html-renderer"><em>HTML Renderer Homework Assignment</em></a></p>
 <p>Let's see if we can do step 1. in class...</p>
+</div>
 
 
 
@@ -595,8 +631,10 @@ instance of the class shares the same one.</p>
       <h3>Inheritance</h3>
     </hgroup>
     <article class="">
-      <p>In object-oriented programming (OOP), inheritance is a way to reuse code of existing objects, or to establish a subtype from an existing object.</p>
-<p>Objects are defined by classes, classes can inherit attributes and behavior from pre-existing classes called base classes or super classes.</p>
+      <p>In object-oriented programming (OOP), inheritance is a way to reuse code of
+existing objects, or to establish a subtype from an existing object.</p>
+<p>Objects are defined by classes, classes can inherit attributes and behavior
+from pre-existing classes called base classes or super classes.</p>
 <p>The resulting classes are known as derived classes or subclasses.</p>
 <p>(<a class="reference external" href="http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29">http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29</a>)</p>
 
@@ -610,7 +648,8 @@ instance of the class shares the same one.</p>
     </hgroup>
     <article class="">
       <p>A subclass &quot;inherits&quot; all the attributes (methods, etc) of the parent class.</p>
-<p>You can then change (&quot;override&quot;) some or all of the attributes to change the behavior.</p>
+<p>You can then change (&quot;override&quot;) some or all of the attributes to change the
+behavior.</p>
 <p>You can also add new attributes to extend the behavior.</p>
 <p>The simplest subclass in Python:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A_subclass</span><span class="p">(</span><span class="n">The_superclass</span><span class="p">):</span>
@@ -618,7 +657,8 @@ instance of the class shares the same one.</p>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">A_subclass</span></tt>  now has exactly the same behavior as <tt class="docutils literal"><span class="pre">The_superclass</span></tt></p>
-<p>NOTE: when we put <tt class="docutils literal"><span class="pre">object</span></tt> in there, it means we are deriving from object -- getting core functionality of all objects.</p>
+<p>NOTE: when we put <tt class="docutils literal"><span class="pre">object</span></tt> in there, it means we are deriving from object --
+getting core functionality of all objects.</p>
 
 
 
@@ -679,19 +719,29 @@ instance of the class shares the same one.</p>
       <h3>Overriding methods</h3>
     </hgroup>
     <article class="">
-      <dl class="docutils">
-<dt>Here's a program design suggestion:</dt>
-<dd><p class="first">whenever you override a method, the
-interface of the new method should be the same as the old.  It should take
-the same parameters, return the same type, and obey the same preconditions
-and postconditions.</p>
-<p class="last">If you obey this rule, you will find that any function
-designed to work with an instance of a superclass, like a Deck, will also work
-with instances of subclasses like a Hand or PokerHand.  If you violate this
-rule, your code will collapse like (sorry) a house of cards.</p>
-</dd>
-</dl>
-<p>[ThinkPython 18.10]</p>
+      <p>A Program Design Suggestion:</p>
+<q>
+whenever you override a method, the interface of the new method should be
+the same as the old.  It should take the same parameters, return the same
+type, and obey the same preconditions and postconditions.</q>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Overriding methods</h3>
+    </hgroup>
+    <article class="">
+      <p>A Program Design Suggestion</p>
+<q>
+If you obey this rule, you will find that any function designed to work
+with an instance of a superclass, like a Deck, will also work with
+instances of subclasses like a Hand or PokerHand.  If you violate this
+rule, your code will collapse like (sorry) a house of cards.</q>
+<div class="author">
+[ThinkPython 18.10]</div>
 <p>( Demo of class vs. instance attributes )</p>
 
 
@@ -710,11 +760,13 @@ rule, your code will collapse like (sorry) a house of cards.</p>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Overriding __init__</h3>
+      <h3>Overriding <tt class="docutils literal"><span class="pre">__init__</span></tt></h3>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">__init__</span></tt> common method to override}</p>
+      <p>Wanting or needing to override <tt class="docutils literal"><span class="pre">__init__</span></tt> is very common</p>
+<div class="build container">
 <p>You often need to call the super class <tt class="docutils literal"><span class="pre">__init__</span></tt>  as well</p>
+<p>Think &quot;everything the parent does, plus this stuff too&quot;</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
@@ -727,6 +779,7 @@ rule, your code will collapse like (sorry) a house of cards.</p>
 </pre></div>
 </div>
 <p>exception to: &quot;don't change the method signature&quot; rule.</p>
+</div>
 
 
 
@@ -762,8 +815,10 @@ automatically when you instantiate an instance.</p>
       <h3>When to Subclass</h3>
     </hgroup>
     <article class="">
-      <p>&quot;Is a&quot; relationship: Subclass/inheritance</p>
+      <div class="build container">
+<p>&quot;Is a&quot; relationship: Subclass/inheritance</p>
 <p>&quot;Has a&quot; relationship: Composition</p>
+</div>
 
 
 
@@ -775,13 +830,17 @@ automatically when you instantiate an instance.</p>
     </hgroup>
     <article class="">
       <p>&quot;Is a&quot; vs &quot;Has a&quot;</p>
-<p>You may have a class that needs to accumulate an arbitrary number of objects.</p>
+<div class="build container">
+<p>You may have a class that needs to accumulate an arbitrary number of
+objects.</p>
 <p>A list can do that -- so should you subclass list?</p>
 <p>Ask yourself:</p>
 <p>-- <strong>Is</strong> your class a list (with some extra functionality)?</p>
 <p>or</p>
 <p>-- Does you class <strong>have</strong> a list?</p>
-<p>You only want to subclass list if your class could be used anywhere a list can be used.</p>
+<p>You only want to subclass list if your class could be used anywhere a list can
+be used.</p>
+</div>
 
 
 
@@ -795,16 +854,18 @@ automatically when you instantiate an instance.</p>
       <p>When you access an attribute:</p>
 <p><tt class="docutils literal"><span class="pre">An_Instance.something</span></tt></p>
 <p>Python looks for it in this order:</p>
-<ul class="simple">
+<ul class="build simple">
 <li>Is it an instance attribute?</li>
 <li>Is it a class attribute?</li>
 <li>Is it a superclass attribute?</li>
 <li>Is it a super-superclass attribute?</li>
 <li>...</li>
 </ul>
+<div class="build container">
 <p>It can get more complicated...</p>
 <p><a class="reference external" href="http://www.python.org/getit/releases/2.3/mro/">http://www.python.org/getit/releases/2.3/mro/</a></p>
 <p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
+</div>
 
 
 
@@ -816,8 +877,9 @@ automatically when you instantiate an instance.</p>
     </hgroup>
     <article class="">
       <p>Putting aside the OO theory...</p>
+<div class="build container">
 <p>Python classes are:</p>
-<ul class="simple">
+<ul class="build simple">
 <li>Namespaces<ul>
 <li>One for the class object</li>
 <li>One for each instance</li>
@@ -827,6 +889,7 @@ automatically when you instantiate an instance.</p>
 <li>Auto tacking-on of <tt class="docutils literal"><span class="pre">self</span></tt> when methods are called</li>
 </ul>
 <p>That's about it -- really!</p>
+</div>
 
 
 
@@ -844,12 +907,14 @@ automatically when you instantiate an instance.</p>
     <span class="n">Do_something_else</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>Usually better to use &quot;duck typing&quot; (polymorphism)</p>
 <p>But when it's called for:</p>
-<ul class="simple">
+<ul class="build simple">
 <li><tt class="docutils literal"><span class="pre">isinstance()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">issubclass()</span></tt></li>
 </ul>
+</div>
 
 
 
@@ -875,14 +940,16 @@ automatically when you instantiate an instance.</p>
     </hgroup>
     <article class="">
       <p>Thinking OO in Python:</p>
+<div class="build container">
 <p>Think about what makes sense for your code:</p>
-<ul class="simple">
+<ul class="build simple">
 <li>Code re-use</li>
 <li>Clean APIs</li>
 <li>...</li>
 </ul>
 <p>Don't be a slave to what OO is <em>supposed</em> to look like.</p>
 <p>Let OO work for you, not <em>create</em> work for you</p>
+</div>
 
 
 
@@ -890,17 +957,22 @@ automatically when you instantiate an instance.</p>
     </article>
   </slide>  <slide class="level-3">
     <hgroup>
-      <h3>Wrap Up</h3>
+      <h3>OO in Python:</h3>
     </hgroup>
     <article class="">
-      <p>OO in Python:</p>
-<p>The Art of Subclassing: <em>Raymond Hettinger</em></p>
+      <div class="build container">
+<div class="container">
+<p><strong>The Art of Subclassing</strong>: <em>Raymond Hettinger</em></p>
 <p><a class="reference external" href="http://pyvideo.org/video/879/the-art-of-subclassing">http://pyvideo.org/video/879/the-art-of-subclassing</a></p>
 <p>&quot;classes are for code re-use -- not creating taxonomies&quot;</p>
-<p>Stop Writing Classes: <em>Jack Diederich</em></p>
+</div>
+<div class="container">
+<p><strong>Stop Writing Classes</strong>: <em>Jack Diederich</em></p>
 <p><a class="reference external" href="http://pyvideo.org/video/880/stop-writing-classes">http://pyvideo.org/video/880/stop-writing-classes</a></p>
-<p>&quot;If your class has only two methods -- and one of them is <tt class="docutils literal"><span class="pre">__init__</span></tt>
--- you don't need a class&quot;</p>
+<p>&quot;If your class has only two methods and one of them is <tt class="docutils literal"><span class="pre">__init__</span></tt>,
+you don't need a class&quot;</p>
+</div>
+</div>
 
 
 
