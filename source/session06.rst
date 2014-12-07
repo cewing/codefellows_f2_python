@@ -555,17 +555,22 @@ all the instances will have the new method
 
 .. nextslide::
 
-Here's a program design suggestion:
-  whenever you override a method, the interface of the new method should be the
-  same as the old.  It should take the same parameters, return the same type,
-  and obey the same preconditions and postconditions.
+A Program Design Suggestion:
 
-  If you obey this rule, you will find that any function designed to work with
-  an instance of a superclass, like a Deck, will also work with instances of
-  subclasses like a Hand or PokerHand.  If you violate this rule, your code
-  will collapse like (sorry) a house of cards.
+    whenever you override a method, the interface of the new method should be
+    the same as the old.  It should take the same parameters, return the same
+    type, and obey the same preconditions and postconditions.
 
-[ThinkPython 18.10]
+.. nextslide::
+
+A Program Design Suggestion
+
+    If you obey this rule, you will find that any function designed to work
+    with an instance of a superclass, like a Deck, will also work with
+    instances of subclasses like a Hand or PokerHand.  If you violate this
+    rule, your code will collapse like (sorry) a house of cards.
+
+    -- [ThinkPython 18.10]
 
 ( Demo of class vs. instance attributes )
 
@@ -635,21 +640,24 @@ When to Subclass
 
 "Is a" vs "Has a"
 
-You may have a class that needs to accumulate an arbitrary number of objects.
+.. rst-class:: build
+.. container::
 
-A list can do that -- so should you subclass list?
+    You may have a class that needs to accumulate an arbitrary number of
+    objects.
 
-Ask yourself:
+    A list can do that -- so should you subclass list?
 
--- **Is** your class a list (with some extra functionality)?
+    Ask yourself:
 
-or
+    -- **Is** your class a list (with some extra functionality)?
 
--- Does you class **have** a list?
+    or
 
-You only want to subclass list if your class could be used anywhere a list can
-be used.
+    -- Does you class **have** a list?
 
+    You only want to subclass list if your class could be used anywhere a list can
+    be used.
 
 Attribute resolution order
 --------------------------
@@ -740,31 +748,42 @@ Wrap Up
 
 Thinking OO in Python:
 
-Think about what makes sense for your code:
+.. rst-class:: build
+.. container::
 
-* Code re-use
-* Clean APIs
-* ...
+    Think about what makes sense for your code:
 
-Don't be a slave to what OO is *supposed* to look like.
+    .. rst-class:: build
 
-Let OO work for you, not *create* work for you
+    * Code re-use
+    * Clean APIs
+    * ...
+
+    Don't be a slave to what OO is *supposed* to look like.
+
+    Let OO work for you, not *create* work for you
 
 .. nextslide:: OO in Python:
 
-The Art of Subclassing: *Raymond Hettinger*
+.. rst-class:: build
+.. container::
 
-http://pyvideo.org/video/879/the-art-of-subclassing
+    .. container::
 
-"classes are for code re-use -- not creating taxonomies"
+        **The Art of Subclassing**: *Raymond Hettinger*
 
-Stop Writing Classes: *Jack Diederich*
+        http://pyvideo.org/video/879/the-art-of-subclassing
 
-http://pyvideo.org/video/880/stop-writing-classes
+        "classes are for code re-use -- not creating taxonomies"
 
-"If your class has only two methods and one of them is ``__init__``, you don't
-need a class"
+    .. container::
 
+        **Stop Writing Classes**: *Jack Diederich*
+
+        http://pyvideo.org/video/880/stop-writing-classes
+
+        "If your class has only two methods and one of them is ``__init__``,
+        you don't need a class"
 
 Homework
 --------
