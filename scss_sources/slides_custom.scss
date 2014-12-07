@@ -29,10 +29,10 @@ slides > slide {
   transition: opacity 0.1s ease-in;
 }
 .build > *, p.build {
-    transition: opacity 0.1s ease-in-out 0.1s;
-    -o-transition: opacity 0.1s ease-in-out 0.1s;
-    -moz-transition: opacity 0.1s ease-in-out 0.1s;
-    -webkit-transition: opacity 0.1s ease-in-out 0.1s;
+    transition: opacity 0.05s ease-in-out 0.1s;
+    -o-transition: opacity 0.05s ease-in-out 0.1s;
+    -moz-transition: opacity 0.05s ease-in-out 0.1s;
+    -webkit-transition: opacity 0.05s ease-in-out 0.1s;
 }
 .note {
   -webkit-transition: all 0.1s ease-in-out;
