@@ -786,20 +786,20 @@ Thinking OO in Python:
         you don't need a class"
 
 Homework
---------
+========
 
-Build an html rendering system:
+.. rst-class:: left
+.. container::
 
-:ref:`homework_html_renderer`
+    Build an html rendering system:
 
-|
+    :ref:`homework_html_renderer`
 
-You will build an html generator, using:
+    You will build an html generator, using:
 
-* A Base Class with a couple methods
-* Subclasses overriding class attributes
-* Subclasses overriding a method
-* Subclasses overriding the ``__init__``
+    * A Base Class with a couple methods
+    * Subclasses overriding class attributes
+    * Subclasses overriding a method
+    * Subclasses overriding the ``__init__``
 
-These are the core OO approaches
-
+    These are the core OO approaches
