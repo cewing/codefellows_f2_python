@@ -821,8 +821,10 @@ out what it does.
 .. rst-class:: build
 .. container::
 
-    As a result, not much to submit -- but so we can give you credit, submit a
-    file with a solution to the final problem.
+    In canvas, you'll take a quiz where each of these questions is worth 1
+    point.
+
+    You can take the quiz repeatedly if you have trouble.
 
     .. code-block:: python
 
