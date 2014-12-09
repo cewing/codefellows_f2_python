@@ -251,9 +251,9 @@ Watch This Video:
 http://pyvideo.org/video/879/the-art-of-subclassing
 
 
-| 
-| 
-| 
+|
+|
+|
 
 ( I pointed you to it last week, but Seriously, well worth the time. )
 
@@ -695,7 +695,7 @@ argument
     In [41]: class Classy(object):
        ....:     x = 2
        ....:     def a_class_method(cls, y):
-       ....:         print "in a class method: ", cls
+       ....:         print(u"in a class method: ", cls)
        ....:         return y ** cls.x
        ....:     a_class_method = classmethod(a_class_method)
        ....:
@@ -718,7 +718,7 @@ more declarative style of programming:
         x = 2
         @classmethod
         def a_class_method(cls, y):
-            print "in a class method: ", cls
+            print(u"in a class method: ", cls)
             return y ** cls.x
 
 .. nextslide:: Why?
@@ -733,7 +733,7 @@ more declarative style of programming:
     Consider this:
 
     .. code-block:: ipython
-    
+
         In [44]: class SubClassy(Classy):
            ....:     x = 3
            ....:
