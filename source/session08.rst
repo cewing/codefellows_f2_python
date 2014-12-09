@@ -51,7 +51,7 @@ Decorators
 
         def substitute(a_function):
             def new_function(*args, **kwargs):
-                return "I'm not that other function"
+                return u"I'm not that other function"
             return new_function
 
 A Definition
@@ -93,9 +93,9 @@ one:
     .. code-block:: python
 
         def add(a, b):
-            print "Function 'add' called with args: %r" % locals()
+            print(u"Function 'add' called with args: %r" % locals())
             result = a + b
-            print "\tResult --> %r" % result
+            print(u"\tResult --> %r" % result)
             return result
 
 .. nextslide::
@@ -109,13 +109,13 @@ Now imagine we defined the following, more generic *decorator*:
 
     def logged_func(func):
         def logged(*args, **kwargs):
-            print "Function %r called" % func.__name__
+            print(u"Function %r called" % func.__name__)
             if args:
-                print "\twith args: %r" % args
+                print(u"\twith args: %r" % args)
             if kwargs:
-                print "\twith kwargs: %r" % kwargs
+                print(u"\twith kwargs: %r" % kwargs)
             result = func(*args, **kwargs)
-            print "\t Result --> %r" % result
+            print(u"\t Result --> %r" % result)
             return result
         return logged
 
@@ -291,7 +291,7 @@ Let's define another decorator that will time how long a given call takes:
             start = time.time()
             result = func(*args, **kwargs)
             elapsed = time.time() - start
-            print "time expired: %s" % elapsed
+            print(u"time expired: %s" % elapsed)
             return result
         return timed
 
@@ -380,7 +380,7 @@ Remember this from last week?
         def delx(self):
             del self._x
         x = property(getx, setx, delx,
-                     "I'm the 'x' property.")
+                     u"I'm the 'x' property.")
 
 .. nextslide:: The Decorator version
 
@@ -430,14 +430,14 @@ The Iterator Protocol
 An iterator must have the following methods:
 
 .. code-block:: python
-    
+
     an_iterator.__iter__()
 
 Returns the iterator object itself. This is required to allow both containers
 and iterators to be used with the ``for`` and ``in`` statements.
 
 .. code-block:: python
-    
+
     an_iterator.next()
 
 Returns the next item from the container. If there are no further items,
@@ -502,10 +502,10 @@ The ``iter()`` function:
     In [20]: iter([2,3,4])
     Out[20]: <listiterator at 0x101e01350>
 
-    In [21]: iter("a string")
+    In [21]: iter(u"a string")
     Out[21]: <iterator at 0x101e01090>
 
-    In [22]: iter( ('a', 'tuple') )
+    In [22]: iter( (u'a', u'tuple') )
     Out[22]: <tupleiterator at 0x101e01710>
 
 for an arbitrary object, ``iter()`` calls the ``__iter__`` method. But it knows about some object (``str``, for instance) that don't have a ``__iter__`` method.
@@ -568,14 +568,14 @@ In the ``Examples/Session08`` dir, you will find: ``iterator_1.py``
     it = IterateMe_2(2, 20, 2)
     for i in it:
         if i > 10:  break
-        print i
+        print(i)
 
 And then pick up again:
 
 .. code-block:: python
 
     for i in it:
-        print i
+        print(i)
 
 * Does ``xrange()``  behave the same?
 
@@ -689,7 +689,7 @@ yet another way to make a generator:
     >>> (x * 2 for x in [1, 2, 3])
     <generator object <genexpr> at 0x10911bf50>
     >>> for n in (x * 2 for x in [1, 2, 3]):
-    ...   print n
+    ...   print(n)
     ... 2 4 6
 
 
@@ -761,7 +761,7 @@ Context Managers
 
     .. code-block:: python
 
-        file_handle = open('filename.txt', 'r')
+        file_handle = open(u'filename.txt', u'r')
         file_content = file_handle.read()
         file_handle.close()
         # do some stuff with the contents
@@ -781,7 +781,7 @@ You can write more robust code for handling your resources:
 .. code-block:: python
 
     try:
-        file_handle = open('filename.txt', 'r')
+        file_handle = open(u'filename.txt', u'r')
         file_content = file_handle.read()
     finally:
         file_handle.close()
@@ -811,7 +811,7 @@ lines of defensive code have been replaced with this simple form:
 
 .. code-block:: python
 
-    with open('filename', 'r') as file_handle:
+    with open(u'filename', u'r') as file_handle:
         file_content = file_handle.read()
     # do something with file_content
 
@@ -888,13 +888,13 @@ Consider this code:
     http://pymotw.com/2/contextlib/#module-contextlib
     """
     def __init__(self, handle_error):
-        print '__init__(%s)' % handle_error
+        print(u'__init__(%s)' % handle_erro)r
         self.handle_error = handle_error
     def __enter__(self):
-        print '__enter__()'
+        print(u'__enter__()')
         return self
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
+        print(u'__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb))
         return self.handle_error
 
 .. nextslide::
@@ -905,8 +905,8 @@ the order in which things happen:
 .. code-block:: ipython
 
     In [46]: with Context(True) as foo:
-       ....:     print 'This is in the context'
-       ....:     raise RuntimeError('this is the error message')
+       ....:     print(u'This is in the context')
+       ....:     raise RuntimeError(u'this is the error message')
     __init__(True)
     __enter__()
     This is in the context
@@ -924,8 +924,8 @@ What if we try with ``False``?
 .. code-block:: ipython
 
     In [47]: with Context(False) as foo:
-       ....:     print 'This is in the context'
-       ....:     raise RuntimeError('this is the error message')
+       ....:     print(u'This is in the context')
+       ....:     raise RuntimeError(u'this is the error message')
     __init__(False)
     __enter__()
     This is in the context
@@ -934,8 +934,8 @@ What if we try with ``False``?
     RuntimeError                              Traceback (most recent call last)
     <ipython-input-47-de2c0c873dfc> in <module>()
           1 with Context(False) as foo:
-          2     print 'This is in the context'
-    ----> 3     raise RuntimeError('this is the error message')
+          2     print(u'This is in the context')
+    ----> 3     raise RuntimeError(u'this is the error message')
           4
     RuntimeError: this is the error message
 
@@ -951,16 +951,16 @@ Consider this code:
 
     @contextmanager
     def context(boolean):
-        print "__init__ code here"
+        print(u"__init__ code here")
         try:
-            print "__enter__ code goes here"
+            print(u"__enter__ code goes here")
             yield object()
         except Exception as e:
-            print "errors handled here"
+            print(u"errors handled here")
             if not boolean:
                 raise
         finally:
-            print "__exit__ cleanup goes here"
+            print(u"__exit__ cleanup goes here")
 
 .. nextslide::
 
@@ -971,8 +971,8 @@ And using it has similar results.  We can handle errors:
 .. code-block:: ipython
 
     In [50]: with context(True):
-       ....:     print "in the context"
-       ....:     raise RuntimeError("error raised")
+       ....:     print(u"in the context")
+       ....:     raise RuntimeError(u"error raised")
     __init__ code here
     __enter__ code goes here
     in the context
@@ -986,8 +986,8 @@ Or, we can allow them to propagate:
 .. code-block:: ipython
 
     In [51]: with context(False):
-       ....: print "in the context"
-       ....: raise RuntimeError("error raised")
+       ....: print(u"in the context")
+       ....: raise RuntimeError(u"error raised")
     __init__ code here
     __enter__ code goes here
     in the context
@@ -997,8 +997,8 @@ Or, we can allow them to propagate:
     RuntimeError                              Traceback (most recent call last)
     <ipython-input-51-641528ffa695> in <module>()
           1 with context(False):
-          2     print "in the context"
-    ----> 3     raise RuntimeError("error raised")
+          2     print(u"in the context")
+    ----> 3     raise RuntimeError(u"error raised")
           4
     RuntimeError: error raised
 
@@ -1063,7 +1063,7 @@ HTML 'p' tag:
        ...:     return string
        ...:
 
-    In [5]: return_a_string("this is a string")
+    In [5]: return_a_string(u"this is a string")
     Out[5]: '<p> this is a string </p>'
 
 Note that this is a **very** simple version of the very useful decorators
