@@ -1169,21 +1169,25 @@ Exceptions
 -----------
 
 * Improving raw_input :
-   - Create a new file: safe_input.py -- add it to your repo, and submit a pull request. Make sure to make frequent commits with good commit messages.
+  - Create a new file: safe_input.py -- add it to your repo, and submit a pull
+    request. Make sure to make frequent commits with good commit messages.
 
 * The raw_input() function can generate two exceptions:
-   - EOFError or end-of-file (EOF)
-   - KeyboardInterrupt  or canceled input.
-   - Create a wrapper function, perhaps safe_input() that returns 'None' rather than raising these exceptions.
-* Note:
-   - ^C causes a KeyboardInterrupt Error
-   - ^D (^Z on Windows) causes an End Of File Error.
-   - ^ is the Control character
- 
-* The next step should be done in your mailroom.py file: 
+  - EOFError or end-of-file (EOF)
+  - KeyboardInterrupt  or canceled input.
+  - Create a wrapper function, perhaps safe_input() that returns 'None' rather
+    than raising these exceptions.
 
-   - Update your mailroom.py program to use exceptions (and BAFP) to handle malformed numeric input (and other malformed input)
-   - Make sure to have your commit comment reflect that you've added this feature
+* Note:
+  - ^C causes a KeyboardInterrupt Error
+  - ^D (^Z on Windows) causes an End Of File Error.
+  - ^ is the Control character
+
+* The next step should be done in your mailroom.py file:
+  - Update your mailroom.py program to use exceptions (and BAFP) to handle
+    malformed numeric input (and other malformed input)
+  - Make sure to have your commit comment reflect that you've added this
+    feature
 
 
 Paths and File Processing
