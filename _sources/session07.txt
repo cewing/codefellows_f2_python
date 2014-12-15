@@ -6,7 +6,7 @@
 Session Seven: Testing, More OO
 *******************************
 
-.. rst-class:: large centered
+.. rst-class:: centered
 
 | Testing,
 | Multiple Inheritance,
@@ -37,6 +37,44 @@ Homework review
 Homework Questions?
 
 How is progress going on the HTML Renderer?
+
+
+A Quick Note
+------------
+
+One issue that seems vexing is how to make a script "executable"
+
+Have you seen something like this:
+
+.. code-block:: bash
+
+    $ ./run_html_render.py
+    -bash: ./run_html_render.py: Permission denied
+
+The problem is that the file is not "executable":
+
+.. code-block:: bash
+
+    $ ls -l run_html_render.py
+    -rw-r--r--  1 cewing  staff  5015 Dec 10 21:18 run_html_render.py
+
+.. nextslide::
+
+The fix for this is to add the executable bit to the permissions for the file:
+
+.. code-block:: bash
+
+    $ chmod u+x run_html_render.py
+    $ ls -l run_html_render.py
+    -rwxr--r--  1 cewing  staff  5015 Dec 10 21:18 run_html_render.py
+
+You can also do this with a numeric file-mode designation:
+
+.. code-block:: bash
+
+    $ chmod 744 run_html_render.py
+    $ ls -l run_html_render.py
+    -rwxr--r--  1 cewing  staff  5015 Dec 10 21:18 run_html_render.py
 
 
 Testing
@@ -126,10 +164,10 @@ This way, you can write your code in one file and test it from another:
 
 .. nextslide:: Advantages of ``unittest``
 
+The ``unittest`` module is pretty full featured
+
 .. rst-class:: build
 .. container::
-
-    The ``unittest`` module is pretty full featured
 
     It comes with the standard Python distribution, no installation required.
 
@@ -142,11 +180,10 @@ This way, you can write your code in one file and test it from another:
 
 .. nextslide:: Disadvantages:
 
+It's Object Oriented, and quite heavy.
+
 .. rst-class:: build
 .. container::
-
-
-    It's Object Oriented, and quite heavy.
 
     It was modeled after Java's ``junit`` and it shows...
 
@@ -160,7 +197,6 @@ This way, you can write your code in one file and test it from another:
 .. nextslide:: Other Options
 
 There are several other options for running tests in Python.
-
 
 * `Nose`_
 * `pytest`_
@@ -180,14 +216,19 @@ The first step is to install the package:
 
     (cff2py)$ pip install pytest
 
-Once this is complete, you should have a ``py.test`` command you can run at the
-command line:
+.. rst-class:: build
+.. container::
 
-.. code-block:: bash
+    You may need to use 'sudo' to get that to work.
 
-    (cff2py)$ py.test
+    Once this is complete, you should have a ``py.test`` command you can run at
+    the command line:
 
-If you have any tests in your repository, that will find and run them.
+    .. code-block:: bash
+
+        (cff2py)$ py.test
+
+    If you have any tests in your repository, that will find and run them.
 
 .. rst-class:: build
 .. container::
@@ -199,12 +240,15 @@ If you have any tests in your repository, that will find and run them.
 I've added two files to the ``Examples/Session07`` folder, along with a python
 source code file called ``circle.py``.
 
-The results you should have seen when you ran ``py.test`` above come partly
-from these files.
+.. rst-class:: build
+.. container::
 
-Let's take a few minutes to look these files over.
+    The results you should have seen when you ran ``py.test`` above come partly
+    from these files.
 
-[demo]
+    Let's take a few minutes to look these files over.
+
+    [demo]
 
 .. nextslide:: What's Happening Here.
 
@@ -234,14 +278,17 @@ This test running framework is simple, flexible and configurable.
 What we've just done here is the first step in what is called **Test Driven
 Development**.
 
-A bunch of tests exist, but the code to make them pass does not yet exist.
+.. rst-class:: build
+.. container::
 
-The red we see in the terminal when we run our tests is a goad to us to write
-the code that fixes these tests.
+    A bunch of tests exist, but the code to make them pass does not yet exist.
 
-Let's do that next!
+    The red we see in the terminal when we run our tests is a goad to us to write
+    the code that fixes these tests.
 
-[lab time!]
+    Let's do that next!
+
+    [lab time!]
 
 More on Subclassing
 ===================
@@ -250,10 +297,9 @@ Watch This Video:
 
 http://pyvideo.org/video/879/the-art-of-subclassing
 
-
-| 
-| 
-| 
+|
+|
+|
 
 ( I pointed you to it last week, but Seriously, well worth the time. )
 
@@ -263,13 +309,16 @@ What's a Subclass For?
 
 The most salient points from that video are as follows:
 
-**Subclassing is not for Specialization**
+.. rst-class:: build
+.. container::
 
-**Subclassing is for Reusing Code**
+    **Subclassing is not for Specialization**
 
-**Bear in mind that the subclass is in charge**
+    **Subclassing is for Reusing Code**
 
-Is any of this starting to make sense with the HTML builder example?
+    **Bear in mind that the subclass is in charge**
+
+    Is any of this starting to make sense with the HTML builder example?
 
 
 Multiple Inheritance
@@ -277,23 +326,26 @@ Multiple Inheritance
 
 Multiple inheritance: Inheriting from more than one class
 
-Simply provide more than one parent.
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    Simply provide more than one parent.
 
-    class Combined(Super1, Super2, Super3):
-        def __init__(self, something, something else):
-            # some custom initialization here.
-            Super1.__init__(self, ......)
-            Super2.__init__(self, ......)
-            Super3.__init__(self, ......)
-            # possibly more custom initialization
+    .. code-block:: python
 
-(calls to the super class ``__init__``  are optional -- case dependent)
+        class Combined(Super1, Super2, Super3):
+            def __init__(self, something, something else):
+                # some custom initialization here.
+                Super1.__init__(self, ......)
+                Super2.__init__(self, ......)
+                Super3.__init__(self, ......)
+                # possibly more custom initialization
 
-Now you have one class with functionaility of ALL the superclasess!
+    (calls to the super class ``__init__``  are optional -- case dependent)
 
-But what if the same attribute exists in more than one superclass?
+    Now you have one class with functionaility of ALL the superclasess!
+
+    But what if the same attribute exists in more than one superclass?
 
 .. nextslide:: Method Resolution Order
 
@@ -301,132 +353,161 @@ But what if the same attribute exists in more than one superclass?
 
     class Combined(Super1, Super2, Super3)
 
-Attributes are located bottom-to-top, left-to-right
+.. rst-class:: build
+.. container::
 
-* Is it an instance attribute ?
-* Is it a class attribute ?
-* Is it a superclass attribute ?
+    Attributes are located bottom-to-top, left-to-right
 
-  * is the it an attribute of the left-most superclass?
-  * is the it an attribute of the next superclass?
-  * and so on up the hierarchy...
+    .. rst-class:: build
 
-* Is it a super-superclass attribute ?
-* ... also left to right ...
+    * Is it an instance attribute ?
+    * Is it a class attribute ?
+    * Is it a superclass attribute ?
 
-(This is not **at all** simple!)
+      * is the it an attribute of the left-most superclass?
+      * is the it an attribute of the next superclass?
+      * and so on up the hierarchy...
 
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
+    * Is it a super-superclass attribute ?
+    * ... also left to right ...
+
+    (This is not **at all** simple!)
+
+    http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
 .. nextslide:: Mix-ins
 
 Why would you want multiple inheritance? -- one reason is mix-ins.
 
-Provides an subset of expected functionality in a re-usable package.
+.. rst-class:: build
+.. container::
 
-Hierarchies are not always simple:
+    Provides an subset of expected functionality in a re-usable package.
 
-* Animal
+    Hierarchies are not always simple:
 
-  * Mammal
+    * Animal
 
-    * GiveBirth()
+      * Mammal
 
-  * Bird
+        * GiveBirth()
 
-    * LayEggs()
+      * Bird
 
-Where do you put a Platypus?
+        * LayEggs()
 
-Real World Example: `FloatCanvas`_
+    Where do you put a Platypus?
+
+    Real World Example: `FloatCanvas`_
+
+    **Careful About This Pattern**
 
 .. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
-
-**Careful About This Pattern**
 
 
 .. nextslide:: New-Style Classes
 
 All the class definitions we've been showing inherit from ``object``.
 
-This is referred to as a "new style" class.
+.. rst-class:: build
+.. container::
 
-They were introduced in python2.2 to better merge types and classes, and clean
-up a few things.
+    This is referred to as a "new style" class.
 
-There are differences in method resolution order and properties.
+    They were introduced in python2.2 to better merge types and classes, and
+    clean up a few things.
 
-**Always Make New-Style Classes.**
+    There are differences in method resolution order and properties.
 
-The differences are subtle, and may not appear until they jump up to bite you.
+    **Always Make New-Style Classes.**
 
-(which they will the rest of this class session!)
+    The differences are subtle, and may not appear until they jump up to bite
+    you.
+
+    (which they will the rest of this class session!)
 
 .. nextslide:: ``super()``
 
 ``super()``: use it to call a superclass method, rather than explicitly calling
 the unbound method on the superclass.
 
-instead of:
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    instead of:
 
-    class A(B):
-        def __init__(self, *args, **kwargs)
-            B.__init__(self, *args, **kwargs)
-            ...
+    .. code-block:: python
 
-You can do:
+        class A(B):
+            def __init__(self, *args, **kwargs)
+                B.__init__(self, *args, **kwargs)
+                ...
 
-.. code-block:: python
+    You can do:
 
-    class A(B):
-        def __init__(self, *args, **kwargs)
-            super(A, self).__init__(*args, **kwargs)
-            ...
+    .. code-block:: python
+
+        class A(B):
+            def __init__(self, *args, **kwargs)
+                super(A, self).__init__(*args, **kwargs)
+                ...
 
 .. nextslide:: Caveats
 
 Caution: There are some subtle differences with multiple inheritance.
 
-One in the syntax: I always need to think hard to understand all that:
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    One difference is the syntax: need to think hard to understand all that:
 
-    super(A, self).__init__(*args, **kwargs)
+    .. code-block:: python
 
-This means something like:
+        super(A, self).__init__(*args, **kwargs)
 
-"create a ``super`` object for the superclass of class A, with this
-instance. Then call ``__init__`` on that object."
+    This means something like:
 
-Important note: ``super()`` **does not** return the superclass object!
+    "create a ``super`` object for the superclass of class A, with this
+    instance. Then call ``__init__`` on that object."
 
-|
+    Important note: ``super()`` **does not** return the superclass object!
 
-But you can use explicit calling to ensure that the 'right' method is called.
+    |
+
+    But you can use explicit calling to ensure that the 'right' method is
+    called.
 
 
 .. nextslide:: Background
 
 Two seminal articles about ``super()``:
 
-"Super Considered Harmful" -- James Knight
+.. rst-class:: build
+.. container::
 
-https://fuhm.net/super-harmful/
+    .. container::
 
-"super() considered super!"  --  Raymond Hettinger
+        "Super Considered Harmful" -- James Knight
 
-http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
+        https://fuhm.net/super-harmful/
 
-(Both worth reading....)
+    .. container::
 
-While appearing to be contradictory, they both have the same final message...
+        "super() considered super!"  --  Raymond Hettinger
+
+        http://rhettinger.wordpress.com/2011/05/26/super-considered-super/}
+
+    (Both worth reading....)
+
+    While appearing to be contradictory, they both have the same final
+    message...
 
 super() issues...
 -----------------
 
 Both articles actually say similar things:
+
+.. rst-class:: build
 
 * The method being called by super() needs to exist
 * Every occurrence of the method needs to use super():
@@ -438,20 +519,27 @@ Both articles actually say similar things:
 
 The caller and callee need to have a matching argument signature:
 
-Never call super with anything but the exact arguments you received,
-unless you really know what you're doing.
+.. rst-class:: build
+.. container::
 
-If you add one or more optional arguments, always accept:
+    Never call super with anything but the exact arguments you received,
+    unless you really know what you're doing.
 
-.. code-block:: python
+    .. container::
 
-    *args, **kwargs
+        If you add one or more optional arguments, always accept:
 
-and call super like:
+        .. code-block:: python
 
-.. code-block:: python
+            *args, **kwargs
 
-    super(MyClass, self).method(args_declared, *args, **kwargs)
+    .. container::
+
+        and call super like:
+
+        .. code-block:: python
+
+            super(MyClass, self).method(args_declared, *args, **kwargs)
 
 
 Properties
@@ -695,7 +783,7 @@ argument
     In [41]: class Classy(object):
        ....:     x = 2
        ....:     def a_class_method(cls, y):
-       ....:         print "in a class method: ", cls
+       ....:         print(u"in a class method: ", cls)
        ....:         return y ** cls.x
        ....:     a_class_method = classmethod(a_class_method)
        ....:
@@ -718,7 +806,7 @@ more declarative style of programming:
         x = 2
         @classmethod
         def a_class_method(cls, y):
-            print "in a class method: ", cls
+            print(u"in a class method: ", cls)
             return y ** cls.x
 
 .. nextslide:: Why?
@@ -733,7 +821,7 @@ more declarative style of programming:
     Consider this:
 
     .. code-block:: ipython
-    
+
         In [44]: class SubClassy(Classy):
            ....:     x = 3
            ....:
@@ -802,7 +890,7 @@ Kicking the Tires
 -----------------
 
 Copy the file ``Example/Session07/circle.py`` to your student folder.
-(we used it for out testing try out...)
+(we used it for our testing try out...)
 
 In it, update the simple "Circle" class:
 
@@ -849,11 +937,11 @@ Special Methods
 .. rst-class:: left
 .. container::
 
-    Special methods (also called *magic* methods) are the secret sauce to Python's
-    Duck typing.
+    Special methods (also called *magic* methods) are the secret sauce to
+    Python's Duck typing.
 
-    Defining the appropriate special methods in your classes is how you make your
-    class act like standard classes.
+    Defining the appropriate special methods in your classes is how you make
+    your class act like standard classes.
 
 What's in a Name?
 -----------------
@@ -862,19 +950,22 @@ We've seen at least one special method so far::
 
     __init__
 
-It's all in the double underscores...
-
-Pronounced "dunder" (or "under-under")
-
-try: ``dir(2)``  or ``dir(list)``
-
-.. nextslide:: Protocols
-
 .. rst-class:: build
 .. container::
 
-    The set of special methods needed to emulate a particular type of Python object
-    is called a *protocol*.
+    It's all in the double underscores...
+
+    Pronounced "dunder" (or "under-under")
+
+    try: ``dir(2)``  or ``dir(list)``
+
+.. nextslide:: Protocols
+
+The set of special methods needed to emulate a particular type of Python object
+is called a *protocol*.
+
+.. rst-class:: build
+.. container::
 
     Your classes can "become" like Python built-in classes by implementing the
     methods in a given protocol.
@@ -923,19 +1014,23 @@ Want to make a container type? Here's what you need:
 
 Each of these methods supports a common Python operation.
 
-For example, to make '+' work with a sequence type in a vector-like fashion, implement ``__add__``:
+.. rst-class:: build
+.. container::
 
-.. code-block:: python
+    For example, to make '+' work with a sequence type in a vector-like fashion,
+    implement ``__add__``:
 
-    def __add__(self, v):
-        """return the element-wise vector sum of self and v
-        """
-        assert len(self) == len(v)
-        return Vector([x1 + x2 for x1, x2 in zip(self, v)])
+    .. code-block:: python
 
-.. rst-class:: centered
+        def __add__(self, v):
+            """return the element-wise vector sum of self and v
+            """
+            assert len(self) == len(v)
+            return Vector([x1 + x2 for x1, x2 in zip(self, v)])
 
-[a more complete example: ``Examples/Session07/vector.py>``]
+    .. rst-class:: centered
+
+    [a more complete example: ``Examples/Session07/vector.py>``]
 
 
 .. nextslide:: Generally Useful Special Methods

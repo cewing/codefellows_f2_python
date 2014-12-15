@@ -75,7 +75,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h1>Session Seven: Testing, More OO</h1>
     </hgroup>
     <article class="">
-      <div class="large centered line-block">
+      <div class="centered line-block">
 <div class="line">Testing,</div>
 <div class="line">Multiple Inheritance,</div>
 <div class="line">Properties,</div>
@@ -125,6 +125,49 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>Homework Questions?</p>
 <p>How is progress going on the HTML Renderer?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>A Quick Note</h3>
+    </hgroup>
+    <article class="">
+      <p>One issue that seems vexing is how to make a script &quot;executable&quot;</p>
+<p>Have you seen something like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./run_html_render.py
+-bash: ./run_html_render.py: Permission denied
+</pre></div>
+</div>
+<p>The problem is that the file is not &quot;executable&quot;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls -l run_html_render.py
+-rw-r--r--  <span class="m">1</span> cewing  staff  <span class="m">5015</span> Dec <span class="m">10</span> 21:18 run_html_render.py
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>A Quick Note</h3>
+    </hgroup>
+    <article class="">
+      <p>The fix for this is to add the executable bit to the permissions for the file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod u+x run_html_render.py
+<span class="nv">$ </span>ls -l run_html_render.py
+-rwxr--r--  <span class="m">1</span> cewing  staff  <span class="m">5015</span> Dec <span class="m">10</span> 21:18 run_html_render.py
+</pre></div>
+</div>
+<p>You can also do this with a numeric file-mode designation:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod <span class="m">744</span> run_html_render.py
+<span class="nv">$ </span>ls -l run_html_render.py
+-rwxr--r--  <span class="m">1</span> cewing  staff  <span class="m">5015</span> Dec <span class="m">10</span> 21:18 run_html_render.py
+</pre></div>
+</div>
 
 
 
@@ -230,8 +273,8 @@ module:</p>
       <h3>Advantages of <tt class="docutils literal"><span class="pre">unittest</span></tt></h3>
     </hgroup>
     <article class="">
-      <div class="build container">
-<p>The <tt class="docutils literal"><span class="pre">unittest</span></tt> module is pretty full featured</p>
+      <p>The <tt class="docutils literal"><span class="pre">unittest</span></tt> module is pretty full featured</p>
+<div class="build container">
 <p>It comes with the standard Python distribution, no installation required.</p>
 <p>It provides a wide variety of assertions for testing all sorts of situations.</p>
 <p>It allows for a setup and tear down workflow both before and after all tests
@@ -248,8 +291,8 @@ and before and after each test.</p>
       <h3>Disadvantages:</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
-<p>It's Object Oriented, and quite heavy.</p>
+      <p>It's Object Oriented, and quite heavy.</p>
+<div class="build container">
 <p>It was modeled after Java's <tt class="docutils literal"><span class="pre">junit</span></tt> and it shows...</p>
 <p>It uses the framework design pattern, so knowing how to use the features
 means learning what to override.</p>
@@ -287,12 +330,15 @@ means learning what to override.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>cff2py<span class="o">)</span><span class="nv">$ </span>pip install pytest
 </pre></div>
 </div>
-<p>Once this is complete, you should have a <tt class="docutils literal"><span class="pre">py.test</span></tt> command you can run at the
-command line:</p>
+<div class="build container">
+<p>You may need to use 'sudo' to get that to work.</p>
+<p>Once this is complete, you should have a <tt class="docutils literal"><span class="pre">py.test</span></tt> command you can run at
+the command line:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>cff2py<span class="o">)</span><span class="nv">$ </span>py.test
 </pre></div>
 </div>
 <p>If you have any tests in your repository, that will find and run them.</p>
+</div>
 <div class="build container">
 <strong>Do you?</strong></div>
 
@@ -307,10 +353,12 @@ command line:</p>
     <article class="">
       <p>I've added two files to the <tt class="docutils literal"><span class="pre">Examples/Session07</span></tt> folder, along with a python
 source code file called <tt class="docutils literal"><span class="pre">circle.py</span></tt>.</p>
+<div class="build container">
 <p>The results you should have seen when you ran <tt class="docutils literal"><span class="pre">py.test</span></tt> above come partly
 from these files.</p>
 <p>Let's take a few minutes to look these files over.</p>
 <p>[demo]</p>
+</div>
 
 
 
@@ -354,11 +402,13 @@ begin with <tt class="docutils literal"><span class="pre">test_</span></tt> trea
     <article class="">
       <p>What we've just done here is the first step in what is called <strong>Test Driven
 Development</strong>.</p>
+<div class="build container">
 <p>A bunch of tests exist, but the code to make them pass does not yet exist.</p>
 <p>The red we see in the terminal when we run our tests is a goad to us to write
 the code that fixes these tests.</p>
 <p>Let's do that next!</p>
 <p>[lab time!]</p>
+</div>
 
 
 
@@ -388,10 +438,12 @@ the code that fixes these tests.</p>
     </hgroup>
     <article class="">
       <p>The most salient points from that video are as follows:</p>
+<div class="build container">
 <p><strong>Subclassing is not for Specialization</strong></p>
 <p><strong>Subclassing is for Reusing Code</strong></p>
 <p><strong>Bear in mind that the subclass is in charge</strong></p>
 <p>Is any of this starting to make sense with the HTML builder example?</p>
+</div>
 
 
 
@@ -403,6 +455,7 @@ the code that fixes these tests.</p>
     </hgroup>
     <article class="">
       <p>Multiple inheritance: Inheriting from more than one class</p>
+<div class="build container">
 <p>Simply provide more than one parent.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Super1</span><span class="p">,</span> <span class="n">Super2</span><span class="p">,</span> <span class="n">Super3</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">something</span><span class="p">,</span> <span class="n">something</span> <span class="k">else</span><span class="p">):</span>
@@ -416,6 +469,7 @@ the code that fixes these tests.</p>
 <p>(calls to the super class <tt class="docutils literal"><span class="pre">__init__</span></tt>  are optional -- case dependent)</p>
 <p>Now you have one class with functionaility of ALL the superclasess!</p>
 <p>But what if the same attribute exists in more than one superclass?</p>
+</div>
 
 
 
@@ -429,8 +483,9 @@ the code that fixes these tests.</p>
       <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Super1</span><span class="p">,</span> <span class="n">Super2</span><span class="p">,</span> <span class="n">Super3</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>Attributes are located bottom-to-top, left-to-right</p>
-<ul class="simple">
+<ul class="build simple">
 <li>Is it an instance attribute ?</li>
 <li>Is it a class attribute ?</li>
 <li>Is it a superclass attribute ?<ul>
@@ -444,6 +499,7 @@ the code that fixes these tests.</p>
 </ul>
 <p>(This is not <strong>at all</strong> simple!)</p>
 <p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
+</div>
 
 
 
@@ -455,6 +511,7 @@ the code that fixes these tests.</p>
     </hgroup>
     <article class="">
       <p>Why would you want multiple inheritance? -- one reason is mix-ins.</p>
+<div class="build container">
 <p>Provides an subset of expected functionality in a re-usable package.</p>
 <p>Hierarchies are not always simple:</p>
 <ul class="simple">
@@ -473,6 +530,7 @@ the code that fixes these tests.</p>
 <p>Where do you put a Platypus?</p>
 <p>Real World Example: <a class="reference external" href="https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485">FloatCanvas</a></p>
 <p><strong>Careful About This Pattern</strong></p>
+</div>
 
 
 
@@ -484,13 +542,16 @@ the code that fixes these tests.</p>
     </hgroup>
     <article class="">
       <p>All the class definitions we've been showing inherit from <tt class="docutils literal"><span class="pre">object</span></tt>.</p>
+<div class="build container">
 <p>This is referred to as a &quot;new style&quot; class.</p>
-<p>They were introduced in python2.2 to better merge types and classes, and clean
-up a few things.</p>
+<p>They were introduced in python2.2 to better merge types and classes, and
+clean up a few things.</p>
 <p>There are differences in method resolution order and properties.</p>
 <p><strong>Always Make New-Style Classes.</strong></p>
-<p>The differences are subtle, and may not appear until they jump up to bite you.</p>
+<p>The differences are subtle, and may not appear until they jump up to bite
+you.</p>
 <p>(which they will the rest of this class session!)</p>
+</div>
 
 
 
@@ -503,6 +564,7 @@ up a few things.</p>
     <article class="">
       <p><tt class="docutils literal"><span class="pre">super()</span></tt>: use it to call a superclass method, rather than explicitly calling
 the unbound method on the superclass.</p>
+<div class="build container">
 <p>instead of:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -517,6 +579,7 @@ the unbound method on the superclass.</p>
         <span class="o">...</span>
 </pre></div>
 </div>
+</div>
 
 
 
@@ -528,7 +591,8 @@ the unbound method on the superclass.</p>
     </hgroup>
     <article class="">
       <p>Caution: There are some subtle differences with multiple inheritance.</p>
-<p>One in the syntax: I always need to think hard to understand all that:</p>
+<div class="build container">
+<p>One difference is the syntax: need to think hard to understand all that:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">super</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -539,7 +603,9 @@ instance. Then call <tt class="docutils literal"><span class="pre">__init__</spa
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>But you can use explicit calling to ensure that the 'right' method is called.</p>
+<p>But you can use explicit calling to ensure that the 'right' method is
+called.</p>
+</div>
 
 
 
@@ -551,12 +617,19 @@ instance. Then call <tt class="docutils literal"><span class="pre">__init__</spa
     </hgroup>
     <article class="">
       <p>Two seminal articles about <tt class="docutils literal"><span class="pre">super()</span></tt>:</p>
+<div class="build container">
+<div class="container">
 <p>&quot;Super Considered Harmful&quot; -- James Knight</p>
 <p><a class="reference external" href="https://fuhm.net/super-harmful/">https://fuhm.net/super-harmful/</a></p>
+</div>
+<div class="container">
 <p>&quot;super() considered super!&quot;  --  Raymond Hettinger</p>
 <p><a class="reference external" href="http://rhettinger.wordpress.com/2011/05/26/super-considered-super/">http://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a>}</p>
+</div>
 <p>(Both worth reading....)</p>
-<p>While appearing to be contradictory, they both have the same final message...</p>
+<p>While appearing to be contradictory, they both have the same final
+message...</p>
+</div>
 
 
 
@@ -568,7 +641,7 @@ instance. Then call <tt class="docutils literal"><span class="pre">__init__</spa
     </hgroup>
     <article class="">
       <p>Both articles actually say similar things:</p>
-<ul class="simple">
+<ul class="build simple">
 <li>The method being called by super() needs to exist</li>
 <li>Every occurrence of the method needs to use super():<ul>
 <li>Use it consistently, and document that you use it, as it is part of
@@ -587,15 +660,21 @@ the external interface for your class, like it or not.</li>
     </hgroup>
     <article class="">
       <p>The caller and callee need to have a matching argument signature:</p>
+<div class="build container">
 <p>Never call super with anything but the exact arguments you received,
 unless you really know what you're doing.</p>
+<div class="container">
 <p>If you add one or more optional arguments, always accept:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 </pre></div>
 </div>
+</div>
+<div class="container">
 <p>and call super like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">super</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">args_declared</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 
 
@@ -875,7 +954,7 @@ argument</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [41]: </span><span class="k">class</span> <span class="nc">Classy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="gp">   ....: </span>    <span class="k">def</span> <span class="nf">a_class_method</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="gp">   ....: </span>        <span class="k">print</span> <span class="s">&quot;in a class method: &quot;</span><span class="p">,</span> <span class="n">cls</span>
+<span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="s">u&quot;in a class method: &quot;</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span>
 <span class="gp">   ....: </span>        <span class="k">return</span> <span class="n">y</span> <span class="o">**</span> <span class="n">cls</span><span class="o">.</span><span class="n">x</span>
 <span class="gp">   ....: </span>    <span class="n">a_class_method</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">a_class_method</span><span class="p">)</span>
 <span class="gp">   ....:</span>
@@ -901,7 +980,7 @@ more declarative style of programming:</p>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">a_class_method</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;in a class method: &quot;</span><span class="p">,</span> <span class="n">cls</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">u&quot;in a class method: &quot;</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">y</span> <span class="o">**</span> <span class="n">cls</span><span class="o">.</span><span class="n">x</span>
 </pre></div>
 </div>
@@ -1005,7 +1084,7 @@ well.</p>
     </hgroup>
     <article class="">
       <p>Copy the file <tt class="docutils literal"><span class="pre">Example/Session07/circle.py</span></tt> to your student folder.
-(we used it for out testing try out...)</p>
+(we used it for our testing try out...)</p>
 <p>In it, update the simple &quot;Circle&quot; class:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">In [15]: </span><span class="n">c</span><span class="o">.</span><span class="n">diameter</span>
@@ -1051,10 +1130,10 @@ green'.</p>
     </hgroup>
     <article class="">
       <div class="left container">
-<p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python's
-Duck typing.</p>
-<p>Defining the appropriate special methods in your classes is how you make your
-class act like standard classes.</p>
+<p>Special methods (also called <em>magic</em> methods) are the secret sauce to
+Python's Duck typing.</p>
+<p>Defining the appropriate special methods in your classes is how you make
+your class act like standard classes.</p>
 </div>
 
 
@@ -1070,9 +1149,11 @@ class act like standard classes.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>It's all in the double underscores...</p>
 <p>Pronounced &quot;dunder&quot; (or &quot;under-under&quot;)</p>
 <p>try: <tt class="docutils literal"><span class="pre">dir(2)</span></tt>  or <tt class="docutils literal"><span class="pre">dir(list)</span></tt></p>
+</div>
 
 
 
@@ -1083,9 +1164,9 @@ class act like standard classes.</p>
       <h3>Protocols</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
-<p>The set of special methods needed to emulate a particular type of Python object
+      <p>The set of special methods needed to emulate a particular type of Python object
 is called a <em>protocol</em>.</p>
+<div class="build container">
 <p>Your classes can &quot;become&quot; like Python built-in classes by implementing the
 methods in a given protocol.</p>
 <p>Remember, these are more <em>guidelines</em> than laws.  Implement what you need.</p>
@@ -1149,7 +1230,9 @@ methods in a given protocol.</p>
     </hgroup>
     <article class="">
       <p>Each of these methods supports a common Python operation.</p>
-<p>For example, to make '+' work with a sequence type in a vector-like fashion, implement <tt class="docutils literal"><span class="pre">__add__</span></tt>:</p>
+<div class="build container">
+<p>For example, to make '+' work with a sequence type in a vector-like fashion,
+implement <tt class="docutils literal"><span class="pre">__add__</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;return the element-wise vector sum of self and v</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1158,6 +1241,7 @@ methods in a given protocol.</p>
 </pre></div>
 </div>
 <p class="centered">[a more complete example: <tt class="docutils literal"><span class="pre">Examples/Session07/vector.py&gt;</span></tt>]</p>
+</div>
 
 
 

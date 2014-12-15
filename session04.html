@@ -1537,15 +1537,33 @@ letters, etc)</p>
       <h3>Exceptions</h3>
     </hgroup>
     <article class="">
-      <p>Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt></p>
+      <ul>
+<li><p class="first">Improving raw_input :
+- Create a new file: safe_input.py -- add it to your repo, and submit a pull</p>
+<q>
+request. Make sure to make frequent commits with good commit messages.</q>
+</li>
+<li><p class="first">The raw_input() function can generate two exceptions:
+- EOFError or end-of-file (EOF)
+- KeyboardInterrupt  or canceled input.
+- Create a wrapper function, perhaps safe_input() that returns 'None' rather</p>
+<q>
+than raising these exceptions.</q>
+</li>
+<li><p class="first">Note:
+- ^C causes a KeyboardInterrupt Error
+- ^D (^Z on Windows) causes an End Of File Error.
+- ^ is the Control character</p>
+</li>
+<li><p class="first">The next step should be done in your mailroom.py file:
+- Update your mailroom.py program to use exceptions (and BAFP) to handle</p>
+<q>
+malformed numeric input (and other malformed input)</q>
 <ul class="simple">
-<li>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions: <tt class="docutils literal"><span class="pre">EOFError</span></tt>  or
-<tt class="docutils literal"><span class="pre">KeyboardInterrupt</span></tt>  on end-of-file(EOF) or canceled input.</li>
-<li>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns <tt class="docutils literal"><span class="pre">None</span></tt>
-rather rather than raising these exceptions, when the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for
-Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt> (<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</li>
-<li>Use this wrapper to get input from users in your mailroom program and use
-exceptions (and EAFP) to handle malformed numeric input</li>
+<li>Make sure to have your commit comment reflect that you've added this
+feature</li>
+</ul>
+</li>
 </ul>
 
 
