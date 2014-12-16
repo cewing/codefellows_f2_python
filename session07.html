@@ -1253,12 +1253,13 @@ implement <tt class="docutils literal"><span class="pre">__add__</span></tt>:</p
     </hgroup>
     <article class="">
       <p>You only <em>need</em> to define the special methods that will be used by your class.</p>
-<p>However, even in the absence of wanting to duck-type, you should almost always
-define these:</p>
+<div class="build container">
+<p>However, even in the absence of wanting to duck-type, you should almost
+always define these:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">object.__str__</span></tt>:</dt>
-<dd>Called by the str() built-in function and by the print statement to compute
-the <em>informal</em> string representation of an object.</dd>
+<dd>Called by the str() built-in function and by the print statement to
+compute the <em>informal</em> string representation of an object.</dd>
 <dt><tt class="docutils literal"><span class="pre">object.__unicode__</span></tt>:</dt>
 <dd>Called by the unicode() built-in function.  This converts an object to an
 <em>informal</em> unicode representation.</dd>
@@ -1268,6 +1269,7 @@ quotes) to compute the <em>official</em> string representation of an object.</p>
 <p class="last">(ideally: <tt class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></tt>)</p>
 </dd>
 </dl>
+</div>
 
 
 
@@ -1280,14 +1282,16 @@ quotes) to compute the <em>official</em> string representation of an object.</p>
     <article class="">
       <p>Use special methods when you want your class to act like a &quot;standard&quot; class in
 some way.</p>
+<div class="build container">
 <p>Look up the special methods you need and define them.</p>
 <p>There's more to read about the details of implementing these methods:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/2/reference/datamodel.html#special-method-names">https://docs.python.org/2/reference/datamodel.html#special-method-names</a></li>
 <li><a class="reference external" href="http://www.rafekettler.com/magicmethods.html">http://www.rafekettler.com/magicmethods.html</a></li>
 </ul>
-<p>Be a bit cautious about the code examples in that last one. It uses quite a bit
-of old-style class definitions, which should not be emulated.</p>
+<p>Be a bit cautious about the code examples in that last one. It uses quite a
+bit of old-style class definitions, which should not be emulated.</p>
+</div>
 
 
 
@@ -1362,8 +1366,8 @@ into standalone pytest files.</p>
 </pre></div>
 </div>
 <p>Add unit tests for the HTML Renderer that you are currently constructing.</p>
-<p>Create at least 4 test files with tests that well exercise the features built
-in each source file.</p>
+<p>Create at least 4 test files with tests that exercise the features built in
+the corresponding source file.</p>
 
 
 

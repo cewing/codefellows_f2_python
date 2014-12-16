@@ -1037,37 +1037,43 @@ Each of these methods supports a common Python operation.
 
 You only *need* to define the special methods that will be used by your class.
 
-However, even in the absence of wanting to duck-type, you should almost always
-define these:
+.. rst-class:: build
+.. container::
 
-``object.__str__``:
-  Called by the str() built-in function and by the print statement to compute
-  the *informal* string representation of an object.
+    However, even in the absence of wanting to duck-type, you should almost
+    always define these:
 
-``object.__unicode__``:
-  Called by the unicode() built-in function.  This converts an object to an
-  *informal* unicode representation.
+    ``object.__str__``:
+      Called by the str() built-in function and by the print statement to
+      compute the *informal* string representation of an object.
 
-``object.__repr__``:
-  Called by the repr() built-in function and by string conversions (reverse
-  quotes) to compute the *official* string representation of an object.
+    ``object.__unicode__``:
+      Called by the unicode() built-in function.  This converts an object to an
+      *informal* unicode representation.
 
-  (ideally: ``eval( repr(something) ) == something``)
+    ``object.__repr__``:
+      Called by the repr() built-in function and by string conversions (reverse
+      quotes) to compute the *official* string representation of an object.
+
+      (ideally: ``eval( repr(something) ) == something``)
 
 .. nextslide:: Summary
 
 Use special methods when you want your class to act like a "standard" class in
 some way.
 
-Look up the special methods you need and define them.
+.. rst-class:: build
+.. container::
 
-There's more to read about the details of implementing these methods:
+    Look up the special methods you need and define them.
 
-* https://docs.python.org/2/reference/datamodel.html#special-method-names
-* http://www.rafekettler.com/magicmethods.html
+    There's more to read about the details of implementing these methods:
 
-Be a bit cautious about the code examples in that last one. It uses quite a bit
-of old-style class definitions, which should not be emulated.
+    * https://docs.python.org/2/reference/datamodel.html#special-method-names
+    * http://www.rafekettler.com/magicmethods.html
+
+    Be a bit cautious about the code examples in that last one. It uses quite a
+    bit of old-style class definitions, which should not be emulated.
 
 
 Kicking the Tires
@@ -1131,6 +1137,6 @@ Name each test file so that it is clear with which source file it belongs::
 
 Add unit tests for the HTML Renderer that you are currently constructing.
 
-Create at least 4 test files with tests that well exercise the features built
-in each source file.
+Create at least 4 test files with tests that exercise the features built in
+the corresponding source file.
 
