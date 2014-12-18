@@ -45,7 +45,7 @@ Decorators
 
     Because of this fact, you can write functions that take functions as
     arguments and/or return functions as values (we played with this a
-    bit with the function generator assignment):
+    bit with the lambda magic assignment):
 
     .. code-block:: python
 
@@ -226,20 +226,20 @@ function with given arguments:
 .. code-block:: python
 
     class Memoize:
-    """
-    memoize decorator from avinash.vora
-    http://avinashv.net/2008/04/python-decorators-syntactic-sugar/
-    """
-    def __init__(self, function):  # runs when memoize class is called
-        self.function = function
-        self.memoized = {}
+        """Provide a decorator class that caches expensive function results
 
-    def __call__(self, *args):  # runs when memoize instance is called
-        try:
-            return self.memoized[args]
-        except KeyError:
-            self.memoized[args] = self.function(*args)
-            return self.memoized[args]
+        from avinash.vora http://avinashv.net/2008/04/python-decorators-syntactic-sugar/
+        """
+        def __init__(self, function):  # runs when memoize class is called
+            self.function = function
+            self.memoized = {}
+
+        def __call__(self, *args):  # runs when memoize instance is called
+            try:
+                return self.memoized[args]
+            except KeyError:
+                self.memoized[args] = self.function(*args)
+                return self.memoized[args]
 
 .. nextslide::
 
