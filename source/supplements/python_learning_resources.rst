@@ -86,15 +86,15 @@ The problems themselves need not be difficult, but applying your Python skills t
 small, quick-to-solve coding challenges can be very helpful as a way to stay sharp.
 These are some of my favorite sites with this type of work:
 
-* [LeetCodeOJ](https://leetcode.com) - Offers nearly 200 code challenges ranging 
+* `LeetCodeOJ <https://leetcode.com>`_: Offers nearly 200 code challenges ranging 
   from the simple to the devilishly difficult. You can submit your answers using 
   their online editor and get automatic feedback both on the success of your solution 
   and it's relative efficiencycompared to other solutions. It's quite a nice 
   interface.
-* [CodeEval](https://www.codeeval.com/) - Again, level-graded challenges you can 
+* `CodeEval <https://www.codeeval.com/>`_: Again, level-graded challenges you can 
   submit and evaluate through an online editor.  There is no direct comparison here
   with other solutions, but you do get a "ranking" in their pool of members.
-* [CodeKata](http://codekata.com/) - A series of challenges you can come back to 
+* `CodeKata <http://codekata.com/>`_: A series of challenges you can come back to 
   repeatedly to practice your skills. As you improve, your solutions to the 
   problems should also improve. This site has no automatic evaluation, but the 
   challenges are quite interesting. It is the source of the trigrams assignment
