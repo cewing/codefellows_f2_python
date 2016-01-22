@@ -43,7 +43,7 @@ For the beginner
 * `Think Python <http://greenteapress.com/thinkpython/>`_: Methodical and
   complete.  This book offers a very "computer science"-style introduction to
   Python. It is really an intro to Python *in the service of* Computer Science,
-  though, so not so while helpful for the absolute newcomer, it isn't quite as
+  though, so while helpful for the absolute newcomer, it isn't quite as
   "pythonic" as it might be.
 
 * `Core Python Programming <http://corepython.com/>`_: Only available as a dead
